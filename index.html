@@ -178,6 +178,27 @@
   }
   .card p.body { font-size: 0.88rem; line-height: 1.75; color: var(--text-2); }
 
+  /* ── Architecture flow ── */
+  .arch-flow {
+    display: flex; align-items: center; gap: 6px; flex-wrap: wrap;
+    background: var(--bg); border-radius: 10px;
+    padding: 10px 12px; margin: 12px 0;
+  }
+  .arch-node {
+    display: flex; flex-direction: column; align-items: center; gap: 2px;
+    background: var(--surface); border: 1px solid var(--border);
+    border-radius: 8px; padding: 6px 10px; flex-shrink: 0;
+  }
+  .arch-node-label {
+    font-family: 'Geist Mono', monospace; font-size: 0.65rem;
+    font-weight: 500; color: var(--text-2); white-space: nowrap;
+  }
+  .arch-node-sub {
+    font-size: 0.58rem; color: var(--text-4);
+    text-transform: uppercase; letter-spacing: 0.5px; white-space: nowrap;
+  }
+  .arch-arrow { color: var(--text-4); font-size: 0.75rem; flex-shrink: 0; }
+
   /* ── Projects ── */
   .proj-title { font-size: 1rem; font-weight: 600; color: var(--text-1); margin-bottom: 4px; transition: color 0.3s; }
   .proj-ctx { font-size: 0.74rem; color: var(--text-4); margin-bottom: 10px; }
@@ -558,6 +579,15 @@
         <div class="proj-ctx">DEPT Agency</div>
         <div class="proj-tags"><span>Matillion</span><span>Snowflake</span><span>Python</span><span>S3</span><span>BigQuery</span><span>Looker</span></div>
         <div class="proj-desc">Architected the data warehouse and ETL pipelines to ingest 30+ sources into Snowflake, powering Looker dashboards for campaign performance and budget allocation.</div>
+        <div class="arch-flow">
+          <div class="arch-node"><span class="arch-node-label">APIs / SFTP / S3</span><span class="arch-node-sub">30+ sources</span></div>
+          <span class="arch-arrow">→</span>
+          <div class="arch-node"><span class="arch-node-label">Matillion</span><span class="arch-node-sub">Orchestration</span></div>
+          <span class="arch-arrow">→</span>
+          <div class="arch-node"><span class="arch-node-label">Snowflake</span><span class="arch-node-sub">Raw → Transform</span></div>
+          <span class="arch-arrow">→</span>
+          <div class="arch-node"><span class="arch-node-label">Looker</span><span class="arch-node-sub">Dashboards</span></div>
+        </div>
         <div class="proj-metrics"><div class="pm"><span class="v">30+</span><span class="u">sources</span></div><div class="pm"><span class="v">1TB</span><span class="u">monthly</span></div><div class="pm"><span class="v">$2B+</span><span class="u">ad spend</span></div></div>
       </div>
 
