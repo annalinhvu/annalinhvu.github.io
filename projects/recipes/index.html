@@ -157,22 +157,8 @@ body{
   color:var(--text-3);cursor:pointer;transition:all .18s;
   font-family:inherit;white-space:nowrap;
 }
-.cat-pill:hover{color:var(--text-1);border-color:var(--text-3)}
-.cat-pill[data-cat="breakfast"]:hover{color:var(--cat-breakfast);border-color:var(--cat-breakfast)}
-.cat-pill[data-cat="main"]:hover{color:var(--cat-main);border-color:var(--cat-main)}
-.cat-pill[data-cat="side"]:hover{color:var(--cat-side);border-color:var(--cat-side)}
-.cat-pill[data-cat="dessert"]:hover{color:var(--cat-dessert);border-color:var(--cat-dessert)}
-.cat-pill[data-cat="snack"]:hover{color:var(--cat-snack);border-color:var(--cat-snack)}
-.cat-pill[data-cat="drink"]:hover{color:var(--cat-drink);border-color:var(--cat-drink)}
-.cat-pill[data-cat="vietnamese"]:hover{color:var(--cat-vietnamese);border-color:var(--cat-vietnamese)}
+.cat-pill:hover{color:var(--accent);border-color:var(--accent)}
 .cat-pill.active{background:var(--accent);color:#fff;border-color:var(--accent)}
-.cat-pill[data-cat="breakfast"].active{background:var(--cat-breakfast);border-color:var(--cat-breakfast);color:#fff}
-.cat-pill[data-cat="main"].active{background:var(--cat-main);border-color:var(--cat-main);color:#fff}
-.cat-pill[data-cat="side"].active{background:var(--cat-side);border-color:var(--cat-side);color:#fff}
-.cat-pill[data-cat="dessert"].active{background:var(--cat-dessert);border-color:var(--cat-dessert);color:#fff}
-.cat-pill[data-cat="snack"].active{background:var(--cat-snack);border-color:var(--cat-snack);color:#fff}
-.cat-pill[data-cat="drink"].active{background:var(--cat-drink);border-color:var(--cat-drink);color:#fff}
-.cat-pill[data-cat="vietnamese"].active{background:var(--cat-vietnamese);border-color:var(--cat-vietnamese);color:#fff}
 
 /* ── Page ── */
 .page{max-width:1140px;margin:0 auto;padding:0 28px 100px}
@@ -537,12 +523,7 @@ body{
 const LS_FAV   = 'from-scratch-favorites';
 const LS_THEME = 'from-scratch-theme';
 
-const CAT_COLORS = {
-  breakfast:'var(--cat-breakfast)', main:'var(--cat-main)',
-  side:'var(--cat-side)',           dessert:'var(--cat-dessert)',
-  snack:'var(--cat-snack)',         drink:'var(--cat-drink)',
-  vietnamese:'var(--cat-vietnamese)',
-};
+const BAND_COLOR = 'var(--accent)';
 
 let allRecipes = [], activeCat = 'all', savedIds = new Set(), searchTimer = null;
 
@@ -641,11 +622,10 @@ function renderCards(list){
     return;
   }
   g.innerHTML=list.map((r,i)=>{
-    const col=CAT_COLORS[r.category]||'var(--accent-warm)';
     const sv=savedIds.has(r.id);
     const tot=r.prep_time_min+r.cook_time_min;
     return `<div class="recipe-card card-in" style="animation-delay:${i*.035}s" onclick="showDetail(${r.id})">
-      <div class="card-band" style="background:${col}">
+      <div class="card-band" style="background:${BAND_COLOR}">
         <span class="band-cat">${r.category}</span>
         <button class="heart-btn${sv?' saved':''}" data-id="${r.id}"
           onclick="toggleFavorite(${r.id},event)" style="color:rgba(255,255,255,${sv?'1':'.6'})">${sv?'&#9829;':'&#9825;'}</button>
@@ -666,7 +646,6 @@ function renderCards(list){
 /* ── Detail ── */
 function showDetail(id){
   const r=allRecipes.find(x=>x.id===id); if(!r)return;
-  const col=CAT_COLORS[r.category]||'var(--accent-warm)';
   const sv=savedIds.has(r.id);
   const ings=r.ingredients.split('\n').map(l=>l.replace(/^-\s*/,'').trim()).filter(Boolean);
   const steps=r.instructions.split('\n').map(l=>l.replace(/^\d+\.\s*/,'').trim()).filter(Boolean);
@@ -679,7 +658,7 @@ function showDetail(id){
 
   document.getElementById('detailContent').innerHTML=`
     <div class="detail-card">
-      <div class="detail-band" style="background:${col}">
+      <div class="detail-band" style="background:${BAND_COLOR}">
         <span class="detail-band-cat">${r.category}</span>
       </div>
       <div class="detail-head-section">
