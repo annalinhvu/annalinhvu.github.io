@@ -88,9 +88,9 @@ body{
 /* ── Masthead ── */
 .masthead{
   background:var(--accent);
-  padding:50px 32px 46px;
+  padding:14px 32px 12px;
   text-align:center;
-  border-bottom:5px solid rgba(0,0,0,.2);
+  border-bottom:3px solid rgba(0,0,0,.15);
   position:relative;overflow:hidden;
 }
 :root[data-theme="dark"] .masthead{background:#a81414}
@@ -263,30 +263,10 @@ body{
 .heart-btn:hover{color:var(--gold);transform:scale(1.2)}
 .heart-btn.saved{color:var(--gold)}
 
-/* ── Card photo ── */
-.card-photo{
-  height:140px;position:relative;overflow:hidden;flex-shrink:0;
-}
-.card-photo::after{
-  content:'';position:absolute;inset:0;
-  background:linear-gradient(to bottom,transparent 45%,rgba(0,0,0,.28) 100%);
-  pointer-events:none;
-}
-.card-img{width:100%;height:100%;object-fit:cover;display:block}
 .region-badge{
   font-size:.5rem;letter-spacing:1.2px;font-style:italic;
   color:var(--gold);font-weight:600;
 }
-/* ── Detail photo ── */
-.detail-photo{
-  height:240px;position:relative;overflow:hidden;flex-shrink:0;
-}
-.detail-photo::after{
-  content:'';position:absolute;inset:0;
-  background:linear-gradient(to bottom,transparent 35%,rgba(0,0,0,.35) 100%);
-  pointer-events:none;
-}
-.detail-img{width:100%;height:100%;object-fit:cover;display:block}
 
 /* ── Empty state ── */
 .empty-state{
@@ -448,7 +428,7 @@ body{
 @media(max-width:540px){
   .topbar,.cat-strip{padding-left:16px;padding-right:16px}
   .page{padding:0 16px 80px}
-  .masthead{padding:38px 20px 34px}
+  .masthead{padding:12px 16px 10px}
   .mast-rule::before,.mast-rule::after,.mast-rule-b::before,.mast-rule-b::after{width:40px}
   .detail-head-section,.orn-rule{padding-left:18px;padding-right:18px}
 }
@@ -470,12 +450,8 @@ body{
 <div class="catalog-view" id="catalogView">
 
   <div class="masthead">
-    <p class="masthead-eyebrow">a personal recipe index</p>
     <div class="mast-rule">&#9670;</div>
-    <h1 class="masthead-title">Cơm Nhà</h1>
-    <p class="masthead-viet">home-cooked food</p>
-    <div class="mast-rule-b">&#9670;</div>
-    <p class="masthead-tag">100 Vietnamese recipes made with care</p>
+    <p class="masthead-tag">100 Vietnamese recipes &mdash; nấu từ đầu</p>
   </div>
 
   <div class="cat-wrap">
@@ -643,9 +619,7 @@ function renderCards(list){
   g.innerHTML=list.map((r,i)=>{
     const sv=savedIds.has(r.id);
     const tot=r.prep_time_min+r.cook_time_min;
-    const photoHtml=r.photo?`<img class="card-img" src="${r.photo}" alt="${r.name}" loading="lazy" onerror="this.style.display='none'">`:'' ;
     return `<div class="recipe-card card-in" style="animation-delay:${i*.03}s" onclick="showDetail(${r.id})">
-      <div class="card-photo" style="background:${catGrad(r.category)}">${photoHtml}</div>
       <div class="card-top">
         <span class="card-cat">${r.category}</span>
         <span class="card-stars">${diffStars(r.difficulty)}</span>
@@ -677,10 +651,8 @@ function showDetail(id){
   </div>`:'';
   const tot=r.prep_time_min+r.cook_time_min;
 
-  const detailPhotoHtml=r.photo?`<img class="detail-img" src="${r.photo}" alt="${r.name}" onerror="this.style.display='none'">`:'' ;
   document.getElementById('detailContent').innerHTML=`
     <div class="detail-card">
-      <div class="detail-photo" style="background:${catGrad(r.category)}">${detailPhotoHtml}</div>
       <div class="detail-head-section">
         <div class="detail-cat-label">${r.category}</div>
         <h1 class="detail-title">${r.name}</h1>
