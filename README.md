@@ -9,11 +9,10 @@ Personal portfolio and lab projects. Built with vanilla HTML, CSS, and JavaScrip
 ## Lab Projects
 
 ### 01 — Film Festival Tracker
-> A searchable database of experimental film festivals worldwide.
+> Documentary and experimental film festivals worldwide.
 
-Deadlines, submission fees, acceptance rates, and past selections — everything in one place to plan smarter submissions. Filter by country, tier, premiere requirement, and prestige level.
+Deadlines, submission fees, acceptance rates, and past selections — everything in one place to plan smarter submissions. Filter by type (documentary / experimental), region, tier, and premiere requirement.
 
-- **Data:** 70 festivals with nested deadlines and submission categories
 - **Stack:** Python · SQLite · Vanilla JS
 
 ---
@@ -21,9 +20,8 @@ Deadlines, submission fees, acceptance rates, and past selections — everything
 ### 02 — Analog Film Stock Database
 > Price tracking, availability, and lab locations for analog film stocks.
 
-Browse 54 film stocks with current pricing across vendors, availability status, and ISO/format specs. Paired with a directory of 25 development labs, searchable by process (C-41, E-6, B&W, ECN-2) and format.
+Browse film stocks with current pricing across vendors, availability status, and ISO/format specs. Paired with a directory of development labs, searchable by process (C-41, E-6, B&W, ECN-2) and format.
 
-- **Data:** 54 stocks with vendor prices · 25 labs with services
 - **Stack:** Python · SQLite · Vanilla JS
 
 ---
@@ -33,7 +31,6 @@ Browse 54 film stocks with current pricing across vendors, availability status, 
 
 Screening venues, workshops, labs, galleries, and community spaces — all in one place. Filter by category and borough. Built for anyone trying to find their people in the NYC film community.
 
-- **Data:** 78 venues across 5 boroughs
 - **Stack:** Python · SQLite · Leaflet.js · Vanilla JS
 
 ---
@@ -41,9 +38,8 @@ Screening venues, workshops, labs, galleries, and community spaces — all in on
 ### 04 — Only Good Things
 > A browsable catalog of self-care activities.
 
-Inspired by the *Only Good Things* wall calendar. 143 activities across 6 categories (body, mind, creative, nature, nourish, rest), filterable by season, duration, setting, and difficulty. Track completions and view your progress — all stored locally in your browser.
+Inspired by the *Only Good Things* wall calendar. Activities across 6 categories (body, mind, creative, nature, nourish, rest), filterable by season, duration, setting, and difficulty. Track completions and view your progress — all stored locally in your browser.
 
-- **Data:** 143 activities · completions stored in localStorage
 - **Stack:** Python · SQLite · Vanilla JS
 
 ---
