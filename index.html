@@ -12,7 +12,7 @@
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Anna (Linh) Vu | Data Engineer">
 <meta name="twitter:description" content="Senior Data Engineer in NYC building reliable pipelines and scalable data models.">
-<meta name="theme-color" content="#faf8f4">
+<meta name="theme-color" content="#f3f1eb">
 <meta property="og:url" content="https://annalinhvu.github.io/portfolio/">
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📊</text></svg>">
 <style>
@@ -32,32 +32,32 @@
     src: url(https://cdn.jsdelivr.net/fontsource/fonts/geist-mono:vf@latest/latin-wght-normal.woff2) format('woff2-variations');
   }
 
-  /* ── Light theme (default) — warm cream ── */
+  /* ── Light theme (default) — muted sage + terracotta ── */
   :root[data-theme="light"] {
-    --bg: #faf8f4;
+    --bg: #f3f1eb;
     --surface: #ffffff;
-    --surface-hover: #fdf9f2;
-    --border: #e8e2d8;
-    --border-hover: #cec5b6;
+    --surface-hover: #f8f6f0;
+    --border: #ddd9ce;
+    --border-hover: #c4bfb0;
     --text-1: #2a2218;
-    --text-2: #4e4438;
-    --text-3: #7a6e64;
-    --text-4: #afa49a;
-    --accent: #2a2218;
-    --accent-2: #1a140e;
-    --accent-bg: rgba(42,34,24,0.05);
-    --amber: #a87820;
-    --amber-bg: rgba(168,120,32,0.07);
+    --text-2: #4a4238;
+    --text-3: #7a7060;
+    --text-4: #aaa090;
+    --accent: #5e7a62;
+    --accent-2: #4a6450;
+    --accent-bg: rgba(94,122,98,0.07);
+    --amber: #b8644a;
+    --amber-bg: rgba(184,100,74,0.07);
     --rose: #a85060;
     --rose-bg: rgba(168,80,96,0.08);
     --indigo: #4060a0;
     --indigo-bg: rgba(64,96,160,0.07);
     --red: #b04040;
     --red-bg: rgba(176,64,64,0.07);
-    --green: #3a7a48;
-    --green-bg: rgba(58,122,72,0.07);
-    --tag-border: rgba(42,34,24,0.14);
-    --tag-color: #5e5248;
+    --green: #5e7a62;
+    --green-bg: rgba(94,122,98,0.07);
+    --tag-border: rgba(94,122,98,0.22);
+    --tag-color: #4a6450;
   }
 
   /* ── Dark theme — dark slate (GitHub dark dimmed inspired) ── */
@@ -71,21 +71,21 @@
     --text-2: #b4bcd0;
     --text-3: #7888a4;
     --text-4: #4a5670;
-    --accent: #e6eaf4;
-    --accent-2: #d4daea;
-    --accent-bg: rgba(230,234,244,0.05);
-    --amber: #d4a840;
-    --amber-bg: rgba(212,168,64,0.08);
+    --accent: #8aaa8e;
+    --accent-2: #7a9a7e;
+    --accent-bg: rgba(138,170,142,0.07);
+    --amber: #c8785e;
+    --amber-bg: rgba(200,120,94,0.08);
     --rose: #d47080;
     --rose-bg: rgba(212,112,128,0.08);
     --indigo: #7888c8;
     --indigo-bg: rgba(120,136,200,0.08);
     --red: #d87070;
     --red-bg: rgba(216,112,112,0.08);
-    --green: #60b870;
-    --green-bg: rgba(96,184,112,0.08);
-    --tag-border: rgba(230,234,244,0.13);
-    --tag-color: #9aaac0;
+    --green: #8aaa8e;
+    --green-bg: rgba(138,170,142,0.08);
+    --tag-border: rgba(138,170,142,0.22);
+    --tag-color: #8aaa8e;
   }
 
   * { margin:0; padding:0; box-sizing:border-box; }
@@ -283,20 +283,20 @@
   .snapshot-card .snap-label::before {
     content: ''; display: inline-block; width: 8px; height: 2px; border-radius: 1px;
   }
-  .snap-now .snap-label { color: #1c3d6b; }
-  .snap-now .snap-label::before { background: #1c3d6b; }
+  .snap-now .snap-label { color: #5e7a62; }
+  .snap-now .snap-label::before { background: #5e7a62; }
   .snap-next .snap-label { color: #5a5a90; }
   .snap-next .snap-label::before { background: #5a5a90; }
-  .snap-always .snap-label { color: #a87820; }
-  .snap-always .snap-label::before { background: #a87820; }
+  .snap-always .snap-label { color: #b8644a; }
+  .snap-always .snap-label::before { background: #b8644a; }
   .snap-home .snap-label { color: #a85060; }
   .snap-home .snap-label::before { background: #a85060; }
-  [data-theme="dark"] .snap-now .snap-label { color: #7a9ed4; }
-  [data-theme="dark"] .snap-now .snap-label::before { background: #7a9ed4; }
+  [data-theme="dark"] .snap-now .snap-label { color: #8aaa8e; }
+  [data-theme="dark"] .snap-now .snap-label::before { background: #8aaa8e; }
   [data-theme="dark"] .snap-next .snap-label { color: #a8a8d0; }
   [data-theme="dark"] .snap-next .snap-label::before { background: #a8a8d0; }
-  [data-theme="dark"] .snap-always .snap-label { color: #d4a840; }
-  [data-theme="dark"] .snap-always .snap-label::before { background: #d4a840; }
+  [data-theme="dark"] .snap-always .snap-label { color: #c8785e; }
+  [data-theme="dark"] .snap-always .snap-label::before { background: #c8785e; }
   [data-theme="dark"] .snap-home .snap-label { color: #d47080; }
   [data-theme="dark"] .snap-home .snap-label::before { background: #d47080; }
   .snapshot-card .snap-text { font-size: 0.84rem; color: var(--text-2); line-height: 1.65; }
@@ -315,10 +315,10 @@
   .pipeline { width: 100%; display: block; }
   .pipe-stage { fill: var(--surface); stroke-width: 1.5; transition: fill 0.2s; }
   .pipe-group { cursor: pointer; }
-  .pipe-stage-1 { stroke: rgba(28,61,107,0.45); }
+  .pipe-stage-1 { stroke: rgba(94,122,98,0.5); }
   .pipe-stage-2 { stroke: rgba(90,90,144,0.45); }
   .pipe-stage-3 { stroke: rgba(139,112,64,0.45); }
-  .pipe-stage-4 { stroke: rgba(168,80,96,0.45); }
+  .pipe-stage-4 { stroke: rgba(184,100,74,0.5); }
   .pipe-label { font-family: 'Geist Mono', monospace; font-size: 10px; letter-spacing: 1.5px; text-anchor: middle; pointer-events: none; }
   .pipe-sub { font-family: 'Geist', system-ui, sans-serif; font-size: 7.5px; text-anchor: middle; opacity: 0; transition: opacity 0.25s; pointer-events: none; }
   .pipe-group:hover .pipe-sub { opacity: 1; }
@@ -526,8 +526,8 @@
 
         <g class="pipe-group" data-nav="skills">
           <rect class="pipe-stage pipe-stage-1" x="0" y="15" width="130" height="50" rx="12"/>
-          <text class="pipe-label" x="65" y="44" fill="#1c3d6b">INGEST</text>
-          <text class="pipe-sub" x="65" y="80" fill="#1c3d6b">APIs · SFTP · Platforms · S3</text>
+          <text class="pipe-label" x="65" y="44" fill="#5e7a62">INGEST</text>
+          <text class="pipe-sub" x="65" y="80" fill="#5e7a62">APIs · SFTP · Platforms · S3</text>
         </g>
         <g class="pipe-group" data-nav="skills">
           <rect class="pipe-stage pipe-stage-2" x="195" y="15" width="130" height="50" rx="12"/>
@@ -541,13 +541,13 @@
         </g>
         <g class="pipe-group" data-nav="experience">
           <rect class="pipe-stage pipe-stage-4" x="585" y="15" width="130" height="50" rx="12"/>
-          <text class="pipe-label" x="650" y="44" fill="#a85060">ANALYZE</text>
-          <text class="pipe-sub" x="650" y="80" fill="#a85060">Performance · Budget · Anomalies</text>
+          <text class="pipe-label" x="650" y="44" fill="#b8644a">ANALYZE</text>
+          <text class="pipe-sub" x="650" y="80" fill="#b8644a">Performance · Budget · Anomalies</text>
         </g>
 
-        <circle r="3" fill="#1c3d6b" opacity="0"><animateMotion dur="1.2s" begin="0s" repeatCount="indefinite" path="M130,40 L195,40"/><animate attributeName="opacity" values="0;1;1;0" dur="1.2s" begin="0s" repeatCount="indefinite"/></circle>
-        <circle r="3" fill="#1c3d6b" opacity="0"><animateMotion dur="1.2s" begin="0.4s" repeatCount="indefinite" path="M130,40 L195,40"/><animate attributeName="opacity" values="0;1;1;0" dur="1.2s" begin="0.4s" repeatCount="indefinite"/></circle>
-        <circle r="3" fill="#1c3d6b" opacity="0"><animateMotion dur="1.2s" begin="0.8s" repeatCount="indefinite" path="M130,40 L195,40"/><animate attributeName="opacity" values="0;1;1;0" dur="1.2s" begin="0.8s" repeatCount="indefinite"/></circle>
+        <circle r="3" fill="#5e7a62" opacity="0"><animateMotion dur="1.2s" begin="0s" repeatCount="indefinite" path="M130,40 L195,40"/><animate attributeName="opacity" values="0;1;1;0" dur="1.2s" begin="0s" repeatCount="indefinite"/></circle>
+        <circle r="3" fill="#5e7a62" opacity="0"><animateMotion dur="1.2s" begin="0.4s" repeatCount="indefinite" path="M130,40 L195,40"/><animate attributeName="opacity" values="0;1;1;0" dur="1.2s" begin="0.4s" repeatCount="indefinite"/></circle>
+        <circle r="3" fill="#5e7a62" opacity="0"><animateMotion dur="1.2s" begin="0.8s" repeatCount="indefinite" path="M130,40 L195,40"/><animate attributeName="opacity" values="0;1;1;0" dur="1.2s" begin="0.8s" repeatCount="indefinite"/></circle>
 
         <circle r="3" fill="#6a6a96" opacity="0"><animateMotion dur="1.2s" begin="0.15s" repeatCount="indefinite" path="M325,40 L390,40"/><animate attributeName="opacity" values="0;1;1;0" dur="1.2s" begin="0.15s" repeatCount="indefinite"/></circle>
         <circle r="3" fill="#6a6a96" opacity="0"><animateMotion dur="1.2s" begin="0.55s" repeatCount="indefinite" path="M325,40 L390,40"/><animate attributeName="opacity" values="0;1;1;0" dur="1.2s" begin="0.55s" repeatCount="indefinite"/></circle>
