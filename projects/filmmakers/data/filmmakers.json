@@ -12,8 +12,13 @@
     "notable_films": [
       { "title": "La Pointe Courte", "year": 1955 },
       { "title": "Cléo from 5 to 7", "year": 1962 },
+      { "title": "Le Bonheur", "year": 1965 },
+      { "title": "Lions Love", "year": 1969 },
+      { "title": "One Sings, the Other Doesn't", "year": 1977 },
       { "title": "Vagabond", "year": 1985 },
+      { "title": "Jacquot de Nantes", "year": 1991 },
       { "title": "The Gleaners & I", "year": 2000 },
+      { "title": "The Beaches of Agnès", "year": 2008 },
       { "title": "Faces Places", "year": 2017 }
     ],
     "style_tags": ["essay-film", "documentary", "feminist"]
@@ -29,10 +34,15 @@
     "bio": "Stan Brakhage was the most prolific and radical of American avant-garde filmmakers, producing over 370 works across five decades. He scratched, painted, and collaged directly onto film emulsion, questioning every convention of cinema — narrative, sound, even the camera itself. His work is an ongoing inquiry into vision: what does it mean to truly see without the filters of language and habit?",
     "why": "Brakhage taught me that cinema is not about stories but about light, duration, and perception itself — that the eye can be remade.",
     "notable_films": [
+      { "title": "Desistfilm", "year": 1954 },
+      { "title": "The Way to Shadow Garden", "year": 1955 },
       { "title": "Anticipation of the Night", "year": 1958 },
+      { "title": "Window Water Baby Moving", "year": 1959 },
+      { "title": "Cat's Cradle", "year": 1959 },
       { "title": "Mothlight", "year": 1963 },
       { "title": "Dog Star Man", "year": 1964 },
       { "title": "The Act of Seeing with One's Own Eyes", "year": 1971 },
+      { "title": "Text of Light", "year": 1974 },
       { "title": "Night Music", "year": 1986 }
     ],
     "style_tags": ["experimental", "abstract", "silent"]
@@ -48,10 +58,15 @@
     "bio": "Born in Lithuania, displaced by World War II, Jonas Mekas arrived in New York in 1949 and spent the next seven decades documenting his life in an ecstatic visual diary. He was also the great champion of American avant-garde cinema — co-founding Anthology Film Archives — while his own camera work remained resolutely personal, capturing fragments of beauty in the ordinary rhythms of an immigrant life.",
     "why": "Mekas showed me that a life lived attentively is its own kind of cinema — that ordinary days, filmed with love, become poetry.",
     "notable_films": [
+      { "title": "Guns of the Trees", "year": 1961 },
+      { "title": "Film Magazine of the Arts", "year": 1963 },
+      { "title": "The Brig", "year": 1964 },
+      { "title": "Report from Millbrook", "year": 1966 },
       { "title": "Walden", "year": 1969 },
       { "title": "Reminiscences of a Journey to Lithuania", "year": 1972 },
       { "title": "Lost Lost Lost", "year": 1976 },
       { "title": "He Stands in a Desert...", "year": 1986 },
+      { "title": "Zefiro Torna", "year": 1992 },
       { "title": "As I Was Moving Ahead Occasionally I Saw Brief Glimpses of Beauty", "year": 2000 }
     ],
     "style_tags": ["diary-film", "documentary", "experimental"]
@@ -70,7 +85,13 @@
       { "title": "Breathless", "year": 1960 },
       { "title": "Vivre sa vie", "year": 1962 },
       { "title": "Contempt", "year": 1963 },
+      { "title": "Band of Outsiders", "year": 1964 },
+      { "title": "Alphaville", "year": 1965 },
+      { "title": "Pierrot le Fou", "year": 1965 },
       { "title": "2 or 3 Things I Know About Her", "year": 1967 },
+      { "title": "Weekend", "year": 1967 },
+      { "title": "Every Man for Himself", "year": 1980 },
+      { "title": "Hail Mary", "year": 1985 },
       { "title": "Histoire(s) du cinéma", "year": 1998 }
     ],
     "style_tags": ["essay-film", "political", "experimental"]
@@ -90,6 +111,12 @@
       { "title": "Jeanne Dielman, 23 quai du Commerce, 1080 Bruxelles", "year": 1975 },
       { "title": "News from Home", "year": 1977 },
       { "title": "Les Rendez-vous d'Anna", "year": 1978 },
+      { "title": "Toute une nuit", "year": 1982 },
+      { "title": "The Eighties", "year": 1983 },
+      { "title": "Window Shopping", "year": 1986 },
+      { "title": "D'Est", "year": 1993 },
+      { "title": "La Captive", "year": 2000 },
+      { "title": "Almayer's Folly", "year": 2011 },
       { "title": "No Home Movie", "year": 2015 }
     ],
     "style_tags": ["experimental", "feminist", "slow-cinema"]
@@ -105,11 +132,16 @@
     "bio": "Andrei Tarkovsky believed cinema's unique property was its ability to render time visible — not just to record events but to sculpt duration itself. His seven features are among the most visually and spiritually demanding in all of cinema, dwelling in landscapes of ruin and grace, memory and longing, faith and doubt. He remains cinema's most transcendent artist.",
     "why": "No filmmaker has made me feel more acutely the passage of time, or the weight of spiritual longing.",
     "notable_films": [
+      { "title": "The Killers", "year": 1956 },
+      { "title": "There Will Be No Leave Today", "year": 1959 },
+      { "title": "The Steamroller and the Violin", "year": 1961 },
       { "title": "Ivan's Childhood", "year": 1962 },
       { "title": "Andrei Rublev", "year": 1966 },
       { "title": "Solaris", "year": 1972 },
       { "title": "The Mirror", "year": 1975 },
-      { "title": "Stalker", "year": 1979 }
+      { "title": "Stalker", "year": 1979 },
+      { "title": "Nostalghia", "year": 1983 },
+      { "title": "The Sacrifice", "year": 1986 }
     ],
     "style_tags": ["poetic", "spiritual", "slow-cinema"]
   },
@@ -124,10 +156,16 @@
     "bio": "Ingmar Bergman made over forty films across five decades, returning obsessively to questions of faith, death, love, and the impossibility of truly knowing another person. Working with cinematographer Sven Nykvist and a repertory company of extraordinary actors, he created a body of work of unrivaled psychological intensity. Few filmmakers have gone so deep into the human interior.",
     "why": "Bergman taught me that cinema can be as honest about pain and uncertainty as the best literature — maybe more so.",
     "notable_films": [
+      { "title": "Sawdust and Tinsel", "year": 1953 },
+      { "title": "Smiles of a Summer Night", "year": 1955 },
       { "title": "The Seventh Seal", "year": 1957 },
       { "title": "Wild Strawberries", "year": 1957 },
+      { "title": "Through a Glass Darkly", "year": 1961 },
+      { "title": "Winter Light", "year": 1963 },
       { "title": "Persona", "year": 1966 },
       { "title": "Cries and Whispers", "year": 1972 },
+      { "title": "Scenes from a Marriage", "year": 1973 },
+      { "title": "Autumn Sonata", "year": 1978 },
       { "title": "Fanny and Alexander", "year": 1982 }
     ],
     "style_tags": ["psychological", "existential", "humanist"]
@@ -143,11 +181,16 @@
     "bio": "Wong Kar-wai makes films about desire, time, and the space between people who almost connect. Shooting without scripts, often improvising with cinematographer Christopher Doyle, he creates a world of blurred motion, saturated colors, and pop music that aches. His films don't follow narrative logic — they follow the logic of memory and longing.",
     "why": "He makes you feel the specific texture of missing someone — not in a generic way, but with unbearable precision.",
     "notable_films": [
+      { "title": "As Tears Go By", "year": 1988 },
       { "title": "Days of Being Wild", "year": 1990 },
+      { "title": "Ashes of Time", "year": 1994 },
       { "title": "Chungking Express", "year": 1994 },
       { "title": "Fallen Angels", "year": 1995 },
       { "title": "Happy Together", "year": 1997 },
-      { "title": "In the Mood for Love", "year": 2000 }
+      { "title": "In the Mood for Love", "year": 2000 },
+      { "title": "2046", "year": 2004 },
+      { "title": "My Blueberry Nights", "year": 2007 },
+      { "title": "The Grandmaster", "year": 2013 }
     ],
     "style_tags": ["poetic", "romantic", "experimental"]
   },
@@ -163,10 +206,16 @@
     "why": "Truffaut reminds me that cinema at its best is an act of empathy — a way of saying I understand what it is like to be you.",
     "notable_films": [
       { "title": "The 400 Blows", "year": 1959 },
+      { "title": "Shoot the Piano Player", "year": 1960 },
       { "title": "Jules and Jim", "year": 1962 },
+      { "title": "The Soft Skin", "year": 1964 },
+      { "title": "Fahrenheit 451", "year": 1966 },
       { "title": "Stolen Kisses", "year": 1968 },
       { "title": "The Wild Child", "year": 1970 },
-      { "title": "Day for Night", "year": 1973 }
+      { "title": "Two English Girls", "year": 1971 },
+      { "title": "Day for Night", "year": 1973 },
+      { "title": "The Story of Adele H.", "year": 1975 },
+      { "title": "The Last Metro", "year": 1980 }
     ],
     "style_tags": ["humanist", "autobiographical", "new-wave"]
   },
@@ -181,11 +230,17 @@
     "bio": "Abbas Kiarostami made films that blur the line between documentary and fiction, between the world as it is and as we imagine it. Working in Iran with non-professional actors, he created a body of work of extraordinary philosophical complexity and visual simplicity. His films ask: what is real? What does it mean to represent a life?",
     "why": "Kiarostami showed me that the deepest questions about cinema can be asked with the most minimal means.",
     "notable_films": [
+      { "title": "The Bread and Alley", "year": 1970 },
       { "title": "Where Is the Friend's Home?", "year": 1987 },
+      { "title": "Homework", "year": 1989 },
       { "title": "Close-Up", "year": 1990 },
+      { "title": "Life and Nothing More", "year": 1992 },
       { "title": "Through the Olive Trees", "year": 1994 },
       { "title": "Taste of Cherry", "year": 1997 },
-      { "title": "The Wind Will Carry Us", "year": 1999 }
+      { "title": "The Wind Will Carry Us", "year": 1999 },
+      { "title": "Ten", "year": 2002 },
+      { "title": "Certified Copy", "year": 2010 },
+      { "title": "Like Someone in Love", "year": 2012 }
     ],
     "style_tags": ["minimalist", "philosophical", "documentary"]
   },
@@ -204,7 +259,9 @@
       { "title": "At Land", "year": 1944 },
       { "title": "A Study in Choreography for Camera", "year": 1945 },
       { "title": "Ritual in Transfigured Time", "year": 1946 },
-      { "title": "Meditation on Violence", "year": 1948 }
+      { "title": "Meditation on Violence", "year": 1948 },
+      { "title": "The Very Eye of Night", "year": 1958 },
+      { "title": "Divine Horsemen: The Living Gods of Haiti", "year": 1985 }
     ],
     "style_tags": ["surrealist", "feminist", "experimental"]
   },
@@ -219,11 +276,18 @@
     "bio": "Akira Kurosawa was the first Japanese filmmaker to achieve international recognition, and remains one of the most influential directors in cinema history. His films range from intimate character studies to sweeping historical epics, always driven by a deep humanism and precise visual intelligence. He could make Shakespeare feel Japanese and samurai films feel universal.",
     "why": "Kurosawa understood that spectacle and humanity are not in tension — that the grandest scale can hold the most personal truth.",
     "notable_films": [
+      { "title": "Sanshiro Sugata", "year": 1943 },
+      { "title": "Stray Dog", "year": 1949 },
       { "title": "Rashomon", "year": 1950 },
       { "title": "Ikiru", "year": 1952 },
       { "title": "Seven Samurai", "year": 1954 },
+      { "title": "The Hidden Fortress", "year": 1958 },
       { "title": "Yojimbo", "year": 1961 },
-      { "title": "Ran", "year": 1985 }
+      { "title": "High and Low", "year": 1963 },
+      { "title": "Red Beard", "year": 1965 },
+      { "title": "Kagemusha", "year": 1980 },
+      { "title": "Ran", "year": 1985 },
+      { "title": "Dreams", "year": 1990 }
     ],
     "style_tags": ["humanist", "epic", "visual-poetry"]
   },
@@ -238,11 +302,17 @@
     "bio": "Chris Marker was cinema's great essayist — a filmmaker, photographer, and writer who moved between documentary, fiction, and pure meditation with equal ease. His films are collections of images, questions, and associations rather than arguments; they trust the viewer to make meaning from juxtaposition. He was also deeply political, a committed leftist whose work engaged obsessively with history, memory, and time.",
     "why": "Marker made me understand that a film can think — not illustrate ideas, but genuinely think through images.",
     "notable_films": [
+      { "title": "Olympia 52", "year": 1952 },
+      { "title": "Dimanche à Pékin", "year": 1956 },
       { "title": "Letter from Siberia", "year": 1957 },
+      { "title": "Description of a Struggle", "year": 1960 },
+      { "title": "Cuba Sí!", "year": 1961 },
       { "title": "La Jetée", "year": 1962 },
+      { "title": "A Grin Without a Cat", "year": 1977 },
       { "title": "Sans Soleil", "year": 1983 },
       { "title": "The Last Bolshevik", "year": 1993 },
-      { "title": "Level Five", "year": 1997 }
+      { "title": "Level Five", "year": 1997 },
+      { "title": "The Case of the Grinning Cat", "year": 2004 }
     ],
     "style_tags": ["essay-film", "documentary", "political"]
   },
@@ -257,11 +327,18 @@
     "bio": "Robert Bresson made only thirteen films in fifty years, each one more rigorous than the last. He rejected trained actors and theatrical conventions, working instead with what he called 'models' — people who read lines flatly and move without expression, allowing the viewer to project onto them. The result is a cinema of extraordinary spiritual intensity: minimal on the surface, bottomless underneath.",
     "why": "Bresson showed me that restraint can be the most powerful tool in cinema — that what you withhold is as important as what you show.",
     "notable_films": [
+      { "title": "The Angels of Sin", "year": 1943 },
+      { "title": "The Ladies of the Bois de Boulogne", "year": 1945 },
+      { "title": "Diary of a Country Priest", "year": 1951 },
       { "title": "A Man Escaped", "year": 1956 },
       { "title": "Pickpocket", "year": 1959 },
+      { "title": "The Trial of Joan of Arc", "year": 1962 },
       { "title": "Au Hasard Balthazar", "year": 1966 },
       { "title": "Mouchette", "year": 1967 },
-      { "title": "Four Nights of a Dreamer", "year": 1971 }
+      { "title": "A Gentle Creature", "year": 1969 },
+      { "title": "Four Nights of a Dreamer", "year": 1971 },
+      { "title": "The Devil, Probably", "year": 1977 },
+      { "title": "L'Argent", "year": 1983 }
     ],
     "style_tags": ["minimalist", "spiritual", "austere"]
   },
@@ -277,10 +354,16 @@
     "why": "Rivette's films feel like being invited into something real that you do not quite understand — which is exactly what great cinema does.",
     "notable_films": [
       { "title": "Paris Belongs to Us", "year": 1961 },
+      { "title": "The Nun", "year": 1966 },
       { "title": "L'Amour fou", "year": 1969 },
       { "title": "Out 1", "year": 1971 },
       { "title": "Céline and Julie Go Boating", "year": 1974 },
-      { "title": "La Belle Noiseuse", "year": 1991 }
+      { "title": "Duelle", "year": 1976 },
+      { "title": "Noroît", "year": 1976 },
+      { "title": "The Gang of Four", "year": 1988 },
+      { "title": "La Belle Noiseuse", "year": 1991 },
+      { "title": "Va savoir", "year": 2001 },
+      { "title": "The Duchess of Langeais", "year": 2007 }
     ],
     "style_tags": ["experimental", "improvisational", "theatrical"]
   },
@@ -298,8 +381,13 @@
       { "title": "Badlands", "year": 1973 },
       { "title": "Days of Heaven", "year": 1978 },
       { "title": "The Thin Red Line", "year": 1998 },
+      { "title": "The New World", "year": 2005 },
       { "title": "The Tree of Life", "year": 2011 },
-      { "title": "To the Wonder", "year": 2012 }
+      { "title": "To the Wonder", "year": 2012 },
+      { "title": "Knight of Cups", "year": 2015 },
+      { "title": "Voyage of Time", "year": 2016 },
+      { "title": "Song to Song", "year": 2017 },
+      { "title": "A Hidden Life", "year": 2019 }
     ],
     "style_tags": ["poetic", "philosophical", "lyrical"]
   },
@@ -317,6 +405,7 @@
       { "title": "Water Lilies", "year": 2007 },
       { "title": "Tomboy", "year": 2011 },
       { "title": "Girlhood", "year": 2014 },
+      { "title": "My Life as a Courgette", "year": 2016 },
       { "title": "Portrait of a Lady on Fire", "year": 2019 },
       { "title": "Petite Maman", "year": 2021 }
     ],
@@ -334,10 +423,17 @@
     "why": "Denis taught me that cinema can bypass language and speak directly to something physical — that we understand more than we can say.",
     "notable_films": [
       { "title": "Chocolat", "year": 1988 },
+      { "title": "No Fear, No Die", "year": 1990 },
+      { "title": "I Can't Sleep", "year": 1994 },
+      { "title": "Nénette et Boni", "year": 1996 },
       { "title": "Beau Travail", "year": 1999 },
       { "title": "Trouble Every Day", "year": 2001 },
+      { "title": "The Intruder", "year": 2004 },
       { "title": "35 Shots of Rum", "year": 2008 },
-      { "title": "White Material", "year": 2009 }
+      { "title": "White Material", "year": 2009 },
+      { "title": "Bastards", "year": 2013 },
+      { "title": "Let the Sunshine In", "year": 2017 },
+      { "title": "Both Sides of the Blade", "year": 2022 }
     ],
     "style_tags": ["sensory", "lyrical", "postcolonial"]
   },
@@ -352,11 +448,17 @@
     "bio": "Hou Hsiao-hsien's films observe their characters from a careful, respectful distance — long takes, fixed or slowly moving cameras, natural light. His Taiwanese trilogy is a monumental reckoning with colonial history and identity. His more personal films are among cinema's most beautiful contemplations of time passing, of what gets lost and what endures.",
     "why": "Hou's films taught me patience — how to sit with a moment until it reveals everything.",
     "notable_films": [
+      { "title": "The Boys from Fengkuei", "year": 1983 },
       { "title": "A Summer at Grandpa's", "year": 1984 },
+      { "title": "The Time to Live and the Time to Die", "year": 1985 },
+      { "title": "Dust in the Wind", "year": 1986 },
       { "title": "A City of Sadness", "year": 1989 },
       { "title": "The Puppetmaster", "year": 1993 },
+      { "title": "Good Men, Good Women", "year": 1995 },
+      { "title": "Flowers of Shanghai", "year": 1998 },
       { "title": "Millennium Mambo", "year": 2001 },
-      { "title": "Three Times", "year": 2005 }
+      { "title": "Three Times", "year": 2005 },
+      { "title": "The Assassin", "year": 2015 }
     ],
     "style_tags": ["slow-cinema", "historical", "lyrical"]
   },
@@ -371,11 +473,18 @@
     "bio": "Hayao Miyazaki co-founded Studio Ghibli and created a body of animated films that stand among cinema's great achievements regardless of medium. His films embrace complexity — morally ambiguous figures, female protagonists, ecological themes, ambivalent endings — while maintaining a fundamental faith in children's capacity to understand the world. Every frame is hand-drawn with obsessive care.",
     "why": "Miyazaki reminds me that wonder is not childish — it is a form of wisdom.",
     "notable_films": [
+      { "title": "Lupin III: The Castle of Cagliostro", "year": 1979 },
       { "title": "Nausicaä of the Valley of the Wind", "year": 1984 },
+      { "title": "Castle in the Sky", "year": 1986 },
       { "title": "My Neighbor Totoro", "year": 1988 },
+      { "title": "Kiki's Delivery Service", "year": 1989 },
+      { "title": "Porco Rosso", "year": 1992 },
       { "title": "Princess Mononoke", "year": 1997 },
       { "title": "Spirited Away", "year": 2001 },
-      { "title": "The Wind Rises", "year": 2013 }
+      { "title": "Howl's Moving Castle", "year": 2004 },
+      { "title": "Ponyo", "year": 2008 },
+      { "title": "The Wind Rises", "year": 2013 },
+      { "title": "The Boy and the Heron", "year": 2023 }
     ],
     "style_tags": ["animation", "ecological", "humanist"]
   },
@@ -391,10 +500,16 @@
     "why": "Cassavetes proved that the most radical thing a filmmaker can do is trust actors enough to follow them wherever they go.",
     "notable_films": [
       { "title": "Shadows", "year": 1958 },
+      { "title": "Too Late Blues", "year": 1961 },
+      { "title": "A Child Is Waiting", "year": 1963 },
       { "title": "Faces", "year": 1968 },
       { "title": "Husbands", "year": 1970 },
+      { "title": "Minnie and Moskowitz", "year": 1971 },
       { "title": "A Woman Under the Influence", "year": 1974 },
-      { "title": "The Killing of a Chinese Bookie", "year": 1976 }
+      { "title": "The Killing of a Chinese Bookie", "year": 1976 },
+      { "title": "Opening Night", "year": 1977 },
+      { "title": "Gloria", "year": 1980 },
+      { "title": "Love Streams", "year": 1984 }
     ],
     "style_tags": ["improvisational", "independent", "humanist"]
   },
@@ -409,9 +524,13 @@
     "bio": "Park Chan-wook makes films of extraordinary formal precision and moral complexity. His Vengeance Trilogy interrogates the logic of revenge with a cold, almost clinical intelligence while delivering visceral emotional impact. Later films like The Handmaiden and Decision to Leave show an artist expanding into more lyrical territory without losing his edge.",
     "why": "Park showed me that genre cinema can be as sophisticated and humane as any art film — that form and feeling are not in conflict.",
     "notable_films": [
+      { "title": "Joint Security Area", "year": 2000 },
       { "title": "Sympathy for Mr. Vengeance", "year": 2002 },
       { "title": "Oldboy", "year": 2003 },
       { "title": "Lady Vengeance", "year": 2005 },
+      { "title": "I'm a Cyborg, But That's OK", "year": 2006 },
+      { "title": "Thirst", "year": 2009 },
+      { "title": "Stoker", "year": 2013 },
       { "title": "The Handmaiden", "year": 2016 },
       { "title": "Decision to Leave", "year": 2022 }
     ],
@@ -428,11 +547,16 @@
     "bio": "Bong Joon-ho works in genre — thriller, horror, science fiction — but uses it as a vehicle for merciless social critique. His films are about class, capitalism, and the violence that structures ordinary life, delivered with the compulsive watchability of a great thriller. Parasite's sweep at Cannes and the Oscars confirmed what his Korean fans already knew.",
     "why": "Bong makes films that are simultaneously wildly entertaining and deeply uncomfortable — the best kind of cinema.",
     "notable_films": [
+      { "title": "Incoherence", "year": 1994 },
+      { "title": "Barking Dogs Never Bite", "year": 2000 },
       { "title": "Memories of Murder", "year": 2003 },
       { "title": "The Host", "year": 2006 },
+      { "title": "Shaking Tokyo", "year": 2008 },
       { "title": "Mother", "year": 2009 },
       { "title": "Snowpiercer", "year": 2013 },
-      { "title": "Parasite", "year": 2019 }
+      { "title": "Okja", "year": 2017 },
+      { "title": "Parasite", "year": 2019 },
+      { "title": "Mickey 17", "year": 2025 }
     ],
     "style_tags": ["genre", "political", "social-critique"]
   },
@@ -447,7 +571,11 @@
     "bio": "Alfonso Cuarón moves fluidly between intimate personal drama and large-scale spectacle, always finding the human within the technical. His long-take cinematography in Children of Men changed how action cinema thought about camera movement; Roma, shot in luminous black and white in his childhood neighborhood, is one of cinema's great acts of personal memory and social witness.",
     "why": "Cuarón shows that technical mastery and personal vulnerability can exist in the same frame — that craft is an expression of care.",
     "notable_films": [
+      { "title": "Love in the Time of Hysteria", "year": 1991 },
+      { "title": "A Little Princess", "year": 1995 },
+      { "title": "Great Expectations", "year": 1998 },
       { "title": "Y Tu Mamá También", "year": 2001 },
+      { "title": "Harry Potter and the Prisoner of Azkaban", "year": 2004 },
       { "title": "Children of Men", "year": 2006 },
       { "title": "Gravity", "year": 2013 },
       { "title": "Roma", "year": 2018 }
@@ -468,8 +596,15 @@
       { "title": "Slacker", "year": 1990 },
       { "title": "Dazed and Confused", "year": 1993 },
       { "title": "Before Sunrise", "year": 1995 },
+      { "title": "Waking Life", "year": 2001 },
+      { "title": "School of Rock", "year": 2003 },
       { "title": "Before Sunset", "year": 2004 },
-      { "title": "Boyhood", "year": 2014 }
+      { "title": "Fast Food Nation", "year": 2006 },
+      { "title": "Before Midnight", "year": 2013 },
+      { "title": "Boyhood", "year": 2014 },
+      { "title": "Everybody Wants Some!!", "year": 2016 },
+      { "title": "Apollo 10½: A Space Age Childhood", "year": 2022 },
+      { "title": "Hit Man", "year": 2023 }
     ],
     "style_tags": ["humanist", "conversational", "time"]
   }
