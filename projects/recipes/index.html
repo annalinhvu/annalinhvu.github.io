@@ -143,9 +143,30 @@ body{
   font-style:normal;position:relative;z-index:1;
 }
 
+/* ── Catalog header bar ── */
+.catalog-header{
+  display:flex;align-items:center;gap:14px;
+  padding:10px 28px;
+  background:var(--bg);border-bottom:1px solid var(--border);
+  transition:background .3s;
+}
+@media(max-width:540px){.catalog-header{padding:10px 16px}}
+.catalog-home-btn{
+  font-size:.52rem;letter-spacing:1.6px;text-transform:uppercase;font-weight:600;
+  color:var(--text-4);background:none;border:none;cursor:pointer;
+  padding:0;font-family:inherit;transition:color .2s;
+  white-space:nowrap;
+}
+.catalog-home-btn:hover{color:var(--accent)}
+.catalog-heading{
+  font-family:'Playfair Display',Georgia,serif;
+  font-style:italic;font-size:.95rem;
+  color:var(--text-3);letter-spacing:.3px;
+}
+
 /* ── Category strip ── */
 .cat-wrap{
-  position:sticky;top:46px;z-index:90;
+  position:sticky;top:87px;z-index:90;
   background:var(--bg);border-bottom:1px solid var(--border);
   overflow-x:auto;-ms-overflow-style:none;scrollbar-width:none;
   transition:background .3s;
@@ -290,7 +311,110 @@ body{
 /* ── Views ── */
 .detail-view{display:none}
 .detail-view.active{display:block}
-.catalog-view.hidden{display:none}
+.catalog-view{display:none}
+.catalog-view.active{display:block}
+.explore-view{display:block}
+.explore-view.hidden{display:none}
+
+/* ── Explore view ── */
+.explore-body{
+  max-width:1060px;margin:0 auto;padding:40px 28px 80px;
+  display:grid;grid-template-columns:1fr 1fr;gap:48px;
+}
+@media(max-width:720px){.explore-body{grid-template-columns:1fr;gap:32px;padding:28px 16px 60px}}
+
+.explore-panel-label{
+  font-size:.52rem;letter-spacing:2.5px;text-transform:uppercase;
+  color:var(--text-4);font-weight:700;margin-bottom:20px;
+  display:flex;align-items:center;gap:10px;
+}
+.explore-panel-label::after{content:'';flex:1;height:1px;background:var(--border)}
+
+/* Region map panel */
+.map-and-list{display:flex;gap:24px;align-items:flex-start}
+@media(max-width:540px){.map-and-list{gap:16px}}
+
+.viet-map-svg{
+  flex-shrink:0;width:80px;height:auto;cursor:pointer;
+}
+.viet-region{
+  transition:opacity .2s,filter .15s;cursor:pointer;
+}
+.viet-region:hover{opacity:.8;filter:brightness(1.08)}
+.map-region-north{fill:#6B9E72}
+.map-region-central{fill:#B85828}
+.map-region-south{fill:#C8A020}
+:root[data-theme="dark"] .map-region-north{fill:#4E7A55}
+:root[data-theme="dark"] .map-region-central{fill:#8B3810}
+:root[data-theme="dark"] .map-region-south{fill:#A08010}
+
+.region-list{display:flex;flex-direction:column;gap:8px;flex:1}
+.region-btn{
+  display:flex;align-items:center;gap:10px;
+  padding:10px 13px;border-radius:3px;
+  border:1.5px solid var(--border);background:none;
+  cursor:pointer;transition:all .15s;font-family:inherit;
+  text-align:left;
+}
+.region-btn:hover{border-color:var(--accent);background:rgba(78,122,85,.05)}
+.region-dot{
+  width:9px;height:9px;border-radius:50%;flex-shrink:0;
+}
+.region-dot.north{background:#6B9E72}
+.region-dot.central{background:#B85828}
+.region-dot.south{background:#C8A020}
+.region-info{flex:1;min-width:0}
+.region-viet{
+  font-family:'Playfair Display',Georgia,serif;
+  font-style:italic;font-size:.92rem;color:var(--text-1);font-weight:700;
+  display:block;line-height:1.2;
+}
+.region-eng{
+  font-size:.48rem;letter-spacing:1.4px;text-transform:uppercase;
+  color:var(--text-4);font-weight:600;
+}
+.region-count-badge{
+  font-family:Georgia,serif;font-style:italic;
+  font-size:.88rem;color:var(--text-4);
+}
+
+/* Category tiles */
+.cat-tiles{
+  display:grid;grid-template-columns:repeat(3,1fr);gap:10px;
+}
+@media(max-width:480px){.cat-tiles{grid-template-columns:repeat(2,1fr)}}
+.cat-tile{
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+  padding:20px 10px 14px;border-radius:4px;border:none;cursor:pointer;
+  transition:transform .15s,box-shadow .15s;
+  min-height:96px;position:relative;overflow:hidden;
+  font-family:inherit;
+}
+.cat-tile:hover{transform:translateY(-2px);box-shadow:var(--sh-h)}
+.cat-tile-icon{
+  font-size:1.5rem;margin-bottom:7px;line-height:1;
+}
+.cat-tile-name{
+  font-size:.48rem;letter-spacing:1.8px;text-transform:uppercase;
+  font-weight:700;color:rgba(255,255,255,.92);
+}
+.cat-tile-count{
+  font-family:Georgia,serif;font-style:italic;
+  font-size:.7rem;color:rgba(255,255,255,.65);margin-top:2px;
+}
+
+/* Explore footer */
+.explore-footer{
+  text-align:center;padding:0 28px 60px;
+}
+.explore-all-btn{
+  display:inline-flex;align-items:center;gap:6px;
+  padding:10px 22px;border-radius:3px;
+  border:1.5px solid var(--border);background:none;
+  font-size:.54rem;letter-spacing:1.8px;text-transform:uppercase;font-weight:700;
+  color:var(--text-3);cursor:pointer;transition:all .2s;font-family:inherit;
+}
+.explore-all-btn:hover{border-color:var(--accent);color:var(--accent)}
 
 /* ── Detail ── */
 .detail-back{
@@ -400,7 +524,7 @@ body{
   font-size:.82rem;color:var(--text-3);line-height:1.8;
 }
 /* Sidebar */
-.sb-inner{position:sticky;top:calc(46px + 45px + 24px)}
+.sb-inner{position:sticky;top:calc(46px + 24px)}
 .sb-label{
   font-size:.52rem;letter-spacing:2px;text-transform:uppercase;
   color:var(--accent);margin-bottom:10px;font-weight:700;
@@ -453,7 +577,7 @@ body{
 
 <div class="topbar">
   <a href="../../index.html#lab" class="back-link">&larr; Portfolio</a>
-  <span class="topbar-brand"></span>
+  <button class="topbar-brand" onclick="showExplore()" style="cursor:pointer;background:none;border:none;font-family:inherit">Cơm Nhà</button>
   <div class="topbar-right">
     <button class="saved-btn" id="savedBadge" onclick="filterSaved()">
       <span id="savedHeart">&#9825;</span>&thinsp;<span id="savedCount">0</span>
@@ -462,7 +586,7 @@ body{
   </div>
 </div>
 
-<div class="catalog-view" id="catalogView">
+<div class="explore-view" id="exploreView">
 
   <div class="masthead">
     <div class="mast-rule">&#10022;</div>
@@ -471,12 +595,64 @@ body{
     <div class="mast-rule-b">&#10022;</div>
   </div>
 
+  <div class="explore-body">
+    <!-- A: Region map -->
+    <div class="explore-panel">
+      <div class="explore-panel-label">Browse by region</div>
+      <div class="map-and-list">
+        <svg class="viet-map-svg" viewBox="0 0 80 220" xmlns="http://www.w3.org/2000/svg">
+          <!-- Northern Vietnam -->
+          <path class="viet-region map-region-north"
+            d="M18,2 L58,2 L70,10 L72,28 L70,48 L66,64 L58,72 L44,75 L32,72 L22,60 L16,38 L16,14 Z"
+            onclick="browseRegion('northern')" title="Miền Bắc — Northern">
+            <title>Miền Bắc</title>
+          </path>
+          <!-- Central Vietnam -->
+          <path class="viet-region map-region-central"
+            d="M44,75 L58,72 L66,64 L70,64 L73,80 L73,100 L70,116 L65,126 L58,132 L50,134 L42,132 L36,122 L34,105 L34,84 L36,76 Z"
+            onclick="browseRegion('central')" title="Miền Trung — Central">
+            <title>Miền Trung</title>
+          </path>
+          <!-- Southern Vietnam -->
+          <path class="viet-region map-region-south"
+            d="M50,134 L58,132 L65,126 L70,116 L73,116 L76,136 L78,160 L76,185 L70,205 L60,217 L50,219 L40,215 L30,200 L22,178 L20,156 L24,138 L36,130 L42,132 Z"
+            onclick="browseRegion('southern')" title="Miền Nam — Southern">
+            <title>Miền Nam</title>
+          </path>
+        </svg>
+        <div class="region-list" id="regionList">
+          <!-- populated by JS -->
+        </div>
+      </div>
+    </div>
+
+    <!-- B: Category tiles -->
+    <div class="explore-panel">
+      <div class="explore-panel-label">Browse by category</div>
+      <div class="cat-tiles" id="catTiles">
+        <!-- populated by JS -->
+      </div>
+    </div>
+  </div>
+
+  <div class="explore-footer">
+    <button class="explore-all-btn" onclick="browseAll()">Browse all recipes &rarr;</button>
+  </div>
+
+</div><!-- /explore-view -->
+
+<div class="catalog-view" id="catalogView">
+
+  <div class="catalog-header">
+    <button class="catalog-home-btn" onclick="showExplore()">&larr; Back</button>
+    <span class="catalog-heading" id="catalogHeading">All Recipes</span>
+  </div>
+
   <div class="cat-wrap">
     <div class="cat-strip">
       <button class="cat-pill active" data-cat="all"     onclick="setCat('all',this)">All</button>
       <button class="cat-pill"        data-cat="noodles" onclick="setCat('noodles',this)">Noodles</button>
       <button class="cat-pill"        data-cat="rice"    onclick="setCat('rice',this)">Rice</button>
-      <button class="cat-pill"        data-cat="mains"   onclick="setCat('mains',this)">Mains</button>
       <button class="cat-pill"        data-cat="bánh"    onclick="setCat('bánh',this)">Bánh</button>
       <button class="cat-pill"        data-cat="sides"   onclick="setCat('sides',this)">Sides</button>
       <button class="cat-pill"        data-cat="sweets"  onclick="setCat('sweets',this)">Sweets</button>
@@ -574,6 +750,8 @@ function setCat(cat,btn){
   activeCat=cat;
   document.querySelectorAll('.cat-pill').forEach(p=>p.classList.remove('active'));
   btn.classList.add('active');
+  const h=document.getElementById('catalogHeading');
+  if(h) h.textContent=cat==='all'?'All Recipes':cat==='saved'?'Saved Recipes':(CAT_LABEL[cat]||cat);
   applyFilters();
 }
 function filterSaved(){
@@ -581,6 +759,9 @@ function filterSaved(){
   document.querySelectorAll('.cat-pill').forEach(p=>{
     p.classList.toggle('active',p.dataset.cat==='saved');
   });
+  const h=document.getElementById('catalogHeading');
+  if(h) h.textContent='Saved Recipes';
+  showCatalog();
   applyFilters();
 }
 function onSearch(){ clearTimeout(searchTimer); searchTimer=setTimeout(applyFilters,150); }
@@ -608,11 +789,13 @@ function applyFilters(){
 const CAT_GRAD={
   noodles:'linear-gradient(160deg,#d4880a,#8b3808)',
   rice:   'linear-gradient(160deg,#ddb84a,#a07820)',
-  mains:  'linear-gradient(160deg,#8b2810,#c04828)',
   'bánh': 'linear-gradient(160deg,#c47028,#8b4010)',
   sides:  'linear-gradient(160deg,#3a7830,#1a5018)',
   sweets: 'linear-gradient(160deg,#c84878,#8b2848)',
   drinks: 'linear-gradient(160deg,#1a4878,#3a7898)',
+};
+const CAT_ICON={
+  noodles:'🍜', rice:'🍚', 'bánh':'🥖', sides:'🥬', sweets:'🍮', drinks:'🍵'
 };
 function catGrad(c){return CAT_GRAD[c]||'linear-gradient(160deg,#888,#444)';}
 function regionLabel(c){return{northern:'Miền Bắc',central:'Miền Trung',southern:'Miền Nam'}[c]||c;}
@@ -627,8 +810,8 @@ function fmtTime(m){
 }
 
 /* ── Render cards ── */
-const CAT_ORDER=['noodles','rice','mains','bánh','sides','sweets','drinks'];
-const CAT_LABEL={noodles:'Noodles',rice:'Rice',mains:'Mains','bánh':'Bánh',sides:'Sides',sweets:'Sweets',drinks:'Drinks'};
+const CAT_ORDER=['noodles','rice','bánh','sides','sweets','drinks'];
+const CAT_LABEL={noodles:'Noodles',rice:'Rice','bánh':'Bánh',sides:'Sides',sweets:'Sweets',drinks:'Drinks'};
 
 function renderCards(list){
   const g=document.getElementById('cardGrid');
@@ -727,7 +910,8 @@ function showDetail(id){
       </div>
     </div>`;
 
-  document.getElementById('catalogView').classList.add('hidden');
+  document.getElementById('exploreView').classList.add('hidden');
+  document.getElementById('catalogView').classList.remove('active');
   document.getElementById('detailView').classList.add('active');
   window.scrollTo(0,0);
   location.hash='recipe-'+id;
@@ -735,9 +919,89 @@ function showDetail(id){
 
 function showCatalog(){
   document.getElementById('detailView').classList.remove('active');
-  document.getElementById('catalogView').classList.remove('hidden');
+  document.getElementById('exploreView').classList.add('hidden');
+  document.getElementById('catalogView').classList.add('active');
   history.pushState('',document.title,location.pathname);
+  if(!document.getElementById('cardGrid').children.length) applyFilters();
 }
+
+function showExplore(){
+  document.getElementById('detailView').classList.remove('active');
+  document.getElementById('catalogView').classList.remove('active');
+  document.getElementById('exploreView').classList.remove('hidden');
+  history.pushState('',document.title,location.pathname);
+  window.scrollTo(0,0);
+}
+
+function browseRegion(region){
+  activeCat='all';
+  document.querySelectorAll('.cat-pill').forEach(p=>p.classList.toggle('active',p.dataset.cat==='all'));
+  const sel=document.getElementById('cuisineFilter');
+  if(sel) sel.value=region;
+  const heading={northern:'Miền Bắc',central:'Miền Trung',southern:'Miền Nam'}[region]||region;
+  const h=document.getElementById('catalogHeading');
+  if(h) h.textContent=heading;
+  showCatalog();
+  applyFilters();
+}
+
+function browseCategory(cat){
+  document.querySelectorAll('.cat-pill').forEach(p=>p.classList.toggle('active',p.dataset.cat===cat));
+  activeCat=cat;
+  const sel=document.getElementById('cuisineFilter');
+  if(sel) sel.value='';
+  const h=document.getElementById('catalogHeading');
+  if(h) h.textContent=CAT_LABEL[cat]||cat;
+  showCatalog();
+  applyFilters();
+}
+
+function browseAll(){
+  activeCat='all';
+  document.querySelectorAll('.cat-pill').forEach(p=>p.classList.toggle('active',p.dataset.cat==='all'));
+  const sel=document.getElementById('cuisineFilter');
+  if(sel) sel.value='';
+  const h=document.getElementById('catalogHeading');
+  if(h) h.textContent='All Recipes';
+  showCatalog();
+  applyFilters();
+}
+
+function renderExplore(){
+  // Region list
+  const regionCounts={northern:0,central:0,southern:0};
+  allRecipes.forEach(r=>{if(regionCounts[r.cuisine]!==undefined)regionCounts[r.cuisine]++;});
+  const regionList=document.getElementById('regionList');
+  if(regionList){
+    regionList.innerHTML=[
+      {key:'northern',dot:'north',viet:'Miền Bắc',eng:'Northern'},
+      {key:'central', dot:'central',viet:'Miền Trung',eng:'Central'},
+      {key:'southern',dot:'south',viet:'Miền Nam',eng:'Southern'},
+    ].map(({key,dot,viet,eng})=>`
+      <button class="region-btn" onclick="browseRegion('${key}')">
+        <span class="region-dot ${dot}"></span>
+        <span class="region-info">
+          <span class="region-viet">${viet}</span>
+          <span class="region-eng">${eng}</span>
+        </span>
+        <span class="region-count-badge">${regionCounts[key]}</span>
+      </button>`).join('');
+  }
+  // Category tiles
+  const catCounts={};
+  allRecipes.forEach(r=>{catCounts[r.category]=(catCounts[r.category]||0)+1;});
+  const catTiles=document.getElementById('catTiles');
+  if(catTiles){
+    catTiles.innerHTML=CAT_ORDER.map(cat=>`
+      <button class="cat-tile" style="background:${catGrad(cat)}"
+        onclick="browseCategory('${cat.replace(/'/g,"\\'")}')">
+        <span class="cat-tile-icon">${CAT_ICON[cat]||'🍽'}</span>
+        <span class="cat-tile-name">${CAT_LABEL[cat]||cat}</span>
+        <span class="cat-tile-count">${catCounts[cat]||0}</span>
+      </button>`).join('');
+  }
+}
+
 function handleHash(){
   const h=location.hash;
   if(h.startsWith('#recipe-')){
@@ -753,7 +1017,8 @@ async function init(){
   loadSaved(); updateSavedBadge();
   const res=await fetch('data/recipes.json');
   allRecipes=await res.json();
-  applyFilters(); handleHash();
+  renderExplore();
+  handleHash();
 }
 
 window.addEventListener('hashchange',handleHash);
