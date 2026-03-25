@@ -335,7 +335,7 @@ body{
 @media(max-width:540px){.map-and-list{gap:18px}}
 
 .viet-map-svg{
-  flex-shrink:0;width:84px;height:auto;
+  flex-shrink:0;width:96px;height:auto;
 }
 .viet-region{
   transition:opacity .18s;cursor:pointer;
@@ -614,57 +614,48 @@ body{
     <div class="explore-panel">
       <div class="explore-panel-label">Browse by region</div>
       <div class="map-and-list">
-        <svg class="viet-map-svg" viewBox="0 0 62 126" xmlns="http://www.w3.org/2000/svg">
+        <svg class="viet-map-svg" viewBox="0 0 68 138" xmlns="http://www.w3.org/2000/svg">
           <!--
-            Derived from real lat/lon (102–110°E, 8.5–23.4°N) at ~8 units/degree.
-            N/C border shares: M25,48 ↔ Q30,50 ↔ 40,48
-            C/S border shares: M22,106 ↔ Q30,107 ↔ 40,106
+            Real lat/lon → SVG: x=(lon-102)*9, y=(23.5-lat)*9
+            N/C boundary at y≈60 (17°N, narrow waist), C/S at y≈112 (11°N)
+            North and Central each ~50 height units (50/50 visual split)
           -->
 
-          <!-- Northern: wide — Red River Delta, border with China across top -->
+          <!-- Northern: wide — Red River Delta, Gulf of Tonkin juts right -->
           <path class="viet-region map-region-north"
             onclick="browseRegion('northern')"
-            d="M7,8
-               Q22,2 40,2
-               Q46,5 49,11
-               Q50,18 48,24
-               Q46,30 44,38
-               Q42,44 40,48
-               Q30,50 25,48
-               Q20,44 15,34
-               Q8,22 7,8 Z">
+            d="M3,9 Q18,1 32,1 Q38,5 42,9
+               Q50,14 56,18 Q52,24 48,30
+               Q42,37 37,43 Q41,48 45,54
+               Q47,57 48,60
+               Q44,60 41,60
+               Q33,55 27,50 Q23,45 21,41
+               Q17,36 15,32 Q9,24 7,18 Q4,13 3,9 Z">
             <title>Miền Bắc</title>
           </path>
 
-          <!-- Central: narrow elongated waist, east coast bulges right at Quy Nhơn -->
+          <!-- Central: narrow waist, east coast bulges far right at Quy Nhơn (65,87) -->
           <path class="viet-region map-region-central"
             onclick="browseRegion('central')"
-            d="M25,48
-               Q30,50 40,48
-               Q44,52 46,57
-               Q50,61 52,65
-               Q56,72 59,80
-               Q58,86 57,91
-               Q52,99 40,106
-               Q30,107 22,106
-               Q26,97 24,85
-               Q22,76 22,68
-               Q22,62 24,56
-               Q26,52 25,48 Z">
+            d="M41,60 Q44,60 48,60
+               Q49,61 50,63 Q54,65 58,68
+               Q62,78 65,87
+               Q63,99 60,110 Q58,111 56,112
+               Q39,112 23,112
+               Q28,110 32,108 Q40,106 47,104
+               Q49,95 50,86 Q47,79 45,72
+               Q41,66 41,60 Z">
             <title>Miền Trung</title>
           </path>
 
-          <!-- Southern: Mekong Delta fan, wide base tapering to Cà Mau tip -->
+          <!-- Southern: Mekong Delta fan, Gulf of Thailand west coast, Cà Mau tip -->
           <path class="viet-region map-region-south"
             onclick="browseRegion('southern')"
-            d="M22,106
-               Q30,107 40,106
-               Q39,110 37,114
-               Q33,118 28,122
-               Q24,124 21,123
-               Q16,122 13,116
-               Q11,112 13,108
-               Q17,107 22,106 Z">
+            d="M23,112 Q39,112 56,112
+               Q52,115 47,117 Q44,120 41,122
+               Q34,122 27,122 Q25,129 24,135
+               Q20,130 17,126
+               Q17,121 18,117 Q20,114 23,112 Z">
             <title>Miền Nam</title>
           </path>
         </svg>
