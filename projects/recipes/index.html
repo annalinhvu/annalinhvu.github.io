@@ -344,10 +344,10 @@ body{
 :root[data-theme="dark"] .viet-region{stroke:#111A0E}
 .viet-region:hover{opacity:.7}
 .map-region-north{fill:#A8C8A0}
-.map-region-central{fill:#D4987A}
+.map-region-central{fill:url(#centralGradLight)}
 .map-region-south{fill:#D4B84A}
 :root[data-theme="dark"] .map-region-north{fill:#4E7A55}
-:root[data-theme="dark"] .map-region-central{fill:#8B4820}
+:root[data-theme="dark"] .map-region-central{fill:url(#centralGradDark)}
 :root[data-theme="dark"] .map-region-south{fill:#907A18}
 
 .region-list{display:flex;flex-direction:column;flex:1}
@@ -618,8 +618,22 @@ body{
           <!--
             Real lat/lon → SVG: x=(lon-102)*9, y=(23.5-lat)*9
             N/C boundary at y≈60 (17°N, narrow waist), C/S at y≈112 (11°N)
-            North and Central each ~50 height units (50/50 visual split)
+            Central region uses a gradient: terracotta (top) → gold (bottom)
           -->
+          <defs>
+            <!-- light mode gradient: terracotta → gold -->
+            <linearGradient id="centralGradLight" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0%"   stop-color="#D4987A"/>
+              <stop offset="55%"  stop-color="#D4AC60"/>
+              <stop offset="100%" stop-color="#D4B84A"/>
+            </linearGradient>
+            <!-- dark mode gradient: dark terra → dark gold -->
+            <linearGradient id="centralGradDark" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0%"   stop-color="#8B4820"/>
+              <stop offset="55%"  stop-color="#7A6010"/>
+              <stop offset="100%" stop-color="#907A18"/>
+            </linearGradient>
+          </defs>
 
           <!-- Northern: wide — Red River Delta, Gulf of Tonkin juts right -->
           <path class="viet-region map-region-north"
