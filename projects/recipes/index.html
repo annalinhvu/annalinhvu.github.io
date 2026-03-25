@@ -331,77 +331,91 @@ body{
 .explore-panel-label::after{content:'';flex:1;height:1px;background:var(--border)}
 
 /* Region map panel */
-.map-and-list{display:flex;gap:24px;align-items:flex-start}
-@media(max-width:540px){.map-and-list{gap:16px}}
+.map-and-list{display:flex;gap:28px;align-items:flex-start}
+@media(max-width:540px){.map-and-list{gap:18px}}
 
 .viet-map-svg{
-  flex-shrink:0;width:80px;height:auto;cursor:pointer;
+  flex-shrink:0;width:72px;height:auto;
 }
 .viet-region{
-  transition:opacity .2s,filter .15s;cursor:pointer;
+  transition:opacity .18s,transform .18s;cursor:pointer;
+  transform-origin:center;
+  transform-box:fill-box;
 }
-.viet-region:hover{opacity:.8;filter:brightness(1.08)}
-.map-region-north{fill:#6B9E72}
-.map-region-central{fill:#B85828}
-.map-region-south{fill:#C8A020}
+.viet-region:hover{opacity:.75}
+.map-region-north{fill:#A8C8A0}
+.map-region-central{fill:#D4987A}
+.map-region-south{fill:#D4B84A}
 :root[data-theme="dark"] .map-region-north{fill:#4E7A55}
-:root[data-theme="dark"] .map-region-central{fill:#8B3810}
-:root[data-theme="dark"] .map-region-south{fill:#A08010}
+:root[data-theme="dark"] .map-region-central{fill:#8B4820}
+:root[data-theme="dark"] .map-region-south{fill:#907A18}
 
-.region-list{display:flex;flex-direction:column;gap:8px;flex:1}
+.region-list{display:flex;flex-direction:column;flex:1}
 .region-btn{
-  display:flex;align-items:center;gap:10px;
-  padding:10px 13px;border-radius:3px;
-  border:1.5px solid var(--border);background:none;
-  cursor:pointer;transition:all .15s;font-family:inherit;
-  text-align:left;
+  display:flex;align-items:center;gap:14px;
+  padding:14px 0 14px 16px;
+  border:none;background:none;cursor:pointer;font-family:inherit;
+  text-align:left;width:100%;
+  border-bottom:1px solid var(--border);
+  border-left:3px solid transparent;
+  transition:background .15s,border-left-color .15s;
+  position:relative;
 }
-.region-btn:hover{border-color:var(--accent);background:rgba(78,122,85,.05)}
-.region-dot{
-  width:9px;height:9px;border-radius:50%;flex-shrink:0;
-}
-.region-dot.north{background:#6B9E72}
-.region-dot.central{background:#B85828}
-.region-dot.south{background:#C8A020}
+.region-btn:first-child{border-top:1px solid var(--border)}
+.region-btn:hover{background:rgba(78,122,85,.04)}
+.region-btn.rn:hover{border-left-color:#A8C8A0}
+.region-btn.rc:hover{border-left-color:#D4987A}
+.region-btn.rs:hover{border-left-color:#D4B84A}
+
 .region-info{flex:1;min-width:0}
 .region-viet{
   font-family:'Playfair Display',Georgia,serif;
-  font-style:italic;font-size:.92rem;color:var(--text-1);font-weight:700;
-  display:block;line-height:1.2;
+  font-style:italic;font-size:1.12rem;color:var(--text-1);font-weight:700;
+  display:block;line-height:1.15;margin-bottom:3px;
 }
 .region-eng{
-  font-size:.48rem;letter-spacing:1.4px;text-transform:uppercase;
-  color:var(--text-4);font-weight:600;
+  font-size:.46rem;letter-spacing:2px;text-transform:uppercase;
+  color:var(--text-4);font-weight:700;
 }
 .region-count-badge{
-  font-family:Georgia,serif;font-style:italic;
-  font-size:.88rem;color:var(--text-4);
+  font-family:'Playfair Display',Georgia,serif;font-style:italic;
+  font-size:1.7rem;line-height:1;font-weight:700;
+  flex-shrink:0;
 }
+.region-btn.rn .region-count-badge{color:#7CAE80}
+.region-btn.rc .region-count-badge{color:#C07858}
+.region-btn.rs .region-count-badge{color:#B89428}
+:root[data-theme="dark"] .region-btn.rn .region-count-badge{color:#6B9E72}
+:root[data-theme="dark"] .region-btn.rc .region-count-badge{color:#C86838}
+:root[data-theme="dark"] .region-btn.rs .region-count-badge{color:#A08010}
 
 /* Category tiles */
 .cat-tiles{
-  display:grid;grid-template-columns:repeat(3,1fr);gap:10px;
+  display:grid;grid-template-columns:repeat(3,1fr);gap:8px;
 }
 @media(max-width:480px){.cat-tiles{grid-template-columns:repeat(2,1fr)}}
 .cat-tile{
   display:flex;flex-direction:column;align-items:center;justify-content:center;
-  padding:20px 10px 14px;border-radius:4px;border:none;cursor:pointer;
-  transition:transform .15s,box-shadow .15s;
-  min-height:96px;position:relative;overflow:hidden;
+  padding:22px 10px 16px;border-radius:5px;border:none;cursor:pointer;
+  transition:transform .15s,box-shadow .15s,filter .15s;
+  min-height:100px;position:relative;overflow:hidden;
   font-family:inherit;
+  box-shadow:0 1px 4px rgba(60,40,0,.07);
 }
-.cat-tile:hover{transform:translateY(-2px);box-shadow:var(--sh-h)}
+.cat-tile:hover{transform:translateY(-3px);box-shadow:0 6px 18px rgba(60,40,0,.12);filter:brightness(.97)}
 .cat-tile-icon{
-  font-size:1.5rem;margin-bottom:7px;line-height:1;
+  font-size:1.7rem;margin-bottom:9px;line-height:1;
 }
 .cat-tile-name{
-  font-size:.48rem;letter-spacing:1.8px;text-transform:uppercase;
-  font-weight:700;color:rgba(255,255,255,.92);
+  font-size:.46rem;letter-spacing:2px;text-transform:uppercase;
+  font-weight:700;color:rgba(42,26,8,.72);
 }
 .cat-tile-count{
-  font-family:Georgia,serif;font-style:italic;
-  font-size:.7rem;color:rgba(255,255,255,.65);margin-top:2px;
+  font-family:'Playfair Display',Georgia,serif;font-style:italic;
+  font-size:.8rem;color:rgba(42,26,8,.42);margin-top:2px;
 }
+:root[data-theme="dark"] .cat-tile-name{color:rgba(238,232,208,.75)}
+:root[data-theme="dark"] .cat-tile-count{color:rgba(238,232,208,.4)}
 
 /* Explore footer */
 .explore-footer{
@@ -600,25 +614,19 @@ body{
     <div class="explore-panel">
       <div class="explore-panel-label">Browse by region</div>
       <div class="map-and-list">
-        <svg class="viet-map-svg" viewBox="0 0 80 220" xmlns="http://www.w3.org/2000/svg">
+        <svg class="viet-map-svg" viewBox="0 0 80 224" xmlns="http://www.w3.org/2000/svg">
           <!-- Northern Vietnam -->
           <path class="viet-region map-region-north"
-            d="M18,2 L58,2 L70,10 L72,28 L70,48 L66,64 L58,72 L44,75 L32,72 L22,60 L16,38 L16,14 Z"
-            onclick="browseRegion('northern')" title="Miền Bắc — Northern">
-            <title>Miền Bắc</title>
-          </path>
+            d="M20,4 Q40,0 60,4 Q72,8 74,22 Q76,40 70,56 Q65,68 56,74 Q48,78 40,78 Q30,78 22,72 Q12,62 12,44 Q12,22 16,12 Q17,6 20,4 Z"
+            onclick="browseRegion('northern')"><title>Miền Bắc</title></path>
           <!-- Central Vietnam -->
           <path class="viet-region map-region-central"
-            d="M44,75 L58,72 L66,64 L70,64 L73,80 L73,100 L70,116 L65,126 L58,132 L50,134 L42,132 L36,122 L34,105 L34,84 L36,76 Z"
-            onclick="browseRegion('central')" title="Miền Trung — Central">
-            <title>Miền Trung</title>
-          </path>
+            d="M40,78 Q48,78 56,74 Q64,70 68,66 Q72,68 74,80 Q76,96 74,112 Q72,124 66,132 Q60,138 52,140 Q44,140 38,134 Q32,126 32,112 Q30,96 34,84 Q36,80 40,78 Z"
+            onclick="browseRegion('central')"><title>Miền Trung</title></path>
           <!-- Southern Vietnam -->
           <path class="viet-region map-region-south"
-            d="M50,134 L58,132 L65,126 L70,116 L73,116 L76,136 L78,160 L76,185 L70,205 L60,217 L50,219 L40,215 L30,200 L22,178 L20,156 L24,138 L36,130 L42,132 Z"
-            onclick="browseRegion('southern')" title="Miền Nam — Southern">
-            <title>Miền Nam</title>
-          </path>
+            d="M52,140 Q60,140 66,132 Q72,124 74,112 Q78,116 78,132 Q80,152 78,172 Q74,192 66,208 Q58,220 50,222 Q42,222 34,216 Q24,206 20,188 Q16,168 18,150 Q20,136 30,130 Q38,126 44,128 Q48,130 52,140 Z"
+            onclick="browseRegion('southern')"><title>Miền Nam</title></path>
         </svg>
         <div class="region-list" id="regionList">
           <!-- populated by JS -->
@@ -712,6 +720,8 @@ function toggleTheme(){
   h.setAttribute('data-theme',n);
   localStorage.setItem(LS_THEME,n);
   updateThemeBtn(n);
+  // Re-render tiles so pastel vs dark colours update
+  if(allRecipes.length) renderExplore();
 }
 function updateThemeBtn(t){
   document.getElementById('themeBtn').textContent = t==='dark'?'\u2600':'\u263E';
@@ -787,17 +797,22 @@ function applyFilters(){
 
 /* ── Helpers ── */
 const CAT_GRAD={
-  noodles:'linear-gradient(160deg,#d4880a,#8b3808)',
-  rice:   'linear-gradient(160deg,#ddb84a,#a07820)',
-  'bánh': 'linear-gradient(160deg,#c47028,#8b4010)',
-  sides:  'linear-gradient(160deg,#3a7830,#1a5018)',
-  sweets: 'linear-gradient(160deg,#c84878,#8b2848)',
-  drinks: 'linear-gradient(160deg,#1a4878,#3a7898)',
+  light:{
+    noodles:'#F5D4A0', rice:'#D4E4BC', 'bánh':'#EEC8A0',
+    sides:'#C4D8B0', sweets:'#F0C4C8', drinks:'#BED0E4',
+  },
+  dark:{
+    noodles:'#3A2A10', rice:'#1C3018', 'bánh':'#3A2410',
+    sides:'#1A3018', sweets:'#3A1C24', drinks:'#162438',
+  },
 };
 const CAT_ICON={
   noodles:'🍜', rice:'🍚', 'bánh':'🥖', sides:'🥬', sweets:'🍮', drinks:'🍵'
 };
-function catGrad(c){return CAT_GRAD[c]||'linear-gradient(160deg,#888,#444)';}
+function catGrad(c){
+  const t=document.documentElement.getAttribute('data-theme')||'light';
+  return (CAT_GRAD[t]||CAT_GRAD.light)[c]||'#ccc';
+}
 function regionLabel(c){return{northern:'Miền Bắc',central:'Miền Trung',southern:'Miền Nam'}[c]||c;}
 function diffStars(d){
   const n={easy:1,moderate:2,involved:3}[d]||1;
@@ -974,12 +989,11 @@ function renderExplore(){
   const regionList=document.getElementById('regionList');
   if(regionList){
     regionList.innerHTML=[
-      {key:'northern',dot:'north',viet:'Miền Bắc',eng:'Northern'},
-      {key:'central', dot:'central',viet:'Miền Trung',eng:'Central'},
-      {key:'southern',dot:'south',viet:'Miền Nam',eng:'Southern'},
-    ].map(({key,dot,viet,eng})=>`
-      <button class="region-btn" onclick="browseRegion('${key}')">
-        <span class="region-dot ${dot}"></span>
+      {key:'northern',cls:'rn',viet:'Miền Bắc',eng:'Northern'},
+      {key:'central', cls:'rc',viet:'Miền Trung',eng:'Central'},
+      {key:'southern',cls:'rs',viet:'Miền Nam',eng:'Southern'},
+    ].map(({key,cls,viet,eng})=>`
+      <button class="region-btn ${cls}" onclick="browseRegion('${key}')">
         <span class="region-info">
           <span class="region-viet">${viet}</span>
           <span class="region-eng">${eng}</span>
