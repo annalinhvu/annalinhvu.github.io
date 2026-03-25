@@ -335,7 +335,7 @@ body{
 @media(max-width:540px){.map-and-list{gap:18px}}
 
 .viet-map-svg{
-  flex-shrink:0;width:72px;height:auto;
+  flex-shrink:0;width:84px;height:auto;
 }
 .viet-region{
   transition:opacity .18s,transform .18s;cursor:pointer;
@@ -614,19 +614,29 @@ body{
     <div class="explore-panel">
       <div class="explore-panel-label">Browse by region</div>
       <div class="map-and-list">
-        <svg class="viet-map-svg" viewBox="0 0 80 224" xmlns="http://www.w3.org/2000/svg">
+        <svg class="viet-map-svg" viewBox="0 0 82 256" xmlns="http://www.w3.org/2000/svg">
+          <!--
+            Accurate simplified Vietnam outline split into 3 regions.
+            North: wide (Red River Delta), Central: narrow waist, South: fan (Mekong Delta).
+          -->
           <!-- Northern Vietnam -->
           <path class="viet-region map-region-north"
-            d="M20,4 Q40,0 60,4 Q72,8 74,22 Q76,40 70,56 Q65,68 56,74 Q48,78 40,78 Q30,78 22,72 Q12,62 12,44 Q12,22 16,12 Q17,6 20,4 Z"
-            onclick="browseRegion('northern')"><title>Miền Bắc</title></path>
-          <!-- Central Vietnam -->
+            onclick="browseRegion('northern')"
+            d="M16,4 Q40,0 66,5 Q76,11 78,28 Q80,48 72,62 Q64,74 52,80 Q38,84 24,78 Q10,66 8,44 Q8,22 14,12 Z">
+            <title>Miền Bắc</title>
+          </path>
+          <!-- Central Vietnam — narrow elongated waist -->
           <path class="viet-region map-region-central"
-            d="M40,78 Q48,78 56,74 Q64,70 68,66 Q72,68 74,80 Q76,96 74,112 Q72,124 66,132 Q60,138 52,140 Q44,140 38,134 Q32,126 32,112 Q30,96 34,84 Q36,80 40,78 Z"
-            onclick="browseRegion('central')"><title>Miền Trung</title></path>
-          <!-- Southern Vietnam -->
+            onclick="browseRegion('central')"
+            d="M24,78 Q38,84 52,80 Q64,74 72,62 Q78,68 80,88 Q82,110 79,128 Q75,144 67,153 Q58,159 48,158 Q38,155 32,144 Q25,129 27,107 Q29,91 24,78 Z">
+            <title>Miền Trung</title>
+          </path>
+          <!-- Southern Vietnam — fan/delta shape -->
           <path class="viet-region map-region-south"
-            d="M52,140 Q60,140 66,132 Q72,124 74,112 Q78,116 78,132 Q80,152 78,172 Q74,192 66,208 Q58,220 50,222 Q42,222 34,216 Q24,206 20,188 Q16,168 18,150 Q20,136 30,130 Q38,126 44,128 Q48,130 52,140 Z"
-            onclick="browseRegion('southern')"><title>Miền Nam</title></path>
+            onclick="browseRegion('southern')"
+            d="M32,144 Q38,155 48,158 Q58,159 67,153 Q76,162 78,180 Q82,202 78,224 Q72,240 62,250 Q52,256 42,254 Q30,252 20,242 Q8,228 4,204 Q2,180 6,166 Q14,154 24,150 Q28,147 32,144 Z">
+            <title>Miền Nam</title>
+          </path>
         </svg>
         <div class="region-list" id="regionList">
           <!-- populated by JS -->
