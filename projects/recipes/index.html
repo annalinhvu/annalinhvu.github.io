@@ -338,11 +338,11 @@ body{
   flex-shrink:0;width:84px;height:auto;
 }
 .viet-region{
-  transition:opacity .18s,transform .18s;cursor:pointer;
-  transform-origin:center;
-  transform-box:fill-box;
+  transition:opacity .18s;cursor:pointer;
+  stroke:#F0EAD8;stroke-width:1.2;
 }
-.viet-region:hover{opacity:.75}
+:root[data-theme="dark"] .viet-region{stroke:#111A0E}
+.viet-region:hover{opacity:.7}
 .map-region-north{fill:#A8C8A0}
 .map-region-central{fill:#D4987A}
 .map-region-south{fill:#D4B84A}
@@ -614,27 +614,28 @@ body{
     <div class="explore-panel">
       <div class="explore-panel-label">Browse by region</div>
       <div class="map-and-list">
-        <svg class="viet-map-svg" viewBox="0 0 82 256" xmlns="http://www.w3.org/2000/svg">
+        <svg class="viet-map-svg" viewBox="0 0 70 205" xmlns="http://www.w3.org/2000/svg">
           <!--
-            Accurate simplified Vietnam outline split into 3 regions.
-            North: wide (Red River Delta), Central: narrow waist, South: fan (Mekong Delta).
+            Three connected regions sharing exact borders.
+            N/C boundary: (22,62)→Q(36,64)→(52,60)
+            C/S boundary: (10,120)→Q(18,126)→(28,130)→Q(40,132)→(52,128)
           -->
-          <!-- Northern Vietnam -->
+          <!-- Northern Vietnam: wide, Red River Delta -->
           <path class="viet-region map-region-north"
             onclick="browseRegion('northern')"
-            d="M16,4 Q40,0 66,5 Q76,11 78,28 Q80,48 72,62 Q64,74 52,80 Q38,84 24,78 Q10,66 8,44 Q8,22 14,12 Z">
+            d="M8,18 Q24,10 44,7 Q58,7 63,18 Q67,30 64,46 Q60,56 52,60 Q36,64 22,62 Q10,58 6,48 Q5,34 8,18 Z">
             <title>Miền Bắc</title>
           </path>
-          <!-- Central Vietnam — narrow elongated waist -->
+          <!-- Central Vietnam: narrow waist — west coast cuts in deeply -->
           <path class="viet-region map-region-central"
             onclick="browseRegion('central')"
-            d="M24,78 Q38,84 52,80 Q64,74 72,62 Q78,68 80,88 Q82,110 79,128 Q75,144 67,153 Q58,159 48,158 Q38,155 32,144 Q25,129 27,107 Q29,91 24,78 Z">
+            d="M22,62 Q36,64 52,60 Q60,62 64,76 Q67,92 63,108 Q59,122 52,128 Q40,132 28,130 Q18,126 10,120 Q14,110 20,100 Q26,92 34,86 Q36,80 30,72 Q24,66 22,62 Z">
             <title>Miền Trung</title>
           </path>
-          <!-- Southern Vietnam — fan/delta shape -->
+          <!-- Southern Vietnam: fan / Mekong Delta -->
           <path class="viet-region map-region-south"
             onclick="browseRegion('southern')"
-            d="M32,144 Q38,155 48,158 Q58,159 67,153 Q76,162 78,180 Q82,202 78,224 Q72,240 62,250 Q52,256 42,254 Q30,252 20,242 Q8,228 4,204 Q2,180 6,166 Q14,154 24,150 Q28,147 32,144 Z">
+            d="M10,120 Q18,126 28,130 Q40,132 52,128 Q58,134 62,150 Q65,168 62,184 Q56,194 44,200 Q34,202 22,198 Q10,190 4,174 Q0,156 2,140 Q4,130 10,120 Z">
             <title>Miền Nam</title>
           </path>
         </svg>
