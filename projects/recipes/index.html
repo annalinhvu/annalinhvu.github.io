@@ -184,8 +184,22 @@ body{
   color:var(--text-3);cursor:pointer;transition:all .15s;
   font-family:inherit;white-space:nowrap;
 }
-.cat-pill:hover{color:var(--accent);border-color:var(--accent)}
-.cat-pill.active{background:var(--accent);color:#fff;border-color:var(--accent)}
+.cat-pill:hover{color:var(--region-color,var(--accent));border-color:var(--region-color,var(--accent))}
+.cat-pill.active{background:var(--region-color,var(--accent));color:#fff;border-color:var(--region-color,var(--accent))}
+
+/* Region-tinted catalog */
+.catalog-view[data-region="northern"]{
+  --region-color:#4A8898;
+  --region-tint:rgba(122,170,184,.07);
+}
+.catalog-view[data-region="central"]{
+  --region-color:#A05838;
+  --region-tint:rgba(192,120,88,.07);
+}
+.catalog-view[data-region="southern"]{
+  --region-color:#987018;
+  --region-tint:rgba(200,160,48,.07);
+}
 
 /* ── Page ── */
 .page{max-width:1140px;margin:0 auto;padding:0 28px 100px}
@@ -240,8 +254,8 @@ body{
   position:relative;
 }
 .recipe-card:first-child{ border-top:1px solid var(--border); }
-.recipe-card:hover{ background:rgba(78,122,85,.04); }
-.recipe-card:hover .card-name{ color:var(--accent); }
+.recipe-card:hover{ background:var(--region-tint,rgba(62,112,64,.04)); }
+.recipe-card:hover .card-name{ color:var(--region-color,var(--accent)); }
 .card-num{
   font-family:Georgia,serif;font-style:italic;
   font-size:1.1rem;color:var(--border);
@@ -362,7 +376,7 @@ body{
   position:relative;
 }
 .region-btn:first-child{border-top:1px solid var(--border)}
-.region-btn:hover{background:rgba(78,122,85,.04)}
+.region-btn:hover{background:rgba(62,112,64,.04)}
 .region-btn.rn:hover{border-left-color:#7AAAB8}
 .region-btn.rc:hover{border-left-color:#C07858}
 .region-btn.rs:hover{border-left-color:#C8A030}
@@ -987,7 +1001,9 @@ function showCatalog(){
 
 function showExplore(){
   document.getElementById('detailView').classList.remove('active');
-  document.getElementById('catalogView').classList.remove('active');
+  const cv=document.getElementById('catalogView');
+  cv.classList.remove('active');
+  delete cv.dataset.region;
   document.getElementById('exploreView').classList.remove('hidden');
   history.pushState('',document.title,location.pathname);
   window.scrollTo(0,0);
@@ -998,6 +1014,7 @@ function browseRegion(region){
   document.querySelectorAll('.cat-pill').forEach(p=>p.classList.toggle('active',p.dataset.cat==='all'));
   const sel=document.getElementById('cuisineFilter');
   if(sel) sel.value=region;
+  document.getElementById('catalogView').dataset.region=region;
   const heading={northern:'Miền Bắc',central:'Miền Trung',southern:'Miền Nam'}[region]||region;
   const h=document.getElementById('catalogHeading');
   if(h) h.textContent=heading;
@@ -1010,6 +1027,7 @@ function browseCategory(cat){
   activeCat=cat;
   const sel=document.getElementById('cuisineFilter');
   if(sel) sel.value='';
+  delete document.getElementById('catalogView').dataset.region;
   const h=document.getElementById('catalogHeading');
   if(h) h.textContent=CAT_LABEL[cat]||cat;
   showCatalog();
