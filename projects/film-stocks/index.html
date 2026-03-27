@@ -529,22 +529,91 @@ body {
 
 /* ── Compatible Labs List (in stock detail) ── */
 .compat-labs {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
-  gap: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
 }
 
 .compat-lab {
   background: var(--surface-2);
   border: 1px solid var(--border);
   border-radius: var(--radius-sm);
-  padding: 12px;
+  padding: 14px 16px;
+  cursor: pointer;
+  transition: all 0.2s;
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 4px 16px;
+  align-items: center;
+}
+.compat-lab:hover { border-color: var(--accent); box-shadow: var(--shadow); }
+.compat-lab-left { min-width: 0; }
+.compat-lab-name { font-weight: 700; font-size: 0.9rem; margin-bottom: 3px; }
+.compat-lab-loc { font-size: 0.78rem; color: var(--text-3); }
+.compat-lab-badges {
+  display: flex; gap: 5px; margin-top: 6px; flex-wrap: wrap;
+}
+.compat-lab-right {
+  text-align: right; flex-shrink: 0;
+}
+.compat-lab-price {
+  font-family: var(--mono); font-weight: 700;
+  font-size: 1rem; color: var(--accent);
+}
+.compat-lab-price-label {
+  font-size: 0.68rem; color: var(--text-3); margin-top: 2px;
+}
+.compat-lab-no-price {
+  font-size: 0.78rem; color: var(--text-3); font-style: italic;
+}
+
+/* ── Find a Lab Wizard ── */
+.lab-finder {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 20px 24px;
+  margin: 0 24px 16px;
+  max-width: 1152px; /* 1200px - 2*24px */
+  margin-left: auto; margin-right: auto;
+}
+.lab-finder h2 {
+  font-size: 1rem; font-weight: 700;
+  margin-bottom: 4px;
+}
+.lab-finder p {
+  font-size: 0.82rem; color: var(--text-3); margin-bottom: 14px;
+}
+.lab-finder-controls {
+  display: flex; gap: 8px; flex-wrap: wrap; align-items: center;
+}
+.finder-result-header {
+  font-size: 0.8rem; color: var(--text-3);
+  padding: 0 24px 8px;
+  max-width: 1200px; margin: 0 auto;
+}
+.finder-lab-row {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  padding: 14px 18px;
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 4px 16px;
+  align-items: center;
   cursor: pointer;
   transition: all 0.2s;
 }
-.compat-lab:hover { border-color: var(--accent); }
-.compat-lab-name { font-weight: 700; font-size: 0.88rem; margin-bottom: 2px; }
-.compat-lab-loc { font-size: 0.78rem; color: var(--text-3); }
+.finder-lab-row:hover { border-color: var(--accent); box-shadow: var(--shadow); }
+.finder-lab-name { font-weight: 700; font-size: 0.92rem; margin-bottom: 3px; }
+.finder-lab-loc { font-size: 0.78rem; color: var(--text-3); }
+.finder-lab-badges { display: flex; gap: 5px; margin-top: 6px; flex-wrap: wrap; }
+.finder-lab-price { font-family: var(--mono); font-weight: 700; font-size: 1.05rem; color: var(--accent); text-align: right; }
+.finder-lab-price-breakdown { font-size: 0.68rem; color: var(--text-3); text-align: right; margin-top: 2px; }
+.finder-grid {
+  display: flex; flex-direction: column; gap: 8px;
+  padding: 0 24px 32px; max-width: 1200px; margin: 0 auto;
+}
 
 /* ── Loading ── */
 .loading {
@@ -603,6 +672,9 @@ body {
 <!-- Stats -->
 <div class="stats" id="stats"></div>
 
+<!-- Lab Finder Widget (labs tab only) -->
+<div id="lab-finder-widget" style="display:none"></div>
+
 <!-- Filters -->
 <div class="filters" id="filters"></div>
 
@@ -616,6 +688,8 @@ let allLabs = [];
 let currentTab = 'stocks';
 let stockFilters = { brand: '', type: '', format: '', process: '', status: '', search: '' };
 let labFilters = { country: '', process: '', mail_in: '' };
+let finderProcess = '';
+let finderFormat = '';
 
 // ── Theme ──
 function initTheme() {
@@ -641,6 +715,23 @@ function findLab(id) {
 
 function findLabsByProcess(process) {
   return allLabs.filter(l => (l.processes || []).includes(process));
+}
+
+function findLabsByProcessAndFormat(process, format) {
+  // Return labs that support the process, with the matching service if available
+  return allLabs
+    .filter(l => (l.processes || []).includes(process))
+    .map(l => {
+      // Prefer exact format match, fall back to any service for that process
+      const svc = (l.services || []).find(s => s.process === process && s.format === format)
+               || (l.services || []).find(s => s.process === process);
+      return { lab: l, service: svc || null };
+    })
+    .sort((a, b) => {
+      const totalA = a.service ? (a.service.dev_price || 0) + (a.service.scan_price || 0) : Infinity;
+      const totalB = b.service ? (b.service.dev_price || 0) + (b.service.scan_price || 0) : Infinity;
+      return totalA - totalB;
+    });
 }
 
 // ── Brand Helpers ──
@@ -709,7 +800,7 @@ function renderStockDetail(id) {
   const content = document.getElementById('content');
   const stock = findStock(id);
   if (!stock) { content.innerHTML = '<div class="empty"><h3>Stock not found</h3></div>'; return; }
-  const labs = findLabsByProcess(stock.process);
+  const labMatches = findLabsByProcessAndFormat(stock.process, stock.format);
 
   content.innerHTML = `
     <div class="detail">
@@ -759,14 +850,30 @@ function renderStockDetail(id) {
 
       <div class="detail-section">
         <h3>Where to Develop (${stock.process})</h3>
-        ${labs.length ? `
+        ${labMatches.length ? `
           <div class="compat-labs">
-            ${labs.map(l => `
+            ${labMatches.map(({ lab: l, service: svc }) => {
+              const total = svc && svc.dev_price != null && svc.scan_price != null
+                ? svc.dev_price + svc.scan_price : null;
+              const fmtLabel = svc ? svc.format : stock.format;
+              return `
               <div class="compat-lab" onclick="navigate('lab/${l.id}')">
-                <div class="compat-lab-name">${l.name}</div>
-                <div class="compat-lab-loc">${l.city}, ${l.country}${l.mail_in ? ' &middot; Mail-In' : ''}</div>
-              </div>
-            `).join('')}
+                <div class="compat-lab-left">
+                  <div class="compat-lab-name">${l.name}</div>
+                  <div class="compat-lab-loc">${l.city}, ${l.country}</div>
+                  <div class="compat-lab-badges">
+                    <span class="turnaround-badge">${l.turnaround}</span>
+                    ${l.mail_in ? '<span class="mail-in-badge">Mail-In</span>' : ''}
+                  </div>
+                </div>
+                <div class="compat-lab-right">
+                  ${total != null
+                    ? `<div class="compat-lab-price">$${total.toFixed(0)}</div>
+                       <div class="compat-lab-price-label">dev + scan &middot; ${fmtLabel}</div>`
+                    : `<div class="compat-lab-no-price">see site</div>`}
+                </div>
+              </div>`;
+            }).join('')}
           </div>
         ` : '<p style="color:var(--text-3)">No compatible labs found.</p>'}
       </div>
@@ -858,6 +965,13 @@ function renderStockFilters() {
 function renderLabFilters() {
   const countries = [...new Set(allLabs.map(l => l.country))].sort();
   const processes = [...new Set(allLabs.flatMap(l => l.processes || []))].sort();
+  const formats = [...new Set(allLabs.flatMap(l => (l.services || []).map(s => s.format)))].sort();
+
+  // Finder wizard injected before filters div
+  const finderEl = document.getElementById('lab-finder-widget');
+  if (finderEl) {
+    finderEl.innerHTML = renderLabFinderWidget(processes, formats);
+  }
 
   document.getElementById('filters').innerHTML = `
     <select class="filter-select" onchange="labFilters.country=this.value;applyLabFilters()">
@@ -874,6 +988,92 @@ function renderLabFilters() {
       <option value="0" ${labFilters.mail_in==='0'?'selected':''}>Mail-In: No</option>
     </select>
     <button class="filter-clear" onclick="clearLabFilters()">Clear</button>
+  `;
+}
+
+function renderLabFinderWidget(processes, formats) {
+  return `
+    <div class="lab-finder">
+      <h2>Find a Lab</h2>
+      <p>Pick your process and format to see matching labs sorted by price.</p>
+      <div class="lab-finder-controls">
+        <select class="filter-select" id="finder-process" onchange="finderProcess=this.value;runFinder()">
+          <option value="">Process...</option>
+          ${processes.map(p => `<option value="${p}" ${finderProcess===p?'selected':''}>${p}</option>`).join('')}
+        </select>
+        <select class="filter-select" id="finder-format" onchange="finderFormat=this.value;runFinder()">
+          <option value="">Format...</option>
+          ${formats.map(f => `<option value="${f}" ${finderFormat===f?'selected':''}>${f}</option>`).join('')}
+        </select>
+        ${finderProcess ? `<button class="filter-clear" onclick="finderProcess='';finderFormat='';runFinder()">Clear</button>` : ''}
+      </div>
+    </div>
+  `;
+}
+
+function runFinder() {
+  // Re-render widget to keep selects in sync
+  const processes = [...new Set(allLabs.flatMap(l => l.processes || []))].sort();
+  const formats = [...new Set(allLabs.flatMap(l => (l.services || []).map(s => s.format)))].sort();
+  const finderEl = document.getElementById('lab-finder-widget');
+  if (finderEl) finderEl.innerHTML = renderLabFinderWidget(processes, formats);
+
+  if (!finderProcess) {
+    // No process selected — show normal lab grid
+    applyLabFilters();
+    return;
+  }
+
+  // Filter and sort labs by price for selected process+format
+  const matches = allLabs
+    .filter(l => (l.processes || []).includes(finderProcess))
+    .map(l => {
+      const svc = finderFormat
+        ? (l.services || []).find(s => s.process === finderProcess && s.format === finderFormat)
+           || (l.services || []).find(s => s.process === finderProcess)
+        : (l.services || []).find(s => s.process === finderProcess);
+      return { lab: l, service: svc || null };
+    })
+    .filter(({ service }) => !finderFormat || service)
+    .sort((a, b) => {
+      const tA = a.service ? (a.service.dev_price||0) + (a.service.scan_price||0) : Infinity;
+      const tB = b.service ? (b.service.dev_price||0) + (b.service.scan_price||0) : Infinity;
+      return tA - tB;
+    });
+
+  const fmtNote = finderFormat ? ` &middot; ${finderFormat}` : '';
+  const content = document.getElementById('content');
+
+  if (!matches.length) {
+    content.innerHTML = `<div class="empty"><div class="empty-icon">&#x1f9ea;</div><h3>No labs found</h3><p>No labs support ${finderProcess}${finderFormat ? ' / ' + finderFormat : ''}.</p></div>`;
+    return;
+  }
+
+  content.innerHTML = `
+    <div class="finder-result-header">${matches.length} lab${matches.length !== 1 ? 's' : ''} for <strong>${finderProcess}</strong>${fmtNote} &mdash; sorted by total price</div>
+    <div class="finder-grid">
+      ${matches.map(({ lab: l, service: svc }) => {
+        const total = svc && svc.dev_price != null && svc.scan_price != null
+          ? svc.dev_price + svc.scan_price : null;
+        return `
+          <div class="finder-lab-row" onclick="navigate('lab/${l.id}')">
+            <div>
+              <div class="finder-lab-name">${l.name}</div>
+              <div class="finder-lab-loc">${l.city}, ${l.country}</div>
+              <div class="finder-lab-badges">
+                <span class="turnaround-badge">${l.turnaround}</span>
+                ${l.mail_in ? '<span class="mail-in-badge">Mail-In</span>' : '<span class="tag" style="background:var(--surface-2);color:var(--text-3);font-size:0.7rem;padding:2px 7px;border-radius:4px">In-Person</span>'}
+              </div>
+            </div>
+            <div>
+              ${total != null
+                ? `<div class="finder-lab-price">$${total.toFixed(0)}</div>
+                   <div class="finder-lab-price-breakdown">$${svc.dev_price.toFixed(0)} dev + $${svc.scan_price.toFixed(0)} scan</div>`
+                : `<div style="font-size:0.78rem;color:var(--text-3);text-align:right">see site</div>`}
+            </div>
+          </div>`;
+      }).join('')}
+    </div>
   `;
 }
 
@@ -969,23 +1169,30 @@ function handleRoute() {
   }
   document.querySelectorAll('.tab-btn').forEach(b => b.classList.toggle('active', b.dataset.tab === currentTab));
 
+  const finderWidget = document.getElementById('lab-finder-widget');
   if (parts[0] === 'stocks') {
     document.getElementById('stats').style.display = '';
     document.getElementById('filters').style.display = '';
+    finderWidget.style.display = 'none';
     renderStockFilters();
     applyStockFilters();
   } else if (parts[0] === 'stock' && parts[1]) {
     document.getElementById('stats').style.display = 'none';
     document.getElementById('filters').style.display = 'none';
+    finderWidget.style.display = 'none';
     renderStockDetail(parts[1]);
   } else if (parts[0] === 'labs') {
     document.getElementById('stats').style.display = '';
     document.getElementById('filters').style.display = '';
+    finderWidget.style.display = '';
+    finderProcess = '';
+    finderFormat = '';
     renderLabFilters();
     applyLabFilters();
   } else if (parts[0] === 'lab' && parts[1]) {
     document.getElementById('stats').style.display = 'none';
     document.getElementById('filters').style.display = 'none';
+    finderWidget.style.display = 'none';
     renderLabDetail(parts[1]);
   }
 }
