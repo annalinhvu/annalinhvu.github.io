@@ -225,6 +225,35 @@
     }
     .entry-heart:hover, .entry-heart.saved { color: var(--amber); }
 
+    /* ── Style tag strip ── */
+    .tag-strip {
+      display: flex; flex-wrap: wrap; gap: 5px;
+      padding: 12px 0 16px;
+      border-bottom: 1px solid var(--border);
+    }
+    .style-tag-btn {
+      font-family: 'Geist Mono', monospace; font-size: 0.52rem;
+      letter-spacing: 0.8px; text-transform: uppercase;
+      color: var(--text-4); border: 1px solid var(--border);
+      padding: 3px 10px; border-radius: 2px;
+      transition: color 0.15s, border-color 0.15s, background 0.15s;
+      background: none; cursor: pointer;
+    }
+    .style-tag-btn:hover { color: var(--text-2); border-color: var(--border-h); }
+    .style-tag-btn.active {
+      color: var(--text-1); border-color: var(--text-3);
+      background: var(--surface);
+    }
+    .tag-clear-btn {
+      font-family: 'Geist Mono', monospace; font-size: 0.52rem;
+      letter-spacing: 0.8px; text-transform: uppercase;
+      color: var(--amber); border: 1px solid var(--amber);
+      padding: 3px 10px; border-radius: 2px;
+      background: none; cursor: pointer;
+      transition: opacity 0.15s;
+    }
+    .tag-clear-btn:hover { opacity: 0.7; }
+
     /* ── Empty state ── */
     .empty { padding: 60px 0; color: var(--text-4); font-style: italic;
       font-family: 'Fraunces', serif; font-size: 0.9rem; }
@@ -283,7 +312,10 @@
       letter-spacing: 1px; text-transform: uppercase;
       color: var(--text-3); border: 1px solid var(--border);
       padding: 3px 9px; border-radius: 2px;
+      background: none; cursor: pointer;
+      transition: color 0.15s, border-color 0.15s;
     }
+    .detail-tag:hover { color: var(--text-1); border-color: var(--text-3); }
 
     /* Hero title row */
     .detail-hero-title {
@@ -552,6 +584,8 @@
       </div>
     </div>
 
+    <div class="tag-strip" id="tag-strip"></div>
+
     <div id="spotlight" class="spotlight" style="display:none" onclick="spotlightClick()"></div>
     <div class="count" id="result-count"></div>
     <div class="director-list" id="director-list"></div>
@@ -569,7 +603,11 @@
   let savedIds = new Set();
   let activeNat = '';
   let searchQ = '';
+  let activeTag = '';
   let stimer = null;
+
+  // Tags shown in the strip: appear in >= 3 filmmakers, sorted by frequency desc
+  const STRIP_MIN_COUNT = 3;
 
   const ERA = { 'avant-garde':'Avant-garde', 'new-wave':'New Wave', 'classical':'Classical', 'contemporary':'Contemporary' };
   const NAT = { french:'French', american:'American', japanese:'Japanese', belgian:'Belgian', russian:'Russian', swedish:'Swedish', hongkong:'Hong Kong', iranian:'Iranian', korean:'Korean', taiwanese:'Taiwanese', mexican:'Mexican', indian:'Indian', italian:'Italian', senegalese:'Senegalese', czech:'Czech', argentinian:'Argentinian', polish:'Polish', german:'German', scottish:'Scottish', chinese:'Chinese', spanish:'Spanish', thai:'Thai', danish:'Danish', hungarian:'Hungarian', norwegian:'Norwegian', turkish:'Turkish', british:'British', greek:'Greek', finnish:'Finnish', brazilian:'Brazilian', portuguese:'Portuguese', romanian:'Romanian' };
@@ -587,6 +625,7 @@
     const stored = localStorage.getItem('auteurs-saved');
     if (stored) savedIds = new Set(JSON.parse(stored));
     buildNats();
+    buildTagStrip();
     updateBadge();
     window.addEventListener('hashchange', handleHash);
     handleHash();
@@ -606,16 +645,36 @@
   const ERA_LABEL = { 'avant-garde':'Avant-Garde', 'new-wave':'New Wave', 'classical':'Classical', 'contemporary':'Contemporary' };
   let spotlightId = null;
 
+  function buildTagStrip() {
+    const counts = {};
+    all.forEach(f => (f.style_tags || []).forEach(t => { counts[t] = (counts[t] || 0) + 1; }));
+    const stripTags = Object.entries(counts)
+      .filter(([, n]) => n >= STRIP_MIN_COUNT)
+      .sort((a, b) => b[1] - a[1])
+      .map(([t]) => t);
+    const el = document.getElementById('tag-strip');
+    el.innerHTML = stripTags.map(t =>
+      `<button class="style-tag-btn${activeTag === t ? ' active' : ''}" onclick="setTag('${t}')">${t}</button>`
+    ).join('') + (activeTag ? `<button class="tag-clear-btn" onclick="setTag('')">✕ clear</button>` : '');
+  }
+
+  function setTag(tag) {
+    activeTag = tag;
+    buildTagStrip();
+    applyFilters();
+  }
+
   function applyFilters() {
     let r = all;
     if (activeEra === 'saved') r = r.filter(f => savedIds.has(f.id));
     else if (activeEra !== 'all') r = r.filter(f => f.era === activeEra);
     if (activeNat) r = r.filter(f => f.nationality === activeNat);
+    if (activeTag) r = r.filter(f => (f.style_tags || []).includes(activeTag));
     if (searchQ) {
       const q = searchQ.toLowerCase();
       r = r.filter(f => f.name.toLowerCase().includes(q) || f.tagline.toLowerCase().includes(q));
     }
-    const isDefault = activeEra === 'all' && !activeNat && !searchQ;
+    const isDefault = activeEra === 'all' && !activeNat && !searchQ && !activeTag;
     renderSpotlight(isDefault);
     render(r, isDefault);
     document.getElementById('result-count').textContent = `${r.length} director${r.length !== 1 ? 's' : ''}`;
@@ -718,6 +777,10 @@
           <button class="hero-save-btn ${saved?'saved':''}" id="save-btn-d" onclick="toggleFavDetail(${id})" aria-label="Save">${saved?'♥':'♡'}</button>
         </div>
         <p class="detail-tagline">${f.tagline}</p>
+        ${f.style_tags?.length ? `
+        <div class="detail-tags">
+          ${f.style_tags.map(t => `<button class="detail-tag" onclick="browseTag('${t.replace(/'/g,"\\'")}')">↗ ${t}</button>`).join('')}
+        </div>` : ''}
       </div>
 
       <div class="detail-meta-strip">
@@ -775,6 +838,14 @@
     window.scrollTo(0, 0);
   }
 
+  function browseTag(tag) {
+    activeTag = tag;
+    showCatalog();
+    buildTagStrip();
+    applyFilters();
+    history.pushState(null, '', location.pathname);
+  }
+
   function goBack() {
     showCatalog();
     applyFilters();
@@ -815,6 +886,8 @@
       document.querySelectorAll('.era-tab').forEach(b=>b.classList.remove('active'));
       btn.classList.add('active');
       activeEra = btn.dataset.era;
+      activeTag = '';
+      buildTagStrip();
       applyFilters();
     });
   });
