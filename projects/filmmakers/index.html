@@ -228,8 +228,7 @@
     /* ── Style tag strip ── */
     .tag-strip {
       display: flex; flex-wrap: wrap; gap: 5px;
-      padding: 12px 0 16px;
-      border-bottom: 1px solid var(--border);
+      flex: 1;
     }
     .style-tag-btn {
       font-family: 'Geist Mono', monospace; font-size: 0.52rem;
@@ -568,20 +567,11 @@
     </header>
 
     <div class="filter-bar">
-      <div class="era-tabs">
-        <button class="era-tab active" data-era="all">All</button>
-        <button class="era-tab" data-era="avant-garde">Avant-garde</button>
-        <button class="era-tab" data-era="new-wave">New Wave</button>
-        <button class="era-tab" data-era="classical">Classical</button>
-        <button class="era-tab" data-era="contemporary">Contemporary</button>
-        <button class="era-tab" data-era="saved">Saved ♥</button>
-      </div>
+      <div class="tag-strip" id="tag-strip"></div>
       <div class="filter-aux">
         <input class="filter-input" id="search-input" type="search" placeholder="Search…" aria-label="Search">
       </div>
     </div>
-
-    <div class="tag-strip" id="tag-strip"></div>
 
     <div id="spotlight" class="spotlight" style="display:none" onclick="spotlightClick()"></div>
     <div class="count" id="result-count"></div>
@@ -596,7 +586,6 @@
 
 <script>
   let all = [];
-  let activeEra = 'all';
   let savedIds = new Set();
   let searchQ = '';
   let activeTag = '';
@@ -661,14 +650,12 @@
 
   function applyFilters() {
     let r = all;
-    if (activeEra === 'saved') r = r.filter(f => savedIds.has(f.id));
-    else if (activeEra !== 'all') r = r.filter(f => f.era === activeEra);
     if (activeTag) r = r.filter(f => (f.style_tags || []).includes(activeTag));
     if (searchQ) {
       const q = searchQ.toLowerCase();
       r = r.filter(f => f.name.toLowerCase().includes(q) || f.tagline.toLowerCase().includes(q));
     }
-    const isDefault = activeEra === 'all' && !searchQ && !activeTag;
+    const isDefault = !searchQ && !activeTag;
     renderSpotlight(isDefault);
     render(r, isDefault);
     document.getElementById('result-count').textContent = `${r.length} director${r.length !== 1 ? 's' : ''}`;
@@ -869,16 +856,6 @@
     b.style.display = savedIds.size > 0 ? 'inline' : 'none';
     b.textContent = `♥ ${savedIds.size}`;
   }
-  document.querySelectorAll('.era-tab').forEach(btn => {
-    btn.addEventListener('click', () => {
-      document.querySelectorAll('.era-tab').forEach(b=>b.classList.remove('active'));
-      btn.classList.add('active');
-      activeEra = btn.dataset.era;
-      activeTag = '';
-      buildTagStrip();
-      applyFilters();
-    });
-  });
   document.getElementById('search-input').addEventListener('input', e => {
     clearTimeout(stimer);
     stimer = setTimeout(()=>{ searchQ=e.target.value.trim(); applyFilters(); }, 150);
