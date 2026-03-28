@@ -456,12 +456,37 @@
   }
   .lab-visual svg { display: block; width: 100%; height: 100%; }
   .lv-01 { color: var(--accent);  background: var(--accent-bg); }
-  .lv-02 { color: var(--text-4);  background: rgba(0,0,0,0.04); }
+  .lv-02 { color: var(--amber);   background: var(--amber-bg); }
   .lv-03 { color: var(--indigo);  background: var(--indigo-bg); }
   .lv-04 { color: var(--green);   background: var(--green-bg); }
   .lv-05 { color: var(--red);     background: var(--red-bg); }
-  .lv-06 { color: #909090; background: #f0f0f0; }
-  [data-theme="dark"] .lv-06 { color: #606060; background: #1a1a1a; }
+  .lv-06 { color: #8a7050; background: rgba(138,112,80,0.07); }
+  [data-theme="dark"] .lv-06 { color: #c8a870; background: rgba(200,168,112,0.07); }
+
+  /* ── Skill groups ── */
+  .skill-group { margin-bottom: 16px; }
+  .skill-group:last-child { margin-bottom: 0; }
+  .skill-group-label {
+    font-family: 'Geist Mono', monospace; font-size: 0.6rem;
+    letter-spacing: 1.5px; text-transform: uppercase;
+    color: var(--accent); margin-bottom: 7px;
+  }
+  .skill-chips { display: flex; flex-wrap: wrap; gap: 5px; }
+  .skill-chip {
+    font-family: 'Geist Mono', monospace; font-size: 0.65rem;
+    padding: 3px 10px; border: 1px solid var(--tag-border);
+    border-radius: 8px; color: var(--tag-color);
+  }
+
+  /* ── Lab card per-project accent ── */
+  .lab-card { border-top-color: var(--accent); }
+  .lab-c01 { border-top-color: var(--accent); }
+  .lab-c02 { border-top-color: var(--amber); }
+  .lab-c03 { border-top-color: var(--indigo); }
+  .lab-c04 { border-top-color: #8a7050; }
+  [data-theme="dark"] .lab-c04 { border-top-color: #c8a870; }
+  .lab-c05 { border-top-color: var(--green); }
+  .lab-c06 { border-top-color: var(--red); }
 
   /* ── Responsive ── */
   @media(max-width:768px) {
@@ -522,6 +547,7 @@
         <div class="hero-content">
           <div class="eyebrow">Senior Data Engineer</div>
           <h1>Anna Vu <span class="name-sub">Linh</span></h1>
+          <p class="bio" style="font-size:0.9rem;line-height:1.8;color:var(--text-2);margin-bottom:18px;max-width:480px">I build data infrastructure at the intersection of marketing and engineering — reliable pipelines, clean warehouses, and tools that help people make better decisions. Originally from Hanoi, based in New York.</p>
           <div class="links">
             <a href="#" class="btn-primary" onclick="document.querySelector('[data-tab=projects]').click();return false;">View Projects</a>
             <a href="https://www.linkedin.com/in/linh-vu-251099/">LinkedIn</a>
@@ -608,29 +634,41 @@
 
     <div class="card">
       <div class="sec-title">Skills</div>
-      <div class="edu-entry">
-        <div class="edu-school">Languages</div>
-        <div class="edu-degree">SQL · Python · Java · JavaScript · CSS · C · Assembly</div>
+      <div class="skill-group">
+        <div class="skill-group-label">Languages</div>
+        <div class="skill-chips">
+          <span class="skill-chip">SQL</span><span class="skill-chip">Python</span><span class="skill-chip">Java</span><span class="skill-chip">JavaScript</span><span class="skill-chip">CSS</span><span class="skill-chip">C</span><span class="skill-chip">Assembly</span>
+        </div>
       </div>
-      <div class="edu-entry">
-        <div class="edu-school">Data Warehousing</div>
-        <div class="edu-degree">Snowflake · BigQuery</div>
+      <div class="skill-group">
+        <div class="skill-group-label">Data Warehousing</div>
+        <div class="skill-chips">
+          <span class="skill-chip">Snowflake</span><span class="skill-chip">BigQuery</span>
+        </div>
       </div>
-      <div class="edu-entry">
-        <div class="edu-school">ETL &amp; Data Engineering</div>
-        <div class="edu-degree">Matillion · REST APIs · SFTP ingestion · AWS S3 · Apps Script automation</div>
+      <div class="skill-group">
+        <div class="skill-group-label">ETL &amp; Data Engineering</div>
+        <div class="skill-chips">
+          <span class="skill-chip">Matillion</span><span class="skill-chip">REST APIs</span><span class="skill-chip">SFTP ingestion</span><span class="skill-chip">AWS S3</span><span class="skill-chip">Apps Script</span>
+        </div>
       </div>
-      <div class="edu-entry">
-        <div class="edu-school">Data Analysis &amp; Visualization</div>
-        <div class="edu-degree">Looker · Tableau · Domo · Google Sheets</div>
+      <div class="skill-group">
+        <div class="skill-group-label">Analysis &amp; Visualization</div>
+        <div class="skill-chips">
+          <span class="skill-chip">Looker</span><span class="skill-chip">Tableau</span><span class="skill-chip">Domo</span><span class="skill-chip">Google Sheets</span>
+        </div>
       </div>
-      <div class="edu-entry">
-        <div class="edu-school">Developer Tools</div>
-        <div class="edu-degree">Git · Postman · JIRA · Confluence · VSCode · Jupyter Notebooks · PyCharm · DBeaver</div>
+      <div class="skill-group">
+        <div class="skill-group-label">Developer Tools</div>
+        <div class="skill-chips">
+          <span class="skill-chip">Git</span><span class="skill-chip">Postman</span><span class="skill-chip">JIRA</span><span class="skill-chip">Confluence</span><span class="skill-chip">VSCode</span><span class="skill-chip">Jupyter</span><span class="skill-chip">DBeaver</span>
+        </div>
       </div>
-      <div class="edu-entry">
-        <div class="edu-school">Marketing &amp; Analytics Platforms</div>
-        <div class="edu-degree">Google Analytics 4 · Campaign Manager 360 · Search Ads 360 · Google Ads · Facebook Ads · TikTok Ads · Snapchat Ads · Amazon Ads · Kantar · MRI Simmons · Brandwatch · Kochava</div>
+      <div class="skill-group">
+        <div class="skill-group-label">Marketing Platforms</div>
+        <div class="skill-chips">
+          <span class="skill-chip">GA4</span><span class="skill-chip">Campaign Manager 360</span><span class="skill-chip">Search Ads 360</span><span class="skill-chip">Google Ads</span><span class="skill-chip">Facebook Ads</span><span class="skill-chip">TikTok Ads</span><span class="skill-chip">Amazon Ads</span><span class="skill-chip">Kantar</span><span class="skill-chip">Brandwatch</span><span class="skill-chip">Kochava</span>
+        </div>
       </div>
     </div>
     </div>
@@ -865,7 +903,7 @@
 
     <p class="panel-intro">Side projects built out of curiosity and care: film, culture, data, among other things.</p>
 
-    <a href="projects/festival-tracker/" class="card lab-card" style="display:block;text-decoration:none;color:inherit;cursor:pointer">
+    <a href="projects/festival-tracker/" class="card lab-card lab-c01" style="display:block;text-decoration:none;color:inherit;cursor:pointer">
       <div class="lab-visual lv-01">
         <svg viewBox="0 0 560 90" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
           <rect width="560" height="18" fill="currentColor" opacity="0.08"/>
@@ -915,7 +953,7 @@
 
     <hr class="lab-divider">
 
-    <a href="projects/film-stocks/" class="card lab-card" style="display:block;text-decoration:none;color:inherit;cursor:pointer">
+    <a href="projects/film-stocks/" class="card lab-card lab-c02" style="display:block;text-decoration:none;color:inherit;cursor:pointer">
       <div class="lab-visual lv-02">
         <svg viewBox="0 0 560 90" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
           <!-- Film strip -->
@@ -984,7 +1022,7 @@
 
     <hr class="lab-divider">
 
-    <a href="projects/nyc-film-map/" class="card lab-card" style="display:block;text-decoration:none;color:inherit;cursor:pointer">
+    <a href="projects/nyc-film-map/" class="card lab-card lab-c03" style="display:block;text-decoration:none;color:inherit;cursor:pointer">
       <div class="lab-visual lv-03">
         <svg viewBox="0 0 560 90" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
           <!-- Sparse street grid -->
@@ -1031,7 +1069,7 @@
 
     <hr class="lab-divider">
 
-    <a href="projects/filmmakers/" class="card lab-card" style="display:block;text-decoration:none;color:inherit;cursor:pointer">
+    <a href="projects/filmmakers/" class="card lab-card lab-c04" style="display:block;text-decoration:none;color:inherit;cursor:pointer">
       <div class="lab-visual lv-06">
         <svg viewBox="0 0 560 90" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg">
           <!-- Film reel: outer ring -->
@@ -1072,7 +1110,7 @@
 
     <hr class="lab-divider">
 
-    <a href="projects/self-care/" class="card lab-card" style="display:block;text-decoration:none;color:inherit;cursor:pointer">
+    <a href="projects/self-care/" class="card lab-card lab-c05" style="display:block;text-decoration:none;color:inherit;cursor:pointer">
       <div class="lab-visual lv-04">
         <svg viewBox="0 0 560 90" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
           <!-- Leaf 1: large, left-center, tilt left -->
@@ -1107,7 +1145,7 @@
 
     <hr class="lab-divider">
 
-    <a href="projects/recipes/" class="card lab-card" style="display:block;text-decoration:none;color:inherit;cursor:pointer">
+    <a href="projects/recipes/" class="card lab-card lab-c06" style="display:block;text-decoration:none;color:inherit;cursor:pointer">
       <div class="lab-visual lv-05">
         <svg viewBox="0 0 560 90" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
           <!-- Bowl + steam (cx≈88) -->
