@@ -577,9 +577,6 @@
         <button class="era-tab" data-era="saved">Saved ♥</button>
       </div>
       <div class="filter-aux">
-        <select class="filter-select" id="filter-nat" aria-label="Nationality">
-          <option value="">All nations</option>
-        </select>
         <input class="filter-input" id="search-input" type="search" placeholder="Search…" aria-label="Search">
       </div>
     </div>
@@ -601,13 +598,12 @@
   let all = [];
   let activeEra = 'all';
   let savedIds = new Set();
-  let activeNat = '';
   let searchQ = '';
   let activeTag = '';
   let stimer = null;
 
   // Tags shown in the strip: appear in >= 3 filmmakers, sorted by frequency desc
-  const STRIP_MIN_COUNT = 3;
+  const STRIP_MIN_COUNT = 6;
 
   const ERA = { 'avant-garde':'Avant-garde', 'new-wave':'New Wave', 'classical':'Classical', 'contemporary':'Contemporary' };
   const NAT = { french:'French', american:'American', japanese:'Japanese', belgian:'Belgian', russian:'Russian', swedish:'Swedish', hongkong:'Hong Kong', iranian:'Iranian', korean:'Korean', taiwanese:'Taiwanese', mexican:'Mexican', indian:'Indian', italian:'Italian', senegalese:'Senegalese', czech:'Czech', argentinian:'Argentinian', polish:'Polish', german:'German', scottish:'Scottish', chinese:'Chinese', spanish:'Spanish', thai:'Thai', danish:'Danish', hungarian:'Hungarian', norwegian:'Norwegian', turkish:'Turkish', british:'British', greek:'Greek', finnish:'Finnish', brazilian:'Brazilian', portuguese:'Portuguese', romanian:'Romanian' };
@@ -624,7 +620,6 @@
     }
     const stored = localStorage.getItem('auteurs-saved');
     if (stored) savedIds = new Set(JSON.parse(stored));
-    buildNats();
     buildTagStrip();
     updateBadge();
     window.addEventListener('hashchange', handleHash);
@@ -668,13 +663,12 @@
     let r = all;
     if (activeEra === 'saved') r = r.filter(f => savedIds.has(f.id));
     else if (activeEra !== 'all') r = r.filter(f => f.era === activeEra);
-    if (activeNat) r = r.filter(f => f.nationality === activeNat);
     if (activeTag) r = r.filter(f => (f.style_tags || []).includes(activeTag));
     if (searchQ) {
       const q = searchQ.toLowerCase();
       r = r.filter(f => f.name.toLowerCase().includes(q) || f.tagline.toLowerCase().includes(q));
     }
-    const isDefault = activeEra === 'all' && !activeNat && !searchQ && !activeTag;
+    const isDefault = activeEra === 'all' && !searchQ && !activeTag;
     renderSpotlight(isDefault);
     render(r, isDefault);
     document.getElementById('result-count').textContent = `${r.length} director${r.length !== 1 ? 's' : ''}`;
@@ -875,12 +869,6 @@
     b.style.display = savedIds.size > 0 ? 'inline' : 'none';
     b.textContent = `♥ ${savedIds.size}`;
   }
-  function buildNats() {
-    const nats = [...new Set(all.map(f=>f.nationality))].sort();
-    const sel = document.getElementById('filter-nat');
-    nats.forEach(n => { const o=document.createElement('option'); o.value=n; o.textContent=fn(n); sel.appendChild(o); });
-  }
-
   document.querySelectorAll('.era-tab').forEach(btn => {
     btn.addEventListener('click', () => {
       document.querySelectorAll('.era-tab').forEach(b=>b.classList.remove('active'));
@@ -891,7 +879,6 @@
       applyFilters();
     });
   });
-  document.getElementById('filter-nat').addEventListener('change', e => { activeNat=e.target.value; applyFilters(); });
   document.getElementById('search-input').addEventListener('input', e => {
     clearTimeout(stimer);
     stimer = setTimeout(()=>{ searchQ=e.target.value.trim(); applyFilters(); }, 150);
