@@ -458,7 +458,7 @@
   .lv-01 { color: var(--accent);  background: var(--accent-bg); }
   .lv-02 { color: var(--amber);   background: var(--amber-bg); }
   .lv-03 { color: var(--indigo);  background: var(--indigo-bg); }
-  .lv-04 { color: var(--green);   background: var(--green-bg); }
+  .lv-04 { color: var(--rose);    background: var(--rose-bg); }
   .lv-05 { color: var(--red);     background: var(--red-bg); }
   .lv-06 { color: #8a7050; background: rgba(138,112,80,0.07); }
   [data-theme="dark"] .lv-06 { color: #c8a870; background: rgba(200,168,112,0.07); }
@@ -469,14 +469,23 @@
   .skill-group-label {
     font-family: 'Geist Mono', monospace; font-size: 0.6rem;
     letter-spacing: 1.5px; text-transform: uppercase;
-    color: var(--accent); margin-bottom: 7px;
+    color: var(--sg-color, var(--accent)); margin-bottom: 7px;
   }
   .skill-chips { display: flex; flex-wrap: wrap; gap: 5px; }
   .skill-chip {
     font-family: 'Geist Mono', monospace; font-size: 0.65rem;
-    padding: 3px 10px; border: 1px solid var(--tag-border);
-    border-radius: 8px; color: var(--tag-color);
+    padding: 3px 10px;
+    border: 1px solid color-mix(in srgb, var(--sg-color, var(--accent)) 22%, transparent);
+    border-radius: 8px;
+    color: color-mix(in srgb, var(--sg-color, var(--accent)) 85%, var(--text-3));
   }
+  .sg-lang   { --sg-color: var(--indigo); }
+  .sg-dw     { --sg-color: var(--amber); }
+  .sg-etl    { --sg-color: var(--accent); }
+  .sg-viz    { --sg-color: var(--rose); }
+  .sg-dev    { --sg-color: var(--text-3); }
+  .sg-mktg   { --sg-color: #8a7050; }
+  [data-theme="dark"] .sg-mktg { --sg-color: #c8a870; }
 
   /* ── Lab card per-project accent ── */
   .lab-card { border-top-color: var(--accent); }
@@ -485,7 +494,7 @@
   .lab-c03 { border-top-color: var(--indigo); }
   .lab-c04 { border-top-color: #8a7050; }
   [data-theme="dark"] .lab-c04 { border-top-color: #c8a870; }
-  .lab-c05 { border-top-color: var(--green); }
+  .lab-c05 { border-top-color: var(--rose); }
   .lab-c06 { border-top-color: var(--red); }
 
   /* ── Responsive ── */
@@ -547,7 +556,7 @@
         <div class="hero-content">
           <div class="eyebrow">Senior Data Engineer</div>
           <h1>Anna Vu <span class="name-sub">Linh</span></h1>
-          <p class="bio" style="font-size:0.9rem;line-height:1.8;color:var(--text-2);margin-bottom:18px;max-width:480px">I build data infrastructure at the intersection of marketing and engineering — reliable pipelines, clean warehouses, and tools that help people make better decisions. Originally from Hanoi, based in New York.</p>
+          <p class="bio" style="font-size:0.9rem;line-height:1.8;color:var(--text-2);margin-bottom:18px;max-width:480px">I think in pipelines and feel in frames — drawn to both the precision of a well-modeled dataset and the patience of waiting for the right light.</p>
           <div class="links">
             <a href="#" class="btn-primary" onclick="document.querySelector('[data-tab=projects]').click();return false;">View Projects</a>
             <a href="https://www.linkedin.com/in/linh-vu-251099/">LinkedIn</a>
@@ -634,37 +643,37 @@
 
     <div class="card">
       <div class="sec-title">Skills</div>
-      <div class="skill-group">
+      <div class="skill-group sg-lang">
         <div class="skill-group-label">Languages</div>
         <div class="skill-chips">
           <span class="skill-chip">SQL</span><span class="skill-chip">Python</span><span class="skill-chip">Java</span><span class="skill-chip">JavaScript</span><span class="skill-chip">CSS</span><span class="skill-chip">C</span><span class="skill-chip">Assembly</span>
         </div>
       </div>
-      <div class="skill-group">
+      <div class="skill-group sg-dw">
         <div class="skill-group-label">Data Warehousing</div>
         <div class="skill-chips">
           <span class="skill-chip">Snowflake</span><span class="skill-chip">BigQuery</span>
         </div>
       </div>
-      <div class="skill-group">
+      <div class="skill-group sg-etl">
         <div class="skill-group-label">ETL &amp; Data Engineering</div>
         <div class="skill-chips">
           <span class="skill-chip">Matillion</span><span class="skill-chip">REST APIs</span><span class="skill-chip">SFTP ingestion</span><span class="skill-chip">AWS S3</span><span class="skill-chip">Apps Script</span>
         </div>
       </div>
-      <div class="skill-group">
+      <div class="skill-group sg-viz">
         <div class="skill-group-label">Analysis &amp; Visualization</div>
         <div class="skill-chips">
           <span class="skill-chip">Looker</span><span class="skill-chip">Tableau</span><span class="skill-chip">Domo</span><span class="skill-chip">Google Sheets</span>
         </div>
       </div>
-      <div class="skill-group">
+      <div class="skill-group sg-dev">
         <div class="skill-group-label">Developer Tools</div>
         <div class="skill-chips">
           <span class="skill-chip">Git</span><span class="skill-chip">Postman</span><span class="skill-chip">JIRA</span><span class="skill-chip">Confluence</span><span class="skill-chip">VSCode</span><span class="skill-chip">Jupyter</span><span class="skill-chip">DBeaver</span>
         </div>
       </div>
-      <div class="skill-group">
+      <div class="skill-group sg-mktg">
         <div class="skill-group-label">Marketing Platforms</div>
         <div class="skill-chips">
           <span class="skill-chip">GA4</span><span class="skill-chip">Campaign Manager 360</span><span class="skill-chip">Search Ads 360</span><span class="skill-chip">Google Ads</span><span class="skill-chip">Facebook Ads</span><span class="skill-chip">TikTok Ads</span><span class="skill-chip">Amazon Ads</span><span class="skill-chip">Kantar</span><span class="skill-chip">Brandwatch</span><span class="skill-chip">Kochava</span>
