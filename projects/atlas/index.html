@@ -214,27 +214,13 @@ body {
   gap: 8px;
 }
 
-/* Header row: FROM → TO + flight number */
+/* Header row */
 .pass-header {
-  display: flex; align-items: center; justify-content: space-between;
-  gap: 12px;
-}
-.pass-route {
-  display: flex; align-items: center; gap: 8px;
-}
-.pass-iata {
-  font-family: 'Bebas Neue', sans-serif;
-  font-size: 1.55rem; letter-spacing: 3px;
-  color: var(--text-1); line-height: 1;
-}
-.pass-iata.origin { color: var(--text-3); }
-.pass-arrow {
-  font-size: 0.75rem; color: var(--region-color, var(--text-4));
-  margin: 0 2px; flex-shrink: 0;
+  display: flex; align-items: center;
 }
 .pass-flight-no {
   font-size: 0.54rem; letter-spacing: 1.5px; text-transform: uppercase;
-  color: var(--text-4); text-align: right;
+  color: var(--text-4);
 }
 
 /* Country name */
@@ -619,12 +605,7 @@ function renderPasses(list) {
       <div class="pass-accent"></div>
       <div class="pass-main">
         <div class="pass-header">
-          <div class="pass-route">
-            <div class="pass-iata origin">NYC</div>
-            <div class="pass-arrow">→</div>
-            <div class="pass-iata">${esc(c.code)}</div>
-          </div>
-          <div class="pass-flight-no">${flightNo(c.id)}<br>${esc(REGION_LABELS[c.region]||'')}</div>
+          <div class="pass-flight-no">${flightNo(c.id)} &middot; ${esc(REGION_LABELS[c.region]||'')}</div>
         </div>
         <div class="pass-country">${esc(c.name)}</div>
         <div class="pass-tagline">${esc(c.tagline)}</div>
