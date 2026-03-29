@@ -8,7 +8,7 @@
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>✈</text></svg>">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Cormorant+Garant:ital,wght@1,600&family=Special+Elite&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Cormorant+Garant:ital,wght@1,500;1,600&display=swap" rel="stylesheet">
 <style>
 @font-face {
   font-family: 'Geist Mono';
@@ -18,41 +18,39 @@
 
 /* ══ PALETTE ══ */
 :root {
-  --bg:       #1a1410;
-  --bg-2:     #221c16;
-  --surface:  #2a211a;
-  --surface-2:#332820;
-  --border:   #3d3028;
-  --border-2: #4d3c30;
-  --text-1:   #f0e8d8;
-  --text-2:   #c8b89a;
-  --text-3:   #8a7860;
-  --text-4:   #5a4838;
-  --stamp:    #c8a040;    /* gold stamp ink */
-  --stamp-bg: rgba(200,160,64,0.08);
-  --punch:    #1a1410;    /* hole punch color = bg */
-
+  --bg:       #181210;
+  --bg-2:     #201810;
+  --surface:  #261e16;
+  --surface-2:#2e2418;
+  --stub-bg:  #221a12;
+  --border:   #382c20;
+  --border-2: #4a3c2c;
+  --text-1:   #f2e8d4;
+  --text-2:   #c4b090;
+  --text-3:   #847060;
+  --text-4:   #524038;
+  --gold:     #c8a040;
+  --gold-dim: rgba(200,160,64,0.12);
   --asia:     #d4603a;
   --europe:   #4a80d0;
   --americas: #48a868;
   --africa:   #d09030;
   --oceania:  #38b0a8;
 }
-
 :root[data-theme="light"] {
-  --bg:       #f5f0e6;
-  --bg-2:     #ede6d8;
-  --surface:  #faf6ee;
+  --bg:       #f4efe4;
+  --bg-2:     #ece5d6;
+  --surface:  #faf5eb;
   --surface-2:#f0e8d8;
-  --border:   #d8cdb8;
-  --border-2: #c4b8a0;
-  --text-1:   #1a1410;
-  --text-2:   #3a3020;
-  --text-3:   #7a6a50;
-  --text-4:   #aaa090;
-  --stamp:    #b06020;
-  --stamp-bg: rgba(176,96,32,0.07);
-  --punch:    #f5f0e6;
+  --stub-bg:  #ede4d2;
+  --border:   #d4c8b0;
+  --border-2: #beb09a;
+  --text-1:   #1c1408;
+  --text-2:   #3c3020;
+  --text-3:   #786050;
+  --text-4:   #a89888;
+  --gold:     #a85c10;
+  --gold-dim: rgba(168,92,16,0.08);
   --asia:     #c04828;
   --europe:   #2a60b0;
   --americas: #287848;
@@ -76,235 +74,279 @@ body {
   background: var(--bg);
   border-bottom: 1px solid var(--border);
   display: flex; align-items: center;
-  padding: 0 24px; height: 46px; gap: 16px;
+  padding: 0 28px; height: 50px; gap: 20px;
 }
 .back-link {
-  font-size: 0.65rem; letter-spacing: 1.5px; text-transform: uppercase;
+  font-size: 0.6rem; letter-spacing: 1.5px; text-transform: uppercase;
   color: var(--text-3); text-decoration: none; transition: color 0.2s; flex-shrink: 0;
 }
-.back-link:hover { color: var(--stamp); }
+.back-link:hover { color: var(--gold); }
 .topbar-brand {
   flex: 1; text-align: center;
   font-family: 'Bebas Neue', sans-serif;
-  font-size: 1.3rem; letter-spacing: 4px; color: var(--text-1);
-  text-transform: uppercase;
+  font-size: 1.25rem; letter-spacing: 5px; color: var(--text-1);
 }
 .topbar-right { display: flex; align-items: center; gap: 10px; flex-shrink: 0; }
 .saved-btn {
-  font-size: 0.6rem; letter-spacing: 1px; text-transform: uppercase;
+  font-size: 0.58rem; letter-spacing: 1px; text-transform: uppercase;
   color: var(--text-3); background: none;
-  border: 1px solid var(--border); border-radius: 20px;
-  padding: 3px 10px; cursor: pointer; transition: all 0.2s;
+  border: 1px solid var(--border); border-radius: 2px;
+  padding: 4px 10px; cursor: pointer; transition: all 0.2s;
 }
-.saved-btn:hover, .saved-btn.active { color: var(--stamp); border-color: var(--stamp); background: var(--stamp-bg); }
+.saved-btn:hover, .saved-btn.active {
+  color: var(--gold); border-color: var(--gold); background: var(--gold-dim);
+}
 .theme-btn {
   font-size: 0.85rem; background: none; border: none;
   cursor: pointer; color: var(--text-3); transition: color 0.2s; padding: 4px;
 }
 .theme-btn:hover { color: var(--text-1); }
 
-/* ══ PAGE HEADER ══ */
-.page-header {
-  max-width: 900px; margin: 0 auto;
-  padding: 52px 24px 20px;
-  display: flex; align-items: flex-end; justify-content: space-between;
-  gap: 24px; flex-wrap: wrap;
+/* ══ TAGLINE STRIP ══ */
+.tagline-strip {
+  border-bottom: 1px solid var(--border);
+  padding: 10px 28px;
+  display: flex; align-items: center; justify-content: space-between;
+  gap: 16px;
 }
-.header-left {}
-.header-eyebrow {
-  font-size: 0.58rem; letter-spacing: 3px; text-transform: uppercase;
-  color: var(--text-4); margin-bottom: 6px;
+.tagline-text {
+  font-size: 0.6rem; letter-spacing: 1.5px; text-transform: uppercase;
+  color: var(--text-4);
 }
-.header-title {
-  font-family: 'Bebas Neue', sans-serif;
-  font-size: clamp(3rem, 8vw, 5.5rem);
-  letter-spacing: 6px; text-transform: uppercase;
-  color: var(--text-1); line-height: 0.9;
+.tagline-stamp {
+  display: flex; align-items: center; gap: 14px;
+  font-size: 0.56rem; letter-spacing: 1.5px; text-transform: uppercase;
+  color: var(--text-4);
 }
-.header-sub {
-  font-size: 0.72rem; color: var(--text-3); letter-spacing: 1px;
-  margin-top: 10px;
-}
-.header-stamp {
-  flex-shrink: 0; width: 80px; height: 80px;
-  border: 3px solid var(--stamp); border-radius: 50%;
-  display: flex; flex-direction: column; align-items: center; justify-content: center;
-  opacity: 0.55; transform: rotate(-12deg);
-  color: var(--stamp);
-}
-.stamp-main { font-family: 'Bebas Neue', sans-serif; font-size: 1rem; letter-spacing: 2px; }
-.stamp-sub  { font-size: 0.42rem; letter-spacing: 2px; text-transform: uppercase; margin-top: 1px; }
+.tagline-stamp span { color: var(--gold); }
 
 /* ══ FILTERS ══ */
 .filters-wrap {
-  position: sticky; top: 46px; z-index: 90;
+  position: sticky; top: 50px; z-index: 90;
   background: var(--bg); border-bottom: 1px solid var(--border);
-  padding: 10px 24px;
+  padding: 10px 28px;
 }
 .filters-inner {
-  max-width: 900px; margin: 0 auto;
-  display: flex; align-items: center; gap: 8px; flex-wrap: wrap;
+  max-width: 920px; margin: 0 auto;
+  display: flex; align-items: center; gap: 6px; flex-wrap: wrap;
 }
 .filter-pill {
-  font-size: 0.58rem; letter-spacing: 1.2px; text-transform: uppercase;
-  border: 1px solid var(--border); border-radius: 2px;
-  padding: 4px 10px; background: none; cursor: pointer;
-  color: var(--text-3); transition: all 0.18s;
+  font-size: 0.56rem; letter-spacing: 1.5px; text-transform: uppercase;
+  border: 1px solid var(--border); border-radius: 1px;
+  padding: 5px 11px; background: none; cursor: pointer;
+  color: var(--text-3); transition: all 0.15s;
 }
 .filter-pill:hover { color: var(--text-1); border-color: var(--border-2); }
 .filter-pill.active { color: var(--text-1); border-color: var(--text-3); background: var(--surface-2); }
-.filter-pill[data-region="asia"].active    { color: var(--asia);     border-color: var(--asia); }
-.filter-pill[data-region="europe"].active  { color: var(--europe);   border-color: var(--europe); }
-.filter-pill[data-region="americas"].active{ color: var(--americas); border-color: var(--americas); }
-.filter-pill[data-region="africa"].active  { color: var(--africa);   border-color: var(--africa); }
-.filter-pill[data-region="oceania"].active { color: var(--oceania);  border-color: var(--oceania); }
-.filter-sep { width: 1px; height: 16px; background: var(--border); flex-shrink: 0; }
+.filter-pill[data-region="asia"].active    { color: var(--asia);     border-color: var(--asia); background: rgba(212,96,58,0.08); }
+.filter-pill[data-region="europe"].active  { color: var(--europe);   border-color: var(--europe); background: rgba(74,128,208,0.08); }
+.filter-pill[data-region="americas"].active{ color: var(--americas); border-color: var(--americas); background: rgba(72,168,104,0.08); }
+.filter-pill[data-region="africa"].active  { color: var(--africa);   border-color: var(--africa); background: rgba(208,144,48,0.08); }
+.filter-pill[data-region="oceania"].active { color: var(--oceania);  border-color: var(--oceania); background: rgba(56,176,168,0.08); }
+.filter-sep { width: 1px; height: 14px; background: var(--border); flex-shrink: 0; }
 .search-input {
-  flex: 1; min-width: 140px;
-  padding: 5px 10px;
-  background: var(--surface); border: 1px solid var(--border);
-  border-radius: 2px; color: var(--text-1); font-size: 0.7rem;
+  flex: 1; min-width: 160px;
+  padding: 5px 10px; background: var(--surface);
+  border: 1px solid var(--border); border-radius: 1px;
+  color: var(--text-1); font-size: 0.68rem;
   font-family: 'Geist Mono', monospace; letter-spacing: 0.5px;
+  transition: border-color 0.2s;
 }
 .search-input:focus { outline: none; border-color: var(--border-2); }
 .search-input::placeholder { color: var(--text-4); }
 
 /* ══ RESULT COUNT ══ */
 .result-count {
-  max-width: 900px; margin: 0 auto;
-  padding: 10px 24px 4px;
-  font-size: 0.58rem; letter-spacing: 1.5px; text-transform: uppercase;
+  max-width: 920px; margin: 0 auto;
+  padding: 10px 28px 4px;
+  font-size: 0.54rem; letter-spacing: 2px; text-transform: uppercase;
   color: var(--text-4);
 }
 
-/* ══ BOARDING PASS STACK ══ */
+/* ══ PASS STACK ══ */
 .pass-stack {
-  max-width: 900px; margin: 0 auto;
-  padding: 8px 24px 64px;
-  display: flex; flex-direction: column; gap: 12px;
+  max-width: 920px; margin: 0 auto;
+  padding: 10px 28px 80px;
+  display: flex; flex-direction: column; gap: 10px;
 }
 
-/* ══ THE BOARDING PASS ══ */
+/* ══ BOARDING PASS ══ */
 .boarding-pass {
   display: flex; align-items: stretch;
   background: var(--surface);
   border: 1px solid var(--border);
-  border-radius: 6px;
+  border-radius: 4px;
   cursor: pointer;
-  transition: background 0.18s, box-shadow 0.18s, transform 0.15s;
-  overflow: hidden;
+  transition: box-shadow 0.2s, transform 0.15s, border-color 0.2s;
+  overflow: visible; /* allow hole-punches to bleed out */
   position: relative;
-  animation: passIn 0.3s ease both;
+  animation: passIn 0.28s ease both;
 }
 .boarding-pass:hover {
-  background: var(--surface-2);
-  box-shadow: 0 4px 24px rgba(0,0,0,0.35);
-  transform: translateY(-1px);
+  box-shadow: 0 6px 28px rgba(0,0,0,0.45), 0 2px 8px rgba(0,0,0,0.3);
+  transform: translateY(-2px);
+  border-color: var(--border-2);
 }
 @keyframes passIn {
-  from { opacity: 0; transform: translateY(6px); }
+  from { opacity: 0; transform: translateY(8px); }
   to   { opacity: 1; transform: translateY(0); }
 }
 
-/* Color stripe on left */
-.pass-stripe {
-  width: 5px; flex-shrink: 0;
+/* Region left accent */
+.pass-accent {
+  width: 4px; flex-shrink: 0;
   background: var(--region-color, var(--border));
+  border-radius: 4px 0 0 4px;
 }
 
-/* Main body */
-.pass-body {
-  flex: 1; display: flex; align-items: stretch;
-  min-width: 0;
+/* Pass main area */
+.pass-main {
+  flex: 1; min-width: 0;
+  display: flex; flex-direction: column;
+  padding: 18px 22px 16px;
+  gap: 8px;
 }
 
-/* Left section — destination */
-.pass-dest {
-  flex: 1; padding: 20px 24px;
-  display: flex; flex-direction: column; justify-content: space-between;
-  gap: 10px; min-width: 0;
+/* Header row: FROM → TO + flight number */
+.pass-header {
+  display: flex; align-items: center; justify-content: space-between;
+  gap: 12px;
 }
-.pass-from-to {
-  display: flex; align-items: center; gap: 10px;
-  font-size: 0.55rem; letter-spacing: 2px; text-transform: uppercase;
-  color: var(--text-4);
+.pass-route {
+  display: flex; align-items: center; gap: 8px;
 }
-.pass-from-to .arrow { color: var(--region-color, var(--text-4)); font-size: 0.9rem; }
-.pass-country {
+.pass-iata {
   font-family: 'Bebas Neue', sans-serif;
-  font-size: clamp(2rem, 5vw, 3.2rem);
-  letter-spacing: 4px; text-transform: uppercase;
+  font-size: 1.55rem; letter-spacing: 3px;
   color: var(--text-1); line-height: 1;
 }
-.pass-tagline {
-  font-size: 0.72rem; color: var(--text-3);
-  line-height: 1.55; font-style: italic;
-  font-family: 'Cormorant Garant', Georgia, serif;
-  max-width: 420px;
+.pass-iata.origin { color: var(--text-3); }
+.pass-arrow {
+  font-size: 0.75rem; color: var(--region-color, var(--text-4));
+  margin: 0 2px; flex-shrink: 0;
 }
-.pass-tags {
-  display: flex; flex-wrap: wrap; gap: 5px;
-}
-.pass-tag {
-  font-size: 0.5rem; letter-spacing: 1px; text-transform: uppercase;
-  color: var(--text-4); border: 1px solid var(--border);
-  border-radius: 2px; padding: 2px 6px;
+.pass-flight-no {
+  font-size: 0.54rem; letter-spacing: 1.5px; text-transform: uppercase;
+  color: var(--text-4); text-align: right;
 }
 
-/* Tear line */
-.pass-tear {
-  width: 1px; flex-shrink: 0; position: relative;
-  margin: 12px 0;
-  background: repeating-linear-gradient(
-    to bottom,
-    var(--border) 0px, var(--border) 6px,
-    transparent 6px, transparent 10px
-  );
+/* Country name */
+.pass-country {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: clamp(2.2rem, 4.5vw, 3rem);
+  letter-spacing: 5px; text-transform: uppercase;
+  color: var(--text-1); line-height: 1;
 }
-.pass-tear::before,
+
+/* Italic tagline */
+.pass-tagline {
+  font-family: 'Cormorant Garant', Georgia, serif;
+  font-size: 0.88rem; font-style: italic;
+  color: var(--text-3); line-height: 1.55;
+  max-width: 440px;
+}
+
+/* Vibe tags */
+.pass-tags { display: flex; flex-wrap: wrap; gap: 4px; margin-top: 2px; }
+.pass-tag {
+  font-size: 0.48rem; letter-spacing: 1px; text-transform: uppercase;
+  color: var(--text-4); border: 1px solid var(--border);
+  padding: 2px 6px;
+}
+
+/* ══ TEAR LINE ══ */
+.pass-tear {
+  width: 24px; flex-shrink: 0;
+  position: relative; align-self: stretch;
+  display: flex; align-items: center; justify-content: center;
+}
+/* The dashed vertical line */
 .pass-tear::after {
   content: '';
+  position: absolute; left: 50%; top: 0; bottom: 0;
+  width: 1px; transform: translateX(-50%);
+  background: repeating-linear-gradient(
+    to bottom,
+    var(--border) 0px, var(--border) 5px,
+    transparent 5px, transparent 9px
+  );
+}
+/* Hole punch top */
+.pass-tear .hole-top,
+.pass-tear .hole-bot {
   position: absolute; left: 50%; transform: translateX(-50%);
-  width: 14px; height: 14px; border-radius: 50%;
+  width: 18px; height: 9px;
   background: var(--bg);
   border: 1px solid var(--border);
+  z-index: 2;
 }
-.pass-tear::before { top: -7px; }
-.pass-tear::after  { bottom: -7px; }
+.pass-tear .hole-top {
+  top: -1px;
+  border-radius: 0 0 9px 9px;
+  border-top: none;
+}
+.pass-tear .hole-bot {
+  bottom: -1px;
+  border-radius: 9px 9px 0 0;
+  border-bottom: none;
+}
 
-/* Right stub */
+/* ══ STUB ══ */
 .pass-stub {
-  width: 180px; flex-shrink: 0;
-  padding: 18px 20px;
-  display: flex; flex-direction: column; gap: 12px;
+  width: 172px; flex-shrink: 0;
+  background: var(--stub-bg);
+  /* subtle diagonal stripe */
+  background-image:
+    repeating-linear-gradient(
+      45deg,
+      transparent 0, transparent 12px,
+      rgba(255,255,255,0.012) 12px, rgba(255,255,255,0.012) 13px
+    );
+  background-color: var(--stub-bg);
+  border-radius: 0 4px 4px 0;
+  padding: 16px 18px 14px;
+  display: flex; flex-direction: column; gap: 0;
   justify-content: space-between;
 }
-.stub-field { display: flex; flex-direction: column; gap: 3px; }
+.stub-fields {
+  display: flex; flex-direction: column; gap: 11px;
+  margin-bottom: 14px;
+}
+.stub-field { display: flex; flex-direction: column; gap: 2px; }
 .stub-label {
-  font-size: 0.5rem; letter-spacing: 2px; text-transform: uppercase;
+  font-size: 0.46rem; letter-spacing: 2px; text-transform: uppercase;
   color: var(--text-4);
 }
 .stub-value {
-  font-size: 0.72rem; color: var(--text-1);
-  letter-spacing: 0.3px;
+  font-size: 0.7rem; color: var(--text-1); letter-spacing: 0.2px;
 }
 .stub-status {
-  font-size: 0.55rem; letter-spacing: 1px; text-transform: uppercase;
-  padding: 3px 8px; border-radius: 2px; border: 1px solid var(--border);
-  color: var(--text-3); background: var(--surface);
-  display: inline-block; width: fit-content;
+  font-size: 0.5rem; letter-spacing: 1px; text-transform: uppercase;
+  padding: 2px 7px; border: 1px solid var(--border);
+  color: var(--text-3); display: inline-block;
 }
-.stub-status.planning { color: var(--stamp); border-color: var(--stamp); background: var(--stamp-bg); }
+.stub-status.planning { color: var(--gold); border-color: var(--gold); }
 .stub-status.visited  { color: var(--americas); border-color: var(--americas); }
+
+/* Fake barcode */
+.stub-barcode {
+  display: flex; gap: 1.5px; align-items: flex-end;
+  height: 24px; margin-bottom: 10px; opacity: 0.35;
+}
+.stub-barcode span {
+  flex: 1; background: var(--text-2); border-radius: 0.5px;
+}
+
+/* Heart */
 .stub-heart {
   background: none; border: none; cursor: pointer;
-  font-size: 1.1rem; color: var(--text-4);
+  font-size: 1rem; color: var(--text-4);
   transition: color 0.2s, transform 0.15s; padding: 0; align-self: flex-end;
 }
 .stub-heart:hover { color: var(--text-2); }
-.stub-heart.saved { color: var(--stamp); transform: scale(1.1); }
+.stub-heart.saved { color: var(--gold); transform: scale(1.15); }
 
-/* Region color helpers */
+/* Region helpers */
 .rc-asia     { --region-color: var(--asia); }
 .rc-europe   { --region-color: var(--europe); }
 .rc-americas { --region-color: var(--americas); }
@@ -314,141 +356,138 @@ body {
 /* ══ EMPTY STATE ══ */
 .empty-state {
   text-align: center; padding: 64px 24px;
-  color: var(--text-4); font-size: 0.68rem; letter-spacing: 1.5px;
+  color: var(--text-4); font-size: 0.65rem; letter-spacing: 2px; text-transform: uppercase;
 }
 
 /* ══ DETAIL VIEW ══ */
 #view-detail { display: none; }
-.detail-wrap { max-width: 900px; margin: 0 auto; padding: 32px 24px 80px; }
-
+.detail-wrap { max-width: 920px; margin: 0 auto; padding: 36px 28px 80px; }
 .detail-back {
-  font-size: 0.62rem; letter-spacing: 1.5px; text-transform: uppercase;
+  font-size: 0.58rem; letter-spacing: 2px; text-transform: uppercase;
   color: var(--text-3); background: none; border: none;
-  cursor: pointer; transition: color 0.2s; padding: 0; margin-bottom: 36px; display: block;
+  cursor: pointer; transition: color 0.2s; padding: 0; margin-bottom: 32px; display: block;
 }
-.detail-back:hover { color: var(--stamp); }
+.detail-back:hover { color: var(--gold); }
 
-/* Detail boarding pass header */
+/* Detail pass header */
 .detail-pass {
-  background: var(--surface);
-  border: 1px solid var(--border);
-  border-radius: 6px; overflow: hidden;
-  margin-bottom: 32px;
   display: flex; align-items: stretch;
+  background: var(--surface); border: 1px solid var(--border);
+  border-radius: 4px; overflow: visible;
+  margin-bottom: 24px; position: relative;
 }
-.detail-pass-stripe {
-  width: 8px; flex-shrink: 0;
+.detail-accent {
+  width: 6px; flex-shrink: 0;
   background: var(--region-color, var(--border));
+  border-radius: 4px 0 0 4px;
 }
-.detail-pass-body {
-  flex: 1; padding: 28px 32px;
-  display: flex; flex-direction: column; gap: 8px;
+.detail-pass-main {
+  flex: 1; padding: 28px 32px; display: flex; flex-direction: column; gap: 6px;
 }
-.detail-region {
-  font-size: 0.58rem; letter-spacing: 2.5px; text-transform: uppercase;
+.detail-region-label {
+  font-size: 0.54rem; letter-spacing: 3px; text-transform: uppercase;
   color: var(--region-color, var(--text-4));
 }
 .detail-country {
   font-family: 'Bebas Neue', sans-serif;
-  font-size: clamp(2.8rem, 8vw, 5rem);
-  letter-spacing: 5px; color: var(--text-1); line-height: 0.95;
+  font-size: clamp(3rem, 7vw, 4.8rem);
+  letter-spacing: 6px; color: var(--text-1); line-height: 0.95;
 }
 .detail-tagline {
   font-family: 'Cormorant Garant', Georgia, serif;
-  font-size: 1.05rem; font-style: italic;
-  color: var(--text-3); line-height: 1.6; margin-top: 4px;
+  font-size: 1.1rem; font-style: italic;
+  color: var(--text-3); line-height: 1.6; margin-top: 6px;
 }
-.detail-pass-stub {
-  width: 200px; flex-shrink: 0;
-  border-left: repeating-linear-gradient(
-    to bottom, var(--border) 0 6px, transparent 6px 10px
-  ) 1px 0 / 1px 100% no-repeat;
-  padding: 28px 24px;
-  display: flex; flex-direction: column; gap: 14px; justify-content: space-between;
-  border-left: none; position: relative;
+.detail-tear {
+  width: 24px; flex-shrink: 0; position: relative;
+  display: flex; align-items: center; justify-content: center;
 }
-.detail-pass-stub::before {
-  content: '';
-  position: absolute; left: 0; top: 0; bottom: 0; width: 1px;
+.detail-tear::after {
+  content: ''; position: absolute; left: 50%; top: 0; bottom: 0;
+  width: 1px; transform: translateX(-50%);
   background: repeating-linear-gradient(
-    to bottom, var(--border) 0px, var(--border) 6px, transparent 6px, transparent 10px
+    to bottom, var(--border) 0px, var(--border) 5px, transparent 5px, transparent 9px
   );
 }
-.detail-pass-stub::after {
-  content: ''; position: absolute; left: 0; top: -7px;
-  transform: translateX(-50%);
-  width: 14px; height: 14px; border-radius: 50%;
-  background: var(--bg); border: 1px solid var(--border);
+.detail-tear .hole-top, .detail-tear .hole-bot {
+  position: absolute; left: 50%; transform: translateX(-50%);
+  width: 18px; height: 9px; background: var(--bg);
+  border: 1px solid var(--border); z-index: 2;
+}
+.detail-tear .hole-top { top: -1px; border-radius: 0 0 9px 9px; border-top: none; }
+.detail-tear .hole-bot { bottom: -1px; border-radius: 9px 9px 0 0; border-bottom: none; }
+.detail-stub {
+  width: 200px; flex-shrink: 0;
+  background: var(--stub-bg);
+  background-image: repeating-linear-gradient(
+    45deg, transparent 0, transparent 12px,
+    rgba(255,255,255,0.012) 12px, rgba(255,255,255,0.012) 13px
+  );
+  background-color: var(--stub-bg);
+  border-radius: 0 4px 4px 0;
+  padding: 26px 22px;
+  display: flex; flex-direction: column; gap: 14px; justify-content: space-between;
 }
 .detail-stub-field { display: flex; flex-direction: column; gap: 3px; }
 .detail-stub-label {
-  font-size: 0.48rem; letter-spacing: 2px; text-transform: uppercase; color: var(--text-4);
+  font-size: 0.46rem; letter-spacing: 2px; text-transform: uppercase; color: var(--text-4);
 }
-.detail-stub-value { font-size: 0.75rem; color: var(--text-1); }
-.detail-stub-heart {
-  width: 100%; padding: 9px;
-  background: var(--surface-2); border: 1px solid var(--border); border-radius: 3px;
-  font-size: 0.6rem; letter-spacing: 1.2px; text-transform: uppercase;
+.detail-stub-value { font-size: 0.78rem; color: var(--text-1); }
+.detail-heart-btn {
+  width: 100%; padding: 10px;
+  background: none; border: 1px solid var(--border); border-radius: 2px;
+  font-size: 0.56rem; letter-spacing: 1.5px; text-transform: uppercase;
   color: var(--text-2); cursor: pointer; transition: all 0.2s;
-  display: flex; align-items: center; justify-content: center; gap: 6px;
+  display: flex; align-items: center; justify-content: center; gap: 7px;
 }
-.detail-stub-heart:hover { border-color: var(--stamp); color: var(--stamp); background: var(--stamp-bg); }
-.detail-stub-heart.saved { border-color: var(--stamp); color: var(--stamp); background: var(--stamp-bg); }
+.detail-heart-btn:hover { border-color: var(--gold); color: var(--gold); background: var(--gold-dim); }
+.detail-heart-btn.saved { border-color: var(--gold); color: var(--gold); background: var(--gold-dim); }
 
-/* Detail content sections */
+/* Detail content */
 .detail-sections {
-  display: grid; grid-template-columns: 1fr 1fr; gap: 20px;
+  display: grid; grid-template-columns: 1fr 1fr; gap: 12px;
 }
-@media (max-width: 660px) { .detail-sections { grid-template-columns: 1fr; } }
+@media (max-width: 640px) { .detail-sections { grid-template-columns: 1fr; } }
 .detail-section {
   background: var(--surface); border: 1px solid var(--border);
-  border-radius: 4px; padding: 22px 24px;
+  border-radius: 3px; padding: 20px 22px;
 }
 .detail-section.full { grid-column: 1 / -1; }
 .section-label {
-  font-size: 0.5rem; letter-spacing: 2.5px; text-transform: uppercase;
-  color: var(--text-4); margin-bottom: 16px;
+  font-size: 0.48rem; letter-spacing: 2.5px; text-transform: uppercase;
+  color: var(--text-4); margin-bottom: 14px;
   padding-bottom: 8px; border-bottom: 1px solid var(--border);
 }
-.section-text { font-size: 0.82rem; color: var(--text-2); line-height: 1.85; }
+.section-text { font-size: 0.8rem; color: var(--text-2); line-height: 1.9; }
 
-.place-list { display: flex; flex-direction: column; gap: 13px; }
-.place-item {}
-.place-name {
-  font-size: 0.78rem; font-weight: 600; color: var(--text-1);
+.place-list, .food-list { display: flex; flex-direction: column; gap: 13px; }
+.place-item, .food-item {}
+.place-name, .food-name {
+  font-size: 0.76rem; font-weight: 600; color: var(--text-1);
   display: flex; align-items: center; gap: 8px; margin-bottom: 3px;
 }
 .place-name::before {
-  content: ''; width: 6px; height: 6px; border-radius: 50%;
+  content: ''; width: 5px; height: 5px; border-radius: 50%;
   background: var(--region-color, var(--border)); flex-shrink: 0;
-}
-.place-notes { font-size: 0.75rem; color: var(--text-3); line-height: 1.65; padding-left: 14px; }
-
-.food-grid { display: flex; flex-direction: column; gap: 11px; }
-.food-item {}
-.food-name {
-  font-size: 0.78rem; font-weight: 600; color: var(--text-1);
-  display: flex; align-items: center; gap: 8px; margin-bottom: 3px;
 }
 .food-name::before {
-  content: ''; width: 5px; height: 5px; border-radius: 1px;
+  content: ''; width: 5px; height: 2px;
   background: var(--region-color, var(--border)); flex-shrink: 0;
 }
-.food-notes { font-size: 0.75rem; color: var(--text-3); line-height: 1.65; padding-left: 13px; }
-
+.place-notes, .food-notes {
+  font-size: 0.74rem; color: var(--text-3); line-height: 1.7; padding-left: 13px;
+}
 .tips-list { display: flex; flex-direction: column; gap: 10px; }
-.tip { font-size: 0.78rem; color: var(--text-2); line-height: 1.7; display: flex; gap: 10px; }
+.tip { font-size: 0.76rem; color: var(--text-2); line-height: 1.75; display: flex; gap: 10px; }
 .tip::before { content: '—'; color: var(--text-4); flex-shrink: 0; }
 
-/* ══ MOBILE ══ */
-@media (max-width: 600px) {
+/* ══ RESPONSIVE ══ */
+@media (max-width: 580px) {
   .pass-stub { width: 130px; padding: 14px; }
-  .pass-dest { padding: 14px 16px; }
-  .pass-country { font-size: 2rem; }
-  .page-header { padding: 28px 16px 12px; }
-  .header-stamp { display: none; }
-  .pass-stack { padding: 8px 14px 48px; }
-  .filters-wrap { padding: 10px 14px; }
+  .pass-main { padding: 14px 16px; }
+  .pass-country { font-size: 1.8rem; }
+  .pass-iata { font-size: 1.1rem; }
+  .tagline-strip { flex-direction: column; align-items: flex-start; gap: 4px; }
 }
 </style>
 </head>
@@ -466,52 +505,57 @@ body {
   </div>
 </div>
 
+<!-- TAGLINE STRIP -->
+<div class="tagline-strip">
+  <div class="tagline-text">Travel Bucket List &middot; Boarding passes not yet stamped</div>
+  <div class="tagline-stamp">
+    <span>✈</span> Next destination: <span>unknown</span>
+  </div>
+</div>
+
+<!-- FILTERS -->
+<div class="filters-wrap">
+  <div class="filters-inner">
+    <button class="filter-pill active" data-region="all">All</button>
+    <button class="filter-pill" data-region="asia">Asia</button>
+    <button class="filter-pill" data-region="europe">Europe</button>
+    <button class="filter-pill" data-region="americas">Americas</button>
+    <button class="filter-pill" data-region="africa">Africa</button>
+    <button class="filter-pill" data-region="oceania">Oceania</button>
+    <div class="filter-sep"></div>
+    <input type="search" class="search-input" id="searchInput" placeholder="Search destinations…">
+  </div>
+</div>
+
 <!-- CATALOG VIEW -->
 <div id="view-catalog">
-
-  <div class="page-header">
-    <div class="header-left">
-      <div class="header-eyebrow">Travel Bucket List</div>
-      <div class="header-title">Departure<br>Lounge</div>
-      <div class="header-sub">17 destinations · boarding passes not yet stamped</div>
-    </div>
-    <div class="header-stamp">
-      <div class="stamp-main">NEXT</div>
-      <div class="stamp-sub">Destination</div>
-      <div class="stamp-main" style="font-size:0.6rem;margin-top:2px;letter-spacing:1px">UNKNOWN</div>
-    </div>
-  </div>
-
-  <div class="filters-wrap">
-    <div class="filters-inner">
-      <button class="filter-pill active" data-region="all">All</button>
-      <button class="filter-pill" data-region="asia">Asia</button>
-      <button class="filter-pill" data-region="europe">Europe</button>
-      <button class="filter-pill" data-region="americas">Americas</button>
-      <button class="filter-pill" data-region="africa">Africa</button>
-      <button class="filter-pill" data-region="oceania">Oceania</button>
-      <div class="filter-sep"></div>
-      <input type="search" class="search-input" id="searchInput" placeholder="Search destinations…">
-    </div>
-  </div>
-
   <div class="result-count" id="resultCount"></div>
   <div class="pass-stack" id="passStack"></div>
-
 </div>
 
 <!-- DETAIL VIEW -->
 <div id="view-detail">
   <div class="detail-wrap">
-    <button class="detail-back" onclick="showCatalog()">← Back to Departure Lounge</button>
+    <button class="detail-back" onclick="showCatalog()">← Departure Lounge</button>
     <div id="detailContent"></div>
   </div>
 </div>
 
 <script>
 const REGION_LABELS = { asia:'Asia', europe:'Europe', americas:'Americas', africa:'Africa', oceania:'Oceania' };
-const LS_KEY = 'atlas-wishlist';
+// Fake barcode heights — deterministic from id
+function barcode(id) {
+  const seed = [3,7,2,9,1,5,4,8,6,2,7,3,9,1,5,4,8,6,3,7,2,9,1];
+  const heights = [40,70,100,55,85,30,95,65,45,80,35,75,50,90,25,60,100,40,70,55,85,30,95];
+  let html = '';
+  for (let i = 0; i < 18; i++) {
+    const h = heights[(id * 3 + i * seed[i % seed.length]) % heights.length];
+    html += `<span style="height:${h}%"></span>`;
+  }
+  return html;
+}
 
+const LS_KEY = 'atlas-wishlist';
 let allCountries = [];
 let activeRegion = 'all';
 let showingSaved = false;
@@ -523,6 +567,11 @@ function esc(s) {
   return String(s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
 }
 function slug(n) { return n.toLowerCase().replace(/\s+/g,'-').replace(/[^a-z0-9-]/g,''); }
+
+// Simple flight number from id
+function flightNo(id) {
+  return 'DL ' + String(id).padStart(3,'0');
+}
 
 function applyFilters() {
   const q = document.getElementById('searchInput').value.trim().toLowerCase();
@@ -537,7 +586,7 @@ function applyFilters() {
   });
   renderPasses(res);
   document.getElementById('resultCount').textContent =
-    res.length + ' boarding pass' + (res.length === 1 ? '' : 'es');
+    res.length + ' boarding pass' + (res.length===1?'':'es');
 }
 
 function renderPasses(list) {
@@ -550,23 +599,28 @@ function renderPasses(list) {
     const saved = savedIds.has(c.id);
     const tags = (c.vibe_tags||[]).slice(0,4).map(t=>`<span class="pass-tag">${esc(t)}</span>`).join('');
     return `
-    <div class="boarding-pass rc-${c.region}" style="animation-delay:${i*0.04}s"
+    <div class="boarding-pass rc-${c.region}" style="animation-delay:${i*0.035}s"
          onclick="handleClick(event,${c.id})">
-      <div class="pass-stripe"></div>
-      <div class="pass-body">
-        <div class="pass-dest">
-          <div class="pass-from-to">
-            <span>NYC</span>
-            <span class="arrow">→</span>
-            <span>${esc(c.code)}</span>
-            <span style="margin-left:8px;color:var(--text-4)">${esc(REGION_LABELS[c.region]||'')}</span>
+      <div class="pass-accent"></div>
+      <div class="pass-main">
+        <div class="pass-header">
+          <div class="pass-route">
+            <div class="pass-iata origin">NYC</div>
+            <div class="pass-arrow">→</div>
+            <div class="pass-iata">${esc(c.code)}</div>
           </div>
-          <div class="pass-country">${esc(c.name)}</div>
-          <div class="pass-tagline">${esc(c.tagline)}</div>
-          ${tags ? `<div class="pass-tags">${tags}</div>` : ''}
+          <div class="pass-flight-no">${flightNo(c.id)}<br>${esc(REGION_LABELS[c.region]||'')}</div>
         </div>
-        <div class="pass-tear"></div>
-        <div class="pass-stub">
+        <div class="pass-country">${esc(c.name)}</div>
+        <div class="pass-tagline">${esc(c.tagline)}</div>
+        ${tags?`<div class="pass-tags">${tags}</div>`:''}
+      </div>
+      <div class="pass-tear">
+        <div class="hole-top"></div>
+        <div class="hole-bot"></div>
+      </div>
+      <div class="pass-stub">
+        <div class="stub-fields">
           <div class="stub-field">
             <div class="stub-label">Season</div>
             <div class="stub-value">${esc(c.best_time.split(',')[0])}</div>
@@ -577,16 +631,14 @@ function renderPasses(list) {
           </div>
           <div class="stub-field">
             <div class="stub-label">Status</div>
-            <div class="stub-value">
-              <span class="stub-status ${c.status}">${esc(c.status)}</span>
-            </div>
+            <div class="stub-value"><span class="stub-status ${c.status}">${esc(c.status)}</span></div>
           </div>
-          <button class="stub-heart ${saved?'saved':''}"
-                  onclick="toggleSaved(event,${c.id})"
-                  aria-label="Wishlist">
-            ${saved ? '♥' : '♡'}
-          </button>
         </div>
+        <div class="stub-barcode">${barcode(c.id)}</div>
+        <button class="stub-heart ${saved?'saved':''}"
+                onclick="toggleSaved(event,${c.id})" aria-label="Wishlist">
+          ${saved?'♥':'♡'}
+        </button>
       </div>
     </div>`;
   }).join('');
@@ -598,10 +650,10 @@ function handleClick(e, id) {
 }
 
 function showDetail(id) {
-  const c = allCountries.find(x => x.id === id);
+  const c = allCountries.find(x=>x.id===id);
   if (!c) return;
   const saved = savedIds.has(c.id);
-  const rl = REGION_LABELS[c.region] || c.region;
+  const rl = REGION_LABELS[c.region]||c.region;
 
   const cities = (c.cities||[]).map(x=>`
     <div class="place-item">
@@ -620,13 +672,17 @@ function showDetail(id) {
   document.getElementById('detailContent').innerHTML = `
     <div class="rc-${c.region}">
       <div class="detail-pass">
-        <div class="detail-pass-stripe"></div>
-        <div class="detail-pass-body">
-          <div class="detail-region">${esc(rl)} · ${esc(c.code)}</div>
+        <div class="detail-accent"></div>
+        <div class="detail-pass-main">
+          <div class="detail-region-label">${esc(rl)} &middot; ${flightNo(c.id)}</div>
           <div class="detail-country">${esc(c.name)}</div>
           <div class="detail-tagline">"${esc(c.tagline)}"</div>
         </div>
-        <div class="detail-pass-stub">
+        <div class="detail-tear">
+          <div class="hole-top"></div>
+          <div class="hole-bot"></div>
+        </div>
+        <div class="detail-stub">
           <div class="detail-stub-field">
             <div class="detail-stub-label">Best Time</div>
             <div class="detail-stub-value">${esc(c.best_time)}</div>
@@ -641,13 +697,11 @@ function showDetail(id) {
           </div>
           <div class="detail-stub-field">
             <div class="detail-stub-label">Status</div>
-            <div class="detail-stub-value">
-              <span class="stub-status ${c.status}">${esc(c.status)}</span>
-            </div>
+            <div class="detail-stub-value"><span class="stub-status ${c.status}">${esc(c.status)}</span></div>
           </div>
-          <button class="detail-stub-heart ${saved?'saved':''}" id="detailHeart"
+          <button class="detail-heart-btn ${saved?'saved':''}" id="detailHeart"
                   onclick="toggleSavedDetail(${c.id})">
-            ${saved ? '♥ Saved' : '♡ Save'}
+            ${saved?'♥ Saved':'♡ Save'}
           </button>
         </div>
       </div>
@@ -657,48 +711,48 @@ function showDetail(id) {
           <div class="section-label">About</div>
           <div class="section-text">${esc(c.description)}</div>
         </div>
-        ${cities ? `<div class="detail-section">
+        ${cities?`<div class="detail-section">
           <div class="section-label">Cities to Visit</div>
           <div class="place-list">${cities}</div>
-        </div>` : ''}
-        ${food ? `<div class="detail-section">
+        </div>`:''}
+        ${food?`<div class="detail-section">
           <div class="section-label">Food to Try</div>
-          <div class="food-grid">${food}</div>
-        </div>` : ''}
-        ${tips ? `<div class="detail-section full">
+          <div class="food-list">${food}</div>
+        </div>`:''}
+        ${tips?`<div class="detail-section full">
           <div class="section-label">Tips</div>
           <div class="tips-list">${tips}</div>
-        </div>` : ''}
+        </div>`:''}
       </div>
     </div>`;
 
   document.getElementById('view-catalog').style.display = 'none';
   document.getElementById('view-detail').style.display = 'block';
-  window.scrollTo(0, 0);
-  history.pushState({ view: 'detail', id }, '', '#' + slug(c.name));
+  window.scrollTo(0,0);
+  history.pushState({view:'detail',id},'','#'+slug(c.name));
 }
 
 function showCatalog() {
   document.getElementById('view-detail').style.display = 'none';
   document.getElementById('view-catalog').style.display = 'block';
-  history.pushState({ view: 'catalog' }, '', location.pathname);
+  history.pushState({view:'catalog'},'',location.pathname);
   updateBadge();
 }
 
 function toggleSaved(e, id) {
   e.stopPropagation();
-  savedIds.has(id) ? savedIds.delete(id) : savedIds.add(id);
+  savedIds.has(id)?savedIds.delete(id):savedIds.add(id);
   savePersist(); updateBadge(); applyFilters();
 }
 
 function toggleSavedDetail(id) {
-  savedIds.has(id) ? savedIds.delete(id) : savedIds.add(id);
+  savedIds.has(id)?savedIds.delete(id):savedIds.add(id);
   savePersist(); updateBadge();
   const btn = document.getElementById('detailHeart');
   if (btn) {
     const s = savedIds.has(id);
-    btn.className = 'detail-stub-heart' + (s ? ' saved' : '');
-    btn.textContent = s ? '♥ Saved' : '♡ Save';
+    btn.className = 'detail-heart-btn'+(s?' saved':'');
+    btn.textContent = s?'♥ Saved':'♡ Save';
   }
 }
 
@@ -713,53 +767,49 @@ function updateBadge() {
 }
 
 function toggleTheme() {
-  const next = document.documentElement.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+  const next = document.documentElement.getAttribute('data-theme')==='dark'?'light':'dark';
   document.documentElement.setAttribute('data-theme', next);
   localStorage.setItem('atlas-theme', next);
 }
 
-// Filter pills
 document.querySelectorAll('.filter-pill').forEach(p => {
   p.addEventListener('click', () => {
-    document.querySelectorAll('.filter-pill').forEach(x => x.classList.remove('active'));
+    document.querySelectorAll('.filter-pill').forEach(x=>x.classList.remove('active'));
     p.classList.add('active');
     activeRegion = p.dataset.region;
     applyFilters();
   });
 });
 
-// Search
 document.getElementById('searchInput').addEventListener('input', () => {
   clearTimeout(searchTimer);
   searchTimer = setTimeout(applyFilters, 150);
 });
 
-// Back/forward
 window.addEventListener('popstate', e => {
-  if (e.state?.view === 'detail') showDetail(e.state.id);
+  if (e.state?.view==='detail') showDetail(e.state.id);
   else {
-    document.getElementById('view-detail').style.display = 'none';
-    document.getElementById('view-catalog').style.display = 'block';
+    document.getElementById('view-detail').style.display='none';
+    document.getElementById('view-catalog').style.display='block';
   }
 });
 
-// Init
 const savedTheme = localStorage.getItem('atlas-theme');
 if (savedTheme) document.documentElement.setAttribute('data-theme', savedTheme);
 
 fetch('data/countries.json')
-  .then(r => r.json())
+  .then(r=>r.json())
   .then(data => {
     allCountries = data;
     updateBadge();
     const hash = location.hash.slice(1);
     if (hash) {
-      const m = allCountries.find(c => slug(c.name) === hash);
+      const m = allCountries.find(c=>slug(c.name)===hash);
       if (m) { showDetail(m.id); return; }
     }
     applyFilters();
   })
-  .catch(() => {
+  .catch(()=>{
     document.getElementById('passStack').innerHTML =
       '<div class="empty-state">Could not load data. Run a local server.</div>';
   });
