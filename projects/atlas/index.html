@@ -204,10 +204,10 @@ body {
 
 .world-label {
   fill: var(--text-4);
-  font-size: 4.5px;
+  font-size: 3px;
   font-family: 'Geist Mono', monospace;
   text-transform: uppercase;
-  letter-spacing: 0.4px;
+  letter-spacing: 0.3px;
   pointer-events: none;
 }
 .nyc-marker { pointer-events: none; }
@@ -606,7 +606,7 @@ async function initMap() {
       // Gate world label visibility (inside mapG, so font scales with zoom)
       mapG.selectAll('.world-label').each(function() {
         const minZ = +this.getAttribute('data-min-zoom') || 2;
-        d3.select(this).style('opacity', k >= minZ ? 0.28 : 0);
+        d3.select(this).style('opacity', k >= minZ ? 0.22 : 0);
       });
     });
   svg.call(zoomBehavior);
@@ -658,7 +658,7 @@ async function initMap() {
     const c = path.centroid(feat);
     if (!c || isNaN(c[0]) || isNaN(c[1])) return;
     const area = d3.geoArea(feat);
-    const minZ = area > 0.03 ? 1.5 : area > 0.005 ? 2.5 : area > 0.001 ? 3.5 : 5;
+    const minZ = area > 0.1 ? 2.0 : area > 0.03 ? 2.8 : area > 0.008 ? 3.8 : area > 0.002 ? 5.0 : 7.0;
     worldLabelG.append('text')
       .attr('class', 'world-label')
       .attr('x', c[0]).attr('y', c[1])
