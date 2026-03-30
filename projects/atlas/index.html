@@ -164,6 +164,9 @@ body {
 .sphere    { fill: var(--bg-2); }
 .graticule { fill: none; stroke: var(--border); stroke-width: 0.3px; opacity: 0.5; }
 .land      { fill: var(--surface); stroke: var(--border); stroke-width: 0.4px; }
+#world-map .land.destination { cursor: pointer; fill: var(--surface-2); }
+#world-map .land.destination:hover { fill: var(--border); }
+#world-map:active .land.destination { cursor: grabbing; }
 .flight-path {
   fill: none; stroke-width: 1.2px;
   stroke-linecap: round;
@@ -406,6 +409,16 @@ body {
 <script src="https://cdn.jsdelivr.net/npm/topojson-client@3.1.0/dist/topojson-client.min.js"></script>
 <script>
 // ── CONSTANTS ─────────────────────────────────────
+// ISO 3166-1 numeric → country name (for clickable land shapes)
+const ISO_MAP = {
+  392:'Japan', 380:'Italy', 158:'Taiwan', 372:'Ireland', 300:'Greece',
+  250:'France', 704:'Vietnam', 504:'Morocco', 32:'Argentina', 620:'Portugal',
+  352:'Iceland', 484:'Mexico', 764:'Thailand', 724:'Spain', 578:'Norway',
+  554:'New Zealand', 356:'India', 410:'South Korea', 792:'Turkey', 818:'Egypt',
+  76:'Brazil', 36:'Australia', 191:'Croatia', 524:'Nepal', 834:'Tanzania',
+  192:'Cuba', 756:'Switzerland'
+};
+
 const NYC      = [-74.006, 40.7128];
 const LS_KEY   = 'atlas-wishlist';
 const THEME_KEY= 'atlas-theme';
@@ -512,8 +525,14 @@ async function initMap() {
   mapG.append('g').selectAll('path')
     .data(topojson.feature(world, world.objects.countries).features)
     .join('path')
-    .attr('class', 'land')
-    .attr('d', path);
+    .attr('class', d => ISO_MAP[d.id] ? 'land destination' : 'land')
+    .attr('d', path)
+    .on('click', (event, d) => {
+      const name = ISO_MAP[d.id];
+      if (!name) return;
+      const c = allCountries.find(x => x.name === name);
+      if (c) openPanel(c.id);
+    });
 
   // NYC origin marker (diamond)
   const [nx, ny] = mapProjection(NYC);
