@@ -18,44 +18,44 @@
 
 /* ══ PALETTE ══ */
 :root {
-  --bg:       #0e1020;
-  --bg-2:     #121428;
-  --surface:  #181c32;
-  --surface-2:#1e2238;
-  --stub-bg:  #141828;
-  --border:   #26304a;
-  --border-2: #303858;
-  --text-1:   #e4e8f8;
-  --text-2:   #9098c0;
-  --text-3:   #5a6080;
-  --text-4:   #383e5a;
+  --bg:       #04111f;
+  --bg-2:     #071828;
+  --surface:  #0a2038;
+  --surface-2:#0d2848;
+  --stub-bg:  #081a30;
+  --border:   #153858;
+  --border-2: #1e4870;
+  --text-1:   #c8e8f8;
+  --text-2:   #5a98bc;
+  --text-3:   #2e6080;
+  --text-4:   #184858;
   --gold:     #c8a040;
   --gold-dim: rgba(200,160,64,0.12);
-  --asia:     #d4603a;
-  --europe:   #4a80d0;
-  --americas: #48a868;
-  --africa:   #d09030;
-  --oceania:  #38b0a8;
+  --asia:     #e07050;
+  --europe:   #58a0e8;
+  --americas: #48c080;
+  --africa:   #e0a830;
+  --oceania:  #38c8c0;
 }
 :root[data-theme="light"] {
-  --bg:       #f2f4fc;
-  --bg-2:     #e8ecf8;
-  --surface:  #fafbff;
-  --surface-2:#eceef8;
-  --stub-bg:  #e4e8f5;
-  --border:   #c4c8e4;
-  --border-2: #a8b0d0;
-  --text-1:   #1a1e38;
-  --text-2:   #3a4060;
-  --text-3:   #7080a0;
-  --text-4:   #a0aac0;
+  --bg:       #ddf0fc;
+  --bg-2:     #c8e4f8;
+  --surface:  #eef8ff;
+  --surface-2:#d8eef8;
+  --stub-bg:  #c0dcf0;
+  --border:   #90c0e0;
+  --border-2: #68a8d0;
+  --text-1:   #061828;
+  --text-2:   #0e3858;
+  --text-3:   #2a6080;
+  --text-4:   #5890b0;
   --gold:     #a86c00;
   --gold-dim: rgba(168,108,0,0.08);
-  --asia:     #c04828;
-  --europe:   #2a60b0;
-  --americas: #287848;
-  --africa:   #b07020;
-  --oceania:  #188898;
+  --asia:     #c83820;
+  --europe:   #1858c0;
+  --americas: #107848;
+  --africa:   #b07000;
+  --oceania:  #0090a0;
 }
 
 * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -161,12 +161,22 @@ body {
 }
 
 /* Map SVG elements */
-.sphere    { fill: var(--bg-2); }
-.graticule { fill: none; stroke: var(--border); stroke-width: 0.3px; opacity: 0.5; }
+@keyframes ocean-dark {
+  0%, 100% { fill: #051525; }
+  33%       { fill: #081e38; }
+  66%       { fill: #062540; }
+}
+@keyframes ocean-light {
+  0%, 100% { fill: #b0d8f4; }
+  33%       { fill: #9ccef0; }
+  66%       { fill: #bce4fc; }
+}
+:root .sphere { animation: ocean-dark 9s ease-in-out infinite; }
+:root[data-theme="light"] .sphere { animation: ocean-light 9s ease-in-out infinite; }
+.graticule { fill: none; stroke: var(--border); stroke-width: 0.3px; opacity: 0.4; }
 .land      { fill: var(--surface); stroke: var(--border); stroke-width: 0.4px; }
 #world-map .land.destination { cursor: pointer; fill: var(--surface-2); }
 #world-map .land.destination:hover { fill: var(--border); }
-#world-map:active .land.destination { cursor: grabbing; }
 .flight-path {
   fill: none; stroke-width: 1.2px;
   stroke-linecap: round;
@@ -346,8 +356,6 @@ body {
   font-family: monospace;
 }
 .zoom-btn:hover { color: var(--text-1); border-color: var(--border-2); background: var(--surface-2); }
-#world-map { cursor: grab; }
-#world-map:active { cursor: grabbing; }
 
 /* ══ RESPONSIVE ══ */
 @media (max-width: 640px) {
@@ -390,7 +398,7 @@ body {
 <div class="map-wrap" id="mapWrap">
   <div class="map-loading-msg" id="mapLoading">Charting routes…</div>
   <svg id="world-map"></svg>
-  <div class="map-hint" id="mapHint">Click a destination to board · Scroll to zoom · Drag to pan</div>
+  <div class="map-hint" id="mapHint">Click a destination to board · Scroll to zoom</div>
   <div class="zoom-btns">
     <button class="zoom-btn" onclick="mapZoomIn()" title="Zoom in">+</button>
     <button class="zoom-btn" onclick="mapZoomReset()" title="Reset" style="font-size:0.65rem;letter-spacing:0">⊙</button>
@@ -593,6 +601,7 @@ async function initMap() {
   zoomBehavior = d3.zoom()
     .scaleExtent([1, 10])
     .wheelDelta(e => -e.deltaY * (e.deltaMode === 1 ? 0.05 : e.deltaMode ? 1 : 0.001))
+    .filter(event => event.type === 'wheel' || event.type === 'dblclick')
     .on('zoom', ({ transform }) => {
       const { k, x, y } = transform;
       mapG.attr('transform', transform);
