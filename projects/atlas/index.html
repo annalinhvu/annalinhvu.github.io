@@ -202,6 +202,14 @@ body {
 }
 .pin-saved-dot.visible { opacity: 1; }
 
+.world-label {
+  fill: var(--text-4);
+  font-size: 4.5px;
+  font-family: 'Geist Mono', monospace;
+  text-transform: uppercase;
+  letter-spacing: 0.4px;
+  pointer-events: none;
+}
 .nyc-marker { pointer-events: none; }
 .nyc-label { fill: var(--gold); font-size: 7px; font-family: 'Geist Mono', monospace; letter-spacing: 1.5px; opacity: 0.7; }
 
@@ -457,6 +465,46 @@ const LABEL_OPTS = {
   'Taiwan':         [  9,  -5, 'start', 2.5],
 };
 
+// All world countries: ISO numeric → display name
+const ALL_ISO_NAMES = {
+  4:'Afghanistan', 8:'Albania', 12:'Algeria', 20:'Andorra', 24:'Angola',
+  51:'Armenia', 31:'Azerbaijan', 48:'Bahrain', 50:'Bangladesh', 112:'Belarus',
+  56:'Belgium', 84:'Belize', 204:'Benin', 64:'Bhutan', 68:'Bolivia',
+  70:'Bosnia & Herz.', 72:'Botswana', 76:'Brazil', 96:'Brunei', 100:'Bulgaria',
+  854:'Burkina Faso', 108:'Burundi', 116:'Cambodia', 120:'Cameroon', 124:'Canada',
+  132:'Cape Verde', 140:'Central African Rep.', 148:'Chad', 152:'Chile', 156:'China',
+  170:'Colombia', 174:'Comoros', 178:'Congo', 180:'DR Congo', 188:'Costa Rica',
+  191:'Croatia', 192:'Cuba', 196:'Cyprus', 203:'Czechia', 208:'Denmark',
+  262:'Djibouti', 214:'Dominican Rep.', 626:'Timor-Leste', 218:'Ecuador',
+  818:'Egypt', 222:'El Salvador', 226:'Equatorial Guinea', 232:'Eritrea',
+  233:'Estonia', 231:'Ethiopia', 242:'Fiji', 246:'Finland', 250:'France',
+  266:'Gabon', 270:'Gambia', 268:'Georgia', 276:'Germany', 288:'Ghana',
+  300:'Greece', 304:'Greenland', 320:'Guatemala', 324:'Guinea', 624:'Guinea-Bissau',
+  328:'Guyana', 332:'Haiti', 340:'Honduras', 348:'Hungary', 356:'India',
+  360:'Indonesia', 364:'Iran', 368:'Iraq', 372:'Ireland', 376:'Israel',
+  380:'Italy', 388:'Jamaica', 392:'Japan', 400:'Jordan', 398:'Kazakhstan',
+  404:'Kenya', 408:'North Korea', 410:'South Korea', 414:'Kuwait', 417:'Kyrgyzstan',
+  418:'Laos', 428:'Latvia', 422:'Lebanon', 426:'Lesotho', 430:'Liberia',
+  434:'Libya', 440:'Lithuania', 442:'Luxembourg', 450:'Madagascar', 454:'Malawi',
+  458:'Malaysia', 466:'Mali', 478:'Mauritania', 484:'Mexico', 498:'Moldova',
+  496:'Mongolia', 499:'Montenegro', 504:'Morocco', 508:'Mozambique', 104:'Myanmar',
+  516:'Namibia', 524:'Nepal', 528:'Netherlands', 554:'New Zealand', 558:'Nicaragua',
+  562:'Niger', 566:'Nigeria', 578:'Norway', 512:'Oman', 586:'Pakistan',
+  591:'Panama', 598:'Papua New Guinea', 600:'Paraguay', 604:'Peru',
+  608:'Philippines', 616:'Poland', 620:'Portugal', 634:'Qatar', 642:'Romania',
+  643:'Russia', 646:'Rwanda', 682:'Saudi Arabia', 686:'Senegal', 688:'Serbia',
+  694:'Sierra Leone', 703:'Slovakia', 705:'Slovenia', 706:'Somalia',
+  710:'South Africa', 728:'South Sudan', 724:'Spain', 144:'Sri Lanka',
+  729:'Sudan', 740:'Suriname', 752:'Sweden', 756:'Switzerland', 760:'Syria',
+  158:'Taiwan', 762:'Tajikistan', 834:'Tanzania', 764:'Thailand', 768:'Togo',
+  780:'Trinidad & Tobago', 788:'Tunisia', 792:'Turkey', 795:'Turkmenistan',
+  800:'Uganda', 804:'Ukraine', 784:'UAE', 826:'United Kingdom', 840:'United States',
+  858:'Uruguay', 860:'Uzbekistan', 862:'Venezuela', 704:'Vietnam', 887:'Yemen',
+  894:'Zambia', 716:'Zimbabwe', 807:'North Macedonia', 384:'Ivory Coast',
+  275:'Palestine', 732:'Western Sahara', 748:'Eswatini', 678:'São Tomé',
+  90:'Solomon Islands', 548:'Vanuatu', 598:'Papua New Guinea',
+};
+
 const NYC      = [-74.006, 40.7128];
 const LS_KEY   = 'atlas-wishlist';
 const THEME_KEY= 'atlas-theme';
@@ -550,10 +598,15 @@ async function initMap() {
         const py = +this.getAttribute('data-py');
         d3.select(this).attr('transform', `translate(${px * k + x},${py * k + y})`);
       });
-      // Gate label visibility by zoom level
+      // Gate destination label visibility
       pinLayer.selectAll('.pin-label').each(function() {
         const minZ = +this.getAttribute('data-min-zoom') || 1;
         d3.select(this).style('opacity', k >= minZ ? 0.85 : 0);
+      });
+      // Gate world label visibility (inside mapG, so font scales with zoom)
+      mapG.selectAll('.world-label').each(function() {
+        const minZ = +this.getAttribute('data-min-zoom') || 2;
+        d3.select(this).style('opacity', k >= minZ ? 0.28 : 0);
       });
     });
   svg.call(zoomBehavior);
@@ -581,9 +634,11 @@ async function initMap() {
 
   document.getElementById('mapLoading').style.display = 'none';
 
+  const features = topojson.feature(world, world.objects.countries).features;
+
   // Countries
   mapG.append('g').selectAll('path')
-    .data(topojson.feature(world, world.objects.countries).features)
+    .data(features)
     .join('path')
     .attr('class', d => ISO_MAP[d.id] ? 'land destination' : 'land')
     .attr('d', path)
@@ -593,6 +648,25 @@ async function initMap() {
       const c = allCountries.find(x => x.name === name);
       if (c) openPanel(c.id);
     });
+
+  // World country labels — inside mapG so they scale with zoom
+  const destNames = new Set(Object.values(ISO_MAP));
+  const worldLabelG = mapG.append('g');
+  features.forEach(feat => {
+    const name = ALL_ISO_NAMES[+feat.id];
+    if (!name || destNames.has(name)) return;
+    const c = path.centroid(feat);
+    if (!c || isNaN(c[0]) || isNaN(c[1])) return;
+    const area = d3.geoArea(feat);
+    const minZ = area > 0.03 ? 1.5 : area > 0.005 ? 2.5 : area > 0.001 ? 3.5 : 5;
+    worldLabelG.append('text')
+      .attr('class', 'world-label')
+      .attr('x', c[0]).attr('y', c[1])
+      .attr('text-anchor', 'middle').attr('dominant-baseline', 'middle')
+      .attr('data-min-zoom', minZ)
+      .style('opacity', 0)
+      .text(name.toUpperCase());
+  });
 
   // NYC origin marker — in pinLayer so it stays fixed size
   const [nx, ny] = mapProjection(NYC);
