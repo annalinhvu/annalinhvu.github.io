@@ -317,6 +317,23 @@ body {
 .rc-africa   { --region-color: var(--africa); }
 .rc-oceania  { --region-color: var(--oceania); }
 
+/* ══ ZOOM CONTROLS ══ */
+.zoom-btns {
+  position: absolute; bottom: 20px; right: 20px;
+  display: flex; flex-direction: column; gap: 4px; z-index: 50;
+}
+.zoom-btn {
+  width: 30px; height: 30px;
+  background: var(--surface); border: 1px solid var(--border);
+  color: var(--text-3); font-size: 1rem; line-height: 1;
+  cursor: pointer; transition: all 0.15s;
+  display: flex; align-items: center; justify-content: center;
+  font-family: monospace;
+}
+.zoom-btn:hover { color: var(--text-1); border-color: var(--border-2); background: var(--surface-2); }
+#world-map { cursor: grab; }
+#world-map:active { cursor: grabbing; }
+
 /* ══ RESPONSIVE ══ */
 @media (max-width: 640px) {
   body { overflow: auto; }
@@ -358,7 +375,12 @@ body {
 <div class="map-wrap" id="mapWrap">
   <div class="map-loading-msg" id="mapLoading">Charting routes…</div>
   <svg id="world-map"></svg>
-  <div class="map-hint" id="mapHint">Click a destination to board</div>
+  <div class="map-hint" id="mapHint">Click a destination to board · Scroll to zoom · Drag to pan</div>
+  <div class="zoom-btns">
+    <button class="zoom-btn" onclick="mapZoomIn()" title="Zoom in">+</button>
+    <button class="zoom-btn" onclick="mapZoomReset()" title="Reset" style="font-size:0.65rem;letter-spacing:0">⊙</button>
+    <button class="zoom-btn" onclick="mapZoomOut()" title="Zoom out">−</button>
+  </div>
 </div>
 
 <!-- OVERLAY -->
@@ -402,7 +424,9 @@ let showingSaved  = false;
 let currentId     = null;
 let savedIds      = new Set(JSON.parse(localStorage.getItem(LS_KEY) || '[]'));
 let mapSvg        = null;
+let mapG          = null;
 let mapProjection = null;
+let zoomBehavior  = null;
 
 // ── UTILS ─────────────────────────────────────────
 const esc = s => String(s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
@@ -436,20 +460,29 @@ async function initMap() {
 
   mapSvg = svg;
 
+  // Single group that zoom transforms — everything lives inside here
+  mapG = svg.append('g').attr('class', 'map-g');
+
   mapProjection = d3.geoNaturalEarth1()
     .scale(W / 6.28)
     .translate([W / 2, H / 2 + H * 0.04]);
 
   const path = d3.geoPath().projection(mapProjection);
 
+  // Zoom behaviour
+  zoomBehavior = d3.zoom()
+    .scaleExtent([1, 10])
+    .on('zoom', ({ transform }) => mapG.attr('transform', transform));
+  svg.call(zoomBehavior);
+
   // Sphere background
-  svg.append('path')
+  mapG.append('path')
     .datum({ type: 'Sphere' })
     .attr('class', 'sphere')
     .attr('d', path);
 
   // Graticule
-  svg.append('path')
+  mapG.append('path')
     .datum(d3.geoGraticule().step([30, 30])())
     .attr('class', 'graticule')
     .attr('d', path);
@@ -466,7 +499,7 @@ async function initMap() {
   document.getElementById('mapLoading').style.display = 'none';
 
   // Countries
-  svg.append('g').selectAll('path')
+  mapG.append('g').selectAll('path')
     .data(topojson.feature(world, world.objects.countries).features)
     .join('path')
     .attr('class', 'land')
@@ -474,7 +507,7 @@ async function initMap() {
 
   // NYC origin marker (diamond)
   const [nx, ny] = mapProjection(NYC);
-  const nycG = svg.append('g').attr('class', 'nyc-marker').attr('transform', `translate(${nx},${ny})`);
+  const nycG = mapG.append('g').attr('class', 'nyc-marker').attr('transform', `translate(${nx},${ny})`);
   nycG.append('polygon')
     .attr('points', '0,-6 5,0 0,6 -5,0')
     .attr('fill', 'none').attr('stroke', 'var(--gold)').attr('stroke-width', 1.5);
@@ -484,7 +517,7 @@ async function initMap() {
   nycG.append('text').attr('class', 'nyc-label').attr('dx', 9).attr('dy', 3).text('JFK');
 
   // Routes & pins
-  drawAll(svg, nx, ny);
+  drawAll(mapG, nx, ny);
 }
 
 function drawAll(svg, nx, ny) {
@@ -686,6 +719,11 @@ function toggleWishlist() {
     });
   }
 }
+
+// ── ZOOM CONTROLS ─────────────────────────────────
+function mapZoomIn()    { mapSvg && mapSvg.transition().duration(320).call(zoomBehavior.scaleBy, 2); }
+function mapZoomOut()   { mapSvg && mapSvg.transition().duration(320).call(zoomBehavior.scaleBy, 0.5); }
+function mapZoomReset() { mapSvg && mapSvg.transition().duration(500).call(zoomBehavior.transform, d3.zoomIdentity); }
 
 // ── FILTERS ───────────────────────────────────────
 function applyFilters() {
