@@ -603,28 +603,75 @@ body{
   width:5px;height:5px;border-radius:50%;
   background:var(--region-color,var(--accent));opacity:.5;
 }
-.step-list{list-style:none;counter-reset:steps}
+.step-list{list-style:none;counter-reset:steps;display:flex;flex-direction:column;gap:0}
 .step-list li{
-  font-size:.84rem;color:var(--text-2);
-  padding:8px 0 8px 28px;position:relative;
-  line-height:1.8;counter-increment:steps;
+  font-size:.88rem;color:var(--text-2);
+  padding:16px 16px 16px 54px;position:relative;
+  line-height:1.85;counter-increment:steps;
   border-bottom:1px solid var(--border);
+  transition:background .15s;
 }
+.step-list li:hover{background:var(--region-tint,rgba(200,136,10,.04))}
 .step-list li:last-child{border-bottom:none}
 .step-list li::before{
-  content:counter(steps);position:absolute;left:0;top:8px;
-  font-family:Georgia,serif;font-style:italic;font-size:.8rem;
-  color:var(--region-color,var(--terra));width:20px;text-align:center;
+  content:counter(steps);position:absolute;left:12px;top:16px;
+  width:26px;height:26px;border-radius:50%;
+  background:var(--region-color,var(--accent));color:#fff;
+  font-family:Georgia,serif;font-style:normal;font-size:.72rem;font-weight:700;
+  line-height:26px;text-align:center;opacity:.85;
 }
 .tips-wrap{
-  padding:12px 16px;
-  background:var(--region-tint,rgba(62,112,64,.06));
+  padding:16px 20px;
+  background:var(--region-tint,rgba(200,136,10,.06));
   border-left:3px solid var(--region-color,var(--accent));border-radius:0 4px 4px 0;
 }
 .tips-text{
   font-style:italic;
-  font-size:.82rem;color:var(--text-3);line-height:1.8;
+  font-size:.88rem;color:var(--text-2);line-height:1.9;
 }
+
+/* ── Detail nav (prev/next) ── */
+.detail-nav{
+  display:flex;align-items:center;justify-content:space-between;
+  padding:16px 32px;border-top:1px solid var(--border);
+  gap:12px;
+}
+.detail-nav-btn{
+  display:flex;align-items:center;gap:8px;
+  background:none;border:1px solid var(--border);border-radius:2px;
+  padding:9px 16px;cursor:pointer;font-family:inherit;
+  font-size:.62rem;letter-spacing:.5px;color:var(--text-3);
+  transition:all .18s;max-width:45%;text-align:left;
+}
+.detail-nav-btn:hover{color:var(--region-color,var(--accent));border-color:var(--region-color,var(--accent))}
+.detail-nav-btn.next{text-align:right;margin-left:auto}
+.detail-nav-label{font-size:.48rem;letter-spacing:1.5px;text-transform:uppercase;color:var(--text-4);display:block;margin-bottom:2px}
+.detail-nav-name{font-size:.78rem;font-family:'Playfair Display',Georgia,serif;font-style:italic;color:var(--text-2);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:180px}
+
+/* ── Related recipes ── */
+.related-section{padding:32px 32px 36px;border-top:1px solid var(--border)}
+@media(max-width:640px){.related-section{padding:24px 20px 32px}}
+.related-group{margin-bottom:32px}
+.related-group:last-child{margin-bottom:0}
+.related-lbl{
+  font-size:.52rem;letter-spacing:2px;text-transform:uppercase;
+  color:var(--text-4);font-weight:700;margin-bottom:14px;
+  display:flex;align-items:center;gap:10px;
+}
+.related-lbl::after{content:'';flex:1;height:1px;background:var(--border)}
+.related-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(190px,1fr));gap:10px}
+.related-card{
+  padding:14px 16px;background:var(--card);
+  border:1px solid var(--border);
+  border-left:3px solid var(--region-color,var(--accent));
+  cursor:pointer;transition:all .15s;
+}
+.related-card:hover{background:var(--region-tint,rgba(200,136,10,.05));border-left-width:4px}
+.related-name{
+  font-size:.88rem;font-family:'Playfair Display',Georgia,serif;
+  font-weight:700;color:var(--text-1);margin-bottom:5px;line-height:1.3;
+}
+.related-meta{font-size:.6rem;color:var(--text-4);letter-spacing:.3px}
 /* Sidebar */
 .sb-inner{position:sticky;top:calc(46px + 24px)}
 .sb-label{
@@ -837,6 +884,7 @@ body{
   <div class="page">
     <button class="detail-back" onclick="showCatalog()">&larr; Back to Recipes</button>
     <div id="detailContent"></div>
+    <div id="detailNav"></div>
   </div>
 </div>
 
@@ -1008,6 +1056,14 @@ function recipeRow(r,i){
 }
 
 /* ── Detail ── */
+function relatedCard(rx){
+  const tot=rx.prep_time_min+rx.cook_time_min;
+  return `<div class="related-card" onclick="showDetail(${rx.id})">
+    <div class="related-name">${rx.name}</div>
+    <div class="related-meta">${regionLabel(rx.cuisine)} &middot; ${fmtTime(tot)}</div>
+  </div>`;
+}
+
 function showDetail(id){
   const r=allRecipes.find(x=>x.id===id); if(!r)return;
   const sv=savedIds.has(r.id);
@@ -1019,6 +1075,20 @@ function showDetail(id){
     <div class="tips-wrap"><p class="tips-text">${r.tips}</p></div>
   </div>`:'';
   const tot=r.prep_time_min+r.cook_time_min;
+
+  // Related recipes
+  const sameCat=allRecipes.filter(x=>x.id!==r.id&&x.category===r.category).slice(0,4);
+  const sameReg=allRecipes.filter(x=>x.id!==r.id&&x.cuisine===r.cuisine&&x.category!==r.category).slice(0,4);
+  const relatedHtml=`<div class="related-section">
+    ${sameCat.length?`<div class="related-group">
+      <div class="related-lbl">More ${CAT_LABEL[r.category]||r.category}</div>
+      <div class="related-grid">${sameCat.map(relatedCard).join('')}</div>
+    </div>`:''}
+    ${sameReg.length?`<div class="related-group">
+      <div class="related-lbl">More from ${regionLabel(r.cuisine)}</div>
+      <div class="related-grid">${sameReg.map(relatedCard).join('')}</div>
+    </div>`:''}
+  </div>`;
 
   const detailImg=r.photo?`<img class="detail-img-strip" src="${r.photo}" alt="${r.name}" loading="lazy">`:'' ;
   document.getElementById('detailContent').innerHTML=`
@@ -1034,11 +1104,11 @@ function showDetail(id){
         <div class="detail-main">
           <p class="detail-desc">${r.description}</p>
           <div class="det-section">
-            <div class="det-label">Ingredients</div>
+            <div class="det-label">Ingredients <span style="font-style:italic;font-weight:400;font-size:.78em;opacity:.6;text-transform:none;letter-spacing:0">${ings.length} items</span></div>
             <ul class="ing-list">${ings.map(i=>`<li>${i}</li>`).join('')}</ul>
           </div>
           <div class="det-section">
-            <div class="det-label">Instructions</div>
+            <div class="det-label">Instructions <span style="font-style:italic;font-weight:400;font-size:.78em;opacity:.6;text-transform:none;letter-spacing:0">${steps.length} steps</span></div>
             <ol class="step-list">${steps.map(s=>`<li>${s}</li>`).join('')}</ol>
           </div>
           ${tipsHtml}
@@ -1047,7 +1117,7 @@ function showDetail(id){
           <div class="sb-inner">
             <div class="sb-label">Quick Facts</div>
             <div class="sb-stat"><span class="sb-key">Prep</span><span class="sb-val">${r.prep_time_min} min</span></div>
-            <div class="sb-stat"><span class="sb-key">Cook</span><span class="sb-val">${r.cook_time_min>0?r.cook_time_min+' min':' - '}</span></div>
+            <div class="sb-stat"><span class="sb-key">Cook</span><span class="sb-val">${r.cook_time_min>0?r.cook_time_min+' min':'—'}</span></div>
             <div class="sb-stat"><span class="sb-key">Total</span><span class="sb-val">${fmtTime(tot)}</span></div>
             <div class="sb-stat"><span class="sb-key">Serves</span><span class="sb-val">${r.servings}</span></div>
             <div class="sb-stat"><span class="sb-key">Difficulty</span><span class="sb-val">${r.difficulty}</span></div>
@@ -1060,6 +1130,25 @@ function showDetail(id){
           </div>
         </div>
       </div>
+      ${relatedHtml}
+    </div>`;
+
+  // Prev / next within same category
+  const peers=allRecipes.filter(x=>x.category===r.category);
+  const idx=peers.findIndex(x=>x.id===r.id);
+  const prev=peers[idx-1], next=peers[idx+1];
+  document.getElementById('detailNav').innerHTML=`
+    <div class="detail-nav">
+      ${prev?`<button class="detail-nav-btn" onclick="showDetail(${prev.id})">
+        <span>&#8592;</span>
+        <span><span class="detail-nav-label">Previous</span>
+        <span class="detail-nav-name">${prev.name}</span></span>
+      </button>`:'<span></span>'}
+      ${next?`<button class="detail-nav-btn next" onclick="showDetail(${next.id})">
+        <span><span class="detail-nav-label">Next</span>
+        <span class="detail-nav-name">${next.name}</span></span>
+        <span>&#8594;</span>
+      </button>`:''}
     </div>`;
 
   document.getElementById('exploreView').classList.add('hidden');
@@ -1183,8 +1272,19 @@ async function init(){
   loadSaved(); updateSavedBadge();
   const res=await fetch('data/recipes.json');
   allRecipes=await res.json();
+  updateCatCounts();
   renderExplore();
   handleHash();
+}
+
+function updateCatCounts(){
+  document.querySelectorAll('.cat-pill[data-cat]').forEach(pill=>{
+    const cat=pill.dataset.cat;
+    if(cat==='all'||cat==='saved') return;
+    const n=allRecipes.filter(r=>r.category===cat).length;
+    const base=pill.textContent.replace(/\s*\(\d+\)$/,'').trim();
+    pill.textContent=`${base} (${n})`;
+  });
 }
 
 window.addEventListener('hashchange',handleHash);
