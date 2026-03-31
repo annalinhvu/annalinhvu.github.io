@@ -625,6 +625,7 @@
 var allFestivals = [];
 var filteredFestivals = [];
 var currentView = 'list';
+var currentDetailId = null;
 var activeGroup = 'documentary'; // 'documentary' | 'experimental'
 var viewMode = 'list'; // 'list' | 'calendar'
 var calYear = new Date().getFullYear();
@@ -853,6 +854,7 @@ function clearFilters() {
 /* ── Detail view ── */
 function showDetail(id) {
   currentView = 'detail';
+  currentDetailId = id;
   location.hash = 'festival/' + id;
 
   var listView = document.getElementById('list-view');
@@ -955,6 +957,7 @@ function renderDetail(f) {
 
 function showList() {
   currentView = 'list';
+  currentDetailId = null;
   location.hash = '';
 
   var listView = document.getElementById('list-view');
@@ -1149,6 +1152,15 @@ function init() {
   document.getElementById('filter-premiere').addEventListener('change', applyFilters);
   document.getElementById('filter-search').addEventListener('input', debounce(applyFilters, 250));
 }
+
+document.addEventListener('keydown', function(e) {
+  if (e.key === 'Escape' && currentView === 'detail') { showList(); return; }
+  if (currentDetailId === null) return;
+  var idx = filteredFestivals.findIndex(function(f) { return f.id === currentDetailId; });
+  if (idx === -1) return;
+  if (e.key === 'ArrowRight' && idx < filteredFestivals.length - 1) showDetail(filteredFestivals[idx + 1].id);
+  if (e.key === 'ArrowLeft' && idx > 0) showDetail(filteredFestivals[idx - 1].id);
+});
 
 init();
 </script>

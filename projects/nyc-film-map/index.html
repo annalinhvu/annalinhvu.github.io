@@ -22,6 +22,13 @@
   --cat-school:#7a9a72;
   --sans:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;
 }
+[data-theme="dark"]{
+  --paper:#1a1612;--paper-2:#221e1a;--paper-3:#2a2622;
+  --ink:#e8e0d4;--ink-2:#b8b0a4;--ink-3:#8a8278;--ink-4:#5c5450;--ink-5:#3c3830;
+  --accent:#d4756e;--accent-light:#e89892;
+  --surface:#1a1612;--surface-2:#221e1a;
+  --border:#3a3632;
+}
 
 body{
   font-family:Georgia,'Times New Roman',serif;
@@ -183,8 +190,15 @@ body{
 /* Vintage filter on tiles */
 .leaflet-tile-pane{filter:sepia(0.3) saturate(0.85)}
 
+.theme-btn{
+  background:none;border:1px solid var(--border);color:var(--ink-3);
+  font-family:var(--sans);font-size:.65rem;letter-spacing:1px;text-transform:uppercase;
+  padding:4px 10px;border-radius:var(--radius);cursor:pointer;transition:color .2s,border-color .2s;
+}
+.theme-btn:hover{color:var(--accent);border-color:var(--accent)}
+
 /* Clean up leaflet controls */
-.leaflet-control-attribution{font-size:9px!important;background:rgba(244,239,230,.85)!important;color:var(--ink-4)!important}
+.leaflet-control-attribution{font-size:9px!important;background:rgba(0,0,0,.3)!important;color:var(--ink-4)!important}
 .leaflet-control-attribution a{color:var(--ink-3)!important}
 .leaflet-control-zoom a{
   background:var(--surface)!important;color:var(--ink-3)!important;
@@ -249,7 +263,7 @@ body{
     <div class="topbar-title">NYC Film Scene Map</div>
     <div class="topbar-sub">cinemas &middot; labs &middot; museums &middot; schools</div>
   </div>
-  <div class="topbar-spacer"></div>
+  <button class="theme-btn" id="themeBtn" onclick="toggleTheme()">Dark</button>
 </div>
 
 <div class="main">
@@ -294,13 +308,39 @@ let currentBorough = '';
 let currentSearch = '';
 let selectedId = null;
 
-let map, markerLayer;
+let map, markerLayer, tileLayer;
 let markerMap = {}; // id → leaflet marker
+
+// ── Theme ──
+function toggleTheme(){
+  const cur = document.documentElement.dataset.theme || 'light';
+  const next = cur === 'dark' ? 'light' : 'dark';
+  document.documentElement.dataset.theme = next;
+  localStorage.setItem('nyc-map-theme', next);
+  document.getElementById('themeBtn').textContent = next === 'dark' ? 'Light' : 'Dark';
+  if (tileLayer) {
+    map.removeLayer(tileLayer);
+    tileLayer = L.tileLayer(
+      next === 'dark'
+        ? 'https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png'
+        : 'https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png',
+      {attribution:'&copy; <a href="https://www.openstreetmap.org/copyright">OSM</a> &copy; <a href="https://carto.com/">CARTO</a>',subdomains:'abcd',maxZoom:19}
+    ).addTo(map);
+    markerLayer.bringToFront();
+  }
+}
 
 // ── Leaflet Map ──
 function initMap(){
+  const savedTheme = localStorage.getItem('nyc-map-theme') || 'light';
+  document.documentElement.dataset.theme = savedTheme;
+  document.getElementById('themeBtn').textContent = savedTheme === 'dark' ? 'Light' : 'Dark';
+
   map = L.map('map',{zoomControl:true}).setView([40.730,-73.975],12);
-  L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png',{
+  const tileUrl = savedTheme === 'dark'
+    ? 'https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png'
+    : 'https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png';
+  tileLayer = L.tileLayer(tileUrl,{
     attribution:'&copy; <a href="https://www.openstreetmap.org/copyright">OSM</a> &copy; <a href="https://carto.com/">CARTO</a>',
     subdomains:'abcd',
     maxZoom:19
