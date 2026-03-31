@@ -442,7 +442,11 @@
     font-size: 0.92rem; color: var(--text-2); line-height: 1.85;
     max-width: 640px; margin-bottom: 18px;
   }
-  .lab-tags { display: flex; gap: 6px; flex-wrap: wrap; }
+  .lab-tags { display: flex; gap: 6px; flex-wrap: wrap; align-items: center; }
+  .lab-updated {
+    margin-left: auto; font-family: 'Geist Mono', monospace;
+    font-size: 0.6rem; color: var(--text-4); letter-spacing: 0.3px;
+  }
   .lab-tags span {
     font-family: 'Geist Mono', monospace; font-size: 0.65rem;
     padding: 3px 10px; border: 1px solid var(--lab-tag-border);
@@ -452,6 +456,17 @@
   .lab-tags span:hover {
     background: var(--lab-accent-dim);
     border-color: var(--accent);
+  }
+  .lab-stats {
+    display: flex; gap: 16px; flex-wrap: wrap;
+    margin-bottom: 14px; margin-top: -2px;
+  }
+  .lab-stat {
+    font-family: 'Geist Mono', monospace; font-size: 0.7rem;
+    color: var(--text-3); letter-spacing: 0.3px;
+  }
+  .lab-stat strong {
+    color: var(--text-1); font-weight: 600; margin-right: 3px;
   }
   .lab-divider {
     border: none; border-top: 1px dashed var(--border);
@@ -958,8 +973,12 @@
         <span class="lab-status lab-status-live">Live</span>
       </div>
       <div class="lab-title">Film Festival Tracker</div>
+      <div class="lab-stats">
+        <span class="lab-stat"><strong>89</strong> festivals</span>
+        <span class="lab-stat"><strong>8</strong> countries</span>
+      </div>
       <p class="lab-desc">Documentary and experimental film festivals worldwide. Deadlines, fees, past selections, and acceptance rates - filterable by type and region to plan smarter submissions.</p>
-      <div class="lab-tags"><span>HTML</span><span>JSON</span><span>Vanilla JS</span></div>
+      <div class="lab-tags"><span>HTML</span><span>JSON</span><span>Vanilla JS</span><span class="lab-updated">Updated Mar 2026</span></div>
     </a>
 
     <hr class="lab-divider">
@@ -1027,8 +1046,12 @@
         <span class="lab-status lab-status-live">Live</span>
       </div>
       <div class="lab-title">Analog Film Stock Database</div>
+      <div class="lab-stats">
+        <span class="lab-stat"><strong>54</strong> stocks</span>
+        <span class="lab-stat"><strong>25</strong> labs</span>
+      </div>
       <p class="lab-desc">Analog film stocks with price tracking and availability, plus development labs with location and pricing. Find the right stock and where to develop it.</p>
-      <div class="lab-tags"><span>HTML</span><span>JSON</span><span>Vanilla JS</span></div>
+      <div class="lab-tags"><span>HTML</span><span>JSON</span><span>Vanilla JS</span><span class="lab-updated">Updated Mar 2026</span></div>
     </a>
 
     <hr class="lab-divider">
@@ -1074,8 +1097,12 @@
         <span class="lab-status lab-status-live">Live</span>
       </div>
       <div class="lab-title">NYC Film Scene Map</div>
+      <div class="lab-stats">
+        <span class="lab-stat"><strong>78</strong> venues</span>
+        <span class="lab-stat"><strong>5</strong> categories</span>
+      </div>
       <p class="lab-desc">New York's experimental film world on one map: screening spaces, workshops, labs, galleries, and community spots.</p>
-      <div class="lab-tags"><span>HTML</span><span>JSON</span><span>Leaflet.js</span></div>
+      <div class="lab-tags"><span>HTML</span><span>JSON</span><span>Leaflet.js</span><span class="lab-updated">Updated Mar 2026</span></div>
     </a>
 
     <hr class="lab-divider">
@@ -1115,8 +1142,12 @@
         <span class="lab-status lab-status-live">Live</span>
       </div>
       <div class="lab-title">Auteurs</div>
+      <div class="lab-stats">
+        <span class="lab-stat"><strong>100</strong> filmmakers</span>
+        <span class="lab-stat"><strong>4</strong> eras</span>
+      </div>
       <p class="lab-desc">A personal index of 100 filmmakers I admire, searchable and filterable by style tags.</p>
-      <div class="lab-tags"><span>HTML</span><span>JSON</span></div>
+      <div class="lab-tags"><span>HTML</span><span>JSON</span><span class="lab-updated">Updated Mar 2026</span></div>
     </a>
 
     <hr class="lab-divider">
@@ -1149,9 +1180,12 @@
         <span class="lab-status lab-status-live">Live</span>
       </div>
       <div class="lab-title">Only Good Things</div>
+      <div class="lab-stats">
+        <span class="lab-stat"><strong>143</strong> activities</span>
+        <span class="lab-stat"><strong>8</strong> categories</span>
+      </div>
       <p class="lab-desc">A browsable catalog of self-care activities inspired by the "Only Good Things" wall calendar. Filterable by season, duration, and setting, with completion tracking.</p>
-
-      <div class="lab-tags"><span>HTML</span><span>JSON</span><span>Vanilla JS</span></div>
+      <div class="lab-tags"><span>HTML</span><span>JSON</span><span>Vanilla JS</span><span class="lab-updated">Updated Mar 2026</span></div>
     </a>
 
     <hr class="lab-divider">
@@ -1198,8 +1232,12 @@
         <span class="lab-status lab-status-live">Live</span>
       </div>
       <div class="lab-title">Cơm Nhà</div>
+      <div class="lab-stats">
+        <span class="lab-stat"><strong>175</strong> recipes</span>
+        <span class="lab-stat"><strong>3</strong> regions</span>
+      </div>
       <p class="lab-desc">Vietnamese recipes from Miền Bắc, Miền Trung, and Miền Nam. Browse by region or category, search by ingredient, and save favorites.</p>
-      <div class="lab-tags"><span>HTML</span><span>JSON</span><span>Vanilla JS</span></div>
+      <div class="lab-tags"><span>HTML</span><span>JSON</span><span>Vanilla JS</span><span class="lab-updated">Updated Mar 2026</span></div>
     </a>
 
     <hr class="lab-divider">
@@ -1235,8 +1273,12 @@
         <span class="lab-status lab-status-live">Live</span>
       </div>
       <div class="lab-title">Departure Lounge</div>
+      <div class="lab-stats">
+        <span class="lab-stat"><strong>32</strong> countries</span>
+        <span class="lab-stat"><strong>5</strong> regions</span>
+      </div>
       <p class="lab-desc">A travel bucket list: destinations as boarding passes, with cities, food, and reasons to go.</p>
-      <div class="lab-tags"><span>HTML</span><span>JSON</span><span>Vanilla JS</span></div>
+      <div class="lab-tags"><span>HTML</span><span>JSON</span><span>Vanilla JS</span><span class="lab-updated">Updated Mar 2026</span></div>
     </a>
 
 

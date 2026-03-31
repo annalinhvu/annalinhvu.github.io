@@ -730,6 +730,8 @@ const CAT_ICONS = {
 };
 
 let allActivities = [];
+let filteredActivities = [];
+let currentDetailId = null;
 let activeCategories = new Set();
 let searchTimeout = null;
 let completionMap = {}; /* activity_id -> [{id, completed_at, notes}] */
@@ -825,7 +827,7 @@ function applyFilters() {
     btn.appendChild(badge);
   }
 
-  let filtered = allActivities.filter(a => {
+  filteredActivities = allActivities.filter(a => {
     if (!activeCategories.has(a.category)) return false;
     if (season && a.season !== season && a.season !== 'all') return false;
     if (setting && a.setting !== setting && a.setting !== 'either') return false;
@@ -841,8 +843,8 @@ function applyFilters() {
     return true;
   });
 
-  renderCards(filtered);
-  document.getElementById('resultCount').textContent = filtered.length + ' activit' + (filtered.length === 1 ? 'y' : 'ies');
+  renderCards(filteredActivities);
+  document.getElementById('resultCount').textContent = filteredActivities.length + ' activit' + (filteredActivities.length === 1 ? 'y' : 'ies');
 }
 
 /* ── Card rendering ── */
@@ -881,6 +883,7 @@ function showDetail(id) {
   const a = allActivities.find(x => x.id === id);
   if (!a) return;
 
+  currentDetailId = id;
   location.hash = 'activity/' + id;
 
   document.getElementById('catalogView').classList.add('hidden');
@@ -990,6 +993,7 @@ function deleteCompletion(completionId, activityId) {
 }
 
 function showCatalog() {
+  currentDetailId = null;
   location.hash = 'catalog';
   document.getElementById('detailView').classList.remove('active');
   document.getElementById('progressView').classList.remove('active');
@@ -1156,6 +1160,15 @@ function esc(s) {
   });
 
   window.addEventListener('hashchange', handleHash);
+
+  document.addEventListener('keydown', e => {
+    if (e.key === 'Escape' && currentDetailId !== null) { showCatalog(); return; }
+    if (currentDetailId === null) return;
+    const idx = filteredActivities.findIndex(a => a.id === currentDetailId);
+    if (idx === -1) return;
+    if (e.key === 'ArrowRight' && idx < filteredActivities.length - 1) showDetail(filteredActivities[idx + 1].id);
+    if (e.key === 'ArrowLeft' && idx > 0) showDetail(filteredActivities[idx - 1].id);
+  });
 })();
 </script>
 </body>
