@@ -705,7 +705,6 @@
       r = r.filter(f => f.name.toLowerCase().includes(q) || f.tagline.toLowerCase().includes(q));
     }
     const isDefault = !searchQ && !activeTag;
-    renderSpotlight(isDefault);
     render(r, isDefault);
     document.getElementById('result-count').textContent = `${r.length} director${r.length !== 1 ? 's' : ''}`;
   }
