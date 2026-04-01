@@ -122,9 +122,9 @@
   }
   .back-link:hover { color: var(--accent); }
   .page-title {
-    font-family: 'Geist Mono', monospace;
-    font-size: 0.72rem; font-weight: 400; color: var(--text-4);
-    letter-spacing: 3px; text-transform: uppercase;
+    font-family: 'Geist', system-ui, sans-serif;
+    font-size: 1rem; font-weight: 700; color: var(--text-1);
+    letter-spacing: -0.3px;
     position: absolute; left: 50%; transform: translateX(-50%);
     white-space: nowrap;
   }
@@ -140,21 +140,6 @@
   /* ── Page ── */
   .page { max-width: 1440px; margin: 0 auto; padding: 32px 32px 80px; }
 
-  /* ── Page header ── */
-  .page-header {
-    margin-bottom: 28px;
-    padding-bottom: 24px;
-    border-bottom: 1px solid var(--border);
-  }
-  .page-heading {
-    font-family: 'Geist', system-ui, sans-serif;
-    font-size: clamp(1.6rem, 3vw, 2.2rem); font-weight: 700;
-    color: var(--text-1); letter-spacing: -0.5px; margin-bottom: 5px;
-  }
-  .page-heading-sub {
-    font-family: 'Geist Mono', monospace;
-    font-size: 0.7rem; color: var(--text-3); letter-spacing: 0.3px;
-  }
 
   /* ── Group toggle ── */
   .group-toggle {
@@ -616,10 +601,6 @@
 
   <!-- ── List View ── -->
   <div id="list-view" class="view view-visible">
-    <div class="page-header">
-      <h1 class="page-heading">Film Festival Tracker</h1>
-      <p class="page-heading-sub">Documentary &amp; experimental film festivals worldwide — deadlines, fees, and submission details</p>
-    </div>
     <div class="controls-top">
       <div class="group-toggle">
         <button class="group-btn active" id="btn-documentary" onclick="setGroup('documentary')">Documentary</button>
