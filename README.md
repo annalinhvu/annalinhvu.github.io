@@ -29,7 +29,7 @@ Browse film stocks with current pricing across vendors, availability status, and
 ### 03 - NYC Film Scene Map
 > An interactive map of New York's experimental film world.
 
-Screening venues, workshops, labs, galleries, and community spaces. Filter by category and borough. Built for anyone trying to find their people in the NYC film community.
+100 screening venues, workshops, labs, galleries, and community spaces. Filter by category and borough. Built for anyone trying to find their people in the NYC film community.
 
 - **Stack:** HTML, JSON, Leaflet.js
 
@@ -57,6 +57,15 @@ Inspired by the *Only Good Things* wall calendar. Activities across 6 categories
 > 175 Vietnamese recipes from Mien Bac, Mien Trung, and Mien Nam.
 
 Browse by region or category, search by ingredient, and save favorites. Each region has its own color identity throughout the UI.
+
+- **Stack:** HTML, JSON, Vanilla JS
+
+---
+
+### 07 - Departure Lounge
+> A travel bucket list: destinations as boarding passes.
+
+33 countries across 5 regions, each with cities to visit, food to eat, and reasons to go. Styled as boarding passes with a dark, editorial feel.
 
 - **Stack:** HTML, JSON, Vanilla JS
 
