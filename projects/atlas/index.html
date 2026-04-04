@@ -325,12 +325,6 @@ body {
 .panel-field { display: flex; flex-direction: column; gap: 5px; }
 .panel-field-label { font-size: 0.55rem; letter-spacing: 2px; text-transform: uppercase; color: var(--text-4); }
 .panel-field-value { font-size: 0.82rem; color: var(--text-1); }
-.status-chip {
-  font-size: 0.55rem; letter-spacing: 1px; text-transform: uppercase;
-  padding: 3px 8px; border: 1px solid var(--border); color: var(--text-3); display: inline-block;
-}
-.status-chip.planning { color: var(--gold); border-color: var(--gold); }
-.status-chip.visited  { color: var(--americas); border-color: var(--americas); }
 
 /* Panel body */
 .panel-body {
@@ -393,8 +387,6 @@ body {
 .flight-path.active { opacity: 0.85 !important; stroke-width: 2.2px; }
 
 /* Planning + visited hover */
-.pin-group[data-status="planning"]:hover polygon { filter: brightness(1.4); }
-.pin-group[data-status="visited"]:hover .pin-ring { filter: brightness(1.3); }
 
 /* Region cascade */
 .rc-asia     { --region-color: var(--asia); }
@@ -831,35 +823,16 @@ function drawAll(routeLayer, pins, nx, ny) {
         .style('opacity', 0)
         .on('click', () => openPanel(c.id));
 
-      if (c.status === 'visited') {
-        // Solid filled circle — stamped, definitive
-        pg.append('circle').attr('class', 'pin-ring').attr('r', 6)
-          .attr('fill', `var(--${c.region})`).attr('stroke', 'none');
-        pg.append('text')
-          .attr('text-anchor', 'middle').attr('dominant-baseline', 'central')
-          .attr('font-size', '7').attr('fill', 'var(--bg)')
-          .attr('font-weight', 'bold').attr('pointer-events', 'none').text('✓');
-      } else if (c.status === 'planning') {
-        // Diamond — in progress, directional
-        pg.append('polygon')
-          .attr('points', '0,-8 8,0 0,8 -8,0')
-          .attr('fill', 'none').attr('stroke', 'var(--gold)').attr('stroke-width', 1.5);
-        pg.append('polygon')
-          .attr('points', '0,-4 4,0 0,4 -4,0')
-          .attr('fill', 'var(--gold)');
-      } else {
-        // Dreaming — animated pulse ring (default)
-        pg.append('circle').attr('r', 10)
-          .attr('fill', 'none')
-          .attr('stroke', `var(--${c.region})`)
-          .attr('stroke-width', 1)
-          .attr('opacity', 0.2)
-          .style('animation', `pinPulse 2.8s ${Math.random()*2}s ease-in-out infinite`);
-        pg.append('circle').attr('class', 'pin-ring').attr('r', 5.5)
-          .attr('fill', 'none').attr('stroke', `var(--${c.region})`).attr('stroke-width', 1.5);
-        pg.append('circle').attr('class', 'pin-dot').attr('r', 2.8)
-          .attr('fill', `var(--${c.region})`);
-      }
+      pg.append('circle').attr('r', 10)
+        .attr('fill', 'none')
+        .attr('stroke', `var(--${c.region})`)
+        .attr('stroke-width', 1)
+        .attr('opacity', 0.2)
+        .style('animation', `pinPulse 2.8s ${Math.random()*2}s ease-in-out infinite`);
+      pg.append('circle').attr('class', 'pin-ring').attr('r', 5.5)
+        .attr('fill', 'none').attr('stroke', `var(--${c.region})`).attr('stroke-width', 1.5);
+      pg.append('circle').attr('class', 'pin-dot').attr('r', 2.8)
+        .attr('fill', `var(--${c.region})`);
 
       // Saved dot (gold, top-right of pin)
       pg.append('circle').attr('class', `pin-saved-dot ${savedIds.has(c.id) ? 'visible' : ''}`)
@@ -943,10 +916,6 @@ function openPanel(id) {
         <div class="panel-field">
           <div class="panel-field-label">$ Currency</div>
           <div class="panel-field-value">${esc(c.currency||'—')}</div>
-        </div>
-        <div class="panel-field">
-          <div class="panel-field-label">◎ Status</div>
-          <div class="panel-field-value"><span class="status-chip ${c.status}">${esc(c.status)}</span></div>
         </div>
         ${vibes ? `<div class="panel-field" style="width:100%">
           <div class="panel-field-label">✦ Vibe</div>
@@ -1035,13 +1004,7 @@ function zoomToCountry(name) {
 function updateStats() {
   const el = document.getElementById('statsInfo');
   if (!el) return;
-  const total    = allCountries.length;
-  const visited  = allCountries.filter(c => c.status === 'visited').length;
-  const planning = allCountries.filter(c => c.status === 'planning').length;
-  const parts = [`${total} destinations`];
-  if (planning) parts.push(`${planning} planning`);
-  if (visited)  parts.push(`${visited} visited`);
-  el.textContent = parts.join(' · ');
+  el.textContent = `${allCountries.length} destinations`;
 }
 
 function setWishlistBtn(saved) {
