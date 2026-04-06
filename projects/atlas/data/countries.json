@@ -64,7 +64,9 @@
       "nature",
       "craft"
     ],
-    "photo": "https://images.pexels.com/photos/4336279/pexels-photo-4336279.jpeg?auto=compress&cs=tinysrgb&w=1200"
+    "photo": "https://images.pexels.com/photos/4336279/pexels-photo-4336279.jpeg?auto=compress&cs=tinysrgb&w=1200",
+    "budget": "$$$",
+    "ideal_days": 14
   },
   {
     "id": 2,
@@ -131,7 +133,9 @@
       "piazzas",
       "slow living"
     ],
-    "photo": "https://images.pexels.com/photos/17803934/pexels-photo-17803934.jpeg?auto=compress&cs=tinysrgb&w=1200"
+    "photo": "https://images.pexels.com/photos/17803934/pexels-photo-17803934.jpeg?auto=compress&cs=tinysrgb&w=1200",
+    "budget": "$$",
+    "ideal_days": 10
   },
   {
     "id": 3,
@@ -198,7 +202,9 @@
       "friendly locals",
       "mountains"
     ],
-    "photo": "https://images.pexels.com/photos/1717934/pexels-photo-1717934.jpeg?auto=compress&cs=tinysrgb&w=1200"
+    "photo": "https://images.pexels.com/photos/1717934/pexels-photo-1717934.jpeg?auto=compress&cs=tinysrgb&w=1200",
+    "budget": "$$",
+    "ideal_days": 7
   },
   {
     "id": 4,
@@ -261,7 +267,9 @@
       "history",
       "music"
     ],
-    "photo": "https://images.pexels.com/photos/23644344/pexels-photo-23644344.jpeg?auto=compress&cs=tinysrgb&w=1200"
+    "photo": "https://images.pexels.com/photos/23644344/pexels-photo-23644344.jpeg?auto=compress&cs=tinysrgb&w=1200",
+    "budget": "$$$",
+    "ideal_days": 7
   },
   {
     "id": 5,
@@ -328,7 +336,9 @@
       "swimming",
       "architecture"
     ],
-    "photo": "https://images.pexels.com/photos/6110642/pexels-photo-6110642.jpeg?auto=compress&cs=tinysrgb&w=1200"
+    "photo": "https://images.pexels.com/photos/6110642/pexels-photo-6110642.jpeg?auto=compress&cs=tinysrgb&w=1200",
+    "budget": "$$",
+    "ideal_days": 10
   },
   {
     "id": 6,
@@ -395,7 +405,9 @@
       "markets",
       "countryside"
     ],
-    "photo": "https://images.pexels.com/photos/1461974/pexels-photo-1461974.jpeg?auto=compress&cs=tinysrgb&w=1200"
+    "photo": "https://images.pexels.com/photos/1461974/pexels-photo-1461974.jpeg?auto=compress&cs=tinysrgb&w=1200",
+    "budget": "$$$",
+    "ideal_days": 10
   },
   {
     "id": 7,
@@ -462,7 +474,9 @@
       "coffee culture",
       "markets"
     ],
-    "photo": "https://images.pexels.com/photos/33224215/pexels-photo-33224215.jpeg?auto=compress&cs=tinysrgb&w=1200"
+    "photo": "https://images.pexels.com/photos/33224215/pexels-photo-33224215.jpeg?auto=compress&cs=tinysrgb&w=1200",
+    "budget": "$",
+    "ideal_days": 14
   },
   {
     "id": 8,
@@ -529,7 +543,9 @@
       "spices",
       "riads"
     ],
-    "photo": "https://images.pexels.com/photos/5472522/pexels-photo-5472522.jpeg?auto=compress&cs=tinysrgb&w=1200"
+    "photo": "https://images.pexels.com/photos/5472522/pexels-photo-5472522.jpeg?auto=compress&cs=tinysrgb&w=1200",
+    "budget": "$",
+    "ideal_days": 10
   },
   {
     "id": 10,
@@ -596,7 +612,9 @@
       "coastal",
       "slow living"
     ],
-    "photo": "https://images.pexels.com/photos/22670278/pexels-photo-22670278.jpeg?auto=compress&cs=tinysrgb&w=1200"
+    "photo": "https://images.pexels.com/photos/22670278/pexels-photo-22670278.jpeg?auto=compress&cs=tinysrgb&w=1200",
+    "budget": "$$",
+    "ideal_days": 7
   },
   {
     "id": 11,
@@ -659,7 +677,9 @@
       "glaciers",
       "city energy"
     ],
-    "photo": "https://images.pexels.com/photos/32910336/pexels-photo-32910336.jpeg?auto=compress&cs=tinysrgb&w=1200"
+    "photo": "https://images.pexels.com/photos/32910336/pexels-photo-32910336.jpeg?auto=compress&cs=tinysrgb&w=1200",
+    "budget": "$",
+    "ideal_days": 14
   },
   {
     "id": 12,
@@ -726,7 +746,9 @@
       "chaos",
       "spirituality"
     ],
-    "photo": "https://images.pexels.com/photos/1260801/pexels-photo-1260801.jpeg?auto=compress&cs=tinysrgb&w=1200"
+    "photo": "https://images.pexels.com/photos/1260801/pexels-photo-1260801.jpeg?auto=compress&cs=tinysrgb&w=1200",
+    "budget": "$",
+    "ideal_days": 14
   },
   {
     "id": 13,
@@ -789,7 +811,9 @@
       "road trip",
       "landscapes"
     ],
-    "photo": "https://images.pexels.com/photos/31338734/pexels-photo-31338734.jpeg?auto=compress&cs=tinysrgb&w=1200"
+    "photo": "https://images.pexels.com/photos/31338734/pexels-photo-31338734.jpeg?auto=compress&cs=tinysrgb&w=1200",
+    "budget": "$$$",
+    "ideal_days": 14
   },
   {
     "id": 14,
@@ -852,7 +876,9 @@
       "hiking",
       "hot springs"
     ],
-    "photo": "https://images.pexels.com/photos/29264035/pexels-photo-29264035.jpeg?auto=compress&cs=tinysrgb&w=1200"
+    "photo": "https://images.pexels.com/photos/29264035/pexels-photo-29264035.jpeg?auto=compress&cs=tinysrgb&w=1200",
+    "budget": "$$$",
+    "ideal_days": 7
   },
   {
     "id": 15,
@@ -919,7 +945,9 @@
       "art",
       "beaches"
     ],
-    "photo": "https://images.pexels.com/photos/6563919/pexels-photo-6563919.jpeg?auto=compress&cs=tinysrgb&w=1200"
+    "photo": "https://images.pexels.com/photos/6563919/pexels-photo-6563919.jpeg?auto=compress&cs=tinysrgb&w=1200",
+    "budget": "$",
+    "ideal_days": 10
   },
   {
     "id": 16,
@@ -986,7 +1014,9 @@
       "night markets",
       "spirituality"
     ],
-    "photo": "https://images.pexels.com/photos/30073413/pexels-photo-30073413.jpeg?auto=compress&cs=tinysrgb&w=1200"
+    "photo": "https://images.pexels.com/photos/30073413/pexels-photo-30073413.jpeg?auto=compress&cs=tinysrgb&w=1200",
+    "budget": "$",
+    "ideal_days": 10
   },
   {
     "id": 17,
@@ -1053,7 +1083,9 @@
       "coastal",
       "food culture"
     ],
-    "photo": "https://images.pexels.com/photos/32634623/pexels-photo-32634623.jpeg?auto=compress&cs=tinysrgb&w=1200"
+    "photo": "https://images.pexels.com/photos/32634623/pexels-photo-32634623.jpeg?auto=compress&cs=tinysrgb&w=1200",
+    "budget": "$$",
+    "ideal_days": 10
   },
   {
     "id": 19,
@@ -1116,7 +1148,9 @@
       "midnight sun",
       "remote"
     ],
-    "photo": "https://images.pexels.com/photos/1562058/pexels-photo-1562058.jpeg?auto=compress&cs=tinysrgb&w=1200"
+    "photo": "https://images.pexels.com/photos/1562058/pexels-photo-1562058.jpeg?auto=compress&cs=tinysrgb&w=1200",
+    "budget": "$$$",
+    "ideal_days": 10
   },
   {
     "id": 20,
@@ -1169,7 +1203,9 @@
       "nightlife",
       "nature"
     ],
-    "photo": "https://images.pexels.com/photos/380707/pexels-photo-380707.jpeg?auto=compress&cs=tinysrgb&w=1200"
+    "photo": "https://images.pexels.com/photos/380707/pexels-photo-380707.jpeg?auto=compress&cs=tinysrgb&w=1200",
+    "budget": "$$",
+    "ideal_days": 7
   },
   {
     "id": 21,
@@ -1222,7 +1258,9 @@
       "bazaars",
       "coastal"
     ],
-    "photo": "https://images.pexels.com/photos/15193542/pexels-photo-15193542.jpeg?auto=compress&cs=tinysrgb&w=1200"
+    "photo": "https://images.pexels.com/photos/15193542/pexels-photo-15193542.jpeg?auto=compress&cs=tinysrgb&w=1200",
+    "budget": "$",
+    "ideal_days": 10
   },
   {
     "id": 22,
@@ -1275,7 +1313,9 @@
       "archaeology",
       "markets"
     ],
-    "photo": "https://images.pexels.com/photos/3873681/pexels-photo-3873681.jpeg?auto=compress&cs=tinysrgb&w=1200"
+    "photo": "https://images.pexels.com/photos/3873681/pexels-photo-3873681.jpeg?auto=compress&cs=tinysrgb&w=1200",
+    "budget": "$",
+    "ideal_days": 10
   },
   {
     "id": 23,
@@ -1328,7 +1368,9 @@
       "wildlife",
       "carnival"
     ],
-    "photo": "https://images.pexels.com/photos/2818895/pexels-photo-2818895.jpeg?auto=compress&cs=tinysrgb&w=1200"
+    "photo": "https://images.pexels.com/photos/2818895/pexels-photo-2818895.jpeg?auto=compress&cs=tinysrgb&w=1200",
+    "budget": "$$",
+    "ideal_days": 14
   },
   {
     "id": 24,
@@ -1381,7 +1423,9 @@
       "city energy",
       "nature"
     ],
-    "photo": "https://images.pexels.com/photos/945615/pexels-photo-945615.jpeg?auto=compress&cs=tinysrgb&w=1200"
+    "photo": "https://images.pexels.com/photos/945615/pexels-photo-945615.jpeg?auto=compress&cs=tinysrgb&w=1200",
+    "budget": "$$$",
+    "ideal_days": 14
   },
   {
     "id": 25,
@@ -1434,7 +1478,9 @@
       "food culture",
       "hiking"
     ],
-    "photo": "https://images.pexels.com/photos/30091818/pexels-photo-30091818.jpeg?auto=compress&cs=tinysrgb&w=1200"
+    "photo": "https://images.pexels.com/photos/30091818/pexels-photo-30091818.jpeg?auto=compress&cs=tinysrgb&w=1200",
+    "budget": "$$",
+    "ideal_days": 7
   },
   {
     "id": 26,
@@ -1487,7 +1533,9 @@
       "nature",
       "adventure"
     ],
-    "photo": "https://images.pexels.com/photos/4185836/pexels-photo-4185836.jpeg?auto=compress&cs=tinysrgb&w=1200"
+    "photo": "https://images.pexels.com/photos/4185836/pexels-photo-4185836.jpeg?auto=compress&cs=tinysrgb&w=1200",
+    "budget": "$",
+    "ideal_days": 14
   },
   {
     "id": 28,
@@ -1540,7 +1588,9 @@
       "architecture",
       "food culture"
     ],
-    "photo": "https://images.pexels.com/photos/8804890/pexels-photo-8804890.jpeg?auto=compress&cs=tinysrgb&w=1200"
+    "photo": "https://images.pexels.com/photos/8804890/pexels-photo-8804890.jpeg?auto=compress&cs=tinysrgb&w=1200",
+    "budget": "$",
+    "ideal_days": 7
   },
   {
     "id": 29,
@@ -1593,7 +1643,9 @@
       "architecture",
       "skiing"
     ],
-    "photo": "https://images.pexels.com/photos/685766/pexels-photo-685766.jpeg?auto=compress&cs=tinysrgb&w=1200"
+    "photo": "https://images.pexels.com/photos/685766/pexels-photo-685766.jpeg?auto=compress&cs=tinysrgb&w=1200",
+    "budget": "$$$",
+    "ideal_days": 7
   },
   {
     "id": 30,
@@ -1646,7 +1698,9 @@
       "history",
       "food culture"
     ],
-    "photo": "https://images.pexels.com/photos/460672/pexels-photo-460672.jpeg?auto=compress&cs=tinysrgb&w=1200"
+    "photo": "https://images.pexels.com/photos/460672/pexels-photo-460672.jpeg?auto=compress&cs=tinysrgb&w=1200",
+    "budget": "$$$",
+    "ideal_days": 10
   },
   {
     "id": 31,
@@ -1703,7 +1757,9 @@
       "food culture",
       "skiing"
     ],
-    "photo": "https://images.pexels.com/photos/32131622/pexels-photo-32131622.jpeg?auto=compress&cs=tinysrgb&w=1200"
+    "photo": "https://images.pexels.com/photos/32131622/pexels-photo-32131622.jpeg?auto=compress&cs=tinysrgb&w=1200",
+    "budget": "$$$",
+    "ideal_days": 14
   },
   {
     "id": 32,
@@ -1760,7 +1816,9 @@
       "nature",
       "street food"
     ],
-    "photo": "https://images.pexels.com/photos/3262994/pexels-photo-3262994.jpeg?auto=compress&cs=tinysrgb&w=1200"
+    "photo": "https://images.pexels.com/photos/3262994/pexels-photo-3262994.jpeg?auto=compress&cs=tinysrgb&w=1200",
+    "budget": "$$",
+    "ideal_days": 14
   },
   {
     "id": 33,
@@ -1817,7 +1875,9 @@
       "architecture",
       "Christmas markets"
     ],
-    "photo": "https://images.pexels.com/photos/18759055/pexels-photo-18759055.jpeg?auto=compress&cs=tinysrgb&w=1200"
+    "photo": "https://images.pexels.com/photos/18759055/pexels-photo-18759055.jpeg?auto=compress&cs=tinysrgb&w=1200",
+    "budget": "$$",
+    "ideal_days": 7
   },
   {
     "id": 34,
@@ -1874,7 +1934,9 @@
       "modern architecture",
       "hawker culture"
     ],
-    "photo": "https://images.pexels.com/photos/8482764/pexels-photo-8482764.jpeg?auto=compress&cs=tinysrgb&w=1200"
+    "photo": "https://images.pexels.com/photos/8482764/pexels-photo-8482764.jpeg?auto=compress&cs=tinysrgb&w=1200",
+    "budget": "$$$",
+    "ideal_days": 5
   },
   {
     "id": 35,
@@ -1927,7 +1989,9 @@
       "tulips",
       "architecture"
     ],
-    "photo": "https://images.pexels.com/photos/2792077/pexels-photo-2792077.jpeg?auto=compress&cs=tinysrgb&w=1200"
+    "photo": "https://images.pexels.com/photos/2792077/pexels-photo-2792077.jpeg?auto=compress&cs=tinysrgb&w=1200",
+    "budget": "$$$",
+    "ideal_days": 5
   },
   {
     "id": 36,
@@ -1984,6 +2048,8 @@
       "music scenes",
       "vast landscapes"
     ],
-    "photo": "https://images.pexels.com/photos/14676934/pexels-photo-14676934.jpeg?auto=compress&cs=tinysrgb&w=1200"
+    "photo": "https://images.pexels.com/photos/14676934/pexels-photo-14676934.jpeg?auto=compress&cs=tinysrgb&w=1200",
+    "budget": "$$",
+    "ideal_days": 14
   }
 ]
