@@ -2051,5 +2051,974 @@
     "photo": "https://images.pexels.com/photos/14676934/pexels-photo-14676934.jpeg?auto=compress&cs=tinysrgb&w=1200",
     "budget": "$$",
     "ideal_days": 14
+  },
+  {
+    "id": 37,
+    "name": "Peru",
+    "code": "PE",
+    "region": "americas",
+    "status": "dreaming",
+    "tagline": "A lost city in the clouds and a civilization that built it.",
+    "description": "Peru is one of the most dramatic countries on Earth — Machu Picchu alone would justify the trip, but there's also the Amazon basin, the floating islands of Lake Titicaca, and a food scene in Lima that has quietly become one of the best on the planet. The Inca Trail is a pilgrimage that rewards every step.",
+    "best_time": "May–September (dry season)",
+    "language": "Spanish, Quechua",
+    "currency": "Sol (S/)",
+    "cities": [
+      {
+        "name": "Cusco",
+        "notes": "The former Inca capital at 3,400m — acclimatize here before the trail. Cobblestone streets, colonial churches built over Inca foundations, and excellent ceviche."
+      },
+      {
+        "name": "Lima",
+        "notes": "One of the world's great food cities. Miraflores and Barranco for clifftop restaurants, ceviche at the market, pisco sours at sunset over the Pacific."
+      },
+      {
+        "name": "Arequipa",
+        "notes": "The White City — built from volcanic sillar stone, framed by three volcanoes. Quieter than Cusco and a base for trekking Colca Canyon."
+      }
+    ],
+    "food": [
+      {
+        "name": "Ceviche",
+        "notes": "Raw fish cured in lime juice with red onion and ají amarillo. The Peruvian version is the original and still the best — eaten at midday, never at night."
+      },
+      {
+        "name": "Lomo saltado",
+        "notes": "Stir-fried beef with tomatoes, onions, and French fries, served over rice. The Chinese-Peruvian chifa fusion that became a national staple."
+      },
+      {
+        "name": "Causa rellena",
+        "notes": "Layered yellow potato terrine filled with avocado and chicken or tuna. A deceptively elegant dish that shows up everywhere from street stalls to fine dining."
+      }
+    ],
+    "tips": [
+      "Book Machu Picchu tickets online well in advance — entry is timed and limited, and sells out months ahead.",
+      "Altitude sickness is real above 3,000m. Spend 2–3 days in Cusco acclimatizing before the Inca Trail. Coca tea helps.",
+      "Lima's food scene is world-class — book Central, Maido, or Astrid y Gastón weeks ahead; walk-ins are almost impossible."
+    ],
+    "vibe_tags": [
+      "ancient ruins",
+      "hiking",
+      "mountains",
+      "food culture",
+      "history",
+      "jungle",
+      "adventure"
+    ],
+    "photo": "https://images.pexels.com/photos/2516418/pexels-photo-2516418.jpeg?auto=compress&cs=tinysrgb&w=1200",
+    "budget": "$$",
+    "ideal_days": 12
+  },
+  {
+    "id": 38,
+    "name": "Colombia",
+    "code": "CO",
+    "region": "americas",
+    "status": "dreaming",
+    "tagline": "Color, coffee, cumbia, and a country that refuses to be defined by its past.",
+    "description": "Colombia has transformed dramatically and now ranks among South America's most exciting destinations. Cartagena's walled colonial city glows at golden hour, Medellín reinvented itself into a model of urban innovation, and the coffee region (Eje Cafetero) is one of the most beautiful landscapes on earth. The warmth of the people matches the warmth of the climate.",
+    "best_time": "December–March, July–August",
+    "language": "Spanish",
+    "currency": "Colombian Peso (COP)",
+    "cities": [
+      {
+        "name": "Cartagena",
+        "notes": "A walled Caribbean city of bougainvillea-draped balconies, horse-drawn carriages, and rooftop bars. The old town at dusk is one of Latin America's great sights."
+      },
+      {
+        "name": "Medellín",
+        "notes": "The city that reinvented itself. Cable cars over barrios, botanical gardens, and a nightlife scene that rivals anywhere on the continent."
+      },
+      {
+        "name": "Salento",
+        "notes": "The heart of the coffee region — steep hills, wax palms in the Cocora Valley, and fincas where you can watch coffee go from cherry to cup."
+      }
+    ],
+    "food": [
+      {
+        "name": "Bandeja paisa",
+        "notes": "The Antioquian mega-platter: red beans, rice, chicharrón, ground beef, chorizo, egg, avocado, and arepa. An entire day's calories in one enormous serving."
+      },
+      {
+        "name": "Arepas",
+        "notes": "Griddled corn cakes eaten at every meal. Each region has its own style — Bogotá's plain and buttered, Costena's stuffed with cheese and egg."
+      },
+      {
+        "name": "Aguardiente",
+        "notes": "Anise-flavored sugarcane spirit — the national drink, consumed in shots at any celebration. Sweet, strong, and an acquired taste that comes fast."
+      }
+    ],
+    "tips": [
+      "Register with your country's embassy before arrival and stay updated on regional safety advisories — some areas remain off-limits.",
+      "The coffee region (Eje Cafetero) is best explored by jeep — book a guided tour from Salento for the Cocora Valley wax palms.",
+      "Colombian Spanish is considered among the clearest in Latin America — a good place to practice if you're learning the language."
+    ],
+    "vibe_tags": [
+      "street food",
+      "architecture",
+      "coffee culture",
+      "beaches",
+      "nightlife",
+      "nature",
+      "history"
+    ],
+    "photo": "https://images.pexels.com/photos/11815919/pexels-photo-11815919.jpeg?auto=compress&cs=tinysrgb&w=1200",
+    "budget": "$",
+    "ideal_days": 10
+  },
+  {
+    "id": 39,
+    "name": "Chile",
+    "code": "CL",
+    "region": "americas",
+    "status": "dreaming",
+    "tagline": "The end of the world is a national park, and it's worth every kilometre.",
+    "description": "Chile stretches over 4,300km from the driest desert on Earth in the north to the glaciers and granite spires of Patagonia in the south — one of the most geographically extreme countries anywhere. Torres del Paine is a trekking destination that defines bucket lists, the Atacama offers stargazing unlike anything in the northern hemisphere, and Santiago punches well above its weight as a city.",
+    "best_time": "November–March (Patagonia), May–September (Atacama)",
+    "language": "Spanish",
+    "currency": "Chilean Peso (CLP)",
+    "cities": [
+      {
+        "name": "Santiago",
+        "notes": "Backed by snow-capped Andes, with a thriving food and wine scene in Lastarria and Barrio Italia. Better than its reputation — spend a few days before heading south."
+      },
+      {
+        "name": "Puerto Natales",
+        "notes": "The gateway town for Torres del Paine. Stock up on supplies, eat lamb stew by a wood-burning stove, and start the W Trek from here."
+      },
+      {
+        "name": "San Pedro de Atacama",
+        "notes": "Desert oasis and stargazing capital. The Valle de la Luna at sunset, geysers at 4am, and salt flats that stretch to Bolivia."
+      }
+    ],
+    "food": [
+      {
+        "name": "Asado",
+        "notes": "Chilean barbecue — whole lamb slow-roasted over an open fire in Patagonia. Found at every roadside parilla and perfected at the end of a long trekking day."
+      },
+      {
+        "name": "Empanadas de pino",
+        "notes": "Baked pastries stuffed with ground beef, hard-boiled egg, olive, and raisin. The national snack, sold at every bakery and market stall."
+      },
+      {
+        "name": "Carménère",
+        "notes": "Chile's signature red grape — thought extinct in Europe, it thrives in the Central Valley. Rich, smoky, and one of the world's best-value wines."
+      }
+    ],
+    "tips": [
+      "Book Torres del Paine accommodation and camping spots 6–12 months ahead — the park fills up completely in high season (December–February).",
+      "Renting a car in Chile unlocks the country. The Carretera Austral is one of the world's great road trips — 1,240km of gravel through fjords and forest.",
+      "The Atacama's altitude (2,400m) hits suddenly after flying in from sea level. Take the first day slow."
+    ],
+    "vibe_tags": [
+      "hiking",
+      "national parks",
+      "mountains",
+      "adventure",
+      "desert",
+      "road trip",
+      "nature"
+    ],
+    "photo": "https://images.pexels.com/photos/25067987/pexels-photo-25067987.jpeg?auto=compress&cs=tinysrgb&w=1200",
+    "budget": "$$",
+    "ideal_days": 14
+  },
+  {
+    "id": 40,
+    "name": "South Africa",
+    "code": "ZA",
+    "region": "africa",
+    "status": "dreaming",
+    "tagline": "Table Mountain, the Big Five, and a wine route that rivals anywhere in the world.",
+    "description": "South Africa is one of the most geographically and culturally diverse countries on Earth — a single trip can include world-class wildlife in Kruger, the dramatic coastline of the Garden Route, and Cape Town, which regularly tops lists of the world's most beautiful cities. The food, wine, and outdoor culture are all exceptional, and the light in the Western Cape is unlike anywhere else.",
+    "best_time": "May–September (Cape Town), June–October (Kruger safari)",
+    "language": "Zulu, Xhosa, Afrikaans, English (11 official languages)",
+    "currency": "Rand (R)",
+    "cities": [
+      {
+        "name": "Cape Town",
+        "notes": "Table Mountain looming over everything, the V&A Waterfront, Bo-Kaap's pastel houses, and a 45-minute drive to some of the world's best wine estates."
+      },
+      {
+        "name": "Johannesburg",
+        "notes": "The economic capital and gateway to Kruger. Soweto township tours, the Apartheid Museum, and a food and art scene in Maboneng worth a full day."
+      },
+      {
+        "name": "Knysna",
+        "notes": "The jewel of the Garden Route — a lagoon flanked by forest, oyster farms, and hiking trails in the Tsitsikamma section of the national park."
+      }
+    ],
+    "food": [
+      {
+        "name": "Braai",
+        "notes": "South African barbecue — a cultural institution more than a meal. Boerewors sausage, lamb chops, pap, and chakalaka around an open fire, for hours."
+      },
+      {
+        "name": "Bobotie",
+        "notes": "Cape Malay spiced minced meat baked under a savory egg custard. A legacy of the Cape's spice trade history and one of the country's true national dishes."
+      },
+      {
+        "name": "Biltong",
+        "notes": "Air-dried spiced meat — beef or game, cut thick or thin. Every shop sells it; every South African takes it on road trips. Addictively good."
+      }
+    ],
+    "tips": [
+      "Rent a car — public transport is limited outside cities and driving gives you the Garden Route, the wine lands, and Cape Point on your own schedule.",
+      "Book Kruger self-drive camps (rest camps) well ahead, especially June–August. Early morning and dusk drives are when the Big Five are most active.",
+      "The Cape Doctor wind blows strong November–January. Visit Cape Town in autumn (March–May) for the best weather and fewest crowds."
+    ],
+    "vibe_tags": [
+      "wildlife",
+      "safari",
+      "mountains",
+      "beaches",
+      "history",
+      "nature",
+      "road trip"
+    ],
+    "photo": "https://images.pexels.com/photos/4064211/pexels-photo-4064211.jpeg?auto=compress&cs=tinysrgb&w=1200",
+    "budget": "$$",
+    "ideal_days": 14
+  },
+  {
+    "id": 41,
+    "name": "Kenya",
+    "code": "KE",
+    "region": "africa",
+    "status": "dreaming",
+    "tagline": "The wildebeest migration is the greatest wildlife spectacle on earth.",
+    "description": "Kenya is the safari standard against which all others are measured. The Maasai Mara hosts the annual wildebeest migration, the most dramatic wildlife event on the planet, and the country's parks hold every major African species at close range. Beyond the animals, there's Nairobi's excellent restaurant scene, the Swahili coast around Lamu, and the culture of the Maasai people.",
+    "best_time": "July–October (wildebeest migration), January–February",
+    "language": "Swahili, English",
+    "currency": "Kenyan Shilling (KSh)",
+    "cities": [
+      {
+        "name": "Nairobi",
+        "notes": "A genuine city with a food scene that surprises — Carnivore restaurant for game meat, the Giraffe Centre, and Nairobi National Park literally on the city's edge."
+      },
+      {
+        "name": "Masai Mara",
+        "notes": "The game reserve that defines East African safari. July to October for the crossing — hundreds of thousands of wildebeest fording the Mara River through crocodiles."
+      },
+      {
+        "name": "Lamu",
+        "notes": "A UNESCO-listed Swahili island town with no cars, donkeys for transport, and some of the most atmospheric seafood restaurants in Africa."
+      }
+    ],
+    "food": [
+      {
+        "name": "Nyama choma",
+        "notes": "Roasted goat meat — Kenya's national dish. Eaten with ugali (maize porridge) and kachumbari (tomato-onion salsa) at roadside joints called nyama spots."
+      },
+      {
+        "name": "Ugali",
+        "notes": "The starchy backbone of Kenyan cooking — stiff maize porridge eaten with the right hand, used to scoop stews, beans, and sukuma wiki (collard greens)."
+      },
+      {
+        "name": "Chai",
+        "notes": "Kenyan chai is brewed strong with milk from the start — thick, sweet, and spiced. Available everywhere, always hot, drunk at all hours."
+      }
+    ],
+    "tips": [
+      "Combine Kenya with Tanzania for the ultimate East Africa safari — cross into the Serengeti via the Mara crossing and follow the migration.",
+      "Go with a reputable guide or safari operator — it transforms the experience. Self-drive in the Mara is possible but having a tracker makes all the difference.",
+      "Malaria prophylaxis is strongly recommended for game reserve areas. Yellow fever vaccination is required if arriving from certain countries."
+    ],
+    "vibe_tags": [
+      "wildlife",
+      "safari",
+      "nature",
+      "adventure",
+      "national parks",
+      "beaches",
+      "history"
+    ],
+    "photo": "https://images.pexels.com/photos/3529692/pexels-photo-3529692.jpeg?auto=compress&cs=tinysrgb&w=1200",
+    "budget": "$$$",
+    "ideal_days": 10
+  },
+  {
+    "id": 42,
+    "name": "Jordan",
+    "code": "JO",
+    "region": "asia",
+    "status": "dreaming",
+    "tagline": "Petra was carved from rose-red rock two thousand years ago and still stops you cold.",
+    "description": "Jordan is one of the Middle East's most accessible and rewarding destinations — a stable, welcoming country holding some of antiquity's greatest monuments. Petra is among the world's true wonders; Wadi Rum is Lawrence of Arabia's desert come to life; and the Dead Sea lets you float without trying. The food is exceptional and the hospitality is genuine.",
+    "best_time": "March–May, September–November",
+    "language": "Arabic",
+    "currency": "Jordanian Dinar (JD)",
+    "cities": [
+      {
+        "name": "Petra",
+        "notes": "Walk the Siq at dawn before the crowds. The Treasury reveals itself around the final bend — an almost theatrical moment. Spend two full days to see the whole site."
+      },
+      {
+        "name": "Amman",
+        "notes": "A city of hills (jabals), Roman ruins, excellent hummus at Hashem restaurant, and a rooftop bar view over minarets at sunset."
+      },
+      {
+        "name": "Wadi Rum",
+        "notes": "Vast red desert valleys, Bedouin camps under a sky full of stars, and Jeep tours through rock formations named after Lawrence of Arabia. Sleep in a camp — worth it."
+      }
+    ],
+    "food": [
+      {
+        "name": "Mansaf",
+        "notes": "Jordan's national dish — slow-cooked lamb in fermented dried yogurt sauce (jameed) served over rice with almonds and pine nuts. Eaten communally by hand."
+      },
+      {
+        "name": "Mezze",
+        "notes": "The spread: hummus, mutabbal, fattoush, tabbouleh, kibbeh, stuffed grape leaves. In Jordan the hummus is always warm and served with a pool of olive oil."
+      },
+      {
+        "name": "Knafeh",
+        "notes": "A hot dessert of shredded pastry or semolina layered over stretchy white cheese, soaked in sugar syrup, and topped with crushed pistachios. Ordered from street carts."
+      }
+    ],
+    "tips": [
+      "Buy the Jordan Pass before arrival — it covers the visa fee plus entry to Petra (2 days) and 40+ other sites. It pays for itself easily.",
+      "Petra at night (3 evenings per week) is a candlelit walk to the Treasury. Touristy but genuinely moving — worth doing in addition to the daytime visit.",
+      "Wadi Rum is a day trip from Petra but staying overnight is transformative — the silence and star density in the desert are extraordinary."
+    ],
+    "vibe_tags": [
+      "ancient ruins",
+      "desert",
+      "history",
+      "spirituality",
+      "adventure",
+      "hiking",
+      "ancient history"
+    ],
+    "photo": "https://images.pexels.com/photos/720254/pexels-photo-720254.jpeg?auto=compress&cs=tinysrgb&w=1200",
+    "budget": "$$",
+    "ideal_days": 7
+  },
+  {
+    "id": 43,
+    "name": "Sri Lanka",
+    "code": "LK",
+    "region": "asia",
+    "status": "dreaming",
+    "tagline": "Temples, tea, elephants, and coastline — a small island with an improbable amount of everything.",
+    "description": "Sri Lanka is compact enough to see a remarkable amount in two weeks but dense enough to reward a month. The Cultural Triangle holds some of Buddhism's most sacred sites; the central highlands have a tea industry that perfumed an empire; the south coast has some of Asia's best surfing; and the wildlife — especially leopards in Yala and elephants everywhere — rivals much larger countries.",
+    "best_time": "December–April (west/south coast), May–August (east coast)",
+    "language": "Sinhala, Tamil",
+    "currency": "Sri Lankan Rupee (LKR)",
+    "cities": [
+      {
+        "name": "Kandy",
+        "notes": "Home of the Temple of the Sacred Tooth Relic — one of Buddhism's most important shrines. Set on a lake in the central highlands with daily puja ceremonies."
+      },
+      {
+        "name": "Sigiriya",
+        "notes": "A 5th-century rock fortress rising 200m above the jungle, with frescoes and water gardens at the top. One of the most dramatic archaeological sites in Asia."
+      },
+      {
+        "name": "Galle",
+        "notes": "A Dutch colonial fort town on the south coast — whitewashed ramparts, a lighthouse, boutique hotels in colonial buildings, and excellent cafes."
+      }
+    ],
+    "food": [
+      {
+        "name": "Rice and curry",
+        "notes": "The national meal — a plate of rice surrounded by multiple small curries, sambol (coconut relish), and papadums. Every family has its own versions; all are good."
+      },
+      {
+        "name": "Hoppers (appa)",
+        "notes": "Bowl-shaped fermented rice flour pancakes, eaten for breakfast — plain, with an egg cracked in the center, or with string hoppers and pol sambol."
+      },
+      {
+        "name": "Ceylon tea",
+        "notes": "The island produces some of the world's finest black tea. Drink it in a hill-country bungalow with milk, watching mist roll over tea bushes at dawn."
+      }
+    ],
+    "tips": [
+      "Trains between Kandy and Ella are among the world's most scenic — book the observation car (Expo Rail) in advance for the best views over tea country.",
+      "Tuk-tuks are the preferred way to get around towns. Negotiate a fair price before getting in and agree on it in writing if it's a longer trip.",
+      "Book Yala National Park safaris in the morning — leopard sightings are highest before 9am, and the park gets crowded with jeeps later in the day."
+    ],
+    "vibe_tags": [
+      "temples",
+      "wildlife",
+      "beaches",
+      "nature",
+      "spirituality",
+      "ancient history",
+      "hiking"
+    ],
+    "photo": "https://images.pexels.com/photos/14041994/pexels-photo-14041994.jpeg?auto=compress&cs=tinysrgb&w=1200",
+    "budget": "$",
+    "ideal_days": 12
+  },
+  {
+    "id": 44,
+    "name": "Indonesia",
+    "code": "ID",
+    "region": "asia",
+    "status": "dreaming",
+    "tagline": "17,000 islands, and Bali is just one of them.",
+    "description": "Indonesia is a world unto itself — the fourth most populous country on Earth, stretching across an archipelago larger than the continental United States, containing some of the planet's oldest rainforests, most active volcanoes, and richest coral reefs. Bali is the gateway and still extraordinary, but Java's temples, Lombok's mountains, and Komodo's dragons reward those who push further.",
+    "best_time": "April–October (dry season)",
+    "language": "Indonesian (Bahasa Indonesia)",
+    "currency": "Indonesian Rupiah (IDR)",
+    "cities": [
+      {
+        "name": "Ubud",
+        "notes": "Bali's cultural heart — rice terrace walks at dawn, traditional dance performances, painters' studios, and the Monkey Forest. Base here over the beach if you have to choose."
+      },
+      {
+        "name": "Yogyakarta",
+        "notes": "The gateway to Borobudur and Prambanan — two of Asia's greatest temple complexes, and both within an hour of the city. Rich in Javanese art and wayang puppet tradition."
+      },
+      {
+        "name": "Labuan Bajo",
+        "notes": "The jumping-off point for Komodo National Park. Pink beach, manta ray snorkeling, and komodo dragons lumbering through scrub under a blinding sun."
+      }
+    ],
+    "food": [
+      {
+        "name": "Nasi goreng",
+        "notes": "Indonesia's national dish — fried rice with kecap manis (sweet soy), shrimp paste, egg, and whatever's in the kitchen. Eaten at any hour, found everywhere."
+      },
+      {
+        "name": "Babi guling",
+        "notes": "Balinese spit-roasted suckling pig stuffed with spices — crispy skin over tender, aromatic meat. Order it at Ibu Oka in Ubud before 11am, it sells out."
+      },
+      {
+        "name": "Rendang",
+        "notes": "Slow-cooked beef braised for hours in coconut milk and a complex spice paste until the liquid caramelizes. From West Sumatra, now beloved everywhere."
+      }
+    ],
+    "tips": [
+      "Cover shoulders and wear a sarong when entering temples — provided at the gate, but bringing your own is more comfortable.",
+      "Hire a driver-guide in Bali for a day rather than renting a scooter. Traffic is difficult, and a local guide unlocks hidden temples, best warungs, and safer roads.",
+      "Borobudur at sunrise requires booking a special early access ticket — get there for 4:30am and watch the mist clear over 2,500 year-old Buddhist reliefs. Unmissable."
+    ],
+    "vibe_tags": [
+      "temples",
+      "beaches",
+      "nature",
+      "adventure",
+      "jungle",
+      "wildlife",
+      "spirituality"
+    ],
+    "photo": "https://images.pexels.com/photos/2412711/pexels-photo-2412711.jpeg?auto=compress&cs=tinysrgb&w=1200",
+    "budget": "$",
+    "ideal_days": 14
+  },
+  {
+    "id": 45,
+    "name": "Philippines",
+    "code": "PH",
+    "region": "asia",
+    "status": "dreaming",
+    "tagline": "7,600 islands, each one with a different shade of turquoise.",
+    "description": "The Philippines is Southeast Asia's most underrated destination — a country of staggering natural beauty, warm and welcoming people, and a food culture that doesn't get nearly enough attention. Palawan holds some of the world's most spectacular island scenery; the Chocolate Hills of Bohol are otherworldly; and the Banaue rice terraces are a 2,000-year-old feat of engineering still in use today.",
+    "best_time": "November–May (dry season)",
+    "language": "Filipino (Tagalog), English",
+    "currency": "Philippine Peso (PHP)",
+    "cities": [
+      {
+        "name": "El Nido",
+        "notes": "Limestone karst towers rising from emerald lagoons in northern Palawan. Island-hopping tours reveal hidden beaches accessible only at low tide. The Philippines at its most dramatic."
+      },
+      {
+        "name": "Bohol",
+        "notes": "Home of the Chocolate Hills — 1,268 perfectly conical mounds turning brown in summer — plus the tiny tarsier, the world's smallest primate, in forest sanctuaries."
+      },
+      {
+        "name": "Vigan",
+        "notes": "A UNESCO-listed Spanish colonial city in Ilocos — cobblestone streets, horse-drawn calesas, and preserved 18th-century mestizo architecture intact from the colonial era."
+      }
+    ],
+    "food": [
+      {
+        "name": "Adobo",
+        "notes": "The national dish — chicken or pork braised in vinegar, soy sauce, garlic, and bay leaf until tender and glossy. Each family's recipe is different; all are correct."
+      },
+      {
+        "name": "Lechon",
+        "notes": "Whole roasted pig with crackling skin so good that Anthony Bourdain called it the best pig he'd ever eaten. The centerpiece of every celebration from baptism to fiesta."
+      },
+      {
+        "name": "Sinigang",
+        "notes": "Sour tamarind-based soup with pork, shrimp, or fish and a pile of vegetables. The broth is aggressively sour — bracing, warming, and deeply comforting."
+      }
+    ],
+    "tips": [
+      "Island-hop by bangka (outrigger boat) — it's the local transport and far more fun than the occasional ferry. Prices are negotiable directly with the boatmen.",
+      "Pack light — many island guesthouses have limited baggage storage, and small aircraft to outer islands have strict weight limits.",
+      "The rainy season (June–October) brings typhoons to most islands, though Palawan has a different rain pattern — it's more protected until August."
+    ],
+    "vibe_tags": [
+      "islands",
+      "beaches",
+      "adventure",
+      "nature",
+      "seafood",
+      "diving",
+      "coastal"
+    ],
+    "photo": "https://images.pexels.com/photos/13874296/pexels-photo-13874296.jpeg?auto=compress&cs=tinysrgb&w=1200",
+    "budget": "$",
+    "ideal_days": 14
+  },
+  {
+    "id": 46,
+    "name": "Cambodia",
+    "code": "KH",
+    "region": "asia",
+    "status": "dreaming",
+    "tagline": "Angkor Wat at sunrise is one of the world's moments — the rest of Cambodia earns it.",
+    "description": "Cambodia holds one of humanity's great architectural achievements in Angkor, a temple complex so vast it was a city of a million people at its height. But there's more than temples: Phnom Penh's complex, heartbreaking history, the river towns of Kampot and Kep, and a resurgent food scene built on one of Southeast Asia's most distinctive and underappreciated culinary traditions.",
+    "best_time": "November–March (cool dry season)",
+    "language": "Khmer",
+    "currency": "Riel (KHR); US dollars widely accepted",
+    "cities": [
+      {
+        "name": "Siem Reap",
+        "notes": "The base for Angkor — hire a tuk-tuk driver for 3 days and see the full temple circuit. Angkor Wat at 5am with the mist rising over the reflecting pool is the reason you came."
+      },
+      {
+        "name": "Phnom Penh",
+        "notes": "The capital holds Tuol Sleng and the Killing Fields — sobering, essential history. Then riverside cocktails, a thriving art scene, and some of the best Khmer food in the country."
+      },
+      {
+        "name": "Kampot",
+        "notes": "A sleepy river town in the south, famous for Kampot pepper — considered the world's best. Rent a bicycle, visit a pepper farm, and eat crab on the coast in nearby Kep."
+      }
+    ],
+    "food": [
+      {
+        "name": "Amok trey",
+        "notes": "Fish steamed in coconut milk with kroeung spice paste, served in a banana leaf cup. Cambodia's signature dish — fragrant, rich, and unlike Thai or Vietnamese food in character."
+      },
+      {
+        "name": "Bai sach chrouk",
+        "notes": "Grilled pork and rice — the classic Cambodian breakfast. Pork marinated in coconut milk, charcoal-grilled, served over broken rice with pickled vegetables."
+      },
+      {
+        "name": "Nom banh chok",
+        "notes": "Rice noodles with a fresh green curry sauce, raw vegetables, and banana blossoms. Eaten for breakfast by most Cambodians, sold from street carts at dawn."
+      }
+    ],
+    "tips": [
+      "Get a 3-day Angkor pass — one day is never enough. The Angkor Thom complex alone takes half a day; Ta Prohm with its tree roots is a separate half-day.",
+      "Dress modestly at temples — covered shoulders and knees are required at Angkor Wat specifically and strictly enforced.",
+      "Tipping your tuk-tuk driver generously matters here — Cambodia's economy is still rebuilding, and tourism dollars have outsized impact on individual livelihoods."
+    ],
+    "vibe_tags": [
+      "ancient ruins",
+      "temples",
+      "history",
+      "spirituality",
+      "street food",
+      "nature",
+      "ancient history"
+    ],
+    "photo": "https://images.pexels.com/photos/15928898/pexels-photo-15928898.jpeg?auto=compress&cs=tinysrgb&w=1200",
+    "budget": "$",
+    "ideal_days": 8
+  },
+  {
+    "id": 47,
+    "name": "Czech Republic",
+    "code": "CZ",
+    "region": "europe",
+    "status": "dreaming",
+    "tagline": "Prague is the most beautiful city in Central Europe, and it knows it.",
+    "description": "The Czech Republic emerged from communism with its Gothic and Baroque architecture almost entirely intact — Prague's old town is a rare European city that survived both the World Wars without major destruction. Beyond Prague, the country has spa towns, medieval castles, and Bohemian landscapes that are deeply undervisited. And the beer, brewed here for 700 years, is the best on Earth by some reckonings.",
+    "best_time": "April–June, September–October",
+    "language": "Czech",
+    "currency": "Czech Koruna (CZK)",
+    "cities": [
+      {
+        "name": "Prague",
+        "notes": "The old town, Charles Bridge at dusk, the castle district — all as spectacular as advertised. Stay in Vinohrady or Žižkov instead of the tourist center for the real city underneath."
+      },
+      {
+        "name": "Český Krumlov",
+        "notes": "A fairytale walled town on a river bend, dominated by a castle and largely unchanged since the 17th century. Two hours from Prague; a full day to explore on foot."
+      },
+      {
+        "name": "Karlovy Vary",
+        "notes": "The grandest of the Czech spa towns — colonnaded promenades, hot spring pavilions, and the Becherovka herbal liqueur distillery. Feels like a sanitarium in the best possible sense."
+      }
+    ],
+    "food": [
+      {
+        "name": "Svíčková",
+        "notes": "Beef sirloin braised in root vegetables and cream sauce, served with bread dumplings and cranberry compote. The Czech national comfort dish — rich, heavy, and deeply satisfying."
+      },
+      {
+        "name": "Trdelník",
+        "notes": "Grilled sweet pastry dough wrapped around a wooden cylinder, rolled in sugar and cinnamon. A tourist staple that's still genuinely good from the right stand."
+      },
+      {
+        "name": "Czech pilsner",
+        "notes": "Pilsner Urquell was invented here in Plzeň in 1842. In Prague's old pubs, it arrives in a half-liter glass with a thick foam head, unfiltered, from a tank. Nothing else compares."
+      }
+    ],
+    "tips": [
+      "Visit Charles Bridge at 6am — it's one of Europe's great monuments and utterly beautiful without the crowds. By 10am it's a wall of selfie sticks.",
+      "The Czech metro and tram network is excellent — buy a 24-hour pass and forget about taxis.",
+      "Prague Castle is the world's largest ancient castle complex — allow 4+ hours and go on a weekday morning to avoid the worst crowds."
+    ],
+    "vibe_tags": [
+      "architecture",
+      "history",
+      "art",
+      "city energy",
+      "ancient history",
+      "food culture",
+      "nightlife"
+    ],
+    "photo": "https://images.pexels.com/photos/16922751/pexels-photo-16922751.jpeg?auto=compress&cs=tinysrgb&w=1200",
+    "budget": "$$",
+    "ideal_days": 6
+  },
+  {
+    "id": 48,
+    "name": "Austria",
+    "code": "AT",
+    "region": "europe",
+    "status": "dreaming",
+    "tagline": "Mozart, Klimt, Sachertorte, and mountains that look exactly like a postcard.",
+    "description": "Austria is one of Europe's most elegant countries — a place that takes its coffee culture, its classical music, and its pastry-making with equal seriousness. Vienna is a museum city that somehow remains genuinely livable; the Alpine west offers some of Europe's best skiing and hiking; and the Salzkammergut lake district is so beautiful it appears in Sound of Music for good reason.",
+    "best_time": "April–June, September–October; December–February (skiing)",
+    "language": "German",
+    "currency": "Euro (€)",
+    "cities": [
+      {
+        "name": "Vienna",
+        "notes": "Schönbrunn Palace, the Kunsthistorisches Museum, a concert at the State Opera, and coffee and cake at Café Central — a city where grandeur is the daily default."
+      },
+      {
+        "name": "Salzburg",
+        "notes": "Mozart's birthplace and the Sound of Music backdrop — narrow baroque streets, a fortress above the river, and some of the best concerts in a country that produces many."
+      },
+      {
+        "name": "Hallstatt",
+        "notes": "A postcard village clinging to a clifftop above a glacial lake. It is as beautiful in person as in photos, which is saying something. Go on a weekday before it fills."
+      }
+    ],
+    "food": [
+      {
+        "name": "Wiener Schnitzel",
+        "notes": "Veal (never pork, the Viennese will tell you) pounded thin, breaded, and fried in clarified butter until perfectly golden. Served with a wedge of lemon and lingonberry jam."
+      },
+      {
+        "name": "Sachertorte",
+        "notes": "The dense chocolate cake with apricot jam layer from the Hotel Sacher, served with a side of unsweetened whipped cream. The original recipe is still a closely guarded secret."
+      },
+      {
+        "name": "Kaffeehaus culture",
+        "notes": "Vienna's coffeehouse tradition is a UNESCO Intangible Cultural Heritage. Order a Melange (espresso with steamed milk foam), take a newspaper, and sit for two hours. Encouraged."
+      }
+    ],
+    "tips": [
+      "The Vienna City Card covers unlimited public transport plus discounts at 210+ museums and attractions — excellent value for a 2–3 day stay.",
+      "Book State Opera standing-room tickets on the day of performance for a fraction of the seat price — €4 for world-class opera. Queue 80 minutes before curtain.",
+      "The Austrian Alpine trails are incredibly well-marked and hut-to-hut hiking infrastructure is superb. July–September is peak hiking season."
+    ],
+    "vibe_tags": [
+      "architecture",
+      "art",
+      "music",
+      "history",
+      "coffee culture",
+      "mountains",
+      "food culture"
+    ],
+    "photo": "https://images.pexels.com/photos/11932444/pexels-photo-11932444.jpeg?auto=compress&cs=tinysrgb&w=1200",
+    "budget": "$$$",
+    "ideal_days": 7
+  },
+  {
+    "id": 49,
+    "name": "Hungary",
+    "code": "HU",
+    "region": "europe",
+    "status": "dreaming",
+    "tagline": "Budapest at night, the Parliament lit gold above the Danube, is one of Europe's finest views.",
+    "description": "Budapest is one of Europe's great cities — two distinct cities (Buda and Pest) joined by bridges across the Danube, with an architectural heritage from the Austro-Hungarian era that survived better than most. The thermal bath culture is unique to Hungary; the ruin bar scene is unlike anything in Europe; and the food, led by a new generation of chefs working with paprika and goose fat, is quietly excellent.",
+    "best_time": "April–June, September–October",
+    "language": "Hungarian",
+    "currency": "Forint (HUF)",
+    "cities": [
+      {
+        "name": "Budapest",
+        "notes": "The Parliament building at night over the Danube, Széchenyi thermal baths, a ruin bar in the Jewish Quarter at midnight — one city doing many things extremely well."
+      },
+      {
+        "name": "Eger",
+        "notes": "A baroque gem in northern Hungary — a castle that repelled the Ottoman siege in 1552, minaret still standing, and the Valley of Beautiful Women for local Egri Bikavér wine."
+      },
+      {
+        "name": "Lake Balaton",
+        "notes": "Central Europe's largest lake and Hungary's summer playground — thermal waters, lavender fields in the Tihany peninsula, and excellent local wines on the northern shore."
+      }
+    ],
+    "food": [
+      {
+        "name": "Goulash (gulyás)",
+        "notes": "The national stew — beef, onions, paprika, and caraway in a rich broth. What the rest of the world calls goulash is not this; this is better and more honest."
+      },
+      {
+        "name": "Lángos",
+        "notes": "Deep-fried dough topped with sour cream and grated cheese, sold at every market and thermal bath. The Budapest street food experience in a single greasy, perfect item."
+      },
+      {
+        "name": "Kürtőskalács",
+        "notes": "Chimney cake — sweet dough wrapped around a spit, roasted over coals, and rolled in cinnamon sugar. A Central European classic with a crispy shell and soft interior."
+      }
+    ],
+    "tips": [
+      "Buy a 72-hour Budapest transit card — the metro, trams, and buses are excellent and cover everything including the airport bus.",
+      "Arrive at Széchenyi Baths on a weekday morning to avoid the tourist hordes — it becomes a party on weekend afternoons, which is a different but equally valid experience.",
+      "Hungarian forint goes a long way — Budapest is significantly cheaper than Vienna or Prague for accommodation, restaurants, and drinks."
+    ],
+    "vibe_tags": [
+      "architecture",
+      "history",
+      "nightlife",
+      "city energy",
+      "art",
+      "food culture",
+      "thermal baths"
+    ],
+    "photo": "https://images.pexels.com/photos/3700529/pexels-photo-3700529.jpeg?auto=compress&cs=tinysrgb&w=1200",
+    "budget": "$$",
+    "ideal_days": 5
+  },
+  {
+    "id": 50,
+    "name": "Sweden",
+    "code": "SE",
+    "region": "europe",
+    "status": "dreaming",
+    "tagline": "Fika, forests, midnight sun, and design that changed how the world lives.",
+    "description": "Sweden offers two different countries in one: the dense, design-forward urban culture of Stockholm — one of Europe's most beautiful capitals — and a vast wilderness of forests, lakes, and Arctic landscapes that represent the European outdoors at its most pure. The midnight sun in June is an experience that rewires your relationship with time, and Swedish food has quietly become one of the continent's most interesting.",
+    "best_time": "June–August (midnight sun, hiking); December–February (northern lights)",
+    "language": "Swedish",
+    "currency": "Swedish Krona (SEK)",
+    "cities": [
+      {
+        "name": "Stockholm",
+        "notes": "Built across 14 islands — Gamla Stan's medieval lanes, Djurgårde's open-air Skansen museum, Södermalm's design shops and cafes. Extraordinary for a city of a million."
+      },
+      {
+        "name": "Gothenburg",
+        "notes": "Sweden's second city and increasingly its food capital — the Feskekörka fish market, the archipelago a ferry ride away, and Liseberg amusement park for a surreal evening."
+      },
+      {
+        "name": "Kiruna / Abisko",
+        "notes": "Above the Arctic Circle — the ICEHOTEL, northern lights tours in February, and in June, 24 hours of daylight over mountains that look like another planet."
+      }
+    ],
+    "food": [
+      {
+        "name": "Köttbullar",
+        "notes": "Swedish meatballs — small, spiced with allspice and nutmeg, served with lingonberry jam, creamy gravy, and mashed potato. The IKEA version is based on a real thing that's much better."
+      },
+      {
+        "name": "Gravlax",
+        "notes": "Salmon cured in salt, sugar, and dill — the Scandinavian preparation that Sweden perfected. Served on crispbread with mustard-dill sauce and a glass of aquavit."
+      },
+      {
+        "name": "Fika",
+        "notes": "Not just coffee — a cultural institution. A mid-morning and mid-afternoon coffee break with a cinnamon bun (kanelbulle) or cardamom roll. Mandatory in all Swedish workplaces and worth importing."
+      }
+    ],
+    "tips": [
+      "Allemansrätten (the Right of Public Access) means you can camp, hike, and pick berries on almost any land in Sweden — even private. Use this freedom.",
+      "The Stockholm archipelago (30,000 islands) is a day trip by ferry from the city center. Rent bikes on Vaxholm or Sandhamn and cycle empty roads between summer cabins.",
+      "Sweden is expensive — budget travelers should take advantage of the excellent supermarkets (ICA, COOP) and free museum days (many museums are free on certain evenings)."
+    ],
+    "vibe_tags": [
+      "nature",
+      "design",
+      "hiking",
+      "northern lights",
+      "coffee culture",
+      "architecture",
+      "coastal"
+    ],
+    "photo": "https://images.pexels.com/photos/29138603/pexels-photo-29138603.jpeg?auto=compress&cs=tinysrgb&w=1200",
+    "budget": "$$$",
+    "ideal_days": 8
+  },
+  {
+    "id": 51,
+    "name": "UAE",
+    "code": "AE",
+    "region": "asia",
+    "status": "dreaming",
+    "tagline": "The future happened here first, and the desert is still just outside the city.",
+    "description": "The UAE — and Dubai in particular — is the most audacious exercise in city-building in modern history: a desert trading port transformed into a global hub in two generations. The architecture is jaw-dropping in scale, the shopping is extraordinary, but what surprises most visitors is the warmth of the culture underneath the gloss, the traditional souks still functioning next to the mega-malls, and the desert thirty minutes from the Burj Khalifa.",
+    "best_time": "November–April (cool season)",
+    "language": "Arabic; English widely spoken",
+    "currency": "UAE Dirham (AED)",
+    "cities": [
+      {
+        "name": "Dubai",
+        "notes": "The Burj Khalifa, the gold souk, a dhow cruise on the Creek, and the desert at sunset — it earns its reputation even as it exceeds every expectation of spectacle."
+      },
+      {
+        "name": "Abu Dhabi",
+        "notes": "The UAE's capital and more culturally grounded than Dubai. The Sheikh Zayed Grand Mosque is one of the world's most beautiful buildings; the Louvre Abu Dhabi is extraordinary."
+      },
+      {
+        "name": "Al Ain",
+        "notes": "The Garden City — an oasis settlement with date palms, falconry markets, a UNESCO-listed fort complex, and a pace of life that feels centuries away from Dubai."
+      }
+    ],
+    "food": [
+      {
+        "name": "Al Machboos",
+        "notes": "The Emirati national dish — spiced rice cooked in broth with meat (lamb, chicken, or fish) and dried limes (loomi). The flavors are unlike anything from neighboring cuisines."
+      },
+      {
+        "name": "Shawarma",
+        "notes": "Dubai's unofficial street food — Lebanese-style, with tahini, pickled vegetables, and garlic sauce. The ones from the laborer cafeterias near the Creek are the best in the city."
+      },
+      {
+        "name": "Camel milk",
+        "notes": "Slightly saltier and thinner than cow's milk, sold fresh or as chocolate bars throughout the country. Worth trying — and the camel milk café culture is a genuine thing here."
+      }
+    ],
+    "tips": [
+      "Dress conservatively in malls, souks, and public spaces — tank tops and shorts are acceptable on the beach but not elsewhere. Carry a light layer.",
+      "The Dubai Metro is excellent and far cheaper than taxis. It connects the airport to most tourist areas; the Palm monorail extends it to Palm Jumeirah.",
+      "Desert safaris are best booked directly with reputable Emirati operators rather than hotel desks — look for smaller groups and operators who include camel interaction and falconry."
+    ],
+    "vibe_tags": [
+      "architecture",
+      "city energy",
+      "markets",
+      "desert",
+      "modern",
+      "shopping",
+      "history"
+    ],
+    "photo": "https://images.pexels.com/photos/5686514/pexels-photo-5686514.jpeg?auto=compress&cs=tinysrgb&w=1200",
+    "budget": "$$$",
+    "ideal_days": 5
+  },
+  {
+    "id": 52,
+    "name": "Costa Rica",
+    "code": "CR",
+    "region": "americas",
+    "status": "dreaming",
+    "tagline": "Pura vida: a country where the national philosophy is also the best travel advice.",
+    "description": "Costa Rica protects 25% of its territory as national parks and reserves — extraordinary for a country this small — and it shows. The biodiversity is staggering: more species of birds than North America, both Pacific and Caribbean coastlines, active volcanoes, cloud forests, and some of the world's best whitewater. And the people genuinely embody 'pura vida' — pure life — in a way that makes every day feel lighter.",
+    "best_time": "December–April (Pacific dry season); the Caribbean side is drier June–October",
+    "language": "Spanish",
+    "currency": "Costa Rican Colón (CRC); USD accepted almost everywhere",
+    "cities": [
+      {
+        "name": "La Fortuna / Arenal",
+        "notes": "The Arenal Volcano towers over a town built for adventure — hot springs, zip-lining, whitewater rafting, and night hikes on lava fields. The thermal river at Tabacón is unmissable."
+      },
+      {
+        "name": "Monteverde",
+        "notes": "A cloud forest reserve with hanging bridges through the canopy, quetzal sightings at dawn, and night tours that reveal tree frogs, sloths, and coatis in the dark."
+      },
+      {
+        "name": "Manuel Antonio",
+        "notes": "A small national park on the Pacific where monkeys steal your lunch on the beach. White sand, turquoise water, dense wildlife in the surrounding jungle."
+      }
+    ],
+    "food": [
+      {
+        "name": "Gallo pinto",
+        "notes": "Rice and black beans cooked together with Lizano sauce, herbs, and peppers. The national breakfast — eaten every morning, sometimes for lunch, occasionally for dinner. Simple and right."
+      },
+      {
+        "name": "Casado",
+        "notes": "The standard lunch plate: rice, beans, plantains, salad, and a protein. Every soda (local restaurant) has it; it's filling, cheap, and almost always good."
+      },
+      {
+        "name": "Ceviche de corvina",
+        "notes": "Sea bass marinated in citrus with cilantro, onion, and sweet peppers — lighter and sweeter than Peruvian ceviche. Eaten ice-cold at a beachside shack before swimming."
+      }
+    ],
+    "tips": [
+      "Rent a 4WD — many of the best beaches and parks have unpaved roads that become impassable in rainy season with a regular car.",
+      "Book zip-lining, whitewater, and hanging bridge tours directly through local operators rather than hotel concierges — same quality, much lower price.",
+      "Slow down. Costa Rica rewards those who stop for an hour to watch a troop of howler monkeys or wait for a sunset over the Pacific rather than rushing between destinations."
+    ],
+    "vibe_tags": [
+      "jungle",
+      "wildlife",
+      "adventure",
+      "national parks",
+      "beaches",
+      "nature",
+      "hiking"
+    ],
+    "photo": "https://images.pexels.com/photos/16863807/pexels-photo-16863807.jpeg?auto=compress&cs=tinysrgb&w=1200",
+    "budget": "$$",
+    "ideal_days": 10
+  },
+  {
+    "id": 53,
+    "name": "Poland",
+    "code": "PL",
+    "region": "europe",
+    "status": "dreaming",
+    "tagline": "History written in every cobblestone, rebuilt by hand after it was erased.",
+    "description": "Poland's cities were almost entirely destroyed in World War II and rebuilt stone by stone — Warsaw's Old Town was reconstructed from 18th-century paintings, an act of cultural defiance that earned UNESCO recognition. Kraków escaped destruction and remains intact, one of Central Europe's most beautiful medieval cities. The country's history is heavy and essential, its pierogi are excellent, and it's still one of Europe's best-value destinations.",
+    "best_time": "May–September",
+    "language": "Polish",
+    "currency": "Polish Złoty (PLN)",
+    "cities": [
+      {
+        "name": "Kraków",
+        "notes": "The undamaged medieval city — Wawel Castle, Europe's largest market square, the Jewish Quarter (Kazimierz), and a 30-minute drive to Auschwitz-Birkenau, which every visitor should make."
+      },
+      {
+        "name": "Warsaw",
+        "notes": "The rebuilt capital — the Old Town reconstruction is remarkable in itself, but it's the modern city that surprises: excellent contemporary art, great coffee, and some of Eastern Europe's best nightlife."
+      },
+      {
+        "name": "Gdańsk",
+        "notes": "A Hanseatic port city on the Baltic — amber shops, Long Street's coloured facades, and the Solidarity Museum in the shipyard where Polish communism began to unravel."
+      }
+    ],
+    "food": [
+      {
+        "name": "Pierogi",
+        "notes": "Boiled or pan-fried stuffed dumplings — ruskie (potato and cheese), meat, sauerkraut and mushroom, or sweet with blueberry. The comfort food of an entire civilization."
+      },
+      {
+        "name": "Żurek",
+        "notes": "Sour rye soup with hard-boiled egg, white sausage, and sometimes served inside a bread bowl. The Polish soup that warms you from the first spoonful on a grey morning."
+      },
+      {
+        "name": "Bigos",
+        "notes": "Hunter's stew of sauerkraut, fresh cabbage, multiple meats, dried mushrooms, and red wine, cooked for days. Better on the second and third day — every grandmother's version is definitive."
+      }
+    ],
+    "tips": [
+      "Visit Auschwitz-Birkenau on a reserved entry ticket with a guide — the guided tour provides crucial historical context that self-guided visits lack. Allow a full day.",
+      "Polish cities are excellent on foot — Kraków's Old Town and Kazimierz are both compact and walkable. Rent a bike for the day in Warsaw to cover more ground.",
+      "Poland is exceptional value: restaurant meals, accommodation, and local transport are a fraction of Western European prices, with no compromise in quality."
+    ],
+    "vibe_tags": [
+      "history",
+      "architecture",
+      "ancient history",
+      "art",
+      "food culture",
+      "city energy",
+      "markets"
+    ],
+    "photo": "https://images.pexels.com/photos/19606024/pexels-photo-19606024.jpeg?auto=compress&cs=tinysrgb&w=1200",
+    "budget": "$",
+    "ideal_days": 7
   }
 ]
