@@ -65,7 +65,7 @@ Browse by region or category, search by ingredient, and save favorites. Each reg
 ### 07 - Departure Lounge
 > A travel bucket list: destinations as boarding passes.
 
-33 countries across 5 regions, each with cities to visit, food to eat, and reasons to go. Styled as boarding passes with a dark, editorial feel.
+50 countries across 5 regions, each with cities to visit, food to eat, and reasons to go. Styled as boarding passes with a dark, editorial feel.
 
 - **Stack:** HTML, JSON, Vanilla JS
 
