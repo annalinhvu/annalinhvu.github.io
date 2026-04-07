@@ -589,6 +589,9 @@
       .director-entry { grid-template-columns: 24px 1fr auto; gap: 0 12px; }
       .entry-name { font-size: 1.25rem; }
     }
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; transition-duration: 0.01ms !important; }
+    }
   </style>
 </head>
 <body>
