@@ -433,7 +433,7 @@ body {
   display: flex; flex-direction: column; gap: 4px; z-index: 50;
 }
 .zoom-btn {
-  width: 30px; height: 30px;
+  width: 44px; height: 44px;
   background: var(--surface); border: 1px solid var(--border);
   color: var(--text-3); font-size: 1rem; line-height: 1;
   cursor: pointer; transition: all 0.15s;
@@ -453,6 +453,9 @@ body {
   .side-panel.open { right: 0; }
   .topbar-brand { font-size: 1.4rem; letter-spacing: 5px; }
   .filter-select { display: none; }
+}
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; transition-duration: 0.01ms !important; }
 }
 </style>
 </head>
