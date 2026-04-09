@@ -761,7 +761,8 @@
     <div class="filter-bar">
       <div class="tag-strip" id="tag-strip"></div>
       <div class="filter-aux">
-        <input class="filter-input" id="search-input" type="search" placeholder="Search…" aria-label="Search">
+        <select class="filter-select" id="nat-select" aria-label="Filter by nationality"></select>
+        <input class="filter-input" id="search-input" type="search" placeholder="Search…" aria-label="Search directors">
       </div>
     </div>
 
@@ -781,13 +782,14 @@
   let savedIds = new Set();
   let searchQ = '';
   let activeTag = '';
+  let activeNat = '';
   let stimer = null;
 
-  // Tags shown in the strip: appear in >= 3 filmmakers, sorted by frequency desc
-  const STRIP_MIN_COUNT = 6;
+  // Tags shown in the strip: appear in >= 2 filmmakers, sorted by frequency desc
+  const STRIP_MIN_COUNT = 2;
 
   const ERA = { 'avant-garde':'Avant-garde', 'new-wave':'New Wave', 'classical':'Classical', 'contemporary':'Contemporary' };
-  const NAT = { french:'French', american:'American', japanese:'Japanese', belgian:'Belgian', russian:'Russian', swedish:'Swedish', hongkong:'Hong Kong', iranian:'Iranian', korean:'Korean', taiwanese:'Taiwanese', mexican:'Mexican', indian:'Indian', italian:'Italian', senegalese:'Senegalese', czech:'Czech', argentinian:'Argentinian', polish:'Polish', german:'German', scottish:'Scottish', chinese:'Chinese', spanish:'Spanish', thai:'Thai', danish:'Danish', hungarian:'Hungarian', norwegian:'Norwegian', turkish:'Turkish', british:'British', greek:'Greek', finnish:'Finnish', brazilian:'Brazilian', portuguese:'Portuguese', romanian:'Romanian' };
+  const NAT = { french:'French', american:'American', japanese:'Japanese', belgian:'Belgian', russian:'Russian', swedish:'Swedish', 'hong kong':'Hong Kong', iranian:'Iranian', korean:'Korean', taiwanese:'Taiwanese', mexican:'Mexican', indian:'Indian', italian:'Italian', senegalese:'Senegalese', czech:'Czech', argentinian:'Argentinian', polish:'Polish', german:'German', scottish:'Scottish', chinese:'Chinese', spanish:'Spanish', thai:'Thai', danish:'Danish', hungarian:'Hungarian', norwegian:'Norwegian', turkish:'Turkish', british:'British', greek:'Greek', finnish:'Finnish', brazilian:'Brazilian', portuguese:'Portuguese', romanian:'Romanian', austrian:'Austrian' };
   const fe = e => ERA[e] || e;
   const fn = n => NAT[n] || n.charAt(0).toUpperCase()+n.slice(1);
 
@@ -802,6 +804,7 @@
     const stored = localStorage.getItem('auteurs-saved');
     if (stored) savedIds = new Set(JSON.parse(stored));
     buildTagStrip();
+    buildNatSelect();
     updateBadge();
     window.addEventListener('hashchange', handleHash);
     handleHash();
@@ -843,13 +846,25 @@
   function applyFilters() {
     let r = all;
     if (activeTag) r = r.filter(f => (f.style_tags || []).includes(activeTag));
+    if (activeNat) r = r.filter(f => f.nationality === activeNat);
     if (searchQ) {
       const q = searchQ.toLowerCase();
       r = r.filter(f => f.name.toLowerCase().includes(q) || f.tagline.toLowerCase().includes(q));
     }
-    const isDefault = !searchQ && !activeTag;
+    const isDefault = !searchQ && !activeTag && !activeNat;
     render(r, isDefault);
     document.getElementById('result-count').textContent = `${r.length} director${r.length !== 1 ? 's' : ''}`;
+  }
+
+  function buildNatSelect() {
+    const counts = {};
+    all.forEach(f => { counts[f.nationality] = (counts[f.nationality] || 0) + 1; });
+    const opts = Object.entries(counts)
+      .sort((a, b) => b[1] - a[1])
+      .map(([nat, n]) => `<option value="${nat}">${fn(nat)} (${n})</option>`)
+      .join('');
+    document.getElementById('nat-select').innerHTML = '<option value="">All nationalities</option>' + opts;
+    document.getElementById('nat-select').value = activeNat;
   }
 
   function renderSpotlight(show) {
@@ -1056,6 +1071,10 @@
   document.getElementById('search-input').addEventListener('input', e => {
     clearTimeout(stimer);
     stimer = setTimeout(()=>{ searchQ=e.target.value.trim(); applyFilters(); }, 150);
+  });
+  document.getElementById('nat-select').addEventListener('change', e => {
+    activeNat = e.target.value;
+    applyFilters();
   });
 
   function toggleTheme() {
