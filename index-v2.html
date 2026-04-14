@@ -467,12 +467,13 @@ body {
 }
 .work-section-hd{
   font-family:'Geist Mono',monospace;
-  font-size:11px;letter-spacing:1.5px;
-  color:var(--t4);
+  font-size:12px;letter-spacing:2px;
+  color:var(--t2);
   margin-bottom:18px;margin-top:36px;
   display:flex;align-items:center;gap:8px;
+  text-transform:uppercase;
 }
-.work-section-hd::before{content:'--';color:var(--amber);font-weight:600;}
+.work-section-hd::before{content:'--';color:var(--amber);font-weight:700;}
 .work-section-hd:first-of-type{margin-top:0;}
 .proj-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-bottom:8px;}
 .proj-card{
@@ -883,6 +884,20 @@ body {
             <div class="proj-tags"><span class="proj-tag">Java</span><span class="proj-tag">ArrayList</span><span class="proj-tag">File I/O</span><span class="proj-tag">JUnit</span></div>
             <div class="proj-desc">Movie database system implementing complex query operations without a traditional RDBMS. Supports actor-movie lookups, co-actor discovery, common movie searches, rating filters (critics vs. audience), and mean rating calculations.</div>
             <div class="proj-metrics"><div><div class="pm-v">8</div><div class="pm-u">query types</div></div></div>
+          </div>
+          <div class="proj-card">
+            <div class="proj-title">LC4 Assembler</div>
+            <div class="proj-ctx">UPenn, CIT 5930 (Solo) · 2025–2026</div>
+            <div class="proj-tags"><span class="proj-tag">C</span><span class="proj-tag">Binary I/O</span><span class="proj-tag">ISA</span><span class="proj-tag">File Parsing</span><span class="proj-tag">Makefile</span></div>
+            <div class="proj-desc">Mini-assembler in C that reads LC4 assembly text files and emits binary .obj machine code files consumable by PennSim. Implements a full two-pass parser: tokenizes instructions, encodes each opcode and operand into 16-bit binary, and handles .CODE/.DATA/.SYMBOL section headers with proper endianness.</div>
+            <div class="proj-metrics"><div><div class="pm-v">30+</div><div class="pm-u">opcodes</div></div><div><div class="pm-v">2</div><div class="pm-u">file formats</div></div></div>
+          </div>
+          <div class="proj-card">
+            <div class="proj-title">LC4 Disassembler</div>
+            <div class="proj-ctx">UPenn, CIT 5930 (Solo) · 2025–2026</div>
+            <div class="proj-tags"><span class="proj-tag">C</span><span class="proj-tag">Linked List</span><span class="proj-tag">Dynamic Memory</span><span class="proj-tag">GDB</span><span class="proj-tag">Valgrind</span></div>
+            <div class="proj-desc">Reverse-assembler in C that reads binary .obj files, loads them into a custom linked list representing LC4 program and data memory, and disassembles binary machine code back into human-readable assembly — mirroring what PennSim's loader does internally. Zero memory leaks verified with Valgrind.</div>
+            <div class="proj-metrics"><div><div class="pm-v">0</div><div class="pm-u">mem leaks</div></div><div><div class="pm-v">3</div><div class="pm-u">section types</div></div></div>
           </div>
           <div class="proj-card">
             <div class="proj-title">Personal Portfolio Website</div>
