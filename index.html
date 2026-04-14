@@ -485,6 +485,14 @@ body {
 .work-section-hd::before{content:'--';color:var(--amber);font-weight:700;}
 .work-section-hd:first-of-type{margin-top:0;}
 .proj-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-bottom:8px;}
+@keyframes cardBounce{
+  0%  {transform:translateY(0);}
+  30% {transform:translateY(-7px);}
+  55% {transform:translateY(-2px);}
+  75% {transform:translateY(-5px);}
+  90% {transform:translateY(-1px);}
+  100%{transform:translateY(0);}
+}
 .proj-card{
   background:var(--surface);
   border:1px solid var(--bd);border-radius:12px;
@@ -492,6 +500,7 @@ body {
   transition:border-color .2s,box-shadow .2s;
 }
 .proj-card:hover{border-color:var(--bd-hi);box-shadow:0 3px 14px rgba(0,0,0,.12);}
+.proj-card.bouncing{animation:cardBounce .5s cubic-bezier(.36,.07,.19,.97) both;}
 .proj-title{font-size:15px;font-weight:600;color:var(--t1);margin-bottom:4px;}
 .proj-ctx{font-size:12px;color:var(--t4);margin-bottom:10px;font-family:'Geist Mono',monospace;letter-spacing:.3px;}
 .proj-tags{display:flex;gap:5px;flex-wrap:wrap;margin-bottom:12px;}
@@ -1077,6 +1086,18 @@ function toggleTheme() {
   html.setAttribute('data-theme', next);
   document.querySelector('.theme-btn').textContent = next === 'dark' ? '☀︎' : '☾';
 }
+
+/* ── Bento card bounce on click ── */
+document.querySelectorAll('.proj-card').forEach(function(card) {
+  card.addEventListener('mousedown', function() {
+    card.classList.remove('bouncing');
+    void card.offsetWidth; // reflow to restart animation
+    card.classList.add('bouncing');
+    card.addEventListener('animationend', function() {
+      card.classList.remove('bouncing');
+    }, {once: true});
+  });
+});
 
 /* ── Arrow key nav ── */
 document.addEventListener('keydown', function(e) {
