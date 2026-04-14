@@ -562,6 +562,33 @@ body {
   font-family:'Geist Mono',monospace;font-size:12.5px;
   color:var(--t1);caret-color:var(--amber);
 }
+.guide-toggle{
+  font-family:'Geist Mono',monospace;font-size:11px;
+  background:transparent;border:1px solid var(--bd);border-radius:6px;
+  color:var(--t3);cursor:pointer;padding:4px 12px;
+  transition:all .15s;letter-spacing:.3px;flex-shrink:0;
+}
+.guide-toggle:hover{border-color:var(--bd-hi);color:var(--t2);}
+.console-guide{
+  display:grid;grid-template-columns:1fr 1fr;gap:0;
+  border:1px solid var(--bd);border-radius:10px;
+  overflow:hidden;margin-bottom:14px;flex-shrink:0;
+}
+.console-guide.hidden{display:none;}
+.guide-col{padding:16px 20px;}
+.guide-col+.guide-col{border-left:1px solid var(--bd);}
+.guide-col-hd{
+  font-family:'Geist Mono',monospace;font-size:10px;
+  letter-spacing:2px;text-transform:uppercase;
+  color:var(--amber);margin-bottom:10px;
+}
+.guide-cmd{
+  font-family:'Geist Mono',monospace;font-size:11.5px;
+  color:var(--t3);line-height:2;cursor:pointer;display:block;
+  transition:color .12s;
+}
+.guide-cmd:hover{color:var(--t1);}
+.guide-cmd .gc-comment{color:var(--t4);font-size:10.5px;}
 .proj-title{font-size:15px;font-weight:600;color:var(--t1);margin-bottom:4px;}
 .proj-ctx{font-size:12px;color:var(--t4);margin-bottom:10px;font-family:'Geist Mono',monospace;letter-spacing:.3px;}
 .proj-tags{display:flex;gap:5px;flex-wrap:wrap;margin-bottom:12px;}
@@ -1080,8 +1107,38 @@ body {
         <div class="console-toolbar">
           <button class="mode-btn active" id="btn-sql" onclick="setConsoleMode('sql')">SQL</button>
           <button class="mode-btn" id="btn-py" onclick="setConsoleMode('python')">Python</button>
-          <span class="console-tip" id="console-tip">try: <code>SHOW TABLES</code></span>
+          <button class="guide-toggle" id="guide-toggle" onclick="toggleGuide()">commands ▾</button>
         </div>
+
+        <div class="console-guide" id="console-guide">
+          <div class="guide-col" id="guide-sql">
+            <div class="guide-col-hd">SQL</div>
+            <span class="guide-cmd" onclick="fillCmd('SHOW TABLES')">SHOW TABLES</span>
+            <span class="guide-cmd" onclick="fillCmd('SELECT * FROM anna')">SELECT * FROM anna</span>
+            <span class="guide-cmd" onclick="fillCmd('SELECT * FROM skills')">SELECT * FROM skills</span>
+            <span class="guide-cmd" onclick="fillCmd(&quot;SELECT * FROM skills WHERE category = 'Languages'&quot;)">SELECT * FROM skills WHERE category = 'Languages'</span>
+            <span class="guide-cmd" onclick="fillCmd('SELECT * FROM experience')">SELECT * FROM experience</span>
+            <span class="guide-cmd" onclick="fillCmd('SELECT * FROM projects')">SELECT * FROM projects</span>
+            <span class="guide-cmd" onclick="fillCmd('DESCRIBE anna')">DESCRIBE anna</span>
+            <span class="guide-cmd" onclick="fillCmd('EXPLAIN SELECT * FROM anna')">EXPLAIN SELECT * FROM anna</span>
+            <span class="guide-cmd" onclick="fillCmd(&quot;UPDATE anna SET status = 'hired'&quot;)">UPDATE anna SET status = 'hired'</span>
+            <span class="guide-cmd" onclick="fillCmd(&quot;INSERT INTO messages (from_name, message) VALUES ('your name', 'hello!')&quot;)">INSERT INTO messages <span class="gc-comment">-- contact anna</span></span>
+          </div>
+          <div class="guide-col" id="guide-python">
+            <div class="guide-col-hd">Python</div>
+            <span class="guide-cmd" onclick="fillCmd('help(anna)')">help(anna)</span>
+            <span class="guide-cmd" onclick="fillCmd('anna.info()')">anna.info()</span>
+            <span class="guide-cmd" onclick="fillCmd('anna.skills()')">anna.skills()</span>
+            <span class="guide-cmd" onclick="fillCmd('anna.experience()')">anna.experience()</span>
+            <span class="guide-cmd" onclick="fillCmd('anna.projects()')">anna.projects()</span>
+            <span class="guide-cmd" onclick="fillCmd('anna.availability()')">anna.availability()</span>
+            <span class="guide-cmd" onclick="fillCmd('anna.dream_job()')">anna.dream_job()</span>
+            <span class="guide-cmd" onclick="fillCmd('anna.hobbies()')">anna.hobbies()</span>
+            <span class="guide-cmd" onclick="fillCmd('anna.coffee_count')">anna.coffee_count</span>
+            <span class="guide-cmd" onclick="fillCmd(&quot;anna.contact('your name', 'hello!')&quot;)">anna.contact('name', 'message') <span class="gc-comment">-- send email</span></span>
+          </div>
+        </div>
+
         <div class="console-output" id="console-output"></div>
         <div class="console-input-row">
           <span class="console-prompt" id="console-prompt">anna_db&gt;&nbsp;</span>
@@ -1729,6 +1786,21 @@ switchPane = function(id) {
       }
     });
   }
+
+  /* ── Guide toggle + click-to-fill ── */
+  window.toggleGuide = function() {
+    var g = document.getElementById('console-guide');
+    var btn = document.getElementById('guide-toggle');
+    var hidden = g.classList.toggle('hidden');
+    btn.textContent = hidden ? 'commands ▸' : 'commands ▾';
+  };
+  window.fillCmd = function(cmd) {
+    if(!cinput) return;
+    cinput.value = cmd;
+    cinput.focus();
+    // place cursor at end
+    cinput.setSelectionRange(cmd.length, cmd.length);
+  };
 
   /* ── Focus input on console pane click ── */
   var consoleWrap = document.querySelector('.console-wrap');
