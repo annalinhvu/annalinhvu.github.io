@@ -300,8 +300,8 @@ body {
 /* ══════════════════════════════════════════════════════════
    MAIN PANEL
 ══════════════════════════════════════════════════════════ */
-.main-panel{overflow-y:auto;overflow-x:hidden;display:flex;flex-direction:column;}
-.tab-pane{display:none;flex:1;flex-direction:column;}
+.main-panel{overflow-y:auto;overflow-x:hidden;display:flex;flex-direction:column;min-height:0;}
+.tab-pane{display:none;flex:1;flex-direction:column;min-height:0;}
 .tab-pane.active{display:flex;}
 
 /* ══════════════════════════════════════════════════════════
@@ -507,8 +507,8 @@ body {
    CONSOLE TAB
 ══════════════════════════════════════════════════════════ */
 .console-wrap{
-  display:flex;flex-direction:column;flex:1;overflow:hidden;
-  padding:0 44px 20px;
+  display:flex;flex-direction:column;flex:1;min-height:0;overflow:hidden;
+  padding:0 44px 0;
 }
 .console-toolbar{
   display:flex;align-items:center;gap:10px;
@@ -528,7 +528,7 @@ body {
 }
 .console-tip code{color:var(--accent);}
 .console-output{
-  flex:1;overflow-y:auto;
+  flex:1;min-height:0;overflow-y:auto;
   font-family:'Geist Mono',monospace;font-size:12.5px;
   line-height:1.75;padding-bottom:12px;
 }
@@ -550,8 +550,8 @@ body {
 .res-row span{color:var(--t2);}
 .res-footer{color:var(--t4);margin-top:6px;font-size:11px;}
 .console-input-row{
-  display:flex;align-items:center;gap:8px;
-  border-top:1px solid var(--bd);padding-top:12px;margin-top:4px;
+  display:flex;align-items:center;gap:8px;flex-shrink:0;
+  border-top:1px solid var(--bd);padding-top:12px;margin-top:4px;padding-bottom:20px;
 }
 .console-prompt{
   color:var(--t4);font-family:'Geist Mono',monospace;
@@ -1519,6 +1519,25 @@ switchPane = function(id) {
     if(/FROM\s+salary/i.test(cu))   return '<div class="res-error">ERROR 1142: access denied — classified.</div>';
     if(/FROM\s+secrets/i.test(cu))  return '<div class="res-info">-- no secrets here... or are there? 🤫</div>';
     if(/SELECT\s+SLEEP/i.test(cu))  return '<div class="res-error">ERROR: i don\'t sleep on the job.</div>';
+    if(/^COMMIT\s*;?$/i.test(cu))   return '<div class="res-success">-- transaction committed. changes saved.</div>';
+    if(/^ROLLBACK\s*;?$/i.test(cu)) return '<div class="res-info">-- nothing to roll back. all good.</div>';
+    if(/^VACUUM\s+anna/i.test(cu))  return '<div class="res-success">-- anna is already optimized. no bloat detected.</div>';
+    if(/^ANALYZE\s+anna/i.test(cu)) return '<div class="res-success">-- analysis complete: highly efficient · zero redundancy · strong references · indexes healthy.</div>';
+    if(/^SELECT\s+VERSION\s*\(\s*\)/i.test(cu)) return renderTable(['version()'], [{'version()':'anna_vu-1.0.0-nyc (Geist Mono, 64-bit)'}]);
+    if(/^SELECT\s+NOW\s*\(\s*\)/i.test(cu)) return renderTable(['NOW()'], [{'NOW()': new Date().toLocaleString()}]);
+    if(/^SELECT\s+CURRENT_USER\s*\(\s*\)/i.test(cu)) return renderTable(['CURRENT_USER()'], [{'CURRENT_USER()':'visitor@anna_vu.profile'}]);
+    if(/UPDATE\s+anna\s+SET\s+status\s*=\s*['"]hired['"]/i.test(cu)) return '<div class="res-info">-- that\'s up to you ;) → vuanna@seas.upenn.edu</div>';
+    if(/^UPDATE\s+anna/i.test(cu))  return '<div class="res-error">ERROR 1142: UPDATE denied. anna edits herself.</div>';
+    if(/GRANT\s+ALL\s+ON\s+anna/i.test(cu)) return '<div class="res-success">-- i\'m listening... 👀 send a message: INSERT INTO messages (from_name, message) VALUES (\'you\', \'hire me\')</div>';
+    if(/^CREATE\s+TABLE\s+job_offer/i.test(cu)) return '<div class="res-success">-- now we\'re talking. → vuanna@seas.upenn.edu</div>';
+    if(/WHERE\s+mood\s*=\s*['"]tired['"]/i.test(cu)) return '<div class="res-info">-- 1 row in set (always)</div>';
+    if(/WHERE\s+mood\s*=\s*['"]happy['"]/i.test(cu)) return '<div class="res-success">-- 1 row in set (building things)</div>';
+    if(/^EXPLAIN\s+SELECT\s+\*\s+FROM\s+(anna\.)?anna/i.test(cu))
+      return '<div class="res-info">+----------+------+-------+-------+------------------+<br>'
+        +'| type     | key  | rows  | extra | note             |<br>'
+        +'+----------+------+-------+-------+------------------+<br>'
+        +'| ALL      | NULL | 1     | NULL  | one of a kind    |<br>'
+        +'+----------+------+-------+-------+------------------+</div>';
     if(/^(SHOW\s+TABLES|SHOW\s+DATABASES)/i.test(cu))
       return renderTable(['Tables_in_anna_vu'], TABLES.map(function(t){return{'Tables_in_anna_vu':t};}));
     var descM = cu.match(/^(?:DESCRIBE|DESC)\s+(\w+)/i);
@@ -1603,6 +1622,23 @@ switchPane = function(id) {
     if(/^len\s*\(\s*anna\.skills\s*\(\s*\)\s*\)/.test(cu)) return '<div class="res-success">'+SKILLS.length+'</div>';
     if(/^import\s+anna/.test(cu)) return '<div class="res-info"># already imported :)</div>';
     if(/^anna\s*=\s*Anna\s*\(\s*\)/.test(cu)) return '<div class="res-info"># already instantiated — hi! 👋</div>';
+    if(/^isinstance\s*\(\s*anna\s*,\s*DataEngineer\s*\)/.test(cu)) return '<div class="res-success">True</div>';
+    if(/^isinstance\s*\(\s*anna\s*,/.test(cu)) return '<div class="res-success">False</div>';
+    if(/^anna\s*==\s*['"]the best['"]/.test(cu)) return '<div class="res-success">True</div>';
+    if(/^anna\s*==/.test(cu)) return '<div class="res-success">False</div>';
+    if(/^anna\.coffee_count/.test(cu)) return '<div class="res-success">∞</div>';
+    if(/^anna\.years_of_experience\s*\(\s*\)/.test(cu)) return '<div class="res-success">4</div>';
+    if(/^anna\.dream_job\s*\(\s*\)/.test(cu)) return '<div class="res-success">\'senior data engineer at a company that ships real things\'</div>';
+    if(/^anna\.availability\s*\(\s*\)/.test(cu)) return '<div class="res-success">{\'status\': \'open_to_work\', \'location\': \'NYC or remote\', \'contact\': \'vuanna@seas.upenn.edu\'}</div>';
+    if(/^anna\.clone\s*\(\s*\)/.test(cu)) return '<div class="res-error">NotImplementedError: not possible... yet.</div>';
+    if(/^anna\.__repr__\s*\(\s*\)/.test(cu)) return '<div class="res-success">\'&lt;Anna Vu: DataEngineer @ NYC | open_to_work&gt;\'</div>';
+    if(/^anna\.bugs_fixed/.test(cu)) return '<div class="res-success">247  # and counting</div>';
+    if(/^anna\.late_night_commits/.test(cu)) return '<div class="res-success">\'more than i\'d like to admit\'</div>';
+    if(/^sorted\s*\(\s*anna\.skills\s*\(\s*\)\s*\)/.test(cu)) {
+      var flat=SKILLS.map(function(s){return'\''+esc(s.skill)+'\''}).sort();
+      return '<div class="res-success">['+flat.join(', ')+']</div>';
+    }
+    if(/^anna\.resume\s*\(\s*\)/.test(cu)) return '<div class="res-info"># email me for the full PDF → vuanna@seas.upenn.edu</div>';
     if(/^anna\.info\s*\(\s*\)/.test(cu)) {
       var keys=['name','location','role','origin','email','linkedin','status','grad_school','undergrad_school'];
       var lines=keys.map(function(k){return '&nbsp;&nbsp;<span style="color:var(--mono-g)">'+k+'</span>: <span style="color:var(--g-text)">"'+esc(ANNA[k])+'"</span>';});
