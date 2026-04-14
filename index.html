@@ -170,7 +170,7 @@ body {
 ══════════════════════════════════════════════════════════ */
 .layout {
   display:grid;
-  grid-template-columns:420px 1fr;
+  grid-template-columns:480px 1fr;
   flex:1; overflow:hidden; min-height:0;
 }
 
@@ -222,10 +222,15 @@ body {
   color:var(--amber);letter-spacing:1.2px;display:block;margin:4px 0;
 }
 .profile-role{font-size:13.5px;color:var(--t3);line-height:1.5;}
-.profile-schools{
-  font-family:'Geist Mono',monospace;font-size:11px;
-  color:var(--t4);margin-top:4px;line-height:1.5;
+.profile-contact-links{
+  display:flex;gap:12px;margin-top:7px;
 }
+.profile-contact-link{
+  font-family:'Geist Mono',monospace;font-size:11px;
+  color:var(--amber);text-decoration:none;letter-spacing:.3px;
+  transition:color .15s;
+}
+.profile-contact-link:hover{color:var(--t1);}
 
 .p-rule{border:none;border-top:1px solid var(--bd);margin:13px 0;}
 
@@ -291,19 +296,6 @@ body {
 .pg1{color:var(--accent);}.pg2{color:var(--indigo);}.pg3{color:#c8a870;}.pg4{color:var(--amber);}
 .pd1{fill:var(--accent);}.pd2{fill:var(--indigo);}.pd3{fill:#c8a870;}
 
-.panel-links{
-  display:flex;gap:14px;flex-wrap:wrap;
-  padding:14px 18px;
-  border-top:1px solid var(--bd);
-  margin-top:auto;
-}
-.panel-link{
-  font-family:'Geist Mono',monospace;
-  font-size:11px;color:var(--amber);
-  text-decoration:none;letter-spacing:.3px;
-  transition:color .15s;
-}
-.panel-link:hover{color:var(--t1);}
 
 /* ══════════════════════════════════════════════════════════
    MAIN PANEL
@@ -393,7 +385,7 @@ body {
 .col-stat strong{color:var(--t1);font-weight:500;}
 .col-tech{
   font-family:'Geist Mono',monospace;
-  font-size:10.5px;color:var(--t4);line-height:1.85;
+  font-size:11px;color:var(--t3);line-height:1.85;
 }
 .col-status{
   display:flex;align-items:center;gap:7px;
@@ -590,7 +582,10 @@ body {
           <div class="profile-name">Anna Vu</div>
           <span class="profile-linh">(LINH)</span>
           <div class="profile-role">Lead Data Technology Engineer</div>
-          <div class="profile-schools">UPenn M.A.Sc. · Vanderbilt B.A.</div>
+          <div class="profile-contact-links">
+            <a href="mailto:vuanna@seas.upenn.edu" class="profile-contact-link">↗ email</a>
+            <a href="https://www.linkedin.com/in/annalinhvu" class="profile-contact-link" target="_blank" rel="noopener">↗ linkedin</a>
+          </div>
         </div>
       </div>
 
@@ -651,10 +646,6 @@ body {
 
     </div>
 
-    <div class="panel-links">
-      <a href="mailto:vuanna@seas.upenn.edu"             class="panel-link">↗ email</a>
-      <a href="https://www.linkedin.com/in/annalinhvu" class="panel-link" target="_blank" rel="noopener">↗ linkedin</a>
-    </div>
   </aside>
 
   <!-- ──────── MAIN PANEL ───────────────────────── -->

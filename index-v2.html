@@ -1,0 +1,1322 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Anna (Linh) Vu | Data Engineer</title>
+<meta name="description" content="Senior Data Engineer in NYC. Building reliable data infrastructure for growth marketing.">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📊</text></svg>">
+<style>
+/* ── Fonts ─────────────────────────────────────────────── */
+@font-face {
+  font-family:'Geist'; font-style:normal; font-display:swap; font-weight:100 900;
+  src:url(https://cdn.jsdelivr.net/fontsource/fonts/geist:vf@latest/latin-wght-normal.woff2) format('woff2-variations');
+}
+@font-face {
+  font-family:'Geist Mono'; font-style:normal; font-display:swap; font-weight:100 900;
+  src:url(https://cdn.jsdelivr.net/fontsource/fonts/geist-mono:vf@latest/latin-wght-normal.woff2) format('woff2-variations');
+}
+
+/* ── Colour tokens ──────────────────────────────────────── */
+:root[data-theme="dark"] {
+  --bg:        #1c2028;
+  --panel:     #20262e;
+  --panel-hd:  #191e26;
+  --bd:        #2e3848;
+  --bd-hi:     #3a4a60;
+  --t1:        #e6eaf4;
+  --t2:        #b4bcd0;
+  --t3:        #7888a4;
+  --t4:        #3e4e66;
+  --accent:    #8aaa8e;
+  --amber:     #c8785e;
+  --amber2:    #b86448;
+  --rose:      #d47080;
+  --indigo:    #a090d4;
+  --green:     #5a8a5e;
+  --g-text:    #8aaa8e;
+  --mono-g:    #7aaa7a;
+  --row-hi:    #1a2230;
+  --row-alt:   #1e242c;
+  --surface:   #252d3a;
+  --surf-hov:  #2e3848;
+  --tag-bd:    rgba(138,170,142,.22);
+  --tag-col:   #8aaa8e;
+  --grid-h:    rgba(90,120,160,.06);
+  --grid-v:    rgba(90,120,160,.03);
+}
+:root[data-theme="light"] {
+  --bg:        #f3f1eb;
+  --panel:     #ffffff;
+  --panel-hd:  #ede9e0;
+  --bd:        #ddd9ce;
+  --bd-hi:     #c4bfb0;
+  --t1:        #2a2218;
+  --t2:        #4a4238;
+  --t3:        #7a7060;
+  --t4:        #aaa090;
+  --accent:    #5e7a62;
+  --amber:     #b8644a;
+  --amber2:    #a05040;
+  --rose:      #a85060;
+  --indigo:    #7060a8;
+  --green:     #4a6a4e;
+  --g-text:    #5e7a62;
+  --mono-g:    #5a7a5a;
+  --row-hi:    #f8f5ee;
+  --row-alt:   #f5f2ea;
+  --surface:   #ffffff;
+  --surf-hov:  #f8f6f0;
+  --tag-bd:    rgba(94,122,98,.22);
+  --tag-col:   #4a6450;
+  --grid-h:    rgba(110,95,70,.07);
+  --grid-v:    rgba(110,95,70,.04);
+}
+
+/* ── Reset ─────────────────────────────────────────────── */
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
+html,body{height:100%;}
+body {
+  font-family:'Geist',system-ui,sans-serif;
+  font-weight:400;
+  background-color:var(--bg);
+  background-image:
+    linear-gradient(var(--grid-h) 1px, transparent 1px),
+    linear-gradient(90deg, var(--grid-v) 1px, transparent 1px);
+  background-size:36px 36px;
+  color:var(--t2);
+  -webkit-font-smoothing:antialiased;
+  display:flex; flex-direction:column;
+  overflow:hidden;
+  transition:background-color .3s,color .3s;
+  animation:pageEntrance .45s ease both;
+}
+@keyframes pageEntrance{from{opacity:0;}to{opacity:1;}}
+
+/* ── Stagger reveal ──────────────────────────────────── */
+@keyframes staggerIn{
+  from{opacity:0;transform:translateY(6px);}
+  to  {opacity:1;transform:translateY(0);}
+}
+.stagger-item{opacity:0;animation:staggerIn .25s ease forwards;}
+
+/* ── Scrollbar ──────────────────────────────────────────── */
+::-webkit-scrollbar{width:5px;}
+::-webkit-scrollbar-track{background:transparent;}
+::-webkit-scrollbar-thumb{background:var(--bd-hi);border-radius:3px;}
+
+/* ══════════════════════════════════════════════════════════
+   TOP BAR
+══════════════════════════════════════════════════════════ */
+.top-bar {
+  height:42px; flex-shrink:0; z-index:20;
+  display:flex; align-items:center;
+  background:var(--panel-hd);
+  border-bottom:1px solid var(--bd-hi);
+  transition:background .3s, border-color .3s;
+}
+
+.terminal-path {
+  font-family:'Geist Mono',monospace;
+  font-size:12px; letter-spacing:.5px;
+  color:var(--mono-g);
+  padding:0 22px;
+  display:flex; align-items:center; gap:3px;
+  white-space:nowrap; flex-shrink:0;
+}
+.cursor {
+  display:inline-block; width:7px; height:15px;
+  background:var(--mono-g); border-radius:1px;
+  animation:blink 1.1s step-end infinite;
+}
+@keyframes blink{50%{opacity:0;}}
+
+.top-tabs {
+  display:flex; align-items:stretch; height:100%; margin:0 auto;
+  position:relative;
+}
+.tab-indicator {
+  position:absolute; bottom:0; height:2px;
+  background:var(--amber); pointer-events:none;
+  transition:left .22s ease, width .22s ease;
+  border-radius:1px 1px 0 0;
+}
+.top-tab {
+  font-family:'Geist Mono',monospace;
+  font-size:12px; font-weight:400; letter-spacing:.5px;
+  color:var(--t3); background:none; border:none;
+  border-bottom:2px solid transparent;
+  padding:0 24px; cursor:pointer; transition:color .15s;
+  white-space:nowrap;
+}
+.top-tab:hover{color:var(--t2);}
+.top-tab.active{color:var(--amber); border-bottom-color:var(--amber);}
+
+.top-right {
+  display:flex; align-items:center; gap:16px;
+  padding:0 20px; flex-shrink:0;
+}
+@keyframes pulse{0%,100%{opacity:1;transform:scale(1);}50%{opacity:.45;transform:scale(.7);}}
+.theme-btn {
+  font-size:14px; background:none; border:none;
+  cursor:pointer; color:var(--t3);
+  padding:4px 6px; border-radius:4px;
+  transition:color .15s;
+}
+.theme-btn:hover{color:var(--t1);}
+
+/* ══════════════════════════════════════════════════════════
+   LAYOUT
+══════════════════════════════════════════════════════════ */
+.layout {
+  display:grid;
+  grid-template-columns:480px 1fr;
+  flex:1; overflow:hidden; min-height:0;
+}
+
+/* ══════════════════════════════════════════════════════════
+   LEFT PANEL
+══════════════════════════════════════════════════════════ */
+.left-panel {
+  background:var(--panel);
+  border-right:1px solid var(--bd-hi);
+  display:flex; flex-direction:column;
+  overflow-y:auto; overflow-x:hidden;
+  transition:background .3s, border-color .3s;
+}
+.panel-titlebar {
+  height:32px; flex-shrink:0;
+  position:sticky; top:0; z-index:2;
+  background:var(--panel-hd);
+  border-bottom:1px solid var(--bd);
+  display:flex; align-items:center; gap:9px; padding:0 14px;
+  transition:background .3s;
+}
+.traffic-lights{display:flex;gap:6px;align-items:center;}
+.tl{width:11px;height:11px;border-radius:50%;}
+.tl-r{background:var(--amber);}
+.tl-y{background:#c8b438;}
+.tl-g{background:var(--green);}
+.panel-filename {
+  font-family:'Geist Mono',monospace;
+  font-size:11px; color:var(--t3); letter-spacing:.3px;
+}
+.panel-body{padding:18px;flex:1;}
+
+/* Avatar */
+.profile-row{display:flex;gap:13px;align-items:flex-start;margin-bottom:16px;}
+.avatar {
+  width:56px;height:56px;border-radius:10px;flex-shrink:0;
+  background:var(--surf-hov); border:1px solid var(--bd-hi);
+  display:flex;align-items:center;justify-content:center;
+  font-family:'Geist Mono',monospace;font-size:16px;font-weight:700;
+  color:var(--amber); position:relative; overflow:hidden;
+}
+.avatar img{position:absolute;width:100%;height:100%;object-fit:cover;}
+.profile-name{
+  font-family:'Geist',sans-serif;font-size:24px;font-weight:600;
+  color:var(--t1);letter-spacing:-.3px;line-height:1.2;
+}
+.profile-linh{
+  font-family:'Geist Mono',monospace;font-size:11px;
+  color:var(--amber);letter-spacing:1.2px;display:block;margin:4px 0;
+}
+.profile-role{font-size:13.5px;color:var(--t3);line-height:1.5;}
+.profile-contact-links{
+  display:flex;gap:12px;margin-top:7px;
+}
+.profile-contact-link{
+  font-family:'Geist Mono',monospace;font-size:11px;
+  color:var(--amber);text-decoration:none;letter-spacing:.3px;
+  transition:color .15s;
+}
+.profile-contact-link:hover{color:var(--t1);}
+
+.p-rule{border:none;border-top:1px solid var(--bd);margin:13px 0;}
+
+/* JSON block */
+.json-block{
+  font-family:'Geist Mono',monospace;
+  font-size:12px;line-height:1.85;margin-bottom:4px;
+}
+.j-key  {color:var(--mono-g);}
+.j-val  {color:var(--t2);}
+.j-str  {color:var(--g-text);}
+.j-punc {color:var(--t4);}
+
+.comment-block{
+  font-family:'Geist Mono',monospace;
+  font-size:12.5px;color:var(--t3);
+  line-height:1.8;font-style:italic;
+}
+
+.metric-lbl{
+  font-family:'Geist Mono',monospace;
+  font-size:10.5px;color:var(--t4);
+  letter-spacing:1.5px;margin-bottom:7px;
+}
+.metric-row{
+  display:flex;justify-content:space-between;
+  font-family:'Geist Mono',monospace;
+  font-size:12.5px;line-height:2.0;
+}
+.mk{color:var(--t3);} .mv{color:var(--t1);font-weight:500;}
+
+.panel-edu{margin-bottom:10px;}
+.pe-school{font-size:13px;font-weight:500;color:var(--t2);}
+.pe-deg{font-size:12px;color:var(--t3);margin-top:2px;line-height:1.4;}
+.pe-per{font-family:'Geist Mono',monospace;font-size:11px;color:var(--t4);margin-top:2px;}
+
+/* Panel skill list */
+.panel-skill-grp{
+  font-family:'Geist Mono',monospace;font-size:10px;
+  color:var(--amber);letter-spacing:1.2px;
+  margin-bottom:4px;margin-top:13px;
+}
+.panel-skill-grp:first-child{margin-top:0;}
+.panel-skill-line{
+  font-size:12px;color:var(--t3);line-height:1.65;
+}
+
+/* Pipeline in work tab */
+.pipeline-wrap{margin-bottom:28px;padding:16px 20px;background:rgba(128,128,128,.03);border:1px solid var(--bd);border-radius:10px;}
+.pipeline-lbl{font-family:'Geist Mono',monospace;font-size:10px;color:var(--t4);letter-spacing:2px;text-transform:uppercase;margin-bottom:12px;}
+.pipeline-svg{width:100%;display:block;}
+.p-stage{fill:rgba(128,128,128,.04);stroke-width:1.5;transition:fill .2s;}
+.p-grp{cursor:default;}
+.p-grp:hover .p-stage{fill:rgba(128,128,128,.09);}
+.p-grp:hover .p-sub{opacity:1;}
+.ps1{stroke:rgba(94,122,98,.5);}
+.ps2{stroke:rgba(122,106,150,.5);}
+.ps3{stroke:rgba(200,168,56,.45);}
+.ps4{stroke:rgba(200,120,94,.5);}
+.p-lbl{font-family:'Geist Mono',monospace;font-size:10px;letter-spacing:1.5px;text-anchor:middle;pointer-events:none;fill:currentColor;}
+.p-sub{font-family:'Geist',sans-serif;font-size:7.5px;text-anchor:middle;opacity:0;transition:opacity .25s;pointer-events:none;fill:currentColor;}
+.p-line{stroke:var(--t4);stroke-width:1.2;stroke-dasharray:3,3;opacity:.3;}
+.pg1{color:var(--accent);}.pg2{color:var(--indigo);}.pg3{color:#c8a870;}.pg4{color:var(--amber);}
+.pd1{fill:var(--accent);}.pd2{fill:var(--indigo);}.pd3{fill:#c8a870;}
+
+
+/* ══════════════════════════════════════════════════════════
+   MAIN PANEL
+══════════════════════════════════════════════════════════ */
+.main-panel{overflow-y:auto;overflow-x:hidden;display:flex;flex-direction:column;}
+.tab-pane{display:none;flex:1;flex-direction:column;}
+.tab-pane.active{display:flex;}
+
+/* ══════════════════════════════════════════════════════════
+   PROJECTS — database table
+══════════════════════════════════════════════════════════ */
+.query-bar {
+  font-family:'Geist Mono',monospace; font-size:12px;
+  padding:13px 26px;
+  background:var(--panel-hd); border-bottom:1px solid var(--bd-hi);
+  display:flex;gap:4px;align-items:center;flex-wrap:nowrap;
+  overflow-x:auto; flex-shrink:0;
+  transition:background .3s;
+}
+.kw  {color:var(--amber);}
+.tbl {color:var(--mono-g);}
+.cmt {color:var(--t4);margin-left:10px;}
+
+.db-head {
+  display:grid;
+  grid-template-columns:48px 1fr 120px 210px 230px 90px;
+  padding:0 26px; height:30px; align-items:center;
+  background:var(--panel-hd);
+  border-bottom:1px solid var(--bd);
+  flex-shrink:0; position:sticky; top:0; z-index:2;
+  transition:background .3s;
+}
+.db-head span{
+  font-family:'Geist Mono',monospace;
+  font-size:10px;letter-spacing:1.8px;
+  text-transform:uppercase;color:var(--t4);
+}
+
+.db-row {
+  display:grid;
+  grid-template-columns:48px 1fr 120px 210px 230px 90px;
+  padding:0 26px; border-bottom:1px solid var(--bd);
+  text-decoration:none; color:inherit; cursor:pointer;
+  transition:background .12s; align-items:center;
+}
+.db-row:hover{background:var(--surf-hov);}
+.db-row:hover .row-name{color:var(--amber);}
+.db-row:hover .row-link{opacity:1;}
+
+.db-row.featured {
+  min-height:96px; background:var(--row-hi);
+  border-left:3px solid var(--amber); padding-left:23px;
+  align-items:start; padding-top:18px; padding-bottom:18px;
+}
+.db-row.featured:hover{filter:brightness(1.07);}
+.db-row.std{min-height:58px;}
+.db-row.alt{background:var(--row-alt);}
+
+.col-idx{
+  font-family:'Geist Mono',monospace;
+  font-size:11px;color:var(--t4);letter-spacing:.5px;
+}
+.col-name{padding-right:14px;}
+.row-name{
+  font-size:15px;font-weight:500;color:var(--t1);
+  display:block;transition:color .12s;line-height:1.3;
+}
+.featured .row-name{font-size:15px;font-weight:500;margin-bottom:5px;}
+.row-desc{
+  font-size:13px;color:var(--t3);
+  display:block;margin-top:4px;line-height:1.55;
+}
+.row-link{
+  font-family:'Geist Mono',monospace;
+  font-size:11px;color:var(--amber);
+  display:block;margin-top:9px;
+  opacity:0;transition:opacity .12s;letter-spacing:.3px;
+}
+.col-cat{
+  font-family:'Geist Mono',monospace;
+  font-size:11px;color:var(--t3);letter-spacing:.3px;
+}
+.col-stat{
+  font-family:'Geist Mono',monospace;
+  font-size:11.5px;color:var(--t3);line-height:1.85;
+}
+.col-stat strong{color:var(--t1);font-weight:500;}
+.col-tech{
+  font-family:'Geist Mono',monospace;
+  font-size:11px;color:var(--t3);line-height:1.85;
+}
+.col-status{
+  display:flex;align-items:center;gap:7px;
+  font-family:'Geist Mono',monospace;
+  font-size:11px;color:var(--g-text);
+}
+.live-dot{
+  width:7px;height:7px;border-radius:50%;
+  background:var(--green);flex-shrink:0;
+}
+/* ── Filter bar ─────────────────────────────────────── */
+.filter-bar{
+  display:flex;align-items:center;gap:0;
+  padding:7px 26px;
+  background:var(--panel-hd);
+  border-bottom:1px solid var(--bd);
+  flex-shrink:0;transition:background .3s;
+}
+.filter-kw{
+  font-family:'Geist Mono',monospace;
+  font-size:12px;color:var(--t4);flex-shrink:0;
+}
+.filter-kw .kw{color:var(--amber);}
+.filter-input{
+  font-family:'Geist Mono',monospace;
+  font-size:12px;color:var(--t2);
+  background:none;border:none;outline:none;
+  flex:1;min-width:0;caret-color:var(--amber);
+}
+.filter-input::placeholder{color:var(--t4);}
+.filter-clear{
+  font-family:'Geist Mono',monospace;font-size:11px;
+  color:var(--t4);background:none;border:none;cursor:pointer;
+  padding:0 6px;transition:color .15s;opacity:0;pointer-events:none;
+}
+.filter-clear.visible{opacity:1;pointer-events:auto;}
+.filter-clear:hover{color:var(--amber);}
+
+/* ── Status bar ──────────────────────────────────────── */
+.status-bar{
+  height:22px;flex-shrink:0;
+  display:flex;align-items:center;justify-content:space-between;
+  padding:0 16px;
+  background:var(--panel-hd);
+  border-top:1px solid var(--bd);
+  font-family:'Geist Mono',monospace;font-size:10px;color:var(--t4);
+  letter-spacing:.3px;z-index:10;transition:background .3s;
+}
+.sb-left{display:flex;align-items:center;gap:14px;}
+.sb-conn{display:flex;align-items:center;gap:6px;}
+.sb-dot-sm{
+  width:5px;height:5px;border-radius:50%;
+  background:var(--green);
+  animation:pulse 2.5s ease-in-out infinite;
+}
+.sb-mid{color:var(--amber);}
+.sb-right{display:flex;gap:10px;align-items:center;}
+.sb-pipe{opacity:.3;}
+
+.db-footer{
+  font-family:'Geist Mono',monospace;
+  font-size:11px;color:var(--t4);
+  padding:10px 26px;
+  border-top:1px solid var(--bd-hi);
+  background:var(--panel-hd);
+  display:flex;gap:22px;align-items:center;flex-shrink:0;
+  transition:background .3s;
+}
+.ft-live{color:var(--g-text);}
+
+
+/* ══════════════════════════════════════════════════════════
+   WORK TAB  (professional + academic projects)
+══════════════════════════════════════════════════════════ */
+.work-wrap{padding:28px 44px;}
+.panel-intro-txt{
+  font-size:15px;color:var(--t3);
+  font-style:italic;margin-bottom:28px;letter-spacing:.2px;line-height:1.7;
+}
+.work-section-hd{
+  font-family:'Geist Mono',monospace;
+  font-size:11px;letter-spacing:1.5px;
+  color:var(--t4);
+  margin-bottom:18px;margin-top:36px;
+  display:flex;align-items:center;gap:8px;
+}
+.work-section-hd::before{content:'--';color:var(--amber);font-weight:600;}
+.work-section-hd:first-of-type{margin-top:0;}
+.proj-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-bottom:8px;}
+.proj-card{
+  background:var(--surface);
+  border:1px solid var(--bd);border-radius:12px;
+  padding:22px 24px;
+  transition:border-color .2s,box-shadow .2s;
+}
+.proj-card:hover{border-color:var(--bd-hi);box-shadow:0 3px 14px rgba(0,0,0,.12);}
+.proj-title{font-size:15px;font-weight:600;color:var(--t1);margin-bottom:4px;}
+.proj-ctx{font-size:12px;color:var(--t4);margin-bottom:10px;font-family:'Geist Mono',monospace;letter-spacing:.3px;}
+.proj-tags{display:flex;gap:5px;flex-wrap:wrap;margin-bottom:12px;}
+.proj-tag{
+  font-family:'Geist Mono',monospace;font-size:10px;
+  padding:3px 10px;border:1px solid var(--tag-bd);border-radius:7px;color:var(--tag-col);
+}
+.proj-desc{font-size:13px;color:var(--t2);line-height:1.75;margin-bottom:14px;}
+.proj-metrics{
+  display:flex;gap:20px;flex-wrap:wrap;
+  padding-top:12px;margin-top:12px;border-top:1px solid var(--bd);
+}
+.pm-v{font-family:'Geist Mono',monospace;font-size:22px;font-weight:600;color:var(--amber);line-height:1;}
+.pm-u{font-size:10px;color:var(--t4);text-transform:uppercase;letter-spacing:.5px;margin-top:2px;}
+
+/* ══════════════════════════════════════════════════════════
+   EXPERIENCE TAB
+══════════════════════════════════════════════════════════ */
+.exp-wrap{padding:28px 44px;}
+.exp-item{margin-bottom:36px;padding-bottom:36px;border-bottom:1px solid var(--bd);}
+.exp-item:last-child{border-bottom:none;}
+.exp-record-hd{
+  display:flex;align-items:baseline;gap:12px;
+  margin-bottom:6px;
+}
+.exp-record-idx{
+  font-family:'Geist Mono',monospace;font-size:11px;
+  color:var(--amber);letter-spacing:1px;flex-shrink:0;
+}
+.exp-role-title{font-size:18px;font-weight:600;color:var(--t1);}
+.exp-meta{
+  font-family:'Geist Mono',monospace;
+  font-size:12px;color:var(--t3);margin-bottom:12px;letter-spacing:.3px;
+}
+.exp-tags{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:14px;}
+.exp-tag{
+  font-family:'Geist Mono',monospace;font-size:10px;
+  padding:3px 10px;border:1px solid var(--tag-bd);border-radius:7px;color:var(--tag-col);
+}
+.exp-bullets{list-style:none;}
+.exp-bullets li{
+  position:relative;padding-left:16px;
+  font-size:14px;color:var(--t2);margin-bottom:8px;line-height:1.75;
+}
+.exp-bullets li::before{
+  content:'';position:absolute;left:2px;top:9px;
+  width:5px;height:5px;border-radius:50%;background:var(--amber);
+}
+.exp-wins{
+  display:flex;gap:22px;flex-wrap:wrap;
+  margin-top:14px;padding-top:14px;border-top:1px solid var(--bd);
+}
+.exp-win{display:flex;flex-direction:column;gap:3px;}
+.exp-win-v{font-family:'Geist Mono',monospace;font-size:22px;font-weight:600;color:var(--amber);line-height:1;}
+.exp-win-u{font-size:10px;color:var(--t4);text-transform:uppercase;letter-spacing:.5px;}
+
+</style>
+</head>
+<body>
+
+<!-- ═══════════════ TOP BAR ════════════════════════════ -->
+<header class="top-bar">
+  <div class="terminal-path">~/anna-vu<span class="cursor"></span></div>
+
+  <nav class="top-tabs" role="tablist">
+    <button class="top-tab active" data-pane="projects"   role="tab">projects</button>
+    <button class="top-tab"        data-pane="work"       role="tab">work</button>
+    <button class="top-tab"        data-pane="experience" role="tab">experience</button>
+    <div class="tab-indicator"></div>
+  </nav>
+
+  <div class="top-right">
+    <button class="theme-btn" onclick="toggleTheme()" title="Toggle theme">☀︎</button>
+  </div>
+</header>
+
+<!-- ═══════════════ LAYOUT ═════════════════════════════ -->
+<div class="layout">
+
+  <!-- ──────── LEFT PANEL ──────────────────────── -->
+  <aside class="left-panel">
+    <div class="panel-titlebar">
+      <div class="traffic-lights">
+        <span class="tl tl-r"></span>
+        <span class="tl tl-y"></span>
+        <span class="tl tl-g"></span>
+      </div>
+      <span class="panel-filename">profile.json</span>
+    </div>
+
+    <div class="panel-body">
+      <div class="profile-row">
+        <div class="avatar">
+          <img src="profile.png" alt="Anna Vu" onerror="this.style.display='none'">
+          AV
+        </div>
+        <div>
+          <div class="profile-name">Anna Vu</div>
+          <span class="profile-linh">(LINH)</span>
+          <div class="profile-role">Lead Data Technology Engineer</div>
+          <div class="profile-contact-links">
+            <a href="mailto:vuanna@seas.upenn.edu" class="profile-contact-link">↗ email</a>
+            <a href="https://www.linkedin.com/in/annalinhvu" class="profile-contact-link" target="_blank" rel="noopener">↗ linkedin</a>
+          </div>
+        </div>
+      </div>
+
+      <hr class="p-rule">
+
+      <div class="json-block">
+        <span class="j-punc">{</span><br>
+        &nbsp;&nbsp;<span class="j-key">"name"</span><span class="j-punc">: </span><span class="j-str">"Anna (Linh) Vu"</span><span class="j-punc">,</span><br>
+        &nbsp;&nbsp;<span class="j-key">"location"</span><span class="j-punc">: </span><span class="j-str">"New York City, NY"</span><span class="j-punc">,</span><br>
+        &nbsp;&nbsp;<span class="j-key">"role"</span><span class="j-punc">: </span><span class="j-str">"Lead Data Technology Engineer"</span><span class="j-punc">,</span><br>
+        &nbsp;&nbsp;<span class="j-key">"grad_school"</span><span class="j-punc">: </span><span class="j-str">"University of Pennsylvania"</span><span class="j-punc">,</span><br>
+        &nbsp;&nbsp;<span class="j-key">"grad_degree"</span><span class="j-punc">: </span><span class="j-str">"M.A.Sc. Computer Science · AI"</span><span class="j-punc">,</span><br>
+        &nbsp;&nbsp;<span class="j-key">"undergrad_school"</span><span class="j-punc">: </span><span class="j-str">"Vanderbilt University"</span><span class="j-punc">,</span><br>
+        &nbsp;&nbsp;<span class="j-key">"undergrad_degree"</span><span class="j-punc">: </span><span class="j-str">"B.A. Economics &amp; Media Arts"</span><span class="j-punc">,</span><br>
+        &nbsp;&nbsp;<span class="j-key">"origin"</span><span class="j-punc">: </span><span class="j-str">"Hanoi, Vietnam"</span><span class="j-punc">,</span><br>
+        &nbsp;&nbsp;<span class="j-key">"languages"</span><span class="j-punc">: </span><span class="j-str">["English", "Vietnamese"]</span><span class="j-punc">,</span><br>
+        &nbsp;&nbsp;<span class="j-key">"hobbies"</span><span class="j-punc">: </span><span class="j-str">["analog film", "photography", "community volunteering"]</span><span class="j-punc">,</span><br>
+        &nbsp;&nbsp;<span class="j-key">"status"</span><span class="j-punc">: </span><span class="j-str" style="color:var(--g-text)">"open_to_work"</span><br>
+        <span class="j-punc">}</span>
+      </div>
+
+      <hr class="p-rule">
+
+      <div class="comment-block">/* Data Engineer with expertise in marketing analytics infrastructure, designing scalable ETL pipelines, data models, and reporting systems that power decision-making for enterprise clients managing billions in marketing spend. */</div>
+
+
+      <hr class="p-rule">
+
+      <div class="metric-lbl">-- education</div>
+      <div class="panel-edu">
+        <div class="pe-school">University of Pennsylvania</div>
+        <div class="pe-deg">Master of Applied Science, Computer Science (part-time) · AI concentration</div>
+        <div class="pe-per">Aug 2024 → Expected Dec 2027</div>
+      </div>
+      <div class="panel-edu">
+        <div class="pe-school">Vanderbilt University</div>
+        <div class="pe-deg">Bachelor of Arts — Economics &amp; Media Arts (Double Major)</div>
+        <div class="pe-per">May 2021 · Nashville, TN</div>
+      </div>
+
+      <hr class="p-rule">
+
+      <div class="metric-lbl">-- skills</div>
+      <div class="panel-skill-grp">LANGUAGES</div>
+      <div class="panel-skill-line">SQL · Python · Java · JavaScript · CSS · C · Assembly</div>
+      <div class="panel-skill-grp">DATA WAREHOUSING</div>
+      <div class="panel-skill-line">Snowflake · BigQuery</div>
+      <div class="panel-skill-grp">ETL &amp; DATA ENGINEERING</div>
+      <div class="panel-skill-line">Matillion · REST APIs · SFTP · AWS S3 · Apps Script · dbt · Airflow</div>
+      <div class="panel-skill-grp">VISUALIZATION</div>
+      <div class="panel-skill-line">Looker · Tableau · Domo · Google Sheets</div>
+      <div class="panel-skill-grp">DEVELOPER TOOLS</div>
+      <div class="panel-skill-line">Git · Postman · JIRA · Confluence · DBeaver · Jupyter · PyCharm</div>
+      <div class="panel-skill-grp">MARKETING ANALYTICS</div>
+      <div class="panel-skill-line">Google Analytics · CM360 · Google Ads · Brandwatch · Prisma/MediaOcean</div>
+      <div class="panel-skill-grp">SOFT SKILLS</div>
+      <div class="panel-skill-line">Stakeholder Communication · Cross-Functional Collaboration · Problem Solving · Leadership</div>
+
+    </div>
+
+  </aside>
+
+  <!-- ──────── MAIN PANEL ───────────────────────── -->
+  <main class="main-panel">
+
+    <!-- ════ CREATIVE PROJECTS (default) ═══════════ -->
+    <section class="tab-pane active" id="pane-projects" role="tabpanel">
+      <div class="query-bar">
+        <span class="kw">SELECT</span><span>&nbsp;*&nbsp;</span>
+        <span class="kw">FROM</span><span>&nbsp;</span>
+        <span class="tbl">anna_vu.creative_projects</span><span>&nbsp;</span>
+        <span class="kw">ORDER BY</span><span>&nbsp;year&nbsp;</span>
+        <span class="kw">DESC</span>
+        <span class="cmt">-- 7 rows returned</span>
+      </div>
+      <div class="filter-bar">
+        <span class="filter-kw"><span class="kw">WHERE</span>&nbsp;project_name&nbsp;<span class="kw">LIKE</span>&nbsp;'%</span>
+        <input class="filter-input" id="proj-filter" placeholder="type to filter..." autocomplete="off" spellcheck="false">
+        <span class="filter-kw">%'</span>
+        <button class="filter-clear" id="filter-clear">× clear</button>
+      </div>
+      <div class="db-head">
+        <span>#</span><span>PROJECT</span><span>CATEGORY</span>
+        <span>ENTRIES</span><span>TECH</span><span>STATUS</span>
+      </div>
+
+      <a href="projects/festival-tracker/" class="db-row featured">
+        <div class="col-idx">01</div>
+        <div class="col-name">
+          <span class="row-name">Film Festival Tracker</span>
+          <span class="row-desc">Documentary and experimental film festivals worldwide. Deadlines, fees, acceptance rates — filterable by type and region to plan smarter submissions.</span>
+          <span class="row-link">view project →</span>
+        </div>
+        <div class="col-cat">Film</div>
+        <div class="col-stat"><strong>89</strong> festivals<br><strong>30</strong> countries</div>
+        <div class="col-tech">HTML · JSON<br>Vanilla JS</div>
+        <div class="col-status"><span class="live-dot"></span>live</div>
+      </a>
+
+      <a href="projects/film-stocks/" class="db-row std">
+        <div class="col-idx">02</div>
+        <div class="col-name"><span class="row-name">Analog Film Stock Database</span><span class="row-desc">Film stocks with price tracking and availability, plus development labs by location and pricing.</span><span class="row-link">view project →</span></div>
+        <div class="col-cat">Photography</div>
+        <div class="col-stat"><strong>54</strong> stocks · <strong>25</strong> labs</div>
+        <div class="col-tech">HTML · JSON · Vanilla JS</div>
+        <div class="col-status"><span class="live-dot"></span>live</div>
+      </a>
+
+      <a href="projects/nyc-film-map/" class="db-row std alt">
+        <div class="col-idx">03</div>
+        <div class="col-name"><span class="row-name">NYC Film Scene Map</span><span class="row-desc">New York's experimental film world on one map: screening spaces, workshops, labs, galleries, community spots.</span><span class="row-link">view project →</span></div>
+        <div class="col-cat">NYC / Film</div>
+        <div class="col-stat"><strong>100</strong> venues · <strong>5</strong> categories</div>
+        <div class="col-tech">HTML · JSON · Leaflet.js</div>
+        <div class="col-status"><span class="live-dot"></span>live</div>
+      </a>
+
+      <a href="projects/filmmakers/" class="db-row std">
+        <div class="col-idx">04</div>
+        <div class="col-name"><span class="row-name">Auteurs</span><span class="row-desc">A personal index of 100 filmmakers I admire, searchable and filterable by style tags.</span><span class="row-link">view project →</span></div>
+        <div class="col-cat">Film</div>
+        <div class="col-stat"><strong>100</strong> filmmakers · <strong>4</strong> eras</div>
+        <div class="col-tech">HTML · JSON</div>
+        <div class="col-status"><span class="live-dot"></span>live</div>
+      </a>
+
+      <a href="projects/self-care/" class="db-row std alt">
+        <div class="col-idx">05</div>
+        <div class="col-name"><span class="row-name">Only Good Things</span><span class="row-desc">Self-care activities filterable by season, duration, and setting — with completion tracking.</span><span class="row-link">view project →</span></div>
+        <div class="col-cat">Lifestyle</div>
+        <div class="col-stat"><strong>143</strong> activities · <strong>8</strong> categories</div>
+        <div class="col-tech">HTML · JSON · Vanilla JS</div>
+        <div class="col-status"><span class="live-dot"></span>live</div>
+      </a>
+
+      <a href="projects/recipes/" class="db-row std">
+        <div class="col-idx">06</div>
+        <div class="col-name"><span class="row-name">Cơm Nhà</span><span class="row-desc">Vietnamese recipes from Miền Bắc, Miền Trung, and Miền Nam. Browse by region, search by ingredient.</span><span class="row-link">view project →</span></div>
+        <div class="col-cat">Food</div>
+        <div class="col-stat"><strong>175</strong> recipes · <strong>3</strong> regions</div>
+        <div class="col-tech">HTML · JSON · Vanilla JS</div>
+        <div class="col-status"><span class="live-dot"></span>live</div>
+      </a>
+
+      <a href="projects/atlas/" class="db-row std alt">
+        <div class="col-idx">07</div>
+        <div class="col-name"><span class="row-name">Departure Lounge</span><span class="row-desc">Destinations as boarding passes — cities, food, and reasons to go.</span><span class="row-link">view project →</span></div>
+        <div class="col-cat">Travel</div>
+        <div class="col-stat"><strong>50</strong> countries · <strong>5</strong> regions</div>
+        <div class="col-tech">HTML · JSON · Vanilla JS</div>
+        <div class="col-status"><span class="live-dot"></span>live</div>
+      </a>
+
+      <div class="db-footer">
+        <span>7 rows returned</span>
+        <span class="ft-live">● all systems live</span>
+        <span>last updated Apr 2025</span>
+      </div>
+    </section>
+
+    <!-- ════ WORK (professional + academic projects) ═══ -->
+    <section class="tab-pane" id="pane-work" role="tabpanel">
+      <div class="query-bar">
+        <span class="kw">SELECT</span><span>&nbsp;project_name, company, year, stack&nbsp;</span>
+        <span class="kw">FROM</span><span>&nbsp;</span>
+        <span class="tbl">anna_vu.projects</span><span>&nbsp;</span>
+        <span class="kw">ORDER BY</span><span>&nbsp;year&nbsp;</span>
+        <span class="kw">DESC</span>
+        <span class="cmt">-- 15 rows returned</span>
+      </div>
+      <div class="work-wrap">
+        <div class="pipeline-wrap">
+          <div class="pipeline-lbl">Data pipeline</div>
+          <svg class="pipeline-svg" viewBox="0 0 720 90">
+            <line class="p-line" x1="130" y1="40" x2="195" y2="40"/>
+            <line class="p-line" x1="325" y1="40" x2="390" y2="40"/>
+            <line class="p-line" x1="520" y1="40" x2="585" y2="40"/>
+            <g class="p-grp pg1"><rect class="p-stage ps1" x="0"   y="15" width="130" height="50" rx="10"/><text class="p-lbl" x="65"  y="43">INGEST</text>   <text class="p-sub" x="65"  y="78">APIs · SFTP · Platforms · S3</text></g>
+            <g class="p-grp pg2"><rect class="p-stage ps2" x="195" y="15" width="130" height="50" rx="10"/><text class="p-lbl" x="260" y="43">TRANSFORM</text> <text class="p-sub" x="260" y="78">Python · Matillion · Snowflake SQL</text></g>
+            <g class="p-grp pg3"><rect class="p-stage ps3" x="390" y="15" width="130" height="50" rx="10"/><text class="p-lbl" x="455" y="43">VISUALIZE</text>  <text class="p-sub" x="455" y="78">Looker · Tableau · Reporting</text></g>
+            <g class="p-grp pg4"><rect class="p-stage ps4" x="585" y="15" width="130" height="50" rx="10"/><text class="p-lbl" x="650" y="43">ANALYZE</text>    <text class="p-sub" x="650" y="78">Performance · Budget · Anomalies</text></g>
+            <circle class="pd1" r="3" opacity="0"><animateMotion dur="1.2s" begin="0s"   repeatCount="indefinite" path="M130,40 L195,40"/><animate attributeName="opacity" values="0;1;1;0" dur="1.2s" begin="0s"   repeatCount="indefinite"/></circle>
+            <circle class="pd1" r="3" opacity="0"><animateMotion dur="1.2s" begin="0.4s" repeatCount="indefinite" path="M130,40 L195,40"/><animate attributeName="opacity" values="0;1;1;0" dur="1.2s" begin="0.4s" repeatCount="indefinite"/></circle>
+            <circle class="pd1" r="3" opacity="0"><animateMotion dur="1.2s" begin="0.8s" repeatCount="indefinite" path="M130,40 L195,40"/><animate attributeName="opacity" values="0;1;1;0" dur="1.2s" begin="0.8s" repeatCount="indefinite"/></circle>
+            <circle class="pd2" r="3" opacity="0"><animateMotion dur="1.2s" begin="0.15s" repeatCount="indefinite" path="M325,40 L390,40"/><animate attributeName="opacity" values="0;1;1;0" dur="1.2s" begin="0.15s" repeatCount="indefinite"/></circle>
+            <circle class="pd2" r="3" opacity="0"><animateMotion dur="1.2s" begin="0.55s" repeatCount="indefinite" path="M325,40 L390,40"/><animate attributeName="opacity" values="0;1;1;0" dur="1.2s" begin="0.55s" repeatCount="indefinite"/></circle>
+            <circle class="pd2" r="3" opacity="0"><animateMotion dur="1.2s" begin="0.95s" repeatCount="indefinite" path="M325,40 L390,40"/><animate attributeName="opacity" values="0;1;1;0" dur="1.2s" begin="0.95s" repeatCount="indefinite"/></circle>
+            <circle class="pd3" r="3" opacity="0"><animateMotion dur="1.2s" begin="0.3s"  repeatCount="indefinite" path="M520,40 L585,40"/><animate attributeName="opacity" values="0;1;1;0" dur="1.2s" begin="0.3s"  repeatCount="indefinite"/></circle>
+            <circle class="pd3" r="3" opacity="0"><animateMotion dur="1.2s" begin="0.7s"  repeatCount="indefinite" path="M520,40 L585,40"/><animate attributeName="opacity" values="0;1;1;0" dur="1.2s" begin="0.7s"  repeatCount="indefinite"/></circle>
+            <circle class="pd3" r="3" opacity="0"><animateMotion dur="1.2s" begin="1.1s"  repeatCount="indefinite" path="M520,40 L585,40"/><animate attributeName="opacity" values="0;1;1;0" dur="1.2s" begin="1.1s"  repeatCount="indefinite"/></circle>
+          </svg>
+        </div>
+        <p class="panel-intro-txt">/* data systems, pipelines, and tools — built professionally and academically to solve real problems. */</p>
+
+        <div class="work-section-hd">professional</div>
+        <div class="proj-grid">
+          <div class="proj-card">
+            <div class="proj-title">Enterprise ETL Pipeline Architecture</div>
+            <div class="proj-ctx">DEPT Agency · 2022–Present</div>
+            <div class="proj-tags"><span class="proj-tag">Matillion</span><span class="proj-tag">Snowflake</span><span class="proj-tag">Python</span><span class="proj-tag">S3</span><span class="proj-tag">BigQuery</span><span class="proj-tag">Looker</span></div>
+            <div class="proj-desc">Architected the data warehouse and ETL pipelines to ingest 30+ sources into Snowflake, powering Looker dashboards for campaign performance and budget allocation.</div>
+            <div class="proj-metrics"><div><div class="pm-v">30+</div><div class="pm-u">sources</div></div><div><div class="pm-v">1TB</div><div class="pm-u">monthly</div></div><div><div class="pm-v">$2B+</div><div class="pm-u">ad spend</div></div></div>
+          </div>
+          <div class="proj-card">
+            <div class="proj-title">Google Sheets Data Pull Tool</div>
+            <div class="proj-ctx">DEPT Agency · 2024</div>
+            <div class="proj-tags"><span class="proj-tag">Apps Script</span><span class="proj-tag">Matillion</span><span class="proj-tag">Snowflake</span><span class="proj-tag">Google Sheets</span><span class="proj-tag">SQL</span></div>
+            <div class="proj-desc">Self-serve data pull tool for Client Services. Dimension and metric selections in Google Sheets trigger Apps Script and Matillion pipelines that generate Snowflake views and write results back to the sheet.</div>
+            <div class="proj-metrics"><div><div class="pm-v">80%</div><div class="pm-u">less manual work</div></div><div><div class="pm-v">80%</div><div class="pm-u">faster turnaround</div></div></div>
+          </div>
+          <div class="proj-card">
+            <div class="proj-title">Real-Time Slack Alerting Pipeline</div>
+            <div class="proj-ctx">DEPT Agency · 2023</div>
+            <div class="proj-tags"><span class="proj-tag">SQL</span><span class="proj-tag">Python</span><span class="proj-tag">Matillion</span><span class="proj-tag">Slack API</span></div>
+            <div class="proj-desc">Evaluates marketing data against thresholds and pushes formatted alerts to client Slack channels when anomalies are detected.</div>
+            <div class="proj-metrics"><div><div class="pm-v">40%</div><div class="pm-u">faster resolution</div></div><div><div class="pm-v">Real-time</div><div class="pm-u">alerting</div></div></div>
+          </div>
+          <div class="proj-card">
+            <div class="proj-title">Snowflake Warehouse Optimization</div>
+            <div class="proj-ctx">DEPT Agency · 2023–2024</div>
+            <div class="proj-tags"><span class="proj-tag">Snowflake</span><span class="proj-tag">SQL</span></div>
+            <div class="proj-desc">Refactored 50%+ of data views, standardized naming conventions, consolidated duplicate logic, and documented ownership across the warehouse.</div>
+            <div class="proj-metrics"><div><div class="pm-v">30%</div><div class="pm-u">cost reduction</div></div><div><div class="pm-v">1,000+</div><div class="pm-u">tables audited</div></div></div>
+          </div>
+          <div class="proj-card">
+            <div class="proj-title">Custom API Ingestion & Data Processing</div>
+            <div class="proj-ctx">DEPT Agency · 2022–2023</div>
+            <div class="proj-tags"><span class="proj-tag">Python</span><span class="proj-tag">Pandas</span><span class="proj-tag">REST APIs</span><span class="proj-tag">Snowflake</span></div>
+            <div class="proj-desc">Reusable Python connectors for marketing APIs handling auth, pagination, rate limiting, and Pandas transformation before loading into Snowflake.</div>
+            <div class="proj-metrics"><div><div class="pm-v">6+</div><div class="pm-u">APIs integrated</div></div></div>
+          </div>
+          <div class="proj-card">
+            <div class="proj-title">Client Reporting & Dashboard Suite</div>
+            <div class="proj-ctx">DEPT Agency · 2022–2024</div>
+            <div class="proj-tags"><span class="proj-tag">SQL</span><span class="proj-tag">Tableau</span><span class="proj-tag">Snowflake</span></div>
+            <div class="proj-desc">SQL views powering automated reports and Tableau dashboards for 100+ clients. Full lifecycle from requirements through development and maintenance.</div>
+            <div class="proj-metrics"><div><div class="pm-v">100+</div><div class="pm-u">clients</div></div><div><div class="pm-v">200+</div><div class="pm-u">tickets resolved</div></div></div>
+          </div>
+          <div class="proj-card">
+            <div class="proj-title">Interactive BI Dashboard Suite</div>
+            <div class="proj-ctx">FIG Agency · 2022</div>
+            <div class="proj-tags"><span class="proj-tag">Domo</span><span class="proj-tag">Python</span><span class="proj-tag">SQL</span></div>
+            <div class="proj-desc">50+ Domo dashboards for campaign performance, audience insights, and media spend. Automated monthly insights generation with Python.</div>
+            <div class="proj-metrics"><div><div class="pm-v">50+</div><div class="pm-u">dashboards</div></div></div>
+          </div>
+          <div class="proj-card">
+            <div class="proj-title">ESOV Media Spend Analysis</div>
+            <div class="proj-ctx">FIG Agency · 2022</div>
+            <div class="proj-tags"><span class="proj-tag">R</span><span class="proj-tag">Kantar</span><span class="proj-tag">Pathmatics</span><span class="proj-tag">Google Trends</span></div>
+            <div class="proj-desc">ESOV charts correlating media spend with Google Trends data. CDI/BDI scatter plots for market identification and radar charts for brand salience.</div>
+            <div class="proj-metrics"><div><div class="pm-v">3</div><div class="pm-u">chart types</div></div></div>
+          </div>
+          <div class="proj-card">
+            <div class="proj-title">Social Listening & Audience Insights</div>
+            <div class="proj-ctx">FIG Agency · 2022</div>
+            <div class="proj-tags"><span class="proj-tag">Brandwatch</span><span class="proj-tag">Python</span><span class="proj-tag">Jupyter</span></div>
+            <div class="proj-desc">Brandwatch social listening dashboards across client brands. Automated insights writing and chart generation with Python for 10+ pitch decks.</div>
+            <div class="proj-metrics"><div><div class="pm-v">10+</div><div class="pm-u">insights decks</div></div></div>
+          </div>
+          <div class="proj-card">
+            <div class="proj-title">Media Campaign Trafficking</div>
+            <div class="proj-ctx">FIG Agency · 2021–2022</div>
+            <div class="proj-tags"><span class="proj-tag">Prisma/MediaOcean</span><span class="proj-tag">Campaign Manager 360</span><span class="proj-tag">Google Ads</span></div>
+            <div class="proj-desc">Campaign setup on Prisma/MediaOcean, trafficking sheets for CM360, Google Ads management, and optimization strategies across 20+ vendors.</div>
+            <div class="proj-metrics"><div><div class="pm-v">20+</div><div class="pm-u">vendors</div></div></div>
+          </div>
+        </div>
+
+        <div class="work-section-hd" style="margin-top:44px">academic</div>
+        <div class="proj-grid">
+          <div class="proj-card">
+            <div class="proj-title">COVID & Property Analytics Platform</div>
+            <div class="proj-ctx">UPenn, CIT 5940 (Group) · 2024–2025</div>
+            <div class="proj-tags"><span class="proj-tag">Java</span><span class="proj-tag">CSV/JSON</span><span class="proj-tag">MVC</span><span class="proj-tag">Memoization</span><span class="proj-tag">JUnit</span></div>
+            <div class="proj-desc">Data processing platform combining Philadelphia COVID vaccination records, population by ZIP, and property assessments. MVC architecture with custom readers, Singleton logger for audit trails, and memoized processors caching expensive computations.</div>
+            <div class="proj-metrics"><div><div class="pm-v">3</div><div class="pm-u">data sources</div></div><div><div class="pm-v">7+</div><div class="pm-u">test suites</div></div></div>
+          </div>
+          <div class="proj-card">
+            <div class="proj-title">Flu Tweet Geolocation Analyzer</div>
+            <div class="proj-ctx">UPenn, CIT 5940 (Solo) · 2024–2025</div>
+            <div class="proj-tags"><span class="proj-tag">Java</span><span class="proj-tag">Regex</span><span class="proj-tag">Geolocation</span><span class="proj-tag">Singleton</span><span class="proj-tag">Factory</span></div>
+            <div class="proj-desc">Analyzes geotagged tweets for flu-related content using regex pattern matching (handling edge cases like "fluent" vs "#flu"). Maps matches to the nearest U.S. state via Cartesian distance. Polymorphic Reader interface supports JSON and TXT formats.</div>
+            <div class="proj-metrics"><div><div class="pm-v">50</div><div class="pm-u">states mapped</div></div><div><div class="pm-v">2</div><div class="pm-u">input formats</div></div></div>
+          </div>
+          <div class="proj-card">
+            <div class="proj-title">Student Management System</div>
+            <div class="proj-ctx">UPenn, CIT 5910 (Group) · 2024–2025</div>
+            <div class="proj-tags"><span class="proj-tag">Java</span><span class="proj-tag">OOP</span><span class="proj-tag">HashMap</span><span class="proj-tag">Auth</span><span class="proj-tag">JUnit 5</span></div>
+            <div class="proj-desc">Full-featured academic management system with role-based access control. Admins create/delete courses and users. Professors manage enrolled students and grades. Students view schedules, enroll/drop, and check grades. File-based persistence with comprehensive test coverage.</div>
+            <div class="proj-metrics"><div><div class="pm-v">3</div><div class="pm-u">user roles</div></div><div><div class="pm-v">7</div><div class="pm-u">test suites</div></div></div>
+          </div>
+          <div class="proj-card">
+            <div class="proj-title">Movie Trivia Database Engine</div>
+            <div class="proj-ctx">UPenn, CIT 5910 · 2024–2025</div>
+            <div class="proj-tags"><span class="proj-tag">Java</span><span class="proj-tag">ArrayList</span><span class="proj-tag">File I/O</span><span class="proj-tag">JUnit</span></div>
+            <div class="proj-desc">Movie database system implementing complex query operations without a traditional RDBMS. Supports actor-movie lookups, co-actor discovery, common movie searches, rating filters (critics vs. audience), and mean rating calculations.</div>
+            <div class="proj-metrics"><div><div class="pm-v">8</div><div class="pm-u">query types</div></div></div>
+          </div>
+          <div class="proj-card">
+            <div class="proj-title">Personal Portfolio Website</div>
+            <div class="proj-ctx">Personal · 2025–Present</div>
+            <div class="proj-tags"><span class="proj-tag">HTML</span><span class="proj-tag">CSS</span><span class="proj-tag">JavaScript</span><span class="proj-tag">SVG</span></div>
+            <div class="proj-desc">This site! Single-page portfolio with tabbed navigation, dark/light theme toggle, animated pipeline visualization, data studio aesthetic, and responsive layout. Built from scratch with vanilla HTML, CSS, and JS.</div>
+            <div class="proj-metrics"><div><div class="pm-v">0</div><div class="pm-u">frameworks</div></div><div><div class="pm-v">2</div><div class="pm-u">themes</div></div></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ════ EXPERIENCE (job history) ════════════════ -->
+    <section class="tab-pane" id="pane-experience" role="tabpanel">
+      <div class="query-bar">
+        <span class="kw">SELECT</span><span>&nbsp;role, company, period, wins&nbsp;</span>
+        <span class="kw">FROM</span><span>&nbsp;</span>
+        <span class="tbl">anna_vu.experience</span><span>&nbsp;</span>
+        <span class="kw">ORDER BY</span><span>&nbsp;start_date&nbsp;</span>
+        <span class="kw">DESC</span>
+        <span class="cmt">-- 5 records</span>
+      </div>
+      <div class="exp-wrap">
+
+        <div class="exp-item">
+          <div class="exp-record-hd">
+            <span class="exp-record-idx">[01]</span>
+            <div class="exp-role-title">Lead Data Technology Engineer</div>
+          </div>
+          <div class="exp-meta">DEPT Agency · New York, NY · Aug 2025 – Present</div>
+          <div class="exp-tags"><span class="exp-tag">Matillion</span><span class="exp-tag">Snowflake</span><span class="exp-tag">Python</span><span class="exp-tag">Looker</span><span class="exp-tag">SQL</span><span class="exp-tag">S3</span></div>
+          <ul class="exp-bullets">
+            <li>Partner with a major enterprise with $2B+ annual marketing spend to translate reporting needs into scalable data solutions, scoping requirements and delivery plans that align with technical capabilities and business goals.</li>
+            <li>Architect scalable data models and ETL pipelines to ingest and transform data from 30+ data sources, powering multiple Looker dashboards that deliver actionable insights for enterprise stakeholders.</li>
+            <li>Mentor junior engineers, establish standards & documentation to ensure operational efficiency across projects.</li>
+            <li>Lead technical delivery across multiple reporting and automation initiatives, coordinating timelines, priorities, and releases to ensure accurate and timely stakeholder outcomes.</li>
+            <li>Champion continuous improvement by identifying gaps in data tooling, proposing roadmap initiatives, and driving cross-functional alignment with Client Services and Data Technology.</li>
+          </ul>
+          <div class="exp-wins"><div class="exp-win"><span class="exp-win-v">30+</span><span class="exp-win-u">sources</span></div><div class="exp-win"><span class="exp-win-v">$2B+</span><span class="exp-win-u">ad spend</span></div></div>
+        </div>
+
+        <div class="exp-item">
+          <div class="exp-record-hd">
+            <span class="exp-record-idx">[02]</span>
+            <div class="exp-role-title">Senior Business Intelligence Engineer</div>
+          </div>
+          <div class="exp-meta">DEPT Agency · New York, NY · Jun 2024 – Aug 2025</div>
+          <div class="exp-tags"><span class="exp-tag">Tableau</span><span class="exp-tag">Apps Script</span><span class="exp-tag">Matillion</span><span class="exp-tag">Snowflake</span><span class="exp-tag">SQL</span><span class="exp-tag">Python</span></div>
+          <ul class="exp-bullets">
+            <li>Maintained high-performance Tableau dashboards and Google Sheets automated reports, managing the full data cycle from ingestion to transformation, visualization, and stakeholder delivery.</li>
+            <li>Drove client-facing projects in partnership with Client Services, clarifying requirements, scoping data sources, cleaning & transforming data, and delivering custom dashboards/reports for strategic decision-making.</li>
+            <li>Architected automated Google Sheets workflows enabling one-click submission of inputs to trigger Apps Script and Matillion jobs that generate SQL views and write outputs back to designated tabs, reducing manual work and turnaround time by 40%.</li>
+            <li>Led large-scale refactoring of 50%+ Snowflake data views, improving query performance and maintainability.</li>
+            <li>Oversaw daily monitoring, investigation, and resolution of data issues to ensure accuracy & reliability of BI deliverables.</li>
+            <li>Facilitated agile delivery as Scrum Master, driving backlog grooming, brainstorming, and project execution.</li>
+          </ul>
+          <div class="exp-wins"><div class="exp-win"><span class="exp-win-v">40%</span><span class="exp-win-u">faster turnaround</span></div><div class="exp-win"><span class="exp-win-v">50%+</span><span class="exp-win-u">views refactored</span></div><div class="exp-win"><span class="exp-win-v">100+</span><span class="exp-win-u">clients</span></div></div>
+        </div>
+
+        <div class="exp-item">
+          <div class="exp-record-hd">
+            <span class="exp-record-idx">[03]</span>
+            <div class="exp-role-title">Business Intelligence Engineer</div>
+          </div>
+          <div class="exp-meta">DEPT Agency · New York, NY · Oct 2022 – May 2024</div>
+          <div class="exp-tags"><span class="exp-tag">SQL</span><span class="exp-tag">Matillion</span><span class="exp-tag">Python</span><span class="exp-tag">Pandas</span><span class="exp-tag">Snowflake</span><span class="exp-tag">Tableau</span><span class="exp-tag">REST APIs</span><span class="exp-tag">Slack API</span></div>
+          <ul class="exp-bullets">
+            <li>Developed backend SQL views for automated marketing reports for 100+ cross-agency clients.</li>
+            <li>Designed ETL pipelines via Matillion to ingest data from emails, SFTP, S3 into Snowflake (1TB of data monthly).</li>
+            <li>Developed Python scripts to ingest JSON responses from various APIs, employing Pandas for data cleanup.</li>
+            <li>Established automated email and Slack alert systems, reducing issue resolution times by 40%.</li>
+            <li>Troubleshot 200+ JIRA tickets for Client Services teams on data discrepancies and integration issues.</li>
+            <li>Cleaned up Snowflake database with over 1,000 tables/views, achieving a 30% reduction in warehouse costs.</li>
+            <li>Created and optimized Tableau dashboards to provide clients with data-driven decision-making capabilities.</li>
+            <li>Wrote detailed documentation on Confluence to improve operational clarity and cross-team collaboration.</li>
+          </ul>
+          <div class="exp-wins"><div class="exp-win"><span class="exp-win-v">1TB</span><span class="exp-win-u">monthly</span></div><div class="exp-win"><span class="exp-win-v">100+</span><span class="exp-win-u">clients</span></div><div class="exp-win"><span class="exp-win-v">30%</span><span class="exp-win-u">cost cut</span></div><div class="exp-win"><span class="exp-win-v">200+</span><span class="exp-win-u">tickets</span></div><div class="exp-win"><span class="exp-win-v">40%</span><span class="exp-win-u">faster resolution</span></div></div>
+        </div>
+
+        <div class="exp-item">
+          <div class="exp-record-hd">
+            <span class="exp-record-idx">[04]</span>
+            <div class="exp-role-title">Data Analyst</div>
+          </div>
+          <div class="exp-meta">FIG · New York, NY · Jul 2022 – Oct 2022</div>
+          <div class="exp-tags"><span class="exp-tag">Domo</span><span class="exp-tag">Python</span><span class="exp-tag">SQL</span><span class="exp-tag">BigQuery</span><span class="exp-tag">Brandwatch</span><span class="exp-tag">Jupyter</span><span class="exp-tag">R</span></div>
+          <ul class="exp-bullets">
+            <li>Ingested data from multiple platforms and APIs into Domo, maintained dashboards/datasets/ETL dataflow pipelines, created interactive visualizations that transform data into actionable performance insights.</li>
+            <li>Handled ad hoc requests from clients and internal teams and troubleshot data collection, taxonomy naming convention & match table issues.</li>
+            <li>Built Brandwatch queries/dashboards and created 10+ social listening, audience insights decks for new business pitches.</li>
+            <li>Automated the insights writing process and custom charts generation with Python on Jupyter Notebooks (NumPy, Pandas, Matplotlib).</li>
+            <li>Wrote SQL queries to set up API connectors (BigQuery) and special calculated fields on Domo.</li>
+            <li>Used R to create Excess Share of Voice (ESOV) charts correlating media spend (Kantar, Pathmatics) with Google Trends search indexes.</li>
+            <li>Created CDI/BDI scatter plot charts to identify potential markets for budget planning and radar charts to analyse salience scores by brand.</li>
+            <li>Performed QA on floodlight tags, tracking URLs and UTM parameters using Google Analytics.</li>
+            <li>Provided insights for brand health studies and assisted in the development and measurement of A/B testing.</li>
+            <li>Assisted in the development of reach/frequency predictive models across all media channels.</li>
+          </ul>
+          <div class="exp-wins"><div class="exp-win"><span class="exp-win-v">50+</span><span class="exp-win-u">dashboards</span></div><div class="exp-win"><span class="exp-win-v">10+</span><span class="exp-win-u">pitch decks</span></div><div class="exp-win"><span class="exp-win-v">5+</span><span class="exp-win-u">API integrations</span></div></div>
+        </div>
+
+        <div class="exp-item">
+          <div class="exp-record-hd">
+            <span class="exp-record-idx">[05]</span>
+            <div class="exp-role-title">Media Coordinator</div>
+          </div>
+          <div class="exp-meta">FIG · New York, NY · Jun 2021 – Jun 2022</div>
+          <div class="exp-tags"><span class="exp-tag">Prisma/MediaOcean</span><span class="exp-tag">Campaign Manager 360</span><span class="exp-tag">Google Ads</span><span class="exp-tag">Kantar</span></div>
+          <ul class="exp-bullets">
+            <li>Managed relationships with 20+ media vendors (Video, Audio, Display, OOH, Print) per billing actualization, reporting and pacing processes.</li>
+            <li>Managed partners' weekly spend and monthly insights reports, kept track of daily spends, KPIs measurement and benchmarks.</li>
+            <li>Wrote monthly performance metrics insights and cross-checked with pre-established benchmarks (CTR, VCR, CPM, CPC, Reach/Frequency).</li>
+            <li>Managed Google Ads account, built search media plan, adjusted pacings and developed strategies for optimizations (SEO).</li>
+            <li>Created new campaigns & placements on Prisma/MediaOcean and trafficking sheets for new placements on Campaign Manager 360 using taxonomy matrix.</li>
+            <li>Created screenshot decks, creative rotation trackers and competitive spend analysis using Kantar, MRI Simmons & Commspoint.</li>
+            <li>Assisted with Media Mix Model strategy & tactical planning, budget prediction and channel allocations.</li>
+            <li>Assisted with researching new audience groups, interests, keywords and creating new ads and adjusting pacing on Facebook & Pinterest Ads.</li>
+          </ul>
+          <div class="exp-wins"><div class="exp-win"><span class="exp-win-v">20+</span><span class="exp-win-u">vendors</span></div><div class="exp-win"><span class="exp-win-v">8+</span><span class="exp-win-u">media channels</span></div></div>
+        </div>
+
+      </div>
+    </section>
+
+
+  </main>
+</div>
+
+<div class="status-bar">
+  <span class="sb-left">
+    <span class="sb-conn"><span class="sb-dot-sm"></span>anna_vu :: snowflake</span>
+    <span>UTF-8</span>
+  </span>
+  <span class="sb-mid" id="sb-pane">projects</span>
+  <span class="sb-right">
+    <span id="sb-rows">7 rows</span>
+    <span class="sb-pipe">|</span>
+    <span id="sb-time">2.1ms</span>
+  </span>
+</div>
+
+<script>
+/* ── Tab indicator ── */
+function moveIndicator(tab) {
+  var ind = document.querySelector('.tab-indicator');
+  if (!ind || !tab) return;
+  var nav = tab.parentElement;
+  var nr = nav.getBoundingClientRect();
+  var tr = tab.getBoundingClientRect();
+  ind.style.left  = (tr.left - nr.left) + 'px';
+  ind.style.width = tr.width + 'px';
+}
+
+/* ── Stagger reveal ── */
+function revealPane(pane) {
+  var items = pane.querySelectorAll('.proj-card, .exp-item, .db-row, .pipeline-wrap, .work-section-hd, .panel-intro-txt');
+  items.forEach(function(el, i) {
+    el.classList.remove('stagger-item');
+    void el.offsetWidth; /* reflow */
+    el.classList.add('stagger-item');
+    el.style.animationDelay = (i * 0.04) + 's';
+  });
+}
+
+/* ── Switch pane ── */
+function switchPane(id) {
+  document.querySelectorAll('.top-tab').forEach(function(t) {
+    var on = t.dataset.pane === id;
+    t.classList.toggle('active', on);
+    t.setAttribute('aria-selected', on);
+    if (on) moveIndicator(t);
+  });
+  document.querySelectorAll('.tab-pane').forEach(function(p) {
+    var on = p.id === 'pane-' + id;
+    p.classList.toggle('active', on);
+    if (on) revealPane(p);
+  });
+}
+
+document.querySelectorAll('.top-tab').forEach(function(tab) {
+  tab.addEventListener('click', function() { switchPane(this.dataset.pane); });
+});
+
+/* ── Theme toggle ── */
+function toggleTheme() {
+  var html = document.documentElement;
+  var next = html.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+  html.setAttribute('data-theme', next);
+  document.querySelector('.theme-btn').textContent = next === 'dark' ? '☀︎' : '☾';
+}
+
+/* ── Arrow key nav ── */
+document.addEventListener('keydown', function(e) {
+  var tabs = ['projects','work','experience'];
+  var active = document.querySelector('.top-tab.active');
+  if (!active) return;
+  var idx = tabs.indexOf(active.dataset.pane);
+  if (e.key === 'ArrowRight' && idx < tabs.length-1) switchPane(tabs[idx+1]);
+  if (e.key === 'ArrowLeft'  && idx > 0)             switchPane(tabs[idx-1]);
+});
+
+/* ── Resize: reposition indicator ── */
+window.addEventListener('resize', function() {
+  var active = document.querySelector('.top-tab.active');
+  if (active) moveIndicator(active);
+});
+
+/* ── Status bar ── */
+function updateStatus(pane, rows) {
+  var ms = (Math.random() * 6 + 0.4).toFixed(1);
+  var paneEl = document.getElementById('sb-pane');
+  var rowsEl = document.getElementById('sb-rows');
+  var timeEl = document.getElementById('sb-time');
+  if (paneEl) paneEl.textContent = pane;
+  if (rowsEl) rowsEl.textContent = rows + ' rows';
+  if (timeEl) timeEl.textContent = ms + 'ms';
+}
+
+/* ── Wire status into switchPane ── */
+var _origSwitch = switchPane;
+switchPane = function(id) {
+  _origSwitch(id);
+  var rowCounts = {projects: 7, work: 15, experience: 5};
+  updateStatus(id, rowCounts[id] || 0);
+};
+
+/* ── Live filter on projects table ── */
+(function() {
+  var input  = document.getElementById('proj-filter');
+  var clear  = document.getElementById('filter-clear');
+  var cmt    = document.querySelector('#pane-projects .cmt');
+  var footer = document.querySelector('.db-footer span');
+  if (!input) return;
+
+  function applyFilter() {
+    var q = input.value.toLowerCase().trim();
+    var rows = document.querySelectorAll('.db-row');
+    var count = 0;
+    rows.forEach(function(row) {
+      var name = row.querySelector('.row-name');
+      var cat  = row.querySelector('.col-cat');
+      var tech = row.querySelector('.col-tech');
+      var text = [name, cat, tech].map(function(el){ return el ? el.textContent : ''; }).join(' ').toLowerCase();
+      var show = !q || text.includes(q);
+      row.style.display = show ? '' : 'none';
+      if (show) count++;
+    });
+    var label = q ? '-- ' + count + ' row' + (count !== 1 ? 's' : '') + ' returned' : '-- 7 rows returned';
+    if (cmt)    cmt.textContent = label;
+    if (footer) footer.textContent = count + ' rows returned';
+    clear.classList.toggle('visible', !!q);
+    updateStatus('projects', count);
+  }
+
+  input.addEventListener('input', applyFilter);
+  clear.addEventListener('click', function() {
+    input.value = '';
+    applyFilter();
+    input.focus();
+  });
+})();
+
+/* ── Init ── */
+(function() {
+  var active = document.querySelector('.top-tab.active');
+  if (active) {
+    moveIndicator(active);
+    var pane = document.getElementById('pane-' + active.dataset.pane);
+    if (pane) revealPane(pane);
+    var rowCounts = {projects: 7, work: 15, experience: 5};
+    updateStatus(active.dataset.pane, rowCounts[active.dataset.pane] || 0);
+  }
+})();
+</script>
+
+<!-- ══════════ PUMKIN ══════════ -->
+<style>
+#pet-wrap {
+  position:fixed; bottom:24px; right:28px;
+  z-index:999;
+  display:flex; flex-direction:column; align-items:flex-end; gap:10px;
+}
+#pet-bubble {
+  background:var(--panel);
+  border:1px solid var(--bd-hi);
+  border-radius:16px 16px 4px 16px;
+  padding:16px 18px;
+  width:230px;
+  box-shadow:0 6px 24px rgba(0,0,0,0.18);
+  position:relative;
+  animation:petBubbleIn 0.22s cubic-bezier(0.34,1.56,0.64,1) both;
+}
+#pet-bubble.hidden{display:none;}
+@keyframes petBubbleIn{
+  from{opacity:0;transform:scale(0.85) translateY(8px);}
+  to  {opacity:1;transform:scale(1) translateY(0);}
+}
+#pet-bubble-close {
+  position:absolute; top:8px; right:10px;
+  background:none; border:none; cursor:pointer;
+  font-size:1rem; color:var(--t4); line-height:1;
+  transition:color 0.15s;
+}
+#pet-bubble-close:hover{color:var(--t2);}
+.pet-msg{
+  font-size:0.82rem; color:var(--t2); line-height:1.65;
+  padding-right:12px;
+}
+.pet-msg strong{color:var(--t1);}
+.pet-nav{display:flex;flex-wrap:wrap;gap:5px;margin-top:12px;}
+.pet-nav-btn {
+  font-family:'Geist Mono',monospace;
+  font-size:0.62rem; letter-spacing:0.5px;
+  padding:4px 10px; border-radius:8px;
+  border:1px solid var(--tag-bd);
+  background:none; color:var(--tag-col);
+  cursor:pointer; transition:all 0.15s;
+}
+.pet-nav-btn:hover{background:var(--surf-hov);border-color:var(--amber);color:var(--amber);}
+#pet-char {
+  cursor:pointer;
+  animation:petFloat 3s ease-in-out infinite;
+  transition:transform 0.15s;
+  filter:drop-shadow(0 4px 8px rgba(0,0,0,0.22));
+}
+#pet-char:hover{transform:scale(1.12);}
+@keyframes petFloat{
+  0%,100%{transform:translateY(0);}
+  50%    {transform:translateY(-6px);}
+}
+#pet-char.excited{animation:petExcited 0.4s ease-in-out 2;}
+@keyframes petExcited{
+  0%,100%{transform:translateY(0) rotate(0deg);}
+  25%    {transform:translateY(-8px) rotate(-6deg);}
+  75%    {transform:translateY(-8px) rotate(6deg);}
+}
+</style>
+
+<div id="pet-wrap">
+  <div id="pet-bubble" class="hidden">
+    <button id="pet-bubble-close">×</button>
+    <div id="pet-bubble-inner"></div>
+  </div>
+  <div style="width:52px;text-align:center;font-family:'Geist Mono',monospace;font-size:0.55rem;letter-spacing:1.5px;color:var(--t4);margin-bottom:2px">PUMKIN</div>
+  <svg id="pet-char" width="52" height="66" viewBox="0 0 52 66" fill="none" xmlns="http://www.w3.org/2000/svg" onclick="petClick()" title="Click me!">
+    <line x1="26" y1="15" x2="26" y2="6" stroke="#e8732a" stroke-width="2.2" stroke-linecap="round"/>
+    <circle cx="26" cy="4" r="3.5" fill="#f5a623"/>
+    <rect x="5" y="15" width="42" height="38" rx="13" fill="#e8732a"/>
+    <rect x="10" y="21" width="32" height="24" rx="8" fill="var(--bg)"/>
+    <circle cx="20" cy="31" r="4.5" fill="var(--panel)"/>
+    <circle cx="32" cy="31" r="4.5" fill="var(--panel)"/>
+    <circle cx="21" cy="31" r="2.5" fill="var(--t1)"/>
+    <circle cx="33" cy="31" r="2.5" fill="var(--t1)"/>
+    <circle cx="22" cy="30" r="0.9" fill="white"/>
+    <circle cx="34" cy="30" r="0.9" fill="white"/>
+    <path d="M 19 38 Q 26 43 33 38" stroke="#c85e20" stroke-width="1.8" stroke-linecap="round" fill="none"/>
+    <rect x="12" y="50" width="11" height="12" rx="5" fill="#c85e20"/>
+    <rect x="29" y="50" width="11" height="12" rx="5" fill="#c85e20"/>
+  </svg>
+</div>
+
+<script>
+(function() {
+  const PET_LS = 'portfolio-pet-v2';
+  const TIPS = [
+    "Anna engineers data pipelines for some of the world's biggest ad campaigns. $2B+ in spend, zero guesswork. 📊",
+    "She tracks 89 film festivals, 54 film stocks, and 100 NYC venues. Very niche. 🎞️",
+    "Currently doing her M.A.Sc. in Computer Science at Penn, on top of a full-time engineering job. Busy human. 📚",
+    "The Departure Lounge has 50 destinations. Maybe inspiration for your next trip? ✈️",
+    "Anna's cleaned up 1,000+ Snowflake tables and cut warehouse costs by <strong>30%</strong>. Tidiness as a skill. 🧹",
+    "Check out Auteurs — 100 filmmakers, filterable by era. A cinephile lives here. 🎬",
+    "Anna speaks English and Vietnamese fluently. The recipe app is proof. 🇻🇳",
+    "Her real-time Slack alerts catch campaign anomalies before clients even notice. 🔔",
+    "She built 7 creative projects just for fun. Curiosity is a feature, not a bug. 🔧",
+    "30+ data sources. 1TB a month. All running quietly. 🛠️",
+  ];
+  let tipIdx = 0;
+
+  function navHtml() {
+    return `<div class="pet-nav">
+      <button class="pet-nav-btn" onclick="petNav('projects')">Projects</button>
+      <button class="pet-nav-btn" onclick="petNav('work')">Work</button>
+      <button class="pet-nav-btn" onclick="petNav('experience')">Experience</button>
+    </div>`;
+  }
+
+  function showWelcome() {
+    document.getElementById('pet-bubble-inner').innerHTML =
+      `<div class="pet-msg">Hey! I'm <strong>Pumkin</strong> 👾 — Anna's tiny data sprite.<br><br>Want a quick tour?</div>` + navHtml();
+    openBubble(); excite();
+  }
+
+  function showTip() {
+    document.getElementById('pet-bubble-inner').innerHTML =
+      `<div class="pet-msg">${TIPS[tipIdx % TIPS.length]}</div>` + navHtml();
+    tipIdx++;
+    openBubble();
+  }
+
+  function openBubble() {
+    const b = document.getElementById('pet-bubble');
+    b.classList.remove('hidden');
+    b.style.animation = 'none';
+    requestAnimationFrame(() => { b.style.animation = ''; });
+  }
+
+  function excite() {
+    const c = document.getElementById('pet-char');
+    c.classList.add('excited');
+    setTimeout(() => c.classList.remove('excited'), 900);
+  }
+
+  window.petClick = function() {
+    const b = document.getElementById('pet-bubble');
+    if (!b.classList.contains('hidden')) { b.classList.add('hidden'); return; }
+    showTip(); excite();
+  };
+
+  window.petNav = function(pane) {
+    switchPane(pane);
+    document.getElementById('pet-bubble').classList.add('hidden');
+  };
+
+  document.getElementById('pet-bubble-close').addEventListener('click', function(e) {
+    e.stopPropagation();
+    document.getElementById('pet-bubble').classList.add('hidden');
+  });
+
+  if (!localStorage.getItem(PET_LS)) {
+    localStorage.setItem(PET_LS, '1');
+    setTimeout(showWelcome, 1800);
+  }
+})();
+</script>
+
+</body>
+</html>
