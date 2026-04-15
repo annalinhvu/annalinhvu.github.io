@@ -51,6 +51,9 @@
   --tag-col:   #8aaa8e;
   --grid-h:    rgba(90,120,160,.06);
   --grid-v:    rgba(90,120,160,.03);
+  --shadow-sm: rgba(0,0,0,.18);
+  --shadow-lg: rgba(0,0,0,.55);
+  --zebra:     rgba(0,0,0,.06);
 }
 :root[data-theme="light"] {
   --bg:        #f3f1eb;
@@ -78,6 +81,9 @@
   --tag-col:   #4a6450;
   --grid-h:    rgba(110,95,70,.07);
   --grid-v:    rgba(110,95,70,.04);
+  --shadow-sm: rgba(0,0,0,.08);
+  --shadow-lg: rgba(0,0,0,.14);
+  --zebra:     rgba(0,0,0,.03);
 }
 
 /* ── Reset ─────────────────────────────────────────────── */
@@ -230,7 +236,7 @@ body {
 }
 .profile-role{font-size:13.5px;color:var(--t3);line-height:1.5;}
 .profile-contact-links{
-  display:flex;gap:12px;margin-top:7px;
+  display:flex;gap:12px;margin-top:7px;align-items:center;
 }
 .profile-contact-link{
   font-family:'Geist Mono',monospace;font-size:11px;
@@ -238,6 +244,14 @@ body {
   transition:color .15s;
 }
 .profile-contact-link:hover{color:var(--t1);}
+.copy-email-btn{
+  font-family:'Geist Mono',monospace;font-size:10px;
+  color:var(--t4);background:none;border:1px solid var(--bd);
+  border-radius:5px;padding:2px 7px;cursor:pointer;
+  transition:all .15s;letter-spacing:.3px;
+}
+.copy-email-btn:hover{color:var(--amber);border-color:var(--amber);}
+.copy-email-btn.copied{color:var(--accent);border-color:var(--accent);}
 
 .p-rule{border:none;border-top:1px solid var(--bd);margin:13px 0;}
 
@@ -449,7 +463,7 @@ body {
 .game-box{
   background:var(--panel);border:1px solid var(--bd-hi);
   border-radius:14px;overflow:hidden;
-  box-shadow:0 24px 80px rgba(0,0,0,.6);
+  box-shadow:0 24px 80px var(--shadow-lg);
   animation:staggerIn .2s ease both;
 }
 .game-titlebar{
@@ -540,7 +554,7 @@ body {
   position:relative;
   transition:border-color .2s,box-shadow .2s;
 }
-.proj-card:hover{border-color:var(--bd-hi);box-shadow:0 3px 14px rgba(0,0,0,.12);}
+.proj-card:hover{border-color:var(--bd-hi);box-shadow:0 3px 14px var(--shadow-sm);}
 .proj-card.bouncing{animation:cardBounce .45s ease;z-index:10;}
 
 /* ══════════════════════════════════════════════════════════
@@ -590,7 +604,7 @@ body {
 }
 .res-thead span,.res-row span{flex:1;min-width:120px;max-width:260px;padding-right:16px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
 .res-row{display:flex;padding:2px 0;}
-.res-row:nth-child(even){background:rgba(0,0,0,.06);}
+.res-row:nth-child(even){background:var(--zebra);}
 .res-row span{color:var(--t2);}
 .res-footer{color:var(--t4);margin-top:6px;font-size:11px;}
 .console-input-row{
@@ -806,6 +820,7 @@ body {
           <div class="profile-role">Lead Data Technology Engineer</div>
           <div class="profile-contact-links">
             <a href="mailto:vuanna@seas.upenn.edu" class="profile-contact-link">↗ email</a>
+            <button class="copy-email-btn" id="copy-email-btn" onclick="copyEmail()" title="Copy email address">copy</button>
             <a href="https://www.linkedin.com/in/annalinhvu" class="profile-contact-link" target="_blank" rel="noopener">↗ linkedin</a>
           </div>
         </div>
@@ -873,7 +888,7 @@ body {
         <span class="tbl">anna_vu.creative_projects</span><span>&nbsp;</span>
         <span class="kw">ORDER BY</span><span>&nbsp;year&nbsp;</span>
         <span class="kw">DESC</span>
-        <span class="cmt">-- 7 rows returned</span>
+        <span class="cmt">-- personal projects · 7 rows returned</span>
       </div>
       <div class="filter-bar">
         <span class="filter-kw"><span class="kw">WHERE</span>&nbsp;project_name&nbsp;<span class="kw">LIKE</span>&nbsp;'%</span>
@@ -949,7 +964,7 @@ body {
       <div class="db-footer">
         <span>7 rows returned</span>
         <span class="ft-live">● all systems live</span>
-        <span>last updated Apr 2025</span>
+        <span>last updated Apr 2026</span>
       </div>
     </section>
 
@@ -1320,6 +1335,18 @@ document.querySelectorAll('.top-tab').forEach(function(tab) {
 });
 
 /* ── Theme toggle ── */
+function copyEmail() {
+  navigator.clipboard.writeText('vuanna@seas.upenn.edu').then(function() {
+    var btn = document.getElementById('copy-email-btn');
+    btn.textContent = 'copied!';
+    btn.classList.add('copied');
+    setTimeout(function() {
+      btn.textContent = 'copy';
+      btn.classList.remove('copied');
+    }, 2000);
+  });
+}
+
 function toggleTheme() {
   var html = document.documentElement;
   var next = html.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
@@ -1435,7 +1462,7 @@ switchPane = function(id) {
   border-radius:16px 16px 4px 16px;
   padding:16px 18px;
   width:230px;
-  box-shadow:0 6px 24px rgba(0,0,0,0.18);
+  box-shadow:0 6px 24px var(--shadow-sm);
   position:relative;
   animation:petBubbleIn 0.22s cubic-bezier(0.34,1.56,0.64,1) both;
 }
@@ -1478,9 +1505,9 @@ switchPane = function(id) {
 #pet-char {
   cursor:pointer; display:block;
   animation:petFloat 3s ease-in-out infinite;
-  filter:drop-shadow(0 4px 8px rgba(0,0,0,0.22));
+  filter:drop-shadow(0 4px 8px var(--shadow-sm));
 }
-#pet-char:hover{filter:drop-shadow(0 4px 8px rgba(0,0,0,0.22)) brightness(1.08);}
+#pet-char:hover{filter:drop-shadow(0 4px 8px var(--shadow-sm)) brightness(1.08);}
 @keyframes petFloat{0%,100%{transform:translateY(0);}50%{transform:translateY(-6px);}}
 #pet-char.excited{animation:petExcited 0.4s ease-in-out 2;}
 @keyframes petExcited{
