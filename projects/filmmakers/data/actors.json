@@ -1,0 +1,2093 @@
+[
+  {
+    "id": 1,
+    "name": "Tony Leung Chiu-wai",
+    "nationality": "hong kong",
+    "birth_year": 1962,
+    "death_year": null,
+    "era": "contemporary",
+    "tagline": "The architect of silence — emotion without a word",
+    "bio": "Tony Leung Chiu-wai is perhaps the finest living film actor in the world. A frequent collaborator of Wong Kar-wai, he has built a career on restraint — on the pause, the glance, the almost-smile. Trained in TVB's acting school in the 1980s, Leung became Hong Kong cinema's most expressive minimalist: able to convey longing, guilt, heartbreak, and tenderness without a single line of dialogue. His performance in In the Mood for Love — largely wordless — is one of cinema's great achievements. As a cop going undercover in Infernal Affairs, he brought rare psychological complexity to the action thriller. He is Wong Kar-wai's muse and the conscience of Hong Kong cinema.",
+    "why": "He proves that less is everything — that restraint is the most powerful form of expression cinema has.",
+    "notable_films": [
+      {
+        "title": "Infernal Affairs",
+        "year": 2002,
+        "runtime": 101,
+        "themes": [
+          "identity",
+          "duality",
+          "loyalty",
+          "moral ambiguity",
+          "undercover"
+        ],
+        "synopsis": "A cop goes deep undercover in the triads while a mole inside the police works against him. Both men are losing themselves in their double lives.",
+        "why_watch": "Leung carries the weight of a man who has forgotten who he really is. Every scene where he's performing as a triad member has sorrow underneath — he's living a life he never chose. The final elevator scene is devastating.",
+        "visual_style": "Sleek and kinetic direction from Andrew Lau and Alan Mak, but Leung's stillness anchors the film. Watch how his eyes change between his two identities."
+      },
+      {
+        "title": "In the Mood for Love",
+        "year": 2000,
+        "runtime": 98,
+        "themes": [
+          "longing",
+          "restraint",
+          "desire",
+          "memory",
+          "time"
+        ],
+        "synopsis": "Two neighbors in 1960s Hong Kong discover their spouses are having an affair. They grow achingly close — but refuse to become what their partners are.",
+        "why_watch": "The greatest performance of unexpressed love in cinema history. Leung and Maggie Cheung never touch, but the film is electric with desire. His walk, his posture, his tiny expressions do all the work.",
+        "visual_style": "Slow motion, tight framing, Shigeru Umebayashi's waltz — Wong Kar-wai traps these characters in gorgeous amber."
+      },
+      {
+        "title": "Happy Together",
+        "year": 1997,
+        "runtime": 96,
+        "themes": [
+          "queer love",
+          "codependency",
+          "displacement",
+          "longing"
+        ],
+        "synopsis": "Two Hong Kong men in Buenos Aires orbit each other in a toxic, beautiful love affair that neither can escape.",
+        "why_watch": "Leung plays tenderness against anguish with absolute conviction — raw, physical, emotionally exposed in ways his later work rarely allows.",
+        "visual_style": "Grainy, black-and-white sections punctuated by vivid color — Christopher Doyle at his most kinetic."
+      },
+      {
+        "title": "Chungking Express",
+        "year": 1994,
+        "runtime": 102,
+        "themes": [
+          "loneliness",
+          "urban life",
+          "chance encounters",
+          "time"
+        ],
+        "synopsis": "Two loosely connected stories of heartbroken cops in neon-lit Hong Kong.",
+        "why_watch": "Lighter and funnier than his usual register — boyish, charming, gently sad. Proof of his range beyond melancholy.",
+        "visual_style": "Handheld, fast, fragmented — Wong Kar-wai shot this in a month and it feels like pure instinct."
+      },
+      {
+        "title": "2046",
+        "year": 2004,
+        "runtime": 129,
+        "themes": [
+          "loss",
+          "memory",
+          "transience",
+          "longing"
+        ],
+        "synopsis": "A writer in 1960s Hong Kong drifts through a series of love affairs, haunted by what — and who — he cannot have.",
+        "why_watch": "Leung is older, more world-weary, more beautiful in his sadness. The film is about what happens when you let beauty pass you by.",
+        "visual_style": "More fragmented and elliptical than In the Mood for Love — lush, melancholy, shot across five years of production."
+      },
+      {
+        "title": "Hero",
+        "year": 2002,
+        "runtime": 99,
+        "themes": [
+          "sacrifice",
+          "honor",
+          "empire",
+          "martial arts"
+        ],
+        "synopsis": "A nameless warrior claims to have defeated three assassins threatening the Qin emperor — but the truth is more complex.",
+        "why_watch": "Leung brings soul to a wuxia spectacle. His duel against Jet Li, shot in a storm of autumn leaves, is one of cinema's most beautiful sequences.",
+        "visual_style": "Zhang Yimou's color-coded chapters saturate each frame completely. Christopher Doyle's cinematography is ravishing."
+      },
+      {
+        "title": "The Grandmaster",
+        "year": 2013,
+        "runtime": 123,
+        "themes": [
+          "martial arts",
+          "honor",
+          "loss",
+          "history"
+        ],
+        "synopsis": "The life and legacy of martial arts master Ip Man, told through Wong Kar-wai's fragmented, lyrical memory.",
+        "why_watch": "Leung trained three years in wing chun for this role. His body becomes the character — deliberate, graceful, immovable. A late-period masterpiece.",
+        "visual_style": "Wong Kar-wai applies his signature slow motion and close-up poetry to the martial arts film — rain, mud, candlelight."
+      }
+    ],
+    "style_tags": [
+      "restraint",
+      "minimalism",
+      "longing",
+      "silence",
+      "collaborations",
+      "intensity"
+    ],
+    "start_with": {
+      "film": "In the Mood for Love",
+      "year": 2000,
+      "note": "The purest distillation of what makes Leung extraordinary — a performance built almost entirely from glances, posture, and the exquisite withholding of words."
+    },
+    "key_themes": [
+      "unexpressed desire",
+      "identity under pressure",
+      "time and memory",
+      "Hong Kong cinema",
+      "minimalist acting"
+    ],
+    "quote": "I don't think of acting as acting. I think of it as living truthfully in an imaginary circumstance."
+  },
+  {
+    "id": 2,
+    "name": "Toshiro Mifune",
+    "nationality": "japanese",
+    "birth_year": 1920,
+    "death_year": 1997,
+    "era": "classical",
+    "tagline": "Raw force and volcanic grace — the samurai who changed world cinema",
+    "bio": "Toshiro Mifune rewrote the rules of screen masculinity. Born in China to Japanese parents, he stumbled into acting after World War II and immediately electrified Akira Kurosawa, who cast him in Drunken Angel (1948). What followed was one of the great director-actor partnerships in film history: sixteen collaborations over two decades. Mifune brought something new to every role — an animal physicality, an explosive unpredictability, and beneath it all, a capacity for tender vulnerability that made his samurai warriors and rogues achingly human. His influence stretched from John Wayne to Clint Eastwood to Harrison Ford, and through Sergio Leone's Dollars trilogy, which openly remade Yojimbo.",
+    "why": "Every great action performance owes a debt to Mifune. He showed that physical cinema could be art — that the body could speak as eloquently as any line of dialogue.",
+    "notable_films": [
+      {
+        "title": "Seven Samurai",
+        "year": 1954,
+        "runtime": 207,
+        "themes": [
+          "honor",
+          "class",
+          "sacrifice",
+          "community",
+          "war"
+        ],
+        "synopsis": "A veteran samurai leads six others to defend a poor village from marauding bandits.",
+        "why_watch": "Mifune's Kikuchiyo — the fake samurai, the peasant pretending — is one of cinema's greatest characters. Funny, heartbreaking, explosive. He steals every scene from actors half a head taller in spirit.",
+        "visual_style": "Kurosawa's deep-focus compositions and the legendary rain-soaked finale — mud, blood, and grief rendered in black and white."
+      },
+      {
+        "title": "Rashomon",
+        "year": 1950,
+        "runtime": 88,
+        "themes": [
+          "truth",
+          "subjectivity",
+          "honor",
+          "self-deception"
+        ],
+        "synopsis": "A samurai's death is recounted from four mutually contradictory perspectives.",
+        "why_watch": "Mifune plays a bandit with wild, almost feral energy — completely different from his later controlled work. Watch him laugh in the rain. It's primordial.",
+        "visual_style": "Kazuo Miyagawa's cinematography — dappled sunlight through forest canopy — is among the most beautiful in Japanese film history."
+      },
+      {
+        "title": "Yojimbo",
+        "year": 1961,
+        "runtime": 110,
+        "themes": [
+          "mercenary honor",
+          "manipulation",
+          "corruption",
+          "violence"
+        ],
+        "synopsis": "A masterless samurai plays two rival criminal gangs against each other for his own amusement.",
+        "why_watch": "The coolest performance in samurai cinema. Mifune invented the archetype that Clint Eastwood would borrow wholesale for the Dollars trilogy. Watch how little he does — and how much it communicates.",
+        "visual_style": "Kurosawa's widescreen compositions treat the town like a stage set — a moral landscape emptied of meaning."
+      },
+      {
+        "title": "Throne of Blood",
+        "year": 1957,
+        "runtime": 110,
+        "themes": [
+          "ambition",
+          "fate",
+          "paranoia",
+          "Macbeth"
+        ],
+        "synopsis": "A feudal-Japan retelling of Macbeth: a warrior, driven by his wife's ambition, murders his way to power.",
+        "why_watch": "Mifune's final scene — shot with real arrows — is one of the most terrifying and physically brave moments in cinema. His face as he dies is unforgettable.",
+        "visual_style": "Noh theatre aesthetics, thick fog, a castle that feels like a trap — Kurosawa at his most expressionistic."
+      },
+      {
+        "title": "High and Low",
+        "year": 1963,
+        "runtime": 143,
+        "themes": [
+          "class",
+          "moral choice",
+          "crime",
+          "capitalism"
+        ],
+        "synopsis": "A wealthy executive must decide whether to pay ransom for a kidnapped child — even after learning the kidnapper took the wrong boy.",
+        "why_watch": "A different Mifune — controlled, corporate, morally anguished. He barely moves, and yet you feel every internal struggle. His finest dramatic performance outside the samurai films.",
+        "visual_style": "Split-screen structure: the wealthy upper floors versus the sweaty, neon-lit underworld below. Kurosawa's most noir film."
+      },
+      {
+        "title": "Red Beard",
+        "year": 1965,
+        "runtime": 185,
+        "themes": [
+          "compassion",
+          "poverty",
+          "medicine",
+          "mentorship"
+        ],
+        "synopsis": "A gruff, legendary doctor at a charity clinic teaches a young physician what medicine — and humanity — really means.",
+        "why_watch": "Mifune's Red Beard is ferocious and gentle in equal measure — a bear of a man who weeps over patients. The most emotionally complete performance of his career, and his final collaboration with Kurosawa.",
+        "visual_style": "Kurosawa's most humanist film — intimate, unhurried, full of grace."
+      }
+    ],
+    "style_tags": [
+      "physicality",
+      "intensity",
+      "samurai",
+      "collaborations",
+      "classical Hollywood influence",
+      "tragedy"
+    ],
+    "start_with": {
+      "film": "Seven Samurai",
+      "year": 1954,
+      "note": "Start with his most famous role, but pay attention to how Mifune steals the film from the 'hero' with sheer animal charisma and unexpected heartbreak."
+    },
+    "key_themes": [
+      "warrior codes",
+      "class and identity",
+      "physical cinema",
+      "Japanese cinema",
+      "honor and its costs"
+    ],
+    "quote": "I am proud that I was able to work with Kurosawa. It was the most fulfilling experience of my life."
+  },
+  {
+    "id": 3,
+    "name": "Marlon Brando",
+    "nationality": "american",
+    "birth_year": 1924,
+    "death_year": 2004,
+    "era": "classical",
+    "tagline": "He broke acting open — everything after is a response to Brando",
+    "bio": "No actor in the history of cinema changed the medium more than Marlon Brando. When he appeared on stage and then screen in the late 1940s and early 1950s, applying Lee Strasberg's method acting techniques with raw, unpolished immediacy, he made everything that came before seem theatrical and false. His Stanley Kowalski was not performed — it was inhabited. His Don Corleone, created forty years later, was the same genius in reverse: where Kowalski was volcanic, Vito Corleone was ice. Brando's greatest gift was his utter refusal of the conventional — he mumbled, he improvised, he showed up unprepared, and yet the camera loved him in a way it has never quite loved anyone since.",
+    "why": "Brando didn't just act — he changed what acting meant. He made cinema intimate in ways that theater never could.",
+    "notable_films": [
+      {
+        "title": "A Streetcar Named Desire",
+        "year": 1951,
+        "runtime": 122,
+        "themes": [
+          "desire",
+          "class",
+          "violence",
+          "illusion",
+          "masculinity"
+        ],
+        "synopsis": "The brutish Stanley Kowalski clashes with his wife's fragile, deluded sister Blanche DuBois.",
+        "why_watch": "The performance that changed acting. Brando's Kowalski is physical, raw, sexually charged, and ultimately terrifying — yet you understand him. The famous 'Stella!' cry is just the surface.",
+        "visual_style": "Elia Kazan stages this like a pressure cooker — hot, claustrophobic, no escape."
+      },
+      {
+        "title": "On the Waterfront",
+        "year": 1954,
+        "runtime": 108,
+        "themes": [
+          "conscience",
+          "corruption",
+          "testimony",
+          "working class"
+        ],
+        "synopsis": "A dockworker struggles with whether to testify against the corrupt union boss who controls his waterfront community.",
+        "why_watch": "The taxi scene with Rod Steiger — 'I coulda been a contender' — is the most quoted scene in acting history. But watch the whole film: every moment is a masterclass in behavioral truth.",
+        "visual_style": "Boris Kaufman's gritty black-and-white photography captures the cold, grey waterfront with documentary realism."
+      },
+      {
+        "title": "The Godfather",
+        "year": 1972,
+        "runtime": 175,
+        "themes": [
+          "family",
+          "power",
+          "loyalty",
+          "crime",
+          "America"
+        ],
+        "synopsis": "The aging patriarch of a crime family transfers power to his reluctant son.",
+        "why_watch": "Brando in his mid-forties, with cotton balls in his cheeks and an old man's whisper, creates the most iconic character in American cinema. Every choice — the hand movements, the pauses, the quiet authority — is perfect.",
+        "visual_style": "Gordon Willis's low-key lighting plunges the Corleone world into shadow and moral ambiguity."
+      },
+      {
+        "title": "Last Tango in Paris",
+        "year": 1972,
+        "runtime": 129,
+        "themes": [
+          "grief",
+          "sex",
+          "anonymity",
+          "self-destruction"
+        ],
+        "synopsis": "A widowed American in Paris begins a savage, anonymous sexual relationship with a young French woman.",
+        "why_watch": "Brando improvised much of his monologue about his dead wife. It may be the most nakedly exposed performance ever captured on film — a man using fiction to process real grief.",
+        "visual_style": "Vittorio Storaro's golden-brown palette, Bernardo Bertolucci's intimate direction — beautiful and unsettling."
+      },
+      {
+        "title": "Apocalypse Now",
+        "year": 1979,
+        "runtime": 153,
+        "themes": [
+          "madness",
+          "war",
+          "imperialism",
+          "Heart of Darkness"
+        ],
+        "synopsis": "A special forces captain is sent upriver into Cambodia to assassinate a rogue colonel who has declared himself a god.",
+        "why_watch": "Brando is barely on screen, and he barely speaks — mostly improvised fragments in near-darkness. And yet he dominates the film. A performance built entirely of presence.",
+        "visual_style": "Vittorio Storaro's extraordinary photography — deep shadow, green jungle light, apocalyptic fire."
+      }
+    ],
+    "style_tags": [
+      "method acting",
+      "intensity",
+      "physicality",
+      "naturalism",
+      "improvisation",
+      "collaborations"
+    ],
+    "start_with": {
+      "film": "On the Waterfront",
+      "year": 1954,
+      "note": "The performance that best demonstrates Brando's revolutionary naturalism — spontaneous, physical, heartbreaking in ways no one had seen on screen before."
+    },
+    "key_themes": [
+      "masculinity and its costs",
+      "class and conscience",
+      "American mythology",
+      "grief and desire"
+    ],
+    "quote": "An actor's a guy who, if you ain't talking about him, ain't listening."
+  },
+  {
+    "id": 4,
+    "name": "Cate Blanchett",
+    "nationality": "australian",
+    "birth_year": 1969,
+    "death_year": null,
+    "era": "contemporary",
+    "tagline": "Shape-shifter without peer — royalty, derangement, and everything between",
+    "bio": "Cate Blanchett operates on a frequency most actors cannot access. Trained at NIDA in Sydney and then honed on the Australian stage, she arrived in cinema fully formed — her first major role, Elizabeth I, demonstrated a command of period, psychology, and sheer physical authority that most actors spend decades working toward. What distinguishes Blanchett is her fearlessness: she disappears into characters utterly unlike herself, shifts register mid-scene without breaking the illusion, and brings intelligence to every choice. She played Bob Dylan in I'm Not There. She played a conductor unraveling in Tár with the specificity of someone who had actually conducted orchestras. She is the closest thing contemporary cinema has to a Meryl Streep.",
+    "why": "Blanchett demonstrates that acting is a genuinely intellectual art — every choice is considered, specific, and earned.",
+    "notable_films": [
+      {
+        "title": "Elizabeth",
+        "year": 1998,
+        "runtime": 124,
+        "themes": [
+          "power",
+          "sacrifice",
+          "virginity",
+          "Tudor England"
+        ],
+        "synopsis": "The young Elizabeth I navigates court intrigue, assassination plots, and her own desires to secure her throne.",
+        "why_watch": "Blanchett's first major film role announced a major talent. Watch her face change over the film — she literally becomes the Virgin Queen. The transformation in the final scene is extraordinary.",
+        "visual_style": "Rich, dark, Caravaggio-lit — Shekhar Kapur treats Elizabethan England as a world of shadow and fire."
+      },
+      {
+        "title": "Notes on a Scandal",
+        "year": 2006,
+        "runtime": 92,
+        "themes": [
+          "obsession",
+          "manipulation",
+          "loneliness",
+          "scandal"
+        ],
+        "synopsis": "A lonely teacher becomes obsessed with her younger colleague after discovering the woman's affair with a student.",
+        "why_watch": "Sharing scenes with Judi Dench is a masterclass in itself. Blanchett plays fragility and self-deception — a woman who never quite understands her own complicity — with aching precision.",
+        "visual_style": "Philip Glass's score and Richard Eyre's restraint make the psychological horror creep rather than announce itself."
+      },
+      {
+        "title": "I'm Not There",
+        "year": 2007,
+        "runtime": 135,
+        "themes": [
+          "identity",
+          "myth",
+          "celebrity",
+          "transformation"
+        ],
+        "synopsis": "Six actors play different facets of Bob Dylan across different eras and personas.",
+        "why_watch": "Of six actors including Heath Ledger and Christian Bale, Blanchett is the most audacious — she's the only woman playing Dylan, and she's the most Dylanesque of all. Pure inhabitation of a myth.",
+        "visual_style": "Todd Haynes shoots each chapter in a different style — black-and-white nouvelle vague for Blanchett's section."
+      },
+      {
+        "title": "Blue Jasmine",
+        "year": 2013,
+        "runtime": 98,
+        "themes": [
+          "class",
+          "denial",
+          "collapse",
+          "self-delusion"
+        ],
+        "synopsis": "A Manhattan socialite falls apart after her husband's Madoff-style crimes destroy their wealth and marriage.",
+        "why_watch": "A Streetcar Named Desire transposed to contemporary San Francisco, with Blanchett as the new Blanche DuBois — deluded, pathetic, and somehow magnificent. Her best screen performance.",
+        "visual_style": "Woody Allen's most Cassavetes-inflected film — loose, observational, close to the face."
+      },
+      {
+        "title": "Carol",
+        "year": 2015,
+        "runtime": 118,
+        "themes": [
+          "queer love",
+          "desire",
+          "repression",
+          "1950s America"
+        ],
+        "synopsis": "A married socialite falls in love with a young department store clerk in 1950s New York.",
+        "why_watch": "Pure restraint — Blanchett plays Carol's desire through gloves, cigarette smoke, and a devastating smile. The scene where she catches Therese's eye across the toy counter is one of cinema's great meet-cutes.",
+        "visual_style": "Edward Lachman's Super 16mm photography renders 1950s New York in soft, impressionistic grain."
+      },
+      {
+        "title": "Tár",
+        "year": 2022,
+        "runtime": 158,
+        "themes": [
+          "power",
+          "genius",
+          "accountability",
+          "collapse",
+          "music"
+        ],
+        "synopsis": "A legendary conductor at the height of her powers begins a slow, self-inflicted unraveling.",
+        "why_watch": "The greatest screen performance of the 2020s so far. Blanchett is onscreen for almost every minute, moving between arrogance and terror, control and free fall. She learned to conduct for this role.",
+        "visual_style": "Florian Sigismondi's long takes and controlled palette — grey, cold, beautiful — match Lydia Tár's need for total mastery."
+      }
+    ],
+    "style_tags": [
+      "transformation",
+      "intensity",
+      "restraint",
+      "period films",
+      "collaborations",
+      "European art cinema"
+    ],
+    "start_with": {
+      "film": "Blue Jasmine",
+      "year": 2013,
+      "note": "The most complete showcase of what makes Blanchett extraordinary — every register in a single film, from grand delusion to small devastation."
+    },
+    "key_themes": [
+      "power and its abuse",
+      "female interiority",
+      "transformation as survival",
+      "class and its fictions"
+    ],
+    "quote": "The worst thing you can do is think too much. You have to trust your instincts."
+  },
+  {
+    "id": 5,
+    "name": "Daniel Day-Lewis",
+    "nationality": "british",
+    "birth_year": 1957,
+    "death_year": null,
+    "era": "contemporary",
+    "tagline": "The last of the total actors — three Oscars and a legend",
+    "bio": "Daniel Day-Lewis is the most method actor who ever lived, and the only one for whom the method produced greatness rather than self-parody. He learned shoemaking for Phantom Thread. He spoke only in character on-set for months during Gangs of New York. He learned to use a wheelchair with his mouth for My Left Foot and refused to leave it between takes. The result of this obsessive preparation is performances of extraordinary specificity — every accent, every physical detail, every behavioral tic feels discovered rather than invented. He retired from acting in 2017. The films he made in those forty years constitute the most consistently excellent body of work any English-speaking actor has produced.",
+    "why": "He proved that total dedication to transformation — not star power, not personality — could produce something approaching art.",
+    "notable_films": [
+      {
+        "title": "My Left Foot",
+        "year": 1989,
+        "runtime": 103,
+        "themes": [
+          "disability",
+          "art",
+          "stubbornness",
+          "Irish working class"
+        ],
+        "synopsis": "The life of Christy Brown, an Irishman with cerebral palsy who became a celebrated painter and writer.",
+        "why_watch": "Day-Lewis spent months in a wheelchair, spoke only as Christy, had crew members carry him to meals. The physical performance is astonishing — but it's the emotional life inside the body that makes it great.",
+        "visual_style": "Jim Sheridan's unfussy direction keeps the camera close — this is a performance film, not a visual one."
+      },
+      {
+        "title": "Gangs of New York",
+        "year": 2002,
+        "runtime": 167,
+        "themes": [
+          "immigration",
+          "violence",
+          "revenge",
+          "American identity"
+        ],
+        "synopsis": "In 1860s Manhattan's Five Points district, a young Irish immigrant seeks revenge for his father's death at the hands of a nativist gang leader.",
+        "why_watch": "Bill the Butcher is Day-Lewis's most theatrical creation — operatic, dangerous, weirdly magnetic. He completely overshadows the protagonist. Every scene he's in becomes his film.",
+        "visual_style": "Scorsese's epic production design recreates a vanished New York — blood-soaked, beautiful, savage."
+      },
+      {
+        "title": "There Will Be Blood",
+        "year": 2007,
+        "runtime": 158,
+        "themes": [
+          "capitalism",
+          "greed",
+          "religion",
+          "American ambition"
+        ],
+        "synopsis": "A ruthless oil prospector in early twentieth-century California builds an empire while destroying everything around him.",
+        "why_watch": "The finest American screen performance since Brando. Day-Lewis plays Daniel Plainview as a force of nature — part genius, part sociopath, entirely riveting. 'I drink your milkshake' is iconic, but the film's power lies in the quieter scenes.",
+        "visual_style": "Robert Elswit's widescreen compositions and Jonny Greenwood's dissonant score create a landscape of beautiful, howling dread."
+      },
+      {
+        "title": "Lincoln",
+        "year": 2012,
+        "runtime": 150,
+        "themes": [
+          "politics",
+          "moral leadership",
+          "the 13th Amendment",
+          "storytelling"
+        ],
+        "synopsis": "The final months of Lincoln's life, focused on the political battle to pass the constitutional amendment abolishing slavery.",
+        "why_watch": "Day-Lewis disappears entirely into Lincoln — the voice, the posture, the endless digressive stories. It is a performance of supreme authority that never once feels like an impression.",
+        "visual_style": "Janusz Kaminski's candlelit interiors feel like photographs from the period — amber, intimate, exhausted."
+      },
+      {
+        "title": "Phantom Thread",
+        "year": 2017,
+        "runtime": 130,
+        "themes": [
+          "obsession",
+          "control",
+          "love",
+          "fashion",
+          "power"
+        ],
+        "synopsis": "A meticulous couturier in 1950s London takes on a new muse — one who refuses to be controlled.",
+        "why_watch": "Day-Lewis's farewell performance, and he chose to play a man whose obsessive perfectionism mirrors his own. The film becomes a strange, funny, disturbing meditation on what Day-Lewis himself has been.",
+        "visual_style": "Paul Thomas Anderson and cinematographer Michael Bauman: rich, exquisitely controlled — every frame dressed like one of Reynolds Woodcock's gowns."
+      }
+    ],
+    "style_tags": [
+      "method acting",
+      "transformation",
+      "intensity",
+      "restraint",
+      "period films",
+      "physicality"
+    ],
+    "start_with": {
+      "film": "There Will Be Blood",
+      "year": 2007,
+      "note": "The fullest expression of what Day-Lewis can do — two and a half hours of total character possession, in a film worthy of the performance."
+    },
+    "key_themes": [
+      "obsession as vocation",
+      "American mythology",
+      "class and aspiration",
+      "the body as instrument"
+    ],
+    "quote": "The more you do, the more experience you have, and the more you realize how little you know."
+  },
+  {
+    "id": 6,
+    "name": "Isabelle Huppert",
+    "nationality": "french",
+    "birth_year": 1953,
+    "death_year": null,
+    "era": "contemporary",
+    "tagline": "Merciless, precise, unflinching — the bravest actress alive",
+    "bio": "Isabelle Huppert has spent fifty years being the actress no one else dared to be. Where other performers seek audience sympathy, Huppert courts discomfort — she plays characters who are cold, calculating, morally complex, sexually transgressive, and she plays them without judgment or apology. Trained at the Conservatoire National Supérieur d'Art Dramatique, she has collaborated with Claude Chabrol, Michael Haneke, Paul Verhoeven, and Hong Sang-soo, adapting her extraordinary precision to radically different directorial visions. Her face is a mask that conceals and reveals simultaneously. She has appeared in over 130 films and remains, at seventy, the most daring actress working in European cinema.",
+    "why": "She refuses the audience the comfort of a character they can simply like or dislike — she demands they look at something harder and stranger.",
+    "notable_films": [
+      {
+        "title": "The Lacemaker",
+        "year": 1977,
+        "runtime": 107,
+        "themes": [
+          "class",
+          "innocence",
+          "heartbreak",
+          "silence"
+        ],
+        "synopsis": "A shy, gentle hairdresser's assistant falls in love with a university student whose world is nothing like hers.",
+        "why_watch": "Huppert at twenty-three — luminous, heartbreaking, doing everything with her eyes. The film's underrated but it shows her naturalistic gifts before her work became more controlled and severe.",
+        "visual_style": "Claude Goretta's delicate, observational style — summer light, soft focus, unbearably tender."
+      },
+      {
+        "title": "La Cérémonie",
+        "year": 1995,
+        "runtime": 111,
+        "themes": [
+          "class",
+          "illiteracy",
+          "resentment",
+          "violence"
+        ],
+        "synopsis": "A postwoman befriends the new housekeeper of a bourgeois family, and together they nurse a growing hatred of their employers.",
+        "why_watch": "Huppert plays transgression as liberation — her joy in the film's final act is terrifying precisely because it's genuine. She and Sandrine Bonnaire are extraordinary together.",
+        "visual_style": "Chabrol's cold, clinical observation — he watches the bourgeoisie like an entomologist studying specimens."
+      },
+      {
+        "title": "The Piano Teacher",
+        "year": 2001,
+        "runtime": 131,
+        "themes": [
+          "repression",
+          "desire",
+          "sadomasochism",
+          "control"
+        ],
+        "synopsis": "A glacially controlled Vienna Conservatory piano teacher enters a disturbing relationship with one of her students.",
+        "why_watch": "The most extreme performance of her career — Huppert shows a woman whose entire inner world has curdled from repression. There are scenes here that are almost impossible to watch. And yet you cannot look away.",
+        "visual_style": "Michael Haneke's controlled distance — he frames cruelty with the neutrality of a security camera."
+      },
+      {
+        "title": "Elle",
+        "year": 2016,
+        "runtime": 130,
+        "themes": [
+          "rape",
+          "power",
+          "control",
+          "dark comedy",
+          "transgression"
+        ],
+        "synopsis": "The CEO of a video game company is raped, and her response to the assault is utterly unlike what anyone expects.",
+        "why_watch": "A film that could not exist without Huppert — any other actress would have softened Michèle's edges into something palatable. Huppert plays her as fully herself: complex, darkly funny, impossible to categorize.",
+        "visual_style": "Paul Verhoeven directs with the slick efficiency of an arthouse Hitchcock — Paris looks beautiful and sinister."
+      },
+      {
+        "title": "Things to Come",
+        "year": 2016,
+        "runtime": 102,
+        "themes": [
+          "aging",
+          "philosophy",
+          "loss",
+          "reinvention"
+        ],
+        "synopsis": "A philosophy teacher in her late fifties finds her carefully ordered life collapsing — husband leaves, mother dies, publisher drops her.",
+        "why_watch": "The gentle flip side of Elle — Huppert plays freedom discovered late, with warmth and grace. Her most quietly humane performance.",
+        "visual_style": "Mia Hansen-Løve's loose, naturalistic style — the film breathes like a conversation."
+      }
+    ],
+    "style_tags": [
+      "restraint",
+      "intensity",
+      "European art cinema",
+      "transgression",
+      "collaborations",
+      "minimalism"
+    ],
+    "start_with": {
+      "film": "The Piano Teacher",
+      "year": 2001,
+      "note": "The film most completely designed to showcase what Huppert does that no one else can — the simultaneous revelation and concealment of a woman's entire hidden life."
+    },
+    "key_themes": [
+      "female transgression",
+      "class and resentment",
+      "repression and its costs",
+      "the unknowable interior"
+    ],
+    "quote": "I don't judge my characters. I don't think they judge themselves either. They just live."
+  },
+  {
+    "id": 7,
+    "name": "Gong Li",
+    "nationality": "chinese",
+    "birth_year": 1965,
+    "death_year": null,
+    "era": "contemporary",
+    "tagline": "The face that launched Chinese cinema onto the world stage",
+    "bio": "Gong Li is the great actress of mainland Chinese cinema — the performer whose collaboration with Zhang Yimou in the late 1980s and early 1990s produced a string of films that introduced Chinese art cinema to global audiences. A graduate of the Beijing Central Academy of Drama, she brought to Zhang's highly stylized, color-saturated world a grounded emotional truth that kept his allegorical films human. Her roles — women trapped by patriarchy, poverty, and political oppression, who resist through survival rather than rebellion — are among the finest acting in world cinema. She later worked with Chen Kaige, Rob Marshall, and Zhang Yimou again, proving her range far beyond those origins.",
+    "why": "She makes the political personal — her suffering is always specific, never symbolic, even when the films are about much more than a single woman.",
+    "notable_films": [
+      {
+        "title": "Raise the Red Lantern",
+        "year": 1991,
+        "runtime": 125,
+        "themes": [
+          "patriarchy",
+          "power",
+          "women",
+          "ritual",
+          "oppression"
+        ],
+        "synopsis": "A young woman becomes the fourth concubine of a wealthy lord and must navigate the vicious rivalries of the household.",
+        "why_watch": "Gong Li plays a woman whose initial resentment slowly transforms into complicity — one of the great portraits of how systems of oppression reproduce themselves through those they oppress. Devastating.",
+        "visual_style": "Zhang Yimou's most formally controlled film — symmetrical compositions, the mansion's courtyard as a trap, crimson lanterns as both privilege and threat."
+      },
+      {
+        "title": "Farewell My Concubine",
+        "year": 1993,
+        "runtime": 171,
+        "themes": [
+          "love",
+          "art",
+          "revolution",
+          "history",
+          "jealousy"
+        ],
+        "synopsis": "Two Peking opera performers navigate their lives and relationship across fifty years of Chinese history.",
+        "why_watch": "Gong Li plays the woman between two men who love each other — a role written as villain that she transforms into tragedy. Her final act is heartbreaking.",
+        "visual_style": "Chen Kaige's epic sweep — opera performances, Cultural Revolution violence, decades of Chinese history as backdrop."
+      },
+      {
+        "title": "To Live",
+        "year": 1994,
+        "runtime": 132,
+        "themes": [
+          "survival",
+          "history",
+          "family",
+          "loss",
+          "China"
+        ],
+        "synopsis": "A family navigates the Cultural Revolution and its aftermath across thirty years, losing everything except each other.",
+        "why_watch": "Gong Li at her most naturalistic — she plays an ordinary woman enduring extraordinary suffering with quiet, practical courage. The shadow puppet scenes are heartbreaking.",
+        "visual_style": "Zhang Yimou strips away the formal stylization of his earlier work for something rawer and more immediate."
+      },
+      {
+        "title": "Ju Dou",
+        "year": 1990,
+        "runtime": 94,
+        "themes": [
+          "desire",
+          "oppression",
+          "forbidden love",
+          "violence"
+        ],
+        "synopsis": "A woman trapped in a loveless, abusive marriage with an elderly dye mill owner begins an affair with his young nephew.",
+        "why_watch": "Gong Li's first great performance — all suppressed desire and explosive need, in a film that Chinese censors immediately banned. She makes you believe every impossible, dangerous choice her character makes.",
+        "visual_style": "Cloth bolts dyed in vivid primaries — Gu Changwei's cinematography turns the dye mill into a fever dream of color and desire."
+      },
+      {
+        "title": "The Story of Qiu Ju",
+        "year": 1992,
+        "runtime": 100,
+        "themes": [
+          "justice",
+          "bureaucracy",
+          "rural China",
+          "stubbornness"
+        ],
+        "synopsis": "A pregnant rural woman seeks justice through China's bureaucratic system after her husband is kicked by the village chief.",
+        "why_watch": "Zhang Yimou's most neorealist film, and Gong Li's most naturalistic — she plays a stubborn, ordinary woman navigating an indifferent system with humor and determination. An outlier in both their careers.",
+        "visual_style": "Shot documentary-style with hidden cameras in actual Chinese villages — radically different from Zhang's usual formalism."
+      }
+    ],
+    "style_tags": [
+      "naturalism",
+      "intensity",
+      "collaborations",
+      "period films",
+      "tragedy",
+      "restraint"
+    ],
+    "start_with": {
+      "film": "Raise the Red Lantern",
+      "year": 1991,
+      "note": "The film where Gong Li's performance and Zhang Yimou's formal control reach their perfect balance — a contained performance inside a stunning visual system."
+    },
+    "key_themes": [
+      "women under patriarchy",
+      "survival as resistance",
+      "Chinese history",
+      "desire and its costs"
+    ],
+    "quote": "When I play a character, I try to understand her from the inside. Not to judge her, but to live her."
+  },
+  {
+    "id": 8,
+    "name": "Maggie Cheung",
+    "nationality": "hong kong",
+    "birth_year": 1964,
+    "death_year": null,
+    "era": "contemporary",
+    "tagline": "Elegance and ache — the soul of Hong Kong cinema",
+    "bio": "Maggie Cheung began her career as a model and beauty queen, and spent most of the 1980s in light comedies and martial arts films. Then Wong Kar-wai found her. Through As Tears Go By, Days of Being Wild, and In the Mood for Love, she became something else entirely — one of the most sophisticated film actresses in the world, a performer whose beauty became inseparable from her emotional intelligence. In the Mood for Love is built around what she and Tony Leung withhold from each other; every movement of her qipao-clad body is a form of communication. She also worked in French cinema, winning the Cannes Best Actress for Clean, playing an addict trying to reclaim her life in English.",
+    "why": "She transformed herself from a commercial star into an artist of the first order — the rarest trajectory in cinema.",
+    "notable_films": [
+      {
+        "title": "In the Mood for Love",
+        "year": 2000,
+        "runtime": 98,
+        "themes": [
+          "longing",
+          "restraint",
+          "desire",
+          "memory"
+        ],
+        "synopsis": "Two neighbors discover their spouses are having an affair. They grow achingly close — but refuse to become what their partners are.",
+        "why_watch": "The twenty-six qipao dresses Cheung wears in this film are not costume — they are character. She moves through Wong Kar-wai's film like a figure out of a dream, present and untouchable simultaneously.",
+        "visual_style": "Slow motion, tight framing in narrow corridors — Wong Kar-wai compresses space and time into longing."
+      },
+      {
+        "title": "Days of Being Wild",
+        "year": 1990,
+        "runtime": 94,
+        "themes": [
+          "rootlessness",
+          "desire",
+          "abandonment",
+          "Hong Kong"
+        ],
+        "synopsis": "A restless, beautiful young man drifts through women and Hong Kong in 1960, unable to connect with anyone.",
+        "why_watch": "An early, underrated Cheung performance — she plays a woman humiliated by love with extraordinary dignity. The film's opening dance to Perfidia, her watching Leslie Cheung, is one of the great scenes of longing.",
+        "visual_style": "Christopher Doyle's green-tinged, humid cinematography — Hong Kong as a tropical trap."
+      },
+      {
+        "title": "Hero",
+        "year": 2002,
+        "runtime": 99,
+        "themes": [
+          "sacrifice",
+          "honor",
+          "swordsmanship",
+          "empire"
+        ],
+        "synopsis": "A story of assassination plots against the first Qin emperor, told and retold from multiple perspectives.",
+        "why_watch": "Cheung and Tony Leung together again, this time in Zhang Yimou's wuxia epic. Their blue-chapter fight sequence — the one that exists only in imagination — is ravishing.",
+        "visual_style": "Each chapter saturated in a different color — red, blue, white — Zhao Xiaoding and Christopher Doyle's cinematography."
+      },
+      {
+        "title": "Clean",
+        "year": 2004,
+        "runtime": 111,
+        "themes": [
+          "addiction",
+          "grief",
+          "motherhood",
+          "redemption"
+        ],
+        "synopsis": "A rock musician struggling with addiction tries to rebuild her life and reconnect with her young son after her partner's overdose death.",
+        "why_watch": "Cheung won Best Actress at Cannes for this English-language performance — raw, unglamorous, determined. She plays withdrawal and longing with the same precision she brought to Wong Kar-wai's gorgeous aestheticism.",
+        "visual_style": "Olivier Assayas's stripped-back naturalism — Edinburgh, Paris, Toronto, no visual flourish, just a woman trying to survive."
+      },
+      {
+        "title": "Ashes of Time",
+        "year": 1994,
+        "runtime": 100,
+        "themes": [
+          "memory",
+          "regret",
+          "desire",
+          "martial arts",
+          "time"
+        ],
+        "synopsis": "A reclusive swordsman-for-hire in the desert takes on clients whose stories intertwine with his past loves.",
+        "why_watch": "Cheung plays a woman who loved and was abandoned — fragmentary, spectral, heartbreaking. Wong Kar-wai's most cryptic film, but her scenes are its emotional core.",
+        "visual_style": "Christopher Doyle's wuxia cinematography — sand, light, blurred motion, the desert as a landscape of memory."
+      }
+    ],
+    "style_tags": [
+      "restraint",
+      "elegance",
+      "longing",
+      "collaborations",
+      "naturalism",
+      "silence"
+    ],
+    "start_with": {
+      "film": "In the Mood for Love",
+      "year": 2000,
+      "note": "The film that defines Cheung's late career — she communicates an entire inner world through posture, movement, and the architecture of the body in space."
+    },
+    "key_themes": [
+      "desire and its withholding",
+      "Hong Kong identity",
+      "transformation and reinvention",
+      "elegance as expression"
+    ],
+    "quote": "There's no such thing as a perfect take. You just stop when you've found something true."
+  },
+  {
+    "id": 9,
+    "name": "Juliette Binoche",
+    "nationality": "french",
+    "birth_year": 1964,
+    "death_year": null,
+    "era": "contemporary",
+    "tagline": "Grief, grace, and the infinite capacity of the face to tell the truth",
+    "bio": "Juliette Binoche is the great actress of European cinema in the second half of the twentieth century. She worked with Jean-Luc Godard as a teenager, then found her great collaborator in Krzysztof Kieślowski, whose Three Colors trilogy gave her the role — Julie in Blue — that made her a world figure. She won the Academy Award for The English Patient, Best Actress at Cannes for Three Colors: Blue, and at Berlin for The English Patient. What makes Binoche exceptional is her emotional availability — she seems always on the edge of feeling, rarely fully defended, so that when grief or joy arrive in a scene, they arrive with full force. She has also worked with Kiarostami, Haneke, and Carax.",
+    "why": "She makes you believe that cinema can capture what's most private and inexpressible in human emotion.",
+    "notable_films": [
+      {
+        "title": "Three Colors: Blue",
+        "year": 1993,
+        "runtime": 99,
+        "themes": [
+          "grief",
+          "freedom",
+          "memory",
+          "music",
+          "forgetting"
+        ],
+        "synopsis": "A woman whose husband and daughter are killed in a car accident tries to rebuild her life by shedding everything — including her connection to his unfinished symphony.",
+        "why_watch": "Binoche carries almost every frame of this film alone, playing a woman trying to feel nothing. The scenes where grief breaks through her control — in the coffee cup, at the rehearsal — are devastating.",
+        "visual_style": "Sławomir Idziak's saturated blue palette and Kieślowski's precise, symbolic compositions."
+      },
+      {
+        "title": "The English Patient",
+        "year": 1996,
+        "runtime": 162,
+        "themes": [
+          "love",
+          "war",
+          "identity",
+          "sacrifice",
+          "Italy"
+        ],
+        "synopsis": "A badly burned patient in an Italian villa at the end of WWII unravels the story of his fatal affair.",
+        "why_watch": "Binoche won the Oscar, but she's doing something subtler than Oscar performances usually allow — her Hana is defined by what she absorbs from others, her capacity for care as a form of self-protection.",
+        "visual_style": "John Seale's lush cinematography — the North African desert and the crumbling Italian villa as twin landscapes of loss."
+      },
+      {
+        "title": "Cache",
+        "year": 2005,
+        "runtime": 117,
+        "themes": [
+          "guilt",
+          "colonialism",
+          "surveillance",
+          "Algeria",
+          "denial"
+        ],
+        "synopsis": "A Parisian couple begin receiving mysterious surveillance tapes of their house, which lead to a long-buried secret.",
+        "why_watch": "Binoche plays Anne as the more honest member of the couple — watchful, increasingly disturbed by her husband's evasions. Michael Haneke's most politically charged film.",
+        "visual_style": "Haneke's fixed-camera surveillance aesthetic — the viewer becomes complicit in the watching."
+      },
+      {
+        "title": "Certified Copy",
+        "year": 2010,
+        "runtime": 106,
+        "themes": [
+          "authenticity",
+          "love",
+          "role-playing",
+          "Tuscany",
+          "time"
+        ],
+        "synopsis": "A British author and a French gallery owner spend a day in Tuscany — their relationship shifting, mysteriously, from strangers to something like long-married.",
+        "why_watch": "The finest performance of Binoche's career and one of the greatest in recent cinema. She plays at least three different versions of her character — and you believe every one. The film only works because of her.",
+        "visual_style": "Abbas Kiarostami's gentle, flowing observationalism — Tuscany in afternoon light, two faces in conversation."
+      },
+      {
+        "title": "The Lovers on the Bridge",
+        "year": 1991,
+        "runtime": 126,
+        "themes": [
+          "homelessness",
+          "love",
+          "Paris",
+          "blindness",
+          "passion"
+        ],
+        "synopsis": "Two homeless people — one slowly going blind — fall violently, beautifully in love on the Pont Neuf.",
+        "why_watch": "Leos Carax's most romantic film, and one of Binoche's most physically demanding performances. She and Denis Lavant are extraordinary — raw, joyful, utterly committed.",
+        "visual_style": "Carax closed the Pont Neuf for this production and built a replica in the south of France. The fireworks sequence is one of cinema's great set pieces."
+      }
+    ],
+    "style_tags": [
+      "naturalism",
+      "restraint",
+      "European art cinema",
+      "grief",
+      "collaborations",
+      "intensity"
+    ],
+    "start_with": {
+      "film": "Three Colors: Blue",
+      "year": 1993,
+      "note": "The most concentrated showcase of Binoche's gift — a film that asks her to carry grief through almost every frame, and she does so with absolute conviction."
+    },
+    "key_themes": [
+      "grief and its survivors",
+      "the permeability of identity",
+      "European art cinema",
+      "love and its discontents"
+    ],
+    "quote": "I try to be in the moment. The character is not separate from me."
+  },
+  {
+    "id": 10,
+    "name": "Jeanne Moreau",
+    "nationality": "french",
+    "birth_year": 1928,
+    "death_year": 2017,
+    "era": "new-wave",
+    "tagline": "The New Wave's muse and its moral conscience",
+    "bio": "Jeanne Moreau was the actress who made the French New Wave possible. Before Truffaut, before Godard's transformation of cinema, Moreau had already transformed what a French screen actress could be — intelligent, sensual, unafraid of moral ambiguity, never performing femininity for male approval. She worked with Louis Malle first, in Elevator to the Gallows and The Lovers, then with Truffaut in Jules and Jim, then with Antonioni, Buñuel, and Orson Welles. She played women who desired, who chose, who destroyed, who were destroyed — and she played all of it with an unflinching directness that made her the prototype for the modern film actress. She also directed two films. She was, by any measure, one of the greatest actors of the twentieth century.",
+    "why": "She gave the New Wave its human face — the intellectual idea made flesh, fully alive, fully dangerous.",
+    "notable_films": [
+      {
+        "title": "Elevator to the Gallows",
+        "year": 1958,
+        "runtime": 91,
+        "themes": [
+          "desire",
+          "crime",
+          "fate",
+          "Paris at night"
+        ],
+        "synopsis": "A woman and her lover plot to kill her husband — but the plan begins to unravel when he gets stuck in an elevator.",
+        "why_watch": "Moreau walking the streets of Paris at night, accompanied by Miles Davis's improvised score, is one of cinema's iconic images. She does almost nothing. It is everything.",
+        "visual_style": "Henri Decaë's existentialist night photography — Paris as a city of shadows and chance."
+      },
+      {
+        "title": "Jules and Jim",
+        "year": 1962,
+        "runtime": 110,
+        "themes": [
+          "love triangle",
+          "freedom",
+          "friendship",
+          "time",
+          "WWI"
+        ],
+        "synopsis": "Two friends — a German and a Frenchman — fall in love with the same free-spirited woman across twenty years.",
+        "why_watch": "Moreau's Catherine is cinema's great free spirit — irresistible, destructive, unknowable. The film asks you to love her even as she destroys everything around her. You can't not.",
+        "visual_style": "Raoul Coutard's playful handheld photography — freeze frames, newsreel footage, voiceover — the nouvelle vague at its most exuberant."
+      },
+      {
+        "title": "The Fire Within",
+        "year": 1963,
+        "runtime": 104,
+        "themes": [
+          "suicide",
+          "alienation",
+          "friendship",
+          "despair"
+        ],
+        "synopsis": "An alcoholic man spends his last day in Paris visiting friends, trying to find a reason to live.",
+        "why_watch": "Moreau appears only briefly, but her scene — the only one where the protagonist feels genuinely seen — is the film's emotional center. She does more in five minutes than most actors do in a career.",
+        "visual_style": "Louis Malle's controlled, grey Paris — Erik Satie on the soundtrack, melancholy made formal."
+      },
+      {
+        "title": "The Bride Wore Black",
+        "year": 1968,
+        "runtime": 107,
+        "themes": [
+          "revenge",
+          "obsession",
+          "death",
+          "Hitchcock homage"
+        ],
+        "synopsis": "A widow systematically hunts down the men responsible for her husband's death on their wedding day.",
+        "why_watch": "Moreau plays revenge without sentimentality — calm, methodical, and utterly chilling. Truffaut's most Hitchcockian film, and she was the only actress who could have made it work.",
+        "visual_style": "Raoul Coutard's elegant framing and Bernard Herrmann's score — an explicit Hitchcock homage that transcends its inspiration."
+      }
+    ],
+    "style_tags": [
+      "intensity",
+      "naturalism",
+      "New Wave collaborations",
+      "European art cinema",
+      "tragedy",
+      "silence"
+    ],
+    "start_with": {
+      "film": "Jules and Jim",
+      "year": 1962,
+      "note": "The performance that defined a generation's understanding of female freedom — irresistible and terrifying in equal measure."
+    },
+    "key_themes": [
+      "female autonomy and its costs",
+      "desire as force of nature",
+      "the New Wave's moral universe",
+      "Paris as character"
+    ],
+    "quote": "Age doesn't protect you from love. But love, to some extent, protects you from age."
+  },
+  {
+    "id": 11,
+    "name": "Monica Vitti",
+    "nationality": "italian",
+    "birth_year": 1931,
+    "death_year": 2022,
+    "era": "new-wave",
+    "tagline": "Alienation made beautiful — Antonioni's muse and cinema's great modern face",
+    "bio": "Monica Vitti was the face of Italian modernism in cinema, the actress who embodied Michelangelo Antonioni's vision of contemporary alienation across four masterpieces in five years. Their collaboration — L'avventura, La Notte, Eclipse, Red Desert — remains one of the greatest director-actress partnerships in film history. Vitti played women adrift in modernity: beautiful, intelligent, profoundly disconnected, unable to feel what they are supposed to feel. In Antonioni's long, silent takes, her face became a landscape — an expression of the void that his films explored. What's less recognized is her talent for comedy: she later became one of Italy's great comic performers, a completely different register that proved her extraordinary range.",
+    "why": "She made philosophical cinema feel human — in Antonioni's most abstract moments, her face kept you tethered to something real.",
+    "notable_films": [
+      {
+        "title": "L'avventura",
+        "year": 1960,
+        "runtime": 143,
+        "themes": [
+          "alienation",
+          "disappearance",
+          "desire",
+          "boredom",
+          "modernity"
+        ],
+        "synopsis": "A woman disappears during a yacht trip to a volcanic island. Her lover and her best friend search for her — and slowly begin an affair.",
+        "why_watch": "Vitti's face in the final scene — one of the most discussed endings in film history — contains an entire world of complicated, exhausted feeling. She barely moves. Everything moves.",
+        "visual_style": "Aldo Scavarda's cinematography — volcanic rock, Sicilian light, the sea as indifference — makes alienation tangible."
+      },
+      {
+        "title": "Eclipse",
+        "year": 1962,
+        "runtime": 125,
+        "themes": [
+          "alienation",
+          "desire",
+          "Rome",
+          "money",
+          "emotional distance"
+        ],
+        "synopsis": "A young woman ends one relationship and begins another, but feels distanced from both men and from life itself.",
+        "why_watch": "Vitti in her most elliptical, challenging mode — playing a woman who can't feel what love is supposed to feel like. The film's final seven-minute sequence, with no actors, is one of cinema's great endings.",
+        "visual_style": "Gianni Di Venanzo's Rome — modernist architecture, the stock exchange, empty streets at dusk — as a map of spiritual vacancy."
+      },
+      {
+        "title": "Red Desert",
+        "year": 1964,
+        "runtime": 120,
+        "themes": [
+          "alienation",
+          "mental illness",
+          "industrialization",
+          "color",
+          "ecology"
+        ],
+        "synopsis": "A fragile, depressed woman navigates life in a grey industrial landscape near Ravenna.",
+        "why_watch": "Antonioni's first color film, and he painted the landscape to create Vitti's psychological state. She plays a kind of madness — not dramatic, but diffuse, pervasive. Her most interior performance.",
+        "visual_style": "Antonioni literally had crew repaint fog grey and grass brown. The industrial landscape becomes a projection of mental illness — unique in film history."
+      },
+      {
+        "title": "La Notte",
+        "year": 1961,
+        "runtime": 122,
+        "themes": [
+          "marriage",
+          "alienation",
+          "intellectual life",
+          "Milan"
+        ],
+        "synopsis": "A celebrated novelist and his wife spend a night at a party, slowly recognizing the emptiness of their marriage.",
+        "why_watch": "Vitti's Valentina — the host's daughter — enters the film midway and transforms it. She plays a young woman as complex and disconnected as anyone, but differently: curious, playful, sad. Her scenes with Marcello Mastroianni are extraordinary.",
+        "visual_style": "Gianni Di Venanzo again — modernist Milan at night, the party's mansion as a trap."
+      }
+    ],
+    "style_tags": [
+      "restraint",
+      "minimalism",
+      "silence",
+      "European art cinema",
+      "New Wave collaborations",
+      "tragedy"
+    ],
+    "start_with": {
+      "film": "L'avventura",
+      "year": 1960,
+      "note": "Start here, even though it is deliberately frustrating. Vitti's performance is the key — once you understand what she's doing, the whole of Antonioni's project opens up."
+    },
+    "key_themes": [
+      "modernity and its discontents",
+      "female inner life",
+      "Italian postwar cinema",
+      "alienation as aesthetic"
+    ],
+    "quote": "I tried to be an actress who could express what no one had the words to say."
+  },
+  {
+    "id": 12,
+    "name": "Anna Karina",
+    "nationality": "danish",
+    "birth_year": 1940,
+    "death_year": 2019,
+    "era": "new-wave",
+    "tagline": "Godard's muse and cinema's freest spirit",
+    "bio": "Anna Karina was Jean-Luc Godard's great muse, his wife, and the emotional center of the French New Wave's most exuberant period. Born in Denmark, she arrived in Paris at eighteen and found herself cast by Godard in Le Petit Soldat — beginning a collaboration that produced seven films and one of cinema's most turbulent real-life love stories. What Karina brought to the New Wave was an irresistible combination of naturalism and performance: she seemed unaware of the camera even as she performed directly for it, could move from tears to laughter in a single take, and projected an infectious, melancholy freedom that made her characters feel genuinely, dangerously alive. She danced, she cried, she looked directly at you.",
+    "why": "She made the French New Wave feel like it was about real people — warm, funny, heartbreaking where the theory threatened to stay cold.",
+    "notable_films": [
+      {
+        "title": "Vivre sa Vie",
+        "year": 1962,
+        "runtime": 85,
+        "themes": [
+          "freedom",
+          "prostitution",
+          "philosophy",
+          "identity"
+        ],
+        "synopsis": "A young Parisian woman drifts into prostitution, told in twelve tableaux.",
+        "why_watch": "Karina's face in close-up while she watches Dreyer's Passion of Joan of Arc — one cinema meeting another, tears flowing — is one of film history's great moments. She plays Nana's doomed freedom with no self-pity.",
+        "visual_style": "Raoul Coutard's long takes and close-ups. Godard structures it like a case study, but Karina makes it a lament."
+      },
+      {
+        "title": "Band of Outsiders",
+        "year": 1964,
+        "runtime": 95,
+        "themes": [
+          "crime",
+          "romance",
+          "literature",
+          "Paris",
+          "youth"
+        ],
+        "synopsis": "Three young Parisians plan a heist; two of the men compete for the affections of the third's apartment-share.",
+        "why_watch": "The famous Madison dance scene — three people in a café, moving in perfect joy, then stopping — crystallizes everything wonderful about the New Wave. Karina's joy in it is completely real.",
+        "visual_style": "Coutard at his most playful — handheld, fast, full of the love of cinema itself."
+      },
+      {
+        "title": "Pierrot le Fou",
+        "year": 1965,
+        "runtime": 110,
+        "themes": [
+          "escape",
+          "love",
+          "death",
+          "media",
+          "freedom"
+        ],
+        "synopsis": "A man abandons his bourgeois life to drive south with his babysitter, heading toward Spain and some kind of freedom.",
+        "why_watch": "The last Godard-Karina collaboration, and the most desperate — you can feel their real relationship fracturing in it. Karina's Marianne is radiant and capricious and finally heartbreaking.",
+        "visual_style": "Raoul Coutard's saturated color, the Mediterranean as paradise and dead end — one of cinema's most beautiful-looking films."
+      },
+      {
+        "title": "Alphaville",
+        "year": 1965,
+        "runtime": 99,
+        "themes": [
+          "dystopia",
+          "totalitarianism",
+          "love",
+          "science fiction",
+          "emotion"
+        ],
+        "synopsis": "A secret agent travels to a futuristic city where emotion has been outlawed and must rescue a scientist.",
+        "why_watch": "Karina plays a woman who has had feeling programmed out of her — and then slowly, terrifyingly, learns to feel again. The final scene, where she says 'I love you' for the first time, is one of Godard's greatest.",
+        "visual_style": "Coutard shoots contemporary Paris as a futuristic dystopia — no sets, no special effects, just modernist architecture at night."
+      },
+      {
+        "title": "Une femme est une femme",
+        "year": 1961,
+        "runtime": 84,
+        "themes": [
+          "desire",
+          "motherhood",
+          "love triangle",
+          "musical"
+        ],
+        "synopsis": "A striptease artist wants to have a baby — her boyfriend isn't ready, his best friend is willing.",
+        "why_watch": "Karina at her most joyful and playful — this is Godard's attempt at a Hollywood musical, and her comic timing is extraordinary. She's funny in a completely unforced way.",
+        "visual_style": "Coutard's CinemaScope color photography — Godard's most genuinely playful film."
+      }
+    ],
+    "style_tags": [
+      "naturalism",
+      "New Wave collaborations",
+      "European art cinema",
+      "joy",
+      "tragedy",
+      "silence"
+    ],
+    "start_with": {
+      "film": "Band of Outsiders",
+      "year": 1964,
+      "note": "The most immediately accessible Godard-Karina film — joyful, funny, and heartbreaking — and the one where her spontaneous charm is most perfectly captured."
+    },
+    "key_themes": [
+      "freedom and its costs",
+      "the gaze and the gazer",
+      "Paris as playground and trap",
+      "emotion against ideology"
+    ],
+    "quote": "I never thought about what I was doing. I just did it. Maybe that was the secret."
+  },
+  {
+    "id": 13,
+    "name": "Max von Sydow",
+    "nationality": "swedish",
+    "birth_year": 1929,
+    "death_year": 2020,
+    "era": "new-wave",
+    "tagline": "Bergman's great knight — a face that held centuries of sorrow",
+    "bio": "Max von Sydow had one of cinema's great faces: long, angular, capable of conveying medieval faith and modern existential anguish with equal conviction. Ingmar Bergman discovered him at the Malmö City Theatre and cast him as the knight Antonius Block in The Seventh Seal — a performance that made him internationally famous at twenty-seven. He went on to star in eleven Bergman films, including Wild Strawberries, The Virgin Spring, and Through a Glass Darkly, forming one of cinema's great director-actor partnerships. He later worked internationally — playing the priest in The Exorcist, Mingus in Hannah and Her Sisters, and ultimately appearing in Star Wars and Game of Thrones, his face and voice retaining their authority into his nineties.",
+    "why": "He embodied faith and doubt simultaneously — his face was a battleground for the great questions of European cinema.",
+    "notable_films": [
+      {
+        "title": "The Seventh Seal",
+        "year": 1957,
+        "runtime": 96,
+        "themes": [
+          "death",
+          "faith",
+          "God's silence",
+          "medieval plague"
+        ],
+        "synopsis": "A knight returning from the Crusades plays chess with Death while searching for meaning in a plague-ravaged landscape.",
+        "why_watch": "Von Sydow makes Antonius Block's spiritual crisis feel genuine rather than schematic — you believe in this man's faith and his doubt simultaneously. The chess game with Death is cinema's great image of mortality.",
+        "visual_style": "Gunnar Fischer's black-and-white cinematography — stark, symbolic, medieval — Bergman's most iconic visual work."
+      },
+      {
+        "title": "The Virgin Spring",
+        "year": 1960,
+        "runtime": 89,
+        "themes": [
+          "faith",
+          "revenge",
+          "innocence",
+          "medieval"
+        ],
+        "synopsis": "A devout medieval farmer's daughter is raped and murdered. When her killers unknowingly seek shelter at his farm, he takes vengeance.",
+        "why_watch": "Von Sydow plays a man of faith whose faith is destroyed and then, in the moment of revenge, demands something more of God. The scene where he begins to tear at a tree with his hands is primally terrifying.",
+        "visual_style": "Sven Nykvist's first major Bergman collaboration — pure, elemental, heartbreakingly beautiful."
+      },
+      {
+        "title": "Through a Glass Darkly",
+        "year": 1961,
+        "runtime": 89,
+        "themes": [
+          "mental illness",
+          "God",
+          "family",
+          "love",
+          "summer island"
+        ],
+        "synopsis": "A young woman struggles with schizophrenia on a remote Swedish island while her husband, brother, and writer-father watch helplessly.",
+        "why_watch": "Von Sydow plays the husband — a figure of helpless love, unable to reach his wife. His stillness against Harriet Andersson's breakdown is one of Bergman's great emotional contrasts.",
+        "visual_style": "Sven Nykvist's first full collaboration with Bergman — the island's spare beauty making spiritual isolation visible."
+      },
+      {
+        "title": "The Exorcist",
+        "year": 1973,
+        "runtime": 122,
+        "themes": [
+          "faith",
+          "evil",
+          "medicine",
+          "Catholicism"
+        ],
+        "synopsis": "A young girl is possessed by a demon; two priests are called to perform an exorcism.",
+        "why_watch": "Von Sydow plays Father Merrin with the same moral authority he brought to Bergman's knights — a man who has faced evil before and knows what it costs. His arrival in the final act changes the film's register entirely.",
+        "visual_style": "Owen Roizman's nighttime cinematography — Georgetown shadows and the girl's glowing bedroom as competing infernos."
+      },
+      {
+        "title": "Wild Strawberries",
+        "year": 1957,
+        "runtime": 91,
+        "themes": [
+          "regret",
+          "aging",
+          "memory",
+          "mortality",
+          "reconciliation"
+        ],
+        "synopsis": "An elderly professor travels to receive an honorary degree, reviewing his life's regrets through dreams and memory.",
+        "why_watch": "Von Sydow appears only briefly, but as the young version of the professor — his physicality and grief exact mirror images of Victor Sjöström's old man. An extraordinary intergenerational piece of casting.",
+        "visual_style": "Gunnar Fischer's dreamlike black-and-white — the past rendered as both beautiful and accusatory."
+      }
+    ],
+    "style_tags": [
+      "intensity",
+      "restraint",
+      "European art cinema",
+      "collaborations",
+      "silence",
+      "tragedy"
+    ],
+    "start_with": {
+      "film": "The Seventh Seal",
+      "year": 1957,
+      "note": "The performance that made him: a knight playing chess with Death, played without allegory, as if this were simply a man trying to hold onto meaning before the end."
+    },
+    "key_themes": [
+      "faith and its testing",
+      "mortality",
+      "Scandinavian existentialism",
+      "the body under spiritual pressure"
+    ],
+    "quote": "Bergman taught me that film was a serious art form. After him, everything else felt like practicing."
+  },
+  {
+    "id": 14,
+    "name": "Jean-Paul Belmondo",
+    "nationality": "french",
+    "birth_year": 1933,
+    "death_year": 2021,
+    "era": "new-wave",
+    "tagline": "The anti-hero who made cool look effortless",
+    "bio": "Jean-Paul Belmondo was everything the old French cinema was not: rumpled, working-class, physically real, magnetic without trying to be beautiful. When Godard cast him as Michel Poiccard in Breathless — the Humphrey Bogart-obsessed small-time crook who runs from the police and from commitment — he invented the New Wave's anti-hero. Belmondo moved through scenes like a force of nature, cigarette dangling, collar turned up, improvising dialogue with Godard's encouragement. He was also, throughout his career, one of France's great action stars — doing his own stunts into his sixties, beloved by a mass audience that didn't always find the art-house work. That combination — the intellectual and the populist — made him France's most beloved actor.",
+    "why": "He proved that anti-hero charisma could carry a film on pure presence — no tricks, no poses, just a man in a world that doesn't quite fit him.",
+    "notable_films": [
+      {
+        "title": "Breathless",
+        "year": 1960,
+        "runtime": 87,
+        "themes": [
+          "freedom",
+          "crime",
+          "American mythology",
+          "betrayal",
+          "youth"
+        ],
+        "synopsis": "A small-time car thief kills a policeman and goes on the run in Paris, pursued by police and his American girlfriend.",
+        "why_watch": "The founding text of French New Wave cool. Belmondo's Michel is completely present in every moment — irresponsible, charming, doomed. Watch how he touches his lip, mimicking Bogart. Completely natural. Completely cinema.",
+        "visual_style": "Raoul Coutard's handheld 400-ASA photography — jump cuts, natural light, Paris as it actually was — revolutionized film grammar."
+      },
+      {
+        "title": "Pierrot le Fou",
+        "year": 1965,
+        "runtime": 110,
+        "themes": [
+          "escape",
+          "love",
+          "death",
+          "art",
+          "freedom"
+        ],
+        "synopsis": "A man abandons his bourgeois life to drive south with his former babysitter, seeking some form of freedom.",
+        "why_watch": "Belmondo and Karina at their finest — the chemistry of two people destroying each other while being unable to stop. His final act, painting his face blue and tying himself in dynamite, is one of cinema's great endings.",
+        "visual_style": "Coutard's Mediterranean color, the South of France as paradise before the fall."
+      },
+      {
+        "title": "Léon Morin, Priest",
+        "year": 1961,
+        "runtime": 117,
+        "themes": [
+          "faith",
+          "desire",
+          "occupied France",
+          "conversion",
+          "repression"
+        ],
+        "synopsis": "During the Nazi occupation of France, a Communist widow begins a complicated relationship with a young priest.",
+        "why_watch": "A completely different Belmondo — still, intelligent, spiritually serious. He plays a priest whose faith is genuine and whose effect on women he refuses to exploit. His most understated performance.",
+        "visual_style": "Henri Decaë's austere wartime France — grey, cold, morally complex."
+      },
+      {
+        "title": "Stavisky",
+        "year": 1974,
+        "runtime": 117,
+        "themes": [
+          "fraud",
+          "charm",
+          "politics",
+          "1930s France",
+          "self-invention"
+        ],
+        "synopsis": "The story of Alexandre Stavisky, a charming swindler whose financial fraud destabilized the French government.",
+        "why_watch": "Belmondo in his mature period — elegant, still, playing a man whose life is one long improvisation. Alain Resnais's direction and Stephen Sondheim's score make this one of the great underrated films.",
+        "visual_style": "Resnais's precise, musical construction — art deco 1930s France rendered with nostalgic melancholy."
+      }
+    ],
+    "style_tags": [
+      "naturalism",
+      "New Wave collaborations",
+      "physicality",
+      "European art cinema",
+      "collaborations"
+    ],
+    "start_with": {
+      "film": "Breathless",
+      "year": 1960,
+      "note": "The film that created the template — Belmondo's Michel is still cinema's most effortlessly cool character, and the film that launched a revolution."
+    },
+    "key_themes": [
+      "masculine freedom and its limits",
+      "American myth in French soil",
+      "charm as survival strategy",
+      "the New Wave's working-class soul"
+    ],
+    "quote": "I never wanted to be a star. I just wanted to work."
+  },
+  {
+    "id": 15,
+    "name": "Gena Rowlands",
+    "nationality": "american",
+    "birth_year": 1930,
+    "death_year": 2024,
+    "era": "new-wave",
+    "tagline": "Raw, unpredictable, completely alive — Cassavetes's great partner",
+    "bio": "Gena Rowlands gave the most sustained and extraordinary performances in American independent cinema through her collaboration with her husband John Cassavetes — a partnership that produced some of the most emotionally raw, technically demanding films ever made. Rowlands worked without the safety net of a conventional script, finding her characters in the moment, often shooting for weeks or months until something true emerged. Her Mabel Longhetti in A Woman Under the Influence — a woman descending into mental illness while trying to hold her family together — is the greatest performance in American cinema after Brando. She played women who were too much for the world around them, women whose need and imagination exceeded what anyone could contain.",
+    "why": "She showed what acting could be when it dispensed with performance entirely and became something closer to witnessing.",
+    "notable_films": [
+      {
+        "title": "A Woman Under the Influence",
+        "year": 1974,
+        "runtime": 155,
+        "themes": [
+          "mental illness",
+          "marriage",
+          "motherhood",
+          "conformity",
+          "love"
+        ],
+        "synopsis": "The wife of a working-class construction foreman struggles with mental illness while trying to be the wife and mother her family needs.",
+        "why_watch": "The greatest film about a woman's inner life in American cinema. Rowlands plays Mabel as fully herself — inappropriate, loving, confused, alive — in a world that cannot accommodate what she is. The dinner party sequence is almost unbearable.",
+        "visual_style": "Cassavetes's long, probing takes — the camera stays on Rowlands's face until you see everything. No score, no relief."
+      },
+      {
+        "title": "Opening Night",
+        "year": 1977,
+        "runtime": 144,
+        "themes": [
+          "aging",
+          "art",
+          "grief",
+          "performance",
+          "identity"
+        ],
+        "synopsis": "A stage actress preparing for a Broadway opening night begins to unravel after witnessing a young fan's death.",
+        "why_watch": "Rowlands plays an actress who is losing herself and cannot separate the role she's playing from the grief she's feeling. Meta, exhausting, brilliant — she was drinking real alcohol for some scenes.",
+        "visual_style": "Cassavetes's most theatrical film — the theatre itself as a space of crisis, the audience as witness."
+      },
+      {
+        "title": "Faces",
+        "year": 1968,
+        "runtime": 130,
+        "themes": [
+          "marriage",
+          "infidelity",
+          "middle age",
+          "loneliness",
+          "alcohol"
+        ],
+        "synopsis": "A middle-class couple drift apart over the course of a single night of infidelity.",
+        "why_watch": "Rowlands as Jeannie — the call girl who is the most clear-eyed, most human person in the film. Her scenes in the second half of the film are among the most emotionally honest ever committed to celluloid.",
+        "visual_style": "Cassavetes's grainy, handheld 16mm — faces in extreme close-up, no distance, no mercy."
+      },
+      {
+        "title": "Gloria",
+        "year": 1980,
+        "runtime": 121,
+        "themes": [
+          "protection",
+          "crime",
+          "motherhood",
+          "Bronx",
+          "survival"
+        ],
+        "synopsis": "A tough, gun-toting woman finds herself protecting a young Puerto Rican boy from the mob after his family is killed.",
+        "why_watch": "Rowlands plays a woman who doesn't like children, doesn't want to be maternal, and becomes a ferocious mother-figure entirely against her nature. Physical, funny, heartbreaking — her most commercially accessible Cassavetes performance.",
+        "visual_style": "Cassavetes shooting the Bronx with the energy of a crime film — the city as a maze of danger."
+      }
+    ],
+    "style_tags": [
+      "naturalism",
+      "intensity",
+      "improvisation",
+      "method acting",
+      "collaborations",
+      "tragedy"
+    ],
+    "start_with": {
+      "film": "A Woman Under the Influence",
+      "year": 1974,
+      "note": "The film that contains everything Rowlands could do — don't watch it expecting a conventional film, expect something rawer and more alive than you're used to."
+    },
+    "key_themes": [
+      "female excess and how the world punishes it",
+      "love that cannot contain itself",
+      "American independent cinema",
+      "performance as survival"
+    ],
+    "quote": "John never told me what to do. He just pointed the camera and believed in me. I tried to be worthy of that."
+  },
+  {
+    "id": 16,
+    "name": "Song Kang-ho",
+    "nationality": "korean",
+    "birth_year": 1967,
+    "death_year": null,
+    "era": "contemporary",
+    "tagline": "Korean cinema's everyman — ordinary face, extraordinary depths",
+    "bio": "Song Kang-ho is South Korean cinema's greatest actor and one of the best in the world. He has an unusual screen presence: he looks like nobody in particular — middle-aged, unremarkable, slightly disheveled — and from that ordinariness he extracts everything. He can play broad comedy (The Host's bumbling father), procedural gravitas (Memories of Murder's detective), class rage (Parasite's Ki-taek), and spiritual complexity (Thirst's vampire priest) with equal conviction. His three collaborations with Bong Joon-ho — Memories of Murder, The Host, and Parasite — are among the great director-actor partnerships of contemporary cinema. He received the Palme d'Or at Cannes for Broker in 2022, a measure of how completely the world has caught up to what South Korean cinema has always known about him.",
+    "why": "He proves that the most powerful screen presence is often the least exceptional-looking face — the one that contains the full range of what it means to be a person.",
+    "notable_films": [
+      {
+        "title": "Memories of Murder",
+        "year": 2003,
+        "runtime": 132,
+        "themes": [
+          "justice",
+          "failure",
+          "rural Korea",
+          "serial murder",
+          "obsession"
+        ],
+        "synopsis": "Two detectives — a provincial bully and a Seoul rationalist — chase South Korea's first serial killer in 1986.",
+        "why_watch": "Song plays Detective Park as a man whose intuition-based, violent approach to policing is being exposed as bankrupt — but you love him anyway. The final shot of him looking at the camera is one of cinema's great endings.",
+        "visual_style": "Bong Joon-ho's precise widescreen compositions — rice paddies, rain, the 1980s Korean provinces as a world of unresolved crime."
+      },
+      {
+        "title": "The Host",
+        "year": 2006,
+        "runtime": 120,
+        "themes": [
+          "family",
+          "monster",
+          "American imperialism",
+          "incompetence",
+          "grief"
+        ],
+        "synopsis": "A family of bumbling food-stall workers must rescue their daughter from a monster living in the Han River.",
+        "why_watch": "Song plays the hapless, loving father as straight tragedy inside a genre film — his grief is completely real even as the monster chases him through sewer tunnels. The family crying scene is devastatingly funny and heartbreaking simultaneously.",
+        "visual_style": "Bong's genre-defiant approach — the monster is revealed in broad daylight, the family is ridiculous and heroic together."
+      },
+      {
+        "title": "Parasite",
+        "year": 2019,
+        "runtime": 132,
+        "themes": [
+          "class",
+          "inequality",
+          "capitalism",
+          "family",
+          "smell"
+        ],
+        "synopsis": "A poor Seoul family gradually infiltrates the household of a wealthy family — and something goes catastrophically wrong.",
+        "why_watch": "Song's Ki-taek is the film's moral center — we understand his rage even when it becomes murder. The scene where he sniffs the rich man's collar and understands what the smell of poverty means is a masterclass.",
+        "visual_style": "Hong Kyung-pyo's cinematography — the lower house, the upper house, the basement — class as physical architecture."
+      },
+      {
+        "title": "Thirst",
+        "year": 2009,
+        "runtime": 134,
+        "themes": [
+          "vampirism",
+          "desire",
+          "Catholicism",
+          "guilt",
+          "transformation"
+        ],
+        "synopsis": "A devout Catholic priest becomes a vampire after a failed medical experiment and struggles to reconcile his faith with his new nature.",
+        "why_watch": "Song plays desire against asceticism — a man whose body has become his enemy. His scenes of religious guilt are played with complete seriousness inside a horror film. Park Chan-wook's strangest film.",
+        "visual_style": "Park Chan-wook's meticulous, color-precise frames — blood and white as moral extremes."
+      },
+      {
+        "title": "Broker",
+        "year": 2022,
+        "runtime": 129,
+        "themes": [
+          "adoption",
+          "parenthood",
+          "love",
+          "morality",
+          "found family"
+        ],
+        "synopsis": "Two baby brokers who illegally sell abandoned infants find themselves accompanying a young mother on a cross-country journey.",
+        "why_watch": "Song won the Palme d'Or for this — the warmest, most humanist performance of his career. He plays a man with no conventional moral standing who is somehow the most loving person in the film.",
+        "visual_style": "Hirokazu Kore-eda's gentle naturalism — the road trip as a form of healing, rain as punctuation."
+      }
+    ],
+    "style_tags": [
+      "naturalism",
+      "intensity",
+      "collaborations",
+      "comedy",
+      "tragedy",
+      "physicality"
+    ],
+    "start_with": {
+      "film": "Memories of Murder",
+      "year": 2003,
+      "note": "The performance that crystallizes what makes Song extraordinary — a detective whose brutal ordinariness becomes, by the film's end, a portrait of an entire nation's failed innocence."
+    },
+    "key_themes": [
+      "class and its humiliations",
+      "Korean society under pressure",
+      "family as the basic unit of meaning",
+      "the everyman under extreme circumstances"
+    ],
+    "quote": "I never think about being a great actor. I just try to make each character true."
+  },
+  {
+    "id": 17,
+    "name": "Joaquin Phoenix",
+    "nationality": "american",
+    "birth_year": 1974,
+    "death_year": null,
+    "era": "contemporary",
+    "tagline": "The most dangerous actor alive — nothing is safe when he's on screen",
+    "bio": "Joaquin Phoenix is American cinema's great wild card — an actor whose performances always feel on the verge of escaping control, as if the character might do something the director didn't plan and the camera can barely follow. From his breakthrough in To Die For to his extraordinary run with Paul Thomas Anderson — The Master, Inherent Vice — to his Oscar-winning Joker and his haunting work in You Were Never Really Here and Beau Is Afraid, Phoenix has consistently chosen roles that demand something beyond technique. He reportedly gained and lost substantial weight for roles, lived as Forrest MacNeil's double for I'm Still Here, and brings to each performance a quality that is not quite calculation and not quite chaos — something more unsettling in between.",
+    "why": "He's the actor who makes you genuinely uncertain what will happen next — even in films you've seen before.",
+    "notable_films": [
+      {
+        "title": "The Master",
+        "year": 2012,
+        "runtime": 137,
+        "themes": [
+          "PTSD",
+          "cult",
+          "belief",
+          "masculinity",
+          "America"
+        ],
+        "synopsis": "A drifting, damaged WWII veteran falls under the influence of the charismatic leader of a philosophical movement.",
+        "why_watch": "Phoenix's Freddie Quell — drunk, violent, bewildered, feral — is one of the great screen performances of the twenty-first century. Watch the processing scene. Watch any scene. He has no technique, only truth.",
+        "visual_style": "Mihai Mălaimare Jr.'s 65mm cinematography — the postwar America of the 1950s rendered in enormous, gorgeous, suffocating detail."
+      },
+      {
+        "title": "You Were Never Really Here",
+        "year": 2017,
+        "runtime": 89,
+        "themes": [
+          "trauma",
+          "violence",
+          "protection",
+          "dissociation",
+          "rescue"
+        ],
+        "synopsis": "A traumatized hitman who rescues trafficked children takes on a dangerous job that leads somewhere darker than expected.",
+        "why_watch": "Phoenix delivers one of the most internal performances in recent cinema — Joe barely speaks, but his body and breathing communicate everything. Lynne Ramsay's film and his performance are inseparable.",
+        "visual_style": "Thomas Townend's fragmentary, elliptical cinematography — trauma rendered as formal disruption."
+      },
+      {
+        "title": "Her",
+        "year": 2013,
+        "runtime": 126,
+        "themes": [
+          "loneliness",
+          "love",
+          "technology",
+          "grief",
+          "connection"
+        ],
+        "synopsis": "A lonely man falls in love with his operating system.",
+        "why_watch": "Phoenix spends much of the film talking to an earpiece, and his warmth, vulnerability, and eventual heartbreak are completely convincing. The most tender performance of his career.",
+        "visual_style": "Hoyte van Hoytema's warm, pastel-saturated near-future Los Angeles — gentle, beautiful, melancholy."
+      },
+      {
+        "title": "Joker",
+        "year": 2019,
+        "runtime": 122,
+        "themes": [
+          "alienation",
+          "mental illness",
+          "class",
+          "violence",
+          "identity"
+        ],
+        "synopsis": "A failed stand-up comedian with mental illness descends into the violence that will make him the Joker.",
+        "why_watch": "Phoenix lost 52 pounds for this role and found a physicality — that dancing, that laugh — that has never been seen in superhero cinema before. Whether you like the film or not, the performance is extraordinary.",
+        "visual_style": "Lawrence Sher's gritty, 1970s-inflected cinematography — Gotham as pre-Giuliani New York, a city of cracks."
+      },
+      {
+        "title": "Walk the Line",
+        "year": 2005,
+        "runtime": 136,
+        "themes": [
+          "addiction",
+          "family",
+          "music",
+          "ambition",
+          "love"
+        ],
+        "synopsis": "The life of Johnny Cash — his rise, his addiction, and his love for June Carter.",
+        "why_watch": "Phoenix learned to play guitar and sing for this role, refusing a vocal double. His Cash is a man of enormous capacity for both damage and love. The audition scene at Sun Records is electrifying.",
+        "visual_style": "Phedon Papamichael's period-perfect American South — rich, warm, shadowed."
+      }
+    ],
+    "style_tags": [
+      "method acting",
+      "transformation",
+      "intensity",
+      "physicality",
+      "naturalism",
+      "collaborations"
+    ],
+    "start_with": {
+      "film": "The Master",
+      "year": 2012,
+      "note": "The performance that shows the full range of what Phoenix can do — dangerous, pathetic, feral, and heartbreaking, often in the same scene."
+    },
+    "key_themes": [
+      "American masculinity under pressure",
+      "trauma and its returns",
+      "the seduction of belief",
+      "physical cinema"
+    ],
+    "quote": "I'm just trying to find the truth of the moment. Everything else is noise."
+  },
+  {
+    "id": 18,
+    "name": "Chow Yun-fat",
+    "nationality": "hong kong",
+    "birth_year": 1955,
+    "death_year": null,
+    "era": "contemporary",
+    "tagline": "Cool incarnate — the hero who made action cinema elegant",
+    "bio": "Chow Yun-fat is the great movie star of Hong Kong cinema — not its most acclaimed actor, but the one who most completely embodied what cinema can do with screen presence alone. His collaborations with John Woo in the late 1980s and early 1990s produced a series of action films that elevated the genre to something approaching art: A Better Tomorrow, The Killer, Hard Boiled. What Chow brought to these films was a quality that can't be taught — a calm, effortless cool that made even the most theatrical gunfights feel like a man simply expressing who he is. He was also a gifted comic actor in the tradition of Cary Grant, and his later casting in Ang Lee's Crouching Tiger, Hidden Dragon brought him to Western audiences.",
+    "why": "He proved that genre cinema can have its own form of grace — that cool, in the right hands, is a kind of moral stance.",
+    "notable_films": [
+      {
+        "title": "A Better Tomorrow",
+        "year": 1986,
+        "runtime": 95,
+        "themes": [
+          "brotherhood",
+          "loyalty",
+          "crime",
+          "Hong Kong",
+          "honor"
+        ],
+        "synopsis": "Two brothers on opposite sides of the law — one a triad member, one a cop — must navigate loyalty, betrayal, and violence.",
+        "why_watch": "Chow's Mark Gor — the triad hitman — is one of cinema's great cool figures. The scene where he lights his cigarette with a burning hundred-dollar bill defined Hong Kong cool for a generation.",
+        "visual_style": "John Woo's balletic violence and fraternal melodrama — slow motion, matching outfits, the grammar of Hong Kong action cinema."
+      },
+      {
+        "title": "The Killer",
+        "year": 1989,
+        "runtime": 111,
+        "themes": [
+          "honor",
+          "redemption",
+          "friendship",
+          "violence",
+          "sight"
+        ],
+        "synopsis": "A hitman takes one last job to pay for a singer's eye surgery — inadvertently blinding her — and forms an unexpected friendship with the detective hunting him.",
+        "why_watch": "The perfect John Woo film and Chow's finest performance in the genre — he plays a hitman with a moral code so rigid it's a form of tragedy. The church shootout is beautiful and absurd in equal measure.",
+        "visual_style": "Peter Pau's cinematography — doves, slow motion, white suits — operatic Hong Kong action at its apex."
+      },
+      {
+        "title": "Hard Boiled",
+        "year": 1992,
+        "runtime": 128,
+        "themes": [
+          "justice",
+          "undercover",
+          "violence",
+          "hospital",
+          "honor"
+        ],
+        "synopsis": "A tough cop and an undercover officer work together to take down a weapons-trafficking operation.",
+        "why_watch": "The hospital sequence — a single continuous take through rooms of violence — is one of action cinema's great set pieces. Chow plays a man who kills without pleasure, which makes every death carry weight.",
+        "visual_style": "John Woo's most controlled action masterpiece — the hospital as a labyrinth of moral choices."
+      },
+      {
+        "title": "Crouching Tiger, Hidden Dragon",
+        "year": 2000,
+        "runtime": 120,
+        "themes": [
+          "martial arts",
+          "desire",
+          "honor",
+          "freedom",
+          "wuxia"
+        ],
+        "synopsis": "The theft of a legendary sword draws together a legendary warrior, his secret love, and a rebellious young woman.",
+        "why_watch": "Chow's Li Mu Bai is the great sad knight — a man whose restraint and honor have cost him everything he truly wants. His scenes with Michelle Yeoh are the heart of the film's emotional world.",
+        "visual_style": "Peter Pau's Oscar-winning cinematography — bamboo forests, rooftop pursuits, the desert as a landscape of romantic freedom."
+      }
+    ],
+    "style_tags": [
+      "physicality",
+      "naturalism",
+      "collaborations",
+      "action",
+      "Hong Kong cinema",
+      "restraint"
+    ],
+    "start_with": {
+      "film": "The Killer",
+      "year": 1989,
+      "note": "The film that best shows what makes Chow extraordinary — a man made entirely of cool and code, in a world that cannot sustain either."
+    },
+    "key_themes": [
+      "honor among killers",
+      "Hong Kong cinema's golden age",
+      "action as moral expression",
+      "the hero's loneliness"
+    ],
+    "quote": "I don't need to be a great actor. I just need to be true to myself on screen."
+  },
+  {
+    "id": 19,
+    "name": "Audrey Hepburn",
+    "nationality": "belgian",
+    "birth_year": 1929,
+    "death_year": 1993,
+    "era": "classical",
+    "tagline": "Grace under pressure — a new kind of beauty for a new kind of cinema",
+    "bio": "Audrey Hepburn invented a type — the gamineextraordinaire, the waif with intelligence — that cinema has been trying to replicate ever since and never quite managed. Born in Belgium to a Dutch mother and English-Irish father, she survived Nazi occupation as a child before becoming a dancer and then an actress. Her early 1950s rise was meteoric: stage success in Gigi, then Roman Holiday, then the Oscar. What Hepburn brought to Hollywood was something it hadn't seen before — a quality of unaffected grace, a face that registered thought and feeling simultaneously, and a delivery that managed to be both light and serious. She knew she wasn't conventionally beautiful and turned her angular specificity into the century's most recognizable style.",
+    "why": "She made grace look effortless — not the grace of Hollywood perfection but something rarer, more individual, completely her own.",
+    "notable_films": [
+      {
+        "title": "Roman Holiday",
+        "year": 1953,
+        "runtime": 118,
+        "themes": [
+          "freedom",
+          "royalty",
+          "romance",
+          "Rome",
+          "duty"
+        ],
+        "synopsis": "A princess on a European tour escapes her minders and spends a day in Rome with an American reporter.",
+        "why_watch": "The performance that introduced Hepburn to the world and won her the Oscar. Watch the scene where she gets her hair cut — the joy on her face is completely genuine. William Wyler understood what she could do.",
+        "visual_style": "Franz Planer and Henri Alekan's black-and-white Rome — the city as a playground of possibilities."
+      },
+      {
+        "title": "Breakfast at Tiffany's",
+        "year": 1961,
+        "runtime": 115,
+        "themes": [
+          "freedom",
+          "loneliness",
+          "self-invention",
+          "New York",
+          "love"
+        ],
+        "synopsis": "A free-spirited New York party girl tries to cultivate a wealthy boyfriend while falling for her struggling writer neighbor.",
+        "why_watch": "Holly Golightly is Hepburn's most complete creation — a woman who has invented herself so thoroughly she's almost lost the original. The Moon River scene on the fire escape is one of cinema's great quiet moments.",
+        "visual_style": "Franz Planer's New York — Tiffany's at dawn, Manhattan apartments, Harlem parties — the city as dream and trap."
+      },
+      {
+        "title": "Charade",
+        "year": 1963,
+        "runtime": 113,
+        "themes": [
+          "identity",
+          "romance",
+          "mystery",
+          "Paris",
+          "trust"
+        ],
+        "synopsis": "A recently widowed woman is pursued by her late husband's associates while a charming stranger may or may not be helping her.",
+        "why_watch": "Hepburn's most purely enjoyable film — playful, witty, perfectly matched with Cary Grant. She handles the comedy, the romance, and the genuine danger with equal assurance. Stanley Donen's love letter to Paris.",
+        "visual_style": "Charles Lang's sparkling Paris cinematography — the city as a Technicolor fairy tale."
+      },
+      {
+        "title": "Wait Until Dark",
+        "year": 1967,
+        "runtime": 108,
+        "runtime_note": "108",
+        "themes": [
+          "blindness",
+          "vulnerability",
+          "survival",
+          "thriller",
+          "courage"
+        ],
+        "synopsis": "A recently blinded woman is terrorized by criminals searching for a doll filled with heroin hidden in her apartment.",
+        "why_watch": "Hepburn is frightening herself — her performance of terror and then resourcefulness is some of the finest acting she ever did, requiring total physical commitment in a confined space. The ending, when she destroys every light source, is genuinely terrifying.",
+        "visual_style": "Charles Lang's escalating darkness — the film literally ends in near-total black."
+      },
+      {
+        "title": "Sabrina",
+        "year": 1954,
+        "runtime": 113,
+        "themes": [
+          "class",
+          "transformation",
+          "love triangle",
+          "Paris",
+          "self-invention"
+        ],
+        "synopsis": "The chauffeur's daughter returns from Paris transformed, drawing the attention of both the playboy and the serious heir of the family she works for.",
+        "why_watch": "Hepburn plays transformation from the inside — you believe in the shy girl who went to Paris and became something more, because she never loses the shy girl completely.",
+        "visual_style": "Billy Wilder's elegant black-and-white — Long Island estates, Paris sequences, the American class system as comedy."
+      }
+    ],
+    "style_tags": [
+      "naturalism",
+      "classical Hollywood influence",
+      "restraint",
+      "elegance",
+      "comedy",
+      "tragedy"
+    ],
+    "start_with": {
+      "film": "Roman Holiday",
+      "year": 1953,
+      "note": "The purest introduction to what made Hepburn incomparable — a performance of absolute natural grace, the kind that looks like it couldn't have been otherwise."
+    },
+    "key_themes": [
+      "self-invention and its limits",
+      "grace as intelligence",
+      "the gamineheroine",
+      "freedom within duty"
+    ],
+    "quote": "I never thought I'd land in pictures with a face like mine."
+  },
+  {
+    "id": 20,
+    "name": "Sophia Loren",
+    "nationality": "italian",
+    "birth_year": 1934,
+    "death_year": null,
+    "era": "classical",
+    "tagline": "The force of nature — a woman who made beauty feel like power",
+    "bio": "Sophia Loren is the great survivor of European cinema — a woman born into poverty in wartime Naples who became, through sheer force of will and extraordinary talent, the defining actress of Italian cinema and one of the most beloved in the world. Her work with Vittorio De Sica — particularly Two Women, for which she won the first Academy Award for Best Actress given to a non-English performance — revealed a capacity for suffering and resilience that transcended her glamorous image. What makes Loren extraordinary is that she was simultaneously Hollywood's idea of a goddess and Italian neorealism's idea of an ordinary woman, and she moved between these registers without contradiction because both were always present in her simultaneously.",
+    "why": "She made you feel that beauty and suffering could inhabit the same body without either diminishing the other.",
+    "notable_films": [
+      {
+        "title": "Two Women",
+        "year": 1960,
+        "runtime": 100,
+        "themes": [
+          "war",
+          "rape",
+          "motherhood",
+          "survival",
+          "Italy"
+        ],
+        "synopsis": "A mother and her teenage daughter flee bombing raids during WWII, encountering terrible violence on the road south.",
+        "why_watch": "The performance that won her the Oscar — raw, physical, completely committed to showing a woman transformed by violence. De Sica simply let the camera record what she did. The rape aftermath scene is devastating.",
+        "visual_style": "De Sica's neorealist Italy — rubble, refugees, the war's aftermath as a landscape of moral devastation."
+      },
+      {
+        "title": "Marriage Italian Style",
+        "year": 1964,
+        "runtime": 102,
+        "themes": [
+          "love",
+          "manipulation",
+          "class",
+          "Naples",
+          "marriage"
+        ],
+        "synopsis": "A working-class woman schemes to secure marriage from the rich man who has kept her as his mistress for years.",
+        "why_watch": "Loren at her most comedic and her most ferocious — she plays Filumena as an inexhaustible force of pragmatic love. Her scenes with Marcello Mastroianni have the easy electricity of two people who genuinely like each other.",
+        "visual_style": "De Sica's warm Naples — the city as a place where ordinary cunning and ordinary love are the same thing."
+      },
+      {
+        "title": "Yesterday, Today and Tomorrow",
+        "year": 1963,
+        "runtime": 118,
+        "themes": [
+          "Italian identity",
+          "class",
+          "desire",
+          "comedy",
+          "Naples"
+        ],
+        "synopsis": "Three stories: a black marketeer who uses pregnancy to avoid prison, a wealthy woman whose affair stalls, and a prostitute whose neighbor becomes obsessed with a seminary student.",
+        "why_watch": "Loren plays three completely different women across three vignettes, each perfectly calibrated. The striptease in the third story, where she performs for Mastroianni while his priest-to-be neighbor watches, is one of cinema's great comic sequences.",
+        "visual_style": "De Sica's color television Italy — bright, warm, comedic, utterly confident."
+      },
+      {
+        "title": "The Ciociara",
+        "year": 1960,
+        "runtime": 100,
+        "themes": [
+          "war",
+          "motherhood",
+          "survival",
+          "Italy",
+          "violence"
+        ],
+        "synopsis": "A Roman shopkeeper flees the Allied bombing with her daughter — the same story as Two Women but told from a different angle.",
+        "why_watch": "The Italian version of Two Women — longer, with different emphases. Loren plays the same character with slightly different shadings, allowing comparison of her choices across cuts.",
+        "visual_style": "De Sica and cinematographer Gabor Pogany — the Italian countryside as both beautiful and terrifying."
+      }
+    ],
+    "style_tags": [
+      "naturalism",
+      "intensity",
+      "comedy",
+      "tragedy",
+      "physicality",
+      "European art cinema"
+    ],
+    "start_with": {
+      "film": "Two Women",
+      "year": 1960,
+      "note": "The performance that reveals what lies beneath the glamour — a woman of extraordinary force and vulnerability, playing suffering without any protective distance."
+    },
+    "key_themes": [
+      "Italian womanhood",
+      "survival under violence",
+      "the body as social capital",
+      "love as pragmatic force"
+    ],
+    "quote": "Sex appeal is fifty percent what you've got and fifty percent what people think you've got."
+  }
+]

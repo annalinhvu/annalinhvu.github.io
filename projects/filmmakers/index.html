@@ -717,6 +717,23 @@
     @media (max-width: 600px) {
       .film-panel { width: 100vw; }
     }
+
+    /* ── Section tabs ── */
+    .section-tabs {
+      display: flex; align-items: center; gap: 0;
+      margin-bottom: 20px;
+      border-bottom: 1px solid var(--border);
+    }
+    .section-tab {
+      font-family: 'Geist Mono', monospace; font-size: 0.58rem;
+      letter-spacing: 1.5px; text-transform: uppercase;
+      color: var(--text-4); padding: 10px 18px;
+      border-bottom: 2px solid transparent;
+      transition: color 0.15s, border-color 0.15s;
+      margin-bottom: -1px;
+    }
+    .section-tab:hover { color: var(--text-2); }
+    .section-tab.active { color: var(--text-1); border-bottom-color: var(--text-1); }
   </style>
 </head>
 <body>
@@ -752,9 +769,13 @@
   <div id="view-catalog">
 
     <div class="masthead">
-      <span class="masthead-pub">Auteurs</span>
+      <div class="section-tabs">
+        <button class="section-tab active" id="tab-directors" onclick="switchSection('directors')">Directors</button>
+        <button class="section-tab" id="tab-actors" onclick="switchSection('actors')">Actors</button>
+      </div>
+      <span class="masthead-pub" id="masthead-pub">Auteurs</span>
       <div class="masthead-sub">
-        <span class="masthead-tagline">Directors who shaped the way I see</span>
+        <span class="masthead-tagline" id="masthead-tagline">Directors who shaped the way I see</span>
       </div>
     </div>
 
@@ -777,7 +798,10 @@
 </div>
 
 <script>
+  let allDirectors = [];
+  let allActors = [];
   let all = [];
+  let currentSection = 'directors';
   let currentDetailId = null;
   let savedIds = new Set();
   let searchQ = '';
@@ -785,18 +809,37 @@
   let activeNat = '';
   let stimer = null;
 
-  // Tags shown in the strip: top 10 most common (appear in >= 6 filmmakers)
-  const STRIP_MIN_COUNT = 6;
+  const STRIP_MIN_COUNT = { directors: 6, actors: 3 };
+
+  function switchSection(section) {
+    if (section === currentSection) return;
+    currentSection = section;
+    all = section === 'directors' ? allDirectors : allActors;
+    activeTag = ''; activeNat = ''; searchQ = '';
+    document.getElementById('search-input').value = '';
+    document.getElementById('tab-directors').classList.toggle('active', section === 'directors');
+    document.getElementById('tab-actors').classList.toggle('active', section === 'actors');
+    document.getElementById('masthead-pub').textContent = section === 'directors' ? 'Auteurs' : 'Performers';
+    document.getElementById('masthead-tagline').textContent = section === 'directors'
+      ? 'Directors who shaped the way I see'
+      : 'Actors who made me believe';
+    buildTagStrip(); buildNatSelect(); applyFilters();
+  }
 
   const ERA = { 'avant-garde':'Avant-garde', 'new-wave':'New Wave', 'classical':'Classical', 'contemporary':'Contemporary' };
-  const NAT = { french:'French', american:'American', japanese:'Japanese', belgian:'Belgian', russian:'Russian', swedish:'Swedish', 'hong kong':'Hong Kong', iranian:'Iranian', korean:'Korean', taiwanese:'Taiwanese', mexican:'Mexican', indian:'Indian', italian:'Italian', senegalese:'Senegalese', czech:'Czech', argentinian:'Argentinian', polish:'Polish', german:'German', scottish:'Scottish', chinese:'Chinese', spanish:'Spanish', thai:'Thai', danish:'Danish', hungarian:'Hungarian', norwegian:'Norwegian', turkish:'Turkish', british:'British', greek:'Greek', finnish:'Finnish', brazilian:'Brazilian', portuguese:'Portuguese', romanian:'Romanian', austrian:'Austrian' };
+  const NAT = { french:'French', american:'American', japanese:'Japanese', belgian:'Belgian', russian:'Russian', swedish:'Swedish', 'hong kong':'Hong Kong', iranian:'Iranian', korean:'Korean', taiwanese:'Taiwanese', mexican:'Mexican', indian:'Indian', italian:'Italian', senegalese:'Senegalese', czech:'Czech', argentinian:'Argentinian', polish:'Polish', german:'German', scottish:'Scottish', chinese:'Chinese', spanish:'Spanish', thai:'Thai', danish:'Danish', hungarian:'Hungarian', norwegian:'Norwegian', turkish:'Turkish', british:'British', greek:'Greek', finnish:'Finnish', brazilian:'Brazilian', portuguese:'Portuguese', romanian:'Romanian', austrian:'Austrian', australian:'Australian' };
   const fe = e => ERA[e] || e;
   const fn = n => NAT[n] || n.charAt(0).toUpperCase()+n.slice(1);
 
   async function init() {
     try {
-      const r = await fetch('data/filmmakers.json');
-      all = await r.json();
+      const [r1, r2] = await Promise.all([
+        fetch('data/filmmakers.json'),
+        fetch('data/actors.json')
+      ]);
+      allDirectors = await r1.json();
+      allActors = await r2.json();
+      all = allDirectors;
     } catch(e) {
       document.getElementById('director-list').innerHTML = '<p class="empty">Could not load data.</p>';
       return;
@@ -827,8 +870,9 @@
   function buildTagStrip() {
     const counts = {};
     all.forEach(f => (f.style_tags || []).forEach(t => { counts[t] = (counts[t] || 0) + 1; }));
+    const minCount = STRIP_MIN_COUNT[currentSection] || 3;
     const stripTags = Object.entries(counts)
-      .filter(([, n]) => n >= STRIP_MIN_COUNT)
+      .filter(([, n]) => n >= minCount)
       .sort((a, b) => b[1] - a[1])
       .map(([t]) => t);
     const el = document.getElementById('tag-strip');
@@ -853,7 +897,8 @@
     }
     const isDefault = !searchQ && !activeTag && !activeNat;
     render(r, isDefault);
-    document.getElementById('result-count').textContent = `${r.length} director${r.length !== 1 ? 's' : ''}`;
+    const noun = currentSection === 'directors' ? 'director' : 'actor';
+    document.getElementById('result-count').textContent = `${r.length} ${noun}${r.length !== 1 ? 's' : ''}`;
   }
 
   function buildNatSelect() {
@@ -956,7 +1001,7 @@
 
     const died = f.death_year ? f.death_year : 'present';
     dv.innerHTML = `
-      <button class="detail-back" onclick="goBack()">← Back to directors</button>
+      <button class="detail-back" onclick="goBack()">← Back to ${currentSection}</button>
 
       <div class="detail-hero">
         <span class="detail-era-label detail-era-${f.era}">${fe(f.era)}</span>
