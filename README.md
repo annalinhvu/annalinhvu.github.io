@@ -1,6 +1,6 @@
 # Anna (Linh) Vu — Portfolio
 
-**[annalinhvu.github.io/portfolio](https://annalinhvu.github.io/portfolio)**
+**[annalinhvu.github.io](https://annalinhvu.github.io)**
 
 Personal portfolio and a collection of lab projects built out of curiosity and care. No frameworks, no build step, fully static.
 
@@ -35,16 +35,26 @@ Browse film stocks with current pricing across vendors, availability status, and
 
 ---
 
-### 04 - Auteurs
-> A personal index of filmmakers.
+### 04 - Auteurs & Actors
+> A personal index of filmmakers and legendary performers.
 
-100 filmmakers filterable by era and nationality.
+100+ directors and 25 actors filterable by era and nationality. Each entry includes a biography, curated film list with synopses, and portrait photography.
 
 - **Stack:** HTML, JSON
 
 ---
 
-### 05 - Only Good Things
+### 05 - NYC Adventure Log
+> Curated NYC activities across 10 categories.
+
+Cinema, Food, Bakeries, Arts, Shows, Explore, Wellness, Day Trips, Free, and Classes — each with practical details and a seasonal tag. Mark things done, rate them, and let the surprise picker decide when you can't.
+
+- **Live site:** https://annalinhvu.github.io/nyc-adventure/
+- **Stack:** HTML, Vanilla JS
+
+---
+
+### 06 - Only Good Things
 > A browsable catalog of self-care activities.
 
 Inspired by the *Only Good Things* wall calendar. Activities across 6 categories (body, mind, creative, nature, nourish, rest), filterable by season, duration, setting, and difficulty. Track completions locally in your browser.
@@ -53,8 +63,8 @@ Inspired by the *Only Good Things* wall calendar. Activities across 6 categories
 
 ---
 
-### 06 - Com Nha
-> 175 Vietnamese recipes from Mien Bac, Mien Trung, and Mien Nam.
+### 07 - Cơm Nhà
+> 175 Vietnamese recipes from Miền Bắc, Miền Trung, and Miền Nam.
 
 Browse by region or category, search by ingredient, and save favorites. Each region has its own color identity throughout the UI.
 
@@ -62,7 +72,7 @@ Browse by region or category, search by ingredient, and save favorites. Each reg
 
 ---
 
-### 07 - Departure Lounge
+### 08 - Departure Lounge
 > A travel bucket list: destinations as boarding passes.
 
 50 countries across 5 regions, each with cities to visit, food to eat, and reasons to go. Styled as boarding passes with a dark, editorial feel.
@@ -74,23 +84,12 @@ Browse by region or category, search by ingredient, and save favorites. Each reg
 ## Running Locally
 
 ```bash
-git clone https://github.com/annalinhvu/portfolio.git
-cd portfolio
+git clone https://github.com/annalinhvu/annalinhvu.github.io.git
+cd annalinhvu.github.io
 python3 -m http.server 8080
 ```
 
 Open [http://localhost:8080](http://localhost:8080).
-
----
-
-## Architecture
-
-All lab projects are fully static and hosted on GitHub Pages:
-
-- Seed data lives in `seed_data.py` per project
-- `export_json.py` regenerates the static JSON from seed data
-- The frontend fetches from `data/*.json` at load time
-- Client-side state (favorites, completions) uses `localStorage`
 
 ---
 
