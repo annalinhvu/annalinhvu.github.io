@@ -32,9 +32,9 @@
   --bd:        #2e3848;
   --bd-hi:     #3a4a60;
   --t1:        #e6eaf4;
-  --t2:        #b4bcd0;
-  --t3:        #7888a4;
-  --t4:        #3e4e66;
+  --t2:        #c0c8dc;
+  --t3:        #8898b8;
+  --t4:        #4e5e78;
   --accent:    #8aaa8e;
   --amber:     #c8785e;
   --amber2:    #b86448;
@@ -62,9 +62,9 @@
   --bd:        #ddd9ce;
   --bd-hi:     #c4bfb0;
   --t1:        #2a2218;
-  --t2:        #4a4238;
-  --t3:        #7a7060;
-  --t4:        #aaa090;
+  --t2:        #3a3228;
+  --t3:        #5a5248;
+  --t4:        #8a8070;
   --accent:    #5e7a62;
   --amber:     #b8644a;
   --amber2:    #a05040;
@@ -265,6 +265,7 @@ body {
 .j-val  {color:var(--t2);}
 .j-str  {color:var(--g-text);}
 .j-punc {color:var(--t4);}
+.j-dim  {opacity:0.42;}
 
 .comment-block{
   font-family:'Geist Mono',monospace;
@@ -835,13 +836,10 @@ body {
         &nbsp;&nbsp;<span class="j-key">"name"</span><span class="j-punc">: </span><span class="j-str">"Anna (Linh) Vu"</span><span class="j-punc">,</span><br>
         &nbsp;&nbsp;<span class="j-key">"location"</span><span class="j-punc">: </span><span class="j-str">"New York City, NY"</span><span class="j-punc">,</span><br>
         &nbsp;&nbsp;<span class="j-key">"role"</span><span class="j-punc">: </span><span class="j-str">"Lead Data Technology Engineer"</span><span class="j-punc">,</span><br>
-        &nbsp;&nbsp;<span class="j-key">"grad_school"</span><span class="j-punc">: </span><span class="j-str">"University of Pennsylvania"</span><span class="j-punc">,</span><br>
-        &nbsp;&nbsp;<span class="j-key">"grad_degree"</span><span class="j-punc">: </span><span class="j-str">"M.A.Sc. Computer Science · Artificial Intelligence"</span><span class="j-punc">,</span><br>
-        &nbsp;&nbsp;<span class="j-key">"undergrad_school"</span><span class="j-punc">: </span><span class="j-str">"Vanderbilt University"</span><span class="j-punc">,</span><br>
-        &nbsp;&nbsp;<span class="j-key">"undergrad_degree"</span><span class="j-punc">: </span><span class="j-str">"B.A. Economics &amp; Media Arts"</span><span class="j-punc">,</span><br>
-        &nbsp;&nbsp;<span class="j-key">"origin"</span><span class="j-punc">: </span><span class="j-str">"Hanoi, Vietnam"</span><span class="j-punc">,</span><br>
-        &nbsp;&nbsp;<span class="j-key">"languages"</span><span class="j-punc">: </span><span class="j-str">["English", "Vietnamese"]</span><span class="j-punc">,</span><br>
-        &nbsp;&nbsp;<span class="j-key">"hobbies"</span><span class="j-punc">: </span><span class="j-str">["analog film", "photography", "community volunteering"]</span><span class="j-punc">,</span><br>
+        <span class="j-dim">&nbsp;&nbsp;<span class="j-key">"education"</span><span class="j-punc">: </span><span class="j-str">"M.A.Sc. CS @ Penn · B.A. Economics @ Vanderbilt"</span><span class="j-punc">,</span></span><br>
+        <span class="j-dim">&nbsp;&nbsp;<span class="j-key">"origin"</span><span class="j-punc">: </span><span class="j-str">"Hanoi, Vietnam"</span><span class="j-punc">,</span></span><br>
+        <span class="j-dim">&nbsp;&nbsp;<span class="j-key">"languages"</span><span class="j-punc">: </span><span class="j-str">["English", "Vietnamese"]</span><span class="j-punc">,</span></span><br>
+        <span class="j-dim">&nbsp;&nbsp;<span class="j-key">"hobbies"</span><span class="j-punc">: </span><span class="j-str">["analog film", "photography", "community volunteering"]</span><span class="j-punc">,</span></span><br>
         &nbsp;&nbsp;<span class="j-key">"status"</span><span class="j-punc">: [</span><br>
         &nbsp;&nbsp;&nbsp;&nbsp;<span class="j-punc">(</span><span class="j-str">"open_to_work"</span><span class="j-punc">,&nbsp;</span><span class="j-str">"data engineering · BI · analytics"</span><span class="j-punc">),</span><br>
         &nbsp;&nbsp;&nbsp;&nbsp;<span class="j-punc">(</span><span class="j-str">"open_to_connect"</span><span class="j-punc">,&nbsp;</span><span class="j-str">"linkedin.com/in/annalinhvu"</span><span class="j-punc">),</span><br>
@@ -1046,8 +1044,8 @@ body {
             <div class="proj-title">Custom API Ingestion & Data Processing</div>
             <div class="proj-ctx">DEPT Agency · 2022–2023</div>
             <div class="proj-tags"><span class="proj-tag">Python</span><span class="proj-tag">Pandas</span><span class="proj-tag">REST APIs</span><span class="proj-tag">Snowflake</span></div>
-            <div class="proj-desc">Reusable Python connectors for marketing APIs handling auth, pagination, rate limiting, and Pandas transformation before loading into Snowflake.</div>
-            <div class="proj-metrics"><div><div class="pm-v">6+</div><div class="pm-u">APIs integrated</div></div></div>
+            <div class="proj-desc">Modular Python connectors for 6+ marketing platforms (Google Ads, CM360, Meta, DV360) — handling OAuth flows, cursor pagination, rate-limit backoff, and Pandas transformation pipelines into Snowflake. Eliminated manual CSV exports and cut new-source onboarding from days to hours.</div>
+            <div class="proj-metrics"><div><div class="pm-v">6+</div><div class="pm-u">platforms</div></div><div><div class="pm-v">days → hrs</div><div class="pm-u">onboarding</div></div></div>
           </div>
           <div class="proj-card">
             <div class="proj-title">Client Reporting & Dashboard Suite</div>
@@ -1060,8 +1058,8 @@ body {
             <div class="proj-title">ESOV Media Spend Analysis</div>
             <div class="proj-ctx">FIG Agency · 2022</div>
             <div class="proj-tags"><span class="proj-tag">R</span><span class="proj-tag">Kantar</span><span class="proj-tag">Pathmatics</span><span class="proj-tag">Google Trends</span></div>
-            <div class="proj-desc">ESOV charts correlating media spend with Google Trends data. CDI/BDI scatter plots for market identification and radar charts for brand salience.</div>
-            <div class="proj-metrics"><div><div class="pm-v">3</div><div class="pm-u">chart types</div></div></div>
+            <div class="proj-desc">Competitive intelligence framework for brand media planning: ESOV models correlating share-of-voice with brand growth, CDI/BDI scatter plots for market prioritization, and radar charts benchmarking brand salience against competitors. Delivered to brand teams to inform annual media budget strategy.</div>
+            <div class="proj-metrics"><div><div class="pm-v">3</div><div class="pm-u">data sources</div></div><div><div class="pm-v">Competitive</div><div class="pm-u">intel framework</div></div></div>
           </div>
           <div class="proj-card">
             <div class="proj-title">Social Listening & Audience Insights</div>
@@ -1074,8 +1072,8 @@ body {
             <div class="proj-title">Media Campaign Trafficking</div>
             <div class="proj-ctx">FIG Agency · 2021–2022</div>
             <div class="proj-tags"><span class="proj-tag">Prisma/MediaOcean</span><span class="proj-tag">Campaign Manager 360</span><span class="proj-tag">Google Ads</span></div>
-            <div class="proj-desc">Campaign setup on Prisma/MediaOcean, trafficking sheets for CM360, Google Ads management, and optimization strategies across 20+ vendors.</div>
-            <div class="proj-metrics"><div><div class="pm-v">20+</div><div class="pm-u">vendors</div></div></div>
+            <div class="proj-desc">End-to-end campaign operations across 20+ media vendors: IO setup and budget pacing in Prisma/MediaOcean, pixel trafficking and tag QA for CM360, Google Ads bid optimization, and post-campaign performance analysis across digital, OOH, and print channels.</div>
+            <div class="proj-metrics"><div><div class="pm-v">20+</div><div class="pm-u">vendors</div></div><div><div class="pm-v">Multi-channel</div><div class="pm-u">digital · OOH · print</div></div></div>
           </div>
         </div>
 
