@@ -890,7 +890,7 @@ body {
         <span class="tbl">anna_vu.creative_projects</span><span>&nbsp;</span>
         <span class="kw">ORDER BY</span><span>&nbsp;year&nbsp;</span>
         <span class="kw">DESC</span>
-        <span class="cmt">-- personal projects · 7 rows returned</span>
+        <span class="cmt">-- personal projects · 8 rows returned</span>
       </div>
       <div class="filter-bar">
         <span class="filter-kw"><span class="kw">WHERE</span>&nbsp;project_name&nbsp;<span class="kw">LIKE</span>&nbsp;'%</span>
@@ -960,6 +960,14 @@ body {
         <div class="col-name"><span class="row-name">Departure Lounge</span><span class="row-desc">Destinations as boarding passes — cities, food, and reasons to go.</span><span class="row-link">view project →</span></div>
         <div class="col-stat"><strong>50</strong> countries · <strong>5</strong> regions</div>
         <div class="col-tech">HTML · JSON · Vanilla JS</div>
+        <div class="col-status"><span class="live-dot"></span>live</div>
+      </a>
+
+      <a href="https://annalinhvu.github.io/nyc-adventure/" class="db-row std" target="_blank" rel="noopener">
+        <div class="col-idx">08</div>
+        <div class="col-name"><span class="row-name">Adventure Log</span><span class="row-desc">Curated NYC activities across 10 categories — Cinema, Food, Arts, Explore, and more. Rate what you've done, mark favourites, or let the surprise picker decide.</span><span class="row-link">view project →</span></div>
+        <div class="col-stat"><strong>10</strong> categories · <strong>4</strong> seasons</div>
+        <div class="col-tech">HTML · Vanilla JS</div>
         <div class="col-status"><span class="live-dot"></span>live</div>
       </a>
 
@@ -1399,7 +1407,7 @@ function updateStatus(pane, rows) {
 var _origSwitch = switchPane;
 switchPane = function(id) {
   _origSwitch(id);
-  var rowCounts = {studio: 7, built: 15, career: 5};
+  var rowCounts = {studio: 8, built: 15, career: 5};
   updateStatus(id, rowCounts[id] || 0);
 };
 
@@ -1445,7 +1453,7 @@ switchPane = function(id) {
     moveIndicator(active);
     var pane = document.getElementById('pane-' + active.dataset.pane);
     if (pane) revealPane(pane);
-    var rowCounts = {studio: 7, built: 15, career: 5};
+    var rowCounts = {studio: 8, built: 15, career: 5};
     updateStatus(active.dataset.pane, rowCounts[active.dataset.pane] || 0);
   }
 })();
