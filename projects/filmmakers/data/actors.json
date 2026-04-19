@@ -2109,5 +2109,472 @@
     ],
     "quote": "Sex appeal is fifty percent what you've got and fifty percent what people think you've got.",
     "photo_url": "https://upload.wikimedia.org/wikipedia/commons/0/0a/Gala_de_%C3%8Enchidere_TIFF_2016_%2827490660976%29_%28cropped%29.jpg"
+  },
+  {
+    "id": 21,
+    "name": "Liv Ullmann",
+    "nationality": "norwegian",
+    "birth_year": 1938,
+    "death_year": null,
+    "era": "new-wave",
+    "tagline": "Bergman's mirror — the face that held everything he feared about humanity",
+    "bio": "Liv Ullmann is the greatest actress of the Bergman era and one of the finest in world cinema. Born in Tokyo to Norwegian parents, she met Ingmar Bergman in 1965 and began a collaboration — and love affair — that produced ten films and some of the most probing portraits of female inner life ever committed to screen. Where most actors perform emotion, Ullmann seems to have none of the usual defenses: the camera catches something raw and unguarded in her that Bergman called 'the miracle of the human face.' She has also directed two films adapted from Bergman scripts, and her memoir Changing is one of the great actor's books. In 2024 she received an honorary Oscar.",
+    "why": "She proved that cinema's highest calling is the close-up — not for glamour, but for revelation of what lies behind the face.",
+    "notable_films": [
+      {
+        "title": "Persona",
+        "year": 1966,
+        "runtime": 83,
+        "themes": [
+          "identity",
+          "silence",
+          "merging",
+          "performance",
+          "trauma"
+        ],
+        "synopsis": "A nurse is assigned to care for an actress who has suddenly stopped speaking. Alone together in a seaside cottage, their identities begin to dissolve into each other.",
+        "why_watch": "Ullmann plays the silent actress — and yet she dominates the film. Her face in close-up, wordless, is the entire text. The film asks whether identity is a performance, and she answers with her pores.",
+        "visual_style": "Sven Nykvist's extraordinary black-and-white close-ups — Bergman dissolves the two faces into one another in the film's central image."
+      },
+      {
+        "title": "Scenes from a Marriage",
+        "year": 1973,
+        "runtime": 167,
+        "themes": [
+          "marriage",
+          "love",
+          "divorce",
+          "identity",
+          "dependency"
+        ],
+        "synopsis": "A seemingly happy couple's marriage disintegrates over years — and then they find they cannot let go of each other.",
+        "why_watch": "Originally a six-part TV series, this is a two-hour film of sustained emotional violence and tenderness. Ullmann and Erland Josephson improvised much of it. When it aired in Sweden, divorce rates rose.",
+        "visual_style": "Bergman strips everything back — two faces, a room, the most intimate possible framing. Ullmann's face across the table carries the entire weight of love and its failures."
+      },
+      {
+        "title": "Cries and Whispers",
+        "year": 1972,
+        "runtime": 91,
+        "themes": [
+          "death",
+          "sisterhood",
+          "grief",
+          "repression",
+          "the body"
+        ],
+        "synopsis": "Three sisters gather as one of them dies of cancer in their childhood home.",
+        "why_watch": "One of the most devastating films about death ever made, and Ullmann's performance — the sister whose calm conceals a dead marriage and a dead self — is the most quietly devastating in the film.",
+        "visual_style": "Sven Nykvist's saturated reds — Bergman called red the interior of the soul. Every cut to white is a scream."
+      },
+      {
+        "title": "Face to Face",
+        "year": 1976,
+        "runtime": 136,
+        "themes": [
+          "mental breakdown",
+          "psychiatry",
+          "repression",
+          "suicide",
+          "womanhood"
+        ],
+        "synopsis": "A psychiatrist suffers a sudden mental breakdown while staying at her grandparents' apartment.",
+        "why_watch": "Ullmann won the Golden Globe and was nominated for the Oscar. She plays a woman whose professional armor cracks completely — the scene where she attempts suicide and wakes up is utterly harrowing.",
+        "visual_style": "Bergman shoots this more naturalistically than usual — less formal, more urgent, as if the camera is keeping watch."
+      },
+      {
+        "title": "Autumn Sonata",
+        "year": 1978,
+        "runtime": 99,
+        "themes": [
+          "mother and daughter",
+          "art",
+          "guilt",
+          "love",
+          "music"
+        ],
+        "synopsis": "A concert pianist visits her daughter for the first time in years. Over one night, the damage of a childhood defined by absence is laid bare.",
+        "why_watch": "The only Bergman film with Ingrid Bergman. Ullmann's confrontation scene — the daughter finally saying what she has never been allowed to say — is one of cinema's great emotional releases.",
+        "visual_style": "Sven Nykvist's intimate, candlelit chambers — Bergman's last feature before his 24-year theatrical exile."
+      }
+    ],
+    "style_tags": [
+      "restraint",
+      "silence",
+      "intensity",
+      "European art cinema",
+      "collaborations",
+      "naturalism"
+    ],
+    "start_with": {
+      "film": "Scenes from a Marriage",
+      "year": 1973,
+      "note": "The most immediately devastating showcase of what Ullmann can do — two people destroying and sustaining each other, for hours, in close-up."
+    },
+    "key_themes": [
+      "female interiority",
+      "Scandinavian existentialism",
+      "the body under emotional pressure",
+      "identity and its erosion"
+    ],
+    "quote": "I felt that Bergman could see through me — that I had no secrets from the camera when he was there.",
+    "photo_url": "https://upload.wikimedia.org/wikipedia/commons/a/a5/Liv_Ullmann_2024_%28cropped%29.jpg"
+  },
+  {
+    "id": 22,
+    "name": "Setsuko Hara",
+    "nationality": "japanese",
+    "birth_year": 1920,
+    "death_year": 2015,
+    "era": "classical",
+    "tagline": "The Eternal Virgin — Japan's most radiant and most unknowable screen presence",
+    "bio": "Setsuko Hara is the great enigma of Japanese cinema — the actress who retired completely in 1962, at the height of her fame, and never explained why. She was Yasujirō Ozu's muse across six films, embodying his vision of dutiful Japanese womanhood with a radiance that concealed something more complex: women who sacrifice their own desires with a smile that is simultaneously genuine and heartbreaking. Ozu and critic Donald Richie considered her the finest actress of Japanese cinema. She worked with Kurosawa and Naruse as well, but it is the Ozu films — Late Spring, Early Summer, Tokyo Story — that constitute her legacy: portraits of quiet endurance that grow more devastating with each viewing.",
+    "why": "Her smile in Tokyo Story — as she watches her in-laws leave for a city that has no real place for them — is the most complex single expression in cinema history.",
+    "notable_films": [
+      {
+        "title": "Late Spring",
+        "year": 1949,
+        "runtime": 108,
+        "themes": [
+          "marriage",
+          "duty",
+          "fathers and daughters",
+          "modern Japan",
+          "acceptance"
+        ],
+        "synopsis": "A young woman lives contentedly with her widowed father. He decides she must marry — and devises a small deception to make her accept it.",
+        "why_watch": "Hara's Noriko is outwardly cheerful about her approaching marriage and inwardly devastated. The film's final shot of her father alone, peeling an apple — after she has gone — is one of cinema's great endings, and it only works because of what Hara withheld throughout.",
+        "visual_style": "Ozu's tatami-level compositions, pillow shots of empty rooms — cinema reduced to its essential geometry of love and loss."
+      },
+      {
+        "title": "Tokyo Story",
+        "year": 1953,
+        "runtime": 136,
+        "themes": [
+          "aging",
+          "family",
+          "disappointment",
+          "grief",
+          "modern Japan"
+        ],
+        "synopsis": "An elderly couple travel from rural Japan to visit their adult children in Tokyo, who are too busy to spend time with them.",
+        "why_watch": "Hara plays Keiko — the daughter-in-law, not even blood family — who is the kindest person in the film. Her final conversation with the surviving parent is the purest distillation of what Ozu believed about human goodness.",
+        "visual_style": "Ozu's most formally controlled film — every shot at eye-level, every character looking slightly off-camera, every room a portrait of modern emptiness."
+      },
+      {
+        "title": "Early Summer",
+        "year": 1951,
+        "runtime": 124,
+        "themes": [
+          "marriage",
+          "independence",
+          "family pressure",
+          "postwar Japan"
+        ],
+        "synopsis": "A young working woman resists her family's pressure to marry the man they have chosen and makes her own unexpected choice.",
+        "why_watch": "Hara's most independent Noriko — the film where she gets to choose, and her choice confounds everyone. Her smile here is different: genuinely free rather than performing contentment.",
+        "visual_style": "Ozu's Kamakura suburb as a landscape of mild social pressure — the family home as a gentle trap."
+      },
+      {
+        "title": "No Regrets for Our Youth",
+        "year": 1946,
+        "runtime": 110,
+        "themes": [
+          "war",
+          "resistance",
+          "sacrifice",
+          "political awakening",
+          "Japan"
+        ],
+        "synopsis": "A professor's daughter becomes politically radicalized after her husband is arrested and executed as a spy.",
+        "why_watch": "A very different Hara — Kurosawa's film, shot just after WWII, asks her to play not quiet endurance but active transformation. Her final scenes working in the rice paddies, rejected by the village, are extraordinary.",
+        "visual_style": "Kurosawa's more kinetic, documentary-inflected style — as different from Ozu as possible, and Hara adapts completely."
+      },
+      {
+        "title": "Late Autumn",
+        "year": 1960,
+        "runtime": 128,
+        "themes": [
+          "widowhood",
+          "daughters",
+          "marriage again",
+          "time passing"
+        ],
+        "synopsis": "A widow's male friends scheme to arrange marriages for both her and her daughter.",
+        "why_watch": "Hara's last great Ozu performance, now playing the mother rather than the daughter. Her containment has new layers of weariness and wisdom. Two years later she retired and never spoke publicly about why.",
+        "visual_style": "Ozu's color period — tatami compositions now in rich, warm Agfa color, the domestic world more beautiful and more suffocating."
+      }
+    ],
+    "style_tags": [
+      "restraint",
+      "silence",
+      "collaborations",
+      "naturalism",
+      "tragedy",
+      "minimalism"
+    ],
+    "start_with": {
+      "film": "Tokyo Story",
+      "year": 1953,
+      "note": "The film where her gift is most concentrated — a character who barely does anything, whose goodness is the entire moral argument of the film."
+    },
+    "key_themes": [
+      "duty and its costs",
+      "female sacrifice",
+      "postwar Japanese identity",
+      "the smile as mask"
+    ],
+    "quote": "I never thought about acting. I just tried to be the person Ozu-san needed.",
+    "photo_url": "https://upload.wikimedia.org/wikipedia/commons/1/17/Setsuko_Hara_in_Late_Spring_%281949%29.jpg"
+  },
+  {
+    "id": 23,
+    "name": "Marcello Mastroianni",
+    "nationality": "italian",
+    "birth_year": 1924,
+    "death_year": 1996,
+    "era": "new-wave",
+    "tagline": "Charm as philosophy — Fellini's alter ego and Italy's most elegantly melancholy face",
+    "bio": "Marcello Mastroianni was the defining male actor of Italian cinema and one of the great screen presences of the twentieth century. Where Brando was volcanic and Mifune was physical, Mastroianni was mercurial — intelligent, ironic, effortlessly seductive, and fundamentally sad. He was Federico Fellini's alter ego across four films, including La Dolce Vita and 8½, and his combination of masculine charm and spiritual exhaustion captured something essential about Italy's postwar condition: the beautiful man who cannot commit, who watches life with devastating clarity and does nothing about it. He was also a gifted comedian, and his partnership with Sophia Loren in a series of films produced some of Italian cinema's most joyful performances.",
+    "why": "He perfected ironic detachment as a performance mode — the observer who sees everything and changes nothing, which is somehow the most honest position in his films.",
+    "notable_films": [
+      {
+        "title": "La Dolce Vita",
+        "year": 1960,
+        "runtime": 174,
+        "themes": [
+          "celebrity",
+          "decadence",
+          "spiritual emptiness",
+          "Rome",
+          "modern life"
+        ],
+        "synopsis": "A gossip journalist drifts through Rome's glamorous, empty high society over a week of parties, scandals, and hollow encounters.",
+        "why_watch": "Mastroianni's Marcello is complicit in the world he's disgusted by — he watches, he participates, he fails to change. The Trevi Fountain scene with Anita Ekberg is cinema's great image of desire without consequence.",
+        "visual_style": "Otello Martelli's wide, wandering black-and-white Rome — parties, dawn, ruins, the city as a beautiful void."
+      },
+      {
+        "title": "8½",
+        "year": 1963,
+        "runtime": 138,
+        "themes": [
+          "creative block",
+          "memory",
+          "women",
+          "fantasy",
+          "cinema"
+        ],
+        "synopsis": "A famous film director, paralyzed by creative block, retreats into memory and fantasy while trying to make his next film.",
+        "why_watch": "The most personal and self-critical film Fellini made, and Mastroianni plays him — the charming, evasive, imaginative, impossible man. His harem fantasy and his childhood memory scenes are equally real. Unmissable.",
+        "visual_style": "Gianni Di Venanzo's cinematography — reality, memory, and fantasy rendered in the same luxurious black-and-white, indistinguishable until it's too late."
+      },
+      {
+        "title": "Divorce Italian Style",
+        "year": 1961,
+        "runtime": 104,
+        "themes": [
+          "marriage",
+          "murder",
+          "dark comedy",
+          "Sicily",
+          "machismo"
+        ],
+        "synopsis": "A bored Sicilian nobleman plots to murder his wife so he can marry his beautiful young cousin — by engineering a crime of passion.",
+        "why_watch": "Mastroianni's most purely comic performance — the film is a razor-sharp satire of Italian masculinity, and he plays the absurd schemer with absolute conviction. His mustache does half the acting.",
+        "visual_style": "Gianni Di Venanzo's Sicilian heat and shadow — the baroque architecture of small-town conformity as both trap and stage."
+      },
+      {
+        "title": "A Special Day",
+        "year": 1977,
+        "runtime": 105,
+        "themes": [
+          "fascism",
+          "loneliness",
+          "sexuality",
+          "1938 Rome",
+          "repression"
+        ],
+        "synopsis": "On the day of Hitler's visit to Rome in 1938, a housewife and her gay neighbor share an unexpected afternoon that changes both of them.",
+        "why_watch": "Against the grain of all his glamorous roles, Mastroianni plays a melancholy, closeted man facing deportation. His vulnerability here is extraordinary — the charm entirely stripped away.",
+        "visual_style": "Pasqualino De Santis desaturates the film almost to sepia — the day's festivity outside rendered in greys, the apartment as a small world of human warmth."
+      },
+      {
+        "title": "Yesterday, Today and Tomorrow",
+        "year": 1963,
+        "runtime": 118,
+        "themes": [
+          "desire",
+          "Italian identity",
+          "class",
+          "comedy",
+          "Naples"
+        ],
+        "synopsis": "Three vignettes with Sophia Loren — a black marketeer, a wealthy Milanese wife, and a Roman prostitute.",
+        "why_watch": "The Mastroianni-Loren chemistry is cinema's great comic pairing. The striptease sequence in the third story is legendary — he watches her with an expression of helpless, reverent desire that perfectly captures his gift.",
+        "visual_style": "De Sica's warm, color-saturated Italy — each segment a different class register, each one perfectly played."
+      }
+    ],
+    "style_tags": [
+      "naturalism",
+      "comedy",
+      "intensity",
+      "European art cinema",
+      "collaborations",
+      "restraint"
+    ],
+    "start_with": {
+      "film": "8½",
+      "year": 1963,
+      "note": "The film where Mastroianni plays Fellini's most private self — irresponsible, imaginative, charming, evasive — and makes all of it sympathetic."
+    },
+    "key_themes": [
+      "Italian masculinity and its discontents",
+      "the observer who cannot act",
+      "desire and its evasions",
+      "postwar Italian identity"
+    ],
+    "quote": "I always played myself. Fortunately, the directors needed someone like me.",
+    "photo_url": "https://upload.wikimedia.org/wikipedia/commons/5/5a/Marcello_Mastroianni_02.jpg"
+  },
+  {
+    "id": 24,
+    "name": "Giulietta Masina",
+    "nationality": "italian",
+    "birth_year": 1921,
+    "death_year": 1994,
+    "era": "classical",
+    "tagline": "The clown and the saint — cinema's most heartbreaking comedienne",
+    "bio": "Giulietta Masina was Federico Fellini's wife, his collaborator, and in the eyes of many critics the greatest actress of Italian cinema. She embodied a type that cinema had never quite found before: the holy fool, the eternal naïf, a woman whose openness to the world is simultaneously her gift and her wound. Her Gelsomina in La Strada and her Cabiria in Nights of Cabiria are among the most loved characters in film history — both abused, both surviving through a combination of innocence and stubbornness that Masina made genuinely miraculous. Charlie Chaplin called her the female Chaplin. She won Best Actress at Cannes for Nights of Cabiria. When she and Fellini died within months of each other in 1993-1994, the Italian press mourned them as a single loss.",
+    "why": "She found a way to play innocence without sentimentality — the most technically difficult thing an actor can do, and she made it look like simply being herself.",
+    "notable_films": [
+      {
+        "title": "La Strada",
+        "year": 1954,
+        "runtime": 108,
+        "themes": [
+          "innocence",
+          "cruelty",
+          "freedom",
+          "love",
+          "the road"
+        ],
+        "synopsis": "A simple-minded girl is sold by her mother to a traveling strongman. She loves him. He cannot understand what that means until it is too late.",
+        "why_watch": "Masina's Gelsomina is one of cinema's great creations — a clown, a saint, a child-woman who understands everything and can explain nothing. The film destroyed audiences worldwide. The final scene, with Zampanò on the beach, is one of cinema's great endings.",
+        "visual_style": "Otello Martelli's austere Italian roadscapes — winter, dust, circus tents in empty fields. The road itself as a moral landscape."
+      },
+      {
+        "title": "Nights of Cabiria",
+        "year": 1957,
+        "runtime": 110,
+        "themes": [
+          "hope",
+          "exploitation",
+          "resilience",
+          "love",
+          "Rome"
+        ],
+        "synopsis": "A small, brash Roman prostitute is repeatedly cheated and betrayed — and keeps hoping, keeps dreaming, keeps surviving.",
+        "why_watch": "Masina won Cannes for this and it's the most complete showcase of her gifts — comic, pathetic, defiant, heartbreaking. The final scene, where she walks into the camera surrounded by revelers, is one of cinema's great endings: devastation transformed into something like grace.",
+        "visual_style": "Aldo Tonti and Otello Martelli's nighttime Rome — the Via Veneto and the outskirts of the city as a landscape of dreams and disappointments."
+      },
+      {
+        "title": "Juliet of the Spirits",
+        "year": 1965,
+        "runtime": 137,
+        "themes": [
+          "repression",
+          "fantasy",
+          "marriage",
+          "female liberation",
+          "color"
+        ],
+        "synopsis": "A middle-class housewife suspects her husband is having an affair and begins to explore her inner life through visions and fantasies.",
+        "why_watch": "Fellini's first color film, built around Masina's face — her stillness against the film's baroque visual excess is remarkable. A more internal, harder performance than Cabiria, and equally extraordinary.",
+        "visual_style": "Gianni Di Venanzo's explosion of color — Fellini designs around Masina as if she's the grey center of a constantly shifting kaleidoscope."
+      },
+      {
+        "title": "Ginger and Fred",
+        "year": 1986,
+        "runtime": 126,
+        "themes": [
+          "nostalgia",
+          "television",
+          "aging",
+          "Italy",
+          "friendship"
+        ],
+        "synopsis": "Two elderly variety dancers who impersonated Astaire and Rogers are reunited for a television spectacular.",
+        "why_watch": "Masina and Mastroianni in their only film together — both in their sixties, both playing people out of time with a world that has become garish and cheap. Their chemistry is tender and wistful. Fellini's most personal late film.",
+        "visual_style": "Tonino Delli Colli's bright, vulgar television-studio lighting — Fellini's satire of modern media as a form of mourning."
+      }
+    ],
+    "style_tags": [
+      "naturalism",
+      "comedy",
+      "tragedy",
+      "collaborations",
+      "intensity",
+      "physicality"
+    ],
+    "start_with": {
+      "film": "Nights of Cabiria",
+      "year": 1957,
+      "note": "The fullest expression of what makes Masina extraordinary — hope as a form of courage, played without a single false note across two hours."
+    },
+    "key_themes": [
+      "innocence and its survival",
+      "female resilience",
+      "the holy fool tradition",
+      "Italian postwar cinema"
+    ],
+    "quote": "I never played a character. I just tried to find the part of me that understood her.",
+    "photo_url": "https://upload.wikimedia.org/wikipedia/commons/b/b9/Masinanightsofcabiria.jpg"
+  },
+  {
+    "id": 25,
+    "name": "Renée Falconetti",
+    "nationality": "french",
+    "birth_year": 1892,
+    "death_year": 1946,
+    "era": "classical",
+    "tagline": "One film, one face — the greatest screen performance ever given",
+    "bio": "Renée Jeanne Falconetti made one film. She was a stage comedienne in Paris when Carl Theodor Dreyer cast her, against all expectation, as Joan of Arc in 1928. What he captured over months of difficult, exhausting shooting — with Falconetti kneeling on stone floors between takes, refusing cushions, seeking real pain — is widely considered the single greatest performance in cinema history. Her face, in enormous close-up, without makeup, conveys the full spectrum of human spiritual experience: faith, doubt, agony, transcendence, and finally a peace that is almost impossible to watch. After the film she returned to theater and never made another film. She died in Buenos Aires in 1946, largely forgotten. The film has since been named by critics and filmmakers as the most important ever made.",
+    "why": "She proved that cinema's greatest subject is the human face — and that suffering, genuinely inhabited, becomes something close to sacred.",
+    "notable_films": [
+      {
+        "title": "The Passion of Joan of Arc",
+        "year": 1928,
+        "runtime": 82,
+        "themes": [
+          "faith",
+          "martyrdom",
+          "injustice",
+          "the body",
+          "transcendence"
+        ],
+        "synopsis": "The trial and execution of Joan of Arc, told entirely in close-up over a single day.",
+        "why_watch": "Dreyer shot this in sequence, told Falconetti nothing of what was coming next, and kept the camera inches from her face for most of the film. What she gives is not a performance — it is something more frightening and more beautiful. Every great film actor since has been in conversation with this.",
+        "visual_style": "Rudolph Maté's extraordinary cinematography — no makeup, natural light, the camera so close to Falconetti's face that you see every pore, every shadow of doubt, every flicker of grace."
+      }
+    ],
+    "style_tags": [
+      "intensity",
+      "silence",
+      "minimalism",
+      "tragedy",
+      "naturalism"
+    ],
+    "start_with": {
+      "film": "The Passion of Joan of Arc",
+      "year": 1928,
+      "note": "There is only one film to start with. It will take 82 minutes and you will think about it for years."
+    },
+    "key_themes": [
+      "faith under duress",
+      "the close-up as revelation",
+      "martyrdom and its witness",
+      "silent cinema's expressive peak"
+    ],
+    "quote": "I gave Dreyer everything I had. I don't know if I had anything left after.",
+    "photo_url": "https://upload.wikimedia.org/wikipedia/commons/3/3f/The_Passion_of_Joan_of_Arc_%281928%29.jpg"
   }
 ]
