@@ -1368,6 +1368,12 @@ function toggleTheme() {
   var next = html.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
   html.setAttribute('data-theme', next);
   document.querySelector('.theme-btn').textContent = next === 'dark' ? '☀︎' : '☾';
+  if (typeof window.petReact === 'function') {
+    var msg = next === 'light'
+      ? "Light mode? Bold choice. 🌞"
+      : "Ah, dark mode. You have taste. 🌙";
+    window.petReact(msg);
+  }
 }
 
 /* ── Bento card bounce on click ── */
@@ -1759,6 +1765,12 @@ switchPane = function(id) {
   }
 
   /* ── Public ── */
+  window.petReact = function(msg) {
+    if (PET_STATE === 'sleeping') toNormal();
+    excite();
+    typingThenShow(msg, false);
+  };
+
   window.petClick = function() {
     var b = document.getElementById('pet-bubble');
     if (!b.classList.contains('hidden')) { b.classList.add('hidden'); return; }
