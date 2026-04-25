@@ -3385,56 +3385,6 @@
   },
   {
     "id": 37,
-    "name": "Agnès Jaoui",
-    "nationality": "french",
-    "birth_year": 1964,
-    "death_year": null,
-    "era": "contemporary",
-    "tagline": "Sharp-eyed chronicler of class, vanity, and human longing",
-    "bio": "Agnès Jaoui writes and directs with Jean-Pierre Bacri, creating films that observe the social rituals of French middle-class life with sharp comedy and genuine pathos. Her films feel like social essays disguised as light comedies, attentive to the self-deceptions people need to get through their days. The Taste of Others is her best-known work outside France.",
-    "why": "Jaoui made me see that the comedy of manners is still cinema's sharpest lens for examining how people fail each other.",
-    "notable_films": [
-      {
-        "title": "The Taste of Others",
-        "year": 2000
-      },
-      {
-        "title": "Look at Me",
-        "year": 2004
-      },
-      {
-        "title": "Let's Talk About the Rain",
-        "year": 2008
-      },
-      {
-        "title": "Under the Rainbow",
-        "year": 2013
-      },
-      {
-        "title": "I Do...Until I Don't",
-        "year": 2017
-      }
-    ],
-    "style_tags": [
-      "comedy",
-      "social-realism",
-      "humanist"
-    ],
-    "start_with": {
-      "film": "The Taste of Others",
-      "year": 2000,
-      "note": "A wealthy industrialist falls for an acting teacher. Comedy of manners at its most precise."
-    },
-    "key_themes": [
-      "class and self-delusion",
-      "the comedy of desire",
-      "social ritual"
-    ],
-    "quote": "I make films about the gap between who we think we are and who we really are.",
-    "photo_url": "https://upload.wikimedia.org/wikipedia/commons/1/18/Agnes_Jaoui_Cannes_2017.jpg"
-  },
-  {
-    "id": 38,
     "name": "Lucrecia Martel",
     "nationality": "argentinian",
     "birth_year": 1966,
@@ -3480,7 +3430,7 @@
     "photo_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/96/Lucrecia_Martel_at_the_presentation_of_the_Audioteca_at_the_National_Library%2C_2015.jpg/960px-Lucrecia_Martel_at_the_presentation_of_the_Audioteca_at_the_National_Library%2C_2015.jpg"
   },
   {
-    "id": 39,
+    "id": 38,
     "name": "Krzysztof Kieślowski",
     "nationality": "polish",
     "birth_year": 1941,
@@ -3550,7 +3500,7 @@
     "photo_url": "https://upload.wikimedia.org/wikipedia/commons/7/76/Krzysztof_Kie%C5%9Blowski_Portrait_1994.jpg"
   },
   {
-    "id": 40,
+    "id": 39,
     "name": "Hirokazu Kore-eda",
     "nationality": "japanese",
     "birth_year": 1962,
@@ -3624,7 +3574,7 @@
     "photo_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/15/Hirokazu_Kore-eda_-_The_Egyptian_Theatre.jpg/960px-Hirokazu_Kore-eda_-_The_Egyptian_Theatre.jpg"
   },
   {
-    "id": 41,
+    "id": 40,
     "name": "Leos Carax",
     "nationality": "french",
     "birth_year": 1960,
@@ -3682,7 +3632,7 @@
     "photo_url": "https://upload.wikimedia.org/wikipedia/commons/f/f0/Leos_Carax_Cannes_2012.jpg"
   },
   {
-    "id": 42,
+    "id": 41,
     "name": "Lynne Ramsay",
     "nationality": "scottish",
     "birth_year": 1969,
@@ -3728,7 +3678,7 @@
     "photo_url": "https://upload.wikimedia.org/wikipedia/commons/d/d0/Lynne_Ramsay_at_ADIFF_2018.jpg"
   },
   {
-    "id": 43,
+    "id": 42,
     "name": "Wim Wenders",
     "nationality": "german",
     "birth_year": 1945,
@@ -3798,7 +3748,7 @@
     "photo_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/7b/Wim_Wenders_at_Berlinale_2026.jpg/960px-Wim_Wenders_at_Berlinale_2026.jpg"
   },
   {
-    "id": 44,
+    "id": 43,
     "name": "Werner Herzog",
     "nationality": "german",
     "birth_year": 1942,
@@ -3868,7 +3818,7 @@
     "photo_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5f/Werner_Herzog_Venice_Film_Festival_2025.jpg/960px-Werner_Herzog_Venice_Film_Festival_2025.jpg"
   },
   {
-    "id": 45,
+    "id": 44,
     "name": "Rainer Werner Fassbinder",
     "nationality": "german",
     "birth_year": 1945,
@@ -3938,7 +3888,7 @@
     "photo_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3d/PER51895_061.jpg/960px-PER51895_061.jpg"
   },
   {
-    "id": 46,
+    "id": 45,
     "name": "Asghar Farhadi",
     "nationality": "iranian",
     "birth_year": 1972,
@@ -4004,7 +3954,7 @@
     "photo_url": "https://upload.wikimedia.org/wikipedia/commons/4/47/Asghar_Farhadi_in_2018-2_%28cropped%29.jpg"
   },
   {
-    "id": 47,
+    "id": 46,
     "name": "Kelly Reichardt",
     "nationality": "american",
     "birth_year": 1964,
@@ -4066,7 +4016,7 @@
     "photo_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/74/Kelly_Reichardt-4432.jpg/960px-Kelly_Reichardt-4432.jpg"
   },
   {
-    "id": 48,
+    "id": 47,
     "name": "Tsai Ming-liang",
     "nationality": "taiwanese",
     "birth_year": 1957,
@@ -4140,7 +4090,7 @@
     "photo_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b9/Tsai_Ming-liang_at_82nd_Venice_International_Film_Festival-1.jpg/960px-Tsai_Ming-liang_at_82nd_Venice_International_Film_Festival-1.jpg"
   },
   {
-    "id": 49,
+    "id": 48,
     "name": "Jean-Pierre Melville",
     "nationality": "french",
     "birth_year": 1917,
@@ -4202,7 +4152,7 @@
     "photo_url": "https://upload.wikimedia.org/wikipedia/commons/f/f9/Jean-Pierre_Melville_%28cropped%29.jpg"
   },
   {
-    "id": 50,
+    "id": 49,
     "name": "Luis Buñuel",
     "nationality": "spanish",
     "birth_year": 1900,
@@ -4268,7 +4218,7 @@
     "photo_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/89/LuisBu%C3%B1uel1929.jpg/960px-LuisBu%C3%B1uel1929.jpg"
   },
   {
-    "id": 51,
+    "id": 50,
     "name": "Carl Theodor Dreyer",
     "nationality": "danish",
     "birth_year": 1889,
@@ -4322,7 +4272,7 @@
     "photo_url": "https://upload.wikimedia.org/wikipedia/commons/7/7e/Carl_Theodor_Dreyer_%281965%29_by_Erling_Mandelmann.jpg"
   },
   {
-    "id": 52,
+    "id": 51,
     "name": "Sergei Eisenstein",
     "nationality": "russian",
     "birth_year": 1898,
@@ -4380,7 +4330,7 @@
     "photo_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/26/Sergei_Eisenstein_03.jpg/960px-Sergei_Eisenstein_03.jpg"
   },
   {
-    "id": 53,
+    "id": 52,
     "name": "Stanley Kubrick",
     "nationality": "american",
     "birth_year": 1928,
@@ -4550,7 +4500,7 @@
     "photo_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/59/Stanley_Kubrick_in_Dr._Strangelove_Trailer_%284%29_Cropped.jpg/960px-Stanley_Kubrick_in_Dr._Strangelove_Trailer_%284%29_Cropped.jpg"
   },
   {
-    "id": 54,
+    "id": 53,
     "name": "Jim Jarmusch",
     "nationality": "american",
     "birth_year": 1953,
@@ -4620,7 +4570,7 @@
     "photo_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/34/Jim_Jarmusch-9078.jpg/960px-Jim_Jarmusch-9078.jpg"
   },
   {
-    "id": 55,
+    "id": 54,
     "name": "Sofia Coppola",
     "nationality": "american",
     "birth_year": 1971,
@@ -4762,7 +4712,7 @@
     "photo_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/0b/Sofia_Coppola_at_82nd_Venice_International_Film_Festival-8_%28cropped%29.jpg/960px-Sofia_Coppola_at_82nd_Venice_International_Film_Festival-8_%28cropped%29.jpg"
   },
   {
-    "id": 56,
+    "id": 55,
     "name": "Nuri Bilge Ceylan",
     "nationality": "turkish",
     "birth_year": 1959,
@@ -4820,7 +4770,7 @@
     "photo_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/42/Nuri_Bilge_Ceylan%2C_Cines_del_Sur.jpg/960px-Nuri_Bilge_Ceylan%2C_Cines_del_Sur.jpg"
   },
   {
-    "id": 57,
+    "id": 56,
     "name": "Hong Sang-soo",
     "nationality": "korean",
     "birth_year": 1960,
@@ -4886,7 +4836,7 @@
     "photo_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/71/Hong_Sang-soo_at_the_2025_Cannes_Film_Festival.jpg/960px-Hong_Sang-soo_at_the_2025_Cannes_Film_Festival.jpg"
   },
   {
-    "id": 58,
+    "id": 57,
     "name": "Jafar Panahi",
     "nationality": "iranian",
     "birth_year": 1960,
@@ -4956,7 +4906,7 @@
     "photo_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/57/Jafar_Panahi_at_2025_Cannes_Film_Festival_Photocall.jpg/960px-Jafar_Panahi_at_2025_Cannes_Film_Festival_Photocall.jpg"
   },
   {
-    "id": 59,
+    "id": 58,
     "name": "Mia Hansen-Løve",
     "nationality": "french",
     "birth_year": 1981,
@@ -5018,7 +4968,7 @@
     "photo_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/ea/Seminci_2025_-_Mia_Hansen-L%C3%B8ve-4_%28cropped%29.jpg/960px-Seminci_2025_-_Mia_Hansen-L%C3%B8ve-4_%28cropped%29.jpg"
   },
   {
-    "id": 60,
+    "id": 59,
     "name": "Alice Rohrwacher",
     "nationality": "italian",
     "birth_year": 1981,
@@ -5064,7 +5014,7 @@
     "photo_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/87/Alice_Rohrwacher-5050.jpg/960px-Alice_Rohrwacher-5050.jpg"
   },
   {
-    "id": 61,
+    "id": 60,
     "name": "Béla Tarr",
     "nationality": "hungarian",
     "birth_year": 1955,
@@ -5122,7 +5072,7 @@
     "photo_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a1/B%C3%A9la_Tarr.jpg/960px-B%C3%A9la_Tarr.jpg"
   },
   {
-    "id": 62,
+    "id": 61,
     "name": "Alain Resnais",
     "nationality": "french",
     "birth_year": 1922,
@@ -5184,7 +5134,7 @@
     "photo_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/90/Identite-AlainResnais-1959-Sacem.png/960px-Identite-AlainResnais-1959-Sacem.png"
   },
   {
-    "id": 63,
+    "id": 62,
     "name": "Pier Paolo Pasolini",
     "nationality": "italian",
     "birth_year": 1922,
@@ -5246,7 +5196,7 @@
     "photo_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a4/PierPaoloPasolini.jpg/960px-PierPaoloPasolini.jpg"
   },
   {
-    "id": 64,
+    "id": 63,
     "name": "Martin Scorsese",
     "nationality": "american",
     "birth_year": 1942,
@@ -5324,7 +5274,7 @@
     "photo_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/54/Martin_Scorsese-68749.jpg/960px-Martin_Scorsese-68749.jpg"
   },
   {
-    "id": 65,
+    "id": 64,
     "name": "Frederick Wiseman",
     "nationality": "american",
     "birth_year": 1930,
@@ -5394,73 +5344,7 @@
     "photo_url": "https://upload.wikimedia.org/wikipedia/commons/1/1f/Frederick_Wiseman_1971.jpg"
   },
   {
-    "id": 66,
-    "name": "Naomi Kawase",
-    "nationality": "japanese",
-    "birth_year": 1969,
-    "death_year": null,
-    "era": "contemporary",
-    "tagline": "Japanese poet of grief, nature, and the camera as a form of prayer",
-    "bio": "Naomi Kawase began her career making intimate documentary films about her own life, particularly her search for the father who abandoned her. Her fiction films extend this intimacy into stories of loss, nature, and the relationship between the living and the dead, set in and around her hometown of Nara. Her films treat cinema as a practice of attention rather than a means of storytelling.",
-    "why": "Kawase made me understand that a camera pointed at a tree or a stream can be as intimate and revealing as one pointed at a face.",
-    "notable_films": [
-      {
-        "title": "Embracing",
-        "year": 1992
-      },
-      {
-        "title": "Suzaku",
-        "year": 1997
-      },
-      {
-        "title": "Shara",
-        "year": 2003
-      },
-      {
-        "title": "The Mourning Forest",
-        "year": 2007
-      },
-      {
-        "title": "Hanezu",
-        "year": 2011
-      },
-      {
-        "title": "Still the Water",
-        "year": 2014
-      },
-      {
-        "title": "Sweet Bean",
-        "year": 2015
-      },
-      {
-        "title": "Radiance",
-        "year": 2017
-      },
-      {
-        "title": "True Mothers",
-        "year": 2020
-      }
-    ],
-    "style_tags": [
-      "poetic",
-      "grief",
-      "nature"
-    ],
-    "start_with": {
-      "film": "The Mourning Forest",
-      "year": 2007,
-      "note": "A caregiver and an elderly man with dementia walk into the forest together. Won the Grand Prix at Cannes."
-    },
-    "key_themes": [
-      "grief and nature",
-      "the search for the lost parent",
-      "cinema as prayer"
-    ],
-    "quote": "My films are letters to the world.",
-    "photo_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/00/Naomi_Kawase_at_the_78th_Locarno_Film_Festival_in_2025_06.jpg/960px-Naomi_Kawase_at_the_78th_Locarno_Film_Festival_in_2025_06.jpg"
-  },
-  {
-    "id": 67,
+    "id": 65,
     "name": "Vittorio De Sica",
     "nationality": "italian",
     "birth_year": 1901,
@@ -5522,7 +5406,7 @@
     "photo_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a4/S_Kragujevic%2C_Vittorio_De_Sica%2C_1959.JPG/960px-S_Kragujevic%2C_Vittorio_De_Sica%2C_1959.JPG"
   },
   {
-    "id": 68,
+    "id": 66,
     "name": "Spike Lee",
     "nationality": "american",
     "birth_year": 1957,
@@ -5600,7 +5484,7 @@
     "photo_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c4/Spike_Lee_%2854366842607%29_%28cropped2%29.jpg/960px-Spike_Lee_%2854366842607%29_%28cropped2%29.jpg"
   },
   {
-    "id": 69,
+    "id": 67,
     "name": "Arnaud Desplechin",
     "nationality": "french",
     "birth_year": 1960,
@@ -5666,7 +5550,7 @@
     "photo_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/2a/Arnaud_Desplechin_at_TIFF_2025_02.jpg/960px-Arnaud_Desplechin_at_TIFF_2025_02.jpg"
   },
   {
-    "id": 70,
+    "id": 68,
     "name": "Carlos Reygadas",
     "nationality": "mexican",
     "birth_year": 1971,
@@ -5716,7 +5600,7 @@
     "photo_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/73/Carlos_Reygadas-1969.jpg/960px-Carlos_Reygadas-1969.jpg"
   },
   {
-    "id": 71,
+    "id": 69,
     "name": "Wang Bing",
     "nationality": "chinese",
     "birth_year": 1967,
@@ -5778,65 +5662,7 @@
     "photo_url": null
   },
   {
-    "id": 72,
-    "name": "Paolo Sorrentino",
-    "nationality": "italian",
-    "birth_year": 1970,
-    "death_year": null,
-    "era": "contemporary",
-    "tagline": "Italian heir to Fellini, architect of the beautiful and the corrupt",
-    "bio": "Paolo Sorrentino makes films of baroque visual splendor about power, aging, and the Italian condition. His films are Felliniesque in their visual excess and their affection for grotesque characters, but driven by a harsher irony and a deeper melancholy. The Great Beauty, which won the Oscar for Best Foreign Film, is his most celebrated work, a portrait of a Roman intellectual in the ruins of a life devoted to beauty.",
-    "why": "Sorrentino made me see that beauty and corruption can coexist in the same frame, that cinema can love what it condemns.",
-    "notable_films": [
-      {
-        "title": "The Consequences of Love",
-        "year": 2004
-      },
-      {
-        "title": "The Family Friend",
-        "year": 2006
-      },
-      {
-        "title": "Il Divo",
-        "year": 2008
-      },
-      {
-        "title": "This Must Be the Place",
-        "year": 2011
-      },
-      {
-        "title": "The Great Beauty",
-        "year": 2013
-      },
-      {
-        "title": "Youth",
-        "year": 2015
-      },
-      {
-        "title": "The Hand of God",
-        "year": 2021
-      }
-    ],
-    "style_tags": [
-      "baroque",
-      "melancholic",
-      "political"
-    ],
-    "start_with": {
-      "film": "The Great Beauty",
-      "year": 2013,
-      "note": "Rome. A journalist approaching old age wanders through parties and ruins. Visually overwhelming and surprisingly tender."
-    },
-    "key_themes": [
-      "Italian decadence",
-      "aging and beauty",
-      "the Catholic and the pagan"
-    ],
-    "quote": "Beauty is the enemy of great art.",
-    "photo_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/64/Paolo_Sorrentino_2018.jpg/960px-Paolo_Sorrentino_2018.jpg"
-  },
-  {
-    "id": 73,
+    "id": 70,
     "name": "Joachim Trier",
     "nationality": "norwegian",
     "birth_year": 1974,
@@ -5886,7 +5712,7 @@
     "photo_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/24/Joachim_Trier-9987_%28cropped%29.jpg/960px-Joachim_Trier-9987_%28cropped%29.jpg"
   },
   {
-    "id": 74,
+    "id": 71,
     "name": "Elem Klimov",
     "nationality": "russian",
     "birth_year": 1933,
@@ -5940,7 +5766,7 @@
     "photo_url": null
   },
   {
-    "id": 75,
+    "id": 72,
     "name": "Andrei Zvyagintsev",
     "nationality": "russian",
     "birth_year": 1964,
@@ -5990,77 +5816,7 @@
     "photo_url": "https://upload.wikimedia.org/wikipedia/commons/a/a2/Andre%C3%AF_Zviaguintsev-_2016_%28cropped%29.jpg"
   },
   {
-    "id": 76,
-    "name": "Sally Potter",
-    "nationality": "british",
-    "birth_year": 1949,
-    "death_year": null,
-    "era": "contemporary",
-    "tagline": "British experimentalist making cinema at the intersection of music, politics, and the self",
-    "bio": "Sally Potter has spent forty years making films that refuse easy categorization, moving between experimental narrative, musical, adaptation, and political essay with complete freedom. Orlando, her adaptation of Virginia Woolf, remains her most celebrated work, a four-hundred-year story told through one fluid, gender-shifting life. She works at the intersection of cinema, music, and dance, treating film as a temporal art related to all the others.",
-    "why": "Potter taught me that cinema can absorb the other arts without losing itself, that a film can think in music and dance as well as in images.",
-    "notable_films": [
-      {
-        "title": "Thriller",
-        "year": 1979
-      },
-      {
-        "title": "The Gold Diggers",
-        "year": 1983
-      },
-      {
-        "title": "Orlando",
-        "year": 1992
-      },
-      {
-        "title": "The Tango Lesson",
-        "year": 1997
-      },
-      {
-        "title": "The Man Who Cried",
-        "year": 2000
-      },
-      {
-        "title": "Yes",
-        "year": 2004
-      },
-      {
-        "title": "Rage",
-        "year": 2009
-      },
-      {
-        "title": "Ginger & Rosa",
-        "year": 2012
-      },
-      {
-        "title": "The Party",
-        "year": 2017
-      },
-      {
-        "title": "The Roads Not Taken",
-        "year": 2020
-      }
-    ],
-    "style_tags": [
-      "experimental",
-      "feminist",
-      "musical"
-    ],
-    "start_with": {
-      "film": "Orlando",
-      "year": 1992,
-      "note": "Tilda Swinton as a figure who lives four hundred years and changes sex halfway through. Gorgeous, witty, and genuinely moving."
-    },
-    "key_themes": [
-      "gender and identity over time",
-      "cinema and the other arts",
-      "feminist history"
-    ],
-    "quote": "Film is time made visible.",
-    "photo_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/be/MJK_71590_Sally_Potter_%28The_Roads_Not_Taken%2C_Berlinale_2020%29.jpg/960px-MJK_71590_Sally_Potter_%28The_Roads_Not_Taken%2C_Berlinale_2020%29.jpg"
-  },
-  {
-    "id": 77,
+    "id": 73,
     "name": "Orson Welles",
     "nationality": "american",
     "birth_year": 1915,
@@ -6115,7 +5871,7 @@
     "photo_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/bc/Orson_Welles_1937_cr3-4.jpg/960px-Orson_Welles_1937_cr3-4.jpg"
   },
   {
-    "id": 78,
+    "id": 74,
     "name": "Jacques Tati",
     "nationality": "french",
     "birth_year": 1907,
@@ -6166,7 +5922,7 @@
     "photo_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/85/09.07.1961._La_Belle_Gaillarde_%C3%A0_No%C3%A9_%281961%29_-_53Fi2337.jpg/960px-09.07.1961._La_Belle_Gaillarde_%C3%A0_No%C3%A9_%281961%29_-_53Fi2337.jpg"
   },
   {
-    "id": 79,
+    "id": 75,
     "name": "Éric Rohmer",
     "nationality": "french",
     "birth_year": 1920,
@@ -6221,7 +5977,7 @@
     "photo_url": "https://upload.wikimedia.org/wikipedia/commons/4/44/Eric_Rohmer_cinematheque_2004-04.jpg"
   },
   {
-    "id": 80,
+    "id": 76,
     "name": "Kenji Mizoguchi",
     "nationality": "japanese",
     "birth_year": 1898,
@@ -6272,7 +6028,7 @@
     "photo_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b5/Kenji_Mizoguchi_3.jpg/960px-Kenji_Mizoguchi_3.jpg"
   },
   {
-    "id": 81,
+    "id": 77,
     "name": "F.W. Murnau",
     "nationality": "german",
     "birth_year": 1888,
@@ -6323,7 +6079,7 @@
     "photo_url": "https://upload.wikimedia.org/wikipedia/commons/a/a9/F._W._Murnau_circa_1920-1930.jpg"
   },
   {
-    "id": 82,
+    "id": 78,
     "name": "Michael Haneke",
     "nationality": "austrian",
     "birth_year": 1942,
@@ -6374,7 +6130,7 @@
     "photo_url": "https://upload.wikimedia.org/wikipedia/commons/3/3c/Michael_Haneke_2009.jpg"
   },
   {
-    "id": 83,
+    "id": 79,
     "name": "Yorgos Lanthimos",
     "nationality": "greek",
     "birth_year": 1973,
@@ -6429,7 +6185,7 @@
     "photo_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c1/Yorgos_Lanthimos_at_82nd_Venice_International_Film_Festival-1_%28cropped%29.jpg/960px-Yorgos_Lanthimos_at_82nd_Venice_International_Film_Festival-1_%28cropped%29.jpg"
   },
   {
-    "id": 84,
+    "id": 80,
     "name": "Aki Kaurismäki",
     "nationality": "finnish",
     "birth_year": 1957,
@@ -6484,7 +6240,7 @@
     "photo_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1d/Aki_Kaurism%C3%A4ki_at_Berlinale_2017.jpg/960px-Aki_Kaurism%C3%A4ki_at_Berlinale_2017.jpg"
   },
   {
-    "id": 85,
+    "id": 81,
     "name": "Glauber Rocha",
     "nationality": "brazilian",
     "birth_year": 1939,
@@ -6535,7 +6291,7 @@
     "photo_url": "https://upload.wikimedia.org/wikipedia/commons/6/64/Glauber_Rocha%2C_sem_data.jpg"
   },
   {
-    "id": 86,
+    "id": 82,
     "name": "Djibril Diop Mambéty",
     "nationality": "senegalese",
     "birth_year": 1945,
@@ -6582,7 +6338,7 @@
     "photo_url": "https://upload.wikimedia.org/wikipedia/en/5/5a/Djibril_Diop_Mamb%C3%A9ty.jpg"
   },
   {
-    "id": 87,
+    "id": 83,
     "name": "Ritwik Ghatak",
     "nationality": "indian",
     "birth_year": 1925,
@@ -6637,42 +6393,7 @@
     "photo_url": "https://upload.wikimedia.org/wikipedia/commons/d/db/Ritwik_Ghatak_2025_stamp_of_India.jpg"
   },
   {
-    "id": 88,
-    "name": "Barbara Loden",
-    "nationality": "american",
-    "birth_year": 1932,
-    "death_year": 1980,
-    "era": "classical",
-    "tagline": "Invisible for decades, completely irreplaceable",
-    "bio": "Barbara Loden made exactly one film — Wanda, in 1970 — and it is one of the most remarkable American films of its era. She wrote, directed, and starred in it, shooting on 16mm with a skeleton crew through the coal country of Pennsylvania. The film follows a woman drifting through a life of passivity, abandonment, and small coercions, with no redemption and no judgement. It was largely ignored on release and Loden died of breast cancer at 48, leaving only this one feature. Marguerite Duras called it 'a masterpiece.' Decades later, filmmakers like Kelly Reichardt and Chloé Zhao have cited it as foundational.",
-    "why": "Wanda is the film that makes you realize how few American films actually look at women without a script telling them how to feel. Loden's performance is completely open.",
-    "notable_films": [
-      {
-        "title": "Wanda",
-        "year": 1970
-      }
-    ],
-    "style_tags": [
-      "cinema verité",
-      "female interiority",
-      "working class realism",
-      "16mm"
-    ],
-    "start_with": {
-      "film": "Wanda",
-      "year": 1970,
-      "note": "Her only film and one of the most honest American films ever made."
-    },
-    "key_themes": [
-      "female passivity and drift",
-      "working-class invisibility",
-      "freedom without direction"
-    ],
-    "quote": "I wanted to show a woman who had no options, and make that visible.",
-    "photo_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/63/Barbara_Loden_in_1964.jpg/960px-Barbara_Loden_in_1964.jpg"
-  },
-  {
-    "id": 89,
+    "id": 84,
     "name": "Olivier Assayas",
     "nationality": "french",
     "birth_year": 1955,
@@ -6727,7 +6448,7 @@
     "photo_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/4c/Viennale_2010.10.30_Olivier_Assayas.jpg/960px-Viennale_2010.10.30_Olivier_Assayas.jpg"
   },
   {
-    "id": 90,
+    "id": 85,
     "name": "Jacques Demy",
     "nationality": "french",
     "birth_year": 1931,
@@ -6778,7 +6499,7 @@
     "photo_url": "https://upload.wikimedia.org/wikipedia/commons/1/1f/Identite-Demy-1956-Sacem.jpg"
   },
   {
-    "id": 91,
+    "id": 86,
     "name": "Jean Rouch",
     "nationality": "french",
     "birth_year": 1917,
@@ -6829,7 +6550,7 @@
     "photo_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/96/Jean_Rouch_%28cropped%29.jpg/960px-Jean_Rouch_%28cropped%29.jpg"
   },
   {
-    "id": 92,
+    "id": 87,
     "name": "Larisa Shepitko",
     "nationality": "russian",
     "birth_year": 1938,
@@ -6876,7 +6597,7 @@
     "photo_url": "https://upload.wikimedia.org/wikipedia/en/f/fe/Larisa_Shepitko.png"
   },
   {
-    "id": 93,
+    "id": 88,
     "name": "Cristian Mungiu",
     "nationality": "romanian",
     "birth_year": 1968,
@@ -6927,7 +6648,7 @@
     "photo_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6a/Cristian_Mungiu_at_82nd_Venice_International_Film_Festival_%281_of_1%29_%28cropped%29.jpg/960px-Cristian_Mungiu_at_82nd_Venice_International_Film_Festival_%281_of_1%29_%28cropped%29.jpg"
   },
   {
-    "id": 94,
+    "id": 89,
     "name": "Manoel de Oliveira",
     "nationality": "portuguese",
     "birth_year": 1908,
@@ -6982,7 +6703,7 @@
     "photo_url": "https://upload.wikimedia.org/wikipedia/commons/3/35/Manoel_de_Oliveira_01_%28cropped%29.jpg"
   },
   {
-    "id": 95,
+    "id": 90,
     "name": "Cristi Puiu",
     "nationality": "romanian",
     "birth_year": 1967,
@@ -7033,7 +6754,7 @@
     "photo_url": "https://upload.wikimedia.org/wikipedia/commons/5/5b/Cristi_Puiu.jpg"
   },
   {
-    "id": 96,
+    "id": 91,
     "name": "Shirley Clarke",
     "nationality": "american",
     "birth_year": 1919,
@@ -7084,7 +6805,7 @@
     "photo_url": "https://upload.wikimedia.org/wikipedia/en/9/9e/Shirley_Clarke.jpg"
   },
   {
-    "id": 97,
+    "id": 92,
     "name": "John Woo",
     "nationality": "hong kong",
     "birth_year": 1946,
@@ -7255,7 +6976,7 @@
     "photo_url": "https://upload.wikimedia.org/wikipedia/commons/0/02/John_Woo_Cannes_2005.jpg"
   },
   {
-    "id": 98,
+    "id": 93,
     "name": "Wes Anderson",
     "nationality": "american",
     "birth_year": 1969,
@@ -7358,7 +7079,7 @@
     "photo_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5e/Wes_Anderson-7541_%28cropped%29.jpg/960px-Wes_Anderson-7541_%28cropped%29.jpg"
   },
   {
-    "id": 99,
+    "id": 94,
     "name": "Paul Thomas Anderson",
     "nationality": "american",
     "birth_year": 1970,
