@@ -2576,5 +2576,116 @@
     ],
     "quote": "I gave Dreyer everything I had. I don't know if I had anything left after.",
     "photo_url": "https://upload.wikimedia.org/wikipedia/commons/3/3f/The_Passion_of_Joan_of_Arc_%281928%29.jpg"
+  },
+  {
+    "id": 26,
+    "name": "Andy Lau",
+    "nationality": "hong kong",
+    "birth_year": 1961,
+    "death_year": null,
+    "era": "contemporary",
+    "tagline": "The everyman who carries Hong Kong on his shoulders",
+    "bio": "Andy Lau is one of the most beloved and versatile figures in Hong Kong cinema, a career spanning four decades and over 100 films. A member of the so-called Four Heavenly Kings of Cantopop, he proved his dramatic range in films like Infernal Affairs and A Simple Life, earning international recognition far beyond his pop-star origins. Whether playing a conflicted triad boss, a grieving employer, or a charming thief, Lau brings a grounded, genuine warmth that makes even genre films feel human. He is the commercial and emotional heart of HK cinema at its peak.",
+    "why": "He proves that a movie star and a real actor need not be different things — few performers have carried both registers with such grace.",
+    "notable_films": [
+      {
+        "title": "Infernal Affairs",
+        "year": 2002,
+        "runtime": 101,
+        "themes": [
+          "identity",
+          "duality",
+          "loyalty",
+          "moral ambiguity"
+        ],
+        "synopsis": "A police mole inside the triads and a triad spy inside the police race to expose each other. Lau plays the triad mole who has climbed so high he no longer knows who he is.",
+        "why_watch": "Lau is electrifying — charming, calculating, and ultimately tragic. His final scene reframes everything you thought you knew about his character.",
+        "visual_style": "Sleek Hong Kong noir at its most polished. Watch how Lau uses his physical ease to hide what churns beneath."
+      },
+      {
+        "title": "A Simple Life",
+        "year": 2011,
+        "runtime": 118,
+        "themes": [
+          "loyalty",
+          "aging",
+          "class",
+          "care",
+          "memory"
+        ],
+        "synopsis": "A film producer cares for his family's aging housekeeper after she suffers a stroke, reversing a lifetime of roles.",
+        "why_watch": "Lau is quietly devastating in a role that requires him to do almost nothing — to simply be present, attentive, and loving. One of his finest hours.",
+        "visual_style": "Ann Hui's restrained, observational style lets the performances breathe. No music tells you how to feel."
+      },
+      {
+        "title": "House of Flying Daggers",
+        "year": 2004,
+        "runtime": 119,
+        "themes": [
+          "loyalty",
+          "love",
+          "deception",
+          "sacrifice"
+        ],
+        "synopsis": "A Tang Dynasty soldier falls for a blind dancer suspected of being a rebel spy — but nothing is as it seems.",
+        "why_watch": "Lau holds his own against Zhang Ziyi and Takeshi Kaneshiro in Zhang Yimou's visual spectacular, bringing emotional grounding to operatic material.",
+        "visual_style": "Zhang Yimou's breathtaking color palette — bamboo forests, snow fields, and crimson robes — with Lau as the still center."
+      }
+    ]
+  },
+  {
+    "id": 27,
+    "name": "Jackie Chan",
+    "nationality": "hong kong",
+    "birth_year": 1954,
+    "death_year": null,
+    "era": "contemporary",
+    "tagline": "The man who turned his body into a cinema of joy and danger",
+    "bio": "Jackie Chan is one of the most physically gifted performers in cinema history — a stuntman, choreographer, comedian, and actor who redefined what action could be. Trained at the Peking Opera School from age seven, Chan developed an acrobatic style that fused martial arts with Buster Keaton-esque physical comedy. His Police Story series and Drunken Master films remain benchmarks of kinetic filmmaking. Unlike most action stars, Chan performed all his own stunts, turning his body into the instrument of both spectacle and slapstick. His bloopers reel — real injuries, real laughter — is as much a part of his art as the films themselves.",
+    "why": "He made danger look like joy and joy look dangerous — no one has choreographed the human body with more wit, precision, or sheer generosity.",
+    "notable_films": [
+      {
+        "title": "Police Story",
+        "year": 1985,
+        "runtime": 101,
+        "themes": [
+          "justice",
+          "perseverance",
+          "physical comedy",
+          "heroism"
+        ],
+        "synopsis": "A Hong Kong cop single-handedly takes on a drug lord after being framed for murder, in a film built around increasingly insane action set pieces.",
+        "why_watch": "The shopping mall finale alone justifies a place in cinema history. Chan directed, choreographed, and nearly killed himself making it — and every frame shows.",
+        "visual_style": "Wide shots that show the full body in motion — Chan insisted on this, refusing the editing tricks that disguise lesser stuntwork."
+      },
+      {
+        "title": "Drunken Master",
+        "year": 1978,
+        "runtime": 111,
+        "themes": [
+          "discipline",
+          "humor",
+          "mentorship",
+          "mastery"
+        ],
+        "synopsis": "A young Wong Fei-hung is trained in the brutal Drunken Boxing style by an eccentric old master after his arrogance gets him into trouble.",
+        "why_watch": "The film that established Chan's persona — physically extraordinary but self-deprecating, always the underdog. The final fight is a masterclass in comic martial arts choreography.",
+        "visual_style": "Raw, energetic kung fu cinema with long unbroken takes that let you see every movement. No CGI, no cuts — just a 24-year-old at the peak of his physical gifts."
+      },
+      {
+        "title": "Project A",
+        "year": 1983,
+        "runtime": 105,
+        "themes": [
+          "camaraderie",
+          "duty",
+          "adventure",
+          "physical comedy"
+        ],
+        "synopsis": "A turn-of-the-century Hong Kong coast guard battles pirates in a film that exists primarily as a vehicle for extraordinary physical comedy and stunt work.",
+        "why_watch": "Contains Chan's most Keatonesque sequence — a fall from a clock tower that he performed three times with no safety net. You can see the exact moment he hits the ground.",
+        "visual_style": "Breezy, period-set adventure where Chan fully controls the filmmaking vision — he co-wrote, co-directed, and choreographed every sequence."
+      }
+    ]
   }
 ]
