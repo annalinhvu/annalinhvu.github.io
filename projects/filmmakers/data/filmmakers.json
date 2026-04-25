@@ -3551,48 +3551,6 @@
   },
   {
     "id": 40,
-    "name": "Mati Diop",
-    "nationality": "senegalese",
-    "birth_year": 1982,
-    "death_year": null,
-    "era": "contemporary",
-    "tagline": "Poet of migration, loss, and Atlantic memory",
-    "bio": "Mati Diop is a Franco-Senegalese filmmaker who made history as the first Black woman to compete in Cannes' main competition, winning the Grand Prix for Atlantics in 2019. Her work weaves together the personal and the political, exploring the tragedy of migration and the ghosts it leaves behind through a lens that is simultaneously poetic and deeply grounded in the real. She is one of the most distinctive voices in contemporary world cinema.",
-    "why": "Diop makes films where grief takes on a physical, spectral form, which is the only way grief actually feels.",
-    "notable_films": [
-      {
-        "title": "Mille Soleils",
-        "year": 2013
-      },
-      {
-        "title": "Atlantics",
-        "year": 2019
-      },
-      {
-        "title": "Dahomey",
-        "year": 2024
-      }
-    ],
-    "style_tags": [
-      "postcolonial",
-      "poetic",
-      "feminist"
-    ],
-    "start_with": {
-      "film": "Atlantics",
-      "year": 2019,
-      "note": "Young men leave Senegal on boats and disappear. Their ghosts return. Her debut and her masterwork."
-    },
-    "key_themes": [
-      "migration and loss",
-      "the Atlantic as wound",
-      "haunting and witness"
-    ],
-    "quote": "Cinema is the most powerful weapon we have to fight oblivion.",
-    "photo_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c5/Mati_Diop_with_Golden_Bear_of_Berlinale_2024-2.jpg/960px-Mati_Diop_with_Golden_Bear_of_Berlinale_2024-2.jpg"
-  },
-  {
-    "id": 41,
     "name": "Hirokazu Kore-eda",
     "nationality": "japanese",
     "birth_year": 1962,
@@ -3666,7 +3624,7 @@
     "photo_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/15/Hirokazu_Kore-eda_-_The_Egyptian_Theatre.jpg/960px-Hirokazu_Kore-eda_-_The_Egyptian_Theatre.jpg"
   },
   {
-    "id": 42,
+    "id": 41,
     "name": "Leos Carax",
     "nationality": "french",
     "birth_year": 1960,
@@ -3724,7 +3682,7 @@
     "photo_url": "https://upload.wikimedia.org/wikipedia/commons/f/f0/Leos_Carax_Cannes_2012.jpg"
   },
   {
-    "id": 43,
+    "id": 42,
     "name": "Lynne Ramsay",
     "nationality": "scottish",
     "birth_year": 1969,
@@ -3770,45 +3728,7 @@
     "photo_url": "https://upload.wikimedia.org/wikipedia/commons/d/d0/Lynne_Ramsay_at_ADIFF_2018.jpg"
   },
   {
-    "id": 44,
-    "name": "Bi Gan",
-    "nationality": "chinese",
-    "birth_year": 1989,
-    "death_year": null,
-    "era": "contemporary",
-    "tagline": "Young poet of memory, time, and the dreaming image",
-    "bio": "Bi Gan emerged from the small Chinese city of Kaili and made one of the most startling debut features in years, followed by Long Day's Journey Into Night, which ends with an unbroken 59-minute 3D sequence filmed in a single take. His films are structured like memory or poetry rather than narrative, moving between the real and the imagined with total freedom. He is one of cinema's most exciting young voices.",
-    "why": "Bi Gan made me see that the long take is not a technique but a philosophy, a way of living inside time rather than cutting through it.",
-    "notable_films": [
-      {
-        "title": "Kaili Blues",
-        "year": 2015
-      },
-      {
-        "title": "Long Day's Journey Into Night",
-        "year": 2018
-      }
-    ],
-    "style_tags": [
-      "poetic",
-      "experimental",
-      "slow-cinema"
-    ],
-    "start_with": {
-      "film": "Kaili Blues",
-      "year": 2015,
-      "note": "His debut feature, made at 26. A long take through the mountains of Guizhou that becomes a kind of spell."
-    },
-    "key_themes": [
-      "poetic time",
-      "memory and place",
-      "the long take as trance"
-    ],
-    "quote": "Time is the most important element of cinema for me.",
-    "photo_url": null
-  },
-  {
-    "id": 45,
+    "id": 43,
     "name": "Wim Wenders",
     "nationality": "german",
     "birth_year": 1945,
@@ -3878,7 +3798,7 @@
     "photo_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/7b/Wim_Wenders_at_Berlinale_2026.jpg/960px-Wim_Wenders_at_Berlinale_2026.jpg"
   },
   {
-    "id": 46,
+    "id": 44,
     "name": "Werner Herzog",
     "nationality": "german",
     "birth_year": 1942,
@@ -3948,7 +3868,7 @@
     "photo_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5f/Werner_Herzog_Venice_Film_Festival_2025.jpg/960px-Werner_Herzog_Venice_Film_Festival_2025.jpg"
   },
   {
-    "id": 47,
+    "id": 45,
     "name": "Rainer Werner Fassbinder",
     "nationality": "german",
     "birth_year": 1945,
@@ -4018,7 +3938,7 @@
     "photo_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3d/PER51895_061.jpg/960px-PER51895_061.jpg"
   },
   {
-    "id": 48,
+    "id": 46,
     "name": "Asghar Farhadi",
     "nationality": "iranian",
     "birth_year": 1972,
@@ -4084,7 +4004,7 @@
     "photo_url": "https://upload.wikimedia.org/wikipedia/commons/4/47/Asghar_Farhadi_in_2018-2_%28cropped%29.jpg"
   },
   {
-    "id": 49,
+    "id": 47,
     "name": "Kelly Reichardt",
     "nationality": "american",
     "birth_year": 1964,
@@ -4146,7 +4066,7 @@
     "photo_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/74/Kelly_Reichardt-4432.jpg/960px-Kelly_Reichardt-4432.jpg"
   },
   {
-    "id": 50,
+    "id": 48,
     "name": "Tsai Ming-liang",
     "nationality": "taiwanese",
     "birth_year": 1957,
@@ -4220,7 +4140,7 @@
     "photo_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b9/Tsai_Ming-liang_at_82nd_Venice_International_Film_Festival-1.jpg/960px-Tsai_Ming-liang_at_82nd_Venice_International_Film_Festival-1.jpg"
   },
   {
-    "id": 51,
+    "id": 49,
     "name": "Jean-Pierre Melville",
     "nationality": "french",
     "birth_year": 1917,
@@ -4282,7 +4202,7 @@
     "photo_url": "https://upload.wikimedia.org/wikipedia/commons/f/f9/Jean-Pierre_Melville_%28cropped%29.jpg"
   },
   {
-    "id": 52,
+    "id": 50,
     "name": "Luis Buñuel",
     "nationality": "spanish",
     "birth_year": 1900,
@@ -4348,7 +4268,7 @@
     "photo_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/89/LuisBu%C3%B1uel1929.jpg/960px-LuisBu%C3%B1uel1929.jpg"
   },
   {
-    "id": 53,
+    "id": 51,
     "name": "Carl Theodor Dreyer",
     "nationality": "danish",
     "birth_year": 1889,
@@ -4402,7 +4322,7 @@
     "photo_url": "https://upload.wikimedia.org/wikipedia/commons/7/7e/Carl_Theodor_Dreyer_%281965%29_by_Erling_Mandelmann.jpg"
   },
   {
-    "id": 54,
+    "id": 52,
     "name": "Sergei Eisenstein",
     "nationality": "russian",
     "birth_year": 1898,
@@ -4460,7 +4380,7 @@
     "photo_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/26/Sergei_Eisenstein_03.jpg/960px-Sergei_Eisenstein_03.jpg"
   },
   {
-    "id": 55,
+    "id": 53,
     "name": "Stanley Kubrick",
     "nationality": "american",
     "birth_year": 1928,
@@ -4630,7 +4550,7 @@
     "photo_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/59/Stanley_Kubrick_in_Dr._Strangelove_Trailer_%284%29_Cropped.jpg/960px-Stanley_Kubrick_in_Dr._Strangelove_Trailer_%284%29_Cropped.jpg"
   },
   {
-    "id": 56,
+    "id": 54,
     "name": "Jim Jarmusch",
     "nationality": "american",
     "birth_year": 1953,
@@ -4700,7 +4620,7 @@
     "photo_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/34/Jim_Jarmusch-9078.jpg/960px-Jim_Jarmusch-9078.jpg"
   },
   {
-    "id": 57,
+    "id": 55,
     "name": "Sofia Coppola",
     "nationality": "american",
     "birth_year": 1971,
@@ -4842,7 +4762,7 @@
     "photo_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/0b/Sofia_Coppola_at_82nd_Venice_International_Film_Festival-8_%28cropped%29.jpg/960px-Sofia_Coppola_at_82nd_Venice_International_Film_Festival-8_%28cropped%29.jpg"
   },
   {
-    "id": 58,
+    "id": 56,
     "name": "Nuri Bilge Ceylan",
     "nationality": "turkish",
     "birth_year": 1959,
@@ -4900,7 +4820,7 @@
     "photo_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/42/Nuri_Bilge_Ceylan%2C_Cines_del_Sur.jpg/960px-Nuri_Bilge_Ceylan%2C_Cines_del_Sur.jpg"
   },
   {
-    "id": 59,
+    "id": 57,
     "name": "Hong Sang-soo",
     "nationality": "korean",
     "birth_year": 1960,
@@ -4966,7 +4886,7 @@
     "photo_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/71/Hong_Sang-soo_at_the_2025_Cannes_Film_Festival.jpg/960px-Hong_Sang-soo_at_the_2025_Cannes_Film_Festival.jpg"
   },
   {
-    "id": 60,
+    "id": 58,
     "name": "Jafar Panahi",
     "nationality": "iranian",
     "birth_year": 1960,
@@ -5036,7 +4956,7 @@
     "photo_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/57/Jafar_Panahi_at_2025_Cannes_Film_Festival_Photocall.jpg/960px-Jafar_Panahi_at_2025_Cannes_Film_Festival_Photocall.jpg"
   },
   {
-    "id": 61,
+    "id": 59,
     "name": "Mia Hansen-Løve",
     "nationality": "french",
     "birth_year": 1981,
@@ -5098,7 +5018,7 @@
     "photo_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/ea/Seminci_2025_-_Mia_Hansen-L%C3%B8ve-4_%28cropped%29.jpg/960px-Seminci_2025_-_Mia_Hansen-L%C3%B8ve-4_%28cropped%29.jpg"
   },
   {
-    "id": 62,
+    "id": 60,
     "name": "Alice Rohrwacher",
     "nationality": "italian",
     "birth_year": 1981,
@@ -5144,7 +5064,7 @@
     "photo_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/87/Alice_Rohrwacher-5050.jpg/960px-Alice_Rohrwacher-5050.jpg"
   },
   {
-    "id": 63,
+    "id": 61,
     "name": "Béla Tarr",
     "nationality": "hungarian",
     "birth_year": 1955,
@@ -5202,7 +5122,7 @@
     "photo_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a1/B%C3%A9la_Tarr.jpg/960px-B%C3%A9la_Tarr.jpg"
   },
   {
-    "id": 64,
+    "id": 62,
     "name": "Alain Resnais",
     "nationality": "french",
     "birth_year": 1922,
@@ -5264,7 +5184,7 @@
     "photo_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/90/Identite-AlainResnais-1959-Sacem.png/960px-Identite-AlainResnais-1959-Sacem.png"
   },
   {
-    "id": 65,
+    "id": 63,
     "name": "Pier Paolo Pasolini",
     "nationality": "italian",
     "birth_year": 1922,
@@ -5326,7 +5246,7 @@
     "photo_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a4/PierPaoloPasolini.jpg/960px-PierPaoloPasolini.jpg"
   },
   {
-    "id": 66,
+    "id": 64,
     "name": "Martin Scorsese",
     "nationality": "american",
     "birth_year": 1942,
@@ -5404,7 +5324,7 @@
     "photo_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/54/Martin_Scorsese-68749.jpg/960px-Martin_Scorsese-68749.jpg"
   },
   {
-    "id": 67,
+    "id": 65,
     "name": "Frederick Wiseman",
     "nationality": "american",
     "birth_year": 1930,
@@ -5474,7 +5394,7 @@
     "photo_url": "https://upload.wikimedia.org/wikipedia/commons/1/1f/Frederick_Wiseman_1971.jpg"
   },
   {
-    "id": 68,
+    "id": 66,
     "name": "Naomi Kawase",
     "nationality": "japanese",
     "birth_year": 1969,
@@ -5540,7 +5460,7 @@
     "photo_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/00/Naomi_Kawase_at_the_78th_Locarno_Film_Festival_in_2025_06.jpg/960px-Naomi_Kawase_at_the_78th_Locarno_Film_Festival_in_2025_06.jpg"
   },
   {
-    "id": 69,
+    "id": 67,
     "name": "Vittorio De Sica",
     "nationality": "italian",
     "birth_year": 1901,
@@ -5602,73 +5522,7 @@
     "photo_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a4/S_Kragujevic%2C_Vittorio_De_Sica%2C_1959.JPG/960px-S_Kragujevic%2C_Vittorio_De_Sica%2C_1959.JPG"
   },
   {
-    "id": 70,
-    "name": "Gus Van Sant",
-    "nationality": "american",
-    "birth_year": 1952,
-    "death_year": null,
-    "era": "contemporary",
-    "tagline": "Chronicler of American youth at its most lost and most alive",
-    "bio": "Gus Van Sant has always been drawn to the margins: to runaways, to young men who cannot find a place in the world, to stories of waste and grace that mainstream American cinema ignores. His career oscillates between radical formal experiments and accessible mainstream films. Elephant, his Palme d'Or winner, is among cinema's most challenging formal achievements; Good Will Hunting is his most popular. Both are entirely his.",
-    "why": "Van Sant made me see that American cinema can be simultaneously experimental and deeply emotional, that the avant-garde and the humanist tradition are not opposites.",
-    "notable_films": [
-      {
-        "title": "Mala Noche",
-        "year": 1986
-      },
-      {
-        "title": "Drugstore Cowboy",
-        "year": 1989
-      },
-      {
-        "title": "My Own Private Idaho",
-        "year": 1991
-      },
-      {
-        "title": "Good Will Hunting",
-        "year": 1997
-      },
-      {
-        "title": "Gerry",
-        "year": 2002
-      },
-      {
-        "title": "Elephant",
-        "year": 2003
-      },
-      {
-        "title": "Last Days",
-        "year": 2005
-      },
-      {
-        "title": "Paranoid Park",
-        "year": 2007
-      },
-      {
-        "title": "Milk",
-        "year": 2008
-      }
-    ],
-    "style_tags": [
-      "independent",
-      "youth",
-      "experimental"
-    ],
-    "start_with": {
-      "film": "Elephant",
-      "year": 2003,
-      "note": "A day in an American high school before a shooting. Long takes, non-professional actors. Formal and devastating."
-    },
-    "key_themes": [
-      "American youth and its violence",
-      "queer desire",
-      "formal experiment and emotion"
-    ],
-    "quote": "I make films about outsiders because I am one.",
-    "photo_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d3/Gus_Van_Sant_at_82nd_Venice_International_Film_Festival-2_%28cropped%29.jpg/960px-Gus_Van_Sant_at_82nd_Venice_International_Film_Festival-2_%28cropped%29.jpg"
-  },
-  {
-    "id": 71,
+    "id": 68,
     "name": "Spike Lee",
     "nationality": "american",
     "birth_year": 1957,
@@ -5746,7 +5600,7 @@
     "photo_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c4/Spike_Lee_%2854366842607%29_%28cropped2%29.jpg/960px-Spike_Lee_%2854366842607%29_%28cropped2%29.jpg"
   },
   {
-    "id": 72,
+    "id": 69,
     "name": "Arnaud Desplechin",
     "nationality": "french",
     "birth_year": 1960,
@@ -5812,7 +5666,7 @@
     "photo_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/2a/Arnaud_Desplechin_at_TIFF_2025_02.jpg/960px-Arnaud_Desplechin_at_TIFF_2025_02.jpg"
   },
   {
-    "id": 73,
+    "id": 70,
     "name": "Carlos Reygadas",
     "nationality": "mexican",
     "birth_year": 1971,
@@ -5862,7 +5716,7 @@
     "photo_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/73/Carlos_Reygadas-1969.jpg/960px-Carlos_Reygadas-1969.jpg"
   },
   {
-    "id": 74,
+    "id": 71,
     "name": "Wang Bing",
     "nationality": "chinese",
     "birth_year": 1967,
@@ -5924,7 +5778,7 @@
     "photo_url": null
   },
   {
-    "id": 75,
+    "id": 72,
     "name": "Paolo Sorrentino",
     "nationality": "italian",
     "birth_year": 1970,
@@ -5982,7 +5836,7 @@
     "photo_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/64/Paolo_Sorrentino_2018.jpg/960px-Paolo_Sorrentino_2018.jpg"
   },
   {
-    "id": 76,
+    "id": 73,
     "name": "Joachim Trier",
     "nationality": "norwegian",
     "birth_year": 1974,
@@ -6032,7 +5886,7 @@
     "photo_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/24/Joachim_Trier-9987_%28cropped%29.jpg/960px-Joachim_Trier-9987_%28cropped%29.jpg"
   },
   {
-    "id": 77,
+    "id": 74,
     "name": "Elem Klimov",
     "nationality": "russian",
     "birth_year": 1933,
@@ -6086,7 +5940,7 @@
     "photo_url": null
   },
   {
-    "id": 78,
+    "id": 75,
     "name": "Andrei Zvyagintsev",
     "nationality": "russian",
     "birth_year": 1964,
@@ -6136,7 +5990,7 @@
     "photo_url": "https://upload.wikimedia.org/wikipedia/commons/a/a2/Andre%C3%AF_Zviaguintsev-_2016_%28cropped%29.jpg"
   },
   {
-    "id": 79,
+    "id": 76,
     "name": "Sally Potter",
     "nationality": "british",
     "birth_year": 1949,
@@ -6206,53 +6060,7 @@
     "photo_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/be/MJK_71590_Sally_Potter_%28The_Roads_Not_Taken%2C_Berlinale_2020%29.jpg/960px-MJK_71590_Sally_Potter_%28The_Roads_Not_Taken%2C_Berlinale_2020%29.jpg"
   },
   {
-    "id": 80,
-    "name": "Chloé Zhao",
-    "nationality": "chinese",
-    "birth_year": 1982,
-    "death_year": null,
-    "era": "contemporary",
-    "tagline": "Poet of the American West and the people who live outside its promises",
-    "bio": "Chloé Zhao makes films about people who exist at the margins of the American dream, in landscapes of vast, indifferent beauty. Born in China and working in America, she brings an outsider's eye to the country's interior, collaborating closely with non-professional actors to find the human reality in landscapes that mainstream cinema uses only as backdrop. Nomadland brought her work to a wide audience; The Rider remains her most intimate achievement.",
-    "why": "Zhao made me understand that the American landscape is not neutral, that space and freedom in America have always been unevenly distributed.",
-    "notable_films": [
-      {
-        "title": "Songs My Brothers Taught Me",
-        "year": 2015
-      },
-      {
-        "title": "The Rider",
-        "year": 2017
-      },
-      {
-        "title": "Nomadland",
-        "year": 2020
-      },
-      {
-        "title": "Eternals",
-        "year": 2021
-      }
-    ],
-    "style_tags": [
-      "neorealism",
-      "landscape",
-      "humanist"
-    ],
-    "start_with": {
-      "film": "The Rider",
-      "year": 2017,
-      "note": "A rodeo rider recovers from a brain injury and confronts what his life can be. Shot with the real people it depicts."
-    },
-    "key_themes": [
-      "the American West and its myths",
-      "economic precarity and landscape",
-      "non-professional performance"
-    ],
-    "quote": "Cinema can show us who we are when we think no one is looking.",
-    "photo_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/ac/Chlo%C3%A9_Zhao_at_the_2026_Berlin_International_Film_Festival-68507.jpg/960px-Chlo%C3%A9_Zhao_at_the_2026_Berlin_International_Film_Festival-68507.jpg"
-  },
-  {
-    "id": 81,
+    "id": 77,
     "name": "Orson Welles",
     "nationality": "american",
     "birth_year": 1915,
@@ -6307,7 +6115,7 @@
     "photo_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/bc/Orson_Welles_1937_cr3-4.jpg/960px-Orson_Welles_1937_cr3-4.jpg"
   },
   {
-    "id": 82,
+    "id": 78,
     "name": "Jacques Tati",
     "nationality": "french",
     "birth_year": 1907,
@@ -6358,7 +6166,7 @@
     "photo_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/85/09.07.1961._La_Belle_Gaillarde_%C3%A0_No%C3%A9_%281961%29_-_53Fi2337.jpg/960px-09.07.1961._La_Belle_Gaillarde_%C3%A0_No%C3%A9_%281961%29_-_53Fi2337.jpg"
   },
   {
-    "id": 83,
+    "id": 79,
     "name": "Éric Rohmer",
     "nationality": "french",
     "birth_year": 1920,
@@ -6413,7 +6221,7 @@
     "photo_url": "https://upload.wikimedia.org/wikipedia/commons/4/44/Eric_Rohmer_cinematheque_2004-04.jpg"
   },
   {
-    "id": 84,
+    "id": 80,
     "name": "Kenji Mizoguchi",
     "nationality": "japanese",
     "birth_year": 1898,
@@ -6464,7 +6272,7 @@
     "photo_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b5/Kenji_Mizoguchi_3.jpg/960px-Kenji_Mizoguchi_3.jpg"
   },
   {
-    "id": 85,
+    "id": 81,
     "name": "F.W. Murnau",
     "nationality": "german",
     "birth_year": 1888,
@@ -6515,7 +6323,7 @@
     "photo_url": "https://upload.wikimedia.org/wikipedia/commons/a/a9/F._W._Murnau_circa_1920-1930.jpg"
   },
   {
-    "id": 86,
+    "id": 82,
     "name": "Michael Haneke",
     "nationality": "austrian",
     "birth_year": 1942,
@@ -6566,7 +6374,7 @@
     "photo_url": "https://upload.wikimedia.org/wikipedia/commons/3/3c/Michael_Haneke_2009.jpg"
   },
   {
-    "id": 87,
+    "id": 83,
     "name": "Yorgos Lanthimos",
     "nationality": "greek",
     "birth_year": 1973,
@@ -6621,7 +6429,7 @@
     "photo_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c1/Yorgos_Lanthimos_at_82nd_Venice_International_Film_Festival-1_%28cropped%29.jpg/960px-Yorgos_Lanthimos_at_82nd_Venice_International_Film_Festival-1_%28cropped%29.jpg"
   },
   {
-    "id": 88,
+    "id": 84,
     "name": "Aki Kaurismäki",
     "nationality": "finnish",
     "birth_year": 1957,
@@ -6676,7 +6484,7 @@
     "photo_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1d/Aki_Kaurism%C3%A4ki_at_Berlinale_2017.jpg/960px-Aki_Kaurism%C3%A4ki_at_Berlinale_2017.jpg"
   },
   {
-    "id": 89,
+    "id": 85,
     "name": "Glauber Rocha",
     "nationality": "brazilian",
     "birth_year": 1939,
@@ -6727,7 +6535,7 @@
     "photo_url": "https://upload.wikimedia.org/wikipedia/commons/6/64/Glauber_Rocha%2C_sem_data.jpg"
   },
   {
-    "id": 90,
+    "id": 86,
     "name": "Djibril Diop Mambéty",
     "nationality": "senegalese",
     "birth_year": 1945,
@@ -6774,7 +6582,7 @@
     "photo_url": "https://upload.wikimedia.org/wikipedia/en/5/5a/Djibril_Diop_Mamb%C3%A9ty.jpg"
   },
   {
-    "id": 91,
+    "id": 87,
     "name": "Ritwik Ghatak",
     "nationality": "indian",
     "birth_year": 1925,
@@ -6829,7 +6637,7 @@
     "photo_url": "https://upload.wikimedia.org/wikipedia/commons/d/db/Ritwik_Ghatak_2025_stamp_of_India.jpg"
   },
   {
-    "id": 92,
+    "id": 88,
     "name": "Barbara Loden",
     "nationality": "american",
     "birth_year": 1932,
@@ -6864,7 +6672,7 @@
     "photo_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/63/Barbara_Loden_in_1964.jpg/960px-Barbara_Loden_in_1964.jpg"
   },
   {
-    "id": 93,
+    "id": 89,
     "name": "Olivier Assayas",
     "nationality": "french",
     "birth_year": 1955,
@@ -6919,7 +6727,7 @@
     "photo_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/4c/Viennale_2010.10.30_Olivier_Assayas.jpg/960px-Viennale_2010.10.30_Olivier_Assayas.jpg"
   },
   {
-    "id": 94,
+    "id": 90,
     "name": "Jacques Demy",
     "nationality": "french",
     "birth_year": 1931,
@@ -6970,7 +6778,7 @@
     "photo_url": "https://upload.wikimedia.org/wikipedia/commons/1/1f/Identite-Demy-1956-Sacem.jpg"
   },
   {
-    "id": 95,
+    "id": 91,
     "name": "Jean Rouch",
     "nationality": "french",
     "birth_year": 1917,
@@ -7021,7 +6829,7 @@
     "photo_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/96/Jean_Rouch_%28cropped%29.jpg/960px-Jean_Rouch_%28cropped%29.jpg"
   },
   {
-    "id": 96,
+    "id": 92,
     "name": "Larisa Shepitko",
     "nationality": "russian",
     "birth_year": 1938,
@@ -7068,7 +6876,7 @@
     "photo_url": "https://upload.wikimedia.org/wikipedia/en/f/fe/Larisa_Shepitko.png"
   },
   {
-    "id": 97,
+    "id": 93,
     "name": "Cristian Mungiu",
     "nationality": "romanian",
     "birth_year": 1968,
@@ -7119,7 +6927,7 @@
     "photo_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6a/Cristian_Mungiu_at_82nd_Venice_International_Film_Festival_%281_of_1%29_%28cropped%29.jpg/960px-Cristian_Mungiu_at_82nd_Venice_International_Film_Festival_%281_of_1%29_%28cropped%29.jpg"
   },
   {
-    "id": 98,
+    "id": 94,
     "name": "Manoel de Oliveira",
     "nationality": "portuguese",
     "birth_year": 1908,
@@ -7174,7 +6982,7 @@
     "photo_url": "https://upload.wikimedia.org/wikipedia/commons/3/35/Manoel_de_Oliveira_01_%28cropped%29.jpg"
   },
   {
-    "id": 99,
+    "id": 95,
     "name": "Cristi Puiu",
     "nationality": "romanian",
     "birth_year": 1967,
@@ -7225,7 +7033,7 @@
     "photo_url": "https://upload.wikimedia.org/wikipedia/commons/5/5b/Cristi_Puiu.jpg"
   },
   {
-    "id": 100,
+    "id": 96,
     "name": "Shirley Clarke",
     "nationality": "american",
     "birth_year": 1919,
@@ -7276,7 +7084,7 @@
     "photo_url": "https://upload.wikimedia.org/wikipedia/en/9/9e/Shirley_Clarke.jpg"
   },
   {
-    "id": 101,
+    "id": 97,
     "name": "John Woo",
     "nationality": "hong kong",
     "birth_year": 1946,
@@ -7447,7 +7255,7 @@
     "photo_url": "https://upload.wikimedia.org/wikipedia/commons/0/02/John_Woo_Cannes_2005.jpg"
   },
   {
-    "id": 102,
+    "id": 98,
     "name": "Wes Anderson",
     "nationality": "american",
     "birth_year": 1969,
@@ -7463,7 +7271,12 @@
         "synopsis": "Max Fischer, a wildly ambitious but academically failing student at the elite Rushmore Academy, falls for a first-grade teacher and enters into an escalating war with a steel tycoon over her affections.",
         "why_watch": "The film that announced Anderson's full sensibility — deadpan humor, deep melancholy, and a protagonist whose grandiosity masks genuine hurt. Jason Schwartzman's debut is one of cinema's great performances.",
         "visual_style": "The symmetrical framing and overhead shots that would become Anderson's signatures arrive fully formed — but here they feel almost raw, not yet polished to a finish.",
-        "themes": ["ambition and failure", "unrequited love", "class", "father figures"],
+        "themes": [
+          "ambition and failure",
+          "unrequited love",
+          "class",
+          "father figures"
+        ],
         "runtime": 93
       },
       {
@@ -7472,7 +7285,12 @@
         "synopsis": "The three adult children of the eccentric Royal Tenenbaum — each once considered a genius, each now in some form of collapse — are drawn back together when their estranged father announces he is dying.",
         "why_watch": "Anderson's most emotionally rich film, and perhaps his most honest about failure. The ensemble cast (Gene Hackman, Anjelica Huston, Ben Stiller, Gwyneth Paltrow, Luke and Owen Wilson) is perfect. The Needle Drops selections are untouchable.",
         "visual_style": "Shot to resemble a storybook set in a timeless, fictional New York — pastel facades, burgundy interiors, and an atmosphere of elegant, permanent autumn.",
-        "themes": ["the myth of the gifted child", "family dysfunction", "grief", "second chances"],
+        "themes": [
+          "the myth of the gifted child",
+          "family dysfunction",
+          "grief",
+          "second chances"
+        ],
         "runtime": 110
       },
       {
@@ -7481,7 +7299,12 @@
         "synopsis": "The legendary concierge of the Grand Budapest Hotel and his lobby boy become embroiled in a murder mystery and a battle over a priceless painting in a fictional European republic between the wars.",
         "why_watch": "Anderson at peak confection — a farce that is also an elegy for a civilization about to be destroyed. Ralph Fiennes is revelatory as Gustave H, playing pure Andersonian artifice as genuine human grace.",
         "visual_style": "Multiple aspect ratios for different time periods, a palette of pinks and purples that reads as specifically 1930s Central European fantasy, and action sequences that play as illustrated adventure.",
-        "themes": ["the death of elegance", "loyalty", "fascism and loss", "memory and storytelling"],
+        "themes": [
+          "the death of elegance",
+          "loyalty",
+          "fascism and loss",
+          "memory and storytelling"
+        ],
         "runtime": 99
       },
       {
@@ -7490,7 +7313,12 @@
         "synopsis": "In 1965, two twelve-year-olds fall in love and run away together on a New England island, prompting a search by the local authorities, the Khaki Scouts, and their respective families.",
         "why_watch": "Anderson's most tender film — a genuine celebration of childhood seriousness and the particular courage it takes to love someone before the world has told you not to.",
         "visual_style": "Shot by Robert Yeoman in the warm, amber-drenched palette of a faded postcard — every frame looks like a memory that has been stored somewhere safe.",
-        "themes": ["first love", "outsiders", "childhood and autonomy", "community"],
+        "themes": [
+          "first love",
+          "outsiders",
+          "childhood and autonomy",
+          "community"
+        ],
         "runtime": 94
       },
       {
@@ -7499,22 +7327,38 @@
         "synopsis": "Mr. Fox, a former chicken thief turned newspaper columnist, can't resist one last raid on the three most dangerous farmers in the valley, setting off a war that threatens his entire community.",
         "why_watch": "Anderson's stop-motion adaptation of Roald Dahl is one of cinema's great family films — funny and subversive for adults, genuinely exciting for children, and deeply felt by everyone.",
         "visual_style": "Deliberately imperfect stop-motion with visible fur movement and a warm, autumnal palette. The decision to let the technique show is what makes it feel alive.",
-        "themes": ["wildness vs. domesticity", "ambition and responsibility", "community", "what we can't suppress"],
+        "themes": [
+          "wildness vs. domesticity",
+          "ambition and responsibility",
+          "community",
+          "what we can't suppress"
+        ],
         "runtime": 87
       }
     ],
-    "style_tags": ["symmetry", "deadpan", "ensemble", "storybook", "american"],
+    "style_tags": [
+      "symmetry",
+      "deadpan",
+      "ensemble",
+      "storybook",
+      "american"
+    ],
     "start_with": {
       "film": "The Royal Tenenbaums",
       "year": 2001,
       "note": "The fullest expression of what Anderson cares about — family, failure, and the strange consolations of a life not quite lived as planned. If this one doesn't get you, nothing will."
     },
-    "key_themes": ["dysfunctional families", "the gap between imagination and reality", "loss and memory", "outsiders and communities"],
+    "key_themes": [
+      "dysfunctional families",
+      "the gap between imagination and reality",
+      "loss and memory",
+      "outsiders and communities"
+    ],
     "quote": "I have a way of filming things and staging them and designing sets. There's something specifically Wes Andersonian about it, I imagine.",
     "photo_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5e/Wes_Anderson-7541_%28cropped%29.jpg/960px-Wes_Anderson-7541_%28cropped%29.jpg"
   },
   {
-    "id": 103,
+    "id": 99,
     "name": "Paul Thomas Anderson",
     "nationality": "american",
     "birth_year": 1970,
@@ -7530,7 +7374,12 @@
         "synopsis": "The rise and fall of Dirk Diggler, a young man with a special gift who becomes a porn star during the golden age of adult film in the late 1970s, and the surrogate family he finds and loses in the industry.",
         "why_watch": "A sprawling, Altmanesque ensemble film that is somehow simultaneously a tragedy, a comedy, a love letter to 70s cinema, and a precise dissection of the American Dream. The opening tracking shot announces a major filmmaker.",
         "visual_style": "Long, bravura tracking shots informed by Scorsese and Altman. The camera moves with the confidence of someone who has been making films his whole life — PTA was 26.",
-        "themes": ["surrogate family", "the American Dream", "exploitation and love", "the 1970s as paradise lost"],
+        "themes": [
+          "surrogate family",
+          "the American Dream",
+          "exploitation and love",
+          "the 1970s as paradise lost"
+        ],
         "runtime": 155
       },
       {
@@ -7539,7 +7388,12 @@
         "synopsis": "Over the course of one day in the San Fernando Valley, nine characters — including a dying TV producer, a quiz show champion, a motivational speaker, and a cop — find their lives intersecting in ways that feel like more than coincidence.",
         "why_watch": "The most audacious American film of the 1990s — three hours of emotional devastation that earns its famous climax through sheer force of feeling. Tom Cruise's self-flagellating performance is a revelation.",
         "visual_style": "Robert Elswit's cinematography captures the Valley in a wash of desperate light — blues and yellows that feel both naturalistic and on the verge of apocalypse.",
-        "themes": ["fathers and sons", "regret and forgiveness", "coincidence and fate", "the damage families do"],
+        "themes": [
+          "fathers and sons",
+          "regret and forgiveness",
+          "coincidence and fate",
+          "the damage families do"
+        ],
         "runtime": 188
       },
       {
@@ -7548,7 +7402,12 @@
         "synopsis": "Daniel Plainview, a silver miner turned oil prospector, uses his adopted son to project a family-man image as he ruthlessly expands his empire across early-20th-century California, entering into a years-long conflict with a charismatic young preacher.",
         "why_watch": "The greatest American film of the 2000s, and Daniel Day-Lewis's performance as Plainview is the most overwhelming acting you will witness. A film about capitalism, religion, and the void at the center of American ambition.",
         "visual_style": "Robert Elswit shoots the California oil fields in an epic, austere register — wide open spaces that emphasize the smallness of men against the enormity of what they want. Jonny Greenwood's score is modernist and almost physically disturbing.",
-        "themes": ["capitalism and greed", "father and son", "religion as fraud", "American original sin"],
+        "themes": [
+          "capitalism and greed",
+          "father and son",
+          "religion as fraud",
+          "American original sin"
+        ],
         "runtime": 158
       },
       {
@@ -7557,7 +7416,12 @@
         "synopsis": "A volatile, drifting World War II veteran becomes the first 'guinea pig' of a charismatic intellectual who has founded a movement called The Cause, a thinly veiled portrait of Scientology's early years.",
         "why_watch": "PTA's most formally demanding and emotionally elusive film — not about Scientology so much as about the pull of submission, the search for a father, and two men who are mirror images of each other. Joaquin Phoenix and Philip Seymour Hoffman are extraordinary.",
         "visual_style": "Shot on 65mm by Mihai Mălaimare Jr. — the film has a physical weight and grain that makes the postwar period feel tactile. The processing tests are among the most hypnotic sequences Anderson has ever created.",
-        "themes": ["domination and submission", "faith and manipulation", "the lost generation", "masculine need"],
+        "themes": [
+          "domination and submission",
+          "faith and manipulation",
+          "the lost generation",
+          "masculine need"
+        ],
         "runtime": 137
       },
       {
@@ -7566,17 +7430,33 @@
         "synopsis": "Reynolds Woodcock, the most celebrated dressmaker in 1950s London, meets Alma, a young woman who becomes his muse, his lover, and ultimately his match — in ways neither of them anticipates.",
         "why_watch": "PTA's quietest and strangest film — a love story that functions as a dark comedy about control and surrender, where the dynamic between two people gradually inverts in ways that are both disturbing and genuinely romantic.",
         "visual_style": "Shot by Anderson himself (his first time as his own DP on a live-action film), in a palette of mushroom, cream, and gold — opulent without warmth, precise without comfort. Greenwood's score is his finest.",
-        "themes": ["control and surrender", "the artist as tyrant", "romantic obsession", "domestic power"],
+        "themes": [
+          "control and surrender",
+          "the artist as tyrant",
+          "romantic obsession",
+          "domestic power"
+        ],
         "runtime": 130
       }
     ],
-    "style_tags": ["epic", "ensemble", "american mythology", "character study", "contemporary"],
+    "style_tags": [
+      "epic",
+      "ensemble",
+      "american mythology",
+      "character study",
+      "contemporary"
+    ],
     "start_with": {
       "film": "There Will Be Blood",
       "year": 2007,
       "note": "The film that will make you understand why people call him the greatest filmmaker of his generation. If you can survive Daniel Plainview, everything else will make sense."
     },
-    "key_themes": ["American ambition and its costs", "fathers and sons", "faith and manipulation", "the violence inside intimacy"],
+    "key_themes": [
+      "American ambition and its costs",
+      "fathers and sons",
+      "faith and manipulation",
+      "the violence inside intimacy"
+    ],
     "quote": "I don't think about the audience at all. That sounds horrible, but I really don't. I make the film for myself.",
     "photo_url": "https://upload.wikimedia.org/wikipedia/commons/6/66/Paul_Thomas_Anderson_in_2025.jpg"
   }
