@@ -5345,68 +5345,6 @@
   },
   {
     "id": 65,
-    "name": "Vittorio De Sica",
-    "nationality": "italian",
-    "birth_year": 1901,
-    "death_year": 1974,
-    "era": "classical",
-    "tagline": "Neorealism's most human voice, maker of films that broke the world's heart",
-    "bio": "Vittorio De Sica was an actor before he was a director, and the performer's empathy for his characters runs through every film he made. His neorealist masterpieces, Bicycle Thieves and Umberto D, are among cinema's most emotionally devastating achievements, filmed on the streets of Rome with non-professional actors in stories of almost unbearable simplicity. Where Rossellini analyzed the postwar world, De Sica felt it.",
-    "why": "De Sica proved that the simplest story, told with complete honesty and love for its characters, can break your heart more completely than any epic.",
-    "notable_films": [
-      {
-        "title": "Shoeshine",
-        "year": 1946
-      },
-      {
-        "title": "Bicycle Thieves",
-        "year": 1948
-      },
-      {
-        "title": "Miracle in Milan",
-        "year": 1951
-      },
-      {
-        "title": "Umberto D.",
-        "year": 1952
-      },
-      {
-        "title": "Il Tetto",
-        "year": 1956
-      },
-      {
-        "title": "Two Women",
-        "year": 1960
-      },
-      {
-        "title": "The Garden of the Finzi-Continis",
-        "year": 1970
-      },
-      {
-        "title": "A Brief Vacation",
-        "year": 1973
-      }
-    ],
-    "style_tags": [
-      "neorealism",
-      "humanist",
-      "social-realism"
-    ],
-    "start_with": {
-      "film": "Bicycle Thieves",
-      "year": 1948,
-      "note": "A man and his son search Rome for a stolen bicycle. The simplest story in cinema and the most heartbreaking."
-    },
-    "key_themes": [
-      "postwar poverty",
-      "parent and child",
-      "the dignity of the ordinary"
-    ],
-    "quote": "I want to make films that make people cry, not for the characters, but for themselves.",
-    "photo_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a4/S_Kragujevic%2C_Vittorio_De_Sica%2C_1959.JPG/960px-S_Kragujevic%2C_Vittorio_De_Sica%2C_1959.JPG"
-  },
-  {
-    "id": 66,
     "name": "Spike Lee",
     "nationality": "american",
     "birth_year": 1957,
@@ -5484,7 +5422,7 @@
     "photo_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c4/Spike_Lee_%2854366842607%29_%28cropped2%29.jpg/960px-Spike_Lee_%2854366842607%29_%28cropped2%29.jpg"
   },
   {
-    "id": 67,
+    "id": 66,
     "name": "Arnaud Desplechin",
     "nationality": "french",
     "birth_year": 1960,
@@ -5550,7 +5488,7 @@
     "photo_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/2a/Arnaud_Desplechin_at_TIFF_2025_02.jpg/960px-Arnaud_Desplechin_at_TIFF_2025_02.jpg"
   },
   {
-    "id": 68,
+    "id": 67,
     "name": "Carlos Reygadas",
     "nationality": "mexican",
     "birth_year": 1971,
@@ -5600,7 +5538,7 @@
     "photo_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/73/Carlos_Reygadas-1969.jpg/960px-Carlos_Reygadas-1969.jpg"
   },
   {
-    "id": 69,
+    "id": 68,
     "name": "Wang Bing",
     "nationality": "chinese",
     "birth_year": 1967,
@@ -5662,7 +5600,7 @@
     "photo_url": null
   },
   {
-    "id": 70,
+    "id": 69,
     "name": "Joachim Trier",
     "nationality": "norwegian",
     "birth_year": 1974,
@@ -5712,61 +5650,7 @@
     "photo_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/24/Joachim_Trier-9987_%28cropped%29.jpg/960px-Joachim_Trier-9987_%28cropped%29.jpg"
   },
   {
-    "id": 71,
-    "name": "Elem Klimov",
-    "nationality": "russian",
-    "birth_year": 1933,
-    "death_year": 2003,
-    "era": "classical",
-    "tagline": "Soviet filmmaker who made cinema's most devastating anti-war statement",
-    "bio": "Elem Klimov made only six features in his career before voluntarily stopping after the death of his wife, the filmmaker Larissa Shepitko. His final film, Come and See, is considered one of the greatest war films ever made: a two-and-a-half hour depiction of the Nazi occupation of Belarus in 1943, seen through a teenage boy's eyes, so brutal and formally overwhelming that it is described as impossible to watch more than once, and impossible to forget.",
-    "why": "Klimov made me understand that cinema, at its most committed, can be an act of bearing witness that goes beyond what any other medium can do.",
-    "notable_films": [
-      {
-        "title": "Welcome, or No Trespassing",
-        "year": 1964
-      },
-      {
-        "title": "Adventures of a Dentist",
-        "year": 1965
-      },
-      {
-        "title": "Sport, Sport, Sport",
-        "year": 1970
-      },
-      {
-        "title": "Agony",
-        "year": 1975
-      },
-      {
-        "title": "Farewell",
-        "year": 1983
-      },
-      {
-        "title": "Come and See",
-        "year": 1985
-      }
-    ],
-    "style_tags": [
-      "war",
-      "psychological",
-      "soviet"
-    ],
-    "start_with": {
-      "film": "Come and See",
-      "year": 1985,
-      "note": "A Soviet boy joins the partisans in 1943. The most devastating film ever made about the experience of war."
-    },
-    "key_themes": [
-      "war and its atrocity",
-      "the destruction of innocence",
-      "historical witness"
-    ],
-    "quote": "Cinema is the most powerful art form because it is the most visceral.",
-    "photo_url": null
-  },
-  {
-    "id": 72,
+    "id": 70,
     "name": "Andrei Zvyagintsev",
     "nationality": "russian",
     "birth_year": 1964,
@@ -5816,7 +5700,7 @@
     "photo_url": "https://upload.wikimedia.org/wikipedia/commons/a/a2/Andre%C3%AF_Zviaguintsev-_2016_%28cropped%29.jpg"
   },
   {
-    "id": 73,
+    "id": 71,
     "name": "Orson Welles",
     "nationality": "american",
     "birth_year": 1915,
@@ -5871,7 +5755,7 @@
     "photo_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/bc/Orson_Welles_1937_cr3-4.jpg/960px-Orson_Welles_1937_cr3-4.jpg"
   },
   {
-    "id": 74,
+    "id": 72,
     "name": "Jacques Tati",
     "nationality": "french",
     "birth_year": 1907,
@@ -5922,7 +5806,7 @@
     "photo_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/85/09.07.1961._La_Belle_Gaillarde_%C3%A0_No%C3%A9_%281961%29_-_53Fi2337.jpg/960px-09.07.1961._La_Belle_Gaillarde_%C3%A0_No%C3%A9_%281961%29_-_53Fi2337.jpg"
   },
   {
-    "id": 75,
+    "id": 73,
     "name": "Éric Rohmer",
     "nationality": "french",
     "birth_year": 1920,
@@ -5977,7 +5861,7 @@
     "photo_url": "https://upload.wikimedia.org/wikipedia/commons/4/44/Eric_Rohmer_cinematheque_2004-04.jpg"
   },
   {
-    "id": 76,
+    "id": 74,
     "name": "Kenji Mizoguchi",
     "nationality": "japanese",
     "birth_year": 1898,
@@ -6028,7 +5912,7 @@
     "photo_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b5/Kenji_Mizoguchi_3.jpg/960px-Kenji_Mizoguchi_3.jpg"
   },
   {
-    "id": 77,
+    "id": 75,
     "name": "F.W. Murnau",
     "nationality": "german",
     "birth_year": 1888,
@@ -6079,7 +5963,7 @@
     "photo_url": "https://upload.wikimedia.org/wikipedia/commons/a/a9/F._W._Murnau_circa_1920-1930.jpg"
   },
   {
-    "id": 78,
+    "id": 76,
     "name": "Michael Haneke",
     "nationality": "austrian",
     "birth_year": 1942,
@@ -6130,7 +6014,7 @@
     "photo_url": "https://upload.wikimedia.org/wikipedia/commons/3/3c/Michael_Haneke_2009.jpg"
   },
   {
-    "id": 79,
+    "id": 77,
     "name": "Yorgos Lanthimos",
     "nationality": "greek",
     "birth_year": 1973,
@@ -6185,7 +6069,7 @@
     "photo_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c1/Yorgos_Lanthimos_at_82nd_Venice_International_Film_Festival-1_%28cropped%29.jpg/960px-Yorgos_Lanthimos_at_82nd_Venice_International_Film_Festival-1_%28cropped%29.jpg"
   },
   {
-    "id": 80,
+    "id": 78,
     "name": "Aki Kaurismäki",
     "nationality": "finnish",
     "birth_year": 1957,
@@ -6240,7 +6124,7 @@
     "photo_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1d/Aki_Kaurism%C3%A4ki_at_Berlinale_2017.jpg/960px-Aki_Kaurism%C3%A4ki_at_Berlinale_2017.jpg"
   },
   {
-    "id": 81,
+    "id": 79,
     "name": "Glauber Rocha",
     "nationality": "brazilian",
     "birth_year": 1939,
@@ -6291,109 +6175,7 @@
     "photo_url": "https://upload.wikimedia.org/wikipedia/commons/6/64/Glauber_Rocha%2C_sem_data.jpg"
   },
   {
-    "id": 82,
-    "name": "Djibril Diop Mambéty",
-    "nationality": "senegalese",
-    "birth_year": 1945,
-    "death_year": 1998,
-    "era": "classical",
-    "tagline": "African cinema as pure surrealist poetry",
-    "bio": "Djibril Diop Mambéty made only two features, but they are among the most distinctive films African cinema has produced. Touki Bouki — made in 1973 on almost no money — follows two young Dakar lovers dreaming of Paris, and it cuts between ecstasy and violence with the logic of a fever dream. It was decades ahead of its time. His second feature, Hyenas, came 22 years later. He worked on a planned trilogy of films about the powerless when he died of lung cancer at 53. What remains is irreplaceable: elliptical, visually inventive, rooted in the textures of Senegal while speaking a completely singular cinematic language.",
-    "why": "Touki Bouki is one of the great films of the 1970s. It was in conversation with the French New Wave but came from somewhere entirely its own.",
-    "notable_films": [
-      {
-        "title": "Badou Boy",
-        "year": 1970
-      },
-      {
-        "title": "Touki Bouki",
-        "year": 1973
-      },
-      {
-        "title": "Hyenas",
-        "year": 1992
-      },
-      {
-        "title": "The Little Girl Who Sold the Sun",
-        "year": 1999
-      }
-    ],
-    "style_tags": [
-      "surrealism",
-      "elliptical editing",
-      "African modernity",
-      "poetic realism"
-    ],
-    "start_with": {
-      "film": "Touki Bouki",
-      "year": 1973,
-      "note": "One of the most visually free films ever made. Don't look for a conventional story."
-    },
-    "key_themes": [
-      "desire and escape",
-      "postcolonial identity",
-      "poverty and dreaming"
-    ],
-    "quote": "There are no rules in cinema. Only consequences.",
-    "photo_url": "https://upload.wikimedia.org/wikipedia/en/5/5a/Djibril_Diop_Mamb%C3%A9ty.jpg"
-  },
-  {
-    "id": 83,
-    "name": "Ritwik Ghatak",
-    "nationality": "indian",
-    "birth_year": 1925,
-    "death_year": 1976,
-    "era": "classical",
-    "tagline": "Melodrama as historical wound",
-    "bio": "Ritwik Ghatak is the great underrecognized giant of Indian cinema — known to cinephiles, less canonized than Satyajit Ray, and arguably just as important. Born in what became Bangladesh at Partition, he spent his career making films about the trauma of displacement and the destruction of a culture. Where Ray was lyrical and humanist, Ghatak was raw and operatic, using sound expressionistically, letting emotion overflow. Meghe Dhaka Tara is about a woman who sacrifices everything for her refugee family in Calcutta. It is devastating in the way of someone who has not learned to aestheticize their grief.",
-    "why": "Meghe Dhaka Tara has a scream at its center that I've never forgotten. He uses sound the way Bergman uses faces.",
-    "notable_films": [
-      {
-        "title": "Nagarik",
-        "year": 1952
-      },
-      {
-        "title": "Ajantrik",
-        "year": 1958
-      },
-      {
-        "title": "Meghe Dhaka Tara",
-        "year": 1960
-      },
-      {
-        "title": "Komal Gandhar",
-        "year": 1961
-      },
-      {
-        "title": "Subarnarekha",
-        "year": 1962
-      },
-      {
-        "title": "Jukti Takko Aar Gappo",
-        "year": 1974
-      }
-    ],
-    "style_tags": [
-      "operatic emotion",
-      "expressionist sound",
-      "Partition trauma",
-      "melodrama"
-    ],
-    "start_with": {
-      "film": "Meghe Dhaka Tara",
-      "year": 1960,
-      "note": "The film that announces his scale of feeling. Come prepared."
-    },
-    "key_themes": [
-      "displacement and Partition",
-      "female sacrifice",
-      "cultural loss"
-    ],
-    "quote": "I use melodrama because life is melodrama.",
-    "photo_url": "https://upload.wikimedia.org/wikipedia/commons/d/db/Ritwik_Ghatak_2025_stamp_of_India.jpg"
-  },
-  {
-    "id": 84,
+    "id": 80,
     "name": "Olivier Assayas",
     "nationality": "french",
     "birth_year": 1955,
@@ -6448,7 +6230,7 @@
     "photo_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/4c/Viennale_2010.10.30_Olivier_Assayas.jpg/960px-Viennale_2010.10.30_Olivier_Assayas.jpg"
   },
   {
-    "id": 85,
+    "id": 81,
     "name": "Jacques Demy",
     "nationality": "french",
     "birth_year": 1931,
@@ -6499,7 +6281,7 @@
     "photo_url": "https://upload.wikimedia.org/wikipedia/commons/1/1f/Identite-Demy-1956-Sacem.jpg"
   },
   {
-    "id": 86,
+    "id": 82,
     "name": "Jean Rouch",
     "nationality": "french",
     "birth_year": 1917,
@@ -6550,54 +6332,7 @@
     "photo_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/96/Jean_Rouch_%28cropped%29.jpg/960px-Jean_Rouch_%28cropped%29.jpg"
   },
   {
-    "id": 87,
-    "name": "Larisa Shepitko",
-    "nationality": "russian",
-    "birth_year": 1938,
-    "death_year": 1979,
-    "era": "classical",
-    "tagline": "Transcendence earned through suffering",
-    "bio": "Larisa Shepitko made four films before dying in a car crash at 40. The Ascent, her final completed work, is one of the great films about moral courage and spiritual endurance. Set during the Nazi occupation of Belarus in winter, it follows two Soviet partisans captured and forced toward different choices. Shepitko shot in brutal cold, with cinematography that frames the frozen landscape as both hell and icon. She was the only woman studying under Dovzhenko at VGIK, and her work has a physical, embodied intensity that few filmmakers — of any era or gender — have matched. Her husband Elem Klimov completed Larisa, a documentary tribute, after her death.",
-    "why": "The Ascent contains one of the most devastating sequences I have seen in any film. It is spiritual without being religious, political without being didactic.",
-    "notable_films": [
-      {
-        "title": "Heat",
-        "year": 1963
-      },
-      {
-        "title": "Wings",
-        "year": 1966
-      },
-      {
-        "title": "You and I",
-        "year": 1971
-      },
-      {
-        "title": "The Ascent",
-        "year": 1977
-      }
-    ],
-    "style_tags": [
-      "spiritual intensity",
-      "WWII",
-      "stark black and white",
-      "embodied performance"
-    ],
-    "start_with": {
-      "film": "The Ascent",
-      "year": 1977,
-      "note": "Her masterpiece. Cold and transcendent and completely devastating."
-    },
-    "key_themes": [
-      "moral courage",
-      "sacrifice and betrayal",
-      "the spiritual under totalitarianism"
-    ],
-    "quote": "I am interested in the moment when a person is pushed to the limit of their humanity.",
-    "photo_url": "https://upload.wikimedia.org/wikipedia/en/f/fe/Larisa_Shepitko.png"
-  },
-  {
-    "id": 88,
+    "id": 83,
     "name": "Cristian Mungiu",
     "nationality": "romanian",
     "birth_year": 1968,
@@ -6648,62 +6383,7 @@
     "photo_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6a/Cristian_Mungiu_at_82nd_Venice_International_Film_Festival_%281_of_1%29_%28cropped%29.jpg/960px-Cristian_Mungiu_at_82nd_Venice_International_Film_Festival_%281_of_1%29_%28cropped%29.jpg"
   },
   {
-    "id": 89,
-    "name": "Manoel de Oliveira",
-    "nationality": "portuguese",
-    "birth_year": 1908,
-    "death_year": 2015,
-    "era": "classical",
-    "tagline": "A century of cinema, lived and made",
-    "bio": "Manoel de Oliveira made his first film in 1931 and his last at 106. The span of his career is simply unbelievable — he lived through the silent era, the coming of sound, the New Wave, the digital revolution, and made films through all of it, becoming more experimental and radical the older he got. He was suppressed under Salazar's dictatorship, worked in near-obscurity for decades, and then found global recognition late in life. His films are theatrical, literate, and unlike anyone else's — long monologues, frozen tableaux, characters who quote poetry. He is one of cinema's great eccentrics and one of its most unclassifiable artists.",
-    "why": "I recommend him to people who think cinema has said everything it has to say. His films make you feel the art form has unexplored rooms.",
-    "notable_films": [
-      {
-        "title": "Douro, Faina Fluvial",
-        "year": 1931
-      },
-      {
-        "title": "Aniki Bóbó",
-        "year": 1942
-      },
-      {
-        "title": "The Past and the Present",
-        "year": 1972
-      },
-      {
-        "title": "Francisca",
-        "year": 1981
-      },
-      {
-        "title": "The Convent",
-        "year": 1995
-      },
-      {
-        "title": "The Strange Case of Angelica",
-        "year": 2010
-      }
-    ],
-    "style_tags": [
-      "theatrical staging",
-      "literary adaptation",
-      "extreme longevity",
-      "Portuguese identity"
-    ],
-    "start_with": {
-      "film": "The Strange Case of Angelica",
-      "year": 2010,
-      "note": "Made at 101. Haunting, strange, and completely alive. A good way in."
-    },
-    "key_themes": [
-      "time and memory",
-      "Portuguese history",
-      "art and obsession"
-    ],
-    "quote": "Cinema is life. And life, if you look at it carefully, is cinema.",
-    "photo_url": "https://upload.wikimedia.org/wikipedia/commons/3/35/Manoel_de_Oliveira_01_%28cropped%29.jpg"
-  },
-  {
-    "id": 90,
+    "id": 84,
     "name": "Cristi Puiu",
     "nationality": "romanian",
     "birth_year": 1967,
@@ -6754,7 +6434,7 @@
     "photo_url": "https://upload.wikimedia.org/wikipedia/commons/5/5b/Cristi_Puiu.jpg"
   },
   {
-    "id": 91,
+    "id": 85,
     "name": "Shirley Clarke",
     "nationality": "american",
     "birth_year": 1919,
@@ -6805,7 +6485,7 @@
     "photo_url": "https://upload.wikimedia.org/wikipedia/en/9/9e/Shirley_Clarke.jpg"
   },
   {
-    "id": 92,
+    "id": 86,
     "name": "John Woo",
     "nationality": "hong kong",
     "birth_year": 1946,
@@ -6976,7 +6656,7 @@
     "photo_url": "https://upload.wikimedia.org/wikipedia/commons/0/02/John_Woo_Cannes_2005.jpg"
   },
   {
-    "id": 93,
+    "id": 87,
     "name": "Wes Anderson",
     "nationality": "american",
     "birth_year": 1969,
@@ -7079,7 +6759,7 @@
     "photo_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5e/Wes_Anderson-7541_%28cropped%29.jpg/960px-Wes_Anderson-7541_%28cropped%29.jpg"
   },
   {
-    "id": 94,
+    "id": 88,
     "name": "Paul Thomas Anderson",
     "nationality": "american",
     "birth_year": 1970,
@@ -7180,5 +6860,131 @@
     ],
     "quote": "I don't think about the audience at all. That sounds horrible, but I really don't. I make the film for myself.",
     "photo_url": "https://upload.wikimedia.org/wikipedia/commons/6/66/Paul_Thomas_Anderson_in_2025.jpg"
+  },
+  {
+    "id": 89,
+    "name": "Kenneth Anger",
+    "nationality": "american",
+    "birth_year": 1927,
+    "death_year": 2023,
+    "era": "avant-garde",
+    "tagline": "Rituals of desire, myth, and the American id",
+    "bio": "Kenneth Anger was the enfant terrible of American underground cinema, fusing occult mysticism, queer eroticism, and pop iconography into short films of startling intensity. A self-taught provocateur, he channeled Aleister Crowley and Hollywood glamour in equal measure, producing a body of work that influenced everyone from Martin Scorsese to music video culture.",
+    "why": "Scorpio Rising alone rewrote the grammar of montage and pop-culture collage — an essential text for anyone interested in the avant-garde or queer cinema.",
+    "notable_films": [
+      {
+        "title": "Fireworks",
+        "year": 1947
+      },
+      {
+        "title": "Rabbit's Moon",
+        "year": 1950
+      },
+      {
+        "title": "Inauguration of the Pleasure Dome",
+        "year": 1954
+      },
+      {
+        "title": "Scorpio Rising",
+        "year": 1963
+      },
+      {
+        "title": "Kustom Kar Kommandos",
+        "year": 1965
+      },
+      {
+        "title": "Invocation of My Demon Brother",
+        "year": 1969
+      },
+      {
+        "title": "Lucifer Rising",
+        "year": 1972
+      },
+      {
+        "title": "Mouse Heaven",
+        "year": 2004
+      }
+    ],
+    "style_tags": [
+      "occult",
+      "queer",
+      "pop collage",
+      "ritualistic",
+      "homoerotic",
+      "mythological"
+    ],
+    "start_with": "Scorpio Rising",
+    "key_themes": [
+      "desire",
+      "myth",
+      "American iconography",
+      "occultism",
+      "transgression"
+    ],
+    "quote": "I am the oldest underground filmmaker in the world.",
+    "photo_url": "https://upload.wikimedia.org/wikipedia/commons/4/4e/Kenneth_Anger_2009.jpg"
+  },
+  {
+    "id": 90,
+    "name": "Derek Jarman",
+    "nationality": "british",
+    "birth_year": 1942,
+    "death_year": 1994,
+    "era": "avant-garde",
+    "tagline": "Queer visions painted in fire and ruin",
+    "bio": "Derek Jarman was painter, poet, gardener, activist, and filmmaker — a man who made art as an act of resistance. Working largely outside the mainstream with Super 8 and 16mm film, he forged a singular cinema of queer history, punk rage, and ravishing beauty. His final film, Blue, was shot entirely on a single blue frame as he was going blind from AIDS-related illness.",
+    "why": "Jarman is one of the great artist-filmmakers: every frame is a painting, every film a manifesto. Blue is one of the most radical and moving works in cinema history.",
+    "notable_films": [
+      {
+        "title": "Sebastiane",
+        "year": 1976
+      },
+      {
+        "title": "Jubilee",
+        "year": 1978
+      },
+      {
+        "title": "The Tempest",
+        "year": 1979
+      },
+      {
+        "title": "Caravaggio",
+        "year": 1986
+      },
+      {
+        "title": "The Last of England",
+        "year": 1987
+      },
+      {
+        "title": "Edward II",
+        "year": 1991
+      },
+      {
+        "title": "Wittgenstein",
+        "year": 1993
+      },
+      {
+        "title": "Blue",
+        "year": 1993
+      }
+    ],
+    "style_tags": [
+      "queer cinema",
+      "punk",
+      "painterly",
+      "political",
+      "experimental",
+      "Super 8"
+    ],
+    "start_with": "Caravaggio",
+    "key_themes": [
+      "queer identity",
+      "mortality",
+      "political resistance",
+      "art history",
+      "AIDS crisis"
+    ],
+    "quote": "In the pandemonium of image I present you with the universal Blue.",
+    "photo_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/68/Derek_Jarman_1991.jpg/440px-Derek_Jarman_1991.jpg"
   }
 ]
