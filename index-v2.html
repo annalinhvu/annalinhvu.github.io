@@ -352,7 +352,7 @@ body {
 
 .db-head {
   display:grid;
-  grid-template-columns:42px 1fr 160px 175px 70px;
+  grid-template-columns:42px 1fr 160px 175px;
   column-gap:16px;
   padding:0 44px; height:36px; align-items:center;
   background:var(--panel-hd);
@@ -368,7 +368,7 @@ body {
 
 .db-row {
   display:grid;
-  grid-template-columns:42px 1fr 160px 175px 70px;
+  grid-template-columns:42px 1fr 160px 175px;
   column-gap:16px;
   padding:0 44px; border-bottom:1px solid var(--bd);
   text-decoration:none; color:inherit; cursor:pointer;
@@ -749,6 +749,7 @@ body {
   .db-row.featured,.db-row.std,.db-row.alt{padding-left:16px;}
   .col-stat,.col-tech{display:none;}
   .db-head span:nth-child(3),.db-head span:nth-child(4){display:none;}
+
   .query-bar{padding:8px 16px;overflow-x:auto;white-space:nowrap;}
   .filter-row{padding:6px 16px 10px;}
   .db-footer{padding:8px 16px;}
@@ -906,7 +907,7 @@ body {
       </div>
       <div class="db-head">
         <span>#</span><span>PROJECT</span>
-        <span>ENTRIES</span><span>TECH</span><span>STATUS</span>
+        <span>ENTRIES</span><span>CATEGORY</span>
       </div>
 
       <a href="projects/festival-tracker/" class="db-row featured">
@@ -917,64 +918,56 @@ body {
           <span class="row-link">view project →</span>
         </div>
         <div class="col-stat"><strong>89</strong> festivals<br><strong>30</strong> countries</div>
-        <div class="col-tech">HTML · JSON<br>Vanilla JS</div>
-        <div class="col-status"><span class="live-dot"></span>live</div>
+        <div class="col-tech">Film</div>
       </a>
 
       <a href="projects/film-stocks/" class="db-row std">
         <div class="col-idx">02</div>
         <div class="col-name"><span class="row-name">Analog Film Stock Database</span><span class="row-desc">Compare analog film stocks by price, availability, and format — paired with a development lab directory searchable by process and location.</span><span class="row-link">view project →</span></div>
                 <div class="col-stat"><strong>54</strong> stocks · <strong>25</strong> labs</div>
-        <div class="col-tech">HTML · JSON · Vanilla JS</div>
-        <div class="col-status"><span class="live-dot"></span>live</div>
+        <div class="col-tech">Film</div>
       </a>
 
       <a href="projects/nyc-film-map/" class="db-row std alt">
         <div class="col-idx">03</div>
         <div class="col-name"><span class="row-name">NYC Film Scene Map</span><span class="row-desc">Interactive map of NYC screening spaces, workshops, labs, galleries, and community film spots — filterable by category and borough.</span><span class="row-link">view project →</span></div>
                 <div class="col-stat"><strong>100</strong> venues · <strong>5</strong> categories</div>
-        <div class="col-tech">HTML · JSON · Leaflet.js</div>
-        <div class="col-status"><span class="live-dot"></span>live</div>
+        <div class="col-tech">Film</div>
       </a>
 
       <a href="projects/filmmakers/" class="db-row std">
         <div class="col-idx">04</div>
         <div class="col-name"><span class="row-name">Auteurs</span><span class="row-desc">Personal index of 100+ filmmakers and actors, searchable by era, nationality, and style — with film guides and portraits.</span><span class="row-link">view project →</span></div>
         <div class="col-stat"><strong>100</strong> filmmakers · <strong>4</strong> eras</div>
-        <div class="col-tech">HTML · JSON</div>
-        <div class="col-status"><span class="live-dot"></span>live</div>
+        <div class="col-tech">Film</div>
       </a>
 
       <a href="projects/self-care/" class="db-row std alt">
         <div class="col-idx">05</div>
         <div class="col-name"><span class="row-name">Only Good Things</span><span class="row-desc">Curated self-care activity tracker with filters for season, duration, mood, and setting — with local completion tracking.</span><span class="row-link">view project →</span></div>
         <div class="col-stat"><strong>143</strong> activities · <strong>8</strong> categories</div>
-        <div class="col-tech">HTML · JSON · Vanilla JS</div>
-        <div class="col-status"><span class="live-dot"></span>live</div>
+        <div class="col-tech">Wellness</div>
       </a>
 
       <a href="https://annalinhvu.github.io/nyc-adventure/" class="db-row std" target="_blank" rel="noopener">
         <div class="col-idx">06</div>
         <div class="col-name"><span class="row-name">NYC Adventure Log</span><span class="row-desc">Curated NYC activities across 10 categories — Cinema, Food, Arts, Explore, and more. Surprise picker included.</span><span class="row-link">view project →</span></div>
         <div class="col-stat"><strong>10</strong> categories<br><strong>4</strong> seasons</div>
-        <div class="col-tech">HTML · Vanilla JS</div>
-        <div class="col-status"><span class="live-dot"></span>live</div>
+        <div class="col-tech">City</div>
       </a>
 
       <a href="projects/recipes/" class="db-row std alt">
         <div class="col-idx">07</div>
         <div class="col-name"><span class="row-name">Cơm Nhà</span><span class="row-desc">Vietnamese recipes from Miền Bắc, Miền Trung, and Miền Nam. Browse by region, search by ingredient.</span><span class="row-link">view project →</span></div>
         <div class="col-stat"><strong>175</strong> recipes · <strong>3</strong> regions</div>
-        <div class="col-tech">HTML · JSON · Vanilla JS</div>
-        <div class="col-status"><span class="live-dot"></span>live</div>
+        <div class="col-tech">Food</div>
       </a>
 
       <a href="projects/atlas/" class="db-row std">
         <div class="col-idx">08</div>
         <div class="col-name"><span class="row-name">Departure Lounge</span><span class="row-desc">Destinations as boarding passes — cities, food, and reasons to go.</span><span class="row-link">view project →</span></div>
         <div class="col-stat"><strong>50</strong> countries · <strong>5</strong> regions</div>
-        <div class="col-tech">HTML · JSON · Vanilla JS</div>
-        <div class="col-status"><span class="live-dot"></span>live</div>
+        <div class="col-tech">Travel</div>
       </a>
 
       <div class="db-footer">
