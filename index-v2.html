@@ -751,7 +751,7 @@ body {
   .db-head span:nth-child(3),.db-head span:nth-child(4){display:none;}
 
   .query-bar{padding:8px 16px;overflow-x:auto;white-space:nowrap;}
-  .filter-row{padding:6px 16px 10px;}
+  .filter-bar{padding:6px 16px 10px;}
   .db-footer{padding:8px 16px;}
 
   /* Work */
@@ -1352,18 +1352,6 @@ document.querySelectorAll('.top-tab').forEach(function(tab) {
 });
 
 /* ── Theme toggle ── */
-function copyEmail() {
-  navigator.clipboard.writeText('vuanna@seas.upenn.edu').then(function() {
-    var btn = document.getElementById('copy-email-btn');
-    btn.textContent = 'copied!';
-    btn.classList.add('copied');
-    setTimeout(function() {
-      btn.textContent = 'copy';
-      btn.classList.remove('copied');
-    }, 2000);
-  });
-}
-
 function toggleTheme() {
   var html = document.documentElement;
   var next = html.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
@@ -1620,7 +1608,7 @@ switchPane = function(id) {
     "Doing her M.A.Sc. in CS at Penn while working full-time. Busy human. 📚",
     "The Departure Lounge covers 50 destinations as boarding passes. Wanderlust, engineered. ✈️",
     "Anna cleaned up 1,000+ Snowflake tables and cut warehouse costs by <strong>30%</strong>. Tidiness as a skill. 🧹",
-    "100 filmmakers, filterable by era. A cinephile definitely lives here. 🎬",
+    "89 filmmakers, filterable by era. A cinephile definitely lives here. 🎬",
     "Anna speaks English and Vietnamese. 175 recipes in the app to prove it. 🇻🇳",
     "Her Slack alerts catch campaign anomalies before clients even notice. 🔔",
     "Fun fact: Pumkin's name has no second 'p'. Anna's choice. Iconic. 🎃",
@@ -1631,7 +1619,7 @@ switchPane = function(id) {
   var NAV_MSGS = {
     studio: "Anna's personal projects — built for fun, not deadlines. ✨",
     built:  "4 years of shipping real data infrastructure at DEPT. 💼",
-    career: "Media Coordinator → Lead Data Engineer in 3 years. Quite the arc. 📈",
+    career: "Media Coordinator → Lead Data Engineer in 4 years. Quite the arc. 📈",
     console:"Try <code>anna.skills()</code> in Python, or <code>SELECT * FROM anna.skills</code> in SQL. 💻"
   };
 
@@ -2002,7 +1990,7 @@ switchPane = function(id) {
     {title:'Film Festival Tracker',type:'Film',tech:'HTML · JSON · Vanilla JS',status:'live'},
     {title:'Analog Film Stock Database',type:'Film',tech:'HTML · JSON · Vanilla JS',status:'live'},
     {title:'NYC Analog Film Map',type:'Film',tech:'HTML · JSON · Leaflet.js',status:'live'},
-    {title:'Filmmaker Directory',type:'Film',tech:'HTML · JSON',status:'live'},
+    {title:'Auteurs',type:'Film',tech:'HTML · JSON',status:'live'},
     {title:'Self-Care Tracker',type:'Wellness',tech:'HTML · JSON · Vanilla JS',status:'live'},
     {title:'Recipe Book',type:'Food',tech:'HTML · JSON · Vanilla JS',status:'live'},
     {title:'World Atlas',type:'Travel',tech:'HTML · JSON · Vanilla JS',status:'live'},
