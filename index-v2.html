@@ -1944,7 +1944,7 @@ switchPane = function(id) {
   var ANNA = {
     name:'Anna (Linh) Vu', location:'New York City, NY',
     role:'Lead Data Technology Engineer', origin:'Hanoi, Vietnam',
-    email:'vuanna@seas.upenn.edu', linkedin:'linkedin.com/in/annalinhvu',
+    email:'vuanna@seas.upenn.edu', linkedin:'linkedin.com/in/annalinhvu', github:'github.com/annalinhvu',
     status:'open_to_work',
     grad_school:'University of Pennsylvania',
     grad_degree:'M.A.Sc. Computer Science · Artificial Intelligence',
@@ -2063,7 +2063,7 @@ switchPane = function(id) {
     if(descM) {
       var t=descM[1].toLowerCase();
       var schemas={
-        anna:['name','location','role','origin','email','linkedin','status','grad_school','grad_degree','undergrad_school','undergrad_degree'],
+        anna:['name','location','role','origin','email','linkedin','github','status','grad_school','grad_degree','undergrad_school','undergrad_degree'],
         skills:['category','skill'],experience:['title','company','location','period'],projects:['title','type','tech','status']
       };
       if(!schemas[t]) return '<div class="res-error">ERROR 1146: table \''+esc(t)+'\' doesn\'t exist.</div>';
