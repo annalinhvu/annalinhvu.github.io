@@ -1779,453 +1779,6 @@
   },
   {
     "id": 13,
-    "name": "Max von Sydow",
-    "nationality": "swedish",
-    "birth_year": 1929,
-    "death_year": 2020,
-    "era": "new-wave",
-    "tagline": "Bergman's great knight — a face that held centuries of sorrow",
-    "bio": "Max von Sydow had one of cinema's great faces: long, angular, capable of conveying medieval faith and modern existential anguish with equal conviction. Ingmar Bergman discovered him at the Malmö City Theatre and cast him as the knight Antonius Block in The Seventh Seal — a performance that made him internationally famous at twenty-seven. He went on to star in eleven Bergman films, including Wild Strawberries, The Virgin Spring, and Through a Glass Darkly, forming one of cinema's great director-actor partnerships. He later worked internationally — playing the priest in The Exorcist, Mingus in Hannah and Her Sisters, and ultimately appearing in Star Wars and Game of Thrones, his face and voice retaining their authority into his nineties.",
-    "why": "He embodied faith and doubt simultaneously — his face was a battleground for the great questions of European cinema.",
-    "notable_films": [
-      {
-        "title": "The Seventh Seal",
-        "year": 1957,
-        "runtime": 96,
-        "themes": [
-          "death",
-          "faith",
-          "God's silence",
-          "medieval plague"
-        ],
-        "synopsis": "A knight returning from the Crusades plays chess with Death while searching for meaning in a plague-ravaged landscape.",
-        "why_watch": "Von Sydow makes Antonius Block's spiritual crisis feel genuine rather than schematic — you believe in this man's faith and his doubt simultaneously. The chess game with Death is cinema's great image of mortality.",
-        "visual_style": "Gunnar Fischer's black-and-white cinematography — stark, symbolic, medieval — Bergman's most iconic visual work."
-      },
-      {
-        "title": "The Virgin Spring",
-        "year": 1960,
-        "runtime": 89,
-        "themes": [
-          "faith",
-          "revenge",
-          "innocence",
-          "medieval"
-        ],
-        "synopsis": "A devout medieval farmer's daughter is raped and murdered. When her killers unknowingly seek shelter at his farm, he takes vengeance.",
-        "why_watch": "Von Sydow plays a man of faith whose faith is destroyed and then, in the moment of revenge, demands something more of God. The scene where he begins to tear at a tree with his hands is primally terrifying.",
-        "visual_style": "Sven Nykvist's first major Bergman collaboration — pure, elemental, heartbreakingly beautiful."
-      },
-      {
-        "title": "Through a Glass Darkly",
-        "year": 1961,
-        "runtime": 89,
-        "themes": [
-          "mental illness",
-          "God",
-          "family",
-          "love",
-          "summer island"
-        ],
-        "synopsis": "A young woman struggles with schizophrenia on a remote Swedish island while her husband, brother, and writer-father watch helplessly.",
-        "why_watch": "Von Sydow plays the husband — a figure of helpless love, unable to reach his wife. His stillness against Harriet Andersson's breakdown is one of Bergman's great emotional contrasts.",
-        "visual_style": "Sven Nykvist's first full collaboration with Bergman — the island's spare beauty making spiritual isolation visible."
-      },
-      {
-        "title": "The Exorcist",
-        "year": 1973,
-        "runtime": 122,
-        "themes": [
-          "faith",
-          "evil",
-          "medicine",
-          "Catholicism"
-        ],
-        "synopsis": "A young girl is possessed by a demon; two priests are called to perform an exorcism.",
-        "why_watch": "Von Sydow plays Father Merrin with the same moral authority he brought to Bergman's knights — a man who has faced evil before and knows what it costs. His arrival in the final act changes the film's register entirely.",
-        "visual_style": "Owen Roizman's nighttime cinematography — Georgetown shadows and the girl's glowing bedroom as competing infernos."
-      },
-      {
-        "title": "Wild Strawberries",
-        "year": 1957,
-        "runtime": 91,
-        "themes": [
-          "regret",
-          "aging",
-          "memory",
-          "mortality",
-          "reconciliation"
-        ],
-        "synopsis": "An elderly professor travels to receive an honorary degree, reviewing his life's regrets through dreams and memory.",
-        "why_watch": "Von Sydow appears only briefly, but as the young version of the professor — his physicality and grief exact mirror images of Victor Sjöström's old man. An extraordinary intergenerational piece of casting.",
-        "visual_style": "Gunnar Fischer's dreamlike black-and-white — the past rendered as both beautiful and accusatory."
-      },
-      {
-        "title": "Hour of the Wolf",
-        "year": 1968,
-        "runtime": 90,
-        "themes": [
-          "madness",
-          "art",
-          "demons",
-          "isolation"
-        ],
-        "synopsis": "A painter and his wife spend the summer on an island — until his inner demons, possibly real, begin to destroy them both.",
-        "why_watch": "Von Sydow's most unguarded Bergman performance — he plays breakdown with terrifying authenticity, the monsters inside a creative mind made visible.",
-        "visual_style": "Sven Nykvist's night-saturated black-and-white — the most expressionistic Bergman, all shadows and reflections."
-      },
-      {
-        "title": "The Shame",
-        "year": 1968,
-        "runtime": 103,
-        "themes": [
-          "war",
-          "cowardice",
-          "survival",
-          "moral erosion"
-        ],
-        "synopsis": "Two musicians in rural isolation are caught in a civil war — and watch their humanity slowly erode under the pressure of survival.",
-        "why_watch": "Von Sydow plays a man losing his moral self in real time — Bergman's most politically immediate film.",
-        "visual_style": "Sven Nykvist's documentary-influenced wartime photography — stripped of beauty, raw and immediate."
-      },
-      {
-        "title": "Pelle the Conqueror",
-        "year": 1987,
-        "runtime": 157,
-        "themes": [
-          "immigration",
-          "childhood",
-          "class",
-          "hope"
-        ],
-        "synopsis": "A Swedish immigrant and his young son arrive in 19th-century Denmark seeking a better life — but find themselves at the bottom of a brutal rural hierarchy.",
-        "why_watch": "Von Sydow's aging, hope-filled father is one of cinema's great portraits of dignified failure. He won the Palme d'Or.",
-        "visual_style": "Jorgen Persson's wintry Danish landscapes — beautiful and pitiless, matching the film's view of class and hope."
-      }
-    ],
-    "style_tags": [
-      "intensity",
-      "restraint",
-      "European art cinema",
-      "collaborations",
-      "silence",
-      "tragedy"
-    ],
-    "start_with": {
-      "film": "The Seventh Seal",
-      "year": 1957,
-      "note": "The performance that made him: a knight playing chess with Death, played without allegory, as if this were simply a man trying to hold onto meaning before the end."
-    },
-    "key_themes": [
-      "faith and its testing",
-      "mortality",
-      "Scandinavian existentialism",
-      "the body under spiritual pressure"
-    ],
-    "quote": "Bergman taught me that film was a serious art form. After him, everything else felt like practicing.",
-    "photo_url": "https://upload.wikimedia.org/wikipedia/commons/2/23/Max_von_Sydow_Cannes.jpg"
-  },
-  {
-    "id": 14,
-    "name": "Jean-Paul Belmondo",
-    "nationality": "french",
-    "birth_year": 1933,
-    "death_year": 2021,
-    "era": "new-wave",
-    "tagline": "The anti-hero who made cool look effortless",
-    "bio": "Jean-Paul Belmondo was everything the old French cinema was not: rumpled, working-class, physically real, magnetic without trying to be beautiful. When Godard cast him as Michel Poiccard in Breathless — the Humphrey Bogart-obsessed small-time crook who runs from the police and from commitment — he invented the New Wave's anti-hero. Belmondo moved through scenes like a force of nature, cigarette dangling, collar turned up, improvising dialogue with Godard's encouragement. He was also, throughout his career, one of France's great action stars — doing his own stunts into his sixties, beloved by a mass audience that didn't always find the art-house work. That combination — the intellectual and the populist — made him France's most beloved actor.",
-    "why": "He proved that anti-hero charisma could carry a film on pure presence — no tricks, no poses, just a man in a world that doesn't quite fit him.",
-    "notable_films": [
-      {
-        "title": "Breathless",
-        "year": 1960,
-        "runtime": 87,
-        "themes": [
-          "freedom",
-          "crime",
-          "American mythology",
-          "betrayal",
-          "youth"
-        ],
-        "synopsis": "A small-time car thief kills a policeman and goes on the run in Paris, pursued by police and his American girlfriend.",
-        "why_watch": "The founding text of French New Wave cool. Belmondo's Michel is completely present in every moment — irresponsible, charming, doomed. Watch how he touches his lip, mimicking Bogart. Completely natural. Completely cinema.",
-        "visual_style": "Raoul Coutard's handheld 400-ASA photography — jump cuts, natural light, Paris as it actually was — revolutionized film grammar."
-      },
-      {
-        "title": "Pierrot le Fou",
-        "year": 1965,
-        "runtime": 110,
-        "themes": [
-          "escape",
-          "love",
-          "death",
-          "art",
-          "freedom"
-        ],
-        "synopsis": "A man abandons his bourgeois life to drive south with his former babysitter, seeking some form of freedom.",
-        "why_watch": "Belmondo and Karina at their finest — the chemistry of two people destroying each other while being unable to stop. His final act, painting his face blue and tying himself in dynamite, is one of cinema's great endings.",
-        "visual_style": "Coutard's Mediterranean color, the South of France as paradise before the fall."
-      },
-      {
-        "title": "Léon Morin, Priest",
-        "year": 1961,
-        "runtime": 117,
-        "themes": [
-          "faith",
-          "desire",
-          "occupied France",
-          "conversion",
-          "repression"
-        ],
-        "synopsis": "During the Nazi occupation of France, a Communist widow begins a complicated relationship with a young priest.",
-        "why_watch": "A completely different Belmondo — still, intelligent, spiritually serious. He plays a priest whose faith is genuine and whose effect on women he refuses to exploit. His most understated performance.",
-        "visual_style": "Henri Decaë's austere wartime France — grey, cold, morally complex."
-      },
-      {
-        "title": "Stavisky",
-        "year": 1974,
-        "runtime": 117,
-        "themes": [
-          "fraud",
-          "charm",
-          "politics",
-          "1930s France",
-          "self-invention"
-        ],
-        "synopsis": "The story of Alexandre Stavisky, a charming swindler whose financial fraud destabilized the French government.",
-        "why_watch": "Belmondo in his mature period — elegant, still, playing a man whose life is one long improvisation. Alain Resnais's direction and Stephen Sondheim's score make this one of the great underrated films.",
-        "visual_style": "Resnais's precise, musical construction — art deco 1930s France rendered with nostalgic melancholy."
-      },
-      {
-        "title": "Le Doulos",
-        "year": 1962,
-        "runtime": 108,
-        "themes": [
-          "loyalty",
-          "betrayal",
-          "informants",
-          "noir"
-        ],
-        "synopsis": "A career criminal suspects his best friend may be a police informant — a Melville thriller of paranoia and shifting loyalties.",
-        "why_watch": "Belmondo plays moral ambiguity with extraordinary charisma — you're never sure if Silien is hero or traitor. Melville's tightest thriller.",
-        "visual_style": "Nicolas Hayer's crisp black-and-white — overcoats, low brims, and rain-slicked Paris streets at their most mythic."
-      },
-      {
-        "title": "Cartouche",
-        "year": 1962,
-        "runtime": 115,
-        "themes": [
-          "adventure",
-          "honor",
-          "swashbuckling",
-          "love"
-        ],
-        "synopsis": "An 18th-century Paris street kid rises to become the most celebrated bandit in France — charming, generous, and ultimately tragic.",
-        "why_watch": "Belmondo's physical joy is extraordinary — he does his own stunts in a role requiring him to be funny, romantic, and dangerous simultaneously.",
-        "visual_style": "Philippe de Broca's gorgeous period-adventure aesthetic — all color and movement, unabashedly entertaining."
-      },
-      {
-        "title": "Borsalino",
-        "year": 1970,
-        "runtime": 126,
-        "themes": [
-          "crime",
-          "friendship",
-          "gangsters",
-          "Marseille"
-        ],
-        "synopsis": "Two small-time crooks in 1930s Marseille join forces to climb to the top of the city's criminal underworld.",
-        "why_watch": "Belmondo and Alain Delon as friends-turned-rivals is pure movie star alchemy — the energy between them is magnetic and completely alive.",
-        "visual_style": "Jean Zay's period-perfect 1930s Marseille — all wide lapels, fedoras, and golden light."
-      },
-      {
-        "title": "Un singe en hiver",
-        "year": 1962,
-        "runtime": 105,
-        "themes": [
-          "drinking",
-          "friendship",
-          "war",
-          "small towns"
-        ],
-        "synopsis": "A reformed alcoholic in a Normandy coastal town is tempted back to drinking by a charming, reckless young man passing through.",
-        "why_watch": "Belmondo and Jean Gabin together is a once-in-a-generation pairing — the old guard and the new wave, their scenes practically sparking.",
-        "visual_style": "Marcel Guiffray's wintry Normandy — grey, intimate, warmly lit in the bars where both men come alive."
-      }
-    ],
-    "style_tags": [
-      "naturalism",
-      "New Wave collaborations",
-      "physicality",
-      "European art cinema",
-      "collaborations"
-    ],
-    "start_with": {
-      "film": "Breathless",
-      "year": 1960,
-      "note": "The film that created the template — Belmondo's Michel is still cinema's most effortlessly cool character, and the film that launched a revolution."
-    },
-    "key_themes": [
-      "masculine freedom and its limits",
-      "American myth in French soil",
-      "charm as survival strategy",
-      "the New Wave's working-class soul"
-    ],
-    "quote": "I never wanted to be a star. I just wanted to work.",
-    "photo_url": "https://upload.wikimedia.org/wikipedia/commons/b/b2/Belmondo_1960.jpg"
-  },
-  {
-    "id": 15,
-    "name": "Gena Rowlands",
-    "nationality": "american",
-    "birth_year": 1930,
-    "death_year": 2024,
-    "era": "new-wave",
-    "tagline": "Raw, unpredictable, completely alive — Cassavetes's great partner",
-    "bio": "Gena Rowlands gave the most sustained and extraordinary performances in American independent cinema through her collaboration with her husband John Cassavetes — a partnership that produced some of the most emotionally raw, technically demanding films ever made. Rowlands worked without the safety net of a conventional script, finding her characters in the moment, often shooting for weeks or months until something true emerged. Her Mabel Longhetti in A Woman Under the Influence — a woman descending into mental illness while trying to hold her family together — is the greatest performance in American cinema after Brando. She played women who were too much for the world around them, women whose need and imagination exceeded what anyone could contain.",
-    "why": "She showed what acting could be when it dispensed with performance entirely and became something closer to witnessing.",
-    "notable_films": [
-      {
-        "title": "A Woman Under the Influence",
-        "year": 1974,
-        "runtime": 155,
-        "themes": [
-          "mental illness",
-          "marriage",
-          "motherhood",
-          "conformity",
-          "love"
-        ],
-        "synopsis": "The wife of a working-class construction foreman struggles with mental illness while trying to be the wife and mother her family needs.",
-        "why_watch": "The greatest film about a woman's inner life in American cinema. Rowlands plays Mabel as fully herself — inappropriate, loving, confused, alive — in a world that cannot accommodate what she is. The dinner party sequence is almost unbearable.",
-        "visual_style": "Cassavetes's long, probing takes — the camera stays on Rowlands's face until you see everything. No score, no relief."
-      },
-      {
-        "title": "Opening Night",
-        "year": 1977,
-        "runtime": 144,
-        "themes": [
-          "aging",
-          "art",
-          "grief",
-          "performance",
-          "identity"
-        ],
-        "synopsis": "A stage actress preparing for a Broadway opening night begins to unravel after witnessing a young fan's death.",
-        "why_watch": "Rowlands plays an actress who is losing herself and cannot separate the role she's playing from the grief she's feeling. Meta, exhausting, brilliant — she was drinking real alcohol for some scenes.",
-        "visual_style": "Cassavetes's most theatrical film — the theatre itself as a space of crisis, the audience as witness."
-      },
-      {
-        "title": "Faces",
-        "year": 1968,
-        "runtime": 130,
-        "themes": [
-          "marriage",
-          "infidelity",
-          "middle age",
-          "loneliness",
-          "alcohol"
-        ],
-        "synopsis": "A middle-class couple drift apart over the course of a single night of infidelity.",
-        "why_watch": "Rowlands as Jeannie — the call girl who is the most clear-eyed, most human person in the film. Her scenes in the second half of the film are among the most emotionally honest ever committed to celluloid.",
-        "visual_style": "Cassavetes's grainy, handheld 16mm — faces in extreme close-up, no distance, no mercy."
-      },
-      {
-        "title": "Gloria",
-        "year": 1980,
-        "runtime": 121,
-        "themes": [
-          "protection",
-          "crime",
-          "motherhood",
-          "Bronx",
-          "survival"
-        ],
-        "synopsis": "A tough, gun-toting woman finds herself protecting a young Puerto Rican boy from the mob after his family is killed.",
-        "why_watch": "Rowlands plays a woman who doesn't like children, doesn't want to be maternal, and becomes a ferocious mother-figure entirely against her nature. Physical, funny, heartbreaking — her most commercially accessible Cassavetes performance.",
-        "visual_style": "Cassavetes shooting the Bronx with the energy of a crime film — the city as a maze of danger."
-      },
-      {
-        "title": "Minnie and Moskowitz",
-        "year": 1971,
-        "runtime": 114,
-        "themes": [
-          "romance",
-          "class",
-          "loneliness",
-          "spontaneity"
-        ],
-        "synopsis": "A museum curator and a parking attendant fall into a chaotic, improbable love affair in Los Angeles.",
-        "why_watch": "Rowlands's Minnie is tender and brittle — a woman looking for something real in a city of surfaces. Her chemistry with Seymour Cassel is utterly unforced.",
-        "visual_style": "Cassavetes's loose, handheld documentary style — LA as emotional landscape, all strip-lit diners and parking lots."
-      },
-      {
-        "title": "Love Streams",
-        "year": 1984,
-        "runtime": 141,
-        "themes": [
-          "love",
-          "siblings",
-          "loneliness",
-          "excess"
-        ],
-        "synopsis": "Two adult siblings — a man who collects people he can love, a woman emerging from a painful divorce — move toward each other in mutual incomprehension.",
-        "why_watch": "Rowlands and Cassavetes onscreen together is both extraordinary and unbearable — real intimacy and real strangeness, inseparable.",
-        "visual_style": "Cassavetes's final major work — looser, stranger, more surreal than his earlier films."
-      },
-      {
-        "title": "The Killing of a Chinese Bookie",
-        "year": 1976,
-        "runtime": 135,
-        "themes": [
-          "masculinity",
-          "debt",
-          "nightclub",
-          "identity"
-        ],
-        "synopsis": "The owner of a Los Angeles strip club is forced to commit a murder to pay off his gambling debts.",
-        "why_watch": "Rowlands's small but devastating role — the film's emotional conscience, the one person who sees what Cosmo actually is.",
-        "visual_style": "Cassavetes and Friedrich Elmes in their most noir mode — the strip club as both paradise and trap."
-      },
-      {
-        "title": "Another Woman",
-        "year": 1988,
-        "runtime": 84,
-        "themes": [
-          "identity",
-          "self-deception",
-          "regret",
-          "middle age"
-        ],
-        "synopsis": "A philosophy professor who prides herself on control is forced — by overhearing a stranger's therapy — to reassess her entire life.",
-        "why_watch": "Rowlands in the Woody Allen universe — bringing her Cassavetes rigour to a character study that genuinely earns its intellectual ambitions.",
-        "visual_style": "Sven Nykvist's cool, precise New York — intellectual spaces, grey light, the beauty of restraint."
-      }
-    ],
-    "style_tags": [
-      "naturalism",
-      "intensity",
-      "improvisation",
-      "method acting",
-      "collaborations",
-      "tragedy"
-    ],
-    "start_with": {
-      "film": "A Woman Under the Influence",
-      "year": 1974,
-      "note": "The film that contains everything Rowlands could do — don't watch it expecting a conventional film, expect something rawer and more alive than you're used to."
-    },
-    "key_themes": [
-      "female excess and how the world punishes it",
-      "love that cannot contain itself",
-      "American independent cinema",
-      "performance as survival"
-    ],
-    "quote": "John never told me what to do. He just pointed the camera and believed in me. I tried to be worthy of that.",
-    "photo_url": "https://upload.wikimedia.org/wikipedia/commons/9/9f/Gena_Rowlands_Tony_Rome_1968.JPG"
-  },
-  {
-    "id": 16,
     "name": "Song Kang-ho",
     "nationality": "korean",
     "birth_year": 1967,
@@ -2376,7 +1929,7 @@
     "photo_url": "https://upload.wikimedia.org/wikipedia/commons/d/df/Song_Gangho_2016.jpg"
   },
   {
-    "id": 17,
+    "id": 14,
     "name": "Joaquin Phoenix",
     "nationality": "american",
     "birth_year": 1974,
@@ -2527,7 +2080,7 @@
     "photo_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/dc/Joaquin_Phoenix-64908_%28cropped%29.jpg/960px-Joaquin_Phoenix-64908_%28cropped%29.jpg"
   },
   {
-    "id": 18,
+    "id": 15,
     "name": "Chow Yun-fat",
     "nationality": "hong kong",
     "birth_year": 1955,
@@ -2677,7 +2230,7 @@
     "photo_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/7b/Chow_Yun_Fat_for_wiki.jpg/960px-Chow_Yun_Fat_for_wiki.jpg"
   },
   {
-    "id": 19,
+    "id": 16,
     "name": "Audrey Hepburn",
     "nationality": "belgian",
     "birth_year": 1929,
@@ -2829,7 +2382,7 @@
     "photo_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/74/AudreyKHepburn.jpg/960px-AudreyKHepburn.jpg"
   },
   {
-    "id": 20,
+    "id": 17,
     "name": "Sophia Loren",
     "nationality": "italian",
     "birth_year": 1934,
@@ -2964,7 +2517,7 @@
     "photo_url": "https://upload.wikimedia.org/wikipedia/commons/0/0a/Gala_de_%C3%8Enchidere_TIFF_2016_%2827490660976%29_%28cropped%29.jpg"
   },
   {
-    "id": 21,
+    "id": 18,
     "name": "Liv Ullmann",
     "nationality": "norwegian",
     "birth_year": 1938,
@@ -3115,7 +2668,7 @@
     "photo_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a5/Liv_Ullmann_2024_%28cropped%29.png/440px-Liv_Ullmann_2024_%28cropped%29.png"
   },
   {
-    "id": 22,
+    "id": 19,
     "name": "Setsuko Hara",
     "nationality": "japanese",
     "birth_year": 1920,
@@ -3264,7 +2817,7 @@
     "photo_url": "https://upload.wikimedia.org/wikipedia/commons/1/17/Setsuko_Hara_in_Late_Spring_2.jpg"
   },
   {
-    "id": 23,
+    "id": 20,
     "name": "Marcello Mastroianni",
     "nationality": "italian",
     "birth_year": 1924,
@@ -3415,7 +2968,7 @@
     "photo_url": "https://upload.wikimedia.org/wikipedia/commons/5/5a/Marcello_Mastroianni_02.jpg"
   },
   {
-    "id": 24,
+    "id": 21,
     "name": "Giulietta Masina",
     "nationality": "italian",
     "birth_year": 1921,
@@ -3565,7 +3118,7 @@
     "photo_url": "https://upload.wikimedia.org/wikipedia/commons/b/b9/Masinanightsofcabiria.jpg"
   },
   {
-    "id": 25,
+    "id": 22,
     "name": "Renée Falconetti",
     "nationality": "french",
     "birth_year": 1892,
@@ -3627,7 +3180,7 @@
     "photo_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/05/The_Passion_of_Joan_of_Arc_%281928%29_English_Poster_%28cropped%29.png/440px-The_Passion_of_Joan_of_Arc_%281928%29_English_Poster_%28cropped%29.png"
   },
   {
-    "id": 26,
+    "id": 23,
     "name": "Andy Lau",
     "nationality": "hong kong",
     "birth_year": 1961,
@@ -3754,7 +3307,7 @@
     "photo_url": "https://upload.wikimedia.org/wikipedia/commons/f/ff/Andy_Lau_%28cropped%29.jpg"
   },
   {
-    "id": 27,
+    "id": 24,
     "name": "Jackie Chan",
     "nationality": "hong kong",
     "birth_year": 1954,
