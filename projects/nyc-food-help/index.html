@@ -12,8 +12,8 @@
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}
 :root{
-  --green:#2D6A4F;--green-dk:#1B4D38;--green-md:#52B788;--green-lt:#EAF4EE;
-  --amber:#D97706;--amber-lt:#FEF3C7;
+  --green:#0F7044;--green-dk:#0A5233;--green-md:#27AE70;--green-lt:#CCF0DC;
+  --amber:#F59E0B;--amber-lt:#FEF3C7;
   --bg:#FAFAF7;--bg-card:#fff;--bg-warm:#F3EDE4;
   --text:#1C1917;--text2:#44403C;--text-m:#78716C;
   --border:#E7E2DA;
@@ -46,7 +46,7 @@ a.nav-tab{text-decoration:none}
 .tab-panel[hidden]{display:none}
 
 /* ===== HERO (home only) ===== */
-.hero{background:linear-gradient(135deg,#1B4D38 0%,#2D6A4F 55%,#40916C 100%);padding:72px 24px 64px;text-align:center;position:relative;overflow:hidden}
+.hero{background:linear-gradient(135deg,#0A5233 0%,#0F7044 50%,#27AE70 100%);padding:72px 24px 64px;text-align:center;position:relative;overflow:hidden}
 .hero::before{content:'';position:absolute;inset:0;opacity:.04;background-image:radial-gradient(circle,#fff 1px,transparent 1px);background-size:28px 28px}
 .hero-in{max-width:560px;margin:0 auto;position:relative}
 .hero-tag{display:inline-block;background:rgba(255,255,255,.13);color:rgba(255,255,255,.88);border:1px solid rgba(255,255,255,.2);border-radius:20px;font-size:.72rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase;padding:3px 13px;margin-bottom:16px}
@@ -71,7 +71,7 @@ a.nav-tab{text-decoration:none}
 .hn-eyebrow{font-size:.68rem;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:var(--text-m);margin-bottom:14px}
 .hn-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-bottom:12px;align-items:stretch}
 .hn-card{display:flex;flex-direction:column;align-items:flex-start;gap:6px;padding:20px;background:#fff;border:1px solid var(--border);border-radius:var(--r);cursor:pointer;transition:box-shadow .2s,border-color .2s;text-align:left;font-family:var(--font);height:100%}
-.hn-card:hover{box-shadow:var(--sh-md);border-color:#52B788}
+.hn-card:hover{box-shadow:var(--sh-md);border-color:#27AE70}
 .hn-icon-box{width:40px;height:40px;border-radius:10px;background:var(--green-lt);display:flex;align-items:center;justify-content:center;color:var(--green);flex-shrink:0;margin-bottom:6px}
 .hn-title{font-size:.9rem;font-weight:700;color:var(--text)}
 .hn-desc{font-size:.76rem;color:var(--text-m);line-height:1.5}
@@ -87,7 +87,7 @@ a.nav-tab{text-decoration:none}
 /* ===== GET HELP PANEL ===== */
 .gh-items{display:flex;flex-direction:column;gap:14px;margin-bottom:32px}
 .gh-item{display:flex;gap:16px;align-items:flex-start;padding:22px;background:#fff;border:1px solid var(--border);border-radius:var(--r);transition:box-shadow .2s,border-color .2s}
-.gh-item:hover{box-shadow:var(--sh);border-color:#52B788}
+.gh-item:hover{box-shadow:var(--sh);border-color:#27AE70}
 .gh-ico-box{width:44px;height:44px;border-radius:10px;background:var(--green-lt);display:flex;align-items:center;justify-content:center;color:var(--green);flex-shrink:0;margin-top:1px}
 .gh-head{font-size:.92rem;font-weight:700;margin-bottom:5px}
 .gh-body{font-size:.84rem;color:var(--text2);line-height:1.6;margin-bottom:8px}
@@ -128,7 +128,7 @@ a.nav-tab{text-decoration:none}
 
 /* ===== CARD ===== */
 .org-card{background:var(--bg-card);border:1px solid var(--border);border-radius:var(--r);padding:22px;cursor:pointer;transition:box-shadow .2s,border-color .2s;display:flex;flex-direction:column;gap:10px}
-.org-card:hover{box-shadow:var(--sh-md);border-color:#52B788}
+.org-card:hover{box-shadow:var(--sh-md);border-color:#27AE70}
 .card-name{font-size:.92rem;font-weight:700;color:var(--text);line-height:1.3}
 .card-boro{font-size:.73rem;color:var(--text-m);margin-top:1px}
 .card-badges{display:flex;flex-wrap:wrap;gap:3px}
@@ -198,8 +198,8 @@ a.nav-tab{text-decoration:none}
 .map-pop{padding:13px;min-width:180px;max-width:240px}
 .map-pop-name{font-family:var(--font);font-weight:700;font-size:.88rem;color:#1C1917;margin-bottom:4px;line-height:1.3}
 .map-pop-addr{font-family:var(--font);font-size:.74rem;color:#78716C;margin-bottom:6px}
-.map-pop-phone{font-family:var(--font);font-size:.74rem;color:#2D6A4F;font-weight:600}
-.map-pop-link{display:inline-block;margin-top:8px;font-family:var(--font);font-size:.74rem;color:#fff;background:#2D6A4F;padding:4px 10px;border-radius:6px;font-weight:600}
+.map-pop-phone{font-family:var(--font);font-size:.74rem;color:#0F7044;font-weight:600}
+.map-pop-link{display:inline-block;margin-top:8px;font-family:var(--font);font-size:.74rem;color:#fff;background:#0F7044;padding:4px 10px;border-radius:6px;font-weight:600}
 
 
 /* ===== MODAL ===== */
@@ -576,7 +576,7 @@ footer p{font-size:.82rem;line-height:1.7}
 'use strict';
 
 const TC = {
-  'food-pantry':    { label:'Food Pantry',    color:'#1B5E3B', map:'#2D6A4F' },
+  'food-pantry':    { label:'Food Pantry',    color:'#1B5E3B', map:'#0F7044' },
   'soup-kitchen':   { label:'Soup Kitchen',   color:'#9A3A0A', map:'#D97706' },
   'community-meal': { label:'Community Meal', color:'#3730A3', map:'#4F46E5' },
   'food-rescue':    { label:'Food Rescue',    color:'#5B21B6', map:'#7C3AED' },
@@ -588,7 +588,7 @@ const TC = {
   'food-bank':      { label:'Food Bank',      color:'#78350F', map:'#A16207' },
 };
 const tLabel = t => TC[t]?.label || t;
-const tMap   = t => TC[t]?.map   || '#2D6A4F';
+const tMap   = t => TC[t]?.map   || '#0F7044';
 
 const TABS = ['home','get-help','directory'];
 let orgs = [], filtered = [];
@@ -815,7 +815,7 @@ function refreshMapMarkers() {
       <div class="map-pop-name">${o.name}</div>
       <div style="margin-bottom:5px">${typeLine}</div>
       <div class="map-pop-addr">📍 ${o.address}</div>
-      ${o.phone ? `<div class="map-pop-phone">📞 <a href="tel:${o.phone.replace(/\D/g,'')}" style="color:#2D6A4F">${o.phone}</a></div>` : ''}
+      ${o.phone ? `<div class="map-pop-phone">📞 <a href="tel:${o.phone.replace(/\D/g,'')}" style="color:#0F7044">${o.phone}</a></div>` : ''}
       <a href="${o.websiteUrl}" target="_blank" rel="noopener" class="map-pop-link">Visit website →</a>
     </div>`;
     const m = L.marker([o.lat, o.lng], { icon, title: o.name })
