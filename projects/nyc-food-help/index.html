@@ -324,7 +324,7 @@ footer p{font-size:.82rem;line-height:1.7}
         <button class="hn-card" onclick="showTab('directory')" aria-label="Go to Directory tab">
           <div class="hn-icon-box" aria-hidden="true"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="8" y1="6" x2="21" y2="6"/><line x1="8" y1="12" x2="21" y2="12"/><line x1="8" y1="18" x2="21" y2="18"/><line x1="3" y1="6" x2="3.01" y2="6"/><line x1="3" y1="12" x2="3.01" y2="12"/><line x1="3" y1="18" x2="3.01" y2="18"/></svg></div>
           <span class="hn-title">Directory</span>
-          <span class="hn-desc">17 personally researched organizations. Browse by borough and service type, or explore the map.</span>
+          <span class="hn-desc">24 personally researched organizations. Browse by borough and service type, or explore the map.</span>
         </button>
         <button class="hn-card" onclick="showTab('get-help')" aria-label="Go to Get Help tab">
           <div class="hn-icon-box" aria-hidden="true"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><path d="M12 17h.01"/></svg></div>
@@ -475,6 +475,7 @@ footer p{font-size:.82rem;line-height:1.7}
             <button class="chip" data-boro="brooklyn" aria-pressed="false">Brooklyn</button>
             <button class="chip" data-boro="bronx" aria-pressed="false">Bronx</button>
             <button class="chip" data-boro="queens" aria-pressed="false">Queens</button>
+            <button class="chip" data-boro="staten-island" aria-pressed="false">Staten Island</button>
             <button class="chip" data-boro="citywide" aria-pressed="false">Citywide</button>
           </div>
         </div>
@@ -803,7 +804,7 @@ function refreshMapMarkers() {
 }
 
 /* ===== HELPERS ===== */
-function cap(s) { return s === 'citywide' ? 'Citywide' : s.charAt(0).toUpperCase() + s.slice(1); }
+function cap(s) { return s === 'citywide' ? 'Citywide' : s === 'staten-island' ? 'Staten Island' : s.charAt(0).toUpperCase() + s.slice(1); }
 
 /* ===== INIT ===== */
 async function init() {
