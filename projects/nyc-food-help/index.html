@@ -19,7 +19,7 @@ html{scroll-behavior:smooth}
   --border:#E7E2DA;
   --r:12px;--r-lg:20px;
   --sh:0 2px 8px rgba(0,0,0,.08);--sh-md:0 4px 16px rgba(0,0,0,.1);--sh-lg:0 8px 28px rgba(0,0,0,.14);
-  --font:'Inter',system-ui,sans-serif
+  --font:'Inter', system-ui, sans-serif
 }
 body{font-family:var(--font);background:var(--bg);color:var(--text);line-height:1.6;font-size:16px;min-height:100vh;display:flex;flex-direction:column}
 a{color:inherit;text-decoration:none}
@@ -36,7 +36,7 @@ button{cursor:pointer;font-family:inherit;border:none;background:none}
 .logo-icon{width:30px;height:30px;background:var(--green);border-radius:8px;display:flex;align-items:center;justify-content:center;flex-shrink:0}
 .nav-tabs{display:flex;align-items:center;gap:2px;overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none}
 .nav-tabs::-webkit-scrollbar{display:none}
-.nav-tab{padding:6px 12px;border-radius:6px;font-size:.88rem;font-weight:500;color:var(--text2);cursor:pointer;white-space:nowrap;transition:background .15s,color .15s;background:none;border:none;font-family:var(--font)}
+.nav-tab{padding:6px 12px;border-radius:6px;font-size:.88rem;font-weight:500;color:var(--text2);cursor:pointer;white-space:nowrap;transition:background .15s, color .15s;background:none;border:none;font-family:var(--font)}
 .nav-tab:hover{background:var(--green-lt);color:var(--green)}
 .nav-tab.active{background:var(--green-lt);color:var(--green);font-weight:600}
 a.nav-tab{text-decoration:none}
@@ -47,7 +47,7 @@ a.nav-tab{text-decoration:none}
 
 /* ===== HERO (home only) ===== */
 .hero{background:linear-gradient(135deg,#0A5233 0%,#0F7044 50%,#27AE70 100%);padding:72px 24px 64px;text-align:center;position:relative;overflow:hidden}
-.hero::before{content:'';position:absolute;inset:0;opacity:.04;background-image:radial-gradient(circle,#fff 1px,transparent 1px);background-size:28px 28px}
+.hero::before{content:'';position:absolute;inset:0;opacity:.04;background-image:radial-gradient(circle,#fff 1px, transparent 1px);background-size:28px 28px}
 .hero-in{max-width:560px;margin:0 auto;position:relative}
 .hero-tag{display:inline-block;background:rgba(255,255,255,.13);color:rgba(255,255,255,.88);border:1px solid rgba(255,255,255,.2);border-radius:20px;font-size:.72rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase;padding:3px 13px;margin-bottom:16px}
 .hero h1{font-size:clamp(1.75rem,4vw,2.8rem);font-weight:700;color:#fff;line-height:1.13;margin-bottom:10px}
@@ -70,7 +70,7 @@ a.nav-tab{text-decoration:none}
 .hn-wrap{background:var(--bg);padding:32px 0;border-bottom:1px solid var(--border)}
 .hn-eyebrow{font-size:.68rem;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:var(--text-m);margin-bottom:14px}
 .hn-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-bottom:12px;align-items:stretch}
-.hn-card{display:flex;flex-direction:column;align-items:flex-start;gap:6px;padding:20px;background:#fff;border:1px solid var(--border);border-radius:var(--r);cursor:pointer;transition:box-shadow .2s,border-color .2s;text-align:left;font-family:var(--font);height:100%}
+.hn-card{display:flex;flex-direction:column;align-items:flex-start;gap:6px;padding:20px;background:#fff;border:1px solid var(--border);border-radius:var(--r);cursor:pointer;transition:box-shadow .2s, border-color .2s;text-align:left;font-family:var(--font);height:100%}
 .hn-card:hover{box-shadow:var(--sh-md);border-color:#27AE70}
 .hn-icon-box{width:40px;height:40px;border-radius:10px;background:var(--green-lt);display:flex;align-items:center;justify-content:center;color:var(--green);flex-shrink:0;margin-bottom:6px}
 .hn-title{font-size:.9rem;font-weight:700;color:var(--text)}
@@ -86,7 +86,7 @@ a.nav-tab{text-decoration:none}
 
 /* ===== GET HELP PANEL ===== */
 .gh-items{display:flex;flex-direction:column;gap:14px;margin-bottom:32px}
-.gh-item{display:flex;gap:16px;align-items:flex-start;padding:22px;background:#fff;border:1px solid var(--border);border-radius:var(--r);transition:box-shadow .2s,border-color .2s}
+.gh-item{display:flex;gap:16px;align-items:flex-start;padding:22px;background:#fff;border:1px solid var(--border);border-radius:var(--r);transition:box-shadow .2s, border-color .2s}
 .gh-item:hover{box-shadow:var(--sh);border-color:#27AE70}
 .gh-ico-box{width:44px;height:44px;border-radius:10px;background:var(--green-lt);display:flex;align-items:center;justify-content:center;color:var(--green);flex-shrink:0;margin-top:1px}
 .gh-head{font-size:.92rem;font-weight:700;margin-bottom:5px}
@@ -124,10 +124,10 @@ a.nav-tab{text-decoration:none}
 .search-wrap input::placeholder{color:var(--text-m)}
 .results-meta{display:flex;align-items:center;justify-content:space-between;margin-bottom:12px;font-size:.78rem;color:var(--text-m)}
 .results-meta strong{color:var(--text)}
-.org-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:20px}
+.org-grid{display:grid;grid-template-columns:repeat(auto-fill, minmax(300px,1fr));gap:20px}
 
 /* ===== CARD ===== */
-.org-card{background:var(--bg-card);border:1px solid var(--border);border-radius:var(--r);padding:22px;cursor:pointer;transition:box-shadow .2s,border-color .2s;display:flex;flex-direction:column;gap:10px}
+.org-card{background:var(--bg-card);border:1px solid var(--border);border-radius:var(--r);padding:22px;cursor:pointer;transition:box-shadow .2s, border-color .2s;display:flex;flex-direction:column;gap:10px}
 .org-card:hover{box-shadow:var(--sh-md);border-color:#27AE70}
 .card-name{font-size:.92rem;font-weight:700;color:var(--text);line-height:1.3}
 .card-boro{font-size:.73rem;color:var(--text-m);margin-top:1px}
@@ -329,7 +329,7 @@ footer p{font-size:.82rem;line-height:1.7}
         <button class="hn-card" onclick="showTab('get-help')" aria-label="Go to Get Help tab">
           <div class="hn-icon-box" aria-hidden="true"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><path d="M12 17h.01"/></svg></div>
           <span class="hn-title">Get Help</span>
-          <span class="hn-desc">Not sure where to start? I break it down by situation — hot meal, groceries, delivery, or phone help.</span>
+          <span class="hn-desc">Not sure where to start? I break it down by situation, hot meal, groceries, delivery, or phone help.</span>
         </button>
         <a class="hn-card" href="volunteer.html" aria-label="Go to Give Help page">
           <div class="hn-icon-box" aria-hidden="true"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg></div>
@@ -350,7 +350,7 @@ footer p{font-size:.82rem;line-height:1.7}
     <div class="panel-hdr">
       <div class="s-label">A guide to your options</div>
       <h2 class="s-title">Find what fits your situation</h2>
-      <p class="s-sub">Pick what matches where you're at. And if you're ever unsure, just call <strong>311</strong> — they're genuinely helpful.</p>
+      <p class="s-sub">Pick what matches where you're at. And if you're ever unsure, just call <strong>311</strong>, they're genuinely helpful.</p>
     </div>
 
     <div class="gh-items">
@@ -407,7 +407,7 @@ footer p{font-size:.82rem;line-height:1.7}
     <div class="bfyg">
       <div class="bfyg-title">Before you go</div>
       <div class="bfyg-list">
-        <div class="bfyg-item"><div class="bfyg-num">1</div><span><strong>Call ahead.</strong> Hours shift without warning — even the reliable ones.</span></div>
+        <div class="bfyg-item"><div class="bfyg-num">1</div><span><strong>Call ahead.</strong> Hours shift without warning, even the reliable ones.</span></div>
         <div class="bfyg-item"><div class="bfyg-num">2</div><span><strong>Check the website first.</strong> Many orgs have specific intake days or require appointments.</span></div>
         <div class="bfyg-item"><div class="bfyg-num">3</div><span><strong>Bring ID if you have it.</strong> Most places won't ask, but it doesn't hurt.</span></div>
         <div class="bfyg-item"><div class="bfyg-num">4</div><span><strong>You don't need to prove anything.</strong> Most NYC food programs have no income requirement.</span></div>
@@ -476,7 +476,6 @@ footer p{font-size:.82rem;line-height:1.7}
             <button class="chip" data-boro="bronx" aria-pressed="false">Bronx</button>
             <button class="chip" data-boro="queens" aria-pressed="false">Queens</button>
             <button class="chip" data-boro="staten-island" aria-pressed="false">Staten Island</button>
-            <button class="chip" data-boro="citywide" aria-pressed="false">Citywide</button>
           </div>
         </div>
         <div class="filter-row">
@@ -485,13 +484,8 @@ footer p{font-size:.82rem;line-height:1.7}
             <button class="chip on" data-type="all" aria-pressed="true">All</button>
             <button class="chip" data-type="food-pantry" aria-pressed="false">Food pantry</button>
             <button class="chip" data-type="soup-kitchen" aria-pressed="false">Soup kitchen</button>
-            <button class="chip" data-type="community-meal" aria-pressed="false">Community meal</button>
-            <button class="chip" data-type="food-rescue" aria-pressed="false">Food rescue</button>
             <button class="chip" data-type="home-delivery" aria-pressed="false">Home delivery</button>
             <button class="chip" data-type="senior-meals" aria-pressed="false">Senior meals</button>
-            <button class="chip" data-type="shelter-meals" aria-pressed="false">Shelter meals</button>
-            <button class="chip" data-type="food-bank" aria-pressed="false">Food bank</button>
-            <button class="chip" data-type="snap-help" aria-pressed="false">SNAP help</button>
           </div>
         </div>
       </div>
