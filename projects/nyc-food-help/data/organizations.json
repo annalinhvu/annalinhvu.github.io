@@ -50,7 +50,7 @@
     "name": "City Harvest",
     "slug": "city-harvest",
     "featured": true,
-    "types": ["food-rescue", "mobile-pantry"],
+    "types": ["food-pantry", "food-rescue", "mobile-pantry"],
     "borough": "citywide",
     "neighborhood": "Citywide",
     "address": "6 East 32nd Street, New York, NY 10016",

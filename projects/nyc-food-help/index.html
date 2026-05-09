@@ -484,6 +484,7 @@ footer p{font-size:.82rem;line-height:1.7}
             <button class="chip" data-boro="bronx" aria-pressed="false">Bronx</button>
             <button class="chip" data-boro="queens" aria-pressed="false">Queens</button>
             <button class="chip" data-boro="staten-island" aria-pressed="false">Staten Island</button>
+            <button class="chip" data-boro="citywide" aria-pressed="false">Citywide</button>
           </div>
         </div>
         <div class="filter-row">
@@ -703,7 +704,7 @@ const TYPE_GROUPS = {
 
 function applyFilters() {
   filtered = orgs.filter(o => {
-    const okBoro = boro === 'all' || o.borough === boro || o.borough === 'citywide';
+    const okBoro = boro === 'all' || o.borough === boro;
     const okType = type === 'all' || (
       TYPE_GROUPS[type]
         ? o.types.some(t => TYPE_GROUPS[type].includes(t))
