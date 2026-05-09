@@ -47,13 +47,12 @@ a.nav-tab{text-decoration:none}
 .tab-panel[hidden]{display:none}
 
 /* ===== HERO (home only) ===== */
-.hero{background:linear-gradient(150deg,#424E34 0%,#667B4E 55%,#94AF7C 100%);padding:64px 24px 56px;text-align:center;position:relative;overflow:hidden}
-.hero::before{content:'';position:absolute;inset:0;opacity:.04;background-image:radial-gradient(circle,#fff 1px, transparent 1px);background-size:32px 32px}
+.hero{background:linear-gradient(150deg,#E2EDE0 0%,#EDE8DC 60%,#F2EBE0 100%);padding:64px 24px 56px;text-align:center;position:relative;overflow:hidden;border-bottom:1px solid var(--border)}
+.hero::before{content:'';position:absolute;inset:0;opacity:.05;background-image:radial-gradient(circle,#263A2B 1px, transparent 1px);background-size:32px 32px}
 .hero-in{max-width:520px;margin:0 auto;position:relative}
-.hero-tag{display:inline-block;background:rgba(255,255,255,.13);color:rgba(255,255,255,.88);border:1px solid rgba(255,255,255,.2);border-radius:20px;font-size:.72rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase;padding:3px 13px;margin-bottom:16px}
-.hero h1{font-size:clamp(1.4rem,3vw,2.1rem);font-weight:700;color:#fff;line-height:1.2;margin-bottom:12px}
-.hero h1 em{color:#EDD9A3;font-style:normal}
-.hero-sub{font-size:.9rem;color:rgba(255,255,255,.85);line-height:1.7}
+.hero h1{font-size:clamp(1.4rem,3vw,2.1rem);font-weight:700;color:var(--green-dk);line-height:1.2;margin-bottom:12px}
+.hero h1 em{color:var(--terracotta);font-style:normal}
+.hero-sub{font-size:.9rem;color:var(--text2);line-height:1.7}
 
 /* ===== HOME: NEED FOOD TODAY ===== */
 .ht-wrap{background:#fff;padding:40px 0;border-bottom:1px solid var(--border)}
@@ -263,7 +262,6 @@ footer p{font-size:.82rem;line-height:1.7}
   .ht-btns,.hn-grid{grid-template-columns:1fr}
   .bfyg-list{grid-template-columns:1fr}
   .hero{padding:44px 16px 40px}
-  .hero h1{font-size:1.4rem}
   #lmap{height:320px}
   .org-grid{grid-template-columns:1fr}
   .filter-lbl{display:none}
@@ -334,7 +332,7 @@ footer p{font-size:.82rem;line-height:1.7}
         <button class="hn-card" onclick="showTab('directory')" aria-label="Go to Directory tab">
           <div class="hn-icon-box" aria-hidden="true"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="8" y1="6" x2="21" y2="6"/><line x1="8" y1="12" x2="21" y2="12"/><line x1="8" y1="18" x2="21" y2="18"/><line x1="3" y1="6" x2="3.01" y2="6"/><line x1="3" y1="12" x2="3.01" y2="12"/><line x1="3" y1="18" x2="3.01" y2="18"/></svg></div>
           <span class="hn-title">Directory</span>
-          <span class="hn-desc">24 personally researched organizations. Browse by borough and service type, or explore the map.</span>
+          <span class="hn-desc">25 personally researched organizations. Browse by borough and service type, or explore the map.</span>
         </button>
         <button class="hn-card" onclick="showTab('get-help')" aria-label="Go to Get Help tab">
           <div class="hn-icon-box" aria-hidden="true"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><path d="M12 17h.01"/></svg></div>
@@ -369,7 +367,7 @@ footer p{font-size:.82rem;line-height:1.7}
         <div>
           <div class="gh-head">I need a hot meal today</div>
           <p class="gh-body">Soup kitchens and community meals serve food on-site, no cooking required. Many are low-barrier and serve meals with little or no registration. Requirements can vary, so it's still worth checking before you go.</p>
-          <button class="link-btn" onclick="filterAndGo('soup-kitchen')">See soup kitchens in the directory →</button>
+          <button class="link-btn" onclick="filterAndGo('hot-meals')">See hot meals in the directory →</button>
         </div>
       </div>
       <div class="gh-item">
@@ -492,10 +490,12 @@ footer p{font-size:.82rem;line-height:1.7}
           <div class="filter-lbl" id="type-lbl">Type</div>
           <div class="chips" id="type-chips" role="group" aria-labelledby="type-lbl">
             <button class="chip on" data-type="all" aria-pressed="true">All</button>
+            <button class="chip" data-type="hot-meals" aria-pressed="false">Hot meals</button>
             <button class="chip" data-type="food-pantry" aria-pressed="false">Food pantry</button>
-            <button class="chip" data-type="soup-kitchen" aria-pressed="false">Soup kitchen</button>
+            <button class="chip" data-type="food-rescue" aria-pressed="false">Food rescue</button>
             <button class="chip" data-type="home-delivery" aria-pressed="false">Home delivery</button>
             <button class="chip" data-type="senior-meals" aria-pressed="false">Senior meals</button>
+            <button class="chip" data-type="snap-help" aria-pressed="false">SNAP / Benefits</button>
           </div>
         </div>
       </div>
@@ -692,10 +692,23 @@ function renderCards() {
 }
 
 /* ===== FILTERS ===== */
+const TYPE_GROUPS = {
+  'hot-meals':     ['soup-kitchen','community-meal','shelter-meals'],
+  'food-pantry':   ['food-pantry','food-bank','mobile-pantry'],
+  'food-rescue':   ['food-rescue'],
+  'home-delivery': ['home-delivery'],
+  'senior-meals':  ['senior-meals'],
+  'snap-help':     ['snap-help'],
+};
+
 function applyFilters() {
   filtered = orgs.filter(o => {
     const okBoro = boro === 'all' || o.borough === boro || o.borough === 'citywide';
-    const okType = type === 'all' || o.types.includes(type);
+    const okType = type === 'all' || (
+      TYPE_GROUPS[type]
+        ? o.types.some(t => TYPE_GROUPS[type].includes(t))
+        : o.types.includes(type)
+    );
     const qn = q.toLowerCase().trim();
     const okQ = !qn
       || o.name.toLowerCase().includes(qn)
