@@ -187,8 +187,8 @@ body{
 .map-wrap{flex:1;position:relative}
 #map{width:100%;height:100%}
 
-/* Vintage filter on tiles */
-.leaflet-tile-pane{filter:sepia(0.3) saturate(0.85)}
+/* Vintage filter on tiles — dark mode only */
+[data-theme="dark"] .leaflet-tile-pane{filter:sepia(0.3) saturate(0.85)}
 
 .theme-btn{
   background:none;border:1px solid var(--border);color:var(--ink-3);
@@ -277,7 +277,7 @@ body{
       <div class="cat-tags" id="catTags"></div>
       <div class="filters-row">
         <select id="boroughSelect"><option value="">All boroughs</option></select>
-        <input type="text" id="searchInput" placeholder="Search...">
+        <input type="text" id="searchInput" placeholder="Search..." aria-label="Search venues">
       </div>
     </div>
     <div class="venue-count" id="venueCount"></div>
