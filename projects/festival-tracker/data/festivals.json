@@ -44,7 +44,8 @@
         "min_runtime": null,
         "max_runtime": null
       }
-    ]
+    ],
+    "founded": 2003
   },
   {
     "id": 61,
@@ -86,7 +87,8 @@
         "min_runtime": null,
         "max_runtime": 40
       }
-    ]
+    ],
+    "founded": 2001
   },
   {
     "id": 12,
@@ -175,7 +177,8 @@
         "min_runtime": null,
         "max_runtime": 30
       }
-    ]
+    ],
+    "founded": 2011
   },
   {
     "id": 65,
@@ -184,7 +187,7 @@
     "country": "Mexico",
     "website": "https://www.ambulante.org",
     "filmfreeway": null,
-    "description": "Itinerant documentary festival traveling across Mexico, co-founded by Gael Garc\u00eda Bernal, bringing non-fiction cinema to communities beyond traditional venues.",
+    "description": "Itinerant documentary festival traveling across Mexico, co-founded by Gael García Bernal, bringing non-fiction cinema to communities beyond traditional venues.",
     "focus": "documentary",
     "tier": "mid",
     "event_month": "March-May",
@@ -217,7 +220,8 @@
         "min_runtime": null,
         "max_runtime": 40
       }
-    ]
+    ],
+    "founded": 2006
   },
   {
     "id": 86,
@@ -264,7 +268,8 @@
         "min_runtime": null,
         "max_runtime": 60
       }
-    ]
+    ],
+    "founded": 2009
   },
   {
     "id": 1,
@@ -334,7 +339,8 @@
         "min_runtime": null,
         "max_runtime": 15
       }
-    ]
+    ],
+    "founded": 1963
   },
   {
     "id": 22,
@@ -381,7 +387,8 @@
         "min_runtime": null,
         "max_runtime": 30
       }
-    ]
+    ],
+    "founded": 1997
   },
   {
     "id": 30,
@@ -427,7 +434,8 @@
         "min_runtime": null,
         "max_runtime": 45
       }
-    ]
+    ],
+    "founded": 1971
   },
   {
     "id": 74,
@@ -480,7 +488,8 @@
         "min_runtime": null,
         "max_runtime": 60
       }
-    ]
+    ],
+    "founded": 2003
   },
   {
     "id": 29,
@@ -538,7 +547,8 @@
         "min_runtime": null,
         "max_runtime": 40
       }
-    ]
+    ],
+    "founded": 2012
   },
   {
     "id": 88,
@@ -585,12 +595,13 @@
         "min_runtime": null,
         "max_runtime": 60
       }
-    ]
+    ],
+    "founded": 2012
   },
   {
     "id": 13,
-    "name": "Bogot\u00e1 Experimental Film Festival (CineAutopsia)",
-    "city": "Bogot\u00e1",
+    "name": "Bogotá Experimental Film Festival (CineAutopsia)",
+    "city": "Bogotá",
     "country": "Colombia",
     "website": "https://www.cineautopsia.com",
     "filmfreeway": "https://filmfreeway.com/CineAutopsia",
@@ -731,7 +742,8 @@
         "min_runtime": null,
         "max_runtime": 60
       }
-    ]
+    ],
+    "founded": 2003
   },
   {
     "id": 60,
@@ -779,7 +791,8 @@
         "min_runtime": null,
         "max_runtime": 40
       }
-    ]
+    ],
+    "founded": 2003
   },
   {
     "id": 49,
@@ -832,7 +845,8 @@
         "min_runtime": null,
         "max_runtime": 60
       }
-    ]
+    ],
+    "founded": 1979
   },
   {
     "id": 33,
@@ -916,11 +930,12 @@
         "min_runtime": null,
         "max_runtime": 30
       }
-    ]
+    ],
+    "founded": 2003
   },
   {
     "id": 45,
-    "name": "Curta Cinema \u2014 Rio de Janeiro Short Film Festival",
+    "name": "Curta Cinema — Rio de Janeiro Short Film Festival",
     "city": "Rio de Janeiro",
     "country": "Brazil",
     "website": "https://www.curtacinema.com.br",
@@ -1005,7 +1020,8 @@
         "min_runtime": null,
         "max_runtime": 30
       }
-    ]
+    ],
+    "founded": 2001
   },
   {
     "id": 69,
@@ -1047,7 +1063,8 @@
         "min_runtime": null,
         "max_runtime": 30
       }
-    ]
+    ],
+    "founded": 2009
   },
   {
     "id": 57,
@@ -1095,7 +1112,8 @@
         "min_runtime": null,
         "max_runtime": 40
       }
-    ]
+    ],
+    "founded": 2010
   },
   {
     "id": 72,
@@ -1148,7 +1166,8 @@
         "min_runtime": null,
         "max_runtime": 45
       }
-    ]
+    ],
+    "founded": 1955
   },
   {
     "id": 89,
@@ -1231,7 +1250,8 @@
         "min_runtime": null,
         "max_runtime": 50
       }
-    ]
+    ],
+    "founded": 2003
   },
   {
     "id": 85,
@@ -1271,7 +1291,7 @@
   },
   {
     "id": 79,
-    "name": "DocPoint \u2013 Helsinki Documentary Film Festival",
+    "name": "DocPoint – Helsinki Documentary Film Festival",
     "city": "Helsinki",
     "country": "Finland",
     "website": "https://docpoint.info",
@@ -1303,7 +1323,8 @@
         "min_runtime": null,
         "max_runtime": 30
       }
-    ]
+    ],
+    "founded": 2002
   },
   {
     "id": 44,
@@ -1345,7 +1366,8 @@
         "min_runtime": null,
         "max_runtime": 60
       }
-    ]
+    ],
+    "founded": 1999
   },
   {
     "id": 70,
@@ -1387,7 +1409,8 @@
         "min_runtime": null,
         "max_runtime": 30
       }
-    ]
+    ],
+    "founded": 2000
   },
   {
     "id": 64,
@@ -1429,11 +1452,12 @@
         "min_runtime": null,
         "max_runtime": 30
       }
-    ]
+    ],
+    "founded": 2003
   },
   {
     "id": 77,
-    "name": "Dok.Fest M\u00fcnchen",
+    "name": "Dok.Fest München",
     "city": "Munich",
     "country": "Germany",
     "website": "https://www.dokfest-muenchen.de",
@@ -1470,7 +1494,7 @@
   {
     "id": 27,
     "name": "EMAF (European Media Art Festival)",
-    "city": "Osnabr\u00fcck",
+    "city": "Osnabrück",
     "country": "Germany",
     "website": "https://www.emaf.de",
     "filmfreeway": "https://filmfreeway.com/EMAF",
@@ -1517,11 +1541,12 @@
         "min_runtime": null,
         "max_runtime": null
       }
-    ]
+    ],
+    "founded": 1988
   },
   {
     "id": 46,
-    "name": "EMIFF \u2014 Edinburgh Experimental Film Festival",
+    "name": "EMIFF — Edinburgh Experimental Film Festival",
     "city": "Edinburgh",
     "country": "UK",
     "website": "https://www.emiff.org",
@@ -1611,7 +1636,8 @@
         "min_runtime": null,
         "max_runtime": 30
       }
-    ]
+    ],
+    "founded": 2004
   },
   {
     "id": 19,
@@ -1653,7 +1679,8 @@
         "min_runtime": null,
         "max_runtime": 40
       }
-    ]
+    ],
+    "founded": 1947
   },
   {
     "id": 68,
@@ -1695,7 +1722,8 @@
         "min_runtime": null,
         "max_runtime": 30
       }
-    ]
+    ],
+    "founded": 1999
   },
   {
     "id": 14,
@@ -1801,7 +1829,8 @@
         "min_runtime": null,
         "max_runtime": 60
       }
-    ]
+    ],
+    "founded": 1989
   },
   {
     "id": 63,
@@ -1837,11 +1866,12 @@
         "min_runtime": null,
         "max_runtime": 52
       }
-    ]
+    ],
+    "founded": 1987
   },
   {
     "id": 47,
-    "name": "FLEX Fest \u2014 Florida Experimental Film/Video Festival",
+    "name": "FLEX Fest — Florida Experimental Film/Video Festival",
     "city": "Gainesville, FL",
     "country": "USA",
     "website": "https://www.flexfest.org",
@@ -1935,12 +1965,12 @@
   },
   {
     "id": 39,
-    "name": "Festival du Nouveau Cin\u00e9ma",
-    "city": "Montr\u00e9al",
+    "name": "Festival du Nouveau Cinéma",
+    "city": "Montréal",
     "country": "Canada",
     "website": "https://nouveaucinema.ca",
     "filmfreeway": null,
-    "description": "Montr\u00e9al festival dedicated to new trends in cinema and new media, with a strong experimental and digital arts component.",
+    "description": "Montréal festival dedicated to new trends in cinema and new media, with a strong experimental and digital arts component.",
     "focus": "experimental",
     "tier": "mid",
     "event_month": "October",
@@ -1978,7 +2008,8 @@
         "min_runtime": null,
         "max_runtime": 40
       }
-    ]
+    ],
+    "founded": 1971
   },
   {
     "id": 66,
@@ -2020,7 +2051,8 @@
         "min_runtime": null,
         "max_runtime": 30
       }
-    ]
+    ],
+    "founded": 1955
   },
   {
     "id": 59,
@@ -2068,7 +2100,8 @@
         "min_runtime": null,
         "max_runtime": 40
       }
-    ]
+    ],
+    "founded": 1998
   },
   {
     "id": 52,
@@ -2133,7 +2166,8 @@
         "min_runtime": null,
         "max_runtime": 29
       }
-    ]
+    ],
+    "founded": 1993
   },
   {
     "id": 83,
@@ -2169,7 +2203,8 @@
         "min_runtime": null,
         "max_runtime": 40
       }
-    ]
+    ],
+    "founded": 1988
   },
   {
     "id": 51,
@@ -2216,7 +2251,8 @@
         "min_runtime": null,
         "max_runtime": 30
       }
-    ]
+    ],
+    "founded": 1988
   },
   {
     "id": 18,
@@ -2268,7 +2304,8 @@
         "min_runtime": null,
         "max_runtime": 45
       }
-    ]
+    ],
+    "founded": 1988
   },
   {
     "id": 2,
@@ -2309,12 +2346,13 @@
         "min_runtime": null,
         "max_runtime": 60
       }
-    ]
+    ],
+    "founded": 1972
   },
   {
     "id": 78,
     "name": "It's All True International Documentary Film Festival",
-    "city": "S\u00e3o Paulo",
+    "city": "São Paulo",
     "country": "Brazil",
     "website": "https://www.itsalltrue.com.br",
     "filmfreeway": "https://filmfreeway.com/ItsAllTrue",
@@ -2350,7 +2388,8 @@
         "min_runtime": null,
         "max_runtime": 30
       }
-    ]
+    ],
+    "founded": 1996
   },
   {
     "id": 76,
@@ -2388,7 +2427,7 @@
         "max_runtime": 90
       },
       {
-        "name": "exprmntl \u2014 experimental",
+        "name": "exprmntl — experimental",
         "min_runtime": null,
         "max_runtime": 30
       },
@@ -2402,7 +2441,8 @@
         "min_runtime": null,
         "max_runtime": 30
       }
-    ]
+    ],
+    "founded": 1997
   },
   {
     "id": 28,
@@ -2444,7 +2484,8 @@
         "min_runtime": null,
         "max_runtime": 50
       }
-    ]
+    ],
+    "founded": 1997
   },
   {
     "id": 42,
@@ -2495,7 +2536,7 @@
   },
   {
     "id": 48,
-    "name": "L'Alternativa \u2014 Barcelona Independent Film Festival",
+    "name": "L'Alternativa — Barcelona Independent Film Festival",
     "city": "Barcelona",
     "country": "Spain",
     "website": "https://alternativa.cccb.org",
@@ -2584,7 +2625,7 @@
   },
   {
     "id": 31,
-    "name": "Locarno Film Festival \u2014 Pardi di domani",
+    "name": "Locarno Film Festival — Pardi di domani",
     "city": "Locarno",
     "country": "Switzerland",
     "website": "https://www.locarnofestival.ch",
@@ -2617,7 +2658,8 @@
         "min_runtime": null,
         "max_runtime": 60
       }
-    ]
+    ],
+    "founded": 1946
   },
   {
     "id": 40,
@@ -2659,7 +2701,8 @@
         "min_runtime": null,
         "max_runtime": 30
       }
-    ]
+    ],
+    "founded": 1975
   },
   {
     "id": 67,
@@ -2701,7 +2744,8 @@
         "min_runtime": null,
         "max_runtime": 40
       }
-    ]
+    ],
+    "founded": 1977
   },
   {
     "id": 36,
@@ -2757,7 +2801,7 @@
     "country": "USA",
     "website": "https://mountainfilm.org",
     "filmfreeway": "https://filmfreeway.com/MountainfilminTelluride",
-    "description": "A celebrated festival devoted to films about adventure, environment, and culture \u2014 non-fiction storytelling rooted in the natural world.",
+    "description": "A celebrated festival devoted to films about adventure, environment, and culture — non-fiction storytelling rooted in the natural world.",
     "focus": "documentary",
     "tier": "mid",
     "event_month": "May",
@@ -2795,11 +2839,12 @@
         "min_runtime": null,
         "max_runtime": 30
       }
-    ]
+    ],
+    "founded": 1979
   },
   {
     "id": 4,
-    "name": "New York Film Festival \u2014 Projections",
+    "name": "New York Film Festival — Projections",
     "city": "New York, NY",
     "country": "USA",
     "website": "https://www.filmlinc.org/nyff/projections/",
@@ -2930,7 +2975,8 @@
         "min_runtime": null,
         "max_runtime": 15
       }
-    ]
+    ],
+    "founded": 1954
   },
   {
     "id": 9,
@@ -2992,7 +3038,7 @@
     "country": "France",
     "website": "https://cjcinema.org",
     "filmfreeway": null,
-    "description": "Long-running Parisian festival organized by Collectif Jeune Cin\u00e9ma, France's oldest artist-run film cooperative.",
+    "description": "Long-running Parisian festival organized by Collectif Jeune Cinéma, France's oldest artist-run film cooperative.",
     "focus": "experimental",
     "tier": "mid",
     "event_month": "October",
@@ -3066,11 +3112,12 @@
         "min_runtime": null,
         "max_runtime": 60
       }
-    ]
+    ],
+    "founded": 2004
   },
   {
     "id": 75,
-    "name": "RIDM (Rencontres Internationales du Documentaire de Montr\u00e9al)",
+    "name": "RIDM (Rencontres Internationales du Documentaire de Montréal)",
     "city": "Montreal",
     "country": "Canada",
     "website": "https://ridm.ca",
@@ -3113,12 +3160,13 @@
         "min_runtime": null,
         "max_runtime": 30
       }
-    ]
+    ],
+    "founded": 1998
   },
   {
     "id": 20,
-    "name": "S8 Mostra de Cinema Perif\u00e9rico",
-    "city": "A Coru\u00f1a",
+    "name": "S8 Mostra de Cinema Periférico",
+    "city": "A Coruña",
     "country": "Spain",
     "website": "https://s8cinema.com",
     "filmfreeway": null,
@@ -3255,7 +3303,8 @@
         "min_runtime": null,
         "max_runtime": 30
       }
-    ]
+    ],
+    "founded": 1987
   },
   {
     "id": 55,
@@ -3297,11 +3346,12 @@
         "min_runtime": null,
         "max_runtime": 30
       }
-    ]
+    ],
+    "founded": 1994
   },
   {
     "id": 54,
-    "name": "Sundance Film Festival \u2014 Documentary",
+    "name": "Sundance Film Festival — Documentary",
     "city": "Park City, UT",
     "country": "USA",
     "website": "https://www.sundance.org/festivals/sundance-film-festival",
@@ -3339,11 +3389,12 @@
         "min_runtime": null,
         "max_runtime": 50
       }
-    ]
+    ],
+    "founded": 1978
   },
   {
     "id": 50,
-    "name": "Sundance Film Festival \u2014 New Frontier",
+    "name": "Sundance Film Festival — New Frontier",
     "city": "Park City, UT",
     "country": "USA",
     "website": "https://www.sundance.org/festivals/sundance-film-festival",
@@ -3391,7 +3442,8 @@
         "min_runtime": null,
         "max_runtime": 50
       }
-    ]
+    ],
+    "founded": 1978
   },
   {
     "id": 43,
@@ -3438,7 +3490,8 @@
         "min_runtime": null,
         "max_runtime": 30
       }
-    ]
+    ],
+    "founded": 1969
   },
   {
     "id": 80,
@@ -3516,11 +3569,12 @@
         "min_runtime": null,
         "max_runtime": 45
       }
-    ]
+    ],
+    "founded": 1999
   },
   {
     "id": 5,
-    "name": "Toronto International Film Festival \u2014 Wavelengths",
+    "name": "Toronto International Film Festival — Wavelengths",
     "city": "Toronto",
     "country": "Canada",
     "website": "https://www.tiff.net",
@@ -3558,7 +3612,8 @@
         "min_runtime": null,
         "max_runtime": 50
       }
-    ]
+    ],
+    "founded": 1976
   },
   {
     "id": 71,
@@ -3600,7 +3655,8 @@
         "min_runtime": null,
         "max_runtime": 30
       }
-    ]
+    ],
+    "founded": 2002
   },
   {
     "id": 53,
@@ -3636,11 +3692,12 @@
         "min_runtime": null,
         "max_runtime": 40
       }
-    ]
+    ],
+    "founded": 2004
   },
   {
     "id": 10,
-    "name": "VAEFF \u2014 Video Art & Experimental Film Festival",
+    "name": "VAEFF — Video Art & Experimental Film Festival",
     "city": "New York, NY",
     "country": "USA",
     "website": "https://www.vaeff.org",
@@ -3778,7 +3835,8 @@
         "min_runtime": null,
         "max_runtime": 45
       }
-    ]
+    ],
+    "founded": 1960
   },
   {
     "id": 41,
@@ -3820,7 +3878,8 @@
         "min_runtime": null,
         "max_runtime": 30
       }
-    ]
+    ],
+    "founded": 1993
   },
   {
     "id": 87,
@@ -3856,11 +3915,12 @@
         "min_runtime": null,
         "max_runtime": 60
       }
-    ]
+    ],
+    "founded": 1993
   },
   {
     "id": 56,
-    "name": "Visions du R\u00e9el",
+    "name": "Visions du Réel",
     "city": "Nyon",
     "country": "Switzerland",
     "website": "https://www.visionsdureel.ch",
@@ -3903,7 +3963,8 @@
         "min_runtime": null,
         "max_runtime": 30
       }
-    ]
+    ],
+    "founded": 1969
   },
   {
     "id": 38,
@@ -3980,7 +4041,8 @@
         "min_runtime": null,
         "max_runtime": 60
       }
-    ]
+    ],
+    "founded": 1989
   },
   {
     "id": 81,
@@ -4027,6 +4089,7 @@
         "min_runtime": null,
         "max_runtime": 30
       }
-    ]
+    ],
+    "founded": 2005
   }
 ]
