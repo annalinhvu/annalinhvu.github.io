@@ -588,6 +588,80 @@
     .cal-panel-item { flex-wrap: wrap; gap: 8px; }
     .controls-top { flex-direction: column; align-items: flex-start; }
   }
+  /* ── Tier-colored card left borders ── */
+  .festival-card[data-tier="major"]           { border-left-color: rgba(224,166,80,0.25); }
+  .festival-card[data-tier="mid"]             { border-left-color: rgba(154,144,204,0.18); }
+  .festival-card[data-tier="emerging"]        { border-left-color: rgba(208,128,136,0.18); }
+  .festival-card[data-tier="major"]:hover     { border-left-color: var(--accent); box-shadow: 0 4px 24px var(--accent-glow); }
+  .festival-card[data-tier="mid"]:hover       { border-left-color: var(--indigo); box-shadow: 0 4px 20px var(--indigo-bg); }
+  .festival-card[data-tier="emerging"]:hover  { border-left-color: var(--red); box-shadow: 0 4px 20px var(--red-bg); }
+
+  /* ── Card footer (deadline chip + fee) ── */
+  .card-footer {
+    margin-top: 14px; padding-top: 10px;
+    border-top: 1px solid var(--border);
+    display: flex; align-items: center; justify-content: space-between;
+    gap: 8px; flex-wrap: wrap;
+  }
+  .card-fee {
+    font-family: 'Geist Mono', monospace;
+    font-size: 0.58rem; color: var(--text-4); letter-spacing: 0.5px; white-space: nowrap;
+  }
+
+  /* ── Deadline chip (card list) ── */
+  .dl-chip {
+    font-family: 'Geist Mono', monospace;
+    font-size: 0.58rem; padding: 3px 8px; border-radius: 3px;
+    letter-spacing: 0.5px; display: inline-flex; align-items: center; gap: 4px; white-space: nowrap;
+  }
+  .dl-chip.urgent  { background: var(--red-bg);    border: 1px solid var(--red-border);    color: var(--red); }
+  .dl-chip.soon    { background: var(--accent-bg);  border: 1px solid var(--tag-border);    color: var(--accent); }
+  .dl-chip.far     { background: var(--indigo-bg);  border: 1px solid var(--indigo-border); color: var(--indigo); }
+  .dl-chip.no-dl   { background: none; border: 1px solid var(--border); color: var(--text-4); opacity: 0.45; }
+
+  /* ── Detail 2-col grid ── */
+  .detail-grid { display: grid; grid-template-columns: 1fr 260px; gap: 14px; margin-bottom: 14px; }
+  @media (max-width: 860px) { .detail-grid { grid-template-columns: 1fr; } }
+
+  /* ── Quick facts sidebar ── */
+  .quick-facts-card { padding: 20px; }
+  .qf-head {
+    font-family: 'Geist Mono', monospace;
+    font-size: 0.56rem; letter-spacing: 2.5px; text-transform: uppercase;
+    color: var(--accent); margin-bottom: 12px; padding-bottom: 10px;
+    border-bottom: 1px solid var(--border);
+  }
+  .qf-row {
+    display: flex; justify-content: space-between; align-items: flex-start;
+    gap: 10px; padding: 8px 0; border-bottom: 1px solid var(--border);
+  }
+  .qf-row:last-child { border-bottom: none; padding-bottom: 0; }
+  .qf-label {
+    font-family: 'Geist Mono', monospace;
+    font-size: 0.56rem; letter-spacing: 1px; text-transform: uppercase;
+    color: var(--text-4); white-space: nowrap; padding-top: 2px; flex-shrink: 0;
+  }
+  .qf-value { font-size: 0.78rem; color: var(--text-2); text-align: right; line-height: 1.5; }
+
+  /* ── Next deadline block in sidebar ── */
+  .qf-deadline-block { margin-top: 14px; padding-top: 12px; border-top: 1px solid var(--border); }
+  .qf-dl-chip {
+    font-family: 'Geist Mono', monospace;
+    padding: 10px 12px; border-radius: 4px; width: 100%;
+    display: flex; flex-direction: column; gap: 2px;
+  }
+  .qf-dl-chip.urgent { background: var(--red-bg);   border: 1px solid var(--red-border); }
+  .qf-dl-chip.soon   { background: var(--accent-bg); border: 1px solid var(--tag-border); }
+  .qf-dl-chip.far    { background: var(--indigo-bg); border: 1px solid var(--indigo-border); }
+  .qf-dl-chip.no-dl  { background: none; border: 1px solid var(--border); }
+  .qf-dl-tier { font-size: 0.54rem; letter-spacing: 1.5px; text-transform: uppercase; opacity: 0.65; }
+  .qf-dl-date { font-size: 0.82rem; font-weight: 600; }
+  .qf-dl-days { font-size: 0.62rem; opacity: 0.7; }
+  .qf-dl-chip.urgent .qf-dl-tier, .qf-dl-chip.urgent .qf-dl-date, .qf-dl-chip.urgent .qf-dl-days { color: var(--red); }
+  .qf-dl-chip.soon   .qf-dl-tier, .qf-dl-chip.soon   .qf-dl-date, .qf-dl-chip.soon   .qf-dl-days { color: var(--accent); }
+  .qf-dl-chip.far    .qf-dl-tier, .qf-dl-chip.far    .qf-dl-date, .qf-dl-chip.far    .qf-dl-days { color: var(--indigo); }
+  .qf-dl-chip.no-dl  .qf-dl-tier, .qf-dl-chip.no-dl  .qf-dl-date, .qf-dl-chip.no-dl  .qf-dl-days { color: var(--text-4); }
+
   @media (prefers-reduced-motion: reduce) {
     *, *::before, *::after { animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; transition-duration: 0.01ms !important; }
   }
@@ -815,6 +889,52 @@ function applyFilters() {
   if (viewMode === 'calendar') renderCalendar(); else renderList();
 }
 
+/* ── Deadline helpers ── */
+function nextUpcomingDeadline(f) {
+  var now = new Date();
+  var upcoming = (f.deadlines || [])
+    .filter(function(d) { return d.deadline && !isPast(d.deadline); })
+    .sort(function(a, b) { return a.deadline.localeCompare(b.deadline); });
+  return upcoming[0] || null;
+}
+
+function daysUntil(iso) {
+  var d = new Date(iso + 'T00:00:00');
+  var now = new Date(); now.setHours(0,0,0,0);
+  return Math.ceil((d - now) / (1000 * 60 * 60 * 24));
+}
+
+function dlClass(days) {
+  if (days === null) return 'no-dl';
+  return days <= 30 ? 'urgent' : days <= 90 ? 'soon' : 'far';
+}
+
+function dlDaysStr(days) {
+  if (days === null || days < 0) return '';
+  if (days === 0) return 'Today';
+  if (days === 1) return 'In 1 day';
+  return 'In ' + days + ' days';
+}
+
+function feeRangeStr(f) {
+  var fees = (f.deadlines || [])
+    .map(function(d) { return d.fee_usd; })
+    .filter(function(x) { return x != null; });
+  if (fees.length === 0) return '';
+  var min = Math.min.apply(null, fees);
+  var max = Math.max.apply(null, fees);
+  if (min === max) return '$' + min;
+  return '$' + min + '–$' + max;
+}
+
+function dlChipHtml(f) {
+  var dl = nextUpcomingDeadline(f);
+  if (!dl) return '<span class="dl-chip no-dl">No upcoming deadlines</span>';
+  var days = daysUntil(dl.deadline);
+  var cls = dlClass(days);
+  return '<span class="dl-chip ' + cls + '">' + escapeHtml(dl.tier) + ' · ' + formatDate(dl.deadline) + ' · ' + dlDaysStr(days) + '</span>';
+}
+
 /* ── List rendering ── */
 function renderList() {
   var container = document.getElementById('festival-list');
@@ -836,8 +956,9 @@ function renderList() {
       premiereTag = '<span class="tag">' + escapeHtml(label) + ' premiere</span>';
     }
 
+    var fee = feeRangeStr(f);
     html +=
-      '<div class="card festival-card stagger-item" style="animation-delay:' + (Math.min(i, 20) * 0.03) + 's" onclick="showDetail(' + f.id + ')">' +
+      '<div class="card festival-card stagger-item" data-tier="' + escapeHtml(f.tier || '') + '" style="animation-delay:' + (Math.min(i, 20) * 0.03) + 's" onclick="showDetail(' + f.id + ')">' +
         '<div class="festival-card-top">' +
           '<span class="tier-badge ' + tierBadgeClass(f.tier) + '">' + escapeHtml(f.tier || '') + '</span>' +
           '<span class="event-month">' + escapeHtml(f.event_month || '') + '</span>' +
@@ -852,6 +973,10 @@ function renderList() {
         '<div class="festival-card-tags">' +
           '<span class="tag">' + escapeHtml(f.focus || '') + '</span>' +
           premiereTag +
+        '</div>' +
+        '<div class="card-footer">' +
+          dlChipHtml(f) +
+          (fee ? '<span class="card-fee">' + escapeHtml(fee) + '</span>' : '') +
         '</div>' +
       '</div>';
   });
@@ -910,8 +1035,18 @@ function renderDetail(f) {
     ? '<a href="' + escapeHtml(f.filmfreeway) + '" target="_blank" rel="noopener" class="pill-link">FilmFreeway</a>'
     : '';
 
+  // ── Quick-facts sidebar data ──
+  var dl = nextUpcomingDeadline(f);
+  var dlDays = dl ? daysUntil(dl.deadline) : null;
+  var dlCls = dlClass(dlDays);
+  var fee = feeRangeStr(f);
+
+  // ── 2-col grid: header card + sidebar ──
+  html += '<div class="detail-grid stagger-item" style="animation-delay:0s">';
+
+  // Left: main header card
   html +=
-    '<div class="card detail-header stagger-item" style="animation-delay:0s">' +
+    '<div class="card detail-header">' +
       '<div class="detail-header-top">' +
         '<span class="tier-badge ' + tierBadgeClass(f.tier) + '">' + escapeHtml(f.tier || '') + '</span>' +
         '<span class="event-month">' + escapeHtml(f.event_month || '') + '</span>' +
@@ -931,25 +1066,53 @@ function renderDetail(f) {
       '<div class="detail-links">' + websiteLink + filmfreewayLink + '</div>' +
     '</div>';
 
+  // Right: quick facts sidebar
+  html +=
+    '<div class="card quick-facts-card">' +
+      '<div class="qf-head">Quick Facts</div>' +
+      (f.founded ? '<div class="qf-row"><span class="qf-label">Founded</span><span class="qf-value">' + f.founded + '</span></div>' : '') +
+      '<div class="qf-row"><span class="qf-label">Event</span><span class="qf-value">' + escapeHtml(f.event_month || '—') + '</span></div>' +
+      '<div class="qf-row"><span class="qf-label">Prestige</span><span class="qf-value">' + (f.prestige ? renderPrestige(f.prestige) : '—') + '</span></div>' +
+      '<div class="qf-row"><span class="qf-label">Selectivity</span><span class="qf-value">' + escapeHtml(f.acceptance ? (f.acceptance.charAt(0).toUpperCase() + f.acceptance.slice(1)) : '—') + '</span></div>' +
+      '<div class="qf-row"><span class="qf-label">Premiere</span><span class="qf-value">' + escapeHtml(f.premiere_req && f.premiere_req !== 'none' ? f.premiere_req.replace(/_/g, ' ') : 'None required') + '</span></div>' +
+      '<div class="qf-row"><span class="qf-label">Entry Fee</span><span class="qf-value">' + escapeHtml(fee || 'See site') + '</span></div>' +
+      '<div class="qf-deadline-block">' +
+        '<div class="qf-head" style="margin-bottom:8px;padding-bottom:0;border-bottom:none">Next Deadline</div>' +
+        '<div class="qf-dl-chip ' + dlCls + '">' +
+          (dl
+            ? '<span class="qf-dl-tier">' + escapeHtml(dl.tier) + '</span>' +
+              '<span class="qf-dl-date">' + formatDate(dl.deadline) + '</span>' +
+              (dlDaysStr(dlDays) ? '<span class="qf-dl-days">' + dlDaysStr(dlDays) + '</span>' : '')
+            : '<span class="qf-dl-days">No upcoming deadlines</span>'
+          ) +
+        '</div>' +
+      '</div>' +
+    '</div>';
+
+  html += '</div>'; // /detail-grid
+
   if (f.deadlines && f.deadlines.length > 0) {
     html += '<div class="section-header stagger-item" style="animation-delay:0.03s">Deadlines</div>';
     html +=
       '<div class="card deadlines-card stagger-item" style="animation-delay:0.06s">' +
         '<table class="deadlines-table">' +
           '<thead><tr>' +
-            '<th>Year</th><th>Tier</th><th>Deadline</th><th>Fee</th>' +
+            '<th>Year</th><th>Tier</th><th>Deadline</th><th>Fee</th><th>Days</th>' +
           '</tr></thead><tbody>';
 
     f.deadlines.forEach(function(d) {
       var past = isPast(d.deadline);
       var tierClass = deadlineTierClass(d.tier);
-      var fee = d.fee_usd != null ? '$' + d.fee_usd.toFixed(0) : 'Free';
+      var dlFee = d.fee_usd != null ? '$' + d.fee_usd.toFixed(0) : 'Free';
+      var dDays = !past && d.deadline ? daysUntil(d.deadline) : null;
+      var daysCell = dDays !== null ? dlDaysStr(dDays) : (past ? '—' : '');
       html +=
         '<tr class="' + (past ? 'deadline-past' : '') + '">' +
           '<td>' + d.year + '</td>' +
           '<td class="' + tierClass + '">' + escapeHtml(d.tier) + '</td>' +
           '<td>' + formatDate(d.deadline) + '</td>' +
-          '<td>' + fee + '</td>' +
+          '<td>' + dlFee + '</td>' +
+          '<td style="color:var(--text-4);font-size:0.72rem">' + escapeHtml(daysCell) + '</td>' +
         '</tr>';
     });
 
