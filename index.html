@@ -436,18 +436,11 @@ body {
 }
 /* ── Filter bar ─────────────────────────────────────── */
 .filter-bar{
-  display:flex;flex-direction:column;align-items:stretch;gap:0;
+  display:flex;align-items:center;gap:0;
+  padding:7px 26px;
   background:var(--panel-hd);
   border-bottom:1px solid var(--bd);
   flex-shrink:0;transition:background .3s;
-}
-.filter-line{
-  display:flex;align-items:center;gap:0;
-  padding:7px 26px;
-}
-.filter-line+.filter-line{
-  border-top:1px solid var(--bd);
-  padding-top:5px;padding-bottom:7px;
 }
 .filter-kw{
   font-family:'Geist Mono',monospace;
@@ -467,29 +460,6 @@ body {
   padding:0 6px;transition:color .15s;opacity:0;pointer-events:none;
 }
 .filter-clear.visible{opacity:1;pointer-events:auto;}
-/* ── Category chips ─────────────────────────────────── */
-.cat-chips{display:flex;gap:4px;flex-wrap:wrap;margin:0 6px;}
-.cat-chip{
-  font-family:'Geist Mono',monospace;font-size:11px;
-  color:var(--t4);background:none;border:none;cursor:pointer;
-  padding:1px 7px;border-radius:3px;transition:all .13s;
-  letter-spacing:.2px;
-}
-.cat-chip:hover{color:var(--t2);background:var(--surf-hov);}
-.cat-chip.on{color:var(--amber);}
-.cat-chip.on.cc-film    {color:#7aa0d0;}
-.cat-chip.on.cc-civic   {color:#c8a06e;}
-.cat-chip.on.cc-city    {color:#6aaa8a;}
-.cat-chip.on.cc-wellness{color:#8aaa6e;}
-.cat-chip.on.cc-food    {color:#c87878;}
-.cat-chip.on.cc-travel  {color:#a088c8;}
-/* col-tech category colors */
-.col-tech.cc-film    {color:#7aa0d0;}
-.col-tech.cc-civic   {color:#c8a06e;}
-.col-tech.cc-city    {color:#6aaa8a;}
-.col-tech.cc-wellness{color:#8aaa6e;}
-.col-tech.cc-food    {color:#c87878;}
-.col-tech.cc-travel  {color:#a088c8;}
 .filter-clear:hover{color:var(--amber);}
 
 /* ── Status bar ──────────────────────────────────────── */
@@ -781,8 +751,7 @@ body {
   .db-head span:nth-child(3),.db-head span:nth-child(4){display:none;}
 
   .query-bar{padding:8px 16px;overflow-x:auto;white-space:nowrap;}
-  .filter-line{padding:6px 16px;}
-  .cat-chips{gap:3px;}
+  .filter-bar{padding:6px 16px 10px;}
   .db-footer{padding:8px 16px;}
 
   /* Work */
@@ -825,8 +794,8 @@ body {
   <div class="terminal-path">~/anna-vu<span class="cursor"></span></div>
 
   <nav class="top-tabs" role="tablist">
-    <button class="top-tab active" data-pane="studio"  role="tab">studio</button>
-    <button class="top-tab"        data-pane="built"   role="tab">built</button>
+    <button class="top-tab"        data-pane="studio"  role="tab">studio</button>
+    <button class="top-tab active" data-pane="built"   role="tab">built</button>
     <button class="top-tab"        data-pane="career"  role="tab">career</button>
     <button class="top-tab"        data-pane="console"    role="tab">terminal</button>
     <div class="tab-indicator"></div>
@@ -928,28 +897,13 @@ body {
         <span class="tbl">anna_vu.creative_projects</span><span>&nbsp;</span>
         <span class="kw">ORDER BY</span><span>&nbsp;year&nbsp;</span>
         <span class="kw">DESC</span>
-        <span class="cmt">-- personal projects · 9 rows returned</span>
+        <span class="cmt">-- personal projects · 8 rows returned</span>
       </div>
       <div class="filter-bar">
-        <div class="filter-line">
-          <span class="filter-kw"><span class="kw">WHERE</span>&nbsp;project_name&nbsp;<span class="kw">LIKE</span>&nbsp;'%</span>
-          <input class="filter-input" id="proj-filter" placeholder="type to filter..." autocomplete="off" spellcheck="false">
-          <span class="filter-kw">%'</span>
-          <button class="filter-clear" id="filter-clear">× clear</button>
-        </div>
-        <div class="filter-line">
-          <span class="filter-kw"><span class="kw">AND</span>&nbsp;category&nbsp;<span class="kw">IN</span>&nbsp;(</span>
-          <div class="cat-chips" id="cat-chips" role="group" aria-label="Filter by category">
-            <button class="cat-chip on" data-cat="all">all</button>
-            <button class="cat-chip cc-film" data-cat="Film">film</button>
-            <button class="cat-chip cc-civic" data-cat="Civic">civic</button>
-            <button class="cat-chip cc-city" data-cat="City">city</button>
-            <button class="cat-chip cc-wellness" data-cat="Wellness">wellness</button>
-            <button class="cat-chip cc-food" data-cat="Food">food</button>
-            <button class="cat-chip cc-travel" data-cat="Travel">travel</button>
-          </div>
-          <span class="filter-kw">)</span>
-        </div>
+        <span class="filter-kw"><span class="kw">WHERE</span>&nbsp;project_name&nbsp;<span class="kw">LIKE</span>&nbsp;'%</span>
+        <input class="filter-input" id="proj-filter" placeholder="type to filter..." autocomplete="off" spellcheck="false">
+        <span class="filter-kw">%'</span>
+        <button class="filter-clear" id="filter-clear">× clear</button>
       </div>
       <div class="db-head">
         <span>#</span><span>PROJECT</span>
@@ -964,7 +918,7 @@ body {
           <span class="row-link">view project →</span>
         </div>
         <div class="col-stat"><strong>89</strong> festivals<br><strong>30</strong> countries</div>
-        <div class="col-tech cc-film">Film</div>
+        <div class="col-tech">Film</div>
         <div class="col-status"><span class="live-dot"></span>live</div>
       </a>
 
@@ -972,7 +926,7 @@ body {
         <div class="col-idx">02</div>
         <div class="col-name"><span class="row-name">Analog Film Stock Database</span><span class="row-desc">Compare analog film stocks by price, availability, and format — paired with a development lab directory searchable by process and location.</span><span class="row-link">view project →</span></div>
         <div class="col-stat"><strong>54</strong> stocks · <strong>25</strong> labs</div>
-        <div class="col-tech cc-film">Film</div>
+        <div class="col-tech">Film</div>
         <div class="col-status"><span class="live-dot"></span>live</div>
       </a>
 
@@ -980,7 +934,7 @@ body {
         <div class="col-idx">03</div>
         <div class="col-name"><span class="row-name">NYC Film Scene Map</span><span class="row-desc">Interactive map of NYC screening spaces, workshops, labs, galleries, and community film spots — filterable by category and borough.</span><span class="row-link">view project →</span></div>
         <div class="col-stat"><strong>100</strong> venues · <strong>5</strong> categories</div>
-        <div class="col-tech cc-film">Film</div>
+        <div class="col-tech">Film</div>
         <div class="col-status"><span class="live-dot"></span>live</div>
       </a>
 
@@ -988,15 +942,15 @@ body {
         <div class="col-idx">04</div>
         <div class="col-name"><span class="row-name">Auteurs</span><span class="row-desc">Personal index of 89 filmmakers and 24 performers, searchable by era, nationality, and style — with film guides and portraits.</span><span class="row-link">view project →</span></div>
         <div class="col-stat"><strong>89</strong> filmmakers · <strong>24</strong> performers</div>
-        <div class="col-tech cc-film">Film</div>
+        <div class="col-tech">Film</div>
         <div class="col-status"><span class="live-dot"></span>live</div>
       </a>
 
       <a href="projects/nyc-food-help/" class="db-row std alt">
         <div class="col-idx">05</div>
-        <div class="col-name"><span class="row-name">NYC Food Help Guide</span><span class="row-desc">Free food assistance guide for NYC — 25 verified orgs across pantries, soup kitchens, home delivery, and SNAP help. Filterable by borough, mapped, and volunteer-linked.</span><span class="row-link">view project →</span></div>
-        <div class="col-stat"><strong>25</strong> organizations<br><strong>5</strong> boroughs</div>
-        <div class="col-tech cc-civic">Civic</div>
+        <div class="col-name"><span class="row-name">NYC Food Help Map</span><span class="row-desc">Public-service directory of 17 free food assistance organizations across NYC — pantries, soup kitchens, community meals, mobile food, and home delivery. Filterable, mapped, and volunteer-linked.</span><span class="row-link">view project →</span></div>
+        <div class="col-stat"><strong>17</strong> organizations · <strong>5</strong> boroughs</div>
+        <div class="col-tech">Civic</div>
         <div class="col-status"><span class="live-dot"></span>live</div>
       </a>
 
@@ -1004,7 +958,7 @@ body {
         <div class="col-idx">06</div>
         <div class="col-name"><span class="row-name">NYC Adventure Log</span><span class="row-desc">Curated NYC activities across 10 categories — Cinema, Food, Arts, Explore, and more. Surprise picker included.</span><span class="row-link">view project →</span></div>
         <div class="col-stat"><strong>10</strong> categories<br><strong>4</strong> seasons</div>
-        <div class="col-tech cc-city">City</div>
+        <div class="col-tech">City</div>
         <div class="col-status"><span class="live-dot"></span>live</div>
       </a>
 
@@ -1012,7 +966,7 @@ body {
         <div class="col-idx">07</div>
         <div class="col-name"><span class="row-name">Only Good Things</span><span class="row-desc">Curated self-care activity tracker with filters for season, duration, mood, and setting — with local completion tracking.</span><span class="row-link">view project →</span></div>
         <div class="col-stat"><strong>143</strong> activities · <strong>6</strong> categories</div>
-        <div class="col-tech cc-wellness">Wellness</div>
+        <div class="col-tech">Wellness</div>
         <div class="col-status"><span class="live-dot"></span>live</div>
       </a>
 
@@ -1020,7 +974,7 @@ body {
         <div class="col-idx">08</div>
         <div class="col-name"><span class="row-name">Cơm Nhà</span><span class="row-desc">Vietnamese recipes from Miền Bắc, Miền Trung, and Miền Nam. Browse by region, search by ingredient.</span><span class="row-link">view project →</span></div>
         <div class="col-stat"><strong>175</strong> recipes · <strong>3</strong> regions</div>
-        <div class="col-tech cc-food">Food</div>
+        <div class="col-tech">Food</div>
         <div class="col-status"><span class="live-dot"></span>live</div>
       </a>
 
@@ -1028,7 +982,7 @@ body {
         <div class="col-idx">09</div>
         <div class="col-name"><span class="row-name">Departure Lounge</span><span class="row-desc">Destinations as boarding passes — cities, food, and reasons to go.</span><span class="row-link">view project →</span></div>
         <div class="col-stat"><strong>50</strong> countries · <strong>5</strong> regions</div>
-        <div class="col-tech cc-travel">Travel</div>
+        <div class="col-tech">Travel</div>
         <div class="col-status"><span class="live-dot"></span>live</div>
       </a>
 
@@ -1474,8 +1428,6 @@ switchPane = function(id) {
   var footer = document.querySelector('.db-footer span');
   if (!input) return;
 
-  var selectedCat = 'all';
-
   function applyFilter() {
     var q = input.value.toLowerCase().trim();
     var rows = document.querySelectorAll('.db-row');
@@ -1483,29 +1435,17 @@ switchPane = function(id) {
     rows.forEach(function(row) {
       var name = row.querySelector('.row-name');
       var tech = row.querySelector('.col-tech');
-      var techText = tech ? tech.textContent.trim() : '';
-      var text = [name ? name.textContent : '', techText].join(' ').toLowerCase();
-      var catMatch = selectedCat === 'all' || techText === selectedCat;
-      var show = (!q || text.includes(q)) && catMatch;
+      var text = [name, tech].map(function(el){ return el ? el.textContent : ''; }).join(' ').toLowerCase();
+      var show = !q || text.includes(q);
       row.style.display = show ? '' : 'none';
       if (show) count++;
     });
-    var isFiltered = q || selectedCat !== 'all';
-    var label = isFiltered ? '-- ' + count + ' row' + (count !== 1 ? 's' : '') + ' returned' : '-- 9 rows returned';
+    var label = q ? '-- ' + count + ' row' + (count !== 1 ? 's' : '') + ' returned' : '-- 8 rows returned';
     if (cmt)    cmt.textContent = label;
     if (footer) footer.textContent = count + ' rows returned';
     clear.classList.toggle('visible', !!q);
     updateStatus('studio', count);
   }
-
-  document.querySelectorAll('.cat-chip').forEach(function(chip) {
-    chip.addEventListener('click', function() {
-      selectedCat = chip.dataset.cat;
-      document.querySelectorAll('.cat-chip').forEach(function(c) { c.classList.remove('on'); });
-      chip.classList.add('on');
-      applyFilter();
-    });
-  });
 
   input.addEventListener('input', applyFilter);
   clear.addEventListener('click', function() {
@@ -2063,7 +2003,7 @@ switchPane = function(id) {
     {title:'Recipe Book',type:'Food',tech:'HTML · JSON · Vanilla JS',status:'live'},
     {title:'World Atlas',type:'Travel',tech:'HTML · JSON · Vanilla JS',status:'live'},
     {title:'NYC Adventure Log',type:'City',tech:'HTML · Vanilla JS',status:'live'},
-    {title:'NYC Food Help Guide',type:'Civic',tech:'HTML · JSON · Leaflet.js',status:'live'}
+    {title:'NYC Food Help Map',type:'Civic',tech:'HTML · JSON · Leaflet.js',status:'live'}
   ];
   var TABLES = ['anna','skills','experience','projects'];
 
