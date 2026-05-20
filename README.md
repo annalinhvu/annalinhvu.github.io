@@ -1,97 +1,91 @@
-# Anna (Linh) Vu — Portfolio
+# annalinhvu.github.io
 
 **[annalinhvu.github.io](https://annalinhvu.github.io)**
 
-Portfolio of a Data Engineer & BI Engineer based in NYC. The site covers professional data work (pipelines, warehouses, dashboards) and a collection of personal lab projects built out of curiosity and care. No frameworks, no build step, fully static.
+Hi, I'm Anna (Linh) — a Data Engineer and BI Engineer based in New York City, originally from Hanoi. By day I build data infrastructure for enterprise marketing clients. By night I make small databases about things I care about: film festivals, analog cameras, Vietnamese food, NYC, and places I want to go.
+
+This whole site is one HTML file. No frameworks, no build step, no `npm install`.
+
+---
+
+## What's inside
+
+The portfolio has three tabs:
+
+- **built** — professional and academic data work: ETL pipelines, Snowflake warehouses, BI dashboards, API connectors.
+- **studio** — personal projects. Each one started because I wanted something that didn't exist yet.
+- **career** — work history.
 
 ---
 
 ## Personal Projects
 
-### 01 — Film Festival Tracker
-> Documentary and experimental film festivals worldwide.
+### Film Festival Tracker
+I submit short films and wanted one place to track deadlines, fees, and what kinds of work gets accepted. Ended up building a full directory of documentary and experimental festivals worldwide — filterable by type, region, tier, and premiere status.
 
-Deadlines, submission fees, acceptance rates, and past selections in one place to plan smarter submissions. Filter by type (documentary / experimental), region, tier, and premiere requirement.
-
-- **Stack:** HTML, JSON, Vanilla JS
+**Stack:** HTML · JSON · Vanilla JS
 
 ---
 
-### 02 — Analog Film Stock Database
-> Price tracking, availability, and lab locations for analog film stocks.
+### Analog Film Stock Database
+Shooting on film means constantly comparing stocks across vendors for price and availability. Built a searchable database of stocks paired with a lab directory filterable by process (C-41, E-6, B&W, ECN-2) and format.
 
-Browse film stocks with current pricing across vendors, availability status, and ISO/format specs. Paired with a directory of development labs, searchable by process (C-41, E-6, B&W, ECN-2) and format.
-
-- **Stack:** HTML, JSON, Vanilla JS
+**Stack:** HTML · JSON · Vanilla JS
 
 ---
 
-### 03 — NYC Film Scene Map
-> An interactive map of New York's experimental film world.
+### NYC Film Scene Map
+An interactive map of every place in NYC where you can actually engage with film — screening spaces, workshops, darkrooms, labs, galleries, community spots. Filterable by category and borough.
 
-Screening venues, workshops, labs, galleries, and community spaces. Filter by category and borough. Built for anyone trying to find their people in the NYC film community.
-
-- **Stack:** HTML, JSON, Leaflet.js
+**Stack:** HTML · JSON · Leaflet.js
 
 ---
 
-### 04 — Auteurs
-> A personal index of filmmakers and performers.
+### Auteurs
+A personal filmography index. Directors and performers I keep returning to — biographies, curated film lists with synopses, portrait photography. Searchable by era, nationality, and style.
 
-Directors and performers filterable by era and nationality. Each entry includes a biography, curated film list with synopses, and portrait photography.
-
-- **Stack:** HTML, JSON, Vanilla JS
+**Stack:** HTML · JSON · Vanilla JS
 
 ---
 
-### 05 — NYC Food Help Map
-> A public-service directory of free food assistance across New York City.
+### NYC Food Help Map
+A public-service directory of free food assistance across the five boroughs — food pantries, soup kitchens, community meals, mobile programs, and home delivery. Built because these resources exist and not enough people know about them.
 
-Organizations across all five boroughs — food pantries, soup kitchens, community meals, mobile food programs, home delivery, and more. Searchable and filterable by borough and service type, with an interactive map and a volunteer page linking directly to sign-up forms.
-
-- **Live site:** https://annalinhvu.github.io/projects/nyc-food-help/
-- **Stack:** HTML, JSON, Leaflet.js
+**Live:** https://annalinhvu.github.io/projects/nyc-food-help/  
+**Stack:** HTML · JSON · Leaflet.js
 
 ---
 
-### 06 — NYC Adventure Log
-> Curated NYC activities across seasons and neighborhoods.
+### NYC Adventure Log
+A running list of things to do in New York, organized by category and season — Cinema, Food, Arts, Day Trips, Free, Classes, and more. Includes a surprise picker for when you just can't decide.
 
-Cinema, Food, Bakeries, Arts, Shows, Explore, Wellness, Day Trips, Free, and Classes — each with practical details and a seasonal tag. Mark things done, rate them, and let the surprise picker decide when you can't.
-
-- **Live site:** https://annalinhvu.github.io/nyc-adventure/
-- **Stack:** HTML, Vanilla JS
+**Live:** https://annalinhvu.github.io/nyc-adventure/  
+**Stack:** HTML · Vanilla JS
 
 ---
 
-### 07 — Only Good Things
-> A browsable catalog of self-care activities.
+### Only Good Things
+Named after the wall calendar. A catalog of self-care activities filterable by season, duration, mood, and setting. Track completions locally in your browser, no account needed.
 
-Inspired by the *Only Good Things* wall calendar. Activities across multiple categories (body, mind, creative, nature, nourish, rest), filterable by season, duration, setting, and difficulty. Track completions locally in your browser.
-
-- **Stack:** HTML, JSON, Vanilla JS
+**Stack:** HTML · JSON · Vanilla JS
 
 ---
 
-### 08 — Cơm Nhà
-> Vietnamese recipes from Miền Bắc, Miền Trung, and Miền Nam.
+### Cơm Nhà
+Vietnamese recipes organized by region — Miền Bắc, Miền Trung, Miền Nam. Browse by category, search by ingredient, save favorites. Each region has its own color identity. Built mostly so I'd stop losing recipes in my notes app.
 
-Browse by region or category, search by ingredient, and save favorites. Each region has its own color identity throughout the UI.
-
-- **Stack:** HTML, JSON, Vanilla JS
+**Stack:** HTML · JSON · Vanilla JS
 
 ---
 
-### 09 — Departure Lounge
-> A travel bucket list: destinations as boarding passes.
+### Departure Lounge
+A bucket list formatted as boarding passes. Countries with cities to visit, food to eat, and actual reasons to go — not the usual tourist checklist. Dark, editorial feel.
 
-Countries across multiple regions, each with cities to visit, food to eat, and reasons to go. Styled as boarding passes with a dark, editorial feel.
-
-- **Stack:** HTML, JSON, Vanilla JS
+**Stack:** HTML · JSON · Vanilla JS
 
 ---
 
-## Running Locally
+## Running locally
 
 ```bash
 git clone https://github.com/annalinhvu/annalinhvu.github.io.git
@@ -103,11 +97,8 @@ Open [http://localhost:8080](http://localhost:8080).
 
 ---
 
-## Stack
+## Tech
 
-| Layer | Tools |
-|---|---|
-| Frontend | Vanilla HTML, CSS, JavaScript |
-| Data | Python, JSON |
-| Maps | Leaflet.js |
-| Hosting | GitHub Pages |
+Everything here is vanilla HTML, CSS, and JavaScript. Data lives in JSON files. Maps use Leaflet. Hosted on GitHub Pages.
+
+For the professional side: Snowflake · Matillion · Python · Looker · Tableau · REST APIs · AWS.
