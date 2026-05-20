@@ -462,6 +462,28 @@ body {
 .filter-clear.visible{opacity:1;pointer-events:auto;}
 .filter-clear:hover{color:var(--amber);}
 
+.cat-bar{
+  display:flex;align-items:center;gap:6px;
+  padding:6px 26px 8px;
+  background:var(--panel-hd);
+  border-bottom:1px solid var(--bd);
+  flex-shrink:0;transition:background .3s;
+}
+.cat-bar-kw{
+  font-family:'Geist Mono',monospace;
+  font-size:12px;color:var(--t4);flex-shrink:0;margin-right:2px;
+}
+.cat-bar-kw .kw{color:var(--amber);}
+.cat-chip{
+  font-family:'Geist Mono',monospace;font-size:11px;
+  color:var(--t3);background:none;
+  border:1px solid var(--bd);border-radius:3px;
+  padding:2px 9px;cursor:pointer;
+  transition:color .12s,border-color .12s;
+}
+.cat-chip:hover{color:var(--t1);border-color:var(--bd-hi);}
+.cat-chip.active{color:var(--amber);border-color:var(--amber);}
+
 /* ── Status bar ──────────────────────────────────────── */
 /* ── Snake game modal ── */
 .game-modal{
@@ -904,6 +926,16 @@ body {
         <input class="filter-input" id="proj-filter" placeholder="type to filter..." autocomplete="off" spellcheck="false">
         <span class="filter-kw">%'</span>
         <button class="filter-clear" id="filter-clear">× clear</button>
+      </div>
+      <div class="cat-bar">
+        <span class="cat-bar-kw"><span class="kw">AND</span> category =</span>
+        <button class="cat-chip active" data-cat="all">'all'</button>
+        <button class="cat-chip" data-cat="Film">'Film'</button>
+        <button class="cat-chip" data-cat="Civic">'Civic'</button>
+        <button class="cat-chip" data-cat="City">'City'</button>
+        <button class="cat-chip" data-cat="Wellness">'Wellness'</button>
+        <button class="cat-chip" data-cat="Food">'Food'</button>
+        <button class="cat-chip" data-cat="Travel">'Travel'</button>
       </div>
       <div class="db-head">
         <span>#</span><span>PROJECT</span>
@@ -1413,30 +1445,44 @@ switchPane = function(id) {
 
 /* ── Live filter on projects table ── */
 (function() {
-  var input  = document.getElementById('proj-filter');
-  var clear  = document.getElementById('filter-clear');
-  var cmt    = document.querySelector('#pane-studio .cmt');
-  var footer = document.querySelector('.db-footer span');
+  var input     = document.getElementById('proj-filter');
+  var clear     = document.getElementById('filter-clear');
+  var cmt       = document.querySelector('#pane-studio .cmt');
+  var footer    = document.querySelector('.db-footer span');
+  var chips     = document.querySelectorAll('.cat-chip');
+  var activeCat = 'all';
   if (!input) return;
 
   function applyFilter() {
     var q = input.value.toLowerCase().trim();
-    var rows = document.querySelectorAll('.db-row');
+    var rows = document.querySelectorAll('#pane-studio .db-row');
     var count = 0;
     rows.forEach(function(row) {
-      var name = row.querySelector('.row-name');
-      var tech = row.querySelector('.col-tech');
-      var text = [name, tech].map(function(el){ return el ? el.textContent : ''; }).join(' ').toLowerCase();
-      var show = !q || text.includes(q);
+      var name     = row.querySelector('.row-name');
+      var tech     = row.querySelector('.col-tech');
+      var techText = tech ? tech.textContent.trim() : '';
+      var textMatch = !q || (name ? name.textContent : '').toLowerCase().includes(q);
+      var catMatch  = activeCat === 'all' || techText === activeCat;
+      var show = textMatch && catMatch;
       row.style.display = show ? '' : 'none';
       if (show) count++;
     });
-    var label = q ? '-- ' + count + ' row' + (count !== 1 ? 's' : '') + ' returned' : '-- 9 rows returned';
+    var isFiltered = q || activeCat !== 'all';
+    var label = isFiltered ? '-- ' + count + ' row' + (count !== 1 ? 's' : '') + ' returned' : '-- 9 rows returned';
     if (cmt)    cmt.textContent = label;
     if (footer) footer.textContent = count + ' rows returned';
     clear.classList.toggle('visible', !!q);
     updateStatus('studio', count);
   }
+
+  chips.forEach(function(chip) {
+    chip.addEventListener('click', function() {
+      chips.forEach(function(c) { c.classList.remove('active'); });
+      chip.classList.add('active');
+      activeCat = chip.dataset.cat;
+      applyFilter();
+    });
+  });
 
   input.addEventListener('input', applyFilter);
   clear.addEventListener('click', function() {
