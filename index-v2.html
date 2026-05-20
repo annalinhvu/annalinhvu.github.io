@@ -352,7 +352,7 @@ body {
 
 .db-head {
   display:grid;
-  grid-template-columns:42px 1fr 160px 175px 70px;
+  grid-template-columns:42px 1fr 175px 70px;
   column-gap:16px;
   padding:0 44px; height:36px; align-items:center;
   background:var(--panel-hd);
@@ -368,7 +368,7 @@ body {
 
 .db-row {
   display:grid;
-  grid-template-columns:42px 1fr 160px 175px 70px;
+  grid-template-columns:42px 1fr 175px 70px;
   column-gap:16px;
   padding:0 44px; border-bottom:1px solid var(--bd);
   text-decoration:none; color:inherit; cursor:pointer;
@@ -747,8 +747,8 @@ body {
     column-gap:8px;padding:0 16px;
   }
   .db-row.featured,.db-row.std,.db-row.alt{padding-left:16px;}
-  .col-stat,.col-tech{display:none;}
-  .db-head span:nth-child(3),.db-head span:nth-child(4){display:none;}
+  .col-tech{display:none;}
+  .db-head span:nth-child(3){display:none;}
 
   .query-bar{padding:8px 16px;overflow-x:auto;white-space:nowrap;}
   .filter-bar{padding:6px 16px 10px;}
@@ -897,7 +897,7 @@ body {
         <span class="tbl">anna_vu.creative_projects</span><span>&nbsp;</span>
         <span class="kw">ORDER BY</span><span>&nbsp;year&nbsp;</span>
         <span class="kw">DESC</span>
-        <span class="cmt">-- personal projects · 8 rows returned</span>
+        <span class="cmt">-- personal projects · 9 rows returned</span>
       </div>
       <div class="filter-bar">
         <span class="filter-kw"><span class="kw">WHERE</span>&nbsp;project_name&nbsp;<span class="kw">LIKE</span>&nbsp;'%</span>
@@ -907,7 +907,7 @@ body {
       </div>
       <div class="db-head">
         <span>#</span><span>PROJECT</span>
-        <span>ENTRIES</span><span>CATEGORY</span><span>STATUS</span>
+        <span>CATEGORY</span><span>STATUS</span>
       </div>
 
       <a href="projects/festival-tracker/" class="db-row featured">
@@ -917,7 +917,6 @@ body {
           <span class="row-desc">Track documentary and experimental film festivals worldwide — deadlines, fees, and acceptance rates, filterable by type and region.</span>
           <span class="row-link">view project →</span>
         </div>
-        <div class="col-stat"><strong>89</strong> festivals<br><strong>30</strong> countries</div>
         <div class="col-tech">Film</div>
         <div class="col-status"><span class="live-dot"></span>live</div>
       </a>
@@ -925,7 +924,6 @@ body {
       <a href="projects/film-stocks/" class="db-row std">
         <div class="col-idx">02</div>
         <div class="col-name"><span class="row-name">Analog Film Stock Database</span><span class="row-desc">Compare analog film stocks by price, availability, and format — paired with a development lab directory searchable by process and location.</span><span class="row-link">view project →</span></div>
-        <div class="col-stat"><strong>54</strong> stocks · <strong>25</strong> labs</div>
         <div class="col-tech">Film</div>
         <div class="col-status"><span class="live-dot"></span>live</div>
       </a>
@@ -933,31 +931,27 @@ body {
       <a href="projects/nyc-film-map/" class="db-row std alt">
         <div class="col-idx">03</div>
         <div class="col-name"><span class="row-name">NYC Film Scene Map</span><span class="row-desc">Interactive map of NYC screening spaces, workshops, labs, galleries, and community film spots — filterable by category and borough.</span><span class="row-link">view project →</span></div>
-        <div class="col-stat"><strong>100</strong> venues · <strong>5</strong> categories</div>
         <div class="col-tech">Film</div>
         <div class="col-status"><span class="live-dot"></span>live</div>
       </a>
 
       <a href="projects/filmmakers/" class="db-row std">
         <div class="col-idx">04</div>
-        <div class="col-name"><span class="row-name">Auteurs</span><span class="row-desc">Personal index of 89 filmmakers and 24 performers, searchable by era, nationality, and style — with film guides and portraits.</span><span class="row-link">view project →</span></div>
-        <div class="col-stat"><strong>89</strong> filmmakers · <strong>24</strong> performers</div>
+        <div class="col-name"><span class="row-name">Auteurs</span><span class="row-desc">Personal index of filmmakers and performers, searchable by era, nationality, and style — with film guides and portraits.</span><span class="row-link">view project →</span></div>
         <div class="col-tech">Film</div>
         <div class="col-status"><span class="live-dot"></span>live</div>
       </a>
 
       <a href="projects/nyc-food-help/" class="db-row std alt">
         <div class="col-idx">05</div>
-        <div class="col-name"><span class="row-name">NYC Food Help Map</span><span class="row-desc">Public-service directory of 17 free food assistance organizations across NYC — pantries, soup kitchens, community meals, mobile food, and home delivery. Filterable, mapped, and volunteer-linked.</span><span class="row-link">view project →</span></div>
-        <div class="col-stat"><strong>17</strong> organizations · <strong>5</strong> boroughs</div>
+        <div class="col-name"><span class="row-name">NYC Food Help Map</span><span class="row-desc">Public-service directory of free food assistance organizations across NYC — pantries, soup kitchens, community meals, mobile food, and home delivery. Filterable, mapped, and volunteer-linked.</span><span class="row-link">view project →</span></div>
         <div class="col-tech">Civic</div>
         <div class="col-status"><span class="live-dot"></span>live</div>
       </a>
 
       <a href="https://annalinhvu.github.io/nyc-adventure/" class="db-row std" target="_blank" rel="noopener">
         <div class="col-idx">06</div>
-        <div class="col-name"><span class="row-name">NYC Adventure Log</span><span class="row-desc">Curated NYC activities across 10 categories — Cinema, Food, Arts, Explore, and more. Surprise picker included.</span><span class="row-link">view project →</span></div>
-        <div class="col-stat"><strong>10</strong> categories<br><strong>4</strong> seasons</div>
+        <div class="col-name"><span class="row-name">NYC Adventure Log</span><span class="row-desc">Curated NYC activities across seasons and neighborhoods — Cinema, Food, Arts, Explore, and more. Surprise picker included.</span><span class="row-link">view project →</span></div>
         <div class="col-tech">City</div>
         <div class="col-status"><span class="live-dot"></span>live</div>
       </a>
@@ -965,7 +959,6 @@ body {
       <a href="projects/self-care/" class="db-row std alt">
         <div class="col-idx">07</div>
         <div class="col-name"><span class="row-name">Only Good Things</span><span class="row-desc">Curated self-care activity tracker with filters for season, duration, mood, and setting — with local completion tracking.</span><span class="row-link">view project →</span></div>
-        <div class="col-stat"><strong>143</strong> activities · <strong>6</strong> categories</div>
         <div class="col-tech">Wellness</div>
         <div class="col-status"><span class="live-dot"></span>live</div>
       </a>
@@ -973,7 +966,6 @@ body {
       <a href="projects/recipes/" class="db-row std">
         <div class="col-idx">08</div>
         <div class="col-name"><span class="row-name">Cơm Nhà</span><span class="row-desc">Vietnamese recipes from Miền Bắc, Miền Trung, and Miền Nam. Browse by region, search by ingredient.</span><span class="row-link">view project →</span></div>
-        <div class="col-stat"><strong>175</strong> recipes · <strong>3</strong> regions</div>
         <div class="col-tech">Food</div>
         <div class="col-status"><span class="live-dot"></span>live</div>
       </a>
@@ -981,7 +973,6 @@ body {
       <a href="projects/atlas/" class="db-row std alt">
         <div class="col-idx">09</div>
         <div class="col-name"><span class="row-name">Departure Lounge</span><span class="row-desc">Destinations as boarding passes — cities, food, and reasons to go.</span><span class="row-link">view project →</span></div>
-        <div class="col-stat"><strong>50</strong> countries · <strong>5</strong> regions</div>
         <div class="col-tech">Travel</div>
         <div class="col-status"><span class="live-dot"></span>live</div>
       </a>
@@ -1309,7 +1300,7 @@ body {
   </span>
   <span class="sb-mid" id="sb-pane">studio</span>
   <span class="sb-right">
-    <span id="sb-rows">8 rows</span>
+    <span id="sb-rows">9 rows</span>
     <span class="sb-pipe">|</span>
     <span id="sb-time">2.1ms</span>
   </span>
@@ -1440,7 +1431,7 @@ switchPane = function(id) {
       row.style.display = show ? '' : 'none';
       if (show) count++;
     });
-    var label = q ? '-- ' + count + ' row' + (count !== 1 ? 's' : '') + ' returned' : '-- 8 rows returned';
+    var label = q ? '-- ' + count + ' row' + (count !== 1 ? 's' : '') + ' returned' : '-- 9 rows returned';
     if (cmt)    cmt.textContent = label;
     if (footer) footer.textContent = count + ' rows returned';
     clear.classList.toggle('visible', !!q);
