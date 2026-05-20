@@ -1655,7 +1655,6 @@ switchPane = function(id) {
   };
 
   var TIPS = [
-    "She's moving <strong>1TB</strong> of marketing data through Snowflake every month. Pumkin watches the logs. 📊",
     "The terminal tab is real. Type <code>anna.skills()</code> in Python mode. I dare you. 💻",
     "There's a hidden game somewhere on this page. I am not going to tell you where. 👀",
     "She once refactored an entire data warehouse. 1,000+ tables. Just... tidied them all up. 🧹",
@@ -1663,7 +1662,7 @@ switchPane = function(id) {
     "The NYC Food Help Map exists because those resources deserve to be easy to find. Full stop. 🗺️",
     "Film festival tracker. Film stock database. NYC film venue map. She likes film a little bit. 🎞️",
     "Pumkin has no second 'p'. This was Anna's decision. Pumkin has accepted it. 🎃",
-    "CS at Penn while working full-time. Don't ask how. Just admire. 📚",
+    "CS at Penn while working full-time. Busy human. 📚",
     "She built Slack alerts so anomalies get caught before anyone has to ask. Prevention over panic. 🔔",
     "Anna is from Hanoi, Vietnam. The recipe app has receipts. 🇻🇳",
     "Light mode exists because Anna believes in free will. Dark mode is just correct. 🌙",
@@ -1681,8 +1680,8 @@ switchPane = function(id) {
 
   var NAV_MSGS = {
     studio: "Built for curiosity, not deadlines. ✨",
-    built:  "Four years of shipping real data infrastructure. The actual job stuff. 💼",
-    career: "The full paper trail. DEPT, FIG, Penn. 📋",
+    built:  "Five years of shipping real data infrastructure. The actual job stuff. 💼",
+    career: null,
     console:"Honestly the terminal tab is my favorite. Try <code>anna.skills()</code> in Python mode. 💻"
   };
 
@@ -1843,26 +1842,8 @@ switchPane = function(id) {
     typingThenShow(msg, false);
   };
 
-  var _lastClick = 0;
-  var DOUBLE_MSGS = [
-    "Okay okay, I'm here! 😅",
-    "You really wanted my attention. I respect it. ⚡",
-    "Alright alright! What's up? 👾",
-  ];
-
   window.petClick = function() {
-    var now = Date.now();
     var b = document.getElementById('pet-bubble');
-
-    if (now - _lastClick < 380) {
-      _lastClick = 0;
-      if (PET_STATE === 'sleeping') toNormal();
-      excite();
-      typingThenShow(DOUBLE_MSGS[Math.floor(Math.random() * DOUBLE_MSGS.length)], false);
-      return;
-    }
-    _lastClick = now;
-
     if (!b.classList.contains('hidden')) { b.classList.add('hidden'); return; }
     if (PET_STATE === 'sleeping') {
       toNormal(); excite();
