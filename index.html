@@ -1620,10 +1620,10 @@ switchPane = function(id) {
       <rect x="10" y="21" width="32" height="24" rx="8" fill="var(--bg)"/>
       <circle cx="20" cy="31" r="4.5" fill="var(--panel)"/>
       <circle cx="32" cy="31" r="4.5" fill="var(--panel)"/>
-      <circle cx="21" cy="31" r="2.5" fill="var(--t1)"/>
-      <circle cx="33" cy="31" r="2.5" fill="var(--t1)"/>
-      <circle cx="22" cy="30" r="0.9" fill="white"/>
-      <circle cx="34" cy="30" r="0.9" fill="white"/>
+      <circle id="pet-pupil-l" cx="21" cy="31" r="2.5" fill="var(--t1)"/>
+      <circle id="pet-pupil-r" cx="33" cy="31" r="2.5" fill="var(--t1)"/>
+      <circle id="pet-shine-l" cx="22" cy="30" r="0.9" fill="white"/>
+      <circle id="pet-shine-r" cx="34" cy="30" r="0.9" fill="white"/>
       <!-- eyelids (scaleY 0=open, 1=closed) -->
       <rect id="pet-lid-l" x="15.5" y="26.5" width="9" height="9" fill="#e8732a" clip-path="url(#pet-clip-l)" style="transform:scaleY(0);"/>
       <rect id="pet-lid-r" x="27.5" y="26.5" width="9" height="9" fill="#e8732a" clip-path="url(#pet-clip-r)" style="transform:scaleY(0);"/>
@@ -1648,24 +1648,35 @@ switchPane = function(id) {
   };
 
   var TIPS = [
-    "Anna engineers pipelines for <strong>$2B+</strong> in annual ad spend. That's a lot of impressions. 📊",
-    "She tracks 89 film festivals, 54 film stocks, and 100 NYC venues. Very niche. 🎞️",
-    "Doing her M.A.Sc. in CS at Penn while working full-time. Busy human. 📚",
-    "The Departure Lounge covers 50 destinations as boarding passes. Wanderlust, engineered. ✈️",
-    "Anna cleaned up 1,000+ Snowflake tables and cut warehouse costs by <strong>30%</strong>. Tidiness as a skill. 🧹",
-    "89 filmmakers, filterable by era. A cinephile definitely lives here. 🎬",
-    "Anna speaks English and Vietnamese. 175 recipes in the app to prove it. 🇻🇳",
-    "Her Slack alerts catch campaign anomalies before clients even notice. 🔔",
-    "Fun fact: Pumkin's name has no second 'p'. Anna's choice. Iconic. 🎃",
-    "The terminal tab is real — try <code>anna.skills()</code> in Python mode. It works. 💻",
-    "Psst — there's a hidden game somewhere on this page. Good luck finding it. 👀",
+    "She's moving <strong>1TB</strong> of marketing data through Snowflake every month. Pumkin watches the logs. 📊",
+    "The terminal tab is real. Type <code>anna.skills()</code> in Python mode. I dare you. 💻",
+    "There's a hidden game somewhere on this page. I am not going to tell you where. 👀",
+    "She once refactored an entire data warehouse. 1,000+ tables. Just... tidied them all up. 🧹",
+    "The Cơm Nhà recipe app exists because she kept losing recipes in her notes app. Relatable. 🍜",
+    "The NYC Food Help Map exists because those resources deserve to be easy to find. Full stop. 🗺️",
+    "Film festival tracker. Film stock database. NYC film venue map. She likes film a little bit. 🎞️",
+    "Pumkin has no second 'p'. This was Anna's decision. Pumkin has accepted it. 🎃",
+    "CS at Penn while working full-time. Don't ask how. Just admire. 📚",
+    "She built Slack alerts so anomalies get caught before anyone has to ask. Prevention over panic. 🔔",
+    "Anna is from Hanoi, Vietnam. The recipe app has receipts. 🇻🇳",
+    "Light mode exists because Anna believes in free will. Dark mode is just correct. 🌙",
+    "The Departure Lounge is a bucket list formatted as boarding passes. Normal amount of wanderlust. ✈️",
+    "She speaks English and Vietnamese. Pumkin speaks in emojis. We make it work. 👾",
+  ];
+
+  var WAKEUP = [
+    "You're back! I was dreaming about <strong>NULL values</strong>... 😴",
+    "Oh! I was napping — dreaming about <strong>clean schemas</strong>. 💤",
+    "You startled me. I was counting <strong>missing semicolons</strong> in my sleep. 😪",
+    "Awake! I was just stress-testing a <strong>GROUP BY</strong> clause in my head. 😅",
+    "Back already? I was optimizing a query in a dream. It was going well. 😌",
   ];
 
   var NAV_MSGS = {
-    studio: "Anna's personal projects — built for fun, not deadlines. ✨",
-    built:  "4 years of shipping real data infrastructure at DEPT. 💼",
-    career: null,
-    console:"Try <code>anna.skills()</code> in Python, or <code>SELECT * FROM anna.skills</code> in SQL. 💻"
+    studio: "Built for curiosity, not deadlines. ✨",
+    built:  "Four years of shipping real data infrastructure. The actual job stuff. 💼",
+    career: "The full paper trail. DEPT, FIG, Penn. 📋",
+    console:"Honestly the terminal tab is my favorite. Try <code>anna.skills()</code> in Python mode. 💻"
   };
 
   function getGreeting() {
@@ -1724,7 +1735,7 @@ switchPane = function(id) {
     });
   }
 
-  /* ── Idle: blink / wink ── */
+  /* ── Idle: blink / wink / look around ── */
   function blink() {
     if (PET_STATE !== 'normal') return;
     setLids(1);
@@ -1736,25 +1747,45 @@ switchPane = function(id) {
     setMouth('wink');
     setTimeout(function() { setLid('pet-lid-r', 0); setMouth('happy'); }, 340);
   }
+  function lookAround() {
+    if (PET_STATE !== 'normal') return;
+    var pl = document.getElementById('pet-pupil-l');
+    var pr = document.getElementById('pet-pupil-r');
+    var sl = document.getElementById('pet-shine-l');
+    var sr = document.getElementById('pet-shine-r');
+    if (!pl || !pr) return;
+    var goLeft = Math.random() < 0.5;
+    var lx = goLeft ? 19 : 23, rx = goLeft ? 31 : 35;
+    var slx = goLeft ? 20 : 24, srx = goLeft ? 32 : 36;
+    pl.setAttribute('cx', lx); pr.setAttribute('cx', rx);
+    if (sl) sl.setAttribute('cx', slx); if (sr) sr.setAttribute('cx', srx);
+    setTimeout(function() {
+      pl.setAttribute('cx', 21); pr.setAttribute('cx', 33);
+      if (sl) sl.setAttribute('cx', 22); if (sr) sr.setAttribute('cx', 34);
+    }, 650);
+  }
   function scheduleIdle() {
     clearTimeout(blinkTimer);
-    var delay = 3500 + Math.random() * 4500;
+    var delay = 3000 + Math.random() * 4000;
     blinkTimer = setTimeout(function() {
       if (PET_STATE === 'normal') {
         var r = Math.random();
-        if (r < 0.55) blink();
-        else if (r < 0.72) wink();
+        if      (r < 0.42) blink();
+        else if (r < 0.58) wink();
+        else if (r < 0.74) lookAround();
       }
       scheduleIdle();
     }, delay);
   }
+
+  function randWakeup() { return WAKEUP[Math.floor(Math.random() * WAKEUP.length)]; }
 
   /* ── Inactivity → sleep ── */
   function resetSleepTimer() {
     clearTimeout(sleepTimer);
     if (PET_STATE === 'sleeping') {
       toNormal(); excite();
-      typingThenShow("Oh! You woke me up! 😴<br>I was dreaming about <strong>NULL values</strong>...");
+      typingThenShow(randWakeup());
     }
     sleepTimer = setTimeout(function() {
       if (PET_STATE === 'normal') toSleeping();
@@ -1805,14 +1836,30 @@ switchPane = function(id) {
     typingThenShow(msg, false);
   };
 
+  var _lastClick = 0;
+  var DOUBLE_MSGS = [
+    "Okay okay, I'm here! 😅",
+    "You really wanted my attention. I respect it. ⚡",
+    "Alright alright! What's up? 👾",
+  ];
+
   window.petClick = function() {
+    var now = Date.now();
     var b = document.getElementById('pet-bubble');
+
+    if (now - _lastClick < 380) {
+      _lastClick = 0;
+      if (PET_STATE === 'sleeping') toNormal();
+      excite();
+      typingThenShow(DOUBLE_MSGS[Math.floor(Math.random() * DOUBLE_MSGS.length)], false);
+      return;
+    }
+    _lastClick = now;
+
     if (!b.classList.contains('hidden')) { b.classList.add('hidden'); return; }
     if (PET_STATE === 'sleeping') {
       toNormal(); excite();
-      setTimeout(function() {
-        typingThenShow("Oh! You woke me up! 😴<br>I was dreaming about <strong>NULL values</strong>...");
-      }, 350);
+      setTimeout(function() { typingThenShow(randWakeup()); }, 350);
       return;
     }
     typingThenShow(TIPS[tipIdx % TIPS.length]);
@@ -1849,8 +1896,7 @@ switchPane = function(id) {
     localStorage.setItem(PET_LS, '1');
     setTimeout(function() {
       document.getElementById('pet-bubble-inner').innerHTML =
-        '<div class="pet-msg">Hey! I\'m <strong>Pumkin</strong> 👾 — Anna\'s data sprite.<br><br>' +
-        getGreeting() + ' Want a quick tour?</div>' + navHtml();
+        '<div class="pet-msg">' + getGreeting() + ' I\'m <strong>Pumkin</strong> 👾 — Anna\'s data sprite and self-appointed guide.<br><br>Click me anytime for tips. Want a quick tour?</div>' + navHtml();
       openBubble(); excite();
     }, 1800);
   }
