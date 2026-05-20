@@ -1024,7 +1024,7 @@ body {
         <span class="tbl">anna_vu.projects</span><span>&nbsp;</span>
         <span class="kw">ORDER BY</span><span>&nbsp;year&nbsp;</span>
         <span class="kw">DESC</span>
-        <span class="cmt">-- 15 rows returned</span>
+        <span class="cmt">-- 16 rows returned</span>
       </div>
       <div class="work-wrap">
         <div class="pipeline-wrap">
@@ -1058,6 +1058,13 @@ body {
             <div class="proj-tags"><span class="proj-tag">Matillion</span><span class="proj-tag">Snowflake</span><span class="proj-tag">Python</span><span class="proj-tag">S3</span><span class="proj-tag">BigQuery</span><span class="proj-tag">Looker</span></div>
             <div class="proj-desc">Architected the data warehouse and ETL pipelines to ingest 30+ sources into Snowflake, powering Looker dashboards for campaign performance and budget allocation.</div>
             <div class="proj-metrics"><div><div class="pm-v">30+</div><div class="pm-u">sources</div></div><div><div class="pm-v">1TB</div><div class="pm-u">monthly</div></div><div><div class="pm-v">$2B+</div><div class="pm-u">ad spend</div></div></div>
+          </div>
+          <div class="proj-card">
+            <div class="proj-title">Raw Data Request Builder</div>
+            <div class="proj-ctx">DEPT Agency · 2024–Present</div>
+            <div class="proj-tags"><span class="proj-tag">AWS Amplify</span><span class="proj-tag">Lambda</span><span class="proj-tag">Docker</span><span class="proj-tag">ECR</span><span class="proj-tag">Snowflake</span><span class="proj-tag">Python</span><span class="proj-tag">S3</span><span class="proj-tag">Google Drive API</span><span class="proj-tag">AWS SSM</span></div>
+            <div class="proj-desc">Full-stack internal self-serve tool that lets Client Services query Snowflake and export data without engineering involvement. Amplify-hosted frontend, Dockerized Lambda backend with credentials loaded from AWS SSM. Exports to CSV, Excel, and JSON with automatic S3 staging and Google Drive delivery on every successful request. Audit rows written to Snowflake for traceability.</div>
+            <div class="proj-metrics"><div><div class="pm-v">3</div><div class="pm-u">export formats</div></div><div><div class="pm-v">S3 + Drive</div><div class="pm-u">delivery</div></div><div><div class="pm-v">Zero-code</div><div class="pm-u">for end users</div></div></div>
           </div>
           <div class="proj-card">
             <div class="proj-title">Google Sheets Data Pull Tool</div>
@@ -1439,7 +1446,7 @@ function updateStatus(pane, rows) {
 var _origSwitch = switchPane;
 switchPane = function(id) {
   _origSwitch(id);
-  var rowCounts = {studio: 9, built: 15, career: 5};
+  var rowCounts = {studio: 9, built: 16, career: 5};
   updateStatus(id, rowCounts[id] || 0);
 };
 
@@ -1499,7 +1506,7 @@ switchPane = function(id) {
     moveIndicator(active);
     var pane = document.getElementById('pane-' + active.dataset.pane);
     if (pane) revealPane(pane);
-    var rowCounts = {studio: 9, built: 15, career: 5};
+    var rowCounts = {studio: 9, built: 16, career: 5};
     updateStatus(active.dataset.pane, rowCounts[active.dataset.pane] || 0);
   }
 })();
