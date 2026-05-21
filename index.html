@@ -853,7 +853,7 @@ body {
           <span class="profile-linh">(LINH)</span>
           <div class="profile-role">Lead Data Engineer · BI & Analytics</div>
           <div class="profile-contact-links">
-            <a href="mailto:vuanna@seas.upenn.edu" class="profile-contact-link">↗ email</a>
+            <a href="mailto:vuhongnhatlinh@gmail.com" class="profile-contact-link">↗ email</a>
             <a href="https://www.linkedin.com/in/annalinhvu" class="profile-contact-link" target="_blank" rel="noopener">↗ linkedin</a>
             <a href="https://github.com/annalinhvu" class="profile-contact-link" target="_blank" rel="noopener">↗ github</a>
           </div>
@@ -2013,7 +2013,7 @@ switchPane = function(id) {
   var ANNA = {
     name:'Anna (Linh) Vu', location:'New York City, NY',
     role:'Lead Data Technology Engineer', origin:'Hanoi, Vietnam',
-    email:'vuanna@seas.upenn.edu', linkedin:'linkedin.com/in/annalinhvu', github:'github.com/annalinhvu',
+    email:'vuhongnhatlinh@gmail.com', linkedin:'linkedin.com/in/annalinhvu', github:'github.com/annalinhvu',
     status:'open_to_work',
     grad_school:'University of Pennsylvania',
     grad_degree:'M.A.Sc. Computer Science · Artificial Intelligence',
@@ -2115,10 +2115,10 @@ switchPane = function(id) {
     if(/^SELECT\s+VERSION\s*\(\s*\)/i.test(cu)) return renderTable(['version()'], [{'version()':'anna_vu-1.0.0-nyc (Geist Mono, 64-bit)'}]);
     if(/^SELECT\s+NOW\s*\(\s*\)/i.test(cu)) return renderTable(['NOW()'], [{'NOW()': new Date().toLocaleString()}]);
     if(/^SELECT\s+CURRENT_USER\s*\(\s*\)/i.test(cu)) return renderTable(['CURRENT_USER()'], [{'CURRENT_USER()':'visitor@anna_vu.profile'}]);
-    if(/UPDATE\s+anna\s+SET\s+status\s*=\s*['"]hired['"]/i.test(cu)) return '<div class="res-info">-- that\'s up to you ;) → vuanna@seas.upenn.edu</div>';
+    if(/UPDATE\s+anna\s+SET\s+status\s*=\s*['"]hired['"]/i.test(cu)) return '<div class="res-info">-- that\'s up to you ;) → vuhongnhatlinh@gmail.com</div>';
     if(/^UPDATE\s+anna/i.test(cu))  return '<div class="res-error">ERROR 1142: UPDATE denied. anna edits herself.</div>';
     if(/GRANT\s+ALL\s+ON\s+anna/i.test(cu)) return '<div class="res-success">-- i\'m listening... 👀 send a message: INSERT INTO messages (from_name, message) VALUES (\'you\', \'hire me\')</div>';
-    if(/^CREATE\s+TABLE\s+job_offer/i.test(cu)) return '<div class="res-success">-- now we\'re talking. → vuanna@seas.upenn.edu</div>';
+    if(/^CREATE\s+TABLE\s+job_offer/i.test(cu)) return '<div class="res-success">-- now we\'re talking. → vuhongnhatlinh@gmail.com</div>';
     if(/WHERE\s+mood\s*=\s*['"]tired['"]/i.test(cu)) return '<div class="res-info">-- 1 row in set (always)</div>';
     if(/WHERE\s+mood\s*=\s*['"]happy['"]/i.test(cu)) return '<div class="res-success">-- 1 row in set (building things)</div>';
     if(/^EXPLAIN\s+SELECT\s+\*\s+FROM\s+(anna\.)?anna/i.test(cu))
@@ -2173,7 +2173,7 @@ switchPane = function(id) {
     if(insM) {
       var subj=encodeURIComponent('Portfolio message from '+insM[1]);
       var body=encodeURIComponent(insM[2]+'\n\n— '+insM[1]);
-      window.open('mailto:vuanna@seas.upenn.edu?subject='+subj+'&body='+body);
+      window.open('mailto:vuhongnhatlinh@gmail.com?subject='+subj+'&body='+body);
       return '<div class="res-success">-- 1 row inserted. opening your email client... 📬</div>';
     }
     if(/INSERT\s+INTO\s+messages/i.test(cu))
@@ -2219,7 +2219,7 @@ switchPane = function(id) {
     if(/^anna\.coffee_count/.test(cu)) return '<div class="res-success">∞</div>';
     if(/^anna\.years_of_experience\s*\(\s*\)/.test(cu)) return '<div class="res-success">5</div>';
     if(/^anna\.dream_job\s*\(\s*\)/.test(cu)) return '<div class="res-success">\'principal engineer building data systems that actually matter\'</div>';
-    if(/^anna\.availability\s*\(\s*\)/.test(cu)) return '<div class="res-success">{\'status\': \'open_to_work\', \'location\': \'NYC or remote\', \'contact\': \'vuanna@seas.upenn.edu\'}</div>';
+    if(/^anna\.availability\s*\(\s*\)/.test(cu)) return '<div class="res-success">{\'status\': \'open_to_work\', \'location\': \'NYC or remote\', \'contact\': \'vuhongnhatlinh@gmail.com\'}</div>';
     if(/^anna\.clone\s*\(\s*\)/.test(cu)) return '<div class="res-error">NotImplementedError: not possible... yet.</div>';
     if(/^anna\.__repr__\s*\(\s*\)/.test(cu)) return '<div class="res-success">\'&lt;Anna Vu: DataEngineer @ NYC | open_to_work&gt;\'</div>';
     if(/^anna\.bugs_fixed/.test(cu)) return '<div class="res-success">247  # and counting</div>';
@@ -2228,7 +2228,7 @@ switchPane = function(id) {
       var flat=SKILLS.map(function(s){return'\''+esc(s.skill)+'\''}).sort();
       return '<div class="res-success">['+flat.join(', ')+']</div>';
     }
-    if(/^anna\.resume\s*\(\s*\)/.test(cu)) return '<div class="res-info"># email me for the full PDF → vuanna@seas.upenn.edu</div>';
+    if(/^anna\.resume\s*\(\s*\)/.test(cu)) return '<div class="res-info"># email me for the full PDF → vuhongnhatlinh@gmail.com</div>';
     if(/^anna\.info\s*\(\s*\)/.test(cu)) {
       var keys=['name','location','role','origin','email','linkedin','status','grad_school','undergrad_school'];
       var lines=keys.map(function(k){return '&nbsp;&nbsp;<span style="color:var(--mono-g)">'+k+'</span>: <span style="color:var(--g-text)">"'+esc(ANNA[k])+'"</span>';});
@@ -2262,7 +2262,7 @@ switchPane = function(id) {
     if(cntM) {
       var subj=encodeURIComponent('Portfolio message from '+cntM[1]);
       var body=encodeURIComponent(cntM[2]+'\n\n— '+cntM[1]);
-      window.open('mailto:vuanna@seas.upenn.edu?subject='+subj+'&body='+body);
+      window.open('mailto:vuhongnhatlinh@gmail.com?subject='+subj+'&body='+body);
       return '<div class="res-success"># message sent! opening email client... 📬</div>';
     }
     if(/^anna\.contact\s*\(/.test(cu)) return '<div class="res-info"># usage: anna.contact(\'your name\', \'your message\')</div>';
@@ -2394,7 +2394,7 @@ switchPane = function(id) {
       var lines=PROJECTS.map(function(p){return '&nbsp;&nbsp;new Project("'+esc(p.title)+'", "'+esc(p.status)+'")';});
       return '<div class="res-success">ArrayList&lt;Project&gt; [<br>'+lines.join(',<br>')+'<br>]</div>';
     }
-    if(/^anna\.getAvailability\s*\(\s*\)/.test(cu)) return '<div class="res-success">Status.OPEN_TO_WORK // NYC or remote · vuanna@seas.upenn.edu</div>';
+    if(/^anna\.getAvailability\s*\(\s*\)/.test(cu)) return '<div class="res-success">Status.OPEN_TO_WORK // NYC or remote · vuhongnhatlinh@gmail.com</div>';
     if(/^anna\.getDreamJob\s*\(\s*\)/.test(cu)) return '<div class="res-success">"principal engineer building data systems that actually matter"</div>';
     if(/^anna\.yearsOfExperience\s*\(\s*\)/.test(cu)) return '<div class="res-success">5 // int, not long — still growing</div>';
     if(/^anna\.getCoffeeCount\s*\(\s*\)/.test(cu)) return '<div class="res-success">Integer.MAX_VALUE // ∞</div>';
@@ -2408,7 +2408,7 @@ switchPane = function(id) {
     if(/^new\s+Anna\s*\(\s*\)/.test(cu)) return '<div class="res-info">// already instantiated. hi 👋</div>';
     var cntM=cu.match(/^anna\.contact\s*\(\s*["']([^"']*)['"]\s*,\s*["']([^"']*)["']\s*\)/);
     if(cntM){
-      window.open('mailto:vuanna@seas.upenn.edu?subject='+encodeURIComponent('Portfolio message from '+cntM[1])+'&body='+encodeURIComponent(cntM[2]+'\n\n— '+cntM[1]));
+      window.open('mailto:vuhongnhatlinh@gmail.com?subject='+encodeURIComponent('Portfolio message from '+cntM[1])+'&body='+encodeURIComponent(cntM[2]+'\n\n— '+cntM[1]));
       return '<div class="res-success">// message sent! opening email client... 📬</div>';
     }
     if(/^anna\.contact\s*\(/.test(cu)) return '<div class="res-info">// usage: anna.contact("your name", "your message")</div>';
@@ -2449,7 +2449,7 @@ switchPane = function(id) {
     if(/^anna->salary/.test(cu)) return '<div class="res-error">// access denied: private field</div>';
     var cntM=cu.match(/^contact\s*\(\s*anna\s*,\s*["']([^"']*)['"]\s*,\s*["']([^"']*)["']\s*\)/);
     if(cntM){
-      window.open('mailto:vuanna@seas.upenn.edu?subject='+encodeURIComponent('Portfolio message from '+cntM[1])+'&body='+encodeURIComponent(cntM[2]+'\n\n— '+cntM[1]));
+      window.open('mailto:vuhongnhatlinh@gmail.com?subject='+encodeURIComponent('Portfolio message from '+cntM[1])+'&body='+encodeURIComponent(cntM[2]+'\n\n— '+cntM[1]));
       return '<div class="res-success">// message sent! 📬</div>';
     }
     if(/^contact\s*\(/.test(cu)) return '<div class="res-info">// usage: contact(anna, "your name", "your message")</div>';
