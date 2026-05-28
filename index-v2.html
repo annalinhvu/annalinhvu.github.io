@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Anna (Linh) Vu | Data Engineer · BI Engineer</title>
-<meta name="description" content="Data Engineer &amp; BI Engineer in NYC. Building scalable data infrastructure for enterprise marketing at DEPT. M.A.Sc. CS @ Penn.">
+<title>Anna Vu | Lead Data Engineer · Snowflake · AWS · Python</title>
+<meta name="description" content="Lead Data Engineer in NYC. 5+ years building production pipelines, data models, and analytics infrastructure for enterprise marketing clients managing $2B+ in annual ad spend. Snowflake · AWS · Python · Matillion.">
 <meta property="og:title" content="Anna Vu | Data Engineer · BI Engineer">
 <meta property="og:description" content="Lead Data Engineer in NYC. Building scalable pipelines, data models, and BI infrastructure for enterprise clients managing billions in marketing spend.">
 <meta property="og:url" content="https://annalinhvu.github.io">
@@ -807,6 +807,57 @@ body {
   .terminal-path{display:none;}
 }
 
+/* ── Profile tagline ── */
+.profile-tagline {
+  font-size:12.5px;color:var(--t3);margin-top:6px;line-height:1.55;
+}
+
+/* ── CTA row ── */
+.cta-row {
+  display:flex;gap:6px;flex-wrap:wrap;margin-top:10px;
+}
+.cta-btn {
+  font-family:'Geist Mono',monospace;font-size:10px;letter-spacing:.5px;
+  padding:4px 11px;border-radius:5px;
+  border:1px solid var(--bd);background:none;color:var(--t3);
+  cursor:pointer;text-decoration:none;transition:all .15s;white-space:nowrap;
+  display:inline-block;
+}
+.cta-btn:hover{color:var(--amber);border-color:var(--amber);}
+.cta-btn.cta-primary{
+  border-color:var(--amber);color:var(--amber);
+  background:rgba(200,120,94,.08);
+}
+.cta-btn.cta-primary:hover{background:rgba(200,120,94,.18);}
+
+/* ── Quick stats ── */
+.stats-grid {
+  display:grid;grid-template-columns:1fr 1fr;gap:10px 20px;
+  margin-bottom:4px;
+}
+.stat-item{display:flex;flex-direction:column;gap:2px;}
+.stat-v {
+  font-family:'Geist Mono',monospace;
+  font-size:21px;font-weight:700;
+  color:var(--amber);line-height:1;letter-spacing:-.5px;
+}
+.stat-l {
+  font-size:10px;color:var(--t4);
+  text-transform:uppercase;letter-spacing:.8px;line-height:1.3;
+}
+
+/* ── Now section ── */
+.now-list{margin:4px 0 0;}
+.now-item{
+  font-family:'Geist Mono',monospace;
+  font-size:11.5px;color:var(--t3);
+  line-height:2.0;display:flex;align-items:baseline;gap:5px;
+}
+.now-arrow{color:var(--amber);flex-shrink:0;}
+
+/* ── Featured section header variant ── */
+.work-section-hd.hd-featured::before{content:'★';font-size:9px;}
+
 </style>
 </head>
 <body>
@@ -852,12 +903,24 @@ body {
           <div class="profile-name">Anna Vu</div>
           <span class="profile-linh">(LINH)</span>
           <div class="profile-role">Lead Data Engineer · BI & Analytics</div>
-          <div class="profile-contact-links">
-            <a href="mailto:vuhongnhatlinh@gmail.com" class="profile-contact-link">↗ email</a>
-            <a href="https://www.linkedin.com/in/annalinhvu" class="profile-contact-link" target="_blank" rel="noopener">↗ linkedin</a>
-            <a href="https://github.com/annalinhvu" class="profile-contact-link" target="_blank" rel="noopener">↗ github</a>
+          <div class="profile-tagline">Building production pipelines, data models, and self-serve tooling for enterprise marketing clients at scale.</div>
+          <div class="cta-row">
+            <a href="mailto:vuhongnhatlinh@gmail.com?subject=Resume Request" class="cta-btn cta-primary">↓ resume</a>
+            <a href="https://www.linkedin.com/in/annalinhvu" class="cta-btn" target="_blank" rel="noopener">↗ linkedin</a>
+            <a href="https://github.com/annalinhvu" class="cta-btn" target="_blank" rel="noopener">↗ github</a>
+            <a href="mailto:vuhongnhatlinh@gmail.com" class="cta-btn">↗ email</a>
           </div>
         </div>
+      </div>
+
+      <hr class="p-rule">
+
+      <div class="metric-lbl">-- impact</div>
+      <div class="stats-grid">
+        <div class="stat-item"><div class="stat-v">5+</div><div class="stat-l">years building</div></div>
+        <div class="stat-item"><div class="stat-v">100+</div><div class="stat-l">clients supported</div></div>
+        <div class="stat-item"><div class="stat-v">$2B+</div><div class="stat-l">ad spend analyzed</div></div>
+        <div class="stat-item"><div class="stat-v">50+</div><div class="stat-l">data sources integrated</div></div>
       </div>
 
       <hr class="p-rule">
@@ -879,8 +942,16 @@ body {
 
       <hr class="p-rule">
 
-      <div class="comment-block">/* Data Engineer with expertise in marketing analytics infrastructure, designing scalable ETL pipelines, data models, and reporting systems that power decision-making for enterprise clients managing billions in marketing spend. */</div>
+      <div class="comment-block">/* I build data systems that hold up in production: reliable pipelines, clean schemas, and infrastructure that lets non-engineers get answers without filing a ticket. Five years in enterprise marketing data taught me that the best system is the one that quietly stops generating Slack messages. */</div>
       <a class="panel-career-cta" onclick="document.querySelector('[data-pane=career]').click()">→ view career & work projects</a>
+
+      <hr class="p-rule">
+      <div class="metric-lbl">-- now</div>
+      <div class="now-list">
+        <div class="now-item"><span class="now-arrow">→</span><span>finishing M.A.Sc. CS at Penn · AI track</span></div>
+        <div class="now-item"><span class="now-arrow">→</span><span>building self-serve data tooling at DEPT Agency</span></div>
+        <div class="now-item"><span class="now-arrow">→</span><span>open to senior data engineering roles · NYC or remote</span></div>
+      </div>
 
       <hr class="p-rule">
 
@@ -1024,7 +1095,7 @@ body {
         <span class="tbl">anna_vu.projects</span><span>&nbsp;</span>
         <span class="kw">ORDER BY</span><span>&nbsp;year&nbsp;</span>
         <span class="kw">DESC</span>
-        <span class="cmt">-- 15 rows returned</span>
+        <span class="cmt">-- 15 rows · engineering + academic</span>
       </div>
       <div class="work-wrap">
         <div class="pipeline-wrap">
@@ -1048,9 +1119,9 @@ body {
             <circle class="pd3" r="3" opacity="0"><animateMotion dur="1.2s" begin="1.1s"  repeatCount="indefinite" path="M520,40 L585,40"/><animate attributeName="opacity" values="0;1;1;0" dur="1.2s" begin="1.1s"  repeatCount="indefinite"/></circle>
           </svg>
         </div>
-        <p class="panel-intro-txt">/* data systems, pipelines, and tools built professionally and academically to solve real problems. */</p>
+        <p class="panel-intro-txt">/* production data engineering: pipelines, warehousing, alerting, and self-serve tooling for enterprise marketing clients. academic work from Penn's MCIT program below. */</p>
 
-        <div class="work-section-hd">professional</div>
+        <div class="work-section-hd hd-featured">featured projects</div>
         <div class="proj-grid">
           <div class="proj-card">
             <div class="proj-title">Data Pipelines & Client Dashboard Suite</div>
@@ -1073,6 +1144,10 @@ body {
             <div class="proj-desc">Real-time alert system that monitors key performance metrics across Platform and Geo dimensions, detecting Day-over-Day trend shifts and automatically notifying the team via Slack when values cross configurable thresholds. Sensitivity is tuned per metric group through a configuration table, no code changes needed.</div>
             <div class="proj-metrics"><div><div class="pm-v">DoD</div><div class="pm-u">anomaly detection</div></div><div><div class="pm-v">Config-driven</div><div class="pm-u">thresholds</div></div><div><div class="pm-v">Platform × Geo</div><div class="pm-u">granularity</div></div></div>
           </div>
+        </div>
+
+        <div class="work-section-hd">data engineering</div>
+        <div class="proj-grid">
           <div class="proj-card">
             <div class="proj-title">Snowflake Warehouse Optimization</div>
             <div class="proj-ctx">2023–2024</div>
@@ -1117,7 +1192,7 @@ body {
           </div>
         </div>
 
-        <div class="work-section-hd" style="margin-top:44px">academic</div>
+        <div class="work-section-hd" style="margin-top:44px">academic · penn mcit</div>
         <div class="proj-grid">
           <div class="proj-card">
             <div class="proj-title">COVID & Property Analytics Platform</div>
@@ -1664,13 +1739,12 @@ switchPane = function(id) {
   var WAKEUP = [
     "You're back! I was dreaming about <strong>NULL values</strong>... 😴",
     "Oh! I was napping — dreaming about <strong>clean schemas</strong>. 💤",
-    "You startled me. I was counting <strong>missing semicolons</strong> in my sleep. 😪",
     "Back already? I was optimizing a query in a dream. It was going well. 😌",
   ];
 
   var NAV_MSGS = {
     studio: "Built for curiosity, not deadlines. ✨",
-    built:  "Five years of shipping real data infrastructure. The actual job stuff. 💼",
+    built:  "Five years of production data engineering. Featured projects up top, then the full stack. 💼",
     career: null,
     console:"Honestly the terminal tab is my favorite. Try <code>anna.skills()</code> in Python mode. 💻"
   };
