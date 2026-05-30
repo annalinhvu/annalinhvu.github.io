@@ -956,8 +956,6 @@ body {
 
       <hr class="p-rule">
 
-      <hr class="p-rule">
-
       <div class="metric-lbl">-- skills</div>
       <div class="panel-skill-grp">LANGUAGES</div>
       <div class="panel-skill-line">SQL · Python · Java · HTML · CSS · JavaScript</div>
@@ -1128,21 +1126,21 @@ body {
             <div class="proj-title">Data Pipelines & Client Dashboard Suite</div>
             <div class="proj-ctx">2022–Present</div>
             <div class="proj-tags"><span class="proj-tag">Matillion</span><span class="proj-tag">Snowflake</span><span class="proj-tag">Python</span><span class="proj-tag">S3</span><span class="proj-tag">BigQuery</span><span class="proj-tag">Looker</span><span class="proj-tag">Tableau</span><span class="proj-tag">Domo</span><span class="proj-tag">SQL</span></div>
-            <div class="proj-desc">Designed and own the core reporting infrastructure for a major enterprise client. Pipelines ingest from 50+ sources into Snowflake, models power Looker and Tableau dashboards, and automated reports reach 100+ clients across the agency. Full lifecycle ownership from scoping requirements through development, maintenance, and delivery. This is the system the client team depends on every day.</div>
+            <div class="proj-desc">Core data infrastructure for a major enterprise marketing client. Pipelines pull from 50+ sources into Snowflake; downstream, that powers Looker and Tableau dashboards, automated reports, and ad-hoc pulls for 100+ clients. I own it end to end: scoping, building, maintaining, and delivering.</div>
             <div class="proj-metrics"><div><div class="pm-v">50+</div><div class="pm-u">sources</div></div><div><div class="pm-v">100+</div><div class="pm-u">clients</div></div><div><div class="pm-v">$2B+</div><div class="pm-u">ad spend</div></div></div>
           </div>
           <div class="proj-card">
             <div class="proj-title">Raw Data Request Builder</div>
             <div class="proj-ctx">2026</div>
             <div class="proj-tags"><span class="proj-tag">AWS Amplify</span><span class="proj-tag">Lambda</span><span class="proj-tag">Docker</span><span class="proj-tag">ECR</span><span class="proj-tag">Snowflake</span><span class="proj-tag">Python</span><span class="proj-tag">S3</span><span class="proj-tag">Google Drive API</span><span class="proj-tag">AWS SSM</span></div>
-            <div class="proj-desc">Every data export used to be an engineering ticket: a written request, a manual query, a file emailed back. Built a full-stack self-serve tool that eliminated the bottleneck entirely: Amplify frontend, Dockerized Lambda backend, parameterized Snowflake queries, automatic export to CSV/Excel/JSON with S3 staging and Google Drive delivery. Audit rows written back to Snowflake. Zero engineering involvement on every request since launch.</div>
+            <div class="proj-desc">Internal tool for Client Services to query Snowflake and export data without going through engineering. Amplify frontend, Dockerized Lambda backend, parameterized queries, exports to CSV/Excel/JSON with automatic S3 staging and Google Drive delivery. Audit log written back to Snowflake on each request.</div>
             <div class="proj-metrics"><div><div class="pm-v">3</div><div class="pm-u">export formats</div></div><div><div class="pm-v">S3 + Drive</div><div class="pm-u">delivery</div></div><div><div class="pm-v">Zero-code</div><div class="pm-u">for end users</div></div></div>
           </div>
           <div class="proj-card">
             <div class="proj-title">Anomaly Detection & Slack Alerting System</div>
             <div class="proj-ctx">2022–Present</div>
             <div class="proj-tags"><span class="proj-tag">SQL</span><span class="proj-tag">Python</span><span class="proj-tag">Snowflake</span><span class="proj-tag">Matillion</span><span class="proj-tag">Slack API</span></div>
-            <div class="proj-desc">The team used to find out about data problems at the same time clients did, or after. Built an automated monitoring system that runs Day-over-Day anomaly detection across key metrics, Platform, and Geo dimensions. Slack alerts fire when values cross configurable thresholds stored in a config table, tunable per metric without touching code. Engineering finds out first now.</div>
+            <div class="proj-desc">Monitors key metrics across Platform and Geo dimensions for Day-over-Day anomalies and sends Slack alerts when values go out of range. Thresholds live in a config table so they can be tuned per metric without a code change.</div>
             <div class="proj-metrics"><div><div class="pm-v">DoD</div><div class="pm-u">anomaly detection</div></div><div><div class="pm-v">Config-driven</div><div class="pm-u">thresholds</div></div><div><div class="pm-v">Platform × Geo</div><div class="pm-u">granularity</div></div></div>
           </div>
         </div>
@@ -1153,42 +1151,42 @@ body {
             <div class="proj-title">Snowflake Warehouse Optimization</div>
             <div class="proj-ctx">2023–2024</div>
             <div class="proj-tags"><span class="proj-tag">Snowflake</span><span class="proj-tag">SQL</span></div>
-            <div class="proj-desc">The warehouse had grown without governance: duplicate logic spread across hundreds of views, no consistent naming, no documented ownership, abandoned objects still running on schedule. Audited 1,000+ tables and views, refactored 50%+ of them, consolidated duplicate logic, standardized conventions, and documented ownership throughout. Compute costs dropped 30%.</div>
+            <div class="proj-desc">Audited and cleaned up 1,000+ tables and views that had accumulated over years with no governance. Consolidated duplicate logic, standardized naming, removed unused objects, and documented ownership across the warehouse. Compute costs dropped 30%.</div>
             <div class="proj-metrics"><div><div class="pm-v">30%</div><div class="pm-u">cost reduction</div></div><div><div class="pm-v">1,000+</div><div class="pm-u">tables audited</div></div></div>
           </div>
           <div class="proj-card">
             <div class="proj-title">Google Sheets Data Pull Tool</div>
             <div class="proj-ctx">2024</div>
             <div class="proj-tags"><span class="proj-tag">Apps Script</span><span class="proj-tag">Matillion</span><span class="proj-tag">Snowflake</span><span class="proj-tag">Google Sheets</span><span class="proj-tag">SQL</span></div>
-            <div class="proj-desc">Account managers needed ad-hoc data cuts constantly, and each one was a ticket. Built a self-serve tool inside Google Sheets: dimension and metric selections in a familiar interface trigger Apps Script and Matillion pipelines that generate Snowflake views and write results directly back to the sheet. Reduced manual engineering work and turnaround time by 80%.</div>
+            <div class="proj-desc">Self-serve reporting tool built inside Google Sheets. Dimension and metric selections trigger Apps Script and Matillion pipelines that generate Snowflake views and write results back to the sheet automatically. Cut turnaround time by 80%.</div>
             <div class="proj-metrics"><div><div class="pm-v">80%</div><div class="pm-u">less manual work</div></div><div><div class="pm-v">80%</div><div class="pm-u">faster turnaround</div></div></div>
           </div>
           <div class="proj-card">
             <div class="proj-title">Custom API Ingestion & Data Processing</div>
             <div class="proj-ctx">2022–2023</div>
             <div class="proj-tags"><span class="proj-tag">Python</span><span class="proj-tag">Pandas</span><span class="proj-tag">REST APIs</span><span class="proj-tag">Snowflake</span></div>
-            <div class="proj-desc">Marketing platforms don't make it easy to get data out. Each has its own auth flows, pagination schemes, rate limits, and response shapes. Built modular Python connectors for 6+ platforms including Google Ads, CM360, Meta, and DV360, each handling OAuth, cursor pagination, rate-limit backoff, and transformation into Snowflake. New source onboarding dropped from days to hours.</div>
+            <div class="proj-desc">Python connectors for 6+ marketing platforms (Google Ads, CM360, Meta, DV360) handling OAuth, pagination, rate limiting, and Snowflake ingestion. Built modularly so adding a new source doesn't mean starting from scratch each time.</div>
             <div class="proj-metrics"><div><div class="pm-v">6+</div><div class="pm-u">platforms</div></div><div><div class="pm-v">days → hrs</div><div class="pm-u">onboarding</div></div></div>
           </div>
           <div class="proj-card">
             <div class="proj-title">ESOV Media Spend Analysis</div>
             <div class="proj-ctx">2022</div>
             <div class="proj-tags"><span class="proj-tag">R</span><span class="proj-tag">Kantar</span><span class="proj-tag">Pathmatics</span><span class="proj-tag">Google Trends</span></div>
-            <div class="proj-desc">Built a competitive intelligence framework to support annual media budget planning: ESOV models correlating share-of-voice with brand growth, CDI/BDI scatter plots identifying underserved markets, and radar charts benchmarking salience scores against competitors. Used by brand teams to make the case for budget allocation decisions.</div>
+            <div class="proj-desc">Analysis for media budget planning using Kantar, Pathmatics, and Google Trends data: ESOV models, CDI/BDI scatter plots, and competitor salience benchmarks built in R. Delivered to brand teams for annual budget strategy.</div>
             <div class="proj-metrics"><div><div class="pm-v">3</div><div class="pm-u">data sources</div></div><div><div class="pm-v">Competitive</div><div class="pm-u">intel framework</div></div></div>
           </div>
           <div class="proj-card">
             <div class="proj-title">Social Listening & Audience Insights</div>
             <div class="proj-ctx">2022</div>
             <div class="proj-tags"><span class="proj-tag">Brandwatch</span><span class="proj-tag">Python</span><span class="proj-tag">Jupyter</span></div>
-            <div class="proj-desc">Set up Brandwatch monitoring across client brands and automated the insights pipeline. Python scripts pulled query results, generating charts, and drafting narratives that fed 10+ new business pitch decks.</div>
+            <div class="proj-desc">Brandwatch dashboards for social listening across client brands. Python scripts to pull data, generate charts, and draft narratives for 10+ new business pitch decks.</div>
             <div class="proj-metrics"><div><div class="pm-v">10+</div><div class="pm-u">insights decks</div></div></div>
           </div>
           <div class="proj-card">
             <div class="proj-title">Media Campaign Trafficking</div>
             <div class="proj-ctx">2021–2022</div>
             <div class="proj-tags"><span class="proj-tag">Prisma/MediaOcean</span><span class="proj-tag">Campaign Manager 360</span><span class="proj-tag">Google Ads</span></div>
-            <div class="proj-desc">Managed end-to-end campaign operations across 20+ media vendors: IO setup and budget pacing, pixel trafficking and tag QA, bid optimization, and post-campaign performance analysis across digital, OOH, and print.</div>
+            <div class="proj-desc">Campaign operations across 20+ media vendors: IO setup, budget pacing, pixel trafficking, tag QA, and post-campaign analysis across digital, OOH, and print.</div>
             <div class="proj-metrics"><div><div class="pm-v">20+</div><div class="pm-u">vendors</div></div><div><div class="pm-v">Multi-channel</div><div class="pm-u">digital · OOH · print</div></div></div>
           </div>
         </div>
