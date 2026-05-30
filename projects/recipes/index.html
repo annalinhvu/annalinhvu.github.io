@@ -15,34 +15,34 @@
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 
 :root[data-theme="light"]{
-  --bg:#f5f2ed;
+  --bg:#F8F5FD;
   --card:#ffffff;
   --text-1:#1c1a18;
   --text-2:#3c3830;
   --text-3:#6c6860;
   --text-4:#9c9888;
-  --accent:#5a7a58;
-  --accent-2:#487258;
+  --accent:#8B6BD4;
+  --accent-2:#7A5BC4;
   --terra:#8a4030;
   --gold:#7a6828;
   --gold-l:#9a8838;
-  --border:#dedad2;
+  --border:#E0D8F5;
   --sh:0 2px 8px rgba(28,26,24,.07),0 1px 3px rgba(28,26,24,.04);
   --sh-h:0 6px 20px rgba(28,26,24,.12),0 3px 8px rgba(28,26,24,.07);
 }
 :root[data-theme="dark"]{
-  --bg:#141210;
-  --card:#1e1c18;
+  --bg:#110E1A;
+  --card:#1C1828;
   --text-1:#f0ece4;
-  --text-2:#b8b0a4;
-  --text-3:#787068;
-  --text-4:#484038;
-  --accent:#7a9a70;
-  --accent-2:#8aaa80;
+  --text-2:#C4BFDB;
+  --text-3:#8A84A0;
+  --text-4:#5A5470;
+  --accent:#A78BFA;
+  --accent-2:#DDBDF7;
   --terra:#a05840;
   --gold:#908038;
   --gold-l:#a89048;
-  --border:rgba(200,196,184,.13);
+  --border:rgba(167,139,250,.15);
   --sh:0 2px 8px rgba(0,0,0,.35),0 1px 3px rgba(0,0,0,.22);
   --sh-h:0 6px 20px rgba(0,0,0,.5),0 3px 8px rgba(0,0,0,.3);
 }
@@ -94,14 +94,14 @@ body{
 
 /* ── Masthead ── */
 .masthead{
-  background:#1c1a18;
+  background:#14102A;
   padding:52px 32px 40px;
   text-align:center;
   border-bottom:1px solid rgba(0,0,0,.25);
   position:relative;overflow:hidden;
 }
-:root[data-theme="light"] .masthead{background:#2e2418}
-:root[data-theme="dark"] .masthead{background:#0e0c0a}
+:root[data-theme="light"] .masthead{background:#1C1038}
+:root[data-theme="dark"] .masthead{background:#0A0818}
 .masthead::before{
   content:'';position:absolute;inset:0;
   background-image:url("data:image/svg+xml,%3Csvg width='60' height='60' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M30,4 C20,14 18,26 30,54 C42,26 40,14 30,4 Z' fill='none' stroke='%23FFFFFF' stroke-width='0.8' stroke-opacity='0.05'/%3E%3Cline x1='30' y1='4' x2='30' y2='54' stroke='%23FFFFFF' stroke-width='0.4' stroke-opacity='0.03'/%3E%3C/svg%3E");
@@ -212,21 +212,21 @@ body{
   --region-text:#e4dca8;
 }
 
-/* Per-category banner vars — all dark charcoal ink family */
-.catalog-view[data-category="noodles"]{--cat-bg:#1c1a18;--cat-text:#e8e4dc}
-.catalog-view[data-category="rice"]   {--cat-bg:#1a1e18;--cat-text:#dce8d8}
-.catalog-view[data-category="bánh"]   {--cat-bg:#1e1c18;--cat-text:#e8e0d8}
-.catalog-view[data-category="sides"]  {--cat-bg:#181e18;--cat-text:#d8e4d4}
-.catalog-view[data-category="sweets"] {--cat-bg:#201a18;--cat-text:#ecdcd8}
-.catalog-view[data-category="drinks"] {--cat-bg:#181c18;--cat-text:#d8e0d4}
+/* Per-category banner vars — deep purple ink family */
+.catalog-view[data-category="noodles"]{--cat-bg:#180E2E;--cat-text:#DDD6F5}
+.catalog-view[data-category="rice"]   {--cat-bg:#16102A;--cat-text:#D8D2F0}
+.catalog-view[data-category="bánh"]   {--cat-bg:#1A0E2C;--cat-text:#E0D4F5}
+.catalog-view[data-category="sides"]  {--cat-bg:#140E28;--cat-text:#D4D0F2}
+.catalog-view[data-category="sweets"] {--cat-bg:#1C0E2E;--cat-text:#E4D8F8}
+.catalog-view[data-category="drinks"] {--cat-bg:#140E2A;--cat-text:#D4D2F2}
 
-/* Per-category card band tint — all subtle, within the neutral-sage family */
-.recipe-card[data-cat="noodles"]{--card-band-bg:rgba(90,122,88,.07)}
-.recipe-card[data-cat="rice"]   {--card-band-bg:rgba(80,116,80,.07)}
-.recipe-card[data-cat="bánh"]   {--card-band-bg:rgba(96,112,80,.07)}
-.recipe-card[data-cat="sides"]  {--card-band-bg:rgba(72,114,72,.07)}
-.recipe-card[data-cat="sweets"] {--card-band-bg:rgba(138,64,48,.06)}
-.recipe-card[data-cat="drinks"] {--card-band-bg:rgba(74,120,100,.07)}
+/* Per-category card band tint — subtle lavender family */
+.recipe-card[data-cat="noodles"]{--card-band-bg:rgba(167,139,250,.08)}
+.recipe-card[data-cat="rice"]   {--card-band-bg:rgba(167,139,250,.07)}
+.recipe-card[data-cat="bánh"]   {--card-band-bg:rgba(221,189,247,.08)}
+.recipe-card[data-cat="sides"]  {--card-band-bg:rgba(167,139,250,.07)}
+.recipe-card[data-cat="sweets"] {--card-band-bg:rgba(221,189,247,.09)}
+.recipe-card[data-cat="drinks"] {--card-band-bg:rgba(167,139,250,.07)}
 /* region overrides when browsing by region */
 .catalog-view[data-region="northern"] .recipe-card{--region-color:#4a7890}
 .catalog-view[data-region="central"]  .recipe-card{--region-color:#8a4030}
