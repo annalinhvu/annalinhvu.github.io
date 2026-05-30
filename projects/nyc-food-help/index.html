@@ -12,12 +12,12 @@
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}
 :root{
-  --green:#6F8F72;--green-dk:#263A2B;--green-md:#6F8F72;--green-lt:#E8F0E7;
+  --green:#7DB79C;--green-dk:#2B5246;--green-md:#7DB79C;--green-lt:#E0F2EB;
   --amber:#D9A441;--amber-lt:#FAF3E0;
   --terracotta:#C76D4A;
   --bg:#F8F5EF;--bg-card:#fff;--bg-warm:#F2EBE0;
   --text:#2B2B2B;--text2:#4A4540;--text-m:#8A7E74;
-  --border:#DDE5DA;
+  --border:#C8DED7;
   --r:14px;--r-lg:22px;
   --sh:0 1px 4px rgba(0,0,0,.06);--sh-md:0 3px 12px rgba(0,0,0,.08);--sh-lg:0 8px 24px rgba(0,0,0,.12);
   --font:'Inter', system-ui, sans-serif
@@ -48,7 +48,7 @@ a.nav-tab{text-decoration:none}
 
 /* ===== HERO (home only) ===== */
 .hero{background:linear-gradient(150deg,#E2EDE0 0%,#EDE8DC 60%,#F2EBE0 100%);padding:64px 24px 56px;text-align:center;position:relative;overflow:hidden;border-bottom:1px solid var(--border)}
-.hero::before{content:'';position:absolute;inset:0;opacity:.05;background-image:radial-gradient(circle,#263A2B 1px, transparent 1px);background-size:32px 32px}
+.hero::before{content:'';position:absolute;inset:0;opacity:.05;background-image:radial-gradient(circle,#2B5246 1px, transparent 1px);background-size:32px 32px}
 .hero-in{max-width:520px;margin:0 auto;position:relative}
 .hero h1{font-size:clamp(1.4rem,3vw,2.1rem);font-weight:700;color:var(--green-dk);line-height:1.2;margin-bottom:12px}
 .hero h1 em{color:var(--terracotta);font-style:normal}
@@ -61,7 +61,7 @@ a.nav-tab{text-decoration:none}
 .ht-sub{font-size:.88rem;color:var(--text-m);margin-bottom:20px}
 .ht-btns{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;margin-bottom:14px;align-items:stretch}
 .ht-btn{display:flex;flex-direction:column;gap:4px;padding:20px 22px;background:var(--green-lt);border:1px solid var(--border);border-radius:var(--r);transition:all .15s;text-decoration:none;color:var(--text);height:100%}
-.ht-btn:hover{background:#dde8dc;border-color:var(--green);box-shadow:var(--sh)}
+.ht-btn:hover{background:#c5e2d6;border-color:var(--green);box-shadow:var(--sh)}
 .ht-btn-name{font-size:.92rem;font-weight:700}
 .ht-btn-note{font-size:.78rem;color:var(--text2);line-height:1.45}
 .ht-disc{font-size:.8rem;color:var(--text-m);line-height:1.6}
@@ -133,24 +133,24 @@ a.nav-tab{text-decoration:none}
 .card-boro{font-size:.73rem;color:var(--text-m);margin-top:1px}
 .card-badges{display:flex;flex-wrap:wrap;gap:3px}
 .badge{display:inline-block;font-size:.66rem;font-weight:600;padding:2px 8px;border-radius:20px;white-space:nowrap}
-.badge-food-pantry{background:#E8F0E7;color:#3D5C40}
+.badge-food-pantry{background:#DCF0E9;color:#2B5246}
 .badge-soup-kitchen{background:#F5EBE4;color:#7A4030}
-.badge-community-meal{background:#EBF0E8;color:#3D5C40}
-.badge-food-rescue{background:#EEF0E8;color:#4A5C35}
+.badge-community-meal{background:#DCF0E9;color:#2B5246}
+.badge-food-rescue{background:#DCF0E9;color:#2B5246}
 .badge-home-delivery{background:#E8EEF0;color:#2D5060}
 .badge-senior-meals{background:#FAF3E0;color:#7A6030}
 .badge-shelter-meals{background:#EEECEA;color:#5A5248}
-.badge-mobile-pantry{background:#E8F0E7;color:#3D5C40}
-.badge-snap-help{background:#E8F0E7;color:#3D5C40}
+.badge-mobile-pantry{background:#DCF0E9;color:#2B5246}
+.badge-snap-help{background:#DCF0E9;color:#2B5246}
 .badge-food-bank{background:#FAF3E0;color:#7A6030}
 .badge-featured{background:#FAF0EA;color:#7A4030}
 .quick-badges{display:flex;flex-wrap:wrap;gap:4px}
 .qb{display:inline-flex;align-items:center;gap:4px;font-size:.67rem;font-weight:500;padding:3px 8px;border-radius:6px;white-space:nowrap}
 .qb-meal{background:#F5EBE4;color:#7A4030}
-.qb-grocery{background:#E8F0E7;color:#3D5C40}
+.qb-grocery{background:#DCF0E9;color:#2B5246}
 .qb-delivery{background:#E8EEF0;color:#2D5060}
 .qb-senior{background:#FAF3E0;color:#7A6030}
-.qb-family{background:#EBF0E8;color:#3D5C40}
+.qb-family{background:#DCF0E9;color:#2B5246}
 .qb-call{background:#FAF0EA;color:#9A4030}
 .org-meta{display:flex;flex-direction:column;gap:3px}
 .meta-row{display:flex;align-items:flex-start;gap:6px;font-size:.78rem;color:var(--text2)}
@@ -198,7 +198,7 @@ a.nav-tab{text-decoration:none}
 .map-pop{padding:13px;min-width:180px;max-width:240px}
 .map-pop-name{font-family:var(--font);font-weight:700;font-size:.88rem;color:#1C1917;margin-bottom:4px;line-height:1.3}
 .map-pop-addr{font-family:var(--font);font-size:.74rem;color:#78716C;margin-bottom:6px}
-.map-pop-phone{font-family:var(--font);font-size:.74rem;color:#3D5C40;font-weight:600}
+.map-pop-phone{font-family:var(--font);font-size:.74rem;color:#2B5246;font-weight:600}
 .map-pop-link{display:inline-block;margin-top:8px;font-family:var(--font);font-size:.74rem;color:#fff;background:#C76D4A;padding:4px 10px;border-radius:6px;font-weight:600}
 
 
@@ -577,15 +577,15 @@ const ICONS = {
 };
 
 const TC = {
-  'food-pantry':    { label:'Food Pantry',    color:'#3D5C40', map:'#6F8F72' },
+  'food-pantry':    { label:'Food Pantry',    color:'#2B5246', map:'#7DB79C' },
   'soup-kitchen':   { label:'Soup Kitchen',   color:'#7A4030', map:'#C76D4A' },
-  'community-meal': { label:'Community Meal', color:'#3D5C40', map:'#6F8F72' },
+  'community-meal': { label:'Community Meal', color:'#2B5246', map:'#7DB79C' },
   'food-rescue':    { label:'Food Rescue',    color:'#4A5C35', map:'#7A8F50' },
   'home-delivery':  { label:'Home Delivery',  color:'#2D5060', map:'#4A7A8A' },
   'senior-meals':   { label:'Senior Meals',   color:'#7A6030', map:'#D9A441' },
   'shelter-meals':  { label:'Shelter Meals',  color:'#5A5248', map:'#8A7A6A' },
-  'mobile-pantry':  { label:'Mobile Pantry',  color:'#3D5C40', map:'#6F8F72' },
-  'snap-help':      { label:'SNAP Help',      color:'#3D5C40', map:'#6F8F72' },
+  'mobile-pantry':  { label:'Mobile Pantry',  color:'#2B5246', map:'#7DB79C' },
+  'snap-help':      { label:'SNAP Help',      color:'#2B5246', map:'#7DB79C' },
   'food-bank':      { label:'Food Bank',      color:'#7A6030', map:'#D9A441' },
 };
 const tLabel = t => TC[t]?.label || t;
@@ -841,7 +841,7 @@ function refreshMapMarkers() {
       <div class="map-pop-name">${o.name}</div>
       <div style="margin-bottom:5px">${typeLine}</div>
       <div class="map-pop-addr">${ICONS.pin} ${o.address}</div>
-      ${o.phone ? `<div class="map-pop-phone">${ICONS.phone} <a href="tel:${o.phone.replace(/\D/g,'')}" style="color:#3D5C40">${o.phone}</a></div>` : ''}
+      ${o.phone ? `<div class="map-pop-phone">${ICONS.phone} <a href="tel:${o.phone.replace(/\D/g,'')}" style="color:#2B5246">${o.phone}</a></div>` : ''}
       <a href="${o.websiteUrl}" target="_blank" rel="noopener" class="map-pop-link">Visit website →</a>
     </div>`;
     const m = L.marker([o.lat, o.lng], { icon, title: o.name })
