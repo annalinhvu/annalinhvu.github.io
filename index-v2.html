@@ -1098,7 +1098,7 @@ body {
         <span class="tbl">anna_vu.projects</span><span>&nbsp;</span>
         <span class="kw">ORDER BY</span><span>&nbsp;year&nbsp;</span>
         <span class="kw">DESC</span>
-        <span class="cmt">-- 16 rows · engineering + academic</span>
+        <span class="cmt">-- 15 rows · engineering + academic</span>
       </div>
       <div class="work-wrap">
         <div class="pipeline-wrap">
@@ -1124,50 +1124,25 @@ body {
         </div>
 <div class="work-section-hd hd-featured">featured projects</div>
         <div class="proj-grid">
-          <div class="proj-card proj-card-wow">
-            <div class="proj-title">AI-Powered Campaign Attribution System</div>
-            <div class="proj-ctx">2024–Present</div>
-            <div class="proj-tags"><span class="proj-tag">OpenAI API</span><span class="proj-tag">Python</span><span class="proj-tag">Snowflake</span><span class="proj-tag">Pandas</span><span class="proj-tag">Matillion</span><span class="proj-tag">SQL</span></div>
-            <div class="proj-desc">Marketing campaigns run across dozens of platforms, and each platform names things differently. The same campaign in Google Ads, Meta, and CM360 can have three completely different names — making cross-platform attribution, spend rollups, and benchmarking unreliable. Built a classification pipeline using the OpenAI API to normalize raw campaign and placement strings into a standardized taxonomy. The system processes strings in batches, scores confidence on each match, and routes low-confidence results to a human review queue. Normalized output populates a Snowflake match table that feeds all downstream reporting and cross-client benchmarking.</div>
-            <div class="arch-wrap">
-              <div class="arch-lbl">architecture</div>
-              <svg class="arch-svg" viewBox="0 0 720 90">
-                <line class="p-line" x1="130" y1="40" x2="195" y2="40"/>
-                <line class="p-line" x1="325" y1="40" x2="390" y2="40"/>
-                <line class="p-line" x1="520" y1="40" x2="585" y2="40"/>
-                <g class="p-grp pg1"><rect class="p-stage ps1" x="0" y="15" width="130" height="50" rx="10"/><text class="p-lbl" x="65" y="43">PLATFORMS</text><text class="p-sub" x="65" y="78">50+ sources · raw naming</text></g>
-                <g class="p-grp pg2"><rect class="p-stage ps2" x="195" y="15" width="130" height="50" rx="10"/><text class="p-lbl" x="260" y="43">OPENAI API</text><text class="p-sub" x="260" y="78">batch classify · confidence score</text></g>
-                <g class="p-grp pg3"><rect class="p-stage ps3" x="390" y="15" width="130" height="50" rx="10"/><text class="p-lbl" x="455" y="43">MATCH TABLE</text><text class="p-sub" x="455" y="78">Snowflake · canonical taxonomy</text></g>
-                <g class="p-grp pg4"><rect class="p-stage ps4" x="585" y="15" width="130" height="50" rx="10"/><text class="p-lbl" x="650" y="43">REPORTING</text><text class="p-sub" x="650" y="78">dashboards · benchmarks</text></g>
-                <circle class="pd1" r="3" opacity="0"><animateMotion dur="1.2s" begin="0s" repeatCount="indefinite" path="M130,40 L195,40"/><animate attributeName="opacity" values="0;1;1;0" dur="1.2s" begin="0s" repeatCount="indefinite"/></circle>
-                <circle class="pd1" r="3" opacity="0"><animateMotion dur="1.2s" begin="0.4s" repeatCount="indefinite" path="M130,40 L195,40"/><animate attributeName="opacity" values="0;1;1;0" dur="1.2s" begin="0.4s" repeatCount="indefinite"/></circle>
-                <circle class="pd2" r="3" opacity="0"><animateMotion dur="1.2s" begin="0.15s" repeatCount="indefinite" path="M325,40 L390,40"/><animate attributeName="opacity" values="0;1;1;0" dur="1.2s" begin="0.15s" repeatCount="indefinite"/></circle>
-                <circle class="pd2" r="3" opacity="0"><animateMotion dur="1.2s" begin="0.55s" repeatCount="indefinite" path="M325,40 L390,40"/><animate attributeName="opacity" values="0;1;1;0" dur="1.2s" begin="0.55s" repeatCount="indefinite"/></circle>
-                <circle class="pd3" r="3" opacity="0"><animateMotion dur="1.2s" begin="0.3s" repeatCount="indefinite" path="M520,40 L585,40"/><animate attributeName="opacity" values="0;1;1;0" dur="1.2s" begin="0.3s" repeatCount="indefinite"/></circle>
-                <circle class="pd3" r="3" opacity="0"><animateMotion dur="1.2s" begin="0.7s" repeatCount="indefinite" path="M520,40 L585,40"/><animate attributeName="opacity" values="0;1;1;0" dur="1.2s" begin="0.7s" repeatCount="indefinite"/></circle>
-              </svg>
-            </div>
-            <div class="proj-metrics"><div><div class="pm-v">50+</div><div class="pm-u">sources unified</div></div><div><div class="pm-v">LLM</div><div class="pm-u">classification</div></div><div><div class="pm-v">Confidence</div><div class="pm-u">scoring + review</div></div></div>
-          </div>
           <div class="proj-card">
             <div class="proj-title">Data Pipelines & Client Dashboard Suite</div>
             <div class="proj-ctx">2022–Present</div>
             <div class="proj-tags"><span class="proj-tag">Matillion</span><span class="proj-tag">Snowflake</span><span class="proj-tag">Python</span><span class="proj-tag">S3</span><span class="proj-tag">BigQuery</span><span class="proj-tag">Looker</span><span class="proj-tag">Tableau</span><span class="proj-tag">Domo</span><span class="proj-tag">SQL</span></div>
-            <div class="proj-desc">Designed and own the core reporting infrastructure for a major enterprise client. Pipelines ingest from 50+ sources into Snowflake, models power Looker and Tableau dashboards, and automated reports reach 100+ clients across the agency. Full lifecycle ownership from scoping requirements through development, maintenance, and delivery — this is the system the client team depends on every day.</div>
+            <div class="proj-desc">Designed and own the core reporting infrastructure for a major enterprise client. Pipelines ingest from 50+ sources into Snowflake, models power Looker and Tableau dashboards, and automated reports reach 100+ clients across the agency. Full lifecycle ownership from scoping requirements through development, maintenance, and delivery. This is the system the client team depends on every day.</div>
             <div class="proj-metrics"><div><div class="pm-v">50+</div><div class="pm-u">sources</div></div><div><div class="pm-v">100+</div><div class="pm-u">clients</div></div><div><div class="pm-v">$2B+</div><div class="pm-u">ad spend</div></div></div>
           </div>
           <div class="proj-card">
             <div class="proj-title">Raw Data Request Builder</div>
             <div class="proj-ctx">2026</div>
             <div class="proj-tags"><span class="proj-tag">AWS Amplify</span><span class="proj-tag">Lambda</span><span class="proj-tag">Docker</span><span class="proj-tag">ECR</span><span class="proj-tag">Snowflake</span><span class="proj-tag">Python</span><span class="proj-tag">S3</span><span class="proj-tag">Google Drive API</span><span class="proj-tag">AWS SSM</span></div>
-            <div class="proj-desc">Every data export used to be an engineering ticket — a written request, a manual query, a file emailed back. Built a full-stack self-serve tool that eliminated the bottleneck entirely: Amplify frontend, Dockerized Lambda backend, parameterized Snowflake queries, automatic export to CSV/Excel/JSON with S3 staging and Google Drive delivery. Audit rows written back to Snowflake. Zero engineering involvement on every request since launch.</div>
+            <div class="proj-desc">Every data export used to be an engineering ticket: a written request, a manual query, a file emailed back. Built a full-stack self-serve tool that eliminated the bottleneck entirely: Amplify frontend, Dockerized Lambda backend, parameterized Snowflake queries, automatic export to CSV/Excel/JSON with S3 staging and Google Drive delivery. Audit rows written back to Snowflake. Zero engineering involvement on every request since launch.</div>
             <div class="proj-metrics"><div><div class="pm-v">3</div><div class="pm-u">export formats</div></div><div><div class="pm-v">S3 + Drive</div><div class="pm-u">delivery</div></div><div><div class="pm-v">Zero-code</div><div class="pm-u">for end users</div></div></div>
           </div>
           <div class="proj-card">
             <div class="proj-title">Anomaly Detection & Slack Alerting System</div>
             <div class="proj-ctx">2022–Present</div>
             <div class="proj-tags"><span class="proj-tag">SQL</span><span class="proj-tag">Python</span><span class="proj-tag">Snowflake</span><span class="proj-tag">Matillion</span><span class="proj-tag">Slack API</span></div>
-            <div class="proj-desc">The team used to find out about data problems at the same time clients did — or after. Built an automated monitoring system that runs Day-over-Day anomaly detection across key metrics, Platform, and Geo dimensions. Slack alerts fire when values cross configurable thresholds stored in a config table, tunable per metric without touching code. Engineering finds out first now.</div>
+            <div class="proj-desc">The team used to find out about data problems at the same time clients did, or after. Built an automated monitoring system that runs Day-over-Day anomaly detection across key metrics, Platform, and Geo dimensions. Slack alerts fire when values cross configurable thresholds stored in a config table, tunable per metric without touching code. Engineering finds out first now.</div>
             <div class="proj-metrics"><div><div class="pm-v">DoD</div><div class="pm-u">anomaly detection</div></div><div><div class="pm-v">Config-driven</div><div class="pm-u">thresholds</div></div><div><div class="pm-v">Platform × Geo</div><div class="pm-u">granularity</div></div></div>
           </div>
         </div>
@@ -1178,7 +1153,7 @@ body {
             <div class="proj-title">Snowflake Warehouse Optimization</div>
             <div class="proj-ctx">2023–2024</div>
             <div class="proj-tags"><span class="proj-tag">Snowflake</span><span class="proj-tag">SQL</span></div>
-            <div class="proj-desc">The warehouse had grown without governance — duplicate logic spread across hundreds of views, no consistent naming, no documented ownership, abandoned objects still running on schedule. Audited 1,000+ tables and views, refactored 50%+ of them, consolidated duplicate logic, standardized conventions, and documented ownership throughout. Compute costs dropped 30%.</div>
+            <div class="proj-desc">The warehouse had grown without governance: duplicate logic spread across hundreds of views, no consistent naming, no documented ownership, abandoned objects still running on schedule. Audited 1,000+ tables and views, refactored 50%+ of them, consolidated duplicate logic, standardized conventions, and documented ownership throughout. Compute costs dropped 30%.</div>
             <div class="proj-metrics"><div><div class="pm-v">30%</div><div class="pm-u">cost reduction</div></div><div><div class="pm-v">1,000+</div><div class="pm-u">tables audited</div></div></div>
           </div>
           <div class="proj-card">
@@ -1192,7 +1167,7 @@ body {
             <div class="proj-title">Custom API Ingestion & Data Processing</div>
             <div class="proj-ctx">2022–2023</div>
             <div class="proj-tags"><span class="proj-tag">Python</span><span class="proj-tag">Pandas</span><span class="proj-tag">REST APIs</span><span class="proj-tag">Snowflake</span></div>
-            <div class="proj-desc">Marketing platforms don't make it easy to get data out — each has its own auth flows, pagination schemes, rate limits, and response shapes. Built modular Python connectors for 6+ platforms including Google Ads, CM360, Meta, and DV360, each handling OAuth, cursor pagination, rate-limit backoff, and transformation into Snowflake. New source onboarding dropped from days to hours.</div>
+            <div class="proj-desc">Marketing platforms don't make it easy to get data out. Each has its own auth flows, pagination schemes, rate limits, and response shapes. Built modular Python connectors for 6+ platforms including Google Ads, CM360, Meta, and DV360, each handling OAuth, cursor pagination, rate-limit backoff, and transformation into Snowflake. New source onboarding dropped from days to hours.</div>
             <div class="proj-metrics"><div><div class="pm-v">6+</div><div class="pm-u">platforms</div></div><div><div class="pm-v">days → hrs</div><div class="pm-u">onboarding</div></div></div>
           </div>
           <div class="proj-card">
@@ -1206,7 +1181,7 @@ body {
             <div class="proj-title">Social Listening & Audience Insights</div>
             <div class="proj-ctx">2022</div>
             <div class="proj-tags"><span class="proj-tag">Brandwatch</span><span class="proj-tag">Python</span><span class="proj-tag">Jupyter</span></div>
-            <div class="proj-desc">Set up Brandwatch monitoring across client brands and automated the insights pipeline — Python scripts pulling query results, generating charts, and drafting narratives that fed 10+ new business pitch decks.</div>
+            <div class="proj-desc">Set up Brandwatch monitoring across client brands and automated the insights pipeline. Python scripts pulled query results, generating charts, and drafting narratives that fed 10+ new business pitch decks.</div>
             <div class="proj-metrics"><div><div class="pm-v">10+</div><div class="pm-u">insights decks</div></div></div>
           </div>
           <div class="proj-card">
@@ -1539,7 +1514,7 @@ function updateStatus(pane, rows) {
 var _origSwitch = switchPane;
 switchPane = function(id) {
   _origSwitch(id);
-  var rowCounts = {studio: 9, built: 16, career: 5};
+  var rowCounts = {studio: 9, built: 15, career: 5};
   updateStatus(id, rowCounts[id] || 0);
 };
 
@@ -1599,7 +1574,7 @@ switchPane = function(id) {
     moveIndicator(active);
     var pane = document.getElementById('pane-' + active.dataset.pane);
     if (pane) revealPane(pane);
-    var rowCounts = {studio: 9, built: 16, career: 5};
+    var rowCounts = {studio: 9, built: 15, career: 5};
     updateStatus(active.dataset.pane, rowCounts[active.dataset.pane] || 0);
   }
 })();
