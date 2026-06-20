@@ -1247,7 +1247,7 @@ body {
         <span class="tbl">anna_vu.experience</span><span>&nbsp;</span>
         <span class="kw">ORDER BY</span><span>&nbsp;start_date&nbsp;</span>
         <span class="kw">DESC</span>
-        <span class="cmt">-- 5 records</span>
+        <span class="cmt">-- 4 records</span>
       </div>
       <div class="exp-wrap">
 
@@ -1310,7 +1310,7 @@ body {
             <span class="exp-record-idx">[04]</span>
             <div class="exp-role-title">Data Analyst</div>
           </div>
-          <div class="exp-meta">FIG Agency · New York, NY · Jun 2021 – Oct 2022</div>
+          <div class="exp-meta">FIG Agency · New York, NY · Jun 2021 – Jun 2022</div>
           <div class="exp-tags"><span class="exp-tag">Domo</span><span class="exp-tag">Python</span><span class="exp-tag">SQL</span><span class="exp-tag">BigQuery</span><span class="exp-tag">Brandwatch</span><span class="exp-tag">NumPy</span><span class="exp-tag">Pandas</span><span class="exp-tag">Matplotlib</span></div>
           <ul class="exp-bullets">
             <li>Ingested data from multiple platforms and APIs into Domo, maintaining datasets, ETL dataflows, and dashboards that translated campaign performance data into actionable insights.</li>
@@ -1320,26 +1320,6 @@ body {
             <li>Performed QA on floodlight tags, tracking URLs, and UTM parameters, and resolved ad hoc data collection, taxonomy, and match-table issues to improve reporting accuracy.</li>
           </ul>
           <div class="exp-wins"><div class="exp-win"><span class="exp-win-v">50+</span><span class="exp-win-u">visualizations</span></div><div class="exp-win"><span class="exp-win-v">10+</span><span class="exp-win-u">pitch decks</span></div><div class="exp-win"><span class="exp-win-v">5+</span><span class="exp-win-u">API integrations</span></div></div>
-        </div>
-
-        <div class="exp-item">
-          <div class="exp-record-hd">
-            <span class="exp-record-idx">[05]</span>
-            <div class="exp-role-title">Media Coordinator</div>
-          </div>
-          <div class="exp-meta">FIG · New York, NY · Jun 2021 – Jun 2022</div>
-          <div class="exp-tags"><span class="exp-tag">Prisma/MediaOcean</span><span class="exp-tag">Campaign Manager 360</span><span class="exp-tag">Google Ads</span><span class="exp-tag">Kantar</span></div>
-          <ul class="exp-bullets">
-            <li>Managed relationships with 20+ media vendors (Video, Audio, Display, OOH, Print) per billing actualization, reporting and pacing processes.</li>
-            <li>Managed partners' weekly spend and monthly insights reports, kept track of daily spends, KPIs measurement and benchmarks.</li>
-            <li>Wrote monthly performance metrics insights and cross-checked with pre-established benchmarks (CTR, VCR, CPM, CPC, Reach/Frequency).</li>
-            <li>Managed Google Ads account, built search media plan, adjusted pacings and developed strategies for optimizations (SEO).</li>
-            <li>Created new campaigns & placements on Prisma/MediaOcean and trafficking sheets for new placements on Campaign Manager 360 using taxonomy matrix.</li>
-            <li>Created screenshot decks, creative rotation trackers and competitive spend analysis using Kantar, MRI Simmons & Commspoint.</li>
-            <li>Assisted with Media Mix Model strategy & tactical planning, budget prediction and channel allocations.</li>
-            <li>Assisted with researching new audience groups, interests, keywords and creating new ads and adjusting pacing on Facebook & Pinterest Ads.</li>
-          </ul>
-          <div class="exp-wins"><div class="exp-win"><span class="exp-win-v">20+</span><span class="exp-win-u">vendors</span></div><div class="exp-win"><span class="exp-win-v">8+</span><span class="exp-win-u">media channels</span></div></div>
         </div>
 
       </div>
@@ -1506,7 +1486,7 @@ function updateStatus(pane, rows) {
 var _origSwitch = switchPane;
 switchPane = function(id) {
   _origSwitch(id);
-  var rowCounts = {studio: 9, built: 15, career: 5};
+  var rowCounts = {studio: 9, built: 15, career: 4};
   updateStatus(id, rowCounts[id] || 0);
 };
 
@@ -1566,7 +1546,7 @@ switchPane = function(id) {
     moveIndicator(active);
     var pane = document.getElementById('pane-' + active.dataset.pane);
     if (pane) revealPane(pane);
-    var rowCounts = {studio: 9, built: 15, career: 5};
+    var rowCounts = {studio: 9, built: 15, career: 4};
     updateStatus(active.dataset.pane, rowCounts[active.dataset.pane] || 0);
   }
 })();
@@ -1731,7 +1711,7 @@ switchPane = function(id) {
 
   var WAKEUP = [
     "You're back! I was dreaming about <strong>NULL values</strong>... 😴",
-    "Oh! I was napping — dreaming about <strong>clean schemas</strong>. 💤",
+    "Oh! I was napping. Dreaming about <strong>clean schemas</strong>. 💤",
     "Back already? I was optimizing a query in a dream. It was going well. 😌",
   ];
 
@@ -2119,8 +2099,7 @@ switchPane = function(id) {
     {title:'Lead Data Technology Engineer',company:'DEPT® Agency',location:'New York, NY',period:'Aug 2025 – Present'},
     {title:'Senior Business Intelligence Engineer',company:'DEPT® Agency',location:'New York, NY',period:'Jun 2024 – Aug 2025'},
     {title:'Business Intelligence Engineer',company:'DEPT® Agency',location:'New York, NY',period:'Oct 2022 – Jun 2024'},
-    {title:'Data Analyst',company:'FIG Agency',location:'New York, NY',period:'Jun 2021 – Oct 2022'},
-    {title:'Media Coordinator',company:'FIG',location:'New York, NY',period:'Jun 2021 – Jun 2022'}
+    {title:'Data Analyst',company:'FIG Agency',location:'New York, NY',period:'Jun 2021 – Jun 2022'}
   ];
   var PROJECTS = [
     {title:'Film Festival Tracker',type:'Film',tech:'HTML · JSON · Vanilla JS',status:'live'},
