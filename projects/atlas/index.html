@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Departure Lounge</title>
-<meta name="description" content="A travel bucket list — 17 destinations, boarding passes not yet stamped.">
+<meta name="description" content="A travel bucket list — 50 destinations, boarding passes not yet stamped.">
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>✈</text></svg>">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -18,44 +18,46 @@
 
 /* ══ PALETTE ══ */
 :root {
-  --bg:       #1a2535;
-  --bg-2:     #1f2d40;
-  --surface:  #263648;
-  --surface-2:#2d4058;
+  --bg:       #0d1318;
+  --bg-2:     #121920;
+  --surface:  #192530;
+  --surface-2:#1f3040;
 
-  --border:   #384f68;
-  --border-2: #486080;
-  --text-1:   #e8ddc8;
-  --text-2:   #98a8b5;
-  --text-3:   #607080;
-  --text-4:   #405060;
-  --gold:     #c8a040;
-  --gold-dim: rgba(200,160,64,0.12);
-  --asia:     #e07050;
-  --europe:   #58a0e8;
-  --americas: #48c080;
-  --africa:   #e0a830;
-  --oceania:  #38c8c0;
+  --border:   #2a3d55;
+  --border-2: #3a5070;
+  --text-1:   #f0e8d8;
+  --text-2:   #a0a8b0;
+  --text-3:   #506070;
+  --text-4:   #30404e;
+  --gold:     #ff6b4a;
+  --gold-dim: rgba(255,107,74,0.13);
+  --teal:     #00d4b4;
+  --asia:     #ff5533;
+  --europe:   #4da6ff;
+  --americas: #00d45e;
+  --africa:   #ffb020;
+  --oceania:  #00d4c0;
 }
 :root[data-theme="light"] {
-  --bg:       #ddf0fc;
-  --bg-2:     #c8e4f8;
-  --surface:  #eef8ff;
-  --surface-2:#d8eef8;
+  --bg:       #fff8f0;
+  --bg-2:     #ffeedd;
+  --surface:  #fff5eb;
+  --surface-2:#fae8d8;
 
-  --border:   #90c0e0;
-  --border-2: #68a8d0;
-  --text-1:   #061828;
-  --text-2:   #0e3858;
-  --text-3:   #2a6080;
-  --text-4:   #5890b0;
-  --gold:     #a86c00;
-  --gold-dim: rgba(168,108,0,0.08);
-  --asia:     #c83820;
-  --europe:   #1858c0;
-  --americas: #107848;
-  --africa:   #b07000;
-  --oceania:  #0090a0;
+  --border:   #e8c8a8;
+  --border-2: #d8a880;
+  --text-1:   #1a0808;
+  --text-2:   #3a2010;
+  --text-3:   #6a4428;
+  --text-4:   #9a7860;
+  --gold:     #e03808;
+  --gold-dim: rgba(224,56,8,0.09);
+  --teal:     #007870;
+  --asia:     #cc3010;
+  --europe:   #1040c0;
+  --americas: #007830;
+  --africa:   #c07000;
+  --oceania:  #007880;
 }
 
 * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -95,7 +97,8 @@ body {
   border: 1px solid var(--border); border-radius: 2px;
   padding: 4px 10px; cursor: pointer; transition: all 0.2s;
 }
-.saved-btn:hover, .saved-btn.active { color: var(--gold); border-color: var(--gold); background: var(--gold-dim); }
+.saved-btn:hover { color: var(--gold); border-color: var(--gold); background: var(--gold-dim); }
+.saved-btn.active { color: var(--teal); border-color: var(--teal); background: rgba(0,212,180,0.10); }
 .theme-btn {
   font-size: 0.9rem; background: none; border: none;
   cursor: pointer; color: var(--text-3); transition: color 0.2s; padding: 4px;
@@ -119,11 +122,11 @@ body {
 }
 .filter-pill:hover { color: var(--text-2); border-color: var(--border-2); }
 .filter-pill.active { color: var(--text-1); border-color: var(--text-3); background: var(--surface-2); }
-.filter-pill[data-region="asia"].active    { color: var(--asia);     border-color: var(--asia);     background: rgba(212,96,58,0.08); }
-.filter-pill[data-region="europe"].active  { color: var(--europe);   border-color: var(--europe);   background: rgba(74,128,208,0.08); }
-.filter-pill[data-region="americas"].active{ color: var(--americas); border-color: var(--americas); background: rgba(72,168,104,0.08); }
-.filter-pill[data-region="africa"].active  { color: var(--africa);   border-color: var(--africa);   background: rgba(208,144,48,0.08); }
-.filter-pill[data-region="oceania"].active { color: var(--oceania);  border-color: var(--oceania);  background: rgba(56,176,168,0.08); }
+.filter-pill[data-region="asia"].active    { color: var(--asia);     border-color: var(--asia);     background: rgba(255,85,51,0.10); }
+.filter-pill[data-region="europe"].active  { color: var(--europe);   border-color: var(--europe);   background: rgba(77,166,255,0.10); }
+.filter-pill[data-region="americas"].active{ color: var(--americas); border-color: var(--americas); background: rgba(0,212,94,0.10); }
+.filter-pill[data-region="africa"].active  { color: var(--africa);   border-color: var(--africa);   background: rgba(255,176,32,0.10); }
+.filter-pill[data-region="oceania"].active { color: var(--oceania);  border-color: var(--oceania);  background: rgba(0,212,192,0.10); }
 .filter-sep { width: 1px; height: 16px; background: var(--border); flex-shrink: 0; margin: 0 2px; }
 .search-wrap { flex: 1; min-width: 120px; max-width: 220px; position: relative; display: flex; align-items: center; }
 .search-icon { position: absolute; left: 8px; font-size: 0.7rem; color: var(--text-4); pointer-events: none; }
@@ -164,28 +167,28 @@ body {
 
 /* Map SVG elements */
 @keyframes ocean-dark {
-  0%, 100% { fill: #1e3045; }
-  33%       { fill: #223650; }
-  66%       { fill: #1c2e42; }
+  0%, 100% { fill: #091520; }
+  33%       { fill: #0d1a28; }
+  66%       { fill: #081218; }
 }
 @keyframes ocean-light {
-  0%, 100% { fill: #b0d8f4; }
-  33%       { fill: #9ccef0; }
-  66%       { fill: #bce4fc; }
+  0%, 100% { fill: #ffe8d8; }
+  33%       { fill: #ffddc8; }
+  66%       { fill: #fff0e4; }
 }
 @keyframes graticule-drift {
-  0%, 100% { opacity: 0.4; }
-  50%       { opacity: 0.15; }
+  0%, 100% { opacity: 0.35; }
+  50%       { opacity: 0.12; }
 }
 :root .sphere { animation: ocean-dark 9s ease-in-out infinite; }
 :root[data-theme="light"] .sphere { animation: ocean-light 9s ease-in-out infinite; }
 .sphere-atmo { pointer-events: none; }
-:root .sphere-atmo { fill: #4080b0; opacity: 0.10; filter: blur(18px); }
-:root[data-theme="light"] .sphere-atmo { fill: #0070b0; opacity: 0.07; filter: blur(18px); }
+:root .sphere-atmo { fill: #ff5030; opacity: 0.07; filter: blur(22px); }
+:root[data-theme="light"] .sphere-atmo { fill: #ff7040; opacity: 0.09; filter: blur(22px); }
 .graticule { fill: none; stroke: var(--border); stroke-width: 0.3px; animation: graticule-drift 12s ease-in-out infinite; }
 .land      { fill: var(--surface); stroke: var(--border); stroke-width: 0.4px; }
-#world-map .land.destination { cursor: pointer; fill: var(--surface-2); }
-#world-map .land.destination:hover { fill: var(--border); }
+#world-map .land.destination { cursor: pointer; fill: var(--surface-2); transition: fill 0.2s; }
+#world-map .land.destination:hover { fill: var(--border-2); }
 .flight-path {
   fill: none; stroke-width: 1.2px;
   stroke-linecap: round;
@@ -215,7 +218,7 @@ body {
 }
 .pin-group:hover .pin-label { fill: var(--text-1); opacity: 1; }
 .pin-saved-dot {
-  fill: var(--gold);
+  fill: var(--teal);
   opacity: 0;
   transition: opacity 0.2s;
 }
@@ -386,7 +389,7 @@ body {
   display: flex; align-items: center; justify-content: center; gap: 8px;
 }
 .wishlist-btn:hover { border-color: var(--gold); color: var(--gold); background: var(--gold-dim); }
-.wishlist-btn.saved { border-color: var(--gold); color: var(--gold); background: var(--gold-dim); }
+.wishlist-btn.saved { border-color: var(--teal); color: var(--teal); background: rgba(0,212,180,0.08); }
 
 /* Vibe tags */
 .vibe-chips { display: flex; flex-wrap: wrap; gap: 5px; margin-top: 3px; }
@@ -415,6 +418,12 @@ body {
 }
 
 /* Random picker button */
+@keyframes randomPop {
+  0%   { transform: scale(1); }
+  30%  { transform: scale(1.12); box-shadow: 0 0 12px var(--gold); }
+  70%  { transform: scale(0.96); }
+  100% { transform: scale(1); }
+}
 .random-btn {
   font-size: 0.56rem; letter-spacing: 1px; text-transform: uppercase;
   color: var(--text-3); background: none;
@@ -423,6 +432,7 @@ body {
   white-space: nowrap;
 }
 .random-btn:hover { color: var(--gold); border-color: var(--gold); background: var(--gold-dim); }
+.random-btn.popping { animation: randomPop 0.45s ease-out; }
 
 /* Active pin + path highlight */
 .pin-group.active { filter: brightness(1.8) drop-shadow(0 0 4px var(--region-color, white)); }
@@ -436,6 +446,82 @@ body {
 .rc-americas { --region-color: var(--americas); }
 .rc-africa   { --region-color: var(--africa); }
 .rc-oceania  { --region-color: var(--oceania); }
+
+/* ══ PIN HOVER TOOLTIP ══ */
+#mapTooltip {
+  position: fixed;
+  z-index: 80;
+  pointer-events: none;
+  padding: 8px 12px;
+  background: var(--surface);
+  border: 1px solid var(--border-2);
+  border-left: 3px solid var(--region-color, var(--gold));
+  box-shadow: 0 8px 24px rgba(0,0,0,0.4);
+  opacity: 0;
+  transform: translateY(4px);
+  transition: opacity 0.15s, transform 0.15s;
+  max-width: 220px;
+  pointer-events: none;
+}
+#mapTooltip.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+.tooltip-name {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 1.05rem;
+  letter-spacing: 3px;
+  color: var(--text-1);
+  line-height: 1;
+  margin-bottom: 5px;
+}
+.tooltip-tagline {
+  font-family: 'Cormorant Garant', serif;
+  font-size: 0.75rem;
+  font-style: italic;
+  color: var(--text-3);
+  line-height: 1.4;
+}
+.tooltip-region {
+  font-size: 0.48rem;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--region-color, var(--text-4));
+  margin-bottom: 4px;
+}
+
+/* ══ STAMP ANIMATION ══ */
+@keyframes stampIn {
+  0%   { transform: scale(3.5) rotate(-18deg); opacity: 0; }
+  55%  { transform: scale(0.88) rotate(3deg);  opacity: 1; }
+  75%  { transform: scale(1.04) rotate(-1deg); opacity: 1; }
+  100% { transform: scale(1) rotate(0deg);     opacity: 1; }
+}
+@keyframes stampOut {
+  0%   { opacity: 1; transform: scale(1); }
+  100% { opacity: 0; transform: scale(0.7); }
+}
+#wishlistStamp {
+  position: absolute;
+  top: 50%; left: 50%;
+  width: 90px; height: 90px;
+  margin: -45px 0 0 -45px;
+  border: 3px solid var(--teal);
+  border-radius: 50%;
+  display: flex; flex-direction: column;
+  align-items: center; justify-content: center;
+  pointer-events: none;
+  opacity: 0;
+  z-index: 20;
+}
+#wishlistStamp .stamp-heart { font-size: 1.8rem; color: var(--teal); }
+#wishlistStamp .stamp-text  {
+  font-size: 0.42rem; letter-spacing: 3px; text-transform: uppercase;
+  color: var(--teal); margin-top: 3px;
+  font-family: 'Geist Mono', monospace;
+}
+#wishlistStamp.stamping { animation: stampIn 0.5s cubic-bezier(0.2,0,0.4,1) forwards; }
+#wishlistStamp.unstamping { animation: stampOut 0.3s ease-in forwards; }
 
 /* ══ ZOOM CONTROLS ══ */
 .zoom-btns {
@@ -518,6 +604,13 @@ body {
   <span class="stats-info" id="statsInfo"></span>
 </div>
 
+<!-- PIN HOVER TOOLTIP -->
+<div id="mapTooltip">
+  <div class="tooltip-region" id="ttRegion"></div>
+  <div class="tooltip-name"   id="ttName"></div>
+  <div class="tooltip-tagline" id="ttTagline"></div>
+</div>
+
 <!-- MAP -->
 <div class="map-wrap" id="mapWrap">
   <div class="map-loading-msg" id="mapLoading">Charting routes…</div>
@@ -548,6 +641,10 @@ body {
     <button class="wishlist-btn" id="wishlistBtn" onclick="toggleWishlist()">
       <span id="wishlistHeart">♡</span><span id="wishlistLabel">Save to Wishlist</span>
     </button>
+    <div id="wishlistStamp">
+      <div class="stamp-heart">♥</div>
+      <div class="stamp-text">Saved</div>
+    </div>
   </div>
 </div>
 
@@ -1001,6 +1098,11 @@ function drawAll(routeLayer, pins, nx, ny) {
         .style('opacity', minZ <= 1 ? 0.85 : 0)
         .text(c.name.toUpperCase());
 
+      // Hover tooltip
+      pg.on('mouseenter', function(event) { showTooltip(c, event); })
+        .on('mousemove',  function(event) { moveTooltip(event); })
+        .on('mouseleave', hideTooltip);
+
       // Fade in
       pg.transition().duration(350).style('opacity', 1);
 
@@ -1105,6 +1207,7 @@ function openPanel(id) {
       </div>` : ''}
     </div>`;
 
+  hideTooltip();
   setWishlistBtn(saved);
   document.getElementById('sidePanel').classList.add('open');
   document.getElementById('overlay').classList.add('visible');
@@ -1180,7 +1283,9 @@ function toggleWishlist() {
   if (currentId === null) return;
   savedIds.has(currentId) ? savedIds.delete(currentId) : savedIds.add(currentId);
   savePersist(); updateBadge();
-  setWishlistBtn(savedIds.has(currentId));
+  const nowSaved = savedIds.has(currentId);
+  setWishlistBtn(nowSaved);
+  fireStamp(nowSaved);
   // Update saved dot on pin
   if (mapSvg) {
     mapSvg.selectAll('.pin-group').each(function() {
@@ -1189,6 +1294,44 @@ function toggleWishlist() {
           .classed('visible', savedIds.has(currentId));
       }
     });
+  }
+}
+
+// ── TOOLTIP ───────────────────────────────────────
+const _tip = document.getElementById('mapTooltip');
+function showTooltip(c, event) {
+  document.getElementById('ttRegion').textContent  = (REGIONS[c.region]||c.region).toUpperCase();
+  document.getElementById('ttName').textContent    = c.name;
+  document.getElementById('ttTagline').textContent = c.tagline ? `"${c.tagline}"` : '';
+  _tip.style.setProperty('--region-color', `var(--${c.region})`);
+  _tip.classList.add('visible');
+  moveTooltip(event);
+}
+function moveTooltip(event) {
+  const x = event.clientX, y = event.clientY;
+  const tw = _tip.offsetWidth, th = _tip.offsetHeight;
+  const vw = window.innerWidth, vh = window.innerHeight;
+  const ox = x + 16 + tw > vw ? x - tw - 12 : x + 16;
+  const oy = y - 10 + th > vh ? y - th + 10  : y - 10;
+  _tip.style.left = ox + 'px';
+  _tip.style.top  = oy + 'px';
+}
+function hideTooltip() { _tip.classList.remove('visible'); }
+
+// ── STAMP ─────────────────────────────────────────
+function fireStamp(saved) {
+  const s = document.getElementById('wishlistStamp');
+  s.classList.remove('stamping','unstamping');
+  void s.offsetWidth; // reflow
+  if (saved) {
+    s.classList.add('stamping');
+    s.addEventListener('animationend', () => {
+      setTimeout(() => {
+        s.classList.remove('stamping');
+        s.classList.add('unstamping');
+        s.addEventListener('animationend', () => s.classList.remove('unstamping'), {once:true});
+      }, 600);
+    }, {once:true});
   }
 }
 
@@ -1254,6 +1397,13 @@ function onStatusChange() {
 }
 
 function pickRandom() {
+  const btn = document.querySelector('.random-btn');
+  if (btn) {
+    btn.classList.remove('popping');
+    void btn.offsetWidth;
+    btn.classList.add('popping');
+    btn.addEventListener('animationend', () => btn.classList.remove('popping'), {once:true});
+  }
   const q = document.getElementById('searchInput').value.trim().toLowerCase();
   const pool = allCountries.filter(c => matchesFilter(c, q));
   if (!pool.length) return;
