@@ -312,7 +312,7 @@
   {
     "id": 4,
     "name": "Jean-Luc Godard",
-    "nationality": "french",
+    "nationality": "swiss",
     "birth_year": 1930,
     "death_year": 2022,
     "era": "new-wave",
@@ -1184,7 +1184,7 @@
       "the female body",
       "ritual and mythology"
     ],
-    "quote": "Art is not a mirror to reflect reality but a hammer with which to shape it.",
+    "quote": "I make my pictures for what Hollywood spends on lipstick.",
     "photo_url": "https://upload.wikimedia.org/wikipedia/commons/d/d7/Maya_Deren.jpg"
   },
   {
@@ -1703,10 +1703,6 @@
       {
         "title": "Girlhood",
         "year": 2014
-      },
-      {
-        "title": "My Life as a Courgette",
-        "year": 2016
       },
       {
         "title": "Portrait of a Lady on Fire",
