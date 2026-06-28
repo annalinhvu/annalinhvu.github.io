@@ -31,16 +31,16 @@ html{scroll-behavior:smooth}
   --font:'Geist', system-ui, sans-serif
 }
 :root[data-theme="dark"]{
-  --green:#6DB88A;--green-dk:#8DD0A5;--green-md:#6DB88A;--green-lt:rgba(109,184,138,.12);
-  --amber:#E8B84A;--amber-lt:rgba(232,184,74,.10);
-  --terracotta:#E08060;
-  --bg:#0f1410;--bg-card:#161d17;--bg-warm:#131a14;
-  --text:#e4ece4;--text2:#9aaa9a;--text-m:#627062;
-  --border:#263226;
-  --nav-bg:rgba(12,18,13,.96);
-  --modal-bg:#161d17;
-  --warn-bg:rgba(200,140,40,.10);--warn-border:rgba(200,140,40,.25);--warn-text:#D4A84A;
-  --sh:0 1px 4px rgba(0,0,0,.35);--sh-md:0 3px 12px rgba(0,0,0,.45);--sh-lg:0 8px 24px rgba(0,0,0,.6);
+  --green:#5aad82;--green-dk:#7acca0;--green-md:#5aad82;--green-lt:rgba(90,173,130,.13);
+  --amber:#E8A830;--amber-lt:rgba(232,168,48,.11);
+  --terracotta:#d4705a;
+  --bg:#111010;--bg-card:#1c1918;--bg-warm:#181614;
+  --text:#ede8e0;--text2:#9a9088;--text-m:#605850;
+  --border:#302a26;
+  --nav-bg:rgba(14,13,12,.95);
+  --modal-bg:#1c1918;
+  --warn-bg:rgba(210,150,40,.09);--warn-border:rgba(210,150,40,.22);--warn-text:#C8982A;
+  --sh:0 1px 4px rgba(0,0,0,.4);--sh-md:0 3px 12px rgba(0,0,0,.55);--sh-lg:0 8px 24px rgba(0,0,0,.7);
 }
 body{font-family:var(--font);background:var(--bg);color:var(--text);line-height:1.6;font-size:16px;min-height:100vh;display:flex;flex-direction:column}
 a{color:inherit;text-decoration:none}
@@ -297,46 +297,46 @@ footer p{font-size:.82rem;line-height:1.7}
 .theme-toggle:hover{color:var(--text)}
 
 /* ── Dark mode overrides for badge colours ── */
-[data-theme="dark"] .badge-food-pantry{background:rgba(44,82,70,.35);color:#8DD0A5}
-[data-theme="dark"] .badge-soup-kitchen{background:rgba(122,64,48,.35);color:#E8A090}
-[data-theme="dark"] .badge-community-meal{background:rgba(44,82,70,.35);color:#8DD0A5}
-[data-theme="dark"] .badge-food-rescue{background:rgba(44,82,70,.35);color:#8DD0A5}
-[data-theme="dark"] .badge-home-delivery{background:rgba(45,80,96,.35);color:#88C0D4}
-[data-theme="dark"] .badge-senior-meals{background:rgba(122,96,48,.35);color:#D4B060}
-[data-theme="dark"] .badge-shelter-meals{background:rgba(90,82,72,.35);color:#B0A898}
-[data-theme="dark"] .badge-mobile-pantry{background:rgba(44,82,70,.35);color:#8DD0A5}
-[data-theme="dark"] .badge-snap-help{background:rgba(44,82,70,.35);color:#8DD0A5}
-[data-theme="dark"] .badge-food-bank{background:rgba(122,96,48,.35);color:#D4B060}
-[data-theme="dark"] .badge-featured{background:rgba(122,64,48,.35);color:#E8A080}
-[data-theme="dark"] .qb-meal{background:rgba(122,64,48,.3);color:#E8A090}
-[data-theme="dark"] .qb-grocery{background:rgba(44,82,70,.3);color:#8DD0A5}
-[data-theme="dark"] .qb-delivery{background:rgba(45,80,96,.3);color:#88C0D4}
-[data-theme="dark"] .qb-senior{background:rgba(122,96,48,.3);color:#D4B060}
-[data-theme="dark"] .qb-family{background:rgba(44,82,70,.3);color:#8DD0A5}
-[data-theme="dark"] .qb-call{background:rgba(154,64,48,.3);color:#E89080}
-[data-theme="dark"] .svc-tag{background:rgba(109,184,138,.12);color:#8DD0A5}
-[data-theme="dark"] .gf-tag{background:rgba(232,184,74,.12);color:#D4A84A}
-[data-theme="dark"] .m-elig{background:rgba(109,184,138,.10);border-left-color:var(--green);color:#8DD0A5}
+[data-theme="dark"] .badge-food-pantry{background:rgba(90,173,130,.2);color:#7acca0}
+[data-theme="dark"] .badge-soup-kitchen{background:rgba(212,112,90,.2);color:#e89a80}
+[data-theme="dark"] .badge-community-meal{background:rgba(90,173,130,.2);color:#7acca0}
+[data-theme="dark"] .badge-food-rescue{background:rgba(90,173,130,.2);color:#7acca0}
+[data-theme="dark"] .badge-home-delivery{background:rgba(70,130,180,.18);color:#80b8d8}
+[data-theme="dark"] .badge-senior-meals{background:rgba(200,152,48,.18);color:#d4a840}
+[data-theme="dark"] .badge-shelter-meals{background:rgba(140,128,110,.18);color:#a89880}
+[data-theme="dark"] .badge-mobile-pantry{background:rgba(90,173,130,.2);color:#7acca0}
+[data-theme="dark"] .badge-snap-help{background:rgba(90,173,130,.2);color:#7acca0}
+[data-theme="dark"] .badge-food-bank{background:rgba(200,152,48,.18);color:#d4a840}
+[data-theme="dark"] .badge-featured{background:rgba(212,112,90,.2);color:#e89a80}
+[data-theme="dark"] .qb-meal{background:rgba(212,112,90,.18);color:#e89a80}
+[data-theme="dark"] .qb-grocery{background:rgba(90,173,130,.18);color:#7acca0}
+[data-theme="dark"] .qb-delivery{background:rgba(70,130,180,.18);color:#80b8d8}
+[data-theme="dark"] .qb-senior{background:rgba(200,152,48,.18);color:#d4a840}
+[data-theme="dark"] .qb-family{background:rgba(90,173,130,.18);color:#7acca0}
+[data-theme="dark"] .qb-call{background:rgba(212,90,80,.18);color:#e88878}
+[data-theme="dark"] .svc-tag{background:rgba(90,173,130,.15);color:#7acca0}
+[data-theme="dark"] .gf-tag{background:rgba(232,168,48,.13);color:#c89830}
+[data-theme="dark"] .m-elig{background:rgba(90,173,130,.12);border-left-color:var(--green);color:#7acca0}
 [data-theme="dark"] .m-notes{background:var(--bg)}
 [data-theme="dark"] .chip{background:var(--bg);color:var(--text2)}
 [data-theme="dark"] .search-wrap{background:var(--bg)}
-[data-theme="dark"] .loc-pill{background:rgba(109,184,138,.12);border-color:var(--green);color:var(--green-dk)}
+[data-theme="dark"] .loc-pill{background:rgba(90,173,130,.14);border-color:var(--green);color:var(--green-dk)}
 [data-theme="dark"] .nav-logo{color:var(--green-dk)}
 [data-theme="dark"] .logo-icon{background:var(--green)}
-[data-theme="dark"] .ht-btn{background:rgba(109,184,138,.10);border-color:var(--border)}
-[data-theme="dark"] .ht-btn:hover{background:rgba(109,184,138,.18);border-color:var(--green)}
+[data-theme="dark"] .ht-btn{background:rgba(90,173,130,.08);border-color:var(--border)}
+[data-theme="dark"] .ht-btn:hover{background:rgba(90,173,130,.16);border-color:var(--green)}
 [data-theme="dark"] .modal-close{background:var(--bg);border-color:var(--border);color:var(--text-m)}
 [data-theme="dark"] .modal-close:hover{background:var(--border)}
 [data-theme="dark"] .m-btn-s{background:var(--bg);border-color:var(--border);color:var(--text2)}
 [data-theme="dark"] .m-btn-s:hover{background:var(--border)}
 [data-theme="dark"] .btn-s{background:var(--bg);color:var(--text-m);border-color:var(--border)}
-[data-theme="dark"] footer{background:#0d1a10}
-[data-theme="dark"] .stack-tag{background:rgba(109,184,138,.12);color:var(--green-dk)}
-[data-theme="dark"] .hn-icon-box{background:rgba(109,184,138,.12);color:var(--green)}
-[data-theme="dark"] .gh-ico-box{background:rgba(109,184,138,.12);color:var(--green)}
+[data-theme="dark"] footer{background:#0e0c0b}
+[data-theme="dark"] .stack-tag{background:rgba(90,173,130,.14);color:var(--green-dk)}
+[data-theme="dark"] .hn-icon-box{background:rgba(90,173,130,.14);color:var(--green)}
+[data-theme="dark"] .gh-ico-box{background:rgba(90,173,130,.14);color:var(--green)}
 [data-theme="dark"] .bfyg{background:var(--bg);border-color:var(--border)}
 [data-theme="dark"] .about-who{background:var(--bg);border-color:var(--border)}
-[data-theme="dark"] .hero::before{opacity:.03}
+[data-theme="dark"] .hero::before{opacity:.025}
 </style>
 </head>
 <body>
