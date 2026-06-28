@@ -193,29 +193,24 @@ VENDORS = [
 
 LABS = [
     {"name": "The Darkroom", "city": "San Clemente", "country": "USA", "url": "https://thedarkroom.com", "turnaround": "5-7 days", "mail_in": 1},
-    {"name": "Richard Photo Lab", "city": "Hollywood", "country": "USA", "url": "https://richardphotolab.com", "turnaround": "5-7 days", "mail_in": 1},
+    {"name": "Richard Photo Lab", "city": "Santa Clarita", "country": "USA", "url": "https://richardphotolab.com", "turnaround": "5-7 days", "mail_in": 1},
     {"name": "Indie Film Lab", "city": "Montgomery", "country": "USA", "url": "https://www.indiefilmlab.com", "turnaround": "5-7 days", "mail_in": 1},
     {"name": "The FIND Lab", "city": "Orem", "country": "USA", "url": "https://thefindlab.com", "turnaround": "5-7 days", "mail_in": 1},
-    {"name": "Memphis Film Lab", "city": "Memphis", "country": "USA", "url": "https://www.memphisfilmlab.org", "turnaround": "3-5 days", "mail_in": 1},
-    {"name": "Gelatin Labs", "city": "Salt Lake City", "country": "USA", "url": "https://gelatinlabs.com", "turnaround": "3-5 days", "mail_in": 1},
-    {"name": "Process One", "city": "Los Angeles", "country": "USA", "url": "https://www.processone.com", "turnaround": "1-3 days", "mail_in": 0},
+    {"name": "Memphis Film Lab", "city": "Euclid", "country": "USA", "url": "https://www.memphisfilmlab.org", "turnaround": "3-5 days", "mail_in": 1},
+    {"name": "Gelatin Labs", "city": "Maplewood", "country": "USA", "url": "https://gelatinlabs.com", "turnaround": "3-5 days", "mail_in": 1},
+    {"name": "Process One", "city": "Overland Park", "country": "USA", "url": "https://processonephoto.com", "turnaround": "1-3 days", "mail_in": 1},
     {"name": "Carmencita Film Lab", "city": "Valencia", "country": "Spain", "url": "https://carmencitafilmlab.com", "turnaround": "5-7 days", "mail_in": 1},
-    {"name": "Mori Film Lab", "city": "Tokyo", "country": "Japan", "url": "https://morifilmlab.com", "turnaround": "3-5 days", "mail_in": 1},
-    {"name": "Take It Easy Lab", "city": "Tokyo", "country": "Japan", "url": "https://www.tielab.jp", "turnaround": "5-7 days", "mail_in": 1},
-    {"name": "Silverpan Lab", "city": "Berlin", "country": "Germany", "url": "https://silverpan.de", "turnaround": "5-7 days", "mail_in": 1},
-    {"name": "Metro Lab", "city": "Sydney", "country": "Australia", "url": "https://metrolab.com.au", "turnaround": "3-5 days", "mail_in": 1},
+    {"name": "Mori Film Lab", "city": "Brussels", "country": "Belgium", "url": "https://morifilmlab.com", "turnaround": "3-5 days", "mail_in": 1},
+    {"name": "Take It Easy Lab", "city": "Leeds", "country": "UK", "url": "https://takeiteasylab.com", "turnaround": "5-7 days", "mail_in": 1},
+    {"name": "Silverpan Lab", "city": "Bristol", "country": "UK", "url": "https://silverpan.co.uk", "turnaround": "5-7 days", "mail_in": 1},
     {"name": "Old School Photo Lab", "city": "Dover", "country": "USA", "url": "https://oldschoolphotolab.com", "turnaround": "5-7 days", "mail_in": 1},
-    {"name": "Photo Palace", "city": "London", "country": "UK", "url": "https://photopalace.co.uk", "turnaround": "3-5 days", "mail_in": 1},
-    {"name": "Canadiana Lab", "city": "Toronto", "country": "Canada", "url": "https://canadianalab.com", "turnaround": "5-7 days", "mail_in": 1},
     # Motion picture / cine labs (US-focused)
     {"name": "Cinelab", "city": "New Bedford", "country": "USA", "url": "https://www.cinelab.com", "turnaround": "5-7 days", "mail_in": 1},
     {"name": "Spectra Film & Video", "city": "North Hollywood", "country": "USA", "url": "https://www.spectrafilmandvideo.com", "turnaround": "3-5 days", "mail_in": 1},
     {"name": "Pro8mm", "city": "Burbank", "country": "USA", "url": "https://www.pro8mm.com", "turnaround": "5-7 days", "mail_in": 1},
     {"name": "Dwayne's Photo", "city": "Parsons", "country": "USA", "url": "https://dwaynesphoto.com", "turnaround": "5-7 days", "mail_in": 1},
-    {"name": "Gamma Ray Digital", "city": "Chicago", "country": "USA", "url": "https://gammaraydigital.com", "turnaround": "3-5 days", "mail_in": 1},
-    {"name": "Frame Discreet", "city": "Brooklyn", "country": "USA", "url": "https://framediscreet.com", "turnaround": "5-7 days", "mail_in": 1},
-    {"name": "Negative Supply Lab", "city": "Rochester", "country": "USA", "url": "https://www.negativesupply.com", "turnaround": "5-7 days", "mail_in": 1},
-    {"name": "Yale Film & Video", "city": "Burbank", "country": "USA", "url": "https://yalefilmandvideo.com", "turnaround": "3-5 days", "mail_in": 1},
+    {"name": "Frame Discreet", "city": "Toronto", "country": "Canada", "url": "https://framediscreet.com", "turnaround": "5-7 days", "mail_in": 1},
+    {"name": "Yale Film & Video", "city": "Valencia", "country": "USA", "url": "https://yalefilmandvideo.com", "turnaround": "3-5 days", "mail_in": 1},
     {"name": "Mono No Aware", "city": "New York", "country": "USA", "url": "https://mononoawarefilm.com", "turnaround": "5-7 days", "mail_in": 0},
     {"name": "Metropolis Post", "city": "New York", "country": "USA", "url": "http://metpostny.com", "turnaround": "3-5 days", "mail_in": 1},
 ]
@@ -366,19 +361,10 @@ LAB_SERVICES = [
     # Silverpan Lab
     ("Silverpan Lab", "BW", "35mm", 10.0, 8.0), ("Silverpan Lab", "BW", "120", 10.0, 8.0),
     ("Silverpan Lab", "C-41", "35mm", 11.0, 8.0),
-    # Metro Lab
-    ("Metro Lab", "C-41", "35mm", 11.0, 9.0), ("Metro Lab", "C-41", "120", 11.0, 9.0),
-    ("Metro Lab", "BW", "35mm", 13.0, 9.0), ("Metro Lab", "E-6", "35mm", 15.0, 9.0),
     # Old School Photo Lab
     ("Old School Photo Lab", "C-41", "35mm", 10.0, 7.0), ("Old School Photo Lab", "C-41", "120", 10.0, 7.0),
     ("Old School Photo Lab", "BW", "35mm", 12.0, 7.0), ("Old School Photo Lab", "BW", "120", 12.0, 7.0),
     ("Old School Photo Lab", "E-6", "35mm", 14.0, 7.0), ("Old School Photo Lab", "ECN-2", "35mm", 16.0, 7.0),
-    # Photo Palace
-    ("Photo Palace", "C-41", "35mm", 10.0, 8.0), ("Photo Palace", "C-41", "120", 10.0, 8.0),
-    ("Photo Palace", "BW", "35mm", 12.0, 8.0), ("Photo Palace", "E-6", "35mm", 14.0, 8.0),
-    # Canadiana Lab
-    ("Canadiana Lab", "C-41", "35mm", 11.0, 9.0), ("Canadiana Lab", "C-41", "120", 11.0, 9.0),
-    ("Canadiana Lab", "BW", "35mm", 13.0, 9.0), ("Canadiana Lab", "E-6", "35mm", 15.0, 9.0),
     # Cinelab – full motion picture lab
     ("Cinelab", "ECN-2", "16mm", 45.0, 55.0), ("Cinelab", "ECN-2", "super8", 35.0, 45.0),
     ("Cinelab", "ECN-2", "35mm", 55.0, 65.0),
@@ -397,18 +383,11 @@ LAB_SERVICES = [
     ("Dwayne's Photo", "C-41", "35mm", 9.0, 7.0), ("Dwayne's Photo", "C-41", "120", 9.0, 7.0),
     ("Dwayne's Photo", "BW", "35mm", 11.0, 7.0), ("Dwayne's Photo", "E-6", "35mm", 13.0, 7.0),
     ("Dwayne's Photo", "ECN-2", "super8", 30.0, 42.0),
-    # Gamma Ray Digital
-    ("Gamma Ray Digital", "ECN-2", "16mm", 42.0, 50.0), ("Gamma Ray Digital", "ECN-2", "super8", 32.0, 40.0),
-    ("Gamma Ray Digital", "BW", "16mm", 38.0, 50.0), ("Gamma Ray Digital", "BW", "super8", 28.0, 40.0),
-    ("Gamma Ray Digital", "C-41", "35mm", 10.0, 8.0), ("Gamma Ray Digital", "BW", "35mm", 12.0, 8.0),
     # Frame Discreet
     ("Frame Discreet", "ECN-2", "16mm", 48.0, 55.0), ("Frame Discreet", "ECN-2", "super8", 35.0, 42.0),
     ("Frame Discreet", "BW", "16mm", 42.0, 55.0), ("Frame Discreet", "BW", "super8", 30.0, 42.0),
     ("Frame Discreet", "E-6", "16mm", 52.0, 55.0),
     ("Frame Discreet", "C-41", "35mm", 12.0, 10.0), ("Frame Discreet", "BW", "35mm", 14.0, 10.0),
-    # Negative Supply Lab
-    ("Negative Supply Lab", "C-41", "35mm", 11.0, 9.0), ("Negative Supply Lab", "C-41", "120", 11.0, 9.0),
-    ("Negative Supply Lab", "BW", "35mm", 13.0, 9.0), ("Negative Supply Lab", "E-6", "35mm", 15.0, 9.0),
     # Yale Film & Video
     ("Yale Film & Video", "ECN-2", "16mm", 44.0, 52.0), ("Yale Film & Video", "ECN-2", "super8", 34.0, 42.0),
     ("Yale Film & Video", "BW", "16mm", 40.0, 52.0), ("Yale Film & Video", "BW", "super8", 30.0, 42.0),
