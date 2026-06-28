@@ -1,12 +1,17 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="light">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Give Help — NYC Food Help Guide</title>
 <meta name="description" content="Volunteer with food assistance organizations across New York City. Soup kitchens, food pantries, food rescue, and more.">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap">
+<style>
+@font-face {
+  font-family: 'Geist';
+  font-style: normal; font-display: swap; font-weight: 100 900;
+  src: url(https://cdn.jsdelivr.net/fontsource/fonts/geist:vf@latest/latin-wght-normal.woff2) format('woff2-variations');
+}
+</style>
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 :root{
@@ -16,9 +21,22 @@
   --bg:#F8F5EF;--bg-card:#fff;--bg-warm:#F2EBE0;
   --text:#2B2B2B;--text2:#4A4540;--text-m:#8A7E74;
   --border:#C8DED7;
+  --nav-bg:rgba(255,255,255,.96);
+  --footer-bg:#1E2A20;
   --r:14px;--r-lg:22px;
   --sh:0 1px 4px rgba(0,0,0,.06);--sh-md:0 3px 12px rgba(0,0,0,.08);--sh-lg:0 8px 24px rgba(0,0,0,.12);
-  --font:'Inter',system-ui,sans-serif
+  --font:'Geist',system-ui,sans-serif
+}
+:root[data-theme="dark"]{
+  --green:#5aad82;--green-dk:#7acca0;--green-md:#5aad82;--green-lt:rgba(90,173,130,.13);
+  --amber:#E8A830;--amber-lt:rgba(232,168,48,.11);
+  --terracotta:#d4705a;
+  --bg:#111010;--bg-card:#1c1918;--bg-warm:#181614;
+  --text:#ede8e0;--text2:#9a9088;--text-m:#605850;
+  --border:#302a26;
+  --nav-bg:rgba(14,13,12,.95);
+  --footer-bg:#0e0c0b;
+  --sh:0 1px 4px rgba(0,0,0,.4);--sh-md:0 3px 12px rgba(0,0,0,.55);--sh-lg:0 8px 24px rgba(0,0,0,.7);
 }
 body{font-family:var(--font);background:var(--bg);color:var(--text);line-height:1.6;min-height:100vh;display:flex;flex-direction:column}
 a{color:inherit;text-decoration:none}
@@ -26,8 +44,8 @@ button{cursor:pointer;font-family:inherit;border:none;background:none}
 :focus-visible{outline:3px solid var(--green-dk);outline-offset:2px;border-radius:4px}
 
 /* NAV */
-.nav{position:sticky;top:0;z-index:100;background:rgba(255,255,255,.96);backdrop-filter:blur(8px);border-bottom:1px solid var(--border)}
-.nav-in{max-width:1120px;margin:0 auto;padding:0 24px;height:64px;display:flex;align-items:center;justify-content:space-between;gap:16px}
+.nav{position:sticky;top:0;z-index:100;background:var(--nav-bg);backdrop-filter:blur(8px);border-bottom:1px solid var(--border)}
+.nav-in{max-width:1120px;margin:0 auto;padding:0 24px;height:52px;display:flex;align-items:center;justify-content:space-between;gap:16px}
 .nav-logo{display:flex;align-items:center;gap:10px;font-weight:700;font-size:1rem;color:var(--green-dk);text-decoration:none}
 .logo-icon{width:32px;height:32px;background:var(--green-dk);border-radius:10px;display:flex;align-items:center;justify-content:center;flex-shrink:0}
 .nav-tabs{display:flex;align-items:center;gap:2px;overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none}
@@ -39,8 +57,8 @@ button{cursor:pointer;font-family:inherit;border:none;background:none}
 /* PANEL LAYOUT */
 .panel-body{max-width:1120px;margin:0 auto;padding:48px 24px 72px;flex:1}
 .panel-hdr{margin-bottom:32px;text-align:center}
-.s-label{font-size:.68rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--green-dk);margin-bottom:4px}
-.s-title{font-size:clamp(1.25rem,3vw,1.75rem);font-weight:700;line-height:1.2;color:var(--green-dk)}
+.s-label{font-size:.68rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--green);margin-bottom:4px}
+.s-title{font-size:clamp(1.25rem,3vw,1.75rem);font-weight:700;line-height:1.2}
 .s-sub{margin-top:6px;font-size:.88rem;color:var(--text-m);max-width:560px;margin-left:auto;margin-right:auto}
 
 /* VOL CARDS */
@@ -79,7 +97,7 @@ button{cursor:pointer;font-family:inherit;border:none;background:none}
 .owh-body{font-size:.83rem;color:var(--text2);line-height:1.6}
 
 /* FOOTER */
-footer{background:#1E2A20;color:rgba(255,255,255,.6);padding:32px 24px;text-align:center;margin-top:auto}
+footer{background:var(--footer-bg);color:rgba(255,255,255,.6);padding:32px 24px;text-align:center;margin-top:auto}
 footer a{color:rgba(255,255,255,.7);transition:color .15s}
 footer a:hover{color:#fff}
 footer p{font-size:.82rem;line-height:1.7}
@@ -92,15 +110,28 @@ footer p{font-size:.82rem;line-height:1.7}
 @media(max-width:480px){
   .owh-grid{grid-template-columns:1fr}
 }
-.back-link{position:absolute;left:24px;top:50%;transform:translateY(-50%);font-size:.75rem;font-weight:500;color:#8A7E74;text-decoration:none;white-space:nowrap;transition:color .15s}
+.back-link{position:absolute;left:24px;top:50%;transform:translateY(-50%);font-size:.6rem;font-weight:500;letter-spacing:1.5px;text-transform:uppercase;color:var(--text-m);text-decoration:none;white-space:nowrap;transition:color .15s}
 .back-link:hover{color:var(--green)}
+.theme-toggle{background:none;border:none;font-size:.9rem;color:var(--text-m);cursor:pointer;padding:4px;transition:color .2s;position:absolute;right:24px;top:50%;transform:translateY(-50%)}
+.theme-toggle:hover{color:var(--text)}
+
+/* DARK MODE — volunteer-page overrides */
+[data-theme="dark"] .vol-card{background:var(--bg-card);border-color:var(--border)}
+[data-theme="dark"] .role-tag{background:rgba(90,173,130,.15);color:#7acca0}
+[data-theme="dark"] .vc-btn-s{background:var(--bg);border-color:var(--border);color:var(--text2)}
+[data-theme="dark"] .vc-btn-s:hover{background:var(--border)}
+[data-theme="dark"] .vc-icon{background:rgba(90,173,130,.14);color:var(--green)}
+[data-theme="dark"] .tips{background:var(--bg-warm);border-color:var(--border)}
+[data-theme="dark"] .owh-card{background:var(--bg-card);border-color:var(--border)}
+[data-theme="dark"] .owh-icon{background:rgba(90,173,130,.14);color:var(--green)}
 </style>
 </head>
 <body>
 
 <!-- NAV -->
-<nav class="nav">
+<nav class="nav" style="position:relative">
   <a href="../../index.html" class="back-link">← Portfolio</a>
+  <button class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle theme">◐</button>
   <div class="nav-in">
     <a href="index.html" class="nav-logo">
       <div class="logo-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10Z"/><path d="M2 21c0-3 1.85-5.96 5-8"/></svg></div>
@@ -393,5 +424,13 @@ footer p{font-size:.82rem;line-height:1.7}
   </p>
 </footer>
 
+<script>
+function toggleTheme() {
+  const next = document.documentElement.dataset.theme === 'dark' ? 'light' : 'dark';
+  document.documentElement.dataset.theme = next;
+  localStorage.setItem('nyc-food-theme', next);
+}
+(function(){ const t = localStorage.getItem('nyc-food-theme'); if(t) document.documentElement.dataset.theme = t; })();
+</script>
 </body>
 </html>
