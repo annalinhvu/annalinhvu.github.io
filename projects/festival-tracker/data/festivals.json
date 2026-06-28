@@ -48,49 +48,6 @@
     "founded": 2003
   },
   {
-    "id": 61,
-    "name": "AFI Docs",
-    "city": "Washington, D.C.",
-    "country": "USA",
-    "website": "https://www.afi.com/afi-docs/",
-    "filmfreeway": null,
-    "description": "The American Film Institute's annual documentary festival in the nation's capital, spotlighting films that illuminate the issues of our time.",
-    "focus": "documentary",
-    "tier": "mid",
-    "event_month": "June",
-    "premiere_req": "none",
-    "prestige": 3,
-    "acceptance": "selective",
-    "known_for": "Documentary festival in the nation's capital",
-    "deadlines": [
-      {
-        "year": 2025,
-        "tier": "regular",
-        "deadline": "2025-02-15",
-        "fee_usd": null
-      },
-      {
-        "year": 2026,
-        "tier": "regular",
-        "deadline": "2026-02-15",
-        "fee_usd": null
-      }
-    ],
-    "categories": [
-      {
-        "name": "feature documentary",
-        "min_runtime": 40,
-        "max_runtime": null
-      },
-      {
-        "name": "short documentary",
-        "min_runtime": null,
-        "max_runtime": 40
-      }
-    ],
-    "founded": 2001
-  },
-  {
     "id": 12,
     "name": "ARKIPEL Jakarta",
     "city": "Jakarta",
@@ -187,7 +144,7 @@
     "country": "Mexico",
     "website": "https://www.ambulante.org",
     "filmfreeway": null,
-    "description": "Itinerant documentary festival traveling across Mexico, co-founded by Gael García Bernal, bringing non-fiction cinema to communities beyond traditional venues.",
+    "description": "Itinerant documentary festival traveling across Mexico, co-founded by Gael Garc\u00eda Bernal, Diego Luna, and Elena Fortes, bringing non-fiction cinema to communities beyond traditional venues.",
     "focus": "documentary",
     "tier": "mid",
     "event_month": "March-May",
@@ -395,7 +352,7 @@
     "name": "Berlinale Forum Expanded",
     "city": "Berlin",
     "country": "Germany",
-    "website": "https://www.berlinale.de/en/programme/sections/forum-expanded.html",
+    "website": "https://www.berlinale.de/en/festival/sections/forum-and-forum-expanded.html",
     "filmfreeway": null,
     "description": "The Berlinale's platform for film and art in the expanded field, presenting installations, performances, and experimental works at the intersection of cinema and visual arts.",
     "focus": "avant-garde",
@@ -435,7 +392,7 @@
         "max_runtime": 45
       }
     ],
-    "founded": 1971
+    "founded": 2006
   },
   {
     "id": 74,
@@ -492,79 +449,20 @@
     "founded": 2003
   },
   {
-    "id": 29,
-    "name": "Black Star Film Festival",
-    "city": "Philadelphia, PA",
-    "country": "USA",
-    "website": "https://www.blackstarfest.org",
-    "filmfreeway": "https://filmfreeway.com/BlackStar",
-    "description": "Festival centering the work of Black, Brown, and Indigenous filmmakers, including experimental and avant-garde shorts and features.",
-    "focus": "experimental",
-    "tier": "mid",
-    "event_month": "August",
-    "premiere_req": "none",
-    "prestige": 3,
-    "acceptance": "selective",
-    "known_for": "Centering BIPOC voices in experimental cinema",
-    "deadlines": [
-      {
-        "year": 2025,
-        "tier": "early",
-        "deadline": "2025-01-15",
-        "fee_usd": 15.0
-      },
-      {
-        "year": 2025,
-        "tier": "regular",
-        "deadline": "2025-03-15",
-        "fee_usd": 30.0
-      },
-      {
-        "year": 2025,
-        "tier": "late",
-        "deadline": "2025-05-01",
-        "fee_usd": 45.0
-      }
-    ],
-    "categories": [
-      {
-        "name": "experimental short",
-        "min_runtime": null,
-        "max_runtime": 20
-      },
-      {
-        "name": "feature film",
-        "min_runtime": 40,
-        "max_runtime": null
-      },
-      {
-        "name": "music video",
-        "min_runtime": null,
-        "max_runtime": 10
-      },
-      {
-        "name": "short film",
-        "min_runtime": null,
-        "max_runtime": 40
-      }
-    ],
-    "founded": 2012
-  },
-  {
     "id": 88,
-    "name": "Blackstar Film Festival",
+    "name": "BlackStar Film Festival",
     "city": "Philadelphia, PA",
     "country": "USA",
     "website": "https://blackstarfest.org",
-    "filmfreeway": "https://filmfreeway.com/BlackStarFilmFestival",
-    "description": "A festival centered on films by and about Black, Brown, and Indigenous people, with a strong documentary strand championing underrepresented voices.",
+    "filmfreeway": "https://filmfreeway.com/BlackStarFest",
+    "description": "Festival centered on films by and about Black, Brown, and Indigenous people, spanning narrative, documentary, experimental, and short work. Founded by Maori Karmael Holmes in 2012.",
     "focus": "documentary",
     "tier": "mid",
     "event_month": "August",
     "premiere_req": "none",
     "prestige": 4,
     "acceptance": "selective",
-    "known_for": "Centering Black, Brown, and Indigenous documentary voices",
+    "known_for": "Centering Black, Brown, and Indigenous filmmakers in Philadelphia",
     "deadlines": [
       {
         "year": 2026,
@@ -600,8 +498,8 @@
   },
   {
     "id": 13,
-    "name": "Bogotá Experimental Film Festival (CineAutopsia)",
-    "city": "Bogotá",
+    "name": "Bogot\u00e1 Experimental Film Festival (CineAutopsia)",
+    "city": "Bogot\u00e1",
     "country": "Colombia",
     "website": "https://www.cineautopsia.com",
     "filmfreeway": "https://filmfreeway.com/CineAutopsia",
@@ -935,7 +833,7 @@
   },
   {
     "id": 45,
-    "name": "Curta Cinema — Rio de Janeiro Short Film Festival",
+    "name": "Curta Cinema \u2014 Rio de Janeiro Short Film Festival",
     "city": "Rio de Janeiro",
     "country": "Brazil",
     "website": "https://www.curtacinema.com.br",
@@ -1170,47 +1068,6 @@
     "founded": 1955
   },
   {
-    "id": 89,
-    "name": "DOKFest Kassel",
-    "city": "Kassel",
-    "country": "Germany",
-    "website": "https://www.dokukassel.de",
-    "filmfreeway": "https://filmfreeway.com/DOKFestKassel",
-    "description": "An international documentary and video art festival in Kassel, focused on politically engaged and socially aware non-fiction filmmaking.",
-    "focus": "documentary",
-    "tier": "emerging",
-    "event_month": "November",
-    "premiere_req": "none",
-    "prestige": 2,
-    "acceptance": "moderate",
-    "known_for": "Politically engaged documentary and video art in Germany",
-    "deadlines": [
-      {
-        "year": 2026,
-        "tier": "regular",
-        "deadline": "2026-06-01",
-        "fee_usd": null
-      }
-    ],
-    "categories": [
-      {
-        "name": "documentary feature",
-        "min_runtime": 60,
-        "max_runtime": null
-      },
-      {
-        "name": "documentary short",
-        "min_runtime": null,
-        "max_runtime": 60
-      },
-      {
-        "name": "video art",
-        "min_runtime": null,
-        "max_runtime": 30
-      }
-    ]
-  },
-  {
     "id": 62,
     "name": "DocAviv",
     "city": "Tel Aviv",
@@ -1291,7 +1148,7 @@
   },
   {
     "id": 79,
-    "name": "DocPoint – Helsinki Documentary Film Festival",
+    "name": "DocPoint \u2013 Helsinki Documentary Film Festival",
     "city": "Helsinki",
     "country": "Finland",
     "website": "https://docpoint.info",
@@ -1457,7 +1314,7 @@
   },
   {
     "id": 77,
-    "name": "Dok.Fest München",
+    "name": "Dok.Fest M\u00fcnchen",
     "city": "Munich",
     "country": "Germany",
     "website": "https://www.dokfest-muenchen.de",
@@ -1494,7 +1351,7 @@
   {
     "id": 27,
     "name": "EMAF (European Media Art Festival)",
-    "city": "Osnabrück",
+    "city": "Osnabr\u00fcck",
     "country": "Germany",
     "website": "https://www.emaf.de",
     "filmfreeway": "https://filmfreeway.com/EMAF",
@@ -1546,7 +1403,7 @@
   },
   {
     "id": 46,
-    "name": "EMIFF — Edinburgh Experimental Film Festival",
+    "name": "EMIFF \u2014 Edinburgh Experimental Film Festival",
     "city": "Edinburgh",
     "country": "UK",
     "website": "https://www.emiff.org",
@@ -1646,12 +1503,12 @@
     "country": "UK",
     "website": "https://www.edfilmfest.org.uk",
     "filmfreeway": null,
-    "description": "The world's oldest continually running film festival, with dedicated strands for experimental and artist-moving-image work.",
+    "description": "One of the world's oldest film festivals, relaunched in 2023 under new leadership after a period of dormancy. Programs international features, documentaries, and shorts across genres.",
     "focus": "experimental",
     "tier": "major",
     "event_month": "August",
     "premiere_req": "international",
-    "prestige": 4,
+    "prestige": 3,
     "acceptance": "selective",
     "known_for": "World's oldest continually running film festival",
     "deadlines": [
@@ -1805,7 +1662,7 @@
     "description": "International cinema festival focused on documentary, fiction, and experimental work that pushes boundaries.",
     "focus": "experimental",
     "tier": "major",
-    "event_month": "June",
+    "event_month": "July",
     "premiere_req": "international",
     "prestige": 5,
     "acceptance": "very selective",
@@ -1871,7 +1728,7 @@
   },
   {
     "id": 47,
-    "name": "FLEX Fest — Florida Experimental Film/Video Festival",
+    "name": "FLEX Fest \u2014 Florida Experimental Film/Video Festival",
     "city": "Gainesville, FL",
     "country": "USA",
     "website": "https://www.flexfest.org",
@@ -1965,12 +1822,12 @@
   },
   {
     "id": 39,
-    "name": "Festival du Nouveau Cinéma",
-    "city": "Montréal",
+    "name": "Festival du Nouveau Cin\u00e9ma",
+    "city": "Montr\u00e9al",
     "country": "Canada",
     "website": "https://nouveaucinema.ca",
     "filmfreeway": null,
-    "description": "Montréal festival dedicated to new trends in cinema and new media, with a strong experimental and digital arts component.",
+    "description": "Montr\u00e9al festival dedicated to new trends in cinema and new media, with a strong experimental and digital arts component.",
     "focus": "experimental",
     "tier": "mid",
     "event_month": "October",
@@ -2305,7 +2162,7 @@
         "max_runtime": 45
       }
     ],
-    "founded": 1988
+    "founded": 1987
   },
   {
     "id": 2,
@@ -2352,7 +2209,7 @@
   {
     "id": 78,
     "name": "It's All True International Documentary Film Festival",
-    "city": "São Paulo",
+    "city": "S\u00e3o Paulo",
     "country": "Brazil",
     "website": "https://www.itsalltrue.com.br",
     "filmfreeway": "https://filmfreeway.com/ItsAllTrue",
@@ -2427,7 +2284,7 @@
         "max_runtime": 90
       },
       {
-        "name": "exprmntl — experimental",
+        "name": "exprmntl \u2014 experimental",
         "min_runtime": null,
         "max_runtime": 30
       },
@@ -2445,63 +2302,20 @@
     "founded": 1997
   },
   {
-    "id": 28,
-    "name": "Jihlava International Documentary Film Festival",
-    "city": "Jihlava",
-    "country": "Czech Republic",
-    "website": "https://www.ji-hlava.com",
-    "filmfreeway": null,
-    "description": "Central Europe's largest documentary film festival with a dedicated section for experimental and essay cinema.",
-    "focus": "experimental",
-    "tier": "mid",
-    "event_month": "October",
-    "premiere_req": "none",
-    "prestige": 3,
-    "acceptance": "selective",
-    "known_for": "Central Europe's largest documentary festival",
-    "deadlines": [
-      {
-        "year": 2025,
-        "tier": "regular",
-        "deadline": "2025-07-01",
-        "fee_usd": null
-      },
-      {
-        "year": 2026,
-        "tier": "regular",
-        "deadline": "2026-07-01",
-        "fee_usd": null
-      }
-    ],
-    "categories": [
-      {
-        "name": "feature film",
-        "min_runtime": 50,
-        "max_runtime": null
-      },
-      {
-        "name": "short film",
-        "min_runtime": null,
-        "max_runtime": 50
-      }
-    ],
-    "founded": 1997
-  },
-  {
     "id": 42,
-    "name": "Kassel Documentary Film and Video Festival",
+    "name": "Kasseler Dokfest",
     "city": "Kassel",
     "country": "Germany",
-    "website": "https://www.filmladen.de/dokfest",
-    "filmfreeway": "https://filmfreeway.com/KasselDokfest",
-    "description": "German festival for documentary, experimental, and essay film, adjacent to the Documenta art world.",
+    "website": "https://www.kasselerdokfest.de",
+    "filmfreeway": null,
+    "description": "Annual festival in Kassel covering documentary, experimental, and video art with a close relationship to the Documenta art world. One of Germany's most important non-fiction film events.",
     "focus": "experimental",
     "tier": "mid",
     "event_month": "November",
     "premiere_req": "none",
     "prestige": 3,
     "acceptance": "moderate",
-    "known_for": "Documentary and essay film near Documenta",
+    "known_for": "Documentary, experimental, and video art in Kassel near Documenta",
     "deadlines": [
       {
         "year": 2025,
@@ -2536,7 +2350,7 @@
   },
   {
     "id": 48,
-    "name": "L'Alternativa — Barcelona Independent Film Festival",
+    "name": "L'Alternativa \u2014 Barcelona Independent Film Festival",
     "city": "Barcelona",
     "country": "Spain",
     "website": "https://alternativa.cccb.org",
@@ -2581,7 +2395,7 @@
     "name": "Lausanne Underground Film & Music Festival",
     "city": "Lausanne",
     "country": "Switzerland",
-    "website": "https://www.lfrancais.ch",
+    "website": "https://www.luff.ch",
     "filmfreeway": "https://filmfreeway.com/LUFF",
     "description": "Festival celebrating underground, experimental, and outsider film alongside extreme and avant-garde music.",
     "focus": "underground",
@@ -2625,7 +2439,7 @@
   },
   {
     "id": 31,
-    "name": "Locarno Film Festival — Pardi di domani",
+    "name": "Locarno Film Festival \u2014 Pardi di domani",
     "city": "Locarno",
     "country": "Switzerland",
     "website": "https://www.locarnofestival.ch",
@@ -2801,7 +2615,7 @@
     "country": "USA",
     "website": "https://mountainfilm.org",
     "filmfreeway": "https://filmfreeway.com/MountainfilminTelluride",
-    "description": "A celebrated festival devoted to films about adventure, environment, and culture — non-fiction storytelling rooted in the natural world.",
+    "description": "A celebrated festival devoted to films about adventure, environment, and culture \u2014 non-fiction storytelling rooted in the natural world.",
     "focus": "documentary",
     "tier": "mid",
     "event_month": "May",
@@ -2844,19 +2658,19 @@
   },
   {
     "id": 4,
-    "name": "New York Film Festival — Projections",
+    "name": "New York Film Festival \u2014 Currents",
     "city": "New York, NY",
     "country": "USA",
-    "website": "https://www.filmlinc.org/nyff/projections/",
+    "website": "https://www.filmlinc.org/nyff/",
     "filmfreeway": null,
-    "description": "NYFF's dedicated sidebar for avant-garde and experimental moving image work.",
+    "description": "NYFF's dedicated sidebar for avant-garde, experimental, and moving image work at the vanguard of narrative, documentary, and experimental modes.",
     "focus": "avant-garde",
     "tier": "major",
     "event_month": "September-October",
     "premiere_req": "north_american",
     "prestige": 5,
     "acceptance": "very selective",
-    "known_for": "Premier avant-garde sidebar at NYFF",
+    "known_for": "Premier avant-garde and experimental sidebar at NYFF",
     "deadlines": [
       {
         "year": 2025,
@@ -2881,58 +2695,6 @@
         "name": "experimental short",
         "min_runtime": null,
         "max_runtime": 45
-      }
-    ]
-  },
-  {
-    "id": 37,
-    "name": "New York Underground Film Festival",
-    "city": "New York, NY",
-    "country": "USA",
-    "website": "https://www.nyuff.com",
-    "filmfreeway": "https://filmfreeway.com/NYUFF",
-    "description": "Festival dedicated to transgressive, underground, and no-budget filmmaking in New York City.",
-    "focus": "underground",
-    "tier": "emerging",
-    "event_month": "March",
-    "premiere_req": "none",
-    "prestige": 2,
-    "acceptance": "open",
-    "known_for": "Transgressive and no-budget underground filmmaking",
-    "deadlines": [
-      {
-        "year": 2025,
-        "tier": "early",
-        "deadline": "2024-10-15",
-        "fee_usd": 15.0
-      },
-      {
-        "year": 2025,
-        "tier": "regular",
-        "deadline": "2025-01-01",
-        "fee_usd": 25.0
-      }
-    ],
-    "categories": [
-      {
-        "name": "animation",
-        "min_runtime": null,
-        "max_runtime": 15
-      },
-      {
-        "name": "feature film",
-        "min_runtime": 40,
-        "max_runtime": null
-      },
-      {
-        "name": "music video",
-        "min_runtime": null,
-        "max_runtime": 10
-      },
-      {
-        "name": "short film",
-        "min_runtime": null,
-        "max_runtime": 30
       }
     ]
   },
@@ -3038,7 +2800,7 @@
     "country": "France",
     "website": "https://cjcinema.org",
     "filmfreeway": null,
-    "description": "Long-running Parisian festival organized by Collectif Jeune Cinéma, France's oldest artist-run film cooperative.",
+    "description": "Long-running Parisian festival organized by Collectif Jeune Cin\u00e9ma, France's oldest artist-run film cooperative.",
     "focus": "experimental",
     "tier": "mid",
     "event_month": "October",
@@ -3117,7 +2879,7 @@
   },
   {
     "id": 75,
-    "name": "RIDM (Rencontres Internationales du Documentaire de Montréal)",
+    "name": "RIDM (Rencontres Internationales du Documentaire de Montr\u00e9al)",
     "city": "Montreal",
     "country": "Canada",
     "website": "https://ridm.ca",
@@ -3165,8 +2927,8 @@
   },
   {
     "id": 20,
-    "name": "S8 Mostra de Cinema Periférico",
-    "city": "A Coruña",
+    "name": "S8 Mostra de Cinema Perif\u00e9rico",
+    "city": "A Coru\u00f1a",
     "country": "Spain",
     "website": "https://s8cinema.com",
     "filmfreeway": null,
@@ -3351,7 +3113,7 @@
   },
   {
     "id": 54,
-    "name": "Sundance Film Festival — Documentary",
+    "name": "Sundance Film Festival \u2014 Documentary",
     "city": "Park City, UT",
     "country": "USA",
     "website": "https://www.sundance.org/festivals/sundance-film-festival",
@@ -3394,7 +3156,7 @@
   },
   {
     "id": 50,
-    "name": "Sundance Film Festival — New Frontier",
+    "name": "Sundance Film Festival \u2014 New Frontier",
     "city": "Park City, UT",
     "country": "USA",
     "website": "https://www.sundance.org/festivals/sundance-film-festival",
@@ -3491,7 +3253,7 @@
         "max_runtime": 30
       }
     ],
-    "founded": 1969
+    "founded": 1970
   },
   {
     "id": 80,
@@ -3574,7 +3336,7 @@
   },
   {
     "id": 5,
-    "name": "Toronto International Film Festival — Wavelengths",
+    "name": "Toronto International Film Festival \u2014 Wavelengths",
     "city": "Toronto",
     "country": "Canada",
     "website": "https://www.tiff.net",
@@ -3697,10 +3459,10 @@
   },
   {
     "id": 10,
-    "name": "VAEFF — Video Art & Experimental Film Festival",
+    "name": "VAEFF \u2014 Video Art & Experimental Film Festival",
     "city": "New York, NY",
     "country": "USA",
-    "website": "https://www.vaeff.org",
+    "website": "https://videoart.net",
     "filmfreeway": "https://filmfreeway.com/VAEFF",
     "description": "New York-based festival showcasing video art and experimental film from around the world.",
     "focus": "experimental",
@@ -3920,7 +3682,7 @@
   },
   {
     "id": 56,
-    "name": "Visions du Réel",
+    "name": "Visions du R\u00e9el",
     "city": "Nyon",
     "country": "Switzerland",
     "website": "https://www.visionsdureel.ch",
@@ -4091,5 +3853,47 @@
       }
     ],
     "founded": 2005
+  },
+  {
+    "id": 90,
+    "name": "MONO NO AWARE",
+    "city": "Brooklyn, NY",
+    "country": "USA",
+    "website": "https://mononoawarefilm.com",
+    "filmfreeway": "https://filmfreeway.com/MONONOAWARE",
+    "description": "Annual expanded cinema exhibition in Brooklyn presenting sculpture, installation, performance, and projection works on analog formats including Super 8mm, 16mm, and 35mm. Non-competitive; selects around 20 works for live-performance evenings. Presenting artists must attend in person.",
+    "focus": "experimental",
+    "tier": "mid",
+    "event_month": "December",
+    "premiere_req": "none",
+    "prestige": 3,
+    "acceptance": "selective",
+    "known_for": "Expanded cinema, analog projection, and live performance in Brooklyn",
+    "deadlines": [
+      {
+        "year": 2026,
+        "tier": "regular",
+        "deadline": "2025-10-01",
+        "fee_usd": null
+      }
+    ],
+    "categories": [
+      {
+        "name": "expanded cinema",
+        "min_runtime": null,
+        "max_runtime": null
+      },
+      {
+        "name": "installation",
+        "min_runtime": null,
+        "max_runtime": null
+      },
+      {
+        "name": "performance",
+        "min_runtime": null,
+        "max_runtime": null
+      }
+    ],
+    "founded": 2007
   }
 ]
