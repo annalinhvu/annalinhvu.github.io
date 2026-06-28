@@ -54,7 +54,8 @@
       "C-41",
       "E-6",
       "ECN-2"
-    ]
+    ],
+    "description": "Founded in 2012 by photographers for photographers, Carmencita is one of Europe's most respected labs. Known for meticulous handling and strong community ties across Spain and beyond."
   },
   {
     "id": 16,
@@ -126,7 +127,8 @@
       "BW",
       "E-6",
       "ECN-2"
-    ]
+    ],
+    "description": "New England's oldest continuously running motion picture lab, operating since 1948. Specializes in 16mm and 35mm ECN-2 and E-6 with professional-grade 2K/4K scanning."
   },
   {
     "id": 19,
@@ -183,7 +185,8 @@
       "C-41",
       "E-6",
       "ECN-2"
-    ]
+    ],
+    "description": "A Kansas institution — one of the last labs in the US to process Kodachrome, handling the final roll ever developed in 2010. Still a reliable all-process mail-in option."
   },
   {
     "id": 21,
@@ -256,7 +259,8 @@
       "C-41",
       "E-6",
       "ECN-2"
-    ]
+    ],
+    "description": "Run by a cinematographer collective in Toronto since 2003. Known for razor-sharp 4K frame-by-frame scanning and deep ties to the indie film community."
   },
   {
     "id": 6,
@@ -304,7 +308,8 @@
       "BW",
       "C-41",
       "E-6"
-    ]
+    ],
+    "description": "Family-run lab that started in a Maplewood NJ basement in 2018 and grew into a trusted national mailer. Noritsu and Frontier scanners with their own GelForm scan system."
   },
   {
     "id": 3,
@@ -360,7 +365,8 @@
       "BW",
       "C-41",
       "E-6"
-    ]
+    ],
+    "description": "Alabama-based mail-in lab with a loyal following for reliable quality and strong customer support. Also runs Long Live Film, an online community for analog photographers."
   },
   {
     "id": 5,
@@ -416,7 +422,8 @@
       "BW",
       "C-41",
       "E-6"
-    ]
+    ],
+    "description": "Ohio-based lab known for being one of the most affordable mail-in options without sacrificing quality. Popular with hobbyists who want honest results at accessible prices."
   },
   {
     "id": 25,
@@ -497,7 +504,8 @@
       "C-41",
       "E-6",
       "ECN-2"
-    ]
+    ],
+    "description": "New York's go-to professional motion picture lab, servicing independent film and documentary since 1980. Handles Super 8, 16mm, and 35mm with 4K scanning and archival restoration."
   },
   {
     "id": 24,
@@ -553,7 +561,8 @@
       "BW",
       "E-6",
       "ECN-2"
-    ]
+    ],
+    "description": "More than a lab — a Brooklyn-based school, community darkroom, and screening space dedicated to experimental and handmade cinema. Drop-off only; no mail-in."
   },
   {
     "id": 9,
@@ -601,7 +610,8 @@
       "BW",
       "C-41",
       "E-6"
-    ]
+    ],
+    "description": "Founded in 2020 in Brussels by two analog film lovers, Mori has grown into a beloved European community lab with shops in Brussels and Antwerp, plus a bookable darkroom."
   },
   {
     "id": 13,
@@ -666,7 +676,8 @@
       "C-41",
       "E-6",
       "ECN-2"
-    ]
+    ],
+    "description": "The online arm of Photosmith, a Dover NH lab with over 45 years of experience. Covers 35mm through 4x5, pays return shipping, and uses touchless roller transport for C-41."
   },
   {
     "id": 18,
@@ -731,7 +742,8 @@
       "C-41",
       "E-6",
       "ECN-2"
-    ]
+    ],
+    "description": "Burbank's specialist in Super 8 and 16mm — one of the few labs in the US still dedicated to small-gauge motion picture film. Trusted by filmmakers and archivists alike."
   },
   {
     "id": 7,
@@ -787,7 +799,8 @@
       "BW",
       "C-41",
       "E-6"
-    ]
+    ],
+    "description": "A dependable Midwest institution processing film since 1984. Straightforward mail-in service with a drive-through window and consistent turnaround for C-41, E-6, and BW."
   },
   {
     "id": 2,
@@ -835,7 +848,8 @@
       "BW",
       "C-41",
       "E-6"
-    ]
+    ],
+    "description": "Santa Clarita lab beloved by wedding and portrait photographers for its signature warm, film-forward scan style. A longtime favorite for those who want their film to look like film."
   },
   {
     "id": 11,
@@ -874,7 +888,8 @@
     "processes": [
       "BW",
       "C-41"
-    ]
+    ],
+    "description": "A Bristol lab under the Analogue Wonderland umbrella, known for hands-on handcrafted processing and flexibility with black and white chemistry. Careful, considered results."
   },
   {
     "id": 17,
@@ -947,7 +962,8 @@
       "C-41",
       "E-6",
       "ECN-2"
-    ]
+    ],
+    "description": "A North Hollywood institution for motion picture film. Specializes in Super 8 through 35mm with SCANITY 4K scanning — Spielberg and Spike Lee have both used their services."
   },
   {
     "id": 10,
@@ -986,7 +1002,8 @@
     "processes": [
       "BW",
       "C-41"
-    ]
+    ],
+    "description": "Leeds cousins who turned a rescued film machine into a community hub. Offers developing, scanning, and monthly workshops with a genuinely inclusive and welcoming vibe."
   },
   {
     "id": 1,
@@ -1067,7 +1084,8 @@
       "C-41",
       "E-6",
       "ECN-2"
-    ]
+    ],
+    "description": "One of the largest mail-in labs in the US, based in San Clemente CA. Handles the full process range reliably at scale — a safe first lab for anyone getting started with film."
   },
   {
     "id": 4,
@@ -1106,7 +1124,8 @@
     "processes": [
       "BW",
       "C-41"
-    ]
+    ],
+    "description": "Utah-based lab known for popularizing film simulation presets that let photographers match their digital edits to their film scans. Strong following among lifestyle and wedding shooters."
   },
   {
     "id": 23,
@@ -1170,6 +1189,7 @@
       "BW",
       "E-6",
       "ECN-2"
-    ]
+    ],
+    "description": "The professional lab at CalArts in Valencia CA, specializing in motion picture formats — E-6 reversal and ECN-2 negative for 16mm and 35mm. Primarily serves film students and professionals."
   }
 ]

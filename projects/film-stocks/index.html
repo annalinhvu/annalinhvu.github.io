@@ -363,6 +363,13 @@ body {
   margin-bottom: 8px;
 }
 
+.lab-card-desc {
+  font-size: 0.8rem;
+  color: var(--text-3);
+  line-height: 1.6;
+  margin-bottom: 10px;
+}
+
 .lab-card-meta {
   display: flex;
   flex-wrap: wrap;
@@ -792,6 +799,7 @@ function renderLabCard(lab) {
     <div class="card lab-card-item" onclick="navigate('lab/${lab.id}')">
       <div class="lab-card-name">${lab.name}</div>
       <div class="lab-card-location">${lab.city}, ${lab.country}</div>
+      ${lab.description ? `<div class="lab-card-desc">${lab.description}</div>` : ''}
       <div class="lab-card-meta">
         <span class="turnaround-badge">${lab.turnaround}</span>
         ${lab.mail_in ? '<span class="mail-in-badge">Mail-In</span>' : ''}
@@ -906,6 +914,7 @@ function renderLabDetail(id) {
           <span class="turnaround-badge">${lab.turnaround}</span>
           ${lab.mail_in ? '<span class="mail-in-badge">Mail-In</span>' : '<span class="tag" style="background:var(--surface-2);color:var(--text-3)">In-Person Only</span>'}
         </div>
+        ${lab.description ? `<div class="detail-desc" style="margin-top:14px">${lab.description}</div>` : ''}
         ${lab.url ? `<a class="lab-link" href="${lab.url}" target="_blank" rel="noopener">${lab.url.replace(/^https?:\/\//, '')} &rarr;</a>` : ''}
       </div>
 
