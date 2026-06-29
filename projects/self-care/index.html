@@ -5,6 +5,16 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Only Good Things</title>
 <style>
+@font-face {
+  font-family: 'Geist';
+  font-style: normal; font-display: swap; font-weight: 100 900;
+  src: url(https://cdn.jsdelivr.net/fontsource/fonts/geist:vf@latest/latin-wght-normal.woff2) format('woff2-variations');
+}
+@font-face {
+  font-family: 'Geist Mono';
+  font-style: normal; font-display: swap; font-weight: 100 900;
+  src: url(https://cdn.jsdelivr.net/fontsource/fonts/geist-mono:vf@latest/latin-wght-normal.woff2) format('woff2-variations');
+}
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 
 :root[data-theme="light"]{
@@ -55,7 +65,7 @@
 }
 
 body{
-  font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;
+  font-family:'Geist',system-ui,sans-serif;
   background:var(--bg);color:var(--text-2);
   min-height:100vh;transition:background .3s,color .3s;
   -webkit-font-smoothing:antialiased;
@@ -145,14 +155,15 @@ body{
   transition:background .3s,border-color .3s;
 }
 .topbar-left a{
-  color:var(--text-3);text-decoration:none;font-size:.72rem;
-  letter-spacing:1px;text-transform:uppercase;transition:color .2s;
+  color:var(--text-3);text-decoration:none;font-size:.6rem;
+  letter-spacing:1.5px;text-transform:uppercase;transition:color .2s;
 }
 .topbar-left a:hover{color:var(--accent)}
 .topbar-title{
-  font-family:Georgia,serif;font-size:1rem;font-weight:400;
-  color:var(--text-1);letter-spacing:.5px;
+  font-family:'Geist Mono',monospace;font-size:.68rem;font-weight:400;
+  color:var(--text-2);letter-spacing:3px;text-transform:uppercase;
   position:absolute;left:50%;transform:translateX(-50%);
+  white-space:nowrap;
 }
 .topbar-right{display:flex;align-items:center;gap:8px}
 .theme-btn{
@@ -609,7 +620,7 @@ body{
   </div>
   <div class="topbar-title">Only Good Things</div>
   <div class="topbar-right">
-    <button class="theme-btn" onclick="toggleTheme()" aria-label="Toggle theme"></button>
+    <button class="theme-btn" onclick="toggleTheme()" aria-label="Toggle theme">◐</button>
   </div>
 </div>
 
@@ -747,9 +758,7 @@ function toggleTheme() {
   localStorage.setItem('ogt-theme', next);
   updateThemeBtn(next);
 }
-function updateThemeBtn(t) {
-  document.querySelector('.theme-btn').textContent = t === 'dark' ? '\u2600' : '\u263E';
-}
+function updateThemeBtn(t) {}
 
 /* ── localStorage completions ── */
 function getCompletions() {
