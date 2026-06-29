@@ -7,7 +7,19 @@
   <meta name="description" content="A personal tribute to the filmmakers who shaped the way I see.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,200;0,9..144,300;0,9..144,400;1,9..144,200;1,9..144,300;1,9..144,400&family=Inter:wght@400;500&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,200;0,9..144,300;0,9..144,400;1,9..144,200;1,9..144,300;1,9..144,400&display=swap" rel="stylesheet">
+  <style>
+  @font-face {
+    font-family: 'Geist';
+    font-style: normal; font-display: swap; font-weight: 100 900;
+    src: url(https://cdn.jsdelivr.net/fontsource/fonts/geist:vf@latest/latin-wght-normal.woff2) format('woff2-variations');
+  }
+  @font-face {
+    font-family: 'Geist Mono';
+    font-style: normal; font-display: swap; font-weight: 100 900;
+    src: url(https://cdn.jsdelivr.net/fontsource/fonts/geist-mono:vf@latest/latin-wght-normal.woff2) format('woff2-variations');
+  }
+  </style>
   <style>
 
     /* ── Variables ── */
@@ -28,14 +40,14 @@
       --amber-bg:rgba(200,120,94,0.08);
     }
     :root[data-theme="light"] {
-      --bg:      #c8c8c4;
-      --surface: #d6d6d2;
-      --border:  #ababaa;
-      --border-h:#8a8a88;
-      --text-1:  #121212;
-      --text-2:  #2a2a28;
-      --text-3:  #5e5e5c;
-      --text-4:  #909090;
+      --bg:      #c4b8a4;
+      --surface: #d0c4ae;
+      --border:  #a89880;
+      --border-h:#887060;
+      --text-1:  #120e08;
+      --text-2:  #2a2018;
+      --text-3:  #5c5040;
+      --text-4:  #8a7860;
       --e-ag:    #a03020;
       --e-nw:    #3a6040;
       --e-cl:    #484878;
@@ -48,7 +60,7 @@
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     html { font-size: 16px; }
     body {
-      font-family: 'Inter', sans-serif;
+      font-family: 'Geist', sans-serif;
       background: var(--bg); color: var(--text-1);
       min-height: 100vh;
       transition: background 0.3s, color 0.3s;
@@ -230,7 +242,7 @@
       transition: border-color 0.15s, color 0.15s;
     }
     .filter-input { width: 140px; }
-    .filter-input::placeholder { color: var(--text-4); font-family: 'Inter', sans-serif; font-size: 0.65rem; letter-spacing: 0; }
+    .filter-input::placeholder { color: var(--text-4); font-family: 'Geist', sans-serif; font-size: 0.65rem; letter-spacing: 0; }
     .filter-input:focus, .filter-select:focus { border-color: var(--text-3); color: var(--text-1); }
     .filter-select { appearance: none; -webkit-appearance: none; cursor: pointer; }
 
@@ -832,7 +844,7 @@
   </div>
   <div class="topbar-right">
     <span class="saved-badge" id="saved-badge"></span>
-    <button class="theme-btn" id="theme-btn" onclick="toggleTheme()">Light</button>
+    <button class="theme-btn" id="theme-btn" onclick="toggleTheme()" aria-label="Toggle theme">◐</button>
   </div>
 </div>
 
@@ -1232,11 +1244,9 @@
     const next = cur === 'dark' ? 'light' : 'dark';
     document.documentElement.dataset.theme = next;
     localStorage.setItem('auteurs-theme', next);
-    document.getElementById('theme-btn').textContent = next === 'dark' ? 'Light' : 'Dark';
   }
   const st = localStorage.getItem('auteurs-theme') || 'dark';
   document.documentElement.dataset.theme = st;
-  document.getElementById('theme-btn').textContent = st === 'dark' ? 'Light' : 'Dark';
 
   document.addEventListener('keydown', e => {
     if (e.key === 'Escape' && currentDetailId !== null) { goBack(); return; }
