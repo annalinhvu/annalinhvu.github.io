@@ -12,6 +12,13 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;1,400;1,600&family=Playfair+Display:ital,wght@0,700;1,400&display=swap" rel="stylesheet">
 <style>
+@font-face {
+  font-family: 'Geist';
+  font-style: normal; font-display: swap; font-weight: 100 900;
+  src: url(https://cdn.jsdelivr.net/fontsource/fonts/geist:vf@latest/latin-wght-normal.woff2) format('woff2-variations');
+}
+</style>
+<style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 
 :root[data-theme="light"]{
@@ -49,7 +56,7 @@
 
 /* ── Base ── */
 body{
-  font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;
+  font-family:'Geist',system-ui,sans-serif;
   background-color:var(--bg);
   color:var(--text-2);min-height:100vh;
   transition:background-color .3s,color .3s;
@@ -67,7 +74,7 @@ body{
   transition:background .3s,border-color .3s;
 }
 .back-link{
-  font-size:.72rem;letter-spacing:1px;text-transform:uppercase;
+  font-size:.6rem;letter-spacing:1.5px;text-transform:uppercase;
   color:var(--text-3);text-decoration:none;transition:color .2s;
 }
 .back-link:hover{color:var(--accent)}
@@ -126,7 +133,7 @@ body{
 }
 :root[data-theme="dark"] .masthead-title{color:#e8e4dc}
 .masthead-sub{
-  font-family:Georgia,serif;font-style:italic;
+  font-family:'Lora',Georgia,serif;font-style:italic;
   font-size:.9rem;color:rgba(255,255,255,.45);
   margin-bottom:22px;position:relative;z-index:1;
   letter-spacing:.5px;
@@ -850,7 +857,7 @@ body{
     <button class="saved-btn" id="savedBadge" onclick="filterSaved()">
       <span id="savedHeart">&#9825;</span>&thinsp;<span id="savedCount">0</span>
     </button>
-    <button class="theme-btn" id="themeBtn" onclick="toggleTheme()">&#9790;</button>
+    <button class="theme-btn" id="themeBtn" onclick="toggleTheme()" aria-label="Toggle theme">◐</button>
   </div>
 </div>
 
@@ -1025,9 +1032,7 @@ function toggleTheme(){
   // Re-render tiles so pastel vs dark colours update
   if(allRecipes.length) renderExplore();
 }
-function updateThemeBtn(t){
-  document.getElementById('themeBtn').textContent = t==='dark'?'\u2600':'\u263E';
-}
+function updateThemeBtn(t){}
 
 /* ── Favorites ── */
 function loadSaved(){
