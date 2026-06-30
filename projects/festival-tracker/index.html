@@ -421,6 +421,15 @@
   .state-message a:hover { border-color: var(--accent); }
 
   /* ── Responsive ── */
+  @media (max-width: 1080px) {
+    .festival-grid { grid-template-columns: repeat(2, 1fr); }
+  }
+  @media (max-width: 640px) {
+    #calendar-view { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+    .cal-grid { min-width: 540px; }
+    .cal-day { min-height: 80px; padding: 7px 6px 5px; }
+    .cal-event { font-size: 0.55rem; }
+  }
   @media (max-width: 768px) {
     .festival-grid { grid-template-columns: repeat(2, 1fr); }
     .page { padding: 24px 16px 60px; }
