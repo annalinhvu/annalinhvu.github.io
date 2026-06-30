@@ -1,32 +1,61 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="light">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>our nyc adventure log</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&display=swap" rel="stylesheet" />
+  <style>
+  @font-face {
+    font-family: 'Geist';
+    font-style: normal; font-display: swap; font-weight: 100 900;
+    src: url(https://cdn.jsdelivr.net/fontsource/fonts/geist:vf@latest/latin-wght-normal.woff2) format('woff2-variations');
+  }
+  @font-face {
+    font-family: 'Geist Mono';
+    font-style: normal; font-display: swap; font-weight: 100 900;
+    src: url(https://cdn.jsdelivr.net/fontsource/fonts/geist-mono:vf@latest/latin-wght-normal.woff2) format('woff2-variations');
+  }
+  </style>
   <style>
     :root {
-      --l-bg:       #17110C;
-      --l-text:     #F2EAE0;
-      --l-muted:    rgba(242,234,224,0.42);
-      --l-border:   rgba(242,234,224,0.11);
-      --r-bg:       #F7F3ED;
-      --r-text:     #17110C;
-      --r-muted:    rgba(23,17,12,0.42);
-      --r-border:   rgba(23,17,12,0.10);
-      --accent:     #C05A38;
-      --node-bg:    #F2E8D8;
-      --sh-sm:      0 1px 6px rgba(0,0,0,0.12);
-      --sh:         0 3px 14px rgba(0,0,0,0.16);
-      --sh-lg:      0 8px 28px rgba(0,0,0,0.22);
+      --l-bg:         #17110C;
+      --l-text:       #F2EAE0;
+      --l-muted:      rgba(242,234,224,0.42);
+      --l-border:     rgba(242,234,224,0.11);
+      --r-bg:         #F7F3ED;
+      --r-text:       #17110C;
+      --r-muted:      rgba(23,17,12,0.42);
+      --r-border:     rgba(23,17,12,0.10);
+      --accent:       #C05A38;
+      --node-bg:      #F2E8D8;
+      --wc-bg:        #1F180F;
+      --wc-hover:     #2A1E14;
+      --sh-sm:        0 1px 6px rgba(0,0,0,0.12);
+      --sh:           0 3px 14px rgba(0,0,0,0.16);
+      --sh-lg:        0 8px 28px rgba(0,0,0,0.22);
+    }
+    [data-theme="dark"] {
+      --l-bg:         #100d08;
+      --l-text:       #F2EAE0;
+      --l-muted:      rgba(242,234,224,0.35);
+      --l-border:     rgba(242,234,224,0.09);
+      --r-bg:         #1c1a16;
+      --r-text:       #e8e2d8;
+      --r-muted:      rgba(232,226,216,0.45);
+      --r-border:     rgba(232,226,216,0.10);
+      --accent:       #d06848;
+      --node-bg:      #2a2018;
+      --wc-bg:        #0a0805;
+      --wc-hover:     #140f0a;
+      --sh-sm:        0 1px 6px rgba(0,0,0,0.3);
+      --sh:           0 3px 14px rgba(0,0,0,0.4);
+      --sh-lg:        0 8px 28px rgba(0,0,0,0.55);
     }
 
     * { box-sizing: border-box; margin: 0; padding: 0; }
 
     body {
-      font-family: 'DM Sans', sans-serif;
+      font-family: 'Geist', system-ui, sans-serif;
       overflow-x: hidden;
     }
 
@@ -56,6 +85,14 @@
       transition: color .15s;
     }
     .back-link:hover { color: var(--l-text); }
+
+    .theme-toggle {
+      position: fixed; top: 14px; right: 16px; z-index: 999;
+      background: none; border: none; cursor: pointer;
+      font-size: 0.9rem; color: var(--l-muted);
+      transition: color .15s; padding: 4px;
+    }
+    .theme-toggle:hover { color: var(--l-text); }
 
     .eyebrow {
       display: block;
@@ -91,7 +128,7 @@
       position: absolute; top: 50%; left: 50%;
       transform: translate(-50%, -50%);
       border-radius: 50%;
-      background: #1F180F;
+      background: var(--wc-bg);
       border: 1px solid rgba(242,234,224,0.18);
       box-shadow: var(--sh);
       display: flex; flex-direction: column;
@@ -101,7 +138,7 @@
     }
 
     #wheelCenter:hover {
-      background: #2A1E14;
+      background: var(--wc-hover);
       border-color: rgba(242,234,224,0.32);
     }
 
@@ -167,7 +204,7 @@
       flex: 1; position: relative; overflow: hidden;
       background: var(--accent); border: none;
       padding: 0.52rem 1rem; border-radius: 6px;
-      font-family: 'DM Sans', sans-serif;
+      font-family: inherit;
       font-size: 0.8rem; font-weight: 600;
       color: white; cursor: pointer;
       transition: opacity 0.15s;
@@ -193,7 +230,7 @@
       background: transparent;
       border: 1px solid var(--l-border);
       padding: 0.52rem 1rem; border-radius: 6px;
-      font-family: 'DM Sans', sans-serif;
+      font-family: inherit;
       font-size: 0.8rem; font-weight: 500;
       color: var(--l-muted); cursor: pointer;
       transition: all 0.15s;
@@ -207,7 +244,7 @@
     .solid-btn {
       background: var(--accent); border: none;
       padding: 0.52rem 1rem; border-radius: 6px;
-      font-family: 'DM Sans', sans-serif;
+      font-family: inherit;
       font-size: 0.8rem; font-weight: 500;
       color: white; cursor: pointer;
       transition: opacity 0.15s;
@@ -268,7 +305,7 @@
 
     .cf-pill {
       padding: 0; border: none; background: none;
-      font-family: 'DM Sans', sans-serif;
+      font-family: inherit;
       font-size: 0.72rem; font-weight: 500;
       cursor: pointer; color: var(--r-muted);
       text-transform: uppercase; letter-spacing: 0.07em;
@@ -443,7 +480,7 @@
     .form-group select {
       width: 100%; padding: 0.55rem 0.8rem;
       border: 1px solid var(--r-border); border-radius: 6px;
-      font-family: 'DM Sans', sans-serif;
+      font-family: inherit;
       font-size: 0.88rem; color: var(--r-text);
       outline: none; transition: border-color 0.15s;
       background: white;
@@ -472,7 +509,7 @@
 
     .btn-cancel {
       flex: 1; padding: 0.5rem 1rem; border-radius: 6px;
-      border: 1px solid var(--r-border); font-family: 'DM Sans', sans-serif;
+      border: 1px solid var(--r-border); font-family: inherit;
       font-weight: 500; font-size: 0.82rem;
       cursor: pointer; background: transparent; color: var(--r-muted);
       transition: all 0.15s;
@@ -482,7 +519,7 @@
 
     .btn-save {
       flex: 2; padding: 0.5rem 1.2rem; border-radius: 6px; border: none;
-      font-family: 'DM Sans', sans-serif; font-weight: 500; font-size: 0.82rem;
+      font-family: inherit; font-weight: 500; font-size: 0.82rem;
       cursor: pointer; background: var(--accent); color: white;
       transition: opacity 0.15s;
     }
@@ -551,6 +588,7 @@
 </head>
 <body>
   <a class="back-link" href="https://annalinhvu.github.io">← portfolio</a>
+  <button class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle theme">◐</button>
   <div id="confetti-layer"></div>
 
   <div class="app">
@@ -1429,6 +1467,13 @@
 
   load();
   requestAnimationFrame(renderWheel);
+
+  function toggleTheme() {
+    const next = document.documentElement.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+    document.documentElement.setAttribute('data-theme', next);
+    localStorage.setItem('nyc-adv-theme', next);
+  }
+  (function(){ const t = localStorage.getItem('nyc-adv-theme'); if(t) document.documentElement.setAttribute('data-theme', t); })();
   </script>
 </body>
 </html>
