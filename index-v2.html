@@ -26,15 +26,15 @@
 
 /* ── Colour tokens ──────────────────────────────────────── */
 :root[data-theme="dark"] {
-  --bg:        #0e1218;
-  --panel:     #131920;
-  --panel-hd:  #0b0f15;
-  --bd:        #1e2d42;
-  --bd-hi:     #2a3f5c;
-  --t1:        #e8edf8;
-  --t2:        #b8c4d8;
-  --t3:        #7080a0;
-  --t4:        #3e5068;
+  --bg:        #1a2130;
+  --panel:     #202836;
+  --panel-hd:  #171f2c;
+  --bd:        #2a3a52;
+  --bd-hi:     #364e6a;
+  --t1:        #eaf0fc;
+  --t2:        #c0cce0;
+  --t3:        #7d90b0;
+  --t4:        #4a6080;
   --accent:    #8aaa8e;
   --amber:     #c8785e;
   --amber2:    #b86448;
@@ -43,17 +43,17 @@
   --green:     #5a8a5e;
   --g-text:    #8aaa8e;
   --mono-g:    #7aaa7a;
-  --row-hi:    #111720;
-  --row-alt:   #141a22;
-  --surface:   #182028;
-  --surf-hov:  #1e2d40;
+  --row-hi:    #1e2a3a;
+  --row-alt:   #202e40;
+  --surface:   #242f42;
+  --surf-hov:  #2a3a52;
   --tag-bd:    rgba(138,170,142,.22);
   --tag-col:   #8aaa8e;
-  --grid-h:    rgba(80,120,180,.07);
-  --grid-v:    rgba(80,120,180,.035);
-  --shadow-sm: rgba(0,0,0,.25);
-  --shadow-lg: rgba(0,0,0,.65);
-  --zebra:     rgba(0,0,0,.07);
+  --grid-h:    rgba(80,120,180,.06);
+  --grid-v:    rgba(80,120,180,.03);
+  --shadow-sm: rgba(0,0,0,.2);
+  --shadow-lg: rgba(0,0,0,.5);
+  --zebra:     rgba(0,0,0,.06);
 }
 :root[data-theme="light"] {
   --bg:        #f3f1eb;
@@ -565,6 +565,32 @@ body {
 .demo-slack-link{font-size:11px;color:var(--amber);}
 .demo-slack-sub{font-size:10px;color:var(--t4);margin-top:3px;}
 .demo-slack-code{background:var(--panel-hd);border:1px solid var(--bd);border-radius:3px;padding:1px 5px;color:var(--mono-g);}
+.demo-tbl-head{display:grid;padding:7px 12px;background:var(--panel-hd);font-size:9px;color:var(--t4);letter-spacing:1px;text-transform:uppercase;gap:8px;}
+.demo-tbl-row{display:grid;padding:7px 12px;font-size:11px;color:var(--t3);border-top:1px solid var(--bd);gap:8px;align-items:center;}
+.demo-tbl-row:nth-child(even){background:var(--zebra);}
+.demo-tbl-foot{display:flex;gap:16px;font-size:10px;color:var(--t4);padding:8px 2px;flex-wrap:wrap;}
+.demo-status-dup{color:var(--rose);}
+.demo-status-unused{color:var(--amber);}
+.demo-status-ok{color:var(--accent);}
+.demo-tbl-4{grid-template-columns:2fr 1fr 1fr 1fr;}
+.demo-tbl-5{grid-template-columns:28px 2.2fr 1.2fr 1fr 1fr;}
+.demo-tbl-5c{grid-template-columns:2fr 1fr 1fr 1fr 1fr;}
+.demo-log{background:var(--surface);border:1px solid var(--bd);border-radius:8px;padding:12px 14px;display:flex;flex-direction:column;gap:2px;}
+.demo-log-line{font-size:11px;line-height:1.85;color:var(--t3);}
+.demo-log-ok{color:var(--accent);}
+.demo-log-done{color:var(--mono-g);font-weight:500;}
+.demo-log-dim{color:var(--t4);}
+.demo-sent-bar{display:flex;height:8px;border-radius:4px;overflow:hidden;margin-bottom:6px;}
+.demo-sent-pos{background:var(--accent);}
+.demo-sent-neu{background:var(--t4);}
+.demo-sent-neg{background:var(--rose);}
+.demo-sent-labels{display:flex;gap:16px;font-size:9px;color:var(--t4);}
+.demo-topics{display:flex;gap:5px;flex-wrap:wrap;}
+.demo-topic{font-size:10px;padding:2px 9px;border:1px solid var(--tag-bd);border-radius:5px;color:var(--tag-col);}
+.demo-topic.hot{border-color:rgba(200,120,94,.4);color:var(--amber);}
+.demo-badge-live{color:var(--accent);}
+.demo-badge-pend{color:var(--amber);}
+.demo-badge-done{color:var(--t4);}
 
 /* ── Project detail modal ── */
 .proj-modal{
@@ -1241,42 +1267,42 @@ body {
 
         <div class="work-section-hd">data engineering</div>
         <div class="proj-grid">
-          <div class="proj-card">
+          <div class="proj-card" data-demo="snowflake">
             <div class="proj-title">Snowflake Warehouse Optimization</div>
             <div class="proj-ctx">2023–2024</div>
             <div class="proj-tags"><span class="proj-tag">Snowflake</span><span class="proj-tag">SQL</span></div>
             <div class="proj-desc">Years of ungoverned growth left the warehouse with duplicate views, inconsistent naming, and no ownership tracking. Audited 1,000+ tables and views, consolidated redundant logic, standardized naming, and removed unused objects. Compute costs dropped 30%.</div>
             <div class="proj-metrics"><div><div class="pm-v">30%</div><div class="pm-u">cost reduction</div></div><div><div class="pm-v">1,000+</div><div class="pm-u">tables audited</div></div></div>
           </div>
-          <div class="proj-card">
+          <div class="proj-card" data-demo="sheets">
             <div class="proj-title">Google Sheets Data Pull Tool</div>
             <div class="proj-ctx">2024</div>
             <div class="proj-tags"><span class="proj-tag">Apps Script</span><span class="proj-tag">Matillion</span><span class="proj-tag">Snowflake</span><span class="proj-tag">Google Sheets</span><span class="proj-tag">SQL</span></div>
             <div class="proj-desc">Self-serve reporting tool built inside Google Sheets. Dimension and metric selections trigger Apps Script and Matillion pipelines that generate Snowflake views and write results back to the sheet automatically. Cut turnaround time by 80%.</div>
             <div class="proj-metrics"><div><div class="pm-v">80%</div><div class="pm-u">less manual work</div></div><div><div class="pm-v">80%</div><div class="pm-u">faster turnaround</div></div></div>
           </div>
-          <div class="proj-card">
+          <div class="proj-card" data-demo="api">
             <div class="proj-title">Custom API Ingestion & Data Processing</div>
             <div class="proj-ctx">2022–2023</div>
             <div class="proj-tags"><span class="proj-tag">Python</span><span class="proj-tag">Pandas</span><span class="proj-tag">REST APIs</span><span class="proj-tag">Snowflake</span></div>
             <div class="proj-desc">Python connectors for 6+ marketing platforms (Google Ads, CM360, Meta, DV360) handling OAuth, pagination, rate limiting, and Snowflake ingestion. Built modularly so adding a new source doesn't mean starting from scratch each time.</div>
             <div class="proj-metrics"><div><div class="pm-v">6+</div><div class="pm-u">platforms</div></div><div><div class="pm-v">days → hrs</div><div class="pm-u">onboarding</div></div></div>
           </div>
-          <div class="proj-card">
+          <div class="proj-card" data-demo="esov">
             <div class="proj-title">ESOV Media Spend Analysis</div>
             <div class="proj-ctx">2022</div>
             <div class="proj-tags"><span class="proj-tag">R</span><span class="proj-tag">Kantar</span><span class="proj-tag">Pathmatics</span><span class="proj-tag">Google Trends</span></div>
             <div class="proj-desc">Analysis for media budget planning using Kantar, Pathmatics, and Google Trends data: ESOV models, CDI/BDI scatter plots, and competitor salience benchmarks built in R. Delivered to brand teams for annual budget strategy.</div>
             <div class="proj-metrics"><div><div class="pm-v">3</div><div class="pm-u">data sources</div></div><div><div class="pm-v">Competitive</div><div class="pm-u">intel framework</div></div></div>
           </div>
-          <div class="proj-card">
+          <div class="proj-card" data-demo="social">
             <div class="proj-title">Social Listening & Audience Insights</div>
             <div class="proj-ctx">2022</div>
             <div class="proj-tags"><span class="proj-tag">Brandwatch</span><span class="proj-tag">Python</span><span class="proj-tag">Jupyter</span></div>
             <div class="proj-desc">Brandwatch dashboards for social listening across client brands. Python scripts to pull data, generate charts, and draft narratives for 10+ new business pitch decks.</div>
             <div class="proj-metrics"><div><div class="pm-v">10+</div><div class="pm-u">insights decks</div></div></div>
           </div>
-          <div class="proj-card">
+          <div class="proj-card" data-demo="trafficking">
             <div class="proj-title">Media Campaign Trafficking</div>
             <div class="proj-ctx">2021–2022</div>
             <div class="proj-tags"><span class="proj-tag">Prisma/MediaOcean</span><span class="proj-tag">Campaign Manager 360</span><span class="proj-tag">Google Ads</span></div>
@@ -1569,30 +1595,50 @@ function toggleTheme() {
     pipeline: '<div class="demo-wrap">'
       + '<div class="demo-topbar"><span style="color:var(--t2);font-size:11px">Client Dashboard · Q2 2025</span><span class="demo-env-label">snowflake · tableau · looker</span></div>'
       + '<div class="demo-kpis">'
-      + '<div class="demo-kpi"><div class="demo-kpi-v">142.3M</div><div class="demo-kpi-l">Impressions</div></div>'
-      + '<div class="demo-kpi"><div class="demo-kpi-v">4.2M</div><div class="demo-kpi-l">Clicks</div></div>'
-      + '<div class="demo-kpi"><div class="demo-kpi-v">$8.4M</div><div class="demo-kpi-l">Spend</div></div>'
-      + '<div class="demo-kpi"><div class="demo-kpi-v">2.9%</div><div class="demo-kpi-l">Conv Rate</div></div>'
+      + '<div class="demo-kpi"><div class="demo-kpi-v">142.3M</div><div class="demo-kpi-l">Impressions <span style="color:var(--accent);font-size:9px">↑ 12%</span></div></div>'
+      + '<div class="demo-kpi"><div class="demo-kpi-v">4.2M</div><div class="demo-kpi-l">Clicks <span style="color:var(--accent);font-size:9px">↑ 8%</span></div></div>'
+      + '<div class="demo-kpi"><div class="demo-kpi-v">$8.4M</div><div class="demo-kpi-l">Spend <span style="color:var(--t4);font-size:9px">→ 0%</span></div></div>'
+      + '<div class="demo-kpi"><div class="demo-kpi-v">2.9%</div><div class="demo-kpi-l">Conv Rate <span style="color:var(--rose);font-size:9px">↓ 3%</span></div></div>'
       + '</div>'
-      + '<div class="demo-chart-wrap"><div class="demo-chart-lbl">Spend by Platform</div>'
-      + '<svg class="demo-chart" viewBox="0 0 440 122" style="height:110px">'
-      + '<rect x="20"  y="22" width="60" height="82" rx="3" fill="var(--accent)"  opacity=".75"/>'
-      + '<rect x="98"  y="40" width="60" height="64" rx="3" fill="var(--indigo)" opacity=".75"/>'
-      + '<rect x="176" y="56" width="60" height="48" rx="3" fill="var(--amber)"  opacity=".75"/>'
-      + '<rect x="254" y="78" width="60" height="26" rx="3" fill="var(--rose)"   opacity=".75"/>'
-      + '<rect x="332" y="98" width="60" height="6"  rx="3" fill="var(--amber2)" opacity=".75"/>'
-      + '<text x="50"  y="17"  font-size="9" text-anchor="middle" fill="var(--t2)" font-family="Geist Mono,monospace">$3.1M</text>'
-      + '<text x="128" y="35"  font-size="9" text-anchor="middle" fill="var(--t2)" font-family="Geist Mono,monospace">$2.4M</text>'
-      + '<text x="206" y="51"  font-size="9" text-anchor="middle" fill="var(--t2)" font-family="Geist Mono,monospace">$1.8M</text>'
-      + '<text x="284" y="73"  font-size="9" text-anchor="middle" fill="var(--t2)" font-family="Geist Mono,monospace">$0.9M</text>'
-      + '<text x="362" y="93"  font-size="9" text-anchor="middle" fill="var(--t2)" font-family="Geist Mono,monospace">$0.2M</text>'
-      + '<text x="50"  y="116" font-size="9" text-anchor="middle" fill="var(--t4)" font-family="Geist Mono,monospace">Google</text>'
-      + '<text x="128" y="116" font-size="9" text-anchor="middle" fill="var(--t4)" font-family="Geist Mono,monospace">Meta</text>'
-      + '<text x="206" y="116" font-size="9" text-anchor="middle" fill="var(--t4)" font-family="Geist Mono,monospace">CM360</text>'
-      + '<text x="284" y="116" font-size="9" text-anchor="middle" fill="var(--t4)" font-family="Geist Mono,monospace">DV360</text>'
-      + '<text x="362" y="116" font-size="9" text-anchor="middle" fill="var(--t4)" font-family="Geist Mono,monospace">Other</text>'
+      + '<div class="demo-chart-wrap"><div class="demo-chart-lbl">Weekly Spend Trend · Last 8 Weeks</div>'
+      + '<svg class="demo-chart" viewBox="0 0 440 72" style="height:66px">'
+      + '<polyline points="10,58 66,50 122,46 178,52 234,38 290,32 346,28 420,18" fill="none" stroke="var(--amber)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" opacity=".9"/>'
+      + '<polyline points="10,58 66,50 122,46 178,52 234,38 290,32 346,28 420,18 420,66 10,66" fill="var(--amber)" opacity=".07"/>'
+      + '<circle cx="10"  cy="58" r="3" fill="var(--amber)" opacity=".7"/><circle cx="66"  cy="50" r="3" fill="var(--amber)" opacity=".7"/>'
+      + '<circle cx="122" cy="46" r="3" fill="var(--amber)" opacity=".7"/><circle cx="178" cy="52" r="3" fill="var(--amber)" opacity=".7"/>'
+      + '<circle cx="234" cy="38" r="3" fill="var(--amber)" opacity=".7"/><circle cx="290" cy="32" r="3" fill="var(--amber)" opacity=".7"/>'
+      + '<circle cx="346" cy="28" r="3" fill="var(--amber)" opacity=".7"/><circle cx="420" cy="18" r="4" fill="var(--amber)"/>'
+      + '<text x="10"  y="68" font-size="8" text-anchor="middle" fill="var(--t4)" font-family="Geist Mono,monospace">W1</text>'
+      + '<text x="420" y="68" font-size="8" text-anchor="middle" fill="var(--t4)" font-family="Geist Mono,monospace">W8</text>'
+      + '<text x="420" y="14" font-size="8" text-anchor="end"   fill="var(--amber)" font-family="Geist Mono,monospace">$1.4M</text>'
       + '</svg></div>'
-      + '<div class="demo-sources"><span class="demo-src-chip">Google Ads</span><span class="demo-src-chip">Meta</span><span class="demo-src-chip">CM360</span><span class="demo-src-chip">DV360</span><span class="demo-src-chip">Kochava</span><span class="demo-src-chip">SFTP feeds</span><span class="demo-src-chip">+45 more</span></div>'
+      + '<div class="demo-chart-wrap"><div class="demo-chart-lbl">Spend by Platform</div>'
+      + '<svg class="demo-chart" viewBox="0 0 440 100" style="height:90px">'
+      + '<rect x="20"  y="10" width="60" height="72" rx="3" fill="var(--accent)"  opacity=".75"/>'
+      + '<rect x="98"  y="26" width="60" height="56" rx="3" fill="var(--indigo)" opacity=".75"/>'
+      + '<rect x="176" y="40" width="60" height="42" rx="3" fill="var(--amber)"  opacity=".75"/>'
+      + '<rect x="254" y="62" width="60" height="20" rx="3" fill="var(--rose)"   opacity=".75"/>'
+      + '<rect x="332" y="76" width="60" height="6"  rx="3" fill="var(--amber2)" opacity=".75"/>'
+      + '<text x="50"  y="6"   font-size="8" text-anchor="middle" fill="var(--t2)" font-family="Geist Mono,monospace">$3.1M</text>'
+      + '<text x="128" y="22"  font-size="8" text-anchor="middle" fill="var(--t2)" font-family="Geist Mono,monospace">$2.4M</text>'
+      + '<text x="206" y="36"  font-size="8" text-anchor="middle" fill="var(--t2)" font-family="Geist Mono,monospace">$1.8M</text>'
+      + '<text x="284" y="58"  font-size="8" text-anchor="middle" fill="var(--t2)" font-family="Geist Mono,monospace">$0.9M</text>'
+      + '<text x="362" y="72"  font-size="8" text-anchor="middle" fill="var(--t2)" font-family="Geist Mono,monospace">$0.2M</text>'
+      + '<text x="50"  y="94"  font-size="8" text-anchor="middle" fill="var(--t4)" font-family="Geist Mono,monospace">Google</text>'
+      + '<text x="128" y="94"  font-size="8" text-anchor="middle" fill="var(--t4)" font-family="Geist Mono,monospace">Meta</text>'
+      + '<text x="206" y="94"  font-size="8" text-anchor="middle" fill="var(--t4)" font-family="Geist Mono,monospace">CM360</text>'
+      + '<text x="284" y="94"  font-size="8" text-anchor="middle" fill="var(--t4)" font-family="Geist Mono,monospace">DV360</text>'
+      + '<text x="362" y="94"  font-size="8" text-anchor="middle" fill="var(--t4)" font-family="Geist Mono,monospace">Other</text>'
+      + '</svg></div>'
+      + '<div class="demo-chart-lbl" style="margin-bottom:6px">Connected Sources</div>'
+      + '<div style="border:1px solid var(--bd);border-radius:8px;overflow:hidden;margin-bottom:12px">'
+      + '<div class="demo-tbl-head" style="grid-template-columns:2fr 1fr 1fr 1fr"><span>Source</span><span>Type</span><span>Rows/Day</span><span>Status</span></div>'
+      + '<div class="demo-tbl-row" style="grid-template-columns:2fr 1fr 1fr 1fr"><span>Google Ads</span><span>API</span><span>14,302</span><span class="demo-badge-live">● Active</span></div>'
+      + '<div class="demo-tbl-row" style="grid-template-columns:2fr 1fr 1fr 1fr"><span>Meta Ads</span><span>API</span><span>8,847</span><span class="demo-badge-live">● Active</span></div>'
+      + '<div class="demo-tbl-row" style="grid-template-columns:2fr 1fr 1fr 1fr"><span>CM360</span><span>API</span><span>5,291</span><span class="demo-badge-live">● Active</span></div>'
+      + '<div class="demo-tbl-row" style="grid-template-columns:2fr 1fr 1fr 1fr"><span>DV360</span><span>SFTP</span><span>3,108</span><span class="demo-badge-live">● Active</span></div>'
+      + '<div class="demo-tbl-row" style="grid-template-columns:2fr 1fr 1fr 1fr;color:var(--t4)"><span>+46 more sources</span><span></span><span></span><span class="demo-badge-live">● All live</span></div>'
+      + '</div>'
       + '</div>',
 
     rawdata: '<div class="demo-wrap">'
@@ -1629,6 +1675,125 @@ function toggleTheme() {
       + '<div style="color:var(--t3);font-size:11px;margin-top:3px">Ad set name doesn’t match naming convention — flagged before reporting ingestion</div>'
       + '<div class="demo-slack-link">&#8594; Flag to Media team</div>'
       + '</div></div>'
+      + '</div></div>',
+
+    snowflake: '<div class="demo-wrap">'
+      + '<div class="demo-topbar"><span style="color:var(--t2);font-size:11px">Warehouse Audit Report</span><span class="demo-env-label">snowflake · sql</span></div>'
+      + '<div style="border:1px solid var(--bd);border-radius:8px;overflow:hidden;margin-bottom:10px">'
+      + '<div class="demo-tbl-head demo-tbl-4"><span>Object</span><span>Type</span><span>Status</span><span>Action</span></div>'
+      + '<div class="demo-tbl-row demo-tbl-4"><span>v_client_media_spend</span><span>VIEW</span><span class="demo-status-dup">duplicate</span><span>remove</span></div>'
+      + '<div class="demo-tbl-row demo-tbl-4"><span>v_client_media_spend_2</span><span>VIEW</span><span class="demo-status-dup">duplicate</span><span>remove</span></div>'
+      + '<div class="demo-tbl-row demo-tbl-4"><span>raw_gads_impr_old</span><span>TABLE</span><span class="demo-status-unused">unused</span><span>archive</span></div>'
+      + '<div class="demo-tbl-row demo-tbl-4"><span>v_campaign_summary</span><span>VIEW</span><span class="demo-status-ok">active</span><span>keep</span></div>'
+      + '<div class="demo-tbl-row demo-tbl-4"><span>v_platform_spend_daily</span><span>VIEW</span><span class="demo-status-ok">active</span><span>keep</span></div>'
+      + '<div class="demo-tbl-row demo-tbl-4"><span>tbl_social_staging_old</span><span>TABLE</span><span class="demo-status-unused">unused</span><span>remove</span></div>'
+      + '</div>'
+      + '<div class="demo-tbl-foot"><span>1,024 objects audited</span><span style="color:var(--rose)">387 removed</span><span style="color:var(--accent)">30% cost reduction</span></div>'
+      + '</div>',
+
+    sheets: '<div class="demo-wrap">'
+      + '<div class="demo-topbar"><span style="color:var(--t2);font-size:11px">Data Pull Tool · Google Sheets</span><span class="demo-env-label">apps script · matillion · snowflake</span></div>'
+      + '<div class="demo-form" style="margin-bottom:14px">'
+      + '<div class="demo-field"><div class="demo-field-label">Dimensions</div><div class="demo-chips"><span class="demo-chip on">&#10003; Campaign</span><span class="demo-chip on">&#10003; Platform</span><span class="demo-chip">Ad Set</span><span class="demo-chip">Week</span></div></div>'
+      + '<div class="demo-field"><div class="demo-field-label">Metrics</div><div class="demo-chips"><span class="demo-chip on">&#10003; Impressions</span><span class="demo-chip on">&#10003; Clicks</span><span class="demo-chip on">&#10003; Spend</span><span class="demo-chip">Conv Rate</span></div></div>'
+      + '<div class="demo-field"><div class="demo-field-label">Date Range</div><div class="demo-select"><span>Last 4 weeks</span><span style="color:var(--t4)">&#9662;</span></div></div>'
+      + '<div class="demo-submit-btn">Pull Data &#8594; Write to Sheet</div>'
+      + '</div>'
+      + '<div class="demo-chart-lbl" style="margin-bottom:6px">Output Preview</div>'
+      + '<div style="border:1px solid var(--bd);border-radius:8px;overflow:hidden">'
+      + '<div class="demo-tbl-head" style="grid-template-columns:2fr 1fr 1.2fr 1fr 1fr"><span>Campaign</span><span>Platform</span><span>Impr.</span><span>Clicks</span><span>Spend</span></div>'
+      + '<div class="demo-tbl-row" style="grid-template-columns:2fr 1fr 1.2fr 1fr 1fr;color:var(--t2)"><span>Brand Q2</span><span>Google</span><span>4.2M</span><span>142K</span><span>$18,400</span></div>'
+      + '<div class="demo-tbl-row" style="grid-template-columns:2fr 1fr 1.2fr 1fr 1fr;color:var(--t2)"><span>Brand Q2</span><span>Meta</span><span>2.8M</span><span>96K</span><span>$12,200</span></div>'
+      + '<div class="demo-tbl-row" style="grid-template-columns:2fr 1fr 1.2fr 1fr 1fr;color:var(--t4)"><span>&#8230;</span><span></span><span></span><span></span><span></span></div>'
+      + '</div></div>',
+
+    api: '<div class="demo-wrap">'
+      + '<div class="demo-topbar"><span style="color:var(--t2);font-size:11px">API Ingestion · Daily Run</span><span class="demo-env-label">python · pandas · snowflake</span></div>'
+      + '<div class="demo-log">'
+      + '<div class="demo-log-line">[06:00:02] <span class="demo-log-ok">&#10003;</span> Google Ads — auth OK, fetching campaigns...</div>'
+      + '<div class="demo-log-line">[06:00:08] <span class="demo-log-ok">&#10003;</span> Google Ads — 14,302 rows &#8594; Snowflake</div>'
+      + '<div class="demo-log-line">[06:00:09] <span class="demo-log-ok">&#10003;</span> Meta Ads — auth OK, fetching ad sets...</div>'
+      + '<div class="demo-log-line">[06:00:15] <span class="demo-log-ok">&#10003;</span> Meta Ads — 8,847 rows &#8594; Snowflake</div>'
+      + '<div class="demo-log-line">[06:00:16] <span class="demo-log-ok">&#10003;</span> CM360 — 5,291 rows &#8594; Snowflake</div>'
+      + '<div class="demo-log-line">[06:00:23] <span class="demo-log-ok">&#10003;</span> DV360 — 3,108 rows &#8594; Snowflake</div>'
+      + '<div class="demo-log-line demo-log-dim">[06:00:30] &#8594; 2 more platforms queued...</div>'
+      + '<div class="demo-log-line demo-log-done">[06:01:44] &#9989; All 6 platforms loaded · 31,548 rows total</div>'
+      + '</div>'
+      + '<div class="demo-sources" style="margin-top:12px">'
+      + '<span class="demo-src-chip" style="color:var(--accent);border-color:rgba(90,138,94,.3)">&#10003; Google Ads</span>'
+      + '<span class="demo-src-chip" style="color:var(--accent);border-color:rgba(90,138,94,.3)">&#10003; Meta</span>'
+      + '<span class="demo-src-chip" style="color:var(--accent);border-color:rgba(90,138,94,.3)">&#10003; CM360</span>'
+      + '<span class="demo-src-chip" style="color:var(--accent);border-color:rgba(90,138,94,.3)">&#10003; DV360</span>'
+      + '<span class="demo-src-chip" style="color:var(--accent);border-color:rgba(90,138,94,.3)">&#10003; Kochava</span>'
+      + '<span class="demo-src-chip" style="color:var(--accent);border-color:rgba(90,138,94,.3)">&#10003; SA360</span>'
+      + '</div></div>',
+
+    esov: '<div class="demo-wrap">'
+      + '<div class="demo-topbar"><span style="color:var(--t2);font-size:11px">ESOV Analysis · Media Planning</span><span class="demo-env-label">r · kantar · pathmatics</span></div>'
+      + '<div style="border:1px solid var(--bd);border-radius:8px;overflow:hidden;margin-bottom:14px">'
+      + '<div class="demo-tbl-head demo-tbl-5c"><span>Brand</span><span>SOV%</span><span>SOM%</span><span>ESOV</span><span>Signal</span></div>'
+      + '<div class="demo-tbl-row demo-tbl-5c" style="background:rgba(138,170,142,.06)"><span style="color:var(--t1)">Our Brand</span><span>18.4</span><span>14.2</span><span class="demo-status-ok">+4.2</span><span class="demo-status-ok">&#8593; Invest</span></div>'
+      + '<div class="demo-tbl-row demo-tbl-5c"><span>Competitor A</span><span>31.2</span><span>28.8</span><span style="color:var(--t2)">+2.4</span><span style="color:var(--t2)">&#8594; Hold</span></div>'
+      + '<div class="demo-tbl-row demo-tbl-5c"><span>Competitor B</span><span>24.6</span><span>27.1</span><span class="demo-status-dup">&#8722;2.5</span><span class="demo-status-dup">&#8595; Defend</span></div>'
+      + '<div class="demo-tbl-row demo-tbl-5c"><span>Competitor C</span><span>12.8</span><span>18.4</span><span class="demo-status-dup">&#8722;5.6</span><span class="demo-status-dup">&#8595; Defend</span></div>'
+      + '</div>'
+      + '<div class="demo-chart-wrap"><div class="demo-chart-lbl">SOV vs SOM by Brand</div>'
+      + '<svg class="demo-chart" viewBox="0 0 440 88" style="height:80px">'
+      + '<rect x="20"  y="14" width="32" height="60" rx="2" fill="var(--accent)" opacity=".8"/>'
+      + '<rect x="56"  y="30" width="32" height="44" rx="2" fill="var(--accent)" opacity=".35"/>'
+      + '<rect x="116" y="0"  width="32" height="74" rx="2" fill="var(--t4)"     opacity=".55"/>'
+      + '<rect x="152" y="6"  width="32" height="68" rx="2" fill="var(--t4)"     opacity=".25"/>'
+      + '<rect x="212" y="20" width="32" height="54" rx="2" fill="var(--rose)"   opacity=".55"/>'
+      + '<rect x="248" y="14" width="32" height="60" rx="2" fill="var(--rose)"   opacity=".25"/>'
+      + '<rect x="308" y="50" width="32" height="24" rx="2" fill="var(--amber2)" opacity=".55"/>'
+      + '<rect x="344" y="26" width="32" height="48" rx="2" fill="var(--amber2)" opacity=".25"/>'
+      + '<text x="52"  y="82" font-size="8" text-anchor="middle" fill="var(--t4)" font-family="Geist Mono,monospace">Our Brand</text>'
+      + '<text x="148" y="82" font-size="8" text-anchor="middle" fill="var(--t4)" font-family="Geist Mono,monospace">Comp A</text>'
+      + '<text x="244" y="82" font-size="8" text-anchor="middle" fill="var(--t4)" font-family="Geist Mono,monospace">Comp B</text>'
+      + '<text x="340" y="82" font-size="8" text-anchor="middle" fill="var(--t4)" font-family="Geist Mono,monospace">Comp C</text>'
+      + '</svg>'
+      + '<div style="display:flex;gap:14px;font-size:9px;color:var(--t4);margin-top:6px">'
+      + '<span style="display:flex;align-items:center;gap:4px"><span style="width:8px;height:8px;background:var(--accent);opacity:.8;border-radius:1px;display:inline-block"></span>SOV</span>'
+      + '<span style="display:flex;align-items:center;gap:4px"><span style="width:8px;height:8px;background:var(--accent);opacity:.35;border-radius:1px;display:inline-block"></span>SOM</span>'
+      + '</div></div></div>',
+
+    social: '<div class="demo-wrap">'
+      + '<div class="demo-topbar"><span style="color:var(--t2);font-size:11px">Social Listening Dashboard</span><span class="demo-env-label">brandwatch · python</span></div>'
+      + '<div class="demo-chart-wrap">'
+      + '<div class="demo-chart-lbl">Sentiment · Last 30 Days</div>'
+      + '<div class="demo-sent-bar"><div class="demo-sent-pos" style="flex:0.62"></div><div class="demo-sent-neu" style="flex:0.28"></div><div class="demo-sent-neg" style="flex:0.10"></div></div>'
+      + '<div class="demo-sent-labels"><span style="color:var(--accent)">62% positive</span><span>28% neutral</span><span style="color:var(--rose)">10% negative</span></div>'
+      + '</div>'
+      + '<div class="demo-chart-lbl" style="margin-bottom:8px">Top Topics</div>'
+      + '<div class="demo-topics" style="margin-bottom:14px"><span class="demo-topic hot">brand awareness</span><span class="demo-topic hot">product launch</span><span class="demo-topic">sustainability</span><span class="demo-topic">customer service</span><span class="demo-topic">pricing</span><span class="demo-topic">competitor mentions</span></div>'
+      + '<div class="demo-chart-wrap">'
+      + '<div class="demo-chart-lbl">Mention Volume · 4 Weeks</div>'
+      + '<svg class="demo-chart" viewBox="0 0 440 66" style="height:58px">'
+      + '<polyline points="10,52 55,45 100,35 145,40 190,28 235,32 280,20 325,16 370,22 420,12" fill="none" stroke="var(--accent)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" opacity=".85"/>'
+      + '<polyline points="10,52 55,45 100,35 145,40 190,28 235,32 280,20 325,16 370,22 420,12 420,62 10,62" fill="var(--accent)" opacity=".07"/>'
+      + '</svg>'
+      + '</div>'
+      + '<div class="demo-kpis" style="grid-template-columns:repeat(3,1fr)">'
+      + '<div class="demo-kpi"><div class="demo-kpi-v">24.8K</div><div class="demo-kpi-l">Mentions</div></div>'
+      + '<div class="demo-kpi"><div class="demo-kpi-v">10+</div><div class="demo-kpi-l">Decks built</div></div>'
+      + '<div class="demo-kpi"><div class="demo-kpi-v">62%</div><div class="demo-kpi-l">Positive</div></div>'
+      + '</div></div>',
+
+    trafficking: '<div class="demo-wrap">'
+      + '<div class="demo-topbar"><span style="color:var(--t2);font-size:11px">Campaign Trafficking · Q2 2022</span><span class="demo-env-label">prisma · cm360 · google ads</span></div>'
+      + '<div style="border:1px solid var(--bd);border-radius:8px;overflow:hidden;margin-bottom:12px">'
+      + '<div class="demo-tbl-head demo-tbl-5"><span>#</span><span>Campaign</span><span>Vendor</span><span>Budget</span><span>Status</span></div>'
+      + '<div class="demo-tbl-row demo-tbl-5"><span>01</span><span>Brand Awareness Q2</span><span>Google</span><span>$45K</span><span class="demo-badge-live">&#9679; Live</span></div>'
+      + '<div class="demo-tbl-row demo-tbl-5"><span>02</span><span>Retargeting — Web</span><span>Meta</span><span>$22.5K</span><span class="demo-badge-live">&#9679; Live</span></div>'
+      + '<div class="demo-tbl-row demo-tbl-5"><span>03</span><span>OOH · NYC Metro</span><span>OUTFRONT</span><span>$80K</span><span class="demo-badge-pend">&#9678; Pending</span></div>'
+      + '<div class="demo-tbl-row demo-tbl-5"><span>04</span><span>Print · NYT Weekend</span><span>NYT</span><span>$15K</span><span class="demo-badge-done">&#10003; Done</span></div>'
+      + '<div class="demo-tbl-row demo-tbl-5"><span>05</span><span>Audio · Spotify</span><span>Spotify</span><span>$12K</span><span class="demo-badge-live">&#9679; Live</span></div>'
+      + '</div>'
+      + '<div class="demo-kpis">'
+      + '<div class="demo-kpi"><div class="demo-kpi-v">20+</div><div class="demo-kpi-l">Vendors</div></div>'
+      + '<div class="demo-kpi"><div class="demo-kpi-v">3</div><div class="demo-kpi-l">Channels</div></div>'
+      + '<div class="demo-kpi"><div class="demo-kpi-v">$174.5K</div><div class="demo-kpi-l">Q2 Budget</div></div>'
+      + '<div class="demo-kpi"><div class="demo-kpi-v">3/5</div><div class="demo-kpi-l">Live</div></div>'
       + '</div></div>'
   };
 
