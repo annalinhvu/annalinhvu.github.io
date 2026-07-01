@@ -2,7 +2,7 @@
 
 **[annalinhvu.github.io](https://annalinhvu.github.io)**
 
-Hi, I'm Anna (Linh) — a Data Engineer and BI Engineer based in New York City, originally from Hanoi. By day I build data infrastructure for enterprise marketing clients. By night I make small databases about things I care about: film festivals, analog cameras, Vietnamese food, NYC, and places I want to go.
+Hi, I'm Anna (Linh) — a Data Engineer and BI Engineer based in New York City, originally from Hanoi. By day I build data infrastructure for enterprise marketing clients. By night I make things I actually want to use: maps, databases, tools, and trackers built around film, food, travel, and New York.
 
 This whole site is one HTML file. No frameworks, no build step, no `npm install`.
 
@@ -12,7 +12,7 @@ This whole site is one HTML file. No frameworks, no build step, no `npm install`
 
 The portfolio has three tabs:
 
-- **built** — professional and academic data work: ETL pipelines, Snowflake warehouses, BI dashboards, API connectors.
+- **built** — professional data work (ETL pipelines, Snowflake warehouses, BI dashboards, API connectors) and academic projects from Penn Engineering. Every card has a clickable prototype.
 - **studio** — personal projects. Each one started because I wanted something that didn't exist yet.
 - **career** — work history.
 
