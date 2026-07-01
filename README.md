@@ -2,7 +2,7 @@
 
 **[annalinhvu.github.io](https://annalinhvu.github.io)**
 
-Hi, I'm Anna (Linh) — a Data Engineer and BI Engineer based in New York City, originally from Hanoi. By day I build data infrastructure for enterprise marketing clients. By night I make things I actually want to use: maps, databases, tools, and trackers built around film, food, travel, and New York.
+Hi, I'm Anna (Linh) — a Data Engineer and BI Engineer based in New York City, originally from Hanoi. By day I build data infrastructure for enterprise marketing clients. By night I make small databases about things I care about: film festivals, analog cameras, Vietnamese food, NYC, and places I want to go.
 
 This whole site is one HTML file. No frameworks, no build step, no `npm install`.
 
