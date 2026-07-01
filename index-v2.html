@@ -1310,42 +1310,42 @@ body {
 
         <div class="work-section-hd" style="margin-top:44px">academic · penn engineering</div>
         <div class="proj-grid">
-          <div class="proj-card">
+          <div class="proj-card" data-demo="covid">
             <div class="proj-title">COVID & Property Analytics Platform</div>
             <div class="proj-ctx">2025</div>
             <div class="proj-tags"><span class="proj-tag">Java</span><span class="proj-tag">CSV/JSON</span><span class="proj-tag">MVC</span><span class="proj-tag">Memoization</span><span class="proj-tag">JUnit</span></div>
             <div class="proj-desc">Data processing platform combining Philadelphia COVID vaccination records, population by ZIP, and property assessments. MVC architecture with custom readers, Singleton logger for audit trails, and memoized processors caching expensive computations.</div>
             <div class="proj-metrics"><div><div class="pm-v">3</div><div class="pm-u">data sources</div></div><div><div class="pm-v">7+</div><div class="pm-u">test suites</div></div></div>
           </div>
-          <div class="proj-card">
+          <div class="proj-card" data-demo="flutweet">
             <div class="proj-title">Flu Tweet Geolocation Analyzer</div>
             <div class="proj-ctx">2025</div>
             <div class="proj-tags"><span class="proj-tag">Java</span><span class="proj-tag">Regex</span><span class="proj-tag">Geolocation</span><span class="proj-tag">Singleton</span><span class="proj-tag">Factory</span></div>
             <div class="proj-desc">Analyzes geotagged tweets for flu-related content using regex pattern matching (handling edge cases like "fluent" vs "#flu"). Maps matches to the nearest U.S. state via Cartesian distance. Polymorphic Reader interface supports JSON and TXT formats.</div>
             <div class="proj-metrics"><div><div class="pm-v">50</div><div class="pm-u">states mapped</div></div><div><div class="pm-v">2</div><div class="pm-u">input formats</div></div></div>
           </div>
-          <div class="proj-card">
+          <div class="proj-card" data-demo="studemgmt">
             <div class="proj-title">Student Management System</div>
             <div class="proj-ctx">2025</div>
             <div class="proj-tags"><span class="proj-tag">Java</span><span class="proj-tag">OOP</span><span class="proj-tag">HashMap</span><span class="proj-tag">Auth</span><span class="proj-tag">JUnit 5</span></div>
             <div class="proj-desc">Full-featured academic management system with role-based access control. Admins create/delete courses and users. Professors manage enrolled students and grades. Students view schedules, enroll/drop, and check grades. File-based persistence with comprehensive test coverage.</div>
             <div class="proj-metrics"><div><div class="pm-v">3</div><div class="pm-u">user roles</div></div><div><div class="pm-v">7</div><div class="pm-u">test suites</div></div></div>
           </div>
-          <div class="proj-card">
+          <div class="proj-card" data-demo="movietrivia">
             <div class="proj-title">Movie Trivia Database Engine</div>
             <div class="proj-ctx">2025</div>
             <div class="proj-tags"><span class="proj-tag">Java</span><span class="proj-tag">ArrayList</span><span class="proj-tag">File I/O</span><span class="proj-tag">JUnit</span></div>
             <div class="proj-desc">Movie database system implementing complex query operations without a traditional RDBMS. Supports actor-movie lookups, co-actor discovery, common movie searches, rating filters (critics vs. audience), and mean rating calculations.</div>
             <div class="proj-metrics"><div><div class="pm-v">8</div><div class="pm-u">query types</div></div></div>
           </div>
-          <div class="proj-card">
+          <div class="proj-card" data-demo="lc4asm">
             <div class="proj-title">LC4 Assembler</div>
             <div class="proj-ctx">2026</div>
             <div class="proj-tags"><span class="proj-tag">C</span><span class="proj-tag">Binary I/O</span><span class="proj-tag">ISA</span><span class="proj-tag">File Parsing</span><span class="proj-tag">Makefile</span></div>
             <div class="proj-desc">Mini-assembler in C that reads LC4 assembly text files and emits binary .obj machine code files consumable by PennSim. Implements a full two-pass parser: tokenizes instructions, encodes each opcode and operand into 16-bit binary, and handles .CODE/.DATA/.SYMBOL section headers with proper endianness.</div>
             <div class="proj-metrics"><div><div class="pm-v">30+</div><div class="pm-u">opcodes</div></div><div><div class="pm-v">2</div><div class="pm-u">file formats</div></div></div>
           </div>
-          <div class="proj-card">
+          <div class="proj-card" data-demo="portfolio">
             <div class="proj-title">Personal Portfolio Website</div>
             <div class="proj-ctx">2025–Present</div>
             <div class="proj-tags"><span class="proj-tag">HTML</span><span class="proj-tag">CSS</span><span class="proj-tag">JavaScript</span><span class="proj-tag">SVG</span></div>
@@ -1791,6 +1791,158 @@ function toggleTheme() {
       + '<div class="demo-kpi"><div class="demo-kpi-v">3</div><div class="demo-kpi-l">Channels</div></div>'
       + '<div class="demo-kpi"><div class="demo-kpi-v">$174.5K</div><div class="demo-kpi-l">Q2 Budget</div></div>'
       + '<div class="demo-kpi"><div class="demo-kpi-v">3/5</div><div class="demo-kpi-l">Live</div></div>'
+      + '</div></div>',
+
+    covid: '<div class="demo-wrap">'
+      + '<div class="demo-topbar"><span style="color:var(--t2);font-size:11px">Analytics Run · Philadelphia 2020</span><span class="demo-env-label">Java · CSV/JSON · MVC</span></div>'
+      + '<div class="demo-log" style="margin-bottom:12px">'
+      + '<div class="demo-log-line"><span class="demo-log-dim">→</span> loading <span style="color:var(--mono-g)">covid_vaccinations.csv</span> &nbsp;<span class="demo-log-ok">OK</span></div>'
+      + '<div class="demo-log-line"><span class="demo-log-dim">→</span> loading <span style="color:var(--mono-g)">population_by_zip.json</span> &nbsp;<span class="demo-log-ok">OK</span></div>'
+      + '<div class="demo-log-line"><span class="demo-log-dim">→</span> loading <span style="color:var(--mono-g)">property_assessments.csv</span> &nbsp;<span class="demo-log-ok">OK</span></div>'
+      + '<div class="demo-log-line"><span class="demo-log-dim">→</span> Singleton logger initialized &nbsp;<span class="demo-log-ok">OK</span></div>'
+      + '<div class="demo-log-line"><span class="demo-log-dim">→</span> memoized cache hit &nbsp;<span style="color:var(--amber)">0.003s</span></div>'
+      + '<div class="demo-log-line"><span class="demo-log-dim">→</span> MVC processors complete &nbsp;<span class="demo-log-done">✓</span></div>'
+      + '</div>'
+      + '<div style="border:1px solid var(--bd);border-radius:8px;overflow:hidden;margin-bottom:12px">'
+      + '<div class="demo-tbl-head demo-tbl-4"><span>ZIP</span><span>Vacc %</span><span>Pop.</span><span>Avg. Property Value</span></div>'
+      + '<div class="demo-tbl-row demo-tbl-4"><span>19103</span><span style="color:var(--accent)">81.2%</span><span>18.4K</span><span>$412K</span></div>'
+      + '<div class="demo-tbl-row demo-tbl-4"><span>19104</span><span style="color:var(--amber)">63.7%</span><span>29.1K</span><span>$187K</span></div>'
+      + '<div class="demo-tbl-row demo-tbl-4"><span>19107</span><span style="color:var(--accent)">79.5%</span><span>12.8K</span><span>$356K</span></div>'
+      + '<div class="demo-tbl-row demo-tbl-4"><span>19121</span><span style="color:var(--rose)">44.1%</span><span>21.6K</span><span>$92K</span></div>'
+      + '</div>'
+      + '<div class="demo-kpis">'
+      + '<div class="demo-kpi"><div class="demo-kpi-v">3</div><div class="demo-kpi-l">Data Sources</div></div>'
+      + '<div class="demo-kpi"><div class="demo-kpi-v">67</div><div class="demo-kpi-l">ZIP Codes</div></div>'
+      + '<div class="demo-kpi"><div class="demo-kpi-v">0.003s</div><div class="demo-kpi-l">Cache Hit</div></div>'
+      + '<div class="demo-kpi"><div class="demo-kpi-v">7+</div><div class="demo-kpi-l">Test Suites</div></div>'
+      + '</div></div>',
+
+    flutweet: '<div class="demo-wrap">'
+      + '<div class="demo-topbar"><span style="color:var(--t2);font-size:11px">Flu Tweet Analyzer · 2025</span><span class="demo-env-label">Java · Regex · Geolocation</span></div>'
+      + '<div style="background:var(--panel-hd);border:1px solid var(--bd);border-radius:8px;padding:10px 14px;margin-bottom:10px">'
+      + '<div style="font-size:9px;color:var(--t4);letter-spacing:1px;text-transform:uppercase;margin-bottom:6px">Input Tweet</div>'
+      + '<div style="font-size:12px;color:var(--t2);font-style:italic">"Feeling awful, definitely got the #flu from my coworker. New York City 🤧"</div>'
+      + '</div>'
+      + '<div class="demo-log" style="margin-bottom:10px">'
+      + '<div class="demo-log-line"><span class="demo-log-dim">regex</span> → matched <span style="color:var(--amber)">#flu</span> · excluded "fluent", "influencer" &nbsp;<span class="demo-log-ok">✓</span></div>'
+      + '<div class="demo-log-line"><span class="demo-log-dim">coords</span> → 40.7128° N, 74.0060° W</div>'
+      + '<div class="demo-log-line"><span class="demo-log-dim">nearest state</span> → <span style="color:var(--accent)">New York</span> · Cartesian dist: 0.00</div>'
+      + '<div class="demo-log-line"><span class="demo-log-dim">reader</span> → JSON format detected · Factory pattern <span class="demo-log-ok">✓</span></div>'
+      + '</div>'
+      + '<div style="border:1px solid var(--bd);border-radius:8px;overflow:hidden;margin-bottom:12px">'
+      + '<div class="demo-tbl-head demo-tbl-4"><span>State</span><span>Flu Mentions</span><span>Total Tweets</span><span>Rate</span></div>'
+      + '<div class="demo-tbl-row demo-tbl-4"><span>New York</span><span>143</span><span>892</span><span style="color:var(--rose)">16.0%</span></div>'
+      + '<div class="demo-tbl-row demo-tbl-4"><span>California</span><span>98</span><span>1,204</span><span style="color:var(--amber)">8.1%</span></div>'
+      + '<div class="demo-tbl-row demo-tbl-4"><span>Texas</span><span>77</span><span>1,041</span><span style="color:var(--amber)">7.4%</span></div>'
+      + '<div class="demo-tbl-row demo-tbl-4"><span>Florida</span><span>54</span><span>783</span><span style="color:var(--accent)">6.9%</span></div>'
+      + '</div>'
+      + '<div class="demo-kpis">'
+      + '<div class="demo-kpi"><div class="demo-kpi-v">50</div><div class="demo-kpi-l">States Mapped</div></div>'
+      + '<div class="demo-kpi"><div class="demo-kpi-v">2</div><div class="demo-kpi-l">Input Formats</div></div>'
+      + '<div class="demo-kpi"><div class="demo-kpi-v">Regex</div><div class="demo-kpi-l">Pattern Match</div></div>'
+      + '<div class="demo-kpi"><div class="demo-kpi-v">Factory</div><div class="demo-kpi-l">Reader Pattern</div></div>'
+      + '</div></div>',
+
+    studemgmt: '<div class="demo-wrap">'
+      + '<div class="demo-topbar"><span style="color:var(--t2);font-size:11px">Student Management System · 2025</span><span class="demo-env-label">Java · OOP · JUnit 5</span></div>'
+      + '<div style="display:flex;gap:8px;margin-bottom:12px">'
+      + '<div style="padding:4px 14px;border-radius:5px;font-size:11px;background:var(--panel-hd);color:var(--t4);border:1px solid var(--bd)">Admin</div>'
+      + '<div style="padding:4px 14px;border-radius:5px;font-size:11px;background:var(--panel-hd);color:var(--t4);border:1px solid var(--bd)">Professor</div>'
+      + '<div style="padding:4px 14px;border-radius:5px;font-size:11px;background:var(--surface);color:var(--accent);border:1px solid var(--accent)">Student ●</div>'
+      + '</div>'
+      + '<div style="font-size:11px;color:var(--t4);margin-bottom:10px">Logged in as: <span style="color:var(--t2)">linh.vu@penn.edu</span></div>'
+      + '<div style="border:1px solid var(--bd);border-radius:8px;overflow:hidden;margin-bottom:12px">'
+      + '<div class="demo-tbl-head" style="display:grid;grid-template-columns:1.5fr 1fr 1fr 1fr"><span>Course</span><span>Credits</span><span>Grade</span><span>Status</span></div>'
+      + '<div class="demo-tbl-row" style="display:grid;grid-template-columns:1.5fr 1fr 1fr 1fr"><span>CIT 591 — Java</span><span>1.5 CU</span><span style="color:var(--accent)">A</span><span class="demo-log-ok">Enrolled</span></div>'
+      + '<div class="demo-tbl-row" style="display:grid;grid-template-columns:1.5fr 1fr 1fr 1fr"><span>CIT 592 — Data Structures</span><span>1.5 CU</span><span style="color:var(--accent)">A−</span><span class="demo-log-ok">Enrolled</span></div>'
+      + '<div class="demo-tbl-row" style="display:grid;grid-template-columns:1.5fr 1fr 1fr 1fr"><span>CIS 550 — Databases</span><span>1.0 CU</span><span style="color:var(--t4)">—</span><span style="color:var(--amber)">Waitlisted</span></div>'
+      + '<div class="demo-tbl-row" style="display:grid;grid-template-columns:1.5fr 1fr 1fr 1fr"><span>CIT 593 — Systems</span><span>1.5 CU</span><span style="color:var(--t4)">—</span><span style="color:var(--t4)">Dropped</span></div>'
+      + '</div>'
+      + '<div class="demo-kpis">'
+      + '<div class="demo-kpi"><div class="demo-kpi-v">3</div><div class="demo-kpi-l">User Roles</div></div>'
+      + '<div class="demo-kpi"><div class="demo-kpi-v">RBAC</div><div class="demo-kpi-l">Access Control</div></div>'
+      + '<div class="demo-kpi"><div class="demo-kpi-v">File I/O</div><div class="demo-kpi-l">Persistence</div></div>'
+      + '<div class="demo-kpi"><div class="demo-kpi-v">7</div><div class="demo-kpi-l">Test Suites</div></div>'
+      + '</div></div>',
+
+    movietrivia: '<div class="demo-wrap">'
+      + '<div class="demo-topbar"><span style="color:var(--t2);font-size:11px">Movie Trivia Database Engine · 2025</span><span class="demo-env-label">Java · ArrayList · File I/O</span></div>'
+      + '<div style="display:flex;gap:8px;align-items:center;margin-bottom:12px;flex-wrap:wrap">'
+      + '<div style="font-size:10px;color:var(--t4);letter-spacing:1px;text-transform:uppercase">Query:</div>'
+      + '<div style="padding:4px 12px;border-radius:5px;font-size:11px;background:var(--surface);color:var(--accent);border:1px solid var(--accent)">Actor → Movies</div>'
+      + '<div style="padding:4px 12px;border-radius:5px;font-size:11px;background:var(--panel-hd);color:var(--t4);border:1px solid var(--bd)">Co-Actors</div>'
+      + '<div style="padding:4px 12px;border-radius:5px;font-size:11px;background:var(--panel-hd);color:var(--t4);border:1px solid var(--bd)">Rating Filter</div>'
+      + '<div style="padding:4px 12px;border-radius:5px;font-size:11px;background:var(--panel-hd);color:var(--t4);border:1px solid var(--bd)">Common Movies</div>'
+      + '</div>'
+      + '<div style="font-size:11px;color:var(--t4);margin-bottom:8px">Actor: <span style="color:var(--t2);font-style:italic">Meryl Streep</span></div>'
+      + '<div style="border:1px solid var(--bd);border-radius:8px;overflow:hidden;margin-bottom:12px">'
+      + '<div class="demo-tbl-head demo-tbl-4"><span>Movie</span><span>Year</span><span>Critic</span><span>Audience</span></div>'
+      + '<div class="demo-tbl-row demo-tbl-4"><span>The Devil Wears Prada</span><span>2006</span><span style="color:var(--accent)">75</span><span style="color:var(--accent)">85</span></div>'
+      + '<div class="demo-tbl-row demo-tbl-4"><span>Kramer vs. Kramer</span><span>1979</span><span style="color:var(--accent)">90</span><span style="color:var(--accent)">88</span></div>'
+      + '<div class="demo-tbl-row demo-tbl-4"><span>Sophie\'s Choice</span><span>1982</span><span style="color:var(--accent)">86</span><span style="color:var(--accent)">91</span></div>'
+      + '<div class="demo-tbl-row demo-tbl-4"><span>Doubt</span><span>2008</span><span style="color:var(--amber)">79</span><span style="color:var(--amber)">72</span></div>'
+      + '</div>'
+      + '<div class="demo-kpis">'
+      + '<div class="demo-kpi"><div class="demo-kpi-v">8</div><div class="demo-kpi-l">Query Types</div></div>'
+      + '<div class="demo-kpi"><div class="demo-kpi-v">No SQL</div><div class="demo-kpi-l">Pure Java</div></div>'
+      + '<div class="demo-kpi"><div class="demo-kpi-v">Critic</div><div class="demo-kpi-l">vs. Audience</div></div>'
+      + '<div class="demo-kpi"><div class="demo-kpi-v">Mean</div><div class="demo-kpi-l">Rating Calc</div></div>'
+      + '</div></div>',
+
+    lc4asm: '<div class="demo-wrap">'
+      + '<div class="demo-topbar"><span style="color:var(--t2);font-size:11px">LC4 Assembler · 2026</span><span class="demo-env-label">C · Binary I/O · ISA</span></div>'
+      + '<div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:12px">'
+      + '<div>'
+      + '<div style="font-size:9px;color:var(--t4);letter-spacing:1px;text-transform:uppercase;margin-bottom:6px">prog.asm</div>'
+      + '<div class="demo-log" style="font-family:\'Geist Mono\',monospace;font-size:10px;line-height:2">'
+      + '<div style="color:var(--amber)">.CODE</div>'
+      + '<div><span style="color:var(--accent)">ADD</span> <span style="color:var(--t2)">R1, R2, R0</span></div>'
+      + '<div><span style="color:var(--accent)">ST</span> <span style="color:var(--t2)">R1, 0(R2)</span></div>'
+      + '<div><span style="color:var(--accent)">BRn</span> <span style="color:var(--t2)">#6</span></div>'
+      + '<div><span style="color:var(--accent)">CONST</span> <span style="color:var(--t2)">R3, #42</span></div>'
+      + '<div><span style="color:var(--accent)">RTI</span></div>'
+      + '</div>'
+      + '</div>'
+      + '<div>'
+      + '<div style="font-size:9px;color:var(--t4);letter-spacing:1px;text-transform:uppercase;margin-bottom:6px">prog.obj</div>'
+      + '<div class="demo-log" style="font-family:\'Geist Mono\',monospace;font-size:10px;line-height:2">'
+      + '<div style="color:var(--amber)">0xCADE 0x0001</div>'
+      + '<div style="color:var(--mono-g)">0001 001 010 00 000</div>'
+      + '<div style="color:var(--mono-g)">0111 001 010 000000</div>'
+      + '<div style="color:var(--mono-g)">0000 100 000000110</div>'
+      + '<div style="color:var(--mono-g)">1001 011 000101010</div>'
+      + '<div style="color:var(--mono-g)">1000 000 000000000</div>'
+      + '</div>'
+      + '</div>'
+      + '</div>'
+      + '<div class="demo-kpis">'
+      + '<div class="demo-kpi"><div class="demo-kpi-v">30+</div><div class="demo-kpi-l">Opcodes</div></div>'
+      + '<div class="demo-kpi"><div class="demo-kpi-v">16-bit</div><div class="demo-kpi-l">Instruction Width</div></div>'
+      + '<div class="demo-kpi"><div class="demo-kpi-v">2-pass</div><div class="demo-kpi-l">Parser</div></div>'
+      + '<div class="demo-kpi"><div class="demo-kpi-v">.asm → .obj</div><div class="demo-kpi-l">Output</div></div>'
+      + '</div></div>',
+
+    portfolio: '<div class="demo-wrap">'
+      + '<div class="demo-topbar"><span style="color:var(--t2);font-size:11px">annalinhvu.github.io · 2025–Present</span><span class="demo-env-label">HTML · CSS · JS</span></div>'
+      + '<div class="demo-log" style="margin-bottom:12px">'
+      + '<div class="demo-log-line"><span class="demo-log-dim">→</span> you are currently viewing this project <span class="demo-log-ok">✓</span></div>'
+      + '<div class="demo-log-line"><span class="demo-log-dim">→</span> frameworks loaded: <span style="color:var(--accent)">0</span></div>'
+      + '<div class="demo-log-line"><span class="demo-log-dim">→</span> build tools: <span style="color:var(--accent)">none</span></div>'
+      + '<div class="demo-log-line"><span class="demo-log-dim">→</span> dark / light theme: <span style="color:var(--accent)">✓</span></div>'
+      + '<div class="demo-log-line"><span class="demo-log-dim">→</span> virtual pet (Pumkin): <span style="color:var(--accent)">online</span></div>'
+      + '</div>'
+      + '<div style="border:1px solid var(--bd);border-radius:8px;overflow:hidden;margin-bottom:12px">'
+      + '<div class="demo-tbl-head demo-tbl-4"><span>Feature</span><span>Tech</span><span>Lines</span><span>Status</span></div>'
+      + '<div class="demo-tbl-row demo-tbl-4"><span>Tabbed navigation</span><span>Vanilla JS</span><span>~80</span><span class="demo-log-ok">Live</span></div>'
+      + '<div class="demo-tbl-row demo-tbl-4"><span>Pipeline SVG viz</span><span>SVG · CSS</span><span>~200</span><span class="demo-log-ok">Live</span></div>'
+      + '<div class="demo-tbl-row demo-tbl-4"><span>Prototype modals</span><span>JS · HTML</span><span>~400</span><span class="demo-log-ok">Live</span></div>'
+      + '<div class="demo-tbl-row demo-tbl-4"><span>Virtual pet</span><span>Canvas · JS</span><span>~150</span><span class="demo-log-ok">Live</span></div>'
+      + '</div>'
+      + '<div class="demo-kpis">'
+      + '<div class="demo-kpi"><div class="demo-kpi-v">0</div><div class="demo-kpi-l">Frameworks</div></div>'
+      + '<div class="demo-kpi"><div class="demo-kpi-v">2</div><div class="demo-kpi-l">Themes</div></div>'
+      + '<div class="demo-kpi"><div class="demo-kpi-v">1 file</div><div class="demo-kpi-l">Single HTML</div></div>'
+      + '<div class="demo-kpi"><div class="demo-kpi-v">15</div><div class="demo-kpi-l">Prototypes</div></div>'
       + '</div></div>'
   };
 
