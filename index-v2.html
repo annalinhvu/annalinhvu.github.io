@@ -520,6 +520,99 @@ body {
 }
 #game-score{color:var(--accent);}
 
+/* ── In-modal demo prototypes ── */
+.demo-wrap{font-family:'Geist Mono',monospace;font-size:12px;}
+.demo-topbar{
+  display:flex;align-items:center;justify-content:space-between;
+  padding:8px 12px;background:var(--panel-hd);
+  border:1px solid var(--bd);border-radius:7px;margin-bottom:14px;
+}
+.demo-env-label{font-size:10px;color:var(--t4);letter-spacing:.8px;}
+.demo-kpis{display:grid;grid-template-columns:repeat(4,1fr);gap:9px;margin-bottom:14px;}
+.demo-kpi{background:var(--surface);border:1px solid var(--bd);border-radius:8px;padding:11px 12px;}
+.demo-kpi-v{font-size:17px;font-weight:700;color:var(--amber);line-height:1;}
+.demo-kpi-l{font-size:9px;color:var(--t4);text-transform:uppercase;letter-spacing:.8px;margin-top:4px;}
+.demo-chart-wrap{background:var(--surface);border:1px solid var(--bd);border-radius:8px;padding:12px 14px;margin-bottom:12px;}
+.demo-chart-lbl{font-size:9px;color:var(--t4);letter-spacing:1.5px;text-transform:uppercase;margin-bottom:8px;}
+.demo-chart{width:100%;display:block;}
+.demo-sources{display:flex;gap:5px;flex-wrap:wrap;}
+.demo-src-chip{font-size:10px;padding:2px 8px;border:1px solid var(--tag-bd);border-radius:5px;color:var(--tag-col);}
+.demo-form{display:flex;flex-direction:column;gap:10px;}
+.demo-field{background:var(--surface);border:1px solid var(--bd);border-radius:8px;padding:11px 14px;display:flex;flex-direction:column;gap:6px;}
+.demo-field-label{font-size:9px;color:var(--t4);letter-spacing:1px;text-transform:uppercase;}
+.demo-select{background:var(--panel-hd);border:1px solid var(--bd-hi);border-radius:5px;padding:6px 10px;color:var(--t2);font-size:12px;display:flex;justify-content:space-between;}
+.demo-chips{display:flex;gap:5px;flex-wrap:wrap;}
+.demo-chip{font-size:10px;padding:3px 9px;border:1px solid var(--bd);border-radius:5px;color:var(--t3);}
+.demo-chip.on{border-color:var(--amber);color:var(--amber);background:rgba(200,120,94,.07);}
+.demo-radios{display:flex;gap:12px;}
+.demo-radio{font-size:12px;color:var(--t3);}
+.demo-radio.on{color:var(--amber);}
+.demo-submit-btn{background:rgba(200,120,94,.1);border:1px solid var(--amber);border-radius:8px;padding:10px 16px;color:var(--amber);font-family:'Geist Mono',monospace;font-size:12px;text-align:center;letter-spacing:.5px;margin-top:2px;cursor:default;}
+.demo-note-txt{font-size:10px;color:var(--t4);text-align:center;}
+.demo-slack-channel{display:flex;align-items:center;gap:6px;padding:8px 12px;background:var(--panel-hd);border:1px solid var(--bd);border-radius:7px;margin-bottom:12px;font-size:12px;color:var(--t3);}
+.demo-slack-hash{color:var(--t4);font-size:14px;}
+.demo-slack-msgs{display:flex;flex-direction:column;gap:8px;}
+.demo-slack-msg{background:var(--surface);border:1px solid var(--bd);border-radius:8px;padding:11px 13px;display:flex;gap:10px;}
+.demo-slack-msg.warn{border-color:rgba(200,120,94,.3);}
+.demo-slack-msg.ok{border-color:rgba(90,138,94,.3);}
+.demo-slack-avatar{font-size:18px;flex-shrink:0;line-height:1.2;}
+.demo-slack-sender{color:var(--t2);margin-bottom:5px;font-size:12px;}
+.demo-slack-sender span{color:var(--t4);font-size:10px;margin-left:6px;}
+.demo-slack-alert-title{color:var(--amber);font-size:12px;margin-bottom:6px;}
+.demo-slack-table{display:grid;grid-template-columns:auto 1fr;gap:2px 14px;font-size:11px;color:var(--t3);margin-bottom:6px;}
+.demo-slack-table b{color:var(--t1);}
+.demo-slack-delta{color:var(--rose)!important;}
+.demo-slack-link{font-size:11px;color:var(--amber);}
+.demo-slack-sub{font-size:10px;color:var(--t4);margin-top:3px;}
+.demo-slack-code{background:var(--panel-hd);border:1px solid var(--bd);border-radius:3px;padding:1px 5px;color:var(--mono-g);}
+
+/* ── Project detail modal ── */
+.proj-modal{
+  position:fixed;inset:0;z-index:9990;
+  background:rgba(0,0,0,.72);backdrop-filter:blur(6px);
+  display:flex;align-items:center;justify-content:center;
+  padding:20px;
+}
+.proj-modal.hidden{display:none;}
+.proj-modal-box{
+  background:var(--panel);border:1px solid var(--bd-hi);
+  border-radius:14px;overflow:hidden;
+  box-shadow:0 24px 80px var(--shadow-lg);
+  animation:staggerIn .2s ease both;
+  width:100%;max-width:580px;max-height:88vh;
+  display:flex;flex-direction:column;
+}
+.proj-modal-hd{
+  display:flex;align-items:center;justify-content:space-between;
+  padding:12px 18px;background:var(--panel-hd);
+  border-bottom:1px solid var(--bd);flex-shrink:0;
+}
+.proj-modal-hd-left{display:flex;flex-direction:column;gap:2px;}
+.proj-modal-label{
+  font-family:'Geist Mono',monospace;font-size:10px;
+  color:var(--t4);letter-spacing:1.5px;text-transform:uppercase;
+}
+.proj-modal-title{font-size:14px;font-weight:600;color:var(--t1);}
+.proj-modal-close{
+  background:transparent;border:none;color:var(--t4);
+  cursor:pointer;font-size:18px;line-height:1;padding:2px 6px;
+  transition:color .15s;flex-shrink:0;
+}
+.proj-modal-close:hover{color:var(--rose);}
+.proj-modal-body{padding:22px 24px;overflow-y:auto;}
+.proj-modal-ctx{
+  font-family:'Geist Mono',monospace;font-size:11px;
+  color:var(--amber);letter-spacing:.3px;margin-bottom:14px;
+}
+.proj-modal-tags{display:flex;gap:5px;flex-wrap:wrap;margin-bottom:18px;}
+.proj-modal-desc{
+  font-size:14px;color:var(--t2);line-height:1.8;margin-bottom:22px;
+}
+.proj-modal-metrics{
+  display:flex;gap:24px;flex-wrap:wrap;
+  padding-top:16px;border-top:1px solid var(--bd);
+}
+
 .status-bar{
   height:22px;flex-shrink:0;
   display:flex;align-items:center;justify-content:space-between;
@@ -585,6 +678,7 @@ body {
   padding:22px 24px;
   position:relative;
   transition:border-color .2s,box-shadow .2s;
+  cursor:pointer;
 }
 .proj-card:hover{border-color:var(--bd-hi);box-shadow:0 3px 14px var(--shadow-sm);}
 .proj-card.bouncing{animation:cardBounce .45s ease;z-index:10;}
@@ -1122,21 +1216,21 @@ body {
         </div>
 <div class="work-section-hd hd-featured">featured projects</div>
         <div class="proj-grid">
-          <div class="proj-card">
+          <div class="proj-card" data-demo="pipeline">
             <div class="proj-title">Data Pipelines & Client Dashboard Suite</div>
             <div class="proj-ctx">2022–Present</div>
             <div class="proj-tags"><span class="proj-tag">Matillion</span><span class="proj-tag">Snowflake</span><span class="proj-tag">Python</span><span class="proj-tag">S3</span><span class="proj-tag">BigQuery</span><span class="proj-tag">Looker</span><span class="proj-tag">Tableau</span><span class="proj-tag">Domo</span><span class="proj-tag">SQL</span></div>
             <div class="proj-desc">Data infrastructure for a major enterprise marketing client. Ingests from 50+ sources into Snowflake, powering Tableau & Looker dashboards, automated reports, and ad-hoc pulls for 100+ clients. I own it end to end.</div>
             <div class="proj-metrics"><div><div class="pm-v">50+</div><div class="pm-u">sources</div></div><div><div class="pm-v">100+</div><div class="pm-u">clients</div></div><div><div class="pm-v">$2B+</div><div class="pm-u">ad spend</div></div></div>
           </div>
-          <div class="proj-card">
+          <div class="proj-card" data-demo="rawdata">
             <div class="proj-title">Raw Data Request Builder</div>
             <div class="proj-ctx">2026</div>
             <div class="proj-tags"><span class="proj-tag">AWS Amplify</span><span class="proj-tag">Lambda</span><span class="proj-tag">Docker</span><span class="proj-tag">ECR</span><span class="proj-tag">Snowflake</span><span class="proj-tag">Python</span><span class="proj-tag">S3</span><span class="proj-tag">Google Drive API</span><span class="proj-tag">AWS SSM</span></div>
             <div class="proj-desc">Internal tool for Client Services to query Snowflake and export data without going through engineering. Amplify frontend, Dockerized Lambda backend, parameterized queries, exports to CSV/Excel/JSON with automatic S3 staging and Google Drive delivery. Audit log written back to Snowflake on each request.</div>
             <div class="proj-metrics"><div><div class="pm-v">3</div><div class="pm-u">export formats</div></div><div><div class="pm-v">S3 + Drive</div><div class="pm-u">delivery</div></div><div><div class="pm-v">Zero-code</div><div class="pm-u">for end users</div></div></div>
           </div>
-          <div class="proj-card">
+          <div class="proj-card" data-demo="slack">
             <div class="proj-title">Automated Slack Alerting Suite</div>
             <div class="proj-ctx">2022–Present</div>
             <div class="proj-tags"><span class="proj-tag">SQL</span><span class="proj-tag">Python</span><span class="proj-tag">Snowflake</span><span class="proj-tag">Matillion</span><span class="proj-tag">Slack API</span></div>
@@ -1358,6 +1452,24 @@ body {
   </main>
 </div>
 
+<div class="proj-modal hidden" id="proj-modal">
+  <div class="proj-modal-box">
+    <div class="proj-modal-hd">
+      <div class="proj-modal-hd-left">
+        <span class="proj-modal-label">project</span>
+        <span class="proj-modal-title" id="pm-title"></span>
+      </div>
+      <button class="proj-modal-close" id="pm-close">×</button>
+    </div>
+    <div class="proj-modal-body">
+      <div class="proj-modal-ctx" id="pm-ctx"></div>
+      <div class="proj-modal-tags" id="pm-tags"></div>
+      <div class="proj-modal-desc" id="pm-desc"></div>
+      <div class="proj-modal-metrics" id="pm-metrics"></div>
+    </div>
+  </div>
+</div>
+
 <div class="game-modal hidden" id="game-modal">
   <div class="game-box">
     <div class="game-titlebar">
@@ -1443,16 +1555,130 @@ function toggleTheme() {
   }
 }
 
-/* ── Bento card bounce on click ── */
-document.querySelectorAll('.proj-card').forEach(function(card) {
-  card.addEventListener('mousedown', function() {
-    if (card.classList.contains('bouncing')) return;
-    card.classList.add('bouncing');
+/* ── Bento card bounce + detail modal ── */
+(function() {
+  var modal     = document.getElementById('proj-modal');
+  var pmTitle   = document.getElementById('pm-title');
+  var pmLabel   = document.querySelector('.proj-modal-label');
+  var pmCtx     = document.getElementById('pm-ctx');
+  var pmTags    = document.getElementById('pm-tags');
+  var pmDesc    = document.getElementById('pm-desc');
+  var pmMetrics = document.getElementById('pm-metrics');
+
+  var demoHTML = {
+    pipeline: '<div class="demo-wrap">'
+      + '<div class="demo-topbar"><span style="color:var(--t2);font-size:11px">Client Dashboard · Q2 2025</span><span class="demo-env-label">snowflake · tableau · looker</span></div>'
+      + '<div class="demo-kpis">'
+      + '<div class="demo-kpi"><div class="demo-kpi-v">142.3M</div><div class="demo-kpi-l">Impressions</div></div>'
+      + '<div class="demo-kpi"><div class="demo-kpi-v">4.2M</div><div class="demo-kpi-l">Clicks</div></div>'
+      + '<div class="demo-kpi"><div class="demo-kpi-v">$8.4M</div><div class="demo-kpi-l">Spend</div></div>'
+      + '<div class="demo-kpi"><div class="demo-kpi-v">2.9%</div><div class="demo-kpi-l">Conv Rate</div></div>'
+      + '</div>'
+      + '<div class="demo-chart-wrap"><div class="demo-chart-lbl">Spend by Platform</div>'
+      + '<svg class="demo-chart" viewBox="0 0 440 122" style="height:110px">'
+      + '<rect x="20"  y="22" width="60" height="82" rx="3" fill="var(--accent)"  opacity=".75"/>'
+      + '<rect x="98"  y="40" width="60" height="64" rx="3" fill="var(--indigo)" opacity=".75"/>'
+      + '<rect x="176" y="56" width="60" height="48" rx="3" fill="var(--amber)"  opacity=".75"/>'
+      + '<rect x="254" y="78" width="60" height="26" rx="3" fill="var(--rose)"   opacity=".75"/>'
+      + '<rect x="332" y="98" width="60" height="6"  rx="3" fill="var(--amber2)" opacity=".75"/>'
+      + '<text x="50"  y="17"  font-size="9" text-anchor="middle" fill="var(--t2)" font-family="Geist Mono,monospace">$3.1M</text>'
+      + '<text x="128" y="35"  font-size="9" text-anchor="middle" fill="var(--t2)" font-family="Geist Mono,monospace">$2.4M</text>'
+      + '<text x="206" y="51"  font-size="9" text-anchor="middle" fill="var(--t2)" font-family="Geist Mono,monospace">$1.8M</text>'
+      + '<text x="284" y="73"  font-size="9" text-anchor="middle" fill="var(--t2)" font-family="Geist Mono,monospace">$0.9M</text>'
+      + '<text x="362" y="93"  font-size="9" text-anchor="middle" fill="var(--t2)" font-family="Geist Mono,monospace">$0.2M</text>'
+      + '<text x="50"  y="116" font-size="9" text-anchor="middle" fill="var(--t4)" font-family="Geist Mono,monospace">Google</text>'
+      + '<text x="128" y="116" font-size="9" text-anchor="middle" fill="var(--t4)" font-family="Geist Mono,monospace">Meta</text>'
+      + '<text x="206" y="116" font-size="9" text-anchor="middle" fill="var(--t4)" font-family="Geist Mono,monospace">CM360</text>'
+      + '<text x="284" y="116" font-size="9" text-anchor="middle" fill="var(--t4)" font-family="Geist Mono,monospace">DV360</text>'
+      + '<text x="362" y="116" font-size="9" text-anchor="middle" fill="var(--t4)" font-family="Geist Mono,monospace">Other</text>'
+      + '</svg></div>'
+      + '<div class="demo-sources"><span class="demo-src-chip">Google Ads</span><span class="demo-src-chip">Meta</span><span class="demo-src-chip">CM360</span><span class="demo-src-chip">DV360</span><span class="demo-src-chip">Kochava</span><span class="demo-src-chip">SFTP feeds</span><span class="demo-src-chip">+45 more</span></div>'
+      + '</div>',
+
+    rawdata: '<div class="demo-wrap">'
+      + '<div class="demo-topbar"><span style="color:var(--t2);font-size:11px">Raw Data Request Builder</span><span class="demo-env-label">amplify · lambda · snowflake</span></div>'
+      + '<div class="demo-form">'
+      + '<div class="demo-field"><div class="demo-field-label">Dataset</div><div class="demo-select"><span>Paid Social — Meta</span><span style="color:var(--t4)">&#9662;</span></div></div>'
+      + '<div class="demo-field"><div class="demo-field-label">Date Range</div><div class="demo-select"><span>Last 30 days</span><span style="color:var(--t4)">&#9662;</span></div></div>'
+      + '<div class="demo-field"><div class="demo-field-label">Platforms</div><div class="demo-chips"><span class="demo-chip on">&#10003; Meta</span><span class="demo-chip on">&#10003; Google Ads</span><span class="demo-chip">CM360</span><span class="demo-chip">DV360</span></div></div>'
+      + '<div class="demo-field"><div class="demo-field-label">Fields</div><div class="demo-chips"><span class="demo-chip on">&#10003; Campaign</span><span class="demo-chip on">&#10003; Impressions</span><span class="demo-chip on">&#10003; Clicks</span><span class="demo-chip on">&#10003; Spend</span><span class="demo-chip">Ad Set</span><span class="demo-chip">Conv Rate</span></div></div>'
+      + '<div class="demo-field"><div class="demo-field-label">Export As</div><div class="demo-radios"><span class="demo-radio on">&#9679; CSV</span><span class="demo-radio">&#9675; Excel</span><span class="demo-radio">&#9675; JSON</span></div></div>'
+      + '<div class="demo-field"><div class="demo-field-label">Deliver To</div><div class="demo-chips"><span class="demo-chip on">&#10003; S3</span><span class="demo-chip on">&#10003; Google Drive</span></div></div>'
+      + '<div class="demo-submit-btn">Submit Request &#8594;</div>'
+      + '<div class="demo-note-txt">no engineering required · audit logged to Snowflake</div>'
+      + '</div></div>',
+
+    slack: '<div class="demo-wrap">'
+      + '<div class="demo-slack-channel"><span class="demo-slack-hash">#</span>data-alerts<span style="margin-left:auto;font-size:10px;color:var(--t4)">3 members</span></div>'
+      + '<div class="demo-slack-msgs">'
+      + '<div class="demo-slack-msg warn"><div class="demo-slack-avatar">&#129302;</div><div style="flex:1;min-width:0">'
+      + '<div class="demo-slack-sender">DataBot <span>Today at 9:14 AM</span></div>'
+      + '<div class="demo-slack-alert-title">&#9888;&#65039; KPI Anomaly — OpenAI · Paid Search</div>'
+      + '<div class="demo-slack-table"><div>Metric</div><div><b>Clicks</b></div><div>Expected</div><div><b>~45,200</b></div><div>Actual</div><div><b>12,340</b></div><div>Delta</div><div><b class="demo-slack-delta">−72.7%</b></div></div>'
+      + '<div class="demo-slack-link">&#8594; View in Snowflake</div>'
+      + '</div></div>'
+      + '<div class="demo-slack-msg ok"><div class="demo-slack-avatar">&#129302;</div><div style="flex:1;min-width:0">'
+      + '<div class="demo-slack-sender">DataBot <span>Today at 6:03 AM</span></div>'
+      + '<div style="color:var(--accent);font-size:12px">&#9989; SFTP file arrived</div>'
+      + '<div style="color:var(--t3);font-size:11px;margin-top:3px"><span class="demo-slack-code">campaign_data_20260629.csv</span> · 4.2 MB</div>'
+      + '<div class="demo-slack-sub">client_reporting/ · processing started</div>'
+      + '</div></div>'
+      + '<div class="demo-slack-msg" style="border-color:rgba(212,112,128,.3)"><div class="demo-slack-avatar">&#129302;</div><div style="flex:1;min-width:0">'
+      + '<div class="demo-slack-sender">DataBot <span>Yesterday at 5:47 PM</span></div>'
+      + '<div style="color:var(--rose);font-size:12px">&#9940; Taxonomy mismatch — Media Campaign</div>'
+      + '<div style="color:var(--t3);font-size:11px;margin-top:3px">Ad set name doesn’t match naming convention — flagged before reporting ingestion</div>'
+      + '<div class="demo-slack-link">&#8594; Flag to Media team</div>'
+      + '</div></div>'
+      + '</div></div>'
+  };
+
+  function openProjModal(card) {
+    var demoKey = card.getAttribute('data-demo');
+    var title = card.querySelector('.proj-title');
+    pmTitle.textContent = title ? title.textContent : '';
+    if (demoKey && demoHTML[demoKey]) {
+      pmLabel.textContent = 'prototype';
+      pmCtx.innerHTML     = '';
+      pmTags.innerHTML    = '';
+      pmDesc.innerHTML    = demoHTML[demoKey];
+      pmMetrics.innerHTML = '';
+    } else {
+      var ctx     = card.querySelector('.proj-ctx');
+      var tags    = card.querySelector('.proj-tags');
+      var desc    = card.querySelector('.proj-desc');
+      var metrics = card.querySelector('.proj-metrics');
+      pmLabel.textContent  = 'project';
+      pmCtx.textContent    = ctx     ? ctx.textContent    : '';
+      pmTags.innerHTML     = tags    ? tags.innerHTML     : '';
+      pmDesc.textContent   = desc    ? desc.textContent   : '';
+      pmMetrics.innerHTML  = metrics ? metrics.innerHTML  : '';
+    }
+    modal.classList.remove('hidden');
+  }
+
+  window.closeProjModal = function() {
+    modal.classList.add('hidden');
+  };
+
+  document.querySelectorAll('.proj-card').forEach(function(card) {
+    card.addEventListener('mousedown', function() {
+      if (card.classList.contains('bouncing')) return;
+      card.classList.add('bouncing');
+    });
+    card.addEventListener('animationend', function(e) {
+      if (e.animationName === 'cardBounce') card.classList.remove('bouncing');
+    });
+    card.addEventListener('click', function() { openProjModal(card); });
   });
-  card.addEventListener('animationend', function(e) {
-    if (e.animationName === 'cardBounce') card.classList.remove('bouncing');
+
+  document.getElementById('pm-close').addEventListener('click', window.closeProjModal);
+  modal.addEventListener('click', function(e) {
+    if (e.target === modal) window.closeProjModal();
   });
-});
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape' && !modal.classList.contains('hidden')) window.closeProjModal();
+  });
+})();
 
 /* ── Arrow key nav ── */
 document.addEventListener('keydown', function(e) {
