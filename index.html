@@ -1595,10 +1595,10 @@ function toggleTheme() {
     pipeline: '<div class="demo-wrap">'
       + '<div class="demo-topbar"><span style="color:var(--t2);font-size:11px">Client Dashboard · Q2 2025</span><span class="demo-env-label">snowflake · tableau · looker</span></div>'
       + '<div class="demo-kpis">'
-      + '<div class="demo-kpi"><div class="demo-kpi-v">142.3M</div><div class="demo-kpi-l">Impressions <span style="color:var(--accent);font-size:9px">↑ 12%</span></div></div>'
-      + '<div class="demo-kpi"><div class="demo-kpi-v">4.2M</div><div class="demo-kpi-l">Clicks <span style="color:var(--accent);font-size:9px">↑ 8%</span></div></div>'
-      + '<div class="demo-kpi"><div class="demo-kpi-v">$8.4M</div><div class="demo-kpi-l">Spend <span style="color:var(--t4);font-size:9px">→ 0%</span></div></div>'
-      + '<div class="demo-kpi"><div class="demo-kpi-v">2.9%</div><div class="demo-kpi-l">Conv Rate <span style="color:var(--rose);font-size:9px">↓ 3%</span></div></div>'
+      + '<div class="demo-kpi"><div class="demo-kpi-v">142.3M</div><div class="demo-kpi-l" style="white-space:nowrap">Impr. <span style="color:var(--accent)">↑ 12%</span></div></div>'
+      + '<div class="demo-kpi"><div class="demo-kpi-v">4.2M</div><div class="demo-kpi-l" style="white-space:nowrap">Clicks <span style="color:var(--accent)">↑ 8%</span></div></div>'
+      + '<div class="demo-kpi"><div class="demo-kpi-v">$8.4M</div><div class="demo-kpi-l" style="white-space:nowrap">Spend <span style="color:var(--t4)">→ 0%</span></div></div>'
+      + '<div class="demo-kpi"><div class="demo-kpi-v">2.9%</div><div class="demo-kpi-l" style="white-space:nowrap">Conv Rate <span style="color:var(--rose)">↓ 3%</span></div></div>'
       + '</div>'
       + '<div class="demo-chart-wrap"><div class="demo-chart-lbl">Weekly Spend Trend · Last 8 Weeks</div>'
       + '<svg class="demo-chart" viewBox="0 0 440 72" style="height:66px">'
@@ -1649,9 +1649,9 @@ function toggleTheme() {
       + '<div class="demo-field"><div class="demo-field-label">Platforms</div><div class="demo-chips"><span class="demo-chip on">&#10003; Meta</span><span class="demo-chip on">&#10003; Google Ads</span><span class="demo-chip">CM360</span><span class="demo-chip">DV360</span></div></div>'
       + '<div class="demo-field"><div class="demo-field-label">Fields</div><div class="demo-chips"><span class="demo-chip on">&#10003; Campaign</span><span class="demo-chip on">&#10003; Impressions</span><span class="demo-chip on">&#10003; Clicks</span><span class="demo-chip on">&#10003; Spend</span><span class="demo-chip">Ad Set</span><span class="demo-chip">Conv Rate</span></div></div>'
       + '<div class="demo-field"><div class="demo-field-label">Export As</div><div class="demo-radios"><span class="demo-radio on">&#9679; CSV</span><span class="demo-radio">&#9675; Excel</span><span class="demo-radio">&#9675; JSON</span></div></div>'
-      + '<div class="demo-field"><div class="demo-field-label">Advanced Filters</div><div class="demo-chips"><span class="demo-chip on">&#10003; Exclude test campaigns</span><span class="demo-chip">Paid only</span><span class="demo-chip">Active campaigns</span></div><div class="demo-adv-row"><span class="demo-field-label" style="margin-top:8px;display:block">Min Spend</span><div class="demo-select" style="margin-top:4px"><span>$0.00</span><span style="color:var(--t4)">&#9662;</span></div></div><div class="demo-adv-row"><span class="demo-field-label" style="margin-top:8px;display:block">Campaign Name Contains</span><div class="demo-select" style="margin-top:4px;color:var(--t4)"><span>e.g. "brand_awareness"</span></div></div></div>'
       + '<div class="demo-submit-btn">Submit Request &#8594;</div>'
       + '<div class="demo-note-txt">no engineering required · audit logged to Snowflake</div>'
+      + '<div class="demo-field" style="margin-top:4px"><div class="demo-field-label">Advanced Filters</div><div class="demo-chips"><span class="demo-chip on">&#10003; Exclude test campaigns</span><span class="demo-chip">Paid only</span><span class="demo-chip">Active campaigns</span></div><div><span class="demo-field-label" style="margin-top:8px;display:block">Min Spend</span><div class="demo-select" style="margin-top:4px"><span>$0.00</span><span style="color:var(--t4)">&#9662;</span></div></div><div><span class="demo-field-label" style="margin-top:8px;display:block">Campaign Name Contains</span><div class="demo-select" style="margin-top:4px;color:var(--t4)"><span>e.g. "brand_awareness"</span></div></div></div>'
       + '</div></div>',
 
     slack: '<div class="demo-wrap">'
@@ -1729,7 +1729,7 @@ function toggleTheme() {
       + '</div></div>',
 
     esov: '<div class="demo-wrap">'
-      + '<div class="demo-topbar"><span style="color:var(--t2);font-size:11px">ESOV Analysis · Media Planning</span><span class="demo-env-label">r · kantar · pathmatics</span></div>'
+      + '<div class="demo-topbar"><span style="color:var(--t2);font-size:11px">ESOV Analysis · Media Planning</span><span class="demo-env-label">R · Kantar · Pathmatics</span></div>'
       + '<div style="border:1px solid var(--bd);border-radius:8px;overflow:hidden;margin-bottom:14px">'
       + '<div class="demo-tbl-head demo-tbl-5c"><span>Brand</span><span>SOV%</span><span>SOM%</span><span>ESOV</span><span>Signal</span></div>'
       + '<div class="demo-tbl-row demo-tbl-5c" style="background:rgba(138,170,142,.06)"><span style="color:var(--t1)">Our Brand</span><span>18.4</span><span>14.2</span><span class="demo-status-ok">+4.2</span><span class="demo-status-ok">&#8593; Invest</span></div>'
@@ -1802,17 +1802,20 @@ function toggleTheme() {
     var title = card.querySelector('.proj-title');
     pmTitle.textContent = title ? title.textContent : '';
     if (demoKey && demoHTML[demoKey]) {
-      pmLabel.textContent = 'prototype';
-      pmCtx.innerHTML     = '';
-      pmTags.innerHTML    = '';
-      pmDesc.innerHTML    = demoHTML[demoKey];
-      pmMetrics.innerHTML = '';
+      pmLabel.textContent  = 'prototype';
+      pmCtx.style.display  = 'none';
+      pmTags.style.display = 'none';
+      pmDesc.innerHTML     = demoHTML[demoKey];
+      pmMetrics.style.display = 'none';
     } else {
       var ctx     = card.querySelector('.proj-ctx');
       var tags    = card.querySelector('.proj-tags');
       var desc    = card.querySelector('.proj-desc');
       var metrics = card.querySelector('.proj-metrics');
-      pmLabel.textContent  = 'project';
+      pmLabel.textContent     = 'project';
+      pmCtx.style.display     = '';
+      pmTags.style.display    = '';
+      pmMetrics.style.display = '';
       pmCtx.textContent    = ctx     ? ctx.textContent    : '';
       pmTags.innerHTML     = tags    ? tags.innerHTML     : '';
       pmDesc.textContent   = desc    ? desc.textContent   : '';
