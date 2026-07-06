@@ -101,76 +101,31 @@ body{
 
 /* ── Masthead ── */
 .masthead{
-  background:#14102A;
-  padding:52px 32px 40px;
+  padding:34px 32px 26px;
   text-align:center;
-  border-bottom:1px solid rgba(0,0,0,.25);
-  position:relative;overflow:hidden;
-}
-:root[data-theme="light"] .masthead{background:#1C1038}
-:root[data-theme="dark"] .masthead{background:#0A0818}
-.masthead::before{
-  content:'';position:absolute;inset:0;
-  background-image:url("data:image/svg+xml,%3Csvg width='60' height='60' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M30,4 C20,14 18,26 30,54 C42,26 40,14 30,4 Z' fill='none' stroke='%23FFFFFF' stroke-width='0.8' stroke-opacity='0.05'/%3E%3Cline x1='30' y1='4' x2='30' y2='54' stroke='%23FFFFFF' stroke-width='0.4' stroke-opacity='0.03'/%3E%3C/svg%3E");
-  background-size:60px 60px;pointer-events:none;
+  border-bottom:1px solid var(--border);
+  transition:border-color .3s;
 }
 .mast-rule{
   display:flex;align-items:center;justify-content:center;gap:12px;
-  margin:0 auto 24px;position:relative;z-index:1;
-  color:rgba(255,255,255,.3);font-size:.46rem;letter-spacing:4px;
+  margin:0 auto 16px;
+  color:var(--text-4);font-size:.46rem;letter-spacing:4px;opacity:.6;
 }
 .mast-rule::before,.mast-rule::after{
-  content:'';width:72px;height:1px;background:rgba(255,255,255,.12);
+  content:'';width:56px;height:1px;background:var(--border);
 }
 .masthead-title{
   font-family:'Playfair Display',Georgia,serif;
-  font-size:clamp(2.8rem,7vw,5rem);
+  font-size:clamp(2.1rem,5vw,3.4rem);
   font-weight:700;font-style:italic;
-  color:#f0ece4;line-height:1;
+  color:var(--accent);line-height:1;
   letter-spacing:-.5px;
-  margin-bottom:14px;position:relative;z-index:1;
-  text-shadow:0 2px 18px rgba(0,0,0,.3);
+  margin-bottom:8px;
 }
-:root[data-theme="dark"] .masthead-title{color:#e8e4dc}
 .masthead-sub{
   font-family:'Lora',Georgia,serif;font-style:italic;
-  font-size:.9rem;color:rgba(255,255,255,.45);
-  margin-bottom:22px;position:relative;z-index:1;
-  letter-spacing:.5px;
-}
-.mast-rule-b{
-  display:flex;align-items:center;justify-content:center;gap:12px;
-  margin:0 auto 0;position:relative;z-index:1;
-  color:rgba(255,255,255,.3);font-size:.46rem;letter-spacing:4px;
-}
-.mast-rule-b::before,.mast-rule-b::after{
-  content:'';width:72px;height:1px;background:rgba(255,255,255,.12);
-}
-.masthead-tag{
-  font-size:.46rem;letter-spacing:2.5px;text-transform:uppercase;
-  color:rgba(255,255,255,.25);
-  font-style:normal;position:relative;z-index:1;
-}
-
-/* ── Catalog header bar ── */
-.catalog-header{
-  display:flex;align-items:center;gap:14px;
-  padding:10px 28px;
-  background:var(--bg);border-bottom:1px solid var(--border);
-  transition:background .3s;
-}
-@media(max-width:540px){.catalog-header{padding:10px 16px}}
-.catalog-home-btn{
-  font-size:.52rem;letter-spacing:1.6px;text-transform:uppercase;font-weight:600;
-  color:var(--text-4);background:none;border:none;cursor:pointer;
-  padding:0;font-family:inherit;transition:color .2s;
-  white-space:nowrap;
-}
-.catalog-home-btn:hover{color:var(--accent)}
-.catalog-heading{
-  font-family:'Playfair Display',Georgia,serif;
-  font-style:italic;font-size:.95rem;
-  color:var(--text-3);letter-spacing:.3px;
+  font-size:.85rem;color:var(--text-3);
+  letter-spacing:.3px;
 }
 
 /* ── Category strip ── */
@@ -196,22 +151,19 @@ body{
 .cat-pill:hover{color:var(--region-color,var(--accent));border-color:var(--region-color,var(--accent))}
 .cat-pill.active{background:var(--region-color,var(--accent));color:#fff;border-color:var(--region-color,var(--accent))}
 
-/* Region-tinted catalog + detail */
-.catalog-view[data-region="northern"],
+/* Region-tinted detail */
 .detail-view[data-region="northern"]{
   --region-color:#4a7890;
   --region-tint:rgba(74,120,144,.06);
   --region-bg:#18282e;
   --region-text:#c8e0ec;
 }
-.catalog-view[data-region="central"],
 .detail-view[data-region="central"]{
   --region-color:#8a4030;
   --region-tint:rgba(138,64,48,.06);
   --region-bg:#281410;
   --region-text:#ecd4c8;
 }
-.catalog-view[data-region="southern"],
 .detail-view[data-region="southern"]{
   --region-color:#7a7030;
   --region-tint:rgba(122,112,48,.06);
@@ -219,54 +171,10 @@ body{
   --region-text:#e4dca8;
 }
 
-/* Per-category banner vars — deep purple ink family */
-.catalog-view[data-category="noodles"]{--cat-bg:#180E2E;--cat-text:#DDD6F5}
-.catalog-view[data-category="rice"]   {--cat-bg:#16102A;--cat-text:#D8D2F0}
-.catalog-view[data-category="bánh"]   {--cat-bg:#1A0E2C;--cat-text:#E0D4F5}
-.catalog-view[data-category="sides"]  {--cat-bg:#140E28;--cat-text:#D4D0F2}
-.catalog-view[data-category="sweets"] {--cat-bg:#1C0E2E;--cat-text:#E4D8F8}
-.catalog-view[data-category="drinks"] {--cat-bg:#140E2A;--cat-text:#D4D2F2}
-
 /* region overrides when browsing by region */
-.catalog-view[data-region="northern"] .ledger-row{--region-color:#4a7890}
-.catalog-view[data-region="central"]  .ledger-row{--region-color:#8a4030}
-.catalog-view[data-region="southern"] .ledger-row{--region-color:#7a7030}
-
-/* ── Catalog banner (region or category) ── */
-.catalog-view[data-region] .catalog-header,
-.catalog-view[data-category] .catalog-header{
-  display:block;
-  padding:44px 28px 36px;
-  border-bottom:1px solid rgba(255,255,255,.07);
-  position:relative;overflow:hidden;
-}
-.catalog-view[data-region] .catalog-header{background:var(--region-bg)}
-.catalog-view[data-category] .catalog-header{background:var(--cat-bg)}
-.catalog-view[data-region] .catalog-header::before,
-.catalog-view[data-category] .catalog-header::before{
-  content:'';position:absolute;inset:0;
-  background-image:url("data:image/svg+xml,%3Csvg width='60' height='60' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M30,4 C20,14 18,26 30,54 C42,26 40,14 30,4 Z' fill='none' stroke='%23FFFFFF' stroke-width='0.8' stroke-opacity='0.06'/%3E%3Cline x1='30' y1='4' x2='30' y2='54' stroke='%23FFFFFF' stroke-width='0.4' stroke-opacity='0.04'/%3E%3C/svg%3E");
-  background-size:60px 60px;pointer-events:none;
-}
-.catalog-view[data-region] .catalog-home-btn,
-.catalog-view[data-category] .catalog-home-btn{
-  position:absolute;top:14px;left:28px;
-  opacity:.55;font-size:.5rem;
-}
-.catalog-view[data-region] .catalog-home-btn{color:var(--region-text)}
-.catalog-view[data-category] .catalog-home-btn{color:var(--cat-text)}
-.catalog-view[data-region] .catalog-home-btn:hover,
-.catalog-view[data-category] .catalog-home-btn:hover{opacity:1}
-.catalog-view[data-region] .catalog-heading,
-.catalog-view[data-category] .catalog-heading{
-  display:block;text-align:center;width:100%;
-  font-size:clamp(1.9rem,5vw,3.2rem);
-  font-weight:700;font-style:italic;letter-spacing:-.3px;
-  text-shadow:0 2px 14px rgba(0,0,0,.22);
-  padding:0;
-}
-.catalog-view[data-region] .catalog-heading{color:var(--region-text)}
-.catalog-view[data-category] .catalog-heading{color:var(--cat-text)}
+.browse-view[data-region="northern"] .ledger-row{--region-color:#4a7890}
+.browse-view[data-region="central"]  .ledger-row{--region-color:#8a4030}
+.browse-view[data-region="southern"] .ledger-row{--region-color:#7a7030}
 
 /* ── Detail region banner ── */
 .detail-view[data-region] .detail-head-section{
@@ -330,6 +238,7 @@ body{
 .ledger{
   display:flex;flex-direction:column;
   padding:6px 0 24px;
+  scroll-margin-top:100px;
 }
 
 /* ── Ledger row ── */
@@ -434,14 +343,12 @@ body{
 /* ── Views ── */
 .detail-view{display:none}
 .detail-view.active{display:block}
-.catalog-view{display:none}
-.catalog-view.active{display:block}
-.explore-view{display:block}
-.explore-view.hidden{display:none}
+.browse-view{display:block}
+.browse-view.hidden{display:none}
 
-/* ── Explore view ── */
+/* ── Explore panels (region map + category tiles) ── */
 .explore-body{
-  max-width:1060px;margin:0 auto;padding:40px 28px 80px;
+  max-width:1060px;margin:0 auto;padding:32px 28px 44px;
   display:grid;grid-template-columns:1fr 1fr;gap:48px;
 }
 @media(max-width:720px){.explore-body{grid-template-columns:1fr;gap:32px;padding:28px 16px 60px}}
@@ -550,20 +457,6 @@ body{
 }
 :root[data-theme="dark"] .cat-tile-name{color:rgba(238,232,208,.75)}
 :root[data-theme="dark"] .cat-tile-count{color:rgba(238,232,208,.4)}
-
-/* Explore footer */
-.explore-footer{
-  text-align:center;padding:0 28px 60px;
-}
-.explore-all-btn{
-  display:inline-flex;align-items:center;gap:8px;
-  padding:13px 30px;border-radius:3px;
-  border:1.5px solid var(--border);background:var(--card);
-  font-size:.54rem;letter-spacing:1.8px;text-transform:uppercase;font-weight:700;
-  color:var(--text-2);cursor:pointer;transition:all .2s;font-family:inherit;
-  box-shadow:var(--sh);
-}
-.explore-all-btn:hover{border-color:var(--accent);color:var(--accent);box-shadow:var(--sh-h)}
 
 /* ── Detail ── */
 .detail-back{
@@ -808,7 +701,7 @@ body{
 
 /* ── Print ── */
 @media print{
-  .topbar,.masthead,.explore-view,.catalog-view,.detail-back,.detail-nav,
+  .topbar,.masthead,.browse-view,.detail-back,.detail-nav,
   .save-btn,.print-btn,.scaler-wrap,.related-section,
   [id="savedBadge"],[id="themeBtn"]{display:none!important}
   .detail-view{display:block!important}
@@ -839,7 +732,7 @@ body{
   .topbar,.cat-strip{padding-left:16px;padding-right:16px}
   .page{padding:0 16px 80px}
   .masthead{padding:12px 16px 10px}
-  .mast-rule::before,.mast-rule::after,.mast-rule-b::before,.mast-rule-b::after{width:40px}
+  .mast-rule::before,.mast-rule::after{width:40px}
   .detail-head-section,.orn-rule{padding-left:18px;padding-right:18px}
 }
 @media (prefers-reduced-motion: reduce) {
@@ -851,7 +744,7 @@ body{
 
 <div class="topbar">
   <a href="../../index.html" class="back-link">&larr; Portfolio</a>
-  <button class="topbar-brand" onclick="showExplore()" aria-label="Back to home" style="cursor:pointer;background:none;border:none;font-size:.7rem;color:var(--text-4);letter-spacing:1px;font-family:inherit;transition:color .2s" onmouseenter="this.style.color='var(--accent)'" onmouseleave="this.style.color='var(--text-4)'">&#8962;</button>
+  <button class="topbar-brand" onclick="goHome()" aria-label="Back to home" style="cursor:pointer;background:none;border:none;font-size:.7rem;color:var(--text-4);letter-spacing:1px;font-family:inherit;transition:color .2s" onmouseenter="this.style.color='var(--accent)'" onmouseleave="this.style.color='var(--text-4)'">&#8962;</button>
   <div class="topbar-right">
     <button class="saved-btn" id="savedBadge" onclick="filterSaved()">
       <span id="savedHeart">&#9825;</span>&thinsp;<span id="savedCount">0</span>
@@ -860,13 +753,12 @@ body{
   </div>
 </div>
 
-<div class="explore-view" id="exploreView">
+<div class="browse-view" id="browseView">
 
   <div class="masthead">
     <div class="mast-rule">&#10022;</div>
     <div class="masthead-title">Cơm Nhà</div>
     <p class="masthead-sub">175 Vietnamese recipes, cooked from scratch</p>
-    <div class="mast-rule-b">&#10022;</div>
   </div>
 
   <div class="explore-body">
@@ -949,19 +841,6 @@ body{
     </div>
   </div>
 
-  <div class="explore-footer">
-    <button class="explore-all-btn" onclick="browseAll()">Browse all recipes &rarr;</button>
-  </div>
-
-</div><!-- /explore-view -->
-
-<div class="catalog-view" id="catalogView">
-
-  <div class="catalog-header">
-    <button class="catalog-home-btn" onclick="showExplore()">&larr; Back</button>
-    <span class="catalog-heading" id="catalogHeading">All Recipes</span>
-  </div>
-
   <div class="cat-wrap">
     <div class="cat-strip">
       <button class="cat-pill active" data-cat="all"     onclick="setCat('all',this)">All</button>
@@ -1007,11 +886,11 @@ body{
     </div>
   </div>
 
-</div><!-- /catalog-view -->
+</div><!-- /browse-view -->
 
 <div class="detail-view" id="detailView">
   <div class="page">
-    <button class="detail-back" onclick="showCatalog()">&larr; Back to Recipes</button>
+    <button class="detail-back" onclick="showBrowse()">&larr; Back to Recipes</button>
     <div id="detailContent"></div>
     <div id="detailNav"></div>
   </div>
@@ -1068,12 +947,7 @@ function setCat(cat,btn){
   activeCat=cat;
   document.querySelectorAll('.cat-pill').forEach(p=>p.classList.remove('active'));
   btn.classList.add('active');
-  const h=document.getElementById('catalogHeading');
-  if(h) h.textContent=cat==='all'?'All Recipes':cat==='saved'?'Saved Recipes':(CAT_LABEL[cat]||cat);
-  const cv=document.getElementById('catalogView');
-  delete cv.dataset.region;
-  const REAL_CATS=['noodles','rice','bánh','sides','sweets','drinks'];
-  if(REAL_CATS.includes(cat)) cv.dataset.category=cat; else delete cv.dataset.category;
+  delete document.getElementById('browseView').dataset.region;
   applyFilters();
 }
 function filterSaved(){
@@ -1081,9 +955,7 @@ function filterSaved(){
   document.querySelectorAll('.cat-pill').forEach(p=>{
     p.classList.toggle('active',p.dataset.cat==='saved');
   });
-  const h=document.getElementById('catalogHeading');
-  if(h) h.textContent='Saved Recipes';
-  showCatalog();
+  showBrowse();
   applyFilters();
 }
 function onSearch(){ clearTimeout(searchTimer); searchTimer=setTimeout(applyFilters,150); }
@@ -1322,8 +1194,7 @@ function showDetail(id){
       </button>`:''}
     </div>`;
 
-  document.getElementById('exploreView').classList.add('hidden');
-  document.getElementById('catalogView').classList.remove('active');
+  document.getElementById('browseView').classList.add('hidden');
   const dv=document.getElementById('detailView');
   dv.dataset.region=r.cuisine;
   dv.classList.add('active');
@@ -1331,23 +1202,24 @@ function showDetail(id){
   location.hash='recipe-'+id;
 }
 
-function showCatalog(){
+function showBrowse(){
   document.getElementById('detailView').classList.remove('active');
-  document.getElementById('exploreView').classList.add('hidden');
-  document.getElementById('catalogView').classList.add('active');
+  document.getElementById('browseView').classList.remove('hidden');
   history.pushState('',document.title,location.pathname);
   if(!document.getElementById('cardGrid').children.length) applyFilters();
 }
 
-function showExplore(){
-  document.getElementById('detailView').classList.remove('active');
-  const cv=document.getElementById('catalogView');
-  cv.classList.remove('active');
-  delete cv.dataset.region;
-  delete cv.dataset.category;
-  document.getElementById('exploreView').classList.remove('hidden');
-  history.pushState('',document.title,location.pathname);
-  window.scrollTo(0,0);
+function goHome(){
+  showBrowse();
+  const bv=document.getElementById('browseView');
+  delete bv.dataset.region;
+  activeCat='all';
+  document.querySelectorAll('.cat-pill').forEach(p=>p.classList.toggle('active',p.dataset.cat==='all'));
+  const search=document.getElementById('searchInput'); if(search) search.value='';
+  const cui=document.getElementById('cuisineFilter'); if(cui) cui.value='';
+  const dif=document.getElementById('difficultyFilter'); if(dif) dif.value='';
+  applyFilters();
+  window.scrollTo({top:0,behavior:'smooth'});
 }
 
 function browseRegion(region){
@@ -1355,14 +1227,9 @@ function browseRegion(region){
   document.querySelectorAll('.cat-pill').forEach(p=>p.classList.toggle('active',p.dataset.cat==='all'));
   const sel=document.getElementById('cuisineFilter');
   if(sel) sel.value=region;
-  const cv=document.getElementById('catalogView');
-  cv.dataset.region=region;
-  delete cv.dataset.category;
-  const heading={northern:'Miền Bắc',central:'Miền Trung',southern:'Miền Nam'}[region]||region;
-  const h=document.getElementById('catalogHeading');
-  if(h) h.textContent=heading;
-  showCatalog();
+  document.getElementById('browseView').dataset.region=region;
   applyFilters();
+  document.getElementById('cardGrid').scrollIntoView({behavior:'smooth',block:'start'});
 }
 
 function browseCategory(cat){
@@ -1370,28 +1237,9 @@ function browseCategory(cat){
   activeCat=cat;
   const sel=document.getElementById('cuisineFilter');
   if(sel) sel.value='';
-  const cv=document.getElementById('catalogView');
-  delete cv.dataset.region;
-  const REAL_CATS=['noodles','rice','bánh','sides','sweets','drinks'];
-  if(REAL_CATS.includes(cat)) cv.dataset.category=cat; else delete cv.dataset.category;
-  const h=document.getElementById('catalogHeading');
-  if(h) h.textContent=CAT_LABEL[cat]||cat;
-  showCatalog();
+  delete document.getElementById('browseView').dataset.region;
   applyFilters();
-}
-
-function browseAll(){
-  activeCat='all';
-  document.querySelectorAll('.cat-pill').forEach(p=>p.classList.toggle('active',p.dataset.cat==='all'));
-  const sel=document.getElementById('cuisineFilter');
-  if(sel) sel.value='';
-  const cv=document.getElementById('catalogView');
-  delete cv.dataset.region;
-  delete cv.dataset.category;
-  const h=document.getElementById('catalogHeading');
-  if(h) h.textContent='All Recipes';
-  showCatalog();
-  applyFilters();
+  document.getElementById('cardGrid').scrollIntoView({behavior:'smooth',block:'start'});
 }
 
 function renderExplore(){
@@ -1445,6 +1293,7 @@ async function init(){
   allRecipes=await res.json();
   updateCatCounts();
   renderExplore();
+  applyFilters();
   handleHash();
 }
 
