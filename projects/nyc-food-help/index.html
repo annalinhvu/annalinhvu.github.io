@@ -61,7 +61,7 @@ button{cursor:pointer;font-family:inherit;border:none;background:none}
 .nav-tabs::-webkit-scrollbar{display:none}
 .nav-tab{padding:6px 12px;border-radius:6px;font-size:.88rem;font-weight:500;color:var(--text2);cursor:pointer;white-space:nowrap;transition:background .15s, color .15s;background:none;border:none;font-family:var(--font)}
 .nav-tab:hover{background:var(--green-lt);color:var(--green)}
-.nav-tab.active{background:var(--green);color:#fff;font-weight:600}
+.nav-tab.active{background:var(--bg-warm);color:var(--green-dk);font-weight:600}
 a.nav-tab{text-decoration:none}
 
 /* ===== TAB PANELS ===== */
@@ -82,8 +82,8 @@ a.nav-tab{text-decoration:none}
 .ht-title{font-size:1.1rem;font-weight:700;margin-bottom:5px}
 .ht-sub{font-size:.88rem;color:var(--text-m);margin-bottom:20px}
 .ht-btns{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;margin-bottom:14px;align-items:stretch}
-.ht-btn{display:flex;flex-direction:column;gap:4px;padding:20px 22px;background:var(--green-lt);border:1px solid var(--border);border-radius:var(--r);transition:all .15s;text-decoration:none;color:var(--text);height:100%}
-.ht-btn:hover{background:#c5e2d6;border-color:var(--green);box-shadow:var(--sh)}
+.ht-btn{display:flex;flex-direction:column;gap:4px;padding:20px 22px;background:var(--bg-card);border:1px solid var(--border);border-radius:var(--r);transition:all .15s;text-decoration:none;color:var(--text);height:100%}
+.ht-btn:hover{border-color:var(--green);box-shadow:var(--sh)}
 .ht-btn-name{font-size:.92rem;font-weight:700}
 .ht-btn-note{font-size:.78rem;color:var(--text2);line-height:1.45}
 .ht-disc{font-size:.8rem;color:var(--text-m);line-height:1.6}
@@ -94,7 +94,7 @@ a.nav-tab{text-decoration:none}
 .hn-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-bottom:12px;align-items:stretch}
 .hn-card{display:flex;flex-direction:column;align-items:flex-start;gap:6px;padding:20px;background:var(--bg-card);border:1px solid var(--border);border-radius:var(--r);cursor:pointer;transition:box-shadow .2s, border-color .2s;text-align:left;font-family:var(--font);height:100%}
 .hn-card:hover{box-shadow:var(--sh-md);border-color:var(--green)}
-.hn-icon-box{width:40px;height:40px;border-radius:10px;background:var(--green-lt);display:flex;align-items:center;justify-content:center;color:var(--green);flex-shrink:0;margin-bottom:6px}
+.hn-icon-box{width:40px;height:40px;border-radius:10px;background:var(--bg-warm);display:flex;align-items:center;justify-content:center;color:var(--green-dk);flex-shrink:0;margin-bottom:6px}
 .hn-title{font-size:.9rem;font-weight:700;color:var(--text)}
 .hn-desc{font-size:.76rem;color:var(--text-m);line-height:1.5}
 .hn-disc{font-size:.78rem;color:var(--text-m);line-height:1.6}
@@ -325,8 +325,8 @@ footer p{font-size:.82rem;line-height:1.7}
 [data-theme="dark"] .loc-pill{background:rgba(90,173,130,.14);border-color:var(--green);color:var(--green-dk)}
 [data-theme="dark"] .nav-logo{color:var(--green-dk)}
 [data-theme="dark"] .logo-icon{background:var(--green)}
-[data-theme="dark"] .ht-btn{background:rgba(90,173,130,.08);border-color:var(--border)}
-[data-theme="dark"] .ht-btn:hover{background:rgba(90,173,130,.16);border-color:var(--green)}
+[data-theme="dark"] .ht-btn{border-color:var(--border)}
+[data-theme="dark"] .ht-btn:hover{border-color:var(--green)}
 [data-theme="dark"] .modal-close{background:var(--bg);border-color:var(--border);color:var(--text-m)}
 [data-theme="dark"] .modal-close:hover{background:var(--border)}
 [data-theme="dark"] .m-btn-s{background:var(--bg);border-color:var(--border);color:var(--text2)}
@@ -334,7 +334,7 @@ footer p{font-size:.82rem;line-height:1.7}
 [data-theme="dark"] .btn-s{background:var(--bg);color:var(--text-m);border-color:var(--border)}
 [data-theme="dark"] footer{background:#0e0c0b}
 [data-theme="dark"] .stack-tag{background:rgba(90,173,130,.14);color:var(--green-dk)}
-[data-theme="dark"] .hn-icon-box{background:rgba(90,173,130,.14);color:var(--green)}
+[data-theme="dark"] .hn-icon-box{background:var(--bg-warm);color:var(--green)}
 [data-theme="dark"] .gh-ico-box{background:rgba(90,173,130,.14);color:var(--green)}
 [data-theme="dark"] .bfyg{background:var(--bg);border-color:var(--border)}
 [data-theme="dark"] .about-who{background:var(--bg);border-color:var(--border)}
