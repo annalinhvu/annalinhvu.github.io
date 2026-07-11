@@ -18,28 +18,30 @@
 html{scroll-behavior:smooth}
 :root{
   --green:#7DB79C;--green-dk:#2B5246;--green-md:#7DB79C;--green-lt:#E0F2EB;
-  --amber:#D9A441;--amber-lt:#FAF3E0;
-  --terracotta:#C76D4A;
-  --bg:#F8F5EF;--bg-card:#fff;--bg-warm:#F2EBE0;
+  --amber:#B5694A;--amber-lt:#F5E9E2;
+  --terracotta:#C76D4A;--terracotta-lt:#F5E9E2;
+  --blue:#5C86A0;--blue-dk:#2D5570;--blue-lt:#E7EEF2;
+  --bg:#F4EFE6;--bg-card:#FCFAF5;--bg-warm:#EFE7D8;
   --text:#2B2B2B;--text2:#4A4540;--text-m:#8A7E74;
-  --border:#C8DED7;
-  --nav-bg:rgba(255,255,255,.96);
-  --modal-bg:#fff;
-  --warn-bg:#FAF3E0;--warn-border:#E8D0A0;--warn-text:#7A5820;
+  --border:#DDD5C8;
+  --nav-bg:rgba(252,250,245,.96);
+  --modal-bg:#FCFAF5;
+  --warn-bg:#F5E9E2;--warn-border:#E3CBBC;--warn-text:#8A4A30;
   --r:14px;--r-lg:22px;
   --sh:0 1px 4px rgba(0,0,0,.06);--sh-md:0 3px 12px rgba(0,0,0,.08);--sh-lg:0 8px 24px rgba(0,0,0,.12);
   --font:'Geist', system-ui, sans-serif
 }
 :root[data-theme="dark"]{
   --green:#5aad82;--green-dk:#7acca0;--green-md:#5aad82;--green-lt:rgba(90,173,130,.13);
-  --amber:#E8A830;--amber-lt:rgba(232,168,48,.11);
-  --terracotta:#d4705a;
+  --amber:#d4705a;--amber-lt:rgba(212,112,90,.14);
+  --terracotta:#d4705a;--terracotta-lt:rgba(212,112,90,.14);
+  --blue:#6f9ec2;--blue-dk:#8fb8d8;--blue-lt:rgba(111,158,194,.14);
   --bg:#111010;--bg-card:#1c1918;--bg-warm:#181614;
   --text:#ede8e0;--text2:#9a9088;--text-m:#605850;
   --border:#302a26;
   --nav-bg:rgba(14,13,12,.95);
   --modal-bg:#1c1918;
-  --warn-bg:rgba(210,150,40,.09);--warn-border:rgba(210,150,40,.22);--warn-text:#C8982A;
+  --warn-bg:rgba(212,112,90,.09);--warn-border:rgba(212,112,90,.22);--warn-text:#d4705a;
   --sh:0 1px 4px rgba(0,0,0,.4);--sh-md:0 3px 12px rgba(0,0,0,.55);--sh-lg:0 8px 24px rgba(0,0,0,.7);
 }
 body{font-family:var(--font);background:var(--bg);color:var(--text);line-height:1.6;font-size:16px;min-height:100vh;display:flex;flex-direction:column}
@@ -153,32 +155,32 @@ a.nav-tab{text-decoration:none}
 .card-boro{font-size:.73rem;color:var(--text-m);margin-top:1px}
 .card-badges{display:flex;flex-wrap:wrap;gap:3px}
 .badge{display:inline-block;font-size:.66rem;font-weight:600;padding:2px 8px;border-radius:20px;white-space:nowrap}
-.badge-food-pantry{background:#DCF0E9;color:#2B5246}
-.badge-soup-kitchen{background:#F5EBE4;color:#7A4030}
-.badge-community-meal{background:#DCF0E9;color:#2B5246}
-.badge-food-rescue{background:#DCF0E9;color:#2B5246}
-.badge-home-delivery{background:#E8EEF0;color:#2D5060}
-.badge-senior-meals{background:#FAF3E0;color:#7A6030}
-.badge-shelter-meals{background:#EEECEA;color:#5A5248}
-.badge-mobile-pantry{background:#DCF0E9;color:#2B5246}
-.badge-snap-help{background:#DCF0E9;color:#2B5246}
-.badge-food-bank{background:#FAF3E0;color:#7A6030}
-.badge-featured{background:#FAF0EA;color:#7A4030}
+.badge-food-pantry{background:var(--green-lt);color:var(--green-dk)}
+.badge-soup-kitchen{background:var(--green-lt);color:var(--green-dk)}
+.badge-community-meal{background:var(--green-lt);color:var(--green-dk)}
+.badge-food-rescue{background:var(--green-lt);color:var(--green-dk)}
+.badge-home-delivery{background:var(--blue-lt);color:var(--blue-dk)}
+.badge-senior-meals{background:var(--green-lt);color:var(--green-dk)}
+.badge-shelter-meals{background:var(--green-lt);color:var(--green-dk)}
+.badge-mobile-pantry{background:var(--green-lt);color:var(--green-dk)}
+.badge-snap-help{background:var(--green-lt);color:var(--green-dk)}
+.badge-food-bank{background:var(--green-lt);color:var(--green-dk)}
+.badge-featured{background:var(--terracotta-lt);color:#7A4030}
 .quick-badges{display:flex;flex-wrap:wrap;gap:4px}
 .qb{display:inline-flex;align-items:center;gap:4px;font-size:.67rem;font-weight:500;padding:3px 8px;border-radius:6px;white-space:nowrap}
-.qb-meal{background:#F5EBE4;color:#7A4030}
-.qb-grocery{background:#DCF0E9;color:#2B5246}
-.qb-delivery{background:#E8EEF0;color:#2D5060}
-.qb-senior{background:#FAF3E0;color:#7A6030}
-.qb-family{background:#DCF0E9;color:#2B5246}
-.qb-call{background:#FAF0EA;color:#9A4030}
+.qb-meal{background:var(--green-lt);color:var(--green-dk)}
+.qb-grocery{background:var(--green-lt);color:var(--green-dk)}
+.qb-delivery{background:var(--blue-lt);color:var(--blue-dk)}
+.qb-senior{background:var(--green-lt);color:var(--green-dk)}
+.qb-family{background:var(--green-lt);color:var(--green-dk)}
+.qb-call{background:var(--terracotta-lt);color:#7A4030}
 .org-meta{display:flex;flex-direction:column;gap:3px}
 .meta-row{display:flex;align-items:flex-start;gap:6px;font-size:.78rem;color:var(--text2)}
 .meta-icon{flex-shrink:0;margin-top:1px;opacity:.7;width:13px;text-align:center}
 .hours-warn{font-size:.74rem;color:var(--amber);font-weight:500;display:flex;align-items:center;gap:4px}
 .svc-list{display:flex;flex-wrap:wrap;gap:3px}
 .svc-tag{font-size:.66rem;padding:2px 6px;background:var(--green-lt);color:var(--green);border-radius:4px;font-weight:500}
-.gf-tag{font-size:.66rem;padding:2px 6px;background:var(--amber-lt);color:#92400E;border-radius:4px;font-weight:500}
+.gf-tag{font-size:.66rem;padding:2px 6px;background:var(--amber-lt);color:#7A4030;border-radius:4px;font-weight:500}
 .trust-line{font-size:.64rem;color:var(--text-m);padding-top:7px;border-top:1px solid var(--border)}
 .card-actions{display:flex;gap:6px;margin-top:auto}
 .card-btn{flex:1;padding:7px;border-radius:8px;font-size:.74rem;font-weight:600;text-align:center;transition:all .15s;cursor:pointer;display:inline-block}
@@ -298,24 +300,24 @@ footer p{font-size:.82rem;line-height:1.7}
 
 /* ── Dark mode overrides for badge colours ── */
 [data-theme="dark"] .badge-food-pantry{background:rgba(90,173,130,.2);color:#7acca0}
-[data-theme="dark"] .badge-soup-kitchen{background:rgba(212,112,90,.2);color:#e89a80}
+[data-theme="dark"] .badge-soup-kitchen{background:rgba(90,173,130,.2);color:#7acca0}
 [data-theme="dark"] .badge-community-meal{background:rgba(90,173,130,.2);color:#7acca0}
 [data-theme="dark"] .badge-food-rescue{background:rgba(90,173,130,.2);color:#7acca0}
-[data-theme="dark"] .badge-home-delivery{background:rgba(70,130,180,.18);color:#80b8d8}
-[data-theme="dark"] .badge-senior-meals{background:rgba(200,152,48,.18);color:#d4a840}
-[data-theme="dark"] .badge-shelter-meals{background:rgba(140,128,110,.18);color:#a89880}
+[data-theme="dark"] .badge-home-delivery{background:rgba(111,158,194,.18);color:#8fb8d8}
+[data-theme="dark"] .badge-senior-meals{background:rgba(90,173,130,.18);color:#7acca0}
+[data-theme="dark"] .badge-shelter-meals{background:rgba(90,173,130,.18);color:#7acca0}
 [data-theme="dark"] .badge-mobile-pantry{background:rgba(90,173,130,.2);color:#7acca0}
 [data-theme="dark"] .badge-snap-help{background:rgba(90,173,130,.2);color:#7acca0}
-[data-theme="dark"] .badge-food-bank{background:rgba(200,152,48,.18);color:#d4a840}
+[data-theme="dark"] .badge-food-bank{background:rgba(90,173,130,.18);color:#7acca0}
 [data-theme="dark"] .badge-featured{background:rgba(212,112,90,.2);color:#e89a80}
-[data-theme="dark"] .qb-meal{background:rgba(212,112,90,.18);color:#e89a80}
+[data-theme="dark"] .qb-meal{background:rgba(90,173,130,.18);color:#7acca0}
 [data-theme="dark"] .qb-grocery{background:rgba(90,173,130,.18);color:#7acca0}
-[data-theme="dark"] .qb-delivery{background:rgba(70,130,180,.18);color:#80b8d8}
-[data-theme="dark"] .qb-senior{background:rgba(200,152,48,.18);color:#d4a840}
+[data-theme="dark"] .qb-delivery{background:rgba(111,158,194,.18);color:#8fb8d8}
+[data-theme="dark"] .qb-senior{background:rgba(90,173,130,.18);color:#7acca0}
 [data-theme="dark"] .qb-family{background:rgba(90,173,130,.18);color:#7acca0}
-[data-theme="dark"] .qb-call{background:rgba(212,90,80,.18);color:#e88878}
+[data-theme="dark"] .qb-call{background:rgba(212,112,90,.18);color:#e89a80}
 [data-theme="dark"] .svc-tag{background:rgba(90,173,130,.15);color:#7acca0}
-[data-theme="dark"] .gf-tag{background:rgba(232,168,48,.13);color:#c89830}
+[data-theme="dark"] .gf-tag{background:rgba(212,112,90,.13);color:#e89a80}
 [data-theme="dark"] .m-elig{background:rgba(90,173,130,.12);border-left-color:var(--green);color:#7acca0}
 [data-theme="dark"] .m-notes{background:var(--bg)}
 [data-theme="dark"] .chip{background:var(--bg);color:var(--text2)}
