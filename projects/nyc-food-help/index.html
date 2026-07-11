@@ -68,36 +68,6 @@ a.nav-tab{text-decoration:none}
 .tab-panel{flex:1}
 .tab-panel[hidden]{display:none}
 
-/* ===== HERO (home only) ===== */
-.hero{background:var(--bg);padding:40px 24px 32px;text-align:center;position:relative;overflow:hidden;border-bottom:1px solid var(--border)}
-.hero::before{content:'';position:absolute;inset:0;opacity:.05;background-image:radial-gradient(circle,#2B5246 1px, transparent 1px);background-size:32px 32px}
-.hero-in{max-width:520px;margin:0 auto;position:relative}
-.hero h1{font-size:clamp(1.4rem,3vw,2.1rem);font-weight:700;color:var(--green-dk);line-height:1.2;margin-bottom:12px}
-.hero h1 em{color:var(--terracotta);font-style:normal}
-.hero-sub{font-size:.9rem;color:var(--text2);line-height:1.7}
-
-/* ===== HOME: NEED FOOD TODAY ===== */
-.ht-wrap{background:var(--bg-card);padding:40px 0;border-bottom:1px solid var(--border)}
-.ht-in{max-width:1120px;margin:0 auto;padding:0 24px}
-.ht-title{font-size:1.1rem;font-weight:700;margin-bottom:5px}
-.ht-sub{font-size:.88rem;color:var(--text-m);margin-bottom:20px}
-.ht-btns{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;margin-bottom:14px;align-items:stretch}
-.ht-btn{display:flex;flex-direction:column;gap:4px;padding:20px 22px;background:var(--bg-card);border:1px solid var(--border);border-radius:var(--r);transition:all .15s;text-decoration:none;color:var(--text);height:100%}
-.ht-btn:hover{border-color:var(--green);box-shadow:var(--sh)}
-.ht-btn-name{font-size:.92rem;font-weight:700}
-.ht-btn-note{font-size:.78rem;color:var(--text2);line-height:1.45}
-.ht-disc{font-size:.8rem;color:var(--text-m);line-height:1.6}
-
-/* ===== HOME: NAV CARDS ===== */
-.hn-wrap{background:var(--bg);padding:32px 0;border-bottom:1px solid var(--border)}
-.hn-eyebrow{font-size:.68rem;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:var(--text-m);margin-bottom:14px}
-.hn-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-bottom:12px;align-items:stretch}
-.hn-card{display:flex;flex-direction:column;align-items:flex-start;gap:6px;padding:20px;background:var(--bg-card);border:1px solid var(--border);border-radius:var(--r);cursor:pointer;transition:box-shadow .2s, border-color .2s;text-align:left;font-family:var(--font);height:100%}
-.hn-card:hover{box-shadow:var(--sh-md);border-color:var(--green)}
-.hn-icon-box{width:40px;height:40px;border-radius:10px;background:var(--bg-warm);display:flex;align-items:center;justify-content:center;color:var(--green-dk);flex-shrink:0;margin-bottom:6px}
-.hn-title{font-size:.9rem;font-weight:700;color:var(--text)}
-.hn-desc{font-size:.76rem;color:var(--text-m);line-height:1.5}
-.hn-disc{font-size:.78rem;color:var(--text-m);line-height:1.6}
 
 /* ===== SHARED PANEL LAYOUT ===== */
 .panel-body{max-width:1120px;margin:0 auto;padding:48px 24px 72px}
@@ -259,7 +229,6 @@ footer p{font-size:.82rem;line-height:1.7}
 /* ===== RESPONSIVE ===== */
 @media(max-width:900px){
   .about-grid{grid-template-columns:1fr 1fr}
-  .hn-grid{grid-template-columns:repeat(2,1fr)}
 }
 @media(max-width:768px){
   .bfyg-list{grid-template-columns:1fr 1fr}
@@ -272,18 +241,12 @@ footer p{font-size:.82rem;line-height:1.7}
   .overlay{padding:0;align-items:flex-end}
 }
 @media(max-width:680px){
-  .ht-btns{grid-template-columns:repeat(2,1fr)}
   .panel-body{padding:36px 16px 56px}
-  .ht-wrap{padding:28px 0}
-  .hn-wrap{padding:24px 0}
-  .ht-in{padding:0 16px}
   .about-grid{grid-template-columns:1fr}
   .nav-in{gap:8px}
 }
 @media(max-width:440px){
-  .ht-btns,.hn-grid{grid-template-columns:1fr}
   .bfyg-list{grid-template-columns:1fr}
-  .hero{padding:44px 16px 40px}
   #lmap{height:320px}
   .org-grid{grid-template-columns:1fr}
   .filter-lbl{display:none}
@@ -325,8 +288,6 @@ footer p{font-size:.82rem;line-height:1.7}
 [data-theme="dark"] .loc-pill{background:rgba(90,173,130,.14);border-color:var(--green);color:var(--green-dk)}
 [data-theme="dark"] .nav-logo{color:var(--green-dk)}
 [data-theme="dark"] .logo-icon{background:var(--green)}
-[data-theme="dark"] .ht-btn{border-color:var(--border)}
-[data-theme="dark"] .ht-btn:hover{border-color:var(--green)}
 [data-theme="dark"] .modal-close{background:var(--bg);border-color:var(--border);color:var(--text-m)}
 [data-theme="dark"] .modal-close:hover{background:var(--border)}
 [data-theme="dark"] .m-btn-s{background:var(--bg);border-color:var(--border);color:var(--text2)}
@@ -334,7 +295,6 @@ footer p{font-size:.82rem;line-height:1.7}
 [data-theme="dark"] .btn-s{background:var(--bg);color:var(--text-m);border-color:var(--border)}
 [data-theme="dark"] footer{background:#0e0c0b}
 [data-theme="dark"] .stack-tag{background:rgba(90,173,130,.14);color:var(--green-dk)}
-[data-theme="dark"] .hn-icon-box{background:var(--bg-warm);color:var(--green)}
 [data-theme="dark"] .gh-ico-box{background:rgba(90,173,130,.14);color:var(--green)}
 [data-theme="dark"] .bfyg{background:var(--bg);border-color:var(--border)}
 [data-theme="dark"] .about-who{background:var(--bg);border-color:var(--border)}
@@ -348,81 +308,17 @@ footer p{font-size:.82rem;line-height:1.7}
   <a href="../../index.html" class="back-link">← Portfolio</a>
   <button class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle theme">◐</button>
   <div class="nav-in">
-    <button class="nav-logo" onclick="showTab('home')" aria-label="NYC Food Help Guide, home">
+    <button class="nav-logo" onclick="showTab('directory')" aria-label="NYC Food Help Guide, directory">
       <div class="logo-icon" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10Z"/><path d="M2 21c0-3 1.85-5.96 5-8"/></svg></div>
       NYC Food Help Guide
     </button>
     <div class="nav-tabs" role="tablist">
-      <button class="nav-tab active" data-tab="home" role="tab" aria-selected="true">Home</button>
-      <button class="nav-tab" data-tab="directory" role="tab" aria-selected="false">Directory</button>
+      <button class="nav-tab active" data-tab="directory" role="tab" aria-selected="true">Directory</button>
       <button class="nav-tab" data-tab="get-help" role="tab" aria-selected="false">Get Help</button>
       <a class="nav-tab" href="volunteer.html">Give Help</a>
     </div>
   </div>
 </nav>
-
-<!-- ===== HOME PANEL ===== -->
-<div class="tab-panel" id="panel-home" role="tabpanel">
-
-  <section class="hero" aria-label="Site header">
-    <div class="hero-in">
-      <h1>A gentle starting point <em>for finding food help <span style="white-space:nowrap">in NYC.</span></em></h1>
-      <p class="hero-sub">Inspired by volunteering with food access groups across the city, this guide is here to make the first step a little easier.</p>
-    </div>
-  </section>
-
-  <div class="ht-wrap">
-    <div class="ht-in">
-      <h2 class="ht-title">If you need food today, start here.</h2>
-      <p class="ht-sub">These official tools are the best place to check current hours, nearby sites, and what's open now.</p>
-      <div class="ht-btns">
-        <a class="ht-btn" href="https://www.foodbanknyc.org/find-food/" target="_blank" rel="noopener" aria-label="Food Bank For NYC, 800+ pantries, soup kitchens, and mobile pantries, opens in new tab">
-          <span class="ht-btn-name">Food Bank For NYC</span>
-          <span class="ht-btn-note">800+ pantries, soup kitchens, and mobile pantries ↗</span>
-        </a>
-        <a class="ht-btn" href="https://www.cityharvest.org/food-map/" target="_blank" rel="noopener" aria-label="City Harvest Food Map, soup kitchens, pantries, community fridges, opens in new tab">
-          <span class="ht-btn-name">City Harvest Food Map</span>
-          <span class="ht-btn-note">Soup kitchens, pantries, community fridges ↗</span>
-        </a>
-        <a class="ht-btn" href="https://finder.nyc.gov/foodhelp/" target="_blank" rel="noopener" aria-label="NYC Food Help, official city locator, opens in new tab">
-          <span class="ht-btn-name">NYC Food Help</span>
-          <span class="ht-btn-note">Official city locator, pantries and soup kitchens ↗</span>
-        </a>
-        <a class="ht-btn" href="tel:311" aria-label="Call 311, NYC's 24-hour helpline">
-          <span class="ht-btn-name">📞 Call 311</span>
-          <span class="ht-btn-note">Available 24/7, ask for emergency food assistance</span>
-        </a>
-      </div>
-      <p class="ht-disc">Not sure which to pick? <button class="link-btn" onclick="showTab('get-help')">Walk through your options →</button></p>
-    </div>
-  </div>
-
-  <div class="hn-wrap">
-    <div class="ht-in">
-      <div class="hn-eyebrow">A few ways this guide can help.</div>
-      <div class="hn-grid">
-        <button class="hn-card" onclick="showTab('directory')" aria-label="Go to Directory tab">
-          <div class="hn-icon-box" aria-hidden="true"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="8" y1="6" x2="21" y2="6"/><line x1="8" y1="12" x2="21" y2="12"/><line x1="8" y1="18" x2="21" y2="18"/><line x1="3" y1="6" x2="3.01" y2="6"/><line x1="3" y1="12" x2="3.01" y2="12"/><line x1="3" y1="18" x2="3.01" y2="18"/></svg></div>
-          <span class="hn-title">Directory</span>
-          <span class="hn-desc">25 personally researched organizations. Browse by borough and service type, or explore the map.</span>
-        </button>
-        <button class="hn-card" onclick="showTab('get-help')" aria-label="Go to Get Help tab">
-          <div class="hn-icon-box" aria-hidden="true"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><path d="M12 17h.01"/></svg></div>
-          <span class="hn-title">Get Help</span>
-          <span class="hn-desc">Not sure where to start? I break it down by situation, hot meal, groceries, delivery, or phone help.</span>
-        </button>
-        <a class="hn-card" href="volunteer.html" aria-label="Go to Give Help page">
-          <div class="hn-icon-box" aria-hidden="true"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg></div>
-          <span class="hn-title">Give Help</span>
-          <span class="hn-desc">9 organizations I'd send you to. Volunteer links go straight to their sign-up pages.</span>
-        </a>
-      </div>
-      <p class="hn-disc">This is a personal guide, not a real-time database. For current hours and hundreds more sites, the official tools above are your best bet.</p>
-    </div>
-  </div>
-
-
-</div>
 
 <!-- ===== GET HELP PANEL ===== -->
 <div class="tab-panel" id="panel-get-help" role="tabpanel" hidden>
@@ -604,7 +500,7 @@ footer p{font-size:.82rem;line-height:1.7}
 <!-- ===== FOOTER ===== -->
 <footer>
   <p>
-    <button onclick="showTab('home')" style="background:none;border:none;color:rgba(255,255,255,.7);font-family:inherit;font-size:.82rem;cursor:pointer;padding:0">NYC Food Help Guide</button> &nbsp;·&nbsp;
+    <span style="color:rgba(255,255,255,.7)">NYC Food Help Guide</span> &nbsp;·&nbsp;
     <button style="background:none;border:none;color:rgba(255,255,255,.7);font-family:inherit;font-size:.82rem;cursor:pointer;padding:0" onclick="showTab('directory')">Directory</button> &nbsp;·&nbsp;
     <button style="background:none;border:none;color:rgba(255,255,255,.7);font-family:inherit;font-size:.82rem;cursor:pointer;padding:0" onclick="showTab('get-help')">Get Help</button> &nbsp;·&nbsp;
     <a href="volunteer.html" style="color:rgba(255,255,255,.7)">Give Help</a>
@@ -660,7 +556,7 @@ const TC = {
 const tLabel = t => TC[t]?.label || t;
 const tMap   = t => TC[t]?.map   || '#0F7044';
 
-const TABS = ['home','directory','get-help'];
+const TABS = ['directory','get-help'];
 let orgs = [], filtered = [];
 let boro = 'all', type = 'all', q = '';
 let lmap, mapInitialized = false, mapMarkers = [];
@@ -668,7 +564,7 @@ let currentView = 'list';
 
 /* ===== TAB SYSTEM ===== */
 function showTab(id) {
-  if (!TABS.includes(id)) id = 'home';
+  if (!TABS.includes(id)) id = 'directory';
   document.querySelectorAll('.tab-panel').forEach(p => { p.hidden = true; });
   document.getElementById('panel-' + id).hidden = false;
   document.querySelectorAll('[data-tab]').forEach(b => {
@@ -936,7 +832,7 @@ function toggleTheme() {
 /* ===== INIT ===== */
 async function init() {
   const hash = location.hash.slice(1);
-  showTab(TABS.includes(hash) ? hash : 'home');
+  showTab(TABS.includes(hash) ? hash : 'directory');
   try {
     const res = await fetch('data/organizations.json');
     if (!res.ok) throw new Error(`HTTP ${res.status}`);
