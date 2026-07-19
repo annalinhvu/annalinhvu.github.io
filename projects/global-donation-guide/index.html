@@ -73,16 +73,16 @@ button{cursor:pointer;font-family:inherit;border:none;background:none}
 
 /* PANEL LAYOUT */
 .panel-body{max-width:1040px;margin:0 auto;padding:52px 24px 80px;flex:1}
-.panel-hdr{margin-bottom:32px;max-width:640px}
-.eyebrow{font-size:.72rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);margin-bottom:14px}
+.panel-hdr{margin-bottom:20px;max-width:640px}
+.eyebrow{font-size:.72rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);margin-bottom:10px}
 .s-title{font-family:var(--serif);font-weight:600;font-size:clamp(2rem,5vw,2.75rem);line-height:1.12;letter-spacing:-.01em}
-.hero-intro{margin-top:18px;font-size:.96rem;color:var(--ink2);line-height:1.75;max-width:560px}
-.stat-line{margin-top:28px;padding-top:22px;border-top:1px solid var(--border);font-size:.74rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-m)}
+.hero-intro{margin-top:12px;font-size:.96rem;color:var(--ink2);line-height:1.75;max-width:560px}
+.stat-line{margin-top:14px;font-size:.74rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-m)}
 .stat-line strong{color:var(--accent)}
 
 /* METHODOLOGY */
-.methodology{border-top:1px solid var(--border);margin-bottom:32px;max-width:720px}
-.methodology summary{cursor:pointer;list-style:none;padding:16px 0;font-family:var(--serif);font-style:italic;font-weight:600;font-size:.92rem;color:var(--ink);display:flex;align-items:center;gap:10px;min-height:44px}
+.methodology{border-top:1px solid var(--border);margin-top:18px;margin-bottom:18px;max-width:720px}
+.methodology summary{cursor:pointer;list-style:none;padding:12px 0;font-family:var(--serif);font-style:italic;font-weight:600;font-size:.92rem;color:var(--ink);display:flex;align-items:center;gap:10px;min-height:44px}
 .methodology summary::-webkit-details-marker{display:none}
 .methodology summary::before{content:'+';font-family:var(--sans);font-style:normal;font-weight:700;color:var(--accent);width:14px;flex-shrink:0;text-align:center}
 .methodology[open] summary::before{content:'\2013'}
@@ -90,7 +90,7 @@ button{cursor:pointer;font-family:inherit;border:none;background:none}
 .methodology-content p{font-size:.85rem;color:var(--ink2);line-height:1.75}
 
 /* FILTER */
-.filter-wrap{position:sticky;top:56px;z-index:90;background:color-mix(in srgb, var(--paper) 92%, transparent);backdrop-filter:blur(8px);border-bottom:1px solid var(--border);margin:0 -24px 32px;padding:14px 24px}
+.filter-wrap{position:sticky;top:56px;z-index:90;background:color-mix(in srgb, var(--paper) 92%, transparent);backdrop-filter:blur(8px);border-bottom:1px solid var(--border);margin:0 -24px 24px;padding:12px 24px}
 .filter-in{max-width:1040px;margin:0 auto;display:flex;flex-wrap:wrap;align-items:center;gap:18px;justify-content:space-between}
 .filter-tabs{display:flex;gap:6px;flex-wrap:wrap}
 .filter-tab{font-size:.74rem;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-m);cursor:pointer;padding:10px 12px;min-height:38px;border-radius:7px;border-bottom:2px solid transparent;transition:all .15s}
@@ -117,8 +117,9 @@ button{cursor:pointer;font-family:inherit;border:none;background:none}
 .cat-dek{font-family:var(--serif);font-style:italic;font-size:.9rem;color:var(--ink-m);margin-top:6px;margin-bottom:26px}
 
 /* ENTRY LIST */
-.entry-list{border-top:1px solid var(--border);padding-top:8px;column-count:2;column-gap:52px}
-.entry{break-inside:avoid;margin:28px 0 34px}
+.entry-list{border-top:1px solid var(--border);padding-top:8px;display:flex;gap:52px}
+.entry-col{flex:1;min-width:0}
+.entry{margin:28px 0 34px}
 .entry-num{font-family:var(--sans);font-weight:600;font-size:.62em;letter-spacing:.02em;color:var(--ink-m);opacity:.65;vertical-align:0.35em;margin-right:7px}
 .entry-head{display:flex;flex-direction:column;gap:5px}
 .entry-name{font-family:var(--serif);font-weight:600;font-size:1.08rem;color:var(--ink);line-height:1.3}
@@ -142,13 +143,13 @@ footer p.footer-links{font-size:.76rem;line-height:2;letter-spacing:.03em;text-t
 footer p.credit{text-transform:none;font-weight:400;letter-spacing:0;margin-top:10px;color:rgba(255,255,255,.6);font-size:.78rem;max-width:520px;margin-left:auto;margin-right:auto;line-height:1.75}
 
 @media(max-width:900px){
-  .entry-list{column-count:1}
+  .entry-list{flex-direction:column;gap:0}
 }
 @media(max-width:640px){
   .panel-body{padding:40px 16px 64px}
   .logo-full{display:none}
   .logo-short{display:inline}
-  .filter-wrap{position:static;margin:0 -16px 28px;padding:12px 16px}
+  .filter-wrap{position:static;margin:0 -16px 22px;padding:10px 16px}
   .filter-in{flex-direction:column;align-items:stretch;gap:12px}
   .filter-tabs{flex-wrap:nowrap;overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none;padding-bottom:2px}
   .filter-tabs::-webkit-scrollbar{display:none}
@@ -226,6 +227,8 @@ footer p.credit{text-transform:none;font-weight:400;letter-spacing:0;margin-top:
     <p class="cat-dek">Emergency response in war zones, disasters, and displacement crises, including Gaza, Sudan, and Ukraine.</p>
     <div class="entry-list">
 
+      <div class="entry-col">
+
       <article class="entry">
         <header class="entry-head"><h3 class="entry-name"><span class="entry-num" aria-hidden="true">01</span>World Central Kitchen</h3><p class="entry-meta">Worldwide · Emergency meals</p></header>
           <p class="entry-desc">Gets fresh meals to people fast wherever a crisis hits, from Gaza to hurricane response in the US. Founded by chef José Andrés, built for speed.</p>
@@ -260,6 +263,10 @@ footer p.credit{text-transform:none;font-weight:400;letter-spacing:0;margin-top:
           <p class="entry-note">Built for the entire arc of displacement, not just the emergency. Founded in 1933 at Albert Einstein's request.</p>
           <div class="entry-links"><a class="donate-link" href="https://help.rescue.org/donate" target="_blank" rel="noopener">Donate</a><span class="dot" aria-hidden="true">·</span><a class="secondary" href="https://www.rescue.org" target="_blank" rel="noopener">Learn more</a></div>
       </article>
+
+      </div>
+
+      <div class="entry-col">
 
       <article class="entry">
         <header class="entry-head"><h3 class="entry-name"><span class="entry-num" aria-hidden="true">06</span>UNICEF USA</h3><p class="entry-meta">Worldwide · Child emergency aid</p></header>
@@ -296,6 +303,8 @@ footer p.credit{text-transform:none;font-weight:400;letter-spacing:0;margin-top:
           <div class="entry-links"><a class="donate-link" href="https://www.directrelief.org/donation-options/" target="_blank" rel="noopener">Donate</a><span class="dot" aria-hidden="true">·</span><a class="secondary" href="https://www.directrelief.org" target="_blank" rel="noopener">Learn more</a></div>
       </article>
 
+      </div>
+
     </div>
   </section>
 
@@ -304,6 +313,8 @@ footer p.credit{text-transform:none;font-weight:400;letter-spacing:0;margin-top:
     <h2 class="cat-title">Hunger &amp; Poverty</h2>
     <p class="cat-dek">Long-term food security and direct poverty relief beyond any single crisis.</p>
     <div class="entry-list">
+
+      <div class="entry-col">
 
       <article class="entry">
         <header class="entry-head"><h3 class="entry-name"><span class="entry-num" aria-hidden="true">01</span>Action Against Hunger</h3><p class="entry-meta">Worldwide · Malnutrition treatment</p></header>
@@ -340,6 +351,10 @@ footer p.credit{text-transform:none;font-weight:400;letter-spacing:0;margin-top:
           <div class="entry-links"><a class="donate-link" href="https://www.wfpusa.org/donate/" target="_blank" rel="noopener">Donate</a><span class="dot" aria-hidden="true">·</span><a class="secondary" href="https://www.wfpusa.org" target="_blank" rel="noopener">Learn more</a></div>
       </article>
 
+      </div>
+
+      <div class="entry-col">
+
       <article class="entry">
         <header class="entry-head"><h3 class="entry-name"><span class="entry-num" aria-hidden="true">06</span>Feeding America</h3><p class="entry-meta">United States · Domestic food banks</p></header>
           <p class="entry-desc">The largest domestic hunger-relief network in the US, a web of local food banks rather than one central warehouse, so it moves food where it's actually needed.</p>
@@ -375,6 +390,8 @@ footer p.credit{text-transform:none;font-weight:400;letter-spacing:0;margin-top:
           <div class="entry-links"><a class="donate-link" href="https://www.riseagainsthunger.org/donate/" target="_blank" rel="noopener">Donate</a><span class="dot" aria-hidden="true">·</span><a class="secondary" href="https://www.riseagainsthunger.org" target="_blank" rel="noopener">Learn more</a></div>
       </article>
 
+      </div>
+
     </div>
   </section>
 
@@ -383,6 +400,8 @@ footer p.credit{text-transform:none;font-weight:400;letter-spacing:0;margin-top:
     <h2 class="cat-title">Animals &amp; Wildlife</h2>
     <p class="cat-dek">Rescue, shelter, and protection work for animals across the US and worldwide.</p>
     <div class="entry-list">
+
+      <div class="entry-col">
 
       <article class="entry">
         <header class="entry-head"><h3 class="entry-name"><span class="entry-num" aria-hidden="true">01</span>ASPCA</h3><p class="entry-meta">United States · Anti-cruelty &amp; rescue</p></header>
@@ -419,6 +438,10 @@ footer p.credit{text-transform:none;font-weight:400;letter-spacing:0;margin-top:
           <div class="entry-links"><a class="donate-link" href="https://www.worldwildlife.org/donate" target="_blank" rel="noopener">Donate</a><span class="dot" aria-hidden="true">·</span><a class="secondary" href="https://www.worldwildlife.org" target="_blank" rel="noopener">Learn more</a></div>
       </article>
 
+      </div>
+
+      <div class="entry-col">
+
       <article class="entry">
         <header class="entry-head"><h3 class="entry-name"><span class="entry-num" aria-hidden="true">06</span>World Animal Protection</h3><p class="entry-meta">Worldwide · Disaster &amp; farm welfare</p></header>
           <p class="entry-desc">International animal welfare work spanning disaster response for animals, wildlife protection, and farm animal welfare.</p>
@@ -453,6 +476,8 @@ footer p.credit{text-transform:none;font-weight:400;letter-spacing:0;margin-top:
           <p class="entry-note">The only organization on this entire list working exclusively underwater. Nobody else here covers marine life alone.</p>
           <div class="entry-links"><a class="donate-link" href="https://oceana.org/donate/" target="_blank" rel="noopener">Donate</a><span class="dot" aria-hidden="true">·</span><a class="secondary" href="https://oceana.org" target="_blank" rel="noopener">Learn more</a></div>
       </article>
+
+      </div>
 
     </div>
   </section>
