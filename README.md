@@ -59,7 +59,7 @@ A public-service directory of free food assistance across the five boroughs — 
 ### NYC Adventure Log
 A running list of things to do in New York, organized by category and season — Cinema, Food, Arts, Day Trips, Free, Classes, and more. Includes a surprise picker for when you just can't decide.
 
-**Live:** https://annalinhvu.github.io/nyc-adventure/  
+**Live:** https://annalinhvu.github.io/projects/nyc-adventure/  
 **Stack:** HTML · Vanilla JS
 
 ---
@@ -82,6 +82,14 @@ Vietnamese recipes organized by region — Miền Bắc, Miền Trung, Miền Na
 A bucket list formatted as boarding passes. Countries with cities to visit, food to eat, and actual reasons to go — not the usual tourist checklist. Dark, editorial feel.
 
 **Stack:** HTML · JSON · Vanilla JS
+
+---
+
+### Global Donation Guide
+A personal, non-ranked guide to vetted organizations across crisis relief, hunger and poverty, and animal welfare. Each entry researched individually, with a direct donate link, no rankings or affiliate ties.
+
+**Live:** https://annalinhvu.github.io/projects/global-donation-guide/  
+**Stack:** HTML · Vanilla JS
 
 ---
 
