@@ -14,40 +14,23 @@
 })();
 </script>
 <style>
-@font-face {
-  font-family: 'Geist';
-  font-style: normal; font-display: swap; font-weight: 100 900;
-  src: url(https://cdn.jsdelivr.net/fontsource/fonts/geist:vf@latest/latin-wght-normal.woff2) format('woff2-variations');
-}
-@font-face {
-  font-family: 'Fraunces';
-  font-style: normal; font-display: swap; font-weight: 100 900;
-  src: url(https://cdn.jsdelivr.net/fontsource/fonts/fraunces:vf@latest/latin-wght-normal.woff2) format('woff2-variations');
-}
-@font-face {
-  font-family: 'Fraunces';
-  font-style: italic; font-display: swap; font-weight: 100 900;
-  src: url(https://cdn.jsdelivr.net/fontsource/fonts/fraunces:vf@latest/latin-wght-italic.woff2) format('woff2-variations');
-}
-</style>
-<style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}
 :root{
-  --paper:#F7F4EC;--paper-card:#FFFFFF;
-  --ink:#22201C;--ink2:#5C574E;--ink-m:#766f64;
-  --border:#E3DDCC;
-  --accent:#8C3A2B;--accent-dk:#6E2B1F;--accent-lt:#F1E2DD;
-  --footer-bg:#1D1A15;
-  --sans:'Geist',system-ui,sans-serif;
-  --serif:'Fraunces',Georgia,'Times New Roman',serif
+  --paper:#F1EFEA;--paper-card:#FFFFFF;
+  --ink:#1D1B18;--ink2:#524D45;--ink-m:#8A8478;
+  --border:#E4E1D8;
+  --accent:#3F7A6B;--accent-dk:#2E5F53;--accent-lt:#DDEAE6;
+  --footer-bg:#1B1916;
+  --sans:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;
+  --serif:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif
 }
 :root[data-theme="dark"]{
-  --paper:#15130F;--paper-card:#1D1A15;
-  --ink:#EFEAE0;--ink2:#B3AA9A;--ink-m:#918878;
-  --border:#3A342C;
-  --accent:#D97D63;--accent-dk:#C2543E;--accent-lt:rgba(217,125,99,.15);
-  --footer-bg:#0C0B08;
+  --paper:#171613;--paper-card:#1D1B18;
+  --ink:#EDEAE2;--ink2:#B4AEA0;--ink-m:#8A8478;
+  --border:#332F29;
+  --accent:#5FA592;--accent-dk:#4A8776;--accent-lt:rgba(95,165,146,.15);
+  --footer-bg:#0C0B09;
 }
 body{font-family:var(--sans);background:var(--paper);color:var(--ink);line-height:1.6;min-height:100vh;display:flex;flex-direction:column}
 a{color:inherit;text-decoration:none}
@@ -73,15 +56,15 @@ button{cursor:pointer;font-family:inherit;border:none;background:none}
 
 /* PANEL LAYOUT */
 .panel-body{max-width:1040px;margin:0 auto;padding:52px 24px 80px;flex:1}
-.panel-hdr{margin-bottom:20px;max-width:640px}
+.panel-hdr{margin-bottom:20px;max-width:920px}
 .eyebrow{font-size:.72rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);margin-bottom:10px}
 .s-title{font-family:var(--serif);font-weight:600;font-size:clamp(2rem,5vw,2.75rem);line-height:1.12;letter-spacing:-.01em}
-.hero-intro{margin-top:12px;font-size:.96rem;color:var(--ink2);line-height:1.75;max-width:560px}
+.hero-intro{margin-top:12px;font-size:.96rem;color:var(--ink2);line-height:1.75;max-width:900px}
 .stat-line{margin-top:14px;font-size:.74rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-m)}
 .stat-line strong{color:var(--accent)}
 
 /* METHODOLOGY */
-.methodology{border-top:1px solid var(--border);margin-top:18px;margin-bottom:18px;max-width:720px}
+.methodology{margin-top:6px;margin-bottom:12px;max-width:720px}
 .methodology summary{cursor:pointer;list-style:none;padding:12px 0;font-family:var(--serif);font-style:italic;font-weight:600;font-size:.92rem;color:var(--ink);display:flex;align-items:center;gap:10px;min-height:44px}
 .methodology summary::-webkit-details-marker{display:none}
 .methodology summary::before{content:'+';font-family:var(--sans);font-style:normal;font-weight:700;color:var(--accent);width:14px;flex-shrink:0;text-align:center}
@@ -90,12 +73,12 @@ button{cursor:pointer;font-family:inherit;border:none;background:none}
 .methodology-content p{font-size:.85rem;color:var(--ink2);line-height:1.75}
 
 /* FILTER */
-.filter-wrap{position:sticky;top:56px;z-index:90;background:color-mix(in srgb, var(--paper) 92%, transparent);backdrop-filter:blur(8px);border-bottom:1px solid var(--border);margin:0 -24px 24px;padding:12px 24px}
+.filter-wrap{position:sticky;top:56px;z-index:90;background:color-mix(in srgb, var(--paper) 92%, transparent);backdrop-filter:blur(8px);margin:0 -24px 20px;padding:12px 24px}
 .filter-in{max-width:1040px;margin:0 auto;display:flex;flex-wrap:wrap;align-items:center;gap:18px;justify-content:space-between}
 .filter-tabs{display:flex;gap:6px;flex-wrap:wrap}
-.filter-tab{font-size:.74rem;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-m);cursor:pointer;padding:10px 12px;min-height:38px;border-radius:7px;border-bottom:2px solid transparent;transition:all .15s}
-.filter-tab:hover{color:var(--ink);background:var(--paper)}
-.filter-tab.active{color:var(--accent);border-bottom-color:var(--accent);background:var(--accent-lt)}
+.filter-tab{font-size:.74rem;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-m);cursor:pointer;padding:9px 16px;min-height:38px;border-radius:999px;background:var(--border);transition:all .15s}
+.filter-tab:hover{color:var(--ink)}
+.filter-tab.active{color:var(--accent-dk);background:var(--accent-lt)}
 .search-wrap{display:flex;align-items:center;gap:8px;border-bottom:1px solid var(--border);padding:6px 4px;flex:1;min-width:180px;max-width:260px}
 .search-wrap:focus-within{border-bottom-color:var(--accent)}
 .search-icon{color:var(--ink-m);flex-shrink:0}
@@ -117,18 +100,17 @@ button{cursor:pointer;font-family:inherit;border:none;background:none}
 .cat-dek{font-family:var(--serif);font-style:italic;font-size:.9rem;color:var(--ink-m);margin-top:6px;margin-bottom:26px}
 
 /* ENTRY LIST */
-.entry-list{border-top:1px solid var(--border);padding-top:8px;display:flex;gap:52px}
+.entry-list{display:flex;gap:52px}
 .entry-col{flex:1;min-width:0}
-.entry{margin:28px 0 34px}
-.entry-num{font-family:var(--sans);font-weight:600;font-size:.62em;letter-spacing:.02em;color:var(--ink-m);opacity:.65;vertical-align:0.35em;margin-right:7px}
+.entry{margin:22px 0 26px}
+.entry-num{font-family:var(--sans);font-weight:700;font-size:.62em;letter-spacing:.02em;color:var(--accent);opacity:.8;vertical-align:0.35em;margin-right:7px}
 .entry-head{display:flex;flex-direction:column;gap:5px}
 .entry-name{font-family:var(--serif);font-weight:600;font-size:1.08rem;color:var(--ink);line-height:1.3}
 .entry-meta{font-size:.7rem;font-weight:600;letter-spacing:.07em;text-transform:uppercase;color:var(--ink-m)}
-.entry-desc{font-size:.89rem;color:var(--ink2);line-height:1.75;margin-top:10px;max-width:480px}
-.entry-note{font-family:var(--serif);font-style:italic;font-size:.83rem;color:var(--ink2);line-height:1.65;margin-top:10px;padding-left:14px;border-left:2px solid var(--accent-lt);max-width:460px}
-.entry-links{margin-top:14px;font-size:.82rem;display:flex;align-items:center;gap:16px;flex-wrap:wrap}
-.donate-link{color:var(--accent);font-weight:600;border:1px solid var(--accent);border-radius:6px;padding:8px 14px;display:inline-flex;align-items:center;transition:background .15s,color .15s}
-.donate-link:hover{background:var(--accent);color:#fff}
+.entry-desc{font-size:.89rem;color:var(--ink2);line-height:1.65;margin-top:8px;max-width:480px}
+.entry-links{margin-top:12px;font-size:.82rem;display:flex;align-items:center;gap:16px;flex-wrap:wrap}
+.donate-link{color:#fff;font-weight:700;background:var(--accent);border-radius:7px;padding:8px 15px;display:inline-flex;align-items:center;transition:background .15s}
+.donate-link:hover{background:var(--accent-dk)}
 .donate-link:hover .ext-icon{opacity:.9}
 .entry-links a.secondary{color:var(--ink-m);font-weight:500;padding:8px 2px;display:inline-flex;align-items:center}
 .entry-links a.secondary:hover{color:var(--ink2)}
@@ -188,7 +170,7 @@ footer p.credit{text-transform:none;font-weight:400;letter-spacing:0;margin-top:
   <div class="panel-hdr">
     <div class="eyebrow">Organizations I've researched</div>
     <h1 class="s-title">A global donation guide</h1>
-    <p class="hero-intro">A personal, non-ranked guide to organizations working in crisis relief, hunger and poverty, and animals and wildlife.</p>
+    <p class="hero-intro">A personal, non-ranked guide to organizations working in crisis&nbsp;relief, hunger&nbsp;and&nbsp;poverty, and animals&nbsp;and&nbsp;wildlife.</p>
     <div class="stat-line"><strong>30</strong> organizations &nbsp;·&nbsp; <strong>3</strong> causes &nbsp;·&nbsp; reviewed <strong>July 2026</strong></div>
   </div>
 
@@ -231,36 +213,31 @@ footer p.credit{text-transform:none;font-weight:400;letter-spacing:0;margin-top:
 
       <article class="entry">
         <header class="entry-head"><h3 class="entry-name"><span class="entry-num" aria-hidden="true">01</span>World Central Kitchen</h3><p class="entry-meta">Worldwide · Emergency meals</p></header>
-          <p class="entry-desc">Gets fresh meals to people fast wherever a crisis hits, from Gaza to hurricane response in the US. Founded by chef José Andrés, built for speed.</p>
-          <p class="entry-note">Moves faster than almost anyone else on this list. If a disaster just made the news, they're usually already cooking.</p>
+          <p class="entry-desc">Gets fresh meals to crisis zones faster than almost anyone else, from Gaza to US hurricane response. Founded by chef José Andrés.</p>
           <div class="entry-links"><a class="donate-link" href="https://wck.org/donate" target="_blank" rel="noopener">Donate</a><span class="dot" aria-hidden="true">·</span><a class="secondary" href="https://wck.org" target="_blank" rel="noopener">Learn more</a></div>
       </article>
 
       <article class="entry">
         <header class="entry-head"><h3 class="entry-name"><span class="entry-num" aria-hidden="true">02</span>Doctors Without Borders</h3><p class="entry-meta">Worldwide · Emergency medical care</p></header>
-          <p class="entry-desc">Independent medical teams working in active war zones and crisis regions, including Gaza, Sudan, and Ukraine, when most others can't get in.</p>
-          <p class="entry-note">Still operating inside places most large NGOs have already pulled out of. That independence is the entire point of the organization.</p>
+          <p class="entry-desc">Independent medical teams working in active war zones, including Gaza, Sudan, and Ukraine, often after other NGOs have pulled out.</p>
           <div class="entry-links"><a class="donate-link" href="https://www.doctorswithoutborders.org/donate/" target="_blank" rel="noopener">Donate</a><span class="dot" aria-hidden="true">·</span><a class="secondary" href="https://www.doctorswithoutborders.org" target="_blank" rel="noopener">Learn more</a></div>
       </article>
 
       <article class="entry">
         <header class="entry-head"><h3 class="entry-name"><span class="entry-num" aria-hidden="true">03</span>UNRWA USA</h3><p class="entry-meta">Gaza &amp; West Bank · Refugee relief</p></header>
-          <p class="entry-desc">Supports UN relief operations for Palestine refugees: food, shelter, healthcare, and education across Gaza and the West Bank.</p>
-          <p class="entry-note">The most direct channel to UN operations inside Gaza specifically, rather than a partner org working alongside them.</p>
+          <p class="entry-desc">The most direct channel to UN relief operations for Palestine refugees: food, shelter, healthcare, and education across Gaza and the West Bank.</p>
           <div class="entry-links"><a class="donate-link" href="https://unrwausa.org/donate/" target="_blank" rel="noopener">Donate</a><span class="dot" aria-hidden="true">·</span><a class="secondary" href="https://unrwausa.org" target="_blank" rel="noopener">Learn more</a></div>
       </article>
 
       <article class="entry">
         <header class="entry-head"><h3 class="entry-name"><span class="entry-num" aria-hidden="true">04</span>Anera</h3><p class="entry-meta">Gaza, West Bank, Lebanon, Jordan · Humanitarian aid</p></header>
-          <p class="entry-desc">American Near East Refugee Aid. Delivers direct humanitarian and development aid across the region: medical supplies, food, and education support.</p>
-          <p class="entry-note">Smaller and more regional than most on this list. Fewer hands between your donation and the person it reaches.</p>
+          <p class="entry-desc">American Near East Refugee Aid: smaller and more regional than most, delivering medical supplies, food, and education support directly.</p>
           <div class="entry-links"><a class="donate-link" href="https://www.anera.org/donate/" target="_blank" rel="noopener">Donate</a><span class="dot" aria-hidden="true">·</span><a class="secondary" href="https://www.anera.org" target="_blank" rel="noopener">Learn more</a></div>
       </article>
 
       <article class="entry">
         <header class="entry-head"><h3 class="entry-name"><span class="entry-num" aria-hidden="true">05</span>International Rescue Committee</h3><p class="entry-meta">Worldwide · Refugee resettlement</p></header>
-          <p class="entry-desc">Responds to refugee crises from first emergency aid through long-term resettlement support, one of the largest relief networks operating.</p>
-          <p class="entry-note">Built for the entire arc of displacement, not just the emergency. Founded in 1933 at Albert Einstein's request.</p>
+          <p class="entry-desc">One of the largest relief networks, covering refugee crises from first emergency aid through long-term resettlement. Founded in 1933 at Albert Einstein's request.</p>
           <div class="entry-links"><a class="donate-link" href="https://help.rescue.org/donate" target="_blank" rel="noopener">Donate</a><span class="dot" aria-hidden="true">·</span><a class="secondary" href="https://www.rescue.org" target="_blank" rel="noopener">Learn more</a></div>
       </article>
 
@@ -270,36 +247,31 @@ footer p.credit{text-transform:none;font-weight:400;letter-spacing:0;margin-top:
 
       <article class="entry">
         <header class="entry-head"><h3 class="entry-name"><span class="entry-num" aria-hidden="true">06</span>UNICEF USA</h3><p class="entry-meta">Worldwide · Child emergency aid</p></header>
-          <p class="entry-desc">Emergency aid for children in war zones and disaster areas: clean water, nutrition, vaccines, and emergency shelter.</p>
-          <p class="entry-note">Backed by the UN and enormous in scale, the safest, least improvisational choice here. Sometimes that's exactly what you want.</p>
+          <p class="entry-desc">UN-backed emergency aid for children in war zones and disaster areas: clean water, nutrition, vaccines, shelter. The safest, least improvisational choice here.</p>
           <div class="entry-links"><a class="donate-link" href="https://www.unicefusa.org/donate" target="_blank" rel="noopener">Donate</a><span class="dot" aria-hidden="true">·</span><a class="secondary" href="https://www.unicefusa.org" target="_blank" rel="noopener">Learn more</a></div>
       </article>
 
       <article class="entry">
         <header class="entry-head"><h3 class="entry-name"><span class="entry-num" aria-hidden="true">07</span>Mercy Corps</h3><p class="entry-meta">Worldwide · Disaster recovery</p></header>
-          <p class="entry-desc">Emergency relief paired with longer-term recovery work: clean water, cash assistance, and rebuilding livelihoods after the immediate crisis passes.</p>
-          <p class="entry-note">Stays long after the news cycle moves on. Better suited to rebuilding than to the first chaotic 72 hours.</p>
+          <p class="entry-desc">Pairs emergency relief with longer-term recovery: cash assistance and rebuilding livelihoods after the news cycle moves on.</p>
           <div class="entry-links"><a class="donate-link" href="https://www.mercycorps.org/donate" target="_blank" rel="noopener">Donate</a><span class="dot" aria-hidden="true">·</span><a class="secondary" href="https://www.mercycorps.org" target="_blank" rel="noopener">Learn more</a></div>
       </article>
 
       <article class="entry">
         <header class="entry-head"><h3 class="entry-name"><span class="entry-num" aria-hidden="true">08</span>CARE</h3><p class="entry-meta">Worldwide · Women &amp; girls in crisis</p></header>
-          <p class="entry-desc">Global humanitarian response with a specific focus on women and girls, who are disproportionately affected in almost every crisis it responds to.</p>
-          <p class="entry-note">One of the few large relief orgs that treats gender as the starting point for its programs, not an add-on to them.</p>
+          <p class="entry-desc">Global humanitarian response built around women and girls, who are disproportionately affected in almost every crisis it responds to.</p>
           <div class="entry-links"><a class="donate-link" href="https://www.care.org/donate/" target="_blank" rel="noopener">Donate</a><span class="dot" aria-hidden="true">·</span><a class="secondary" href="https://www.care.org" target="_blank" rel="noopener">Learn more</a></div>
       </article>
 
       <article class="entry">
         <header class="entry-head"><h3 class="entry-name"><span class="entry-num" aria-hidden="true">09</span>Save the Children</h3><p class="entry-meta">Worldwide · Child protection</p></header>
-          <p class="entry-desc">Protects children specifically in war zones and disaster areas: education continuity, trauma support, and basic survival needs.</p>
-          <p class="entry-note">Narrower mandate than most relief orgs here, everything is filtered through what's specifically best for kids.</p>
+          <p class="entry-desc">Protects children in war zones and disaster areas: education continuity, trauma support, and basic survival needs.</p>
           <div class="entry-links"><a class="donate-link" href="https://www.savethechildren.org/donate" target="_blank" rel="noopener">Donate</a><span class="dot" aria-hidden="true">·</span><a class="secondary" href="https://www.savethechildren.org" target="_blank" rel="noopener">Learn more</a></div>
       </article>
 
       <article class="entry">
         <header class="entry-head"><h3 class="entry-name"><span class="entry-num" aria-hidden="true">10</span>Direct Relief</h3><p class="entry-meta">Worldwide · Medical supply delivery</p></header>
-          <p class="entry-desc">Ships medicine and medical supplies directly to health workers on the ground in disaster zones and under-resourced regions, no markup, no politics attached.</p>
-          <p class="entry-note">No cash changes hands, your donation becomes medicine. Good if you want the outcome to be concrete and traceable.</p>
+          <p class="entry-desc">Ships medicine directly to health workers in disaster zones, no markup, no politics. Your donation becomes medicine, not cash.</p>
           <div class="entry-links"><a class="donate-link" href="https://www.directrelief.org/donation-options/" target="_blank" rel="noopener">Donate</a><span class="dot" aria-hidden="true">·</span><a class="secondary" href="https://www.directrelief.org" target="_blank" rel="noopener">Learn more</a></div>
       </article>
 
@@ -318,36 +290,31 @@ footer p.credit{text-transform:none;font-weight:400;letter-spacing:0;margin-top:
 
       <article class="entry">
         <header class="entry-head"><h3 class="entry-name"><span class="entry-num" aria-hidden="true">01</span>Action Against Hunger</h3><p class="entry-meta">Worldwide · Malnutrition treatment</p></header>
-          <p class="entry-desc">Treats and prevents malnutrition in crisis zones and chronically food-insecure regions, with a strong focus on children under five.</p>
-          <p class="entry-note">Clinical rather than purely food-based, they treat malnutrition as the medical emergency it actually is.</p>
+          <p class="entry-desc">Treats and prevents malnutrition in crisis zones, with a strong focus on children under five, as the medical emergency it actually is.</p>
           <div class="entry-links"><a class="donate-link" href="https://www.actionagainsthunger.org/donate/" target="_blank" rel="noopener">Donate</a><span class="dot" aria-hidden="true">·</span><a class="secondary" href="https://www.actionagainsthunger.org" target="_blank" rel="noopener">Learn more</a></div>
       </article>
 
       <article class="entry">
         <header class="entry-head"><h3 class="entry-name"><span class="entry-num" aria-hidden="true">02</span>GiveDirectly</h3><p class="entry-meta">Sub-Saharan Africa · Direct cash transfers</p></header>
-          <p class="entry-desc">Sends unconditional cash transfers straight to people living in extreme poverty. No middle programs, the money goes directly to the household.</p>
-          <p class="entry-note">No overhead theater, no packaged programs, just cash. The pick if you're skeptical of how charities actually spend money.</p>
+          <p class="entry-desc">Sends unconditional cash transfers straight to people in extreme poverty, no programs in between. The pick if you're skeptical of how charities spend money.</p>
           <div class="entry-links"><a class="donate-link" href="https://www.givedirectly.org/donate/" target="_blank" rel="noopener">Donate</a><span class="dot" aria-hidden="true">·</span><a class="secondary" href="https://www.givedirectly.org" target="_blank" rel="noopener">Learn more</a></div>
       </article>
 
       <article class="entry">
         <header class="entry-head"><h3 class="entry-name"><span class="entry-num" aria-hidden="true">03</span>Oxfam</h3><p class="entry-meta">Worldwide · Poverty &amp; policy advocacy</p></header>
-          <p class="entry-desc">Pairs on-the-ground hunger and disaster response with policy advocacy aimed at the systems that keep poverty in place.</p>
-          <p class="entry-note">Spends real energy on policy, not just programs. The pick if you think the actual fix is systemic, not charitable.</p>
+          <p class="entry-desc">Pairs hunger and disaster response with policy advocacy aimed at the systems that keep poverty in place.</p>
           <div class="entry-links"><a class="donate-link" href="https://www.oxfamamerica.org/take-action/donate/" target="_blank" rel="noopener">Donate</a><span class="dot" aria-hidden="true">·</span><a class="secondary" href="https://www.oxfamamerica.org" target="_blank" rel="noopener">Learn more</a></div>
       </article>
 
       <article class="entry">
         <header class="entry-head"><h3 class="entry-name"><span class="entry-num" aria-hidden="true">04</span>The Hunger Project</h3><p class="entry-meta">Africa, S. Asia, Latin America · Community-led development</p></header>
-          <p class="entry-desc">Grassroots, community-led programs aimed at ending hunger for good rather than repeat emergency aid, led by the communities themselves.</p>
-          <p class="entry-note">Deliberately slower than most on this list. The model is "led by the community," not "delivered to the community."</p>
+          <p class="entry-desc">Grassroots, community-led programs aimed at ending hunger for good, deliberately slower than repeat emergency aid.</p>
           <div class="entry-links"><a class="donate-link" href="https://www.thp.org/give/" target="_blank" rel="noopener">Donate</a><span class="dot" aria-hidden="true">·</span><a class="secondary" href="https://www.thp.org" target="_blank" rel="noopener">Learn more</a></div>
       </article>
 
       <article class="entry">
         <header class="entry-head"><h3 class="entry-name"><span class="entry-num" aria-hidden="true">05</span>World Food Program USA</h3><p class="entry-meta">Worldwide · Food assistance</p></header>
-          <p class="entry-desc">Supports the UN World Food Programme, the largest food-assistance operation on Earth, reaching people in famine and near-famine conditions.</p>
-          <p class="entry-note">You're not donating to a charity so much as funding the UN's actual logistics operation. Scale most orgs can't match.</p>
+          <p class="entry-desc">Supports the UN's food-assistance operation, the largest on Earth, reaching people in famine and near-famine conditions.</p>
           <div class="entry-links"><a class="donate-link" href="https://www.wfpusa.org/donate/" target="_blank" rel="noopener">Donate</a><span class="dot" aria-hidden="true">·</span><a class="secondary" href="https://www.wfpusa.org" target="_blank" rel="noopener">Learn more</a></div>
       </article>
 
@@ -357,36 +324,31 @@ footer p.credit{text-transform:none;font-weight:400;letter-spacing:0;margin-top:
 
       <article class="entry">
         <header class="entry-head"><h3 class="entry-name"><span class="entry-num" aria-hidden="true">06</span>Feeding America</h3><p class="entry-meta">United States · Domestic food banks</p></header>
-          <p class="entry-desc">The largest domestic hunger-relief network in the US, a web of local food banks rather than one central warehouse, so it moves food where it's actually needed.</p>
-          <p class="entry-note">Domestic only. If your instinct is to start with your own country, this is the biggest lever available here.</p>
+          <p class="entry-desc">The largest domestic hunger-relief network in the US: local food banks that move food where it's actually needed.</p>
           <div class="entry-links"><a class="donate-link" href="https://www.feedingamerica.org/ways-to-give" target="_blank" rel="noopener">Donate</a><span class="dot" aria-hidden="true">·</span><a class="secondary" href="https://www.feedingamerica.org" target="_blank" rel="noopener">Learn more</a></div>
       </article>
 
       <article class="entry">
         <header class="entry-head"><h3 class="entry-name"><span class="entry-num" aria-hidden="true">07</span>Heifer International</h3><p class="entry-meta">Worldwide · Livestock &amp; livelihoods</p></header>
-          <p class="entry-desc">Gives families livestock, training, and market access so they can generate their own income, aimed at ending the need for aid, not repeating it.</p>
-          <p class="entry-note">An unusual bet: livestock and training instead of food. The goal is a family never needing this kind of help again.</p>
+          <p class="entry-desc">Gives families livestock, training, and market access to generate their own income, aiming to end the need for aid.</p>
           <div class="entry-links"><a class="donate-link" href="https://www.heifer.org/give/" target="_blank" rel="noopener">Donate</a><span class="dot" aria-hidden="true">·</span><a class="secondary" href="https://www.heifer.org" target="_blank" rel="noopener">Learn more</a></div>
       </article>
 
       <article class="entry">
         <header class="entry-head"><h3 class="entry-name"><span class="entry-num" aria-hidden="true">08</span>Concern Worldwide US</h3><p class="entry-meta">Worldwide · Extreme hunger response</p></header>
-          <p class="entry-desc">Works in some of the hardest-to-reach places experiencing extreme hunger and crisis, often where few other large organizations operate.</p>
-          <p class="entry-note">Deliberately goes to the places most large orgs consider too hard, too remote, or too dangerous to operate in.</p>
+          <p class="entry-desc">Works in the hardest-to-reach places experiencing extreme hunger, often where few large organizations operate.</p>
           <div class="entry-links"><a class="donate-link" href="https://www.concernusa.org/donate/" target="_blank" rel="noopener">Donate</a><span class="dot" aria-hidden="true">·</span><a class="secondary" href="https://www.concernusa.org" target="_blank" rel="noopener">Learn more</a></div>
       </article>
 
       <article class="entry">
         <header class="entry-head"><h3 class="entry-name"><span class="entry-num" aria-hidden="true">09</span>Bread for the World</h3><p class="entry-meta">United States · Hunger policy advocacy</p></header>
-          <p class="entry-desc">Advocacy-focused rather than direct service: pushes US policy toward ending hunger, the kind of work that changes systems, not just individual meals.</p>
-          <p class="entry-note">Not a service org at all, it's a lobbying operation. Donate here if you think Congress is the actual bottleneck.</p>
+          <p class="entry-desc">An advocacy operation, not a service org, pushing US policy toward ending hunger.</p>
           <div class="entry-links"><a class="donate-link" href="https://www.bread.org/donate" target="_blank" rel="noopener">Donate</a><span class="dot" aria-hidden="true">·</span><a class="secondary" href="https://www.bread.org" target="_blank" rel="noopener">Learn more</a></div>
       </article>
 
       <article class="entry">
         <header class="entry-head"><h3 class="entry-name"><span class="entry-num" aria-hidden="true">10</span>Rise Against Hunger</h3><p class="entry-meta">Worldwide · Meal packaging</p></header>
-          <p class="entry-desc">Runs volunteer meal-packaging events that ship directly to schools and crisis regions, a rare hunger org where you can literally pack the boxes yourself.</p>
-          <p class="entry-note">The most hands-on option in this section. If money doesn't feel like enough, you can go pack the boxes yourself.</p>
+          <p class="entry-desc">Runs volunteer meal-packaging events shipped to schools and crisis regions. The most hands-on option here, you can pack the boxes yourself.</p>
           <div class="entry-links"><a class="donate-link" href="https://www.riseagainsthunger.org/donate/" target="_blank" rel="noopener">Donate</a><span class="dot" aria-hidden="true">·</span><a class="secondary" href="https://www.riseagainsthunger.org" target="_blank" rel="noopener">Learn more</a></div>
       </article>
 
@@ -405,36 +367,31 @@ footer p.credit{text-transform:none;font-weight:400;letter-spacing:0;margin-top:
 
       <article class="entry">
         <header class="entry-head"><h3 class="entry-name"><span class="entry-num" aria-hidden="true">01</span>ASPCA</h3><p class="entry-meta">United States · Anti-cruelty &amp; rescue</p></header>
-          <p class="entry-desc">Anti-cruelty investigations, disaster rescue, and shelter support, one of the oldest and most active animal welfare groups in the US.</p>
-          <p class="entry-note">The name most people already recognize, which is also why its ads are everywhere. The underlying work is real regardless.</p>
+          <p class="entry-desc">Anti-cruelty investigations, disaster rescue, and shelter support from one of the oldest and most active animal welfare groups in the US.</p>
           <div class="entry-links"><a class="donate-link" href="https://www.aspca.org/donate" target="_blank" rel="noopener">Donate</a><span class="dot" aria-hidden="true">·</span><a class="secondary" href="https://www.aspca.org" target="_blank" rel="noopener">Learn more</a></div>
       </article>
 
       <article class="entry">
         <header class="entry-head"><h3 class="entry-name"><span class="entry-num" aria-hidden="true">02</span>Wildlife Conservation Society</h3><p class="entry-meta">Worldwide · Field conservation</p></header>
-          <p class="entry-desc">Runs field conservation programs worldwide alongside the Bronx Zoo and other NYC wildlife parks, one of the oldest conservation organizations in the country.</p>
-          <p class="entry-note">Also runs the Bronx Zoo, so a slice of your donation funds conservation work you can actually go visit in person.</p>
+          <p class="entry-desc">Runs field conservation programs worldwide alongside the Bronx Zoo, one of the oldest conservation organizations in the country.</p>
           <div class="entry-links"><a class="donate-link" href="https://www.wcs.org/donate" target="_blank" rel="noopener">Donate</a><span class="dot" aria-hidden="true">·</span><a class="secondary" href="https://www.wcs.org" target="_blank" rel="noopener">Learn more</a></div>
       </article>
 
       <article class="entry">
         <header class="entry-head"><h3 class="entry-name"><span class="entry-num" aria-hidden="true">03</span>Defenders of Wildlife</h3><p class="entry-meta">United States · Species protection</p></header>
-          <p class="entry-desc">Focuses on native US wildlife and the legal and policy fights that determine whether endangered species protections actually hold up.</p>
-          <p class="entry-note">Fights in court and in Congress, not in the field. The pick if you think policy is the real bottleneck for wildlife.</p>
+          <p class="entry-desc">Fights in court and Congress for native US wildlife, focused on the legal and policy battles that determine endangered species protections.</p>
           <div class="entry-links"><a class="donate-link" href="https://defenders.org/donate" target="_blank" rel="noopener">Donate</a><span class="dot" aria-hidden="true">·</span><a class="secondary" href="https://defenders.org" target="_blank" rel="noopener">Learn more</a></div>
       </article>
 
       <article class="entry">
         <header class="entry-head"><h3 class="entry-name"><span class="entry-num" aria-hidden="true">04</span>The Humane Society of the US</h3><p class="entry-meta">United States · Animal protection</p></header>
-          <p class="entry-desc">Broad-spectrum animal protection work: disaster rescue, cruelty investigations, and legislative campaigns against puppy mills and factory farming.</p>
-          <p class="entry-note">The broadest mandate in this section: pets, farm animals, wildlife, and the laws governing all three at once.</p>
+          <p class="entry-desc">Broad-spectrum animal protection: disaster rescue, cruelty investigations, and legislative campaigns against puppy mills and factory farming.</p>
           <div class="entry-links"><a class="donate-link" href="https://www.humanesociety.org/donate" target="_blank" rel="noopener">Donate</a><span class="dot" aria-hidden="true">·</span><a class="secondary" href="https://www.humanesociety.org" target="_blank" rel="noopener">Learn more</a></div>
       </article>
 
       <article class="entry">
         <header class="entry-head"><h3 class="entry-name"><span class="entry-num" aria-hidden="true">05</span>World Wildlife Fund</h3><p class="entry-meta">Worldwide · Habitat conservation</p></header>
-          <p class="entry-desc">Habitat and species conservation at a global scale, from anti-poaching work to protecting the ecosystems endangered animals actually depend on.</p>
-          <p class="entry-note">The most recognizable name in conservation, and large enough that your dollar funds infrastructure, not just a single case.</p>
+          <p class="entry-desc">Habitat and species conservation at a global scale, from anti-poaching work to protecting the ecosystems endangered animals depend on.</p>
           <div class="entry-links"><a class="donate-link" href="https://www.worldwildlife.org/donate" target="_blank" rel="noopener">Donate</a><span class="dot" aria-hidden="true">·</span><a class="secondary" href="https://www.worldwildlife.org" target="_blank" rel="noopener">Learn more</a></div>
       </article>
 
@@ -444,36 +401,31 @@ footer p.credit{text-transform:none;font-weight:400;letter-spacing:0;margin-top:
 
       <article class="entry">
         <header class="entry-head"><h3 class="entry-name"><span class="entry-num" aria-hidden="true">06</span>World Animal Protection</h3><p class="entry-meta">Worldwide · Disaster &amp; farm welfare</p></header>
-          <p class="entry-desc">International animal welfare work spanning disaster response for animals, wildlife protection, and farm animal welfare.</p>
-          <p class="entry-note">Covers animals most charities skip entirely: livestock, working animals, and pets caught in disaster response.</p>
+          <p class="entry-desc">International animal welfare spanning disaster response, wildlife protection, and farm animal welfare, covering animals most charities skip.</p>
           <div class="entry-links"><a class="donate-link" href="https://www.worldanimalprotection.org/donate" target="_blank" rel="noopener">Donate</a><span class="dot" aria-hidden="true">·</span><a class="secondary" href="https://www.worldanimalprotection.org" target="_blank" rel="noopener">Learn more</a></div>
       </article>
 
       <article class="entry">
         <header class="entry-head"><h3 class="entry-name"><span class="entry-num" aria-hidden="true">07</span>Best Friends Animal Society</h3><p class="entry-meta">United States · No-kill shelters</p></header>
           <p class="entry-desc">Leads the no-kill shelter movement in the US: direct rescue work plus the policy push to end animal homelessness nationwide.</p>
-          <p class="entry-note">The organization actually behind the "no-kill" movement, not just a slogan other shelters later borrowed from it.</p>
           <div class="entry-links"><a class="donate-link" href="https://bestfriends.org/donate" target="_blank" rel="noopener">Donate</a><span class="dot" aria-hidden="true">·</span><a class="secondary" href="https://bestfriends.org" target="_blank" rel="noopener">Learn more</a></div>
       </article>
 
       <article class="entry">
         <header class="entry-head"><h3 class="entry-name"><span class="entry-num" aria-hidden="true">08</span>Farm Sanctuary</h3><p class="entry-meta">United States · Farm animal rescue</p></header>
           <p class="entry-desc">Rescues farm animals from cruelty and neglect and gives them a real home, paired with advocacy against factory farming.</p>
-          <p class="entry-note">The only org here that treats farm animals as individuals worth rescuing, not just a policy category to legislate around.</p>
           <div class="entry-links"><a class="donate-link" href="https://www.farmsanctuary.org/get-involved/donate/" target="_blank" rel="noopener">Donate</a><span class="dot" aria-hidden="true">·</span><a class="secondary" href="https://www.farmsanctuary.org" target="_blank" rel="noopener">Learn more</a></div>
       </article>
 
       <article class="entry">
         <header class="entry-head"><h3 class="entry-name"><span class="entry-num" aria-hidden="true">09</span>Mercy For Animals</h3><p class="entry-meta">Worldwide · Factory farming reform</p></header>
-          <p class="entry-desc">Investigates and campaigns against factory farming cruelty specifically, the kind of animal suffering that's largest in scale and hardest to see.</p>
-          <p class="entry-note">Investigative rather than sheltering. They're the ones who actually go undercover inside factory farms.</p>
+          <p class="entry-desc">Investigates and campaigns against factory farming cruelty, going undercover inside the operations most others can't see.</p>
           <div class="entry-links"><a class="donate-link" href="https://mercyforanimals.org/donate" target="_blank" rel="noopener">Donate</a><span class="dot" aria-hidden="true">·</span><a class="secondary" href="https://mercyforanimals.org" target="_blank" rel="noopener">Learn more</a></div>
       </article>
 
       <article class="entry">
         <header class="entry-head"><h3 class="entry-name"><span class="entry-num" aria-hidden="true">10</span>Oceana</h3><p class="entry-meta">Worldwide · Ocean conservation</p></header>
-          <p class="entry-desc">The largest organization focused solely on ocean conservation: overfishing, marine habitat protection, and the animals that live entirely underwater.</p>
-          <p class="entry-note">The only organization on this entire list working exclusively underwater. Nobody else here covers marine life alone.</p>
+          <p class="entry-desc">The largest organization focused solely on ocean conservation: overfishing, marine habitat, and the animals that live entirely underwater.</p>
           <div class="entry-links"><a class="donate-link" href="https://oceana.org/donate/" target="_blank" rel="noopener">Donate</a><span class="dot" aria-hidden="true">·</span><a class="secondary" href="https://oceana.org" target="_blank" rel="noopener">Learn more</a></div>
       </article>
 
