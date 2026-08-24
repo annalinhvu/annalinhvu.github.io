@@ -538,6 +538,144 @@ body {
 }
 .zoom-btn:hover { color: var(--text-1); border-color: var(--border-2); background: var(--surface-2); }
 
+/* ══ VIEW TOGGLE ══ */
+.view-toggle { display: flex; border: 1px solid var(--border); border-radius: 2px; overflow: hidden; flex-shrink: 0; }
+.view-toggle-btn {
+  font-family: 'Geist Mono', monospace;
+  font-size: 0.56rem; letter-spacing: 1px; text-transform: uppercase;
+  color: var(--text-3); background: none; border: none;
+  padding: 4px 10px; cursor: pointer; transition: all 0.2s;
+}
+.view-toggle-btn + .view-toggle-btn { border-left: 1px solid var(--border); }
+.view-toggle-btn:hover { color: var(--text-1); background: var(--surface); }
+.view-toggle-btn.active { color: var(--gold); background: var(--gold-dim); }
+
+/* ══ CALENDAR VIEW ══ */
+.calendar-view {
+  position: fixed; top: 52px; left: 0; right: 0; bottom: 0;
+  display: flex; flex-direction: column;
+  background: var(--bg);
+}
+.cal-toolbar {
+  height: 44px; flex-shrink: 0;
+  border-bottom: 1px solid var(--border);
+  display: flex; align-items: center; gap: 16px;
+  padding: 0 24px;
+}
+.cal-year-nav { display: flex; align-items: center; gap: 10px; flex-shrink: 0; }
+.cal-year-btn {
+  background: none; border: 1px solid var(--border); border-radius: 2px;
+  color: var(--text-3); font-size: 0.75rem; cursor: pointer;
+  width: 24px; height: 24px; display: flex; align-items: center; justify-content: center;
+  transition: all 0.15s; font-family: 'Geist Mono', monospace;
+}
+.cal-year-btn:hover { color: var(--text-1); border-color: var(--border-2); }
+.cal-year-label {
+  font-family: 'Bebas Neue', sans-serif; letter-spacing: 3px;
+  font-size: 1.1rem; color: var(--text-1); min-width: 56px; text-align: center;
+}
+.cal-search-wrap { flex: 1; max-width: 220px; position: relative; display: flex; align-items: center; }
+.cal-search-wrap .search-icon { position: absolute; left: 8px; font-size: 0.7rem; color: var(--text-4); pointer-events: none; }
+.cal-search-input {
+  width: 100%; padding: 3px 8px 3px 26px;
+  background: var(--surface); border: 1px solid var(--border); border-radius: 1px;
+  color: var(--text-1); font-size: 0.62rem; height: 26px;
+  font-family: 'Geist Mono', monospace; letter-spacing: 0.5px;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+.cal-search-input:focus { outline: none; border-color: var(--gold); box-shadow: 0 0 0 2px var(--gold-dim); }
+.cal-search-input::placeholder { color: var(--text-4); }
+.cal-stats { margin-left: auto; font-size: 0.52rem; letter-spacing: 1px; color: var(--text-4); white-space: nowrap; flex-shrink: 0; }
+.cal-hint { font-size: 0.5rem; letter-spacing: 1px; color: var(--text-4); white-space: nowrap; flex-shrink: 0; }
+
+.cal-body { flex: 1; display: flex; overflow: hidden; }
+
+.cal-deck {
+  width: 240px; flex-shrink: 0;
+  border-right: 1px solid var(--border);
+  display: flex; flex-direction: column;
+  overflow: hidden;
+}
+.cal-deck-label {
+  font-size: 0.55rem; letter-spacing: 2.5px; text-transform: uppercase;
+  color: var(--text-4); padding: 14px 20px 10px;
+  flex-shrink: 0;
+}
+.cal-deck-list { flex: 1; overflow-y: auto; padding: 0 12px 16px; display: flex; flex-direction: column; gap: 4px; }
+.cal-deck-item {
+  display: flex; align-items: center; gap: 8px;
+  padding: 7px 10px; border: 1px solid var(--border);
+  border-radius: 2px; cursor: grab; background: var(--bg-2);
+  transition: all 0.15s; user-select: none;
+}
+.cal-deck-item:hover { border-color: var(--border-2); background: var(--surface); }
+.cal-deck-item.selected { border-color: var(--gold); background: var(--gold-dim); }
+.cal-deck-item.dragging { opacity: 0.4; }
+.cal-deck-dot { width: 6px; height: 6px; border-radius: 50%; flex-shrink: 0; background: var(--dot-color, var(--text-4)); }
+.cal-deck-name { font-size: 0.72rem; color: var(--text-1); flex: 1; }
+.cal-deck-badge {
+  font-size: 0.48rem; letter-spacing: 1px; color: var(--teal);
+  border: 1px solid var(--teal); border-radius: 1px; padding: 1px 4px;
+  flex-shrink: 0;
+}
+
+.cal-grid {
+  flex: 1; overflow: auto; padding: 14px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(4, minmax(140px, 1fr));
+  gap: 12px;
+}
+.cal-month {
+  border: 1px dashed var(--border); border-radius: 3px;
+  display: flex; flex-direction: column; overflow: hidden;
+  transition: border-color 0.15s, background 0.15s;
+}
+.cal-month.drag-over { border-color: var(--gold); background: var(--gold-dim); border-style: solid; }
+.cal-month.drag-over.ideal { border-color: var(--teal); background: rgba(0,212,180,0.08); }
+.cal-month-head {
+  display: flex; align-items: baseline; justify-content: space-between;
+  padding: 8px 12px; border-bottom: 1px solid var(--border); flex-shrink: 0;
+}
+.cal-month-name {
+  font-family: 'Bebas Neue', sans-serif; letter-spacing: 2px;
+  font-size: 0.95rem; color: var(--text-1);
+}
+.cal-month-count { font-size: 0.5rem; letter-spacing: 1px; color: var(--text-4); }
+.cal-month-body { flex: 1; overflow-y: auto; padding: 8px 10px; display: flex; flex-direction: column; gap: 5px; }
+.cal-month-empty { font-size: 0.55rem; letter-spacing: 0.5px; color: var(--text-4); padding: 8px 2px; }
+.cal-chip {
+  display: flex; align-items: center; gap: 6px;
+  font-size: 0.68rem; color: var(--text-1);
+  padding: 4px 6px; border-radius: 2px;
+  background: var(--surface); border-left: 2px solid var(--dot-color, var(--border-2));
+  cursor: pointer;
+}
+.cal-chip-name { flex: 1; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.cal-chip-remove {
+  background: none; border: none; color: var(--text-4); cursor: pointer;
+  font-size: 0.7rem; line-height: 1; padding: 0 2px; flex-shrink: 0;
+}
+.cal-chip-remove:hover { color: var(--gold); }
+
+/* ══ PANEL BUDGET/TIMING SIDEBAR ══ */
+.panel-month-strip { display: flex; gap: 3px; }
+.panel-month-cell {
+  flex: 1; height: 22px; display: flex; align-items: center; justify-content: center;
+  font-size: 0.48rem; letter-spacing: 0.5px; color: var(--text-4);
+  background: var(--surface); border-radius: 1px;
+}
+.panel-month-cell.ideal { background: var(--region-color, var(--teal)); color: var(--bg); font-weight: 600; }
+.budget-bars { display: flex; flex-direction: column; gap: 12px; }
+.budget-row { display: flex; align-items: center; gap: 12px; }
+.budget-label { font-size: 0.62rem; letter-spacing: 1px; color: var(--text-2); width: 96px; flex-shrink: 0; text-transform: uppercase; }
+.budget-track { flex: 1; height: 6px; background: var(--surface); border-radius: 3px; overflow: hidden; }
+.budget-fill { height: 100%; background: var(--region-color, var(--gold)); border-radius: 3px; }
+.budget-value { font-size: 0.68rem; color: var(--text-1); width: 88px; flex-shrink: 0; text-align: right; }
+.budget-total { display: flex; justify-content: space-between; align-items: baseline; padding-top: 10px; border-top: 1px solid var(--border); margin-top: 2px; }
+.budget-total-label { font-size: 0.58rem; letter-spacing: 1.5px; text-transform: uppercase; color: var(--text-4); }
+.budget-total-value { font-family: 'Bebas Neue', sans-serif; font-size: 1.3rem; letter-spacing: 1px; color: var(--text-1); }
+
 /* ══ RESPONSIVE ══ */
 @media (max-width: 640px) {
   body { overflow: auto; }
@@ -549,6 +687,13 @@ body {
   .side-panel.open { right: 0; }
   .topbar-brand { font-size: 1.4rem; letter-spacing: 5px; }
   .filter-select { display: none; }
+  .cal-body { flex-direction: column; }
+  .cal-deck { width: 100%; max-height: 180px; border-right: none; border-bottom: 1px solid var(--border); }
+  .cal-grid { grid-template-columns: repeat(2, 1fr); grid-template-rows: repeat(6, minmax(120px, 1fr)); }
+  .cal-toolbar { flex-wrap: wrap; height: auto; padding: 8px 16px; gap: 8px; }
+  .cal-hint { display: none; }
+  .budget-label { width: 76px; }
+  .budget-value { width: 70px; }
 }
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; transition-duration: 0.01ms !important; }
@@ -562,14 +707,18 @@ body {
   <a href="../../index.html" class="back-link">← Portfolio</a>
   <div class="topbar-brand">Departure Lounge</div>
   <div class="topbar-right">
-    <button class="random-btn" onclick="pickRandom()">✦ surprise me</button>
+    <div class="view-toggle">
+      <button class="view-toggle-btn active" id="viewMapBtn" onclick="switchView('map')">✈ Map</button>
+      <button class="view-toggle-btn" id="viewCalBtn" onclick="switchView('calendar')">▦ Calendar</button>
+    </div>
+    <button class="random-btn" id="randomBtn" onclick="pickRandom()">✦ surprise me</button>
     <button class="saved-btn" id="savedBtn" onclick="toggleSavedFilter()">♥ <span id="savedCount">0</span></button>
     <button class="theme-btn" onclick="toggleTheme()">◐</button>
   </div>
 </div>
 
 <!-- CONTROLS -->
-<div class="controls-bar">
+<div class="controls-bar" id="controlsBar">
   <button class="filter-pill active" data-region="all">All</button>
   <button class="filter-pill" data-region="asia">Asia</button>
   <button class="filter-pill" data-region="europe">Europe</button>
@@ -620,6 +769,30 @@ body {
     <button class="zoom-btn" onclick="mapZoomIn()" title="Zoom in">+</button>
     <button class="zoom-btn" onclick="mapZoomReset()" title="Reset" style="font-size:0.65rem;letter-spacing:0">⊙</button>
     <button class="zoom-btn" onclick="mapZoomOut()" title="Zoom out">−</button>
+  </div>
+</div>
+
+<!-- CALENDAR VIEW -->
+<div class="calendar-view" id="calendarView" style="display:none">
+  <div class="cal-toolbar">
+    <div class="cal-year-nav">
+      <button class="cal-year-btn" onclick="calYearShift(-1)" title="Previous year">←</button>
+      <span class="cal-year-label" id="calYearLabel"></span>
+      <button class="cal-year-btn" onclick="calYearShift(1)" title="Next year">→</button>
+    </div>
+    <div class="cal-search-wrap">
+      <span class="search-icon">⌕</span>
+      <input type="search" class="cal-search-input" id="calSearchInput" placeholder="Search…">
+    </div>
+    <span class="cal-hint" id="calHint">Drag a destination onto a month</span>
+    <span class="cal-stats" id="calStats"></span>
+  </div>
+  <div class="cal-body">
+    <div class="cal-deck">
+      <div class="cal-deck-label">Destinations</div>
+      <div class="cal-deck-list" id="calDeckList"></div>
+    </div>
+    <div class="cal-grid" id="calGrid"></div>
   </div>
 </div>
 
@@ -752,6 +925,9 @@ const ALL_ISO_NAMES = {
 const NYC      = [-74.006, 40.7128];
 const LS_KEY   = 'atlas-wishlist';
 const THEME_KEY= 'atlas-theme';
+const CAL_KEY  = 'atlas-calendar-plan';
+const MONTH_NAMES  = ['January','February','March','April','May','June','July','August','September','October','November','December'];
+const MONTH_ABBR   = ['JAN','FEB','MAR','APR','MAY','JUN','JUL','AUG','SEP','OCT','NOV','DEC'];
 const REGIONS  = { asia:'Asia', europe:'Europe', americas:'Americas', africa:'Africa', oceania:'Oceania' };
 const COORDS   = {
   'Japan':       [138.25,  36.20], 'Italy':      [ 12.57,  41.87],
@@ -851,6 +1027,12 @@ let mapG          = null;
 let pinLayer      = null;   // outside zoom transform — pins stay fixed size
 let mapProjection = null;
 let zoomBehavior  = null;
+let viewMode      = 'map';
+let calYear       = new Date().getFullYear();
+let calendarPlan  = JSON.parse(localStorage.getItem(CAL_KEY) || '{}');
+let calDraggedId  = null;
+let calSelectedId = null;
+let calSearch     = '';
 
 // ── UTILS ─────────────────────────────────────────
 const esc = s => String(s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
@@ -1143,6 +1325,41 @@ function openPanel(id) {
 
   const tips = (c.tips||[]).map(t => `<div class="tip">${esc(t)}</div>`).join('');
 
+  const idealMonths = new Set(BEST_MONTHS[c.name] || []);
+  const monthStrip  = MONTH_ABBR.map((m, i) =>
+    `<div class="panel-month-cell${idealMonths.has(i+1) ? ' ideal' : ''}">${m}</div>`).join('');
+
+  const bb = c.budget_breakdown || null;
+  const BUDGET_CATS = [
+    ['lodging', '⌂ Lodging', '/night'],
+    ['food',    '◈ Food',    '/day'],
+    ['fun',     '✦ Fun',     '/day'],
+    ['transport','⇄ Transport','/day'],
+  ];
+  let budgetSection = '';
+  if (bb) {
+    const maxHigh = Math.max(...BUDGET_CATS.map(([key]) => (bb[key]||{}).high || 0), 1);
+    const dailyTotal = BUDGET_CATS.filter(([key]) => key !== 'lodging')
+      .reduce((sum, [key]) => sum + (((bb[key]||{}).low||0) + ((bb[key]||{}).high||0)) / 2, 0)
+      + (((bb.lodging||{}).low||0) + ((bb.lodging||{}).high||0)) / 2;
+    const rows = BUDGET_CATS.map(([key, label, unit]) => {
+      const v = bb[key];
+      if (!v) return '';
+      const pct = Math.round((v.high / maxHigh) * 100);
+      return `<div class="budget-row">
+        <div class="budget-label">${label}</div>
+        <div class="budget-track"><div class="budget-fill" style="width:${pct}%"></div></div>
+        <div class="budget-value">$${v.low}–${v.high}${unit}</div>
+      </div>`;
+    }).join('');
+    budgetSection = `
+      <div class="budget-bars">${rows}</div>
+      <div class="budget-total">
+        <span class="budget-total-label">Est. daily average</span>
+        <span class="budget-total-value">~$${Math.round(dailyTotal)}/day</span>
+      </div>`;
+  }
+
   // Nav position
   const idx = allCountries.findIndex(x => x.id === id);
   document.getElementById('panelNavPos').textContent = `${idx + 1} / ${allCountries.length}`;
@@ -1188,9 +1405,21 @@ function openPanel(id) {
         ${cities ? `<button class="panel-tab-btn" onclick="switchTab('tab-cities',this)">Cities</button>` : ''}
         ${food   ? `<button class="panel-tab-btn" onclick="switchTab('tab-food',this)">Food</button>` : ''}
         ${tips   ? `<button class="panel-tab-btn" onclick="switchTab('tab-tips',this)">Tips</button>` : ''}
+        <button class="panel-tab-btn" onclick="switchTab('tab-budget',this)">Budget &amp; Timing</button>
       </div>
       <div id="tab-overview" class="panel-tab-content">
         <div class="panel-section-text">${esc(c.description)}</div>
+        <div style="height:8px"></div>
+      </div>
+      <div id="tab-budget" class="panel-tab-content" style="display:none">
+        <div>
+          <div class="panel-section-label">Best Months to Visit</div>
+          <div class="panel-month-strip">${monthStrip}</div>
+        </div>
+        ${budgetSection ? `<div>
+          <div class="panel-section-label">Daily Budget (USD)</div>
+          ${budgetSection}
+        </div>` : ''}
         <div style="height:8px"></div>
       </div>
       ${cities ? `<div id="tab-cities" class="panel-tab-content" style="display:none">
@@ -1425,6 +1654,164 @@ function toggleSavedFilter() {
   document.getElementById('savedBtn').classList.toggle('active', showingSaved);
   applyFilters();
 }
+
+// ── CALENDAR VIEW ─────────────────────────────────
+function switchView(mode) {
+  viewMode = mode;
+  const isMap = mode === 'map';
+  document.getElementById('mapWrap').style.display     = isMap ? '' : 'none';
+  document.getElementById('controlsBar').style.display  = isMap ? '' : 'none';
+  document.getElementById('calendarView').style.display = isMap ? 'none' : 'flex';
+  document.getElementById('viewMapBtn').classList.toggle('active', isMap);
+  document.getElementById('viewCalBtn').classList.toggle('active', !isMap);
+  document.getElementById('randomBtn').style.display = isMap ? '' : 'none';
+  document.getElementById('savedBtn').style.display   = isMap ? '' : 'none';
+  if (!isMap) {
+    calSelectedId = null;
+    document.getElementById('calHint').textContent = ('ontouchstart' in window)
+      ? 'Tap a destination, then tap a month to schedule it'
+      : 'Drag a destination onto a month — or tap, then tap a month';
+    renderCalendar();
+  }
+}
+
+function calPlanKey() { return String(calYear); }
+function getYearPlan() {
+  if (!calendarPlan[calPlanKey()]) calendarPlan[calPlanKey()] = {};
+  return calendarPlan[calPlanKey()];
+}
+function saveCalendarPlan() { localStorage.setItem(CAL_KEY, JSON.stringify(calendarPlan)); }
+
+function findScheduled(id) {
+  const plan = getYearPlan();
+  for (const m in plan) { if ((plan[m]||[]).includes(id)) return +m; }
+  return null;
+}
+
+function assignToMonth(id, month) {
+  const plan = getYearPlan();
+  Object.keys(plan).forEach(m => { plan[m] = (plan[m]||[]).filter(x => x !== id); });
+  if (!plan[month]) plan[month] = [];
+  plan[month].push(id);
+  saveCalendarPlan();
+  renderCalendar();
+}
+
+function removeFromMonth(id, month) {
+  const plan = getYearPlan();
+  if (plan[month]) plan[month] = plan[month].filter(x => x !== id);
+  saveCalendarPlan();
+  renderCalendar();
+}
+
+function calYearShift(dir) {
+  calYear += dir;
+  calSelectedId = null;
+  renderCalendar();
+}
+
+function renderCalendar() {
+  if (!allCountries.length) return;
+  document.getElementById('calYearLabel').textContent = calYear;
+  renderCalDeck();
+  renderCalGrid();
+}
+
+function renderCalDeck() {
+  const list = document.getElementById('calDeckList');
+  const q = calSearch.toLowerCase();
+  const items = allCountries
+    .filter(c => !q || c.name.toLowerCase().includes(q))
+    .slice()
+    .sort((a, b) => a.name.localeCompare(b.name));
+
+  list.innerHTML = items.map(c => {
+    const month = findScheduled(c.id);
+    const badge = month !== null ? `<span class="cal-deck-badge">${MONTH_ABBR[month-1]}</span>` : '';
+    return `<div class="cal-deck-item${c.id===calSelectedId?' selected':''}" draggable="true"
+        data-id="${c.id}" style="--dot-color:var(--${c.region})">
+      <span class="cal-deck-dot"></span>
+      <span class="cal-deck-name">${esc(c.name)}</span>
+      ${badge}
+    </div>`;
+  }).join('');
+
+  list.querySelectorAll('.cal-deck-item').forEach(el => {
+    const id = +el.dataset.id;
+    el.addEventListener('dragstart', e => {
+      calDraggedId = id;
+      el.classList.add('dragging');
+      e.dataTransfer.setData('text/plain', String(id));
+      e.dataTransfer.effectAllowed = 'move';
+    });
+    el.addEventListener('dragend', () => { el.classList.remove('dragging'); calDraggedId = null; });
+    el.addEventListener('click', () => {
+      calSelectedId = calSelectedId === id ? null : id;
+      renderCalDeck();
+    });
+  });
+}
+
+function renderCalGrid() {
+  const grid = document.getElementById('calGrid');
+  const plan = getYearPlan();
+  let scheduledCount = 0;
+
+  grid.innerHTML = MONTH_NAMES.map((name, i) => {
+    const month = i + 1;
+    const ids = plan[month] || [];
+    scheduledCount += ids.length;
+    const chips = ids.map(id => {
+      const c = allCountries.find(x => x.id === id);
+      if (!c) return '';
+      return `<div class="cal-chip" style="--dot-color:var(--${c.region})" data-id="${id}">
+        <span class="cal-chip-name" onclick="event.stopPropagation();openPanel(${id})">${esc(c.name)}</span>
+        <button class="cal-chip-remove" onclick="event.stopPropagation();removeFromMonth(${id},${month})" title="Remove">×</button>
+      </div>`;
+    }).join('');
+    return `<div class="cal-month" data-month="${month}">
+      <div class="cal-month-head">
+        <span class="cal-month-name">${name}</span>
+        <span class="cal-month-count">${ids.length || ''}</span>
+      </div>
+      <div class="cal-month-body">${chips || '<div class="cal-month-empty">Drop here</div>'}</div>
+    </div>`;
+  }).join('');
+
+  document.getElementById('calStats').textContent = `${scheduledCount} / ${allCountries.length} scheduled`;
+
+  grid.querySelectorAll('.cal-month').forEach(cell => {
+    const month = +cell.dataset.month;
+    cell.addEventListener('dragover', e => {
+      e.preventDefault();
+      e.dataTransfer.dropEffect = 'move';
+      cell.classList.add('drag-over');
+      if (calDraggedId !== null) {
+        const c = allCountries.find(x => x.id === calDraggedId);
+        const ideal = c && (BEST_MONTHS[c.name]||[]).includes(month);
+        cell.classList.toggle('ideal', !!ideal);
+      }
+    });
+    cell.addEventListener('dragleave', () => cell.classList.remove('drag-over', 'ideal'));
+    cell.addEventListener('drop', e => {
+      e.preventDefault();
+      cell.classList.remove('drag-over', 'ideal');
+      const id = +(e.dataTransfer.getData('text/plain') || calDraggedId || 0);
+      if (id) assignToMonth(id, month);
+    });
+    cell.addEventListener('click', () => {
+      if (calSelectedId !== null) {
+        assignToMonth(calSelectedId, month);
+        calSelectedId = null;
+      }
+    });
+  });
+}
+
+document.getElementById('calSearchInput').addEventListener('input', e => {
+  calSearch = e.target.value.trim();
+  renderCalDeck();
+});
 
 // ── KEYBOARD ──────────────────────────────────────
 document.addEventListener('keydown', e => {
