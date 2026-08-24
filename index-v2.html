@@ -1108,7 +1108,7 @@ body {
         <span class="tbl">anna_vu.creative_projects</span><span>&nbsp;</span>
         <span class="kw">ORDER BY</span><span>&nbsp;year&nbsp;</span>
         <span class="kw">DESC</span>
-        <span class="cmt">-- personal projects · 10 rows returned</span>
+        <span class="cmt">-- personal projects · 11 rows returned</span>
       </div>
       <div class="filter-bar">
         <span class="filter-kw"><span class="kw">WHERE</span>&nbsp;project_name&nbsp;<span class="kw">LIKE</span>&nbsp;'%</span>
@@ -1185,38 +1185,38 @@ body {
         <div class="col-status"><span class="live-dot"></span>live</div>
       </a>
 
-      <a href="projects/recipes/" class="db-row std">
+      <a href="projects/well-fed/" class="db-row std">
         <div class="col-idx">08</div>
+        <div class="col-name"><span class="row-name">Healthy Diet Tracker</span><span class="row-desc">A food companion that recommends meals and small swaps based on your real priorities — cholesterol, dental health, steady energy — never calorie counting or guilt.</span><span class="row-link">view project →</span></div>
+        <div class="col-tech">Wellness</div>
+        <div class="col-status"><span class="live-dot"></span>live</div>
+      </a>
+
+      <a href="projects/recipes/" class="db-row std alt">
+        <div class="col-idx">09</div>
         <div class="col-name"><span class="row-name">Cơm Nhà</span><span class="row-desc">Vietnamese recipes from Miền Bắc, Miền Trung, and Miền Nam. Browse by region, search by ingredient.</span><span class="row-link">view project →</span></div>
         <div class="col-tech">Food</div>
         <div class="col-status"><span class="live-dot"></span>live</div>
       </a>
 
-      <a href="projects/atlas/" class="db-row std alt">
-        <div class="col-idx">09</div>
+      <a href="projects/atlas/" class="db-row std">
+        <div class="col-idx">10</div>
         <div class="col-name"><span class="row-name">Departure Lounge</span><span class="row-desc">Destinations as boarding passes, with a calendar and budget planner for actually booking the trip.</span><span class="row-link">view project →</span></div>
         <div class="col-tech">Travel</div>
         <div class="col-status"><span class="live-dot"></span>live</div>
       </a>
 
-      <a href="projects/global-donation-guide/" class="db-row std">
-        <div class="col-idx">10</div>
+      <a href="projects/global-donation-guide/" class="db-row std alt">
+        <div class="col-idx">11</div>
         <div class="col-name"><span class="row-name">Global Donation Guide</span><span class="row-desc">Curated directory of humanitarian relief, global hunger, and animal welfare organizations worldwide. Each one researched individually, with direct donation links.</span><span class="row-link">view project →</span></div>
         <div class="col-tech">Giving</div>
         <div class="col-status"><span class="live-dot"></span>live</div>
       </a>
 
-      <a href="projects/well-fed/" class="db-row std alt">
-        <div class="col-idx">11</div>
-        <div class="col-name"><span class="row-name">Healthy Diet Tracker</span><span class="row-desc">A food companion that recommends meals and small swaps based on your real priorities — cholesterol, dental health, steady energy — never calorie counting or guilt.</span><span class="row-link">view project →</span></div>
-        <div class="col-tech">Nutrition</div>
-        <div class="col-status"><span class="live-dot"></span>live</div>
-      </a>
-
       <div class="db-footer">
-        <span>10 rows returned</span>
+        <span>11 rows returned</span>
         <span class="ft-live">● all systems live</span>
-        <span>last updated July 2026</span>
+        <span>last updated August 2026</span>
       </div>
     </section>
 
@@ -2073,7 +2073,7 @@ switchPane = function(id) {
       if (show) count++;
     });
     var isFiltered = q || activeCat !== 'all';
-    var label = isFiltered ? '-- ' + count + ' row' + (count !== 1 ? 's' : '') + ' returned' : '-- 9 rows returned';
+    var label = isFiltered ? '-- ' + count + ' row' + (count !== 1 ? 's' : '') + ' returned' : '-- 11 rows returned';
     if (cmt)    cmt.textContent = label;
     if (footer) footer.textContent = count + ' rows returned';
     clear.classList.toggle('visible', !!q);
