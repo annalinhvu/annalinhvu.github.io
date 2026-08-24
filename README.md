@@ -65,7 +65,7 @@ A running list of things to do in New York, organized by category and season —
 ---
 
 ### Only Good Things
-Named after the wall calendar. A catalog of self-care activities filterable by season, duration, mood, and setting. Track completions locally in your browser, no account needed.
+Named after the wall calendar. A catalog of self-care activities filterable by season, duration, mood, and setting, with a daily pick banner that surfaces a few things worth trying today. Track completions locally in your browser, no account needed.
 
 **Stack:** HTML · JSON · Vanilla JS
 
@@ -79,9 +79,9 @@ Vietnamese recipes organized by region — Miền Bắc, Miền Trung, Miền Na
 ---
 
 ### Departure Lounge
-A bucket list formatted as boarding passes. Countries with cities to visit, food to eat, and actual reasons to go — not the usual tourist checklist. Dark, editorial feel.
+A bucket list formatted as boarding passes. Countries with cities to visit, food to eat, and actual reasons to go — not the usual tourist checklist. Beyond browsing the map, there's a drag-and-drop calendar for planning which month to visit each place, a budget estimator that tallies cost per trip, and an editable trip status (dreaming, planning, booked, visited) per destination. Dark, editorial feel.
 
-**Stack:** HTML · JSON · Vanilla JS
+**Stack:** HTML · JSON · D3.js
 
 ---
 
