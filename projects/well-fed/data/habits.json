@@ -21,7 +21,7 @@
   },
   {
     "id": "two-min-strength",
-    "text": "Try a 2-minute strength routine, twice this week — it counts.",
+    "text": "Try a 2-minute strength routine, twice this week. It counts.",
     "trigger": "general"
   },
   {
@@ -41,7 +41,7 @@
   },
   {
     "id": "walk-after-heavy",
-    "text": "Take a short walk after a heavier meal — even 5–10 minutes helps.",
+    "text": "Take a short walk after a heavier meal, even 5-10 minutes helps.",
     "trigger": "heavy"
   },
   {
@@ -56,7 +56,7 @@
   },
   {
     "id": "water-first",
-    "text": "Have a glass of water before the meal — it's a small, easy way to slow down.",
+    "text": "Have a glass of water before the meal. It's a small, easy way to slow down.",
     "trigger": "general"
   }
 ]
