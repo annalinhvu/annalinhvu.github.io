@@ -3919,5 +3919,155 @@
         "high": 11
       }
     }
+  },
+  {
+    "id": 54,
+    "name": "Belgium",
+    "code": "BE",
+    "region": "europe",
+    "status": "dreaming",
+    "tagline": "Medieval town squares, canal towns frozen in time, and the best fries you'll ever apologize for loving.",
+    "description": "Belgium gets treated as a layover country and that's a mistake. Bruges looks like a film set that happens to have real people living in it. Ghent has all of Bruges' beauty with a fraction of the tour groups. And Brussels, once you get past the EU-quarter blandness, has a genuinely great food and beer scene tucked into its side streets. It's a small country you can cross by train in an afternoon, which makes it easy to base yourself in one city and day-trip the rest.",
+    "best_time": "April–June, September",
+    "language": "Dutch, French, German",
+    "currency": "Euro (€)",
+    "cities": [
+      {
+        "name": "Bruges",
+        "notes": "Canals, cobblestones, and gabled houses that haven't changed much in centuries. Go early morning or after the day-trippers leave for the version everyone photographs."
+      },
+      {
+        "name": "Ghent",
+        "notes": "Bruges' less-visited sibling — a real working city with a medieval core, a lively student population, and none of the theme-park feeling."
+      },
+      {
+        "name": "Brussels",
+        "notes": "Skip the EU quarter. The Grand Place at night, the comic strip murals scattered through downtown, and Sainte-Catherine's seafood restaurants are the real draw."
+      }
+    ],
+    "food": [
+      {
+        "name": "Frites",
+        "notes": "Twice-fried in beef tallow and served in a paper cone with a small mountain of sauce options. A proper friterie takes this more seriously than you'd expect."
+      },
+      {
+        "name": "Moules-frites",
+        "notes": "A pot of mussels steamed in wine, cream, or beer, always with a side of the fries above. The unofficial national dish."
+      },
+      {
+        "name": "Belgian waffles",
+        "notes": "Two regional versions worth knowing: the light, crisp Brussels waffle and the denser, caramelized-sugar Liège waffle. Get both, argue with yourself about which is better."
+      },
+      {
+        "name": "Trappist beer",
+        "notes": "Brewed by actual monks in a handful of abbeys. Chimay and Orval are the easiest to find; a bar with a real Belgian beer menu is worth seeking out over a generic pub."
+      }
+    ],
+    "tips": [
+      "Trains connect every major city in under an hour — no need to rent a car or fly domestically.",
+      "Chocolate shops are everywhere, but the good ones (Pierre Marcolini, Laurent Gerbaud) are worth the extra few euros over the tourist-strip stores.",
+      "Bruges gets overwhelmed with day-trippers by mid-morning; staying overnight gets you the town to yourself at dawn and after dark."
+    ],
+    "vibe_tags": [
+      "canals",
+      "medieval towns",
+      "beer culture",
+      "food culture",
+      "architecture"
+    ],
+    "photo": "https://images.pexels.com/photos/35829215/pexels-photo-35829215.jpeg?auto=compress&cs=tinysrgb&w=1200",
+    "budget": "$$",
+    "ideal_days": 4,
+    "budget_breakdown": {
+      "lodging": {
+        "low": 52,
+        "high": 96
+      },
+      "food": {
+        "low": 24,
+        "high": 45
+      },
+      "fun": {
+        "low": 18,
+        "high": 38
+      },
+      "transport": {
+        "low": 12,
+        "high": 26
+      }
+    }
+  },
+  {
+    "id": 55,
+    "name": "Denmark",
+    "code": "DK",
+    "region": "europe",
+    "status": "dreaming",
+    "tagline": "Colorful harbor houses, effortless design, and a national obsession with getting cozy.",
+    "description": "Copenhagen runs on bikes, good light, and a level of quiet civic competence that makes everything feel easier than it should. Nyhavn's postcard-colored townhouses are the obvious photo, but the city rewards wandering into Christianshavn's houseboats or Frederiksberg's residential streets just as much. It's an expensive country, but so much of what makes it worthwhile — biking along the harbor, sitting in a park with a pastry, watching the light stretch out on a June evening — costs nothing at all.",
+    "best_time": "May–September",
+    "language": "Danish",
+    "currency": "Danish Krone (kr)",
+    "cities": [
+      {
+        "name": "Copenhagen",
+        "notes": "Nyhavn at golden hour, Christianshavn's canals and houseboats, and Tivoli Gardens if you want old-world amusement park charm instead of anything modern."
+      },
+      {
+        "name": "Aarhus",
+        "notes": "Denmark's second city — smaller, younger, and home to ARoS museum's rainbow rooftop walkway, which is worth the day trip alone."
+      },
+      {
+        "name": "Odense",
+        "notes": "Hans Christian Andersen's hometown, with a well-preserved old quarter that's easy to see in half a day between Copenhagen and Aarhus."
+      }
+    ],
+    "food": [
+      {
+        "name": "Smørrebrød",
+        "notes": "Open-faced rye bread piled with anything from pickled herring to roast beef and fried onions. Lunch, essentially, but treated with real craft."
+      },
+      {
+        "name": "Wienerbrød",
+        "notes": "What the rest of the world calls a 'Danish' — buttery, laminated, and nothing like the mass-produced version. A proper bakery makes the difference obvious."
+      },
+      {
+        "name": "New Nordic cuisine",
+        "notes": "Copenhagen basically invented the modern foraged-and-fermented tasting-menu movement. You don't need a Noma reservation to taste the influence — it's in casual spots all over the city now."
+      }
+    ],
+    "tips": [
+      "Rent a bike the first day — Copenhagen's cycling infrastructure makes it faster than transit for most trips within the city.",
+      "Everything is expensive; budget for it going in rather than being surprised by a coffee that costs what a meal would elsewhere.",
+      "Daylight swings hard by season — near-endless light in June, a handful of daylight hours in December. Plan around it."
+    ],
+    "vibe_tags": [
+      "design",
+      "harbor towns",
+      "cycling",
+      "hygge",
+      "architecture"
+    ],
+    "photo": "https://images.pexels.com/photos/8312086/pexels-photo-8312086.jpeg?auto=compress&cs=tinysrgb&w=1200",
+    "budget": "$$$",
+    "ideal_days": 4,
+    "budget_breakdown": {
+      "lodging": {
+        "low": 108,
+        "high": 242
+      },
+      "food": {
+        "low": 44,
+        "high": 90
+      },
+      "fun": {
+        "low": 35,
+        "high": 79
+      },
+      "transport": {
+        "low": 20,
+        "high": 47
+      }
+    }
   }
 ]

@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Departure Lounge</title>
-<meta name="description" content="A travel bucket list — 50 destinations, boarding passes not yet stamped.">
+<meta name="description" content="A travel bucket list, boarding passes not yet stamped.">
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>✈</text></svg>">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -923,7 +923,7 @@ const ISO_MAP = {
   404:'Kenya', 400:'Jordan', 144:'Sri Lanka', 360:'Indonesia',
   608:'Philippines', 116:'Cambodia', 203:'Czech Republic',
   40:'Austria', 348:'Hungary', 752:'Sweden', 784:'UAE',
-  188:'Costa Rica', 616:'Poland'
+  188:'Costa Rica', 616:'Poland', 56:'Belgium', 208:'Denmark'
 };
 
 // Per-country label: [dx, dy, text-anchor, minZoom]
@@ -964,6 +964,8 @@ const LABEL_OPTS = {
   'Taiwan':         [  9,  -5, 'start', 2.5],
   'Singapore':      [  9,   3, 'start', 2.5],
   'Netherlands':    [  9,  -5, 'start', 2.5],
+  'Belgium':        [ -9,   8, 'end',   2.5],
+  'Denmark':        [  9,  -6, 'start', 2.5],
 };
 
 // All world countries: ISO numeric → display name
@@ -1046,6 +1048,7 @@ const COORDS   = {
   'Hungary':     [ 19.50,  47.16], 'Sweden':     [ 18.64,  59.33],
   'UAE':         [ 53.85,  23.42], 'Costa Rica': [-84.09,   9.75],
   'Poland':      [ 19.14,  51.92],
+  'Belgium':     [  4.47,  50.85], 'Denmark':    [ 10.00,  56.00],
 };
 
 // ── BEST MONTHS MAP ───────────────────────────────
@@ -1100,6 +1103,8 @@ const BEST_MONTHS = {
   'UAE':            [11,12,1,2,3],
   'Costa Rica':     [12,1,2,3,4],
   'Poland':         [5,6,7,8,9,12],
+  'Belgium':        [4,5,6,9],
+  'Denmark':        [5,6,7,8,9],
 };
 
 // ── STATE ─────────────────────────────────────────
