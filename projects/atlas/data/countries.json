@@ -66,7 +66,25 @@
     ],
     "photo": "https://images.pexels.com/photos/4336279/pexels-photo-4336279.jpeg?auto=compress&cs=tinysrgb&w=1200",
     "budget": "$$$",
-    "ideal_days": 14
+    "ideal_days": 14,
+    "budget_breakdown": {
+      "lodging": {
+        "low": 103,
+        "high": 248
+      },
+      "food": {
+        "low": 35,
+        "high": 75
+      },
+      "fun": {
+        "low": 28,
+        "high": 66
+      },
+      "transport": {
+        "low": 17,
+        "high": 42
+      }
+    }
   },
   {
     "id": 2,
@@ -135,7 +153,25 @@
     ],
     "photo": "https://images.pexels.com/photos/17803934/pexels-photo-17803934.jpeg?auto=compress&cs=tinysrgb&w=1200",
     "budget": "$$",
-    "ideal_days": 10
+    "ideal_days": 10,
+    "budget_breakdown": {
+      "lodging": {
+        "low": 48,
+        "high": 95
+      },
+      "food": {
+        "low": 21,
+        "high": 42
+      },
+      "fun": {
+        "low": 16,
+        "high": 38
+      },
+      "transport": {
+        "low": 9,
+        "high": 23
+      }
+    }
   },
   {
     "id": 3,
@@ -204,7 +240,25 @@
     ],
     "photo": "https://images.pexels.com/photos/1717934/pexels-photo-1717934.jpeg?auto=compress&cs=tinysrgb&w=1200",
     "budget": "$$",
-    "ideal_days": 7
+    "ideal_days": 7,
+    "budget_breakdown": {
+      "lodging": {
+        "low": 44,
+        "high": 88
+      },
+      "food": {
+        "low": 18,
+        "high": 35
+      },
+      "fun": {
+        "low": 14,
+        "high": 33
+      },
+      "transport": {
+        "low": 10,
+        "high": 25
+      }
+    }
   },
   {
     "id": 4,
@@ -269,7 +323,25 @@
     ],
     "photo": "https://images.pexels.com/photos/23644344/pexels-photo-23644344.jpeg?auto=compress&cs=tinysrgb&w=1200",
     "budget": "$$$",
-    "ideal_days": 7
+    "ideal_days": 7,
+    "budget_breakdown": {
+      "lodging": {
+        "low": 89,
+        "high": 213
+      },
+      "food": {
+        "low": 37,
+        "high": 79
+      },
+      "fun": {
+        "low": 31,
+        "high": 73
+      },
+      "transport": {
+        "low": 18,
+        "high": 45
+      }
+    }
   },
   {
     "id": 5,
@@ -338,7 +410,25 @@
     ],
     "photo": "https://images.pexels.com/photos/6110642/pexels-photo-6110642.jpeg?auto=compress&cs=tinysrgb&w=1200",
     "budget": "$$",
-    "ideal_days": 10
+    "ideal_days": 10,
+    "budget_breakdown": {
+      "lodging": {
+        "low": 42,
+        "high": 84
+      },
+      "food": {
+        "low": 20,
+        "high": 41
+      },
+      "fun": {
+        "low": 16,
+        "high": 38
+      },
+      "transport": {
+        "low": 9,
+        "high": 22
+      }
+    }
   },
   {
     "id": 6,
@@ -407,7 +497,25 @@
     ],
     "photo": "https://images.pexels.com/photos/1461974/pexels-photo-1461974.jpeg?auto=compress&cs=tinysrgb&w=1200",
     "budget": "$$$",
-    "ideal_days": 10
+    "ideal_days": 10,
+    "budget_breakdown": {
+      "lodging": {
+        "low": 107,
+        "high": 258
+      },
+      "food": {
+        "low": 42,
+        "high": 89
+      },
+      "fun": {
+        "low": 29,
+        "high": 67
+      },
+      "transport": {
+        "low": 17,
+        "high": 41
+      }
+    }
   },
   {
     "id": 7,
@@ -476,7 +584,25 @@
     ],
     "photo": "https://images.pexels.com/photos/33224215/pexels-photo-33224215.jpeg?auto=compress&cs=tinysrgb&w=1200",
     "budget": "$",
-    "ideal_days": 14
+    "ideal_days": 14,
+    "budget_breakdown": {
+      "lodging": {
+        "low": 17,
+        "high": 39
+      },
+      "food": {
+        "low": 8,
+        "high": 17
+      },
+      "fun": {
+        "low": 5,
+        "high": 14
+      },
+      "transport": {
+        "low": 3,
+        "high": 9
+      }
+    }
   },
   {
     "id": 8,
@@ -545,7 +671,25 @@
     ],
     "photo": "https://images.pexels.com/photos/5472522/pexels-photo-5472522.jpeg?auto=compress&cs=tinysrgb&w=1200",
     "budget": "$",
-    "ideal_days": 10
+    "ideal_days": 10,
+    "budget_breakdown": {
+      "lodging": {
+        "low": 16,
+        "high": 38
+      },
+      "food": {
+        "low": 8,
+        "high": 18
+      },
+      "fun": {
+        "low": 5,
+        "high": 16
+      },
+      "transport": {
+        "low": 3,
+        "high": 11
+      }
+    }
   },
   {
     "id": 10,
@@ -614,7 +758,25 @@
     ],
     "photo": "https://images.pexels.com/photos/22670278/pexels-photo-22670278.jpeg?auto=compress&cs=tinysrgb&w=1200",
     "budget": "$$",
-    "ideal_days": 7
+    "ideal_days": 7,
+    "budget_breakdown": {
+      "lodging": {
+        "low": 45,
+        "high": 91
+      },
+      "food": {
+        "low": 22,
+        "high": 45
+      },
+      "fun": {
+        "low": 15,
+        "high": 34
+      },
+      "transport": {
+        "low": 10,
+        "high": 25
+      }
+    }
   },
   {
     "id": 11,
@@ -679,7 +841,25 @@
     ],
     "photo": "https://images.pexels.com/photos/32910336/pexels-photo-32910336.jpeg?auto=compress&cs=tinysrgb&w=1200",
     "budget": "$",
-    "ideal_days": 14
+    "ideal_days": 14,
+    "budget_breakdown": {
+      "lodging": {
+        "low": 16,
+        "high": 38
+      },
+      "food": {
+        "low": 8,
+        "high": 19
+      },
+      "fun": {
+        "low": 5,
+        "high": 16
+      },
+      "transport": {
+        "low": 3,
+        "high": 10
+      }
+    }
   },
   {
     "id": 12,
@@ -748,7 +928,25 @@
     ],
     "photo": "https://images.pexels.com/photos/1260801/pexels-photo-1260801.jpeg?auto=compress&cs=tinysrgb&w=1200",
     "budget": "$",
-    "ideal_days": 14
+    "ideal_days": 14,
+    "budget_breakdown": {
+      "lodging": {
+        "low": 16,
+        "high": 37
+      },
+      "food": {
+        "low": 7,
+        "high": 16
+      },
+      "fun": {
+        "low": 5,
+        "high": 14
+      },
+      "transport": {
+        "low": 3,
+        "high": 9
+      }
+    }
   },
   {
     "id": 13,
@@ -813,7 +1011,25 @@
     ],
     "photo": "https://images.pexels.com/photos/31338734/pexels-photo-31338734.jpeg?auto=compress&cs=tinysrgb&w=1200",
     "budget": "$$$",
-    "ideal_days": 14
+    "ideal_days": 14,
+    "budget_breakdown": {
+      "lodging": {
+        "low": 90,
+        "high": 216
+      },
+      "food": {
+        "low": 37,
+        "high": 80
+      },
+      "fun": {
+        "low": 27,
+        "high": 63
+      },
+      "transport": {
+        "low": 17,
+        "high": 43
+      }
+    }
   },
   {
     "id": 14,
@@ -878,7 +1094,25 @@
     ],
     "photo": "https://images.pexels.com/photos/29264035/pexels-photo-29264035.jpeg?auto=compress&cs=tinysrgb&w=1200",
     "budget": "$$$",
-    "ideal_days": 7
+    "ideal_days": 7,
+    "budget_breakdown": {
+      "lodging": {
+        "low": 103,
+        "high": 248
+      },
+      "food": {
+        "low": 39,
+        "high": 82
+      },
+      "fun": {
+        "low": 29,
+        "high": 68
+      },
+      "transport": {
+        "low": 17,
+        "high": 42
+      }
+    }
   },
   {
     "id": 15,
@@ -947,7 +1181,25 @@
     ],
     "photo": "https://images.pexels.com/photos/6563919/pexels-photo-6563919.jpeg?auto=compress&cs=tinysrgb&w=1200",
     "budget": "$",
-    "ideal_days": 10
+    "ideal_days": 10,
+    "budget_breakdown": {
+      "lodging": {
+        "low": 14,
+        "high": 33
+      },
+      "food": {
+        "low": 9,
+        "high": 20
+      },
+      "fun": {
+        "low": 5,
+        "high": 16
+      },
+      "transport": {
+        "low": 3,
+        "high": 10
+      }
+    }
   },
   {
     "id": 16,
@@ -1016,7 +1268,25 @@
     ],
     "photo": "https://images.pexels.com/photos/30073413/pexels-photo-30073413.jpeg?auto=compress&cs=tinysrgb&w=1200",
     "budget": "$",
-    "ideal_days": 10
+    "ideal_days": 10,
+    "budget_breakdown": {
+      "lodging": {
+        "low": 14,
+        "high": 32
+      },
+      "food": {
+        "low": 8,
+        "high": 19
+      },
+      "fun": {
+        "low": 5,
+        "high": 14
+      },
+      "transport": {
+        "low": 3,
+        "high": 10
+      }
+    }
   },
   {
     "id": 17,
@@ -1085,7 +1355,25 @@
     ],
     "photo": "https://images.pexels.com/photos/32634623/pexels-photo-32634623.jpeg?auto=compress&cs=tinysrgb&w=1200",
     "budget": "$$",
-    "ideal_days": 10
+    "ideal_days": 10,
+    "budget_breakdown": {
+      "lodging": {
+        "low": 50,
+        "high": 101
+      },
+      "food": {
+        "low": 21,
+        "high": 41
+      },
+      "fun": {
+        "low": 15,
+        "high": 35
+      },
+      "transport": {
+        "low": 10,
+        "high": 26
+      }
+    }
   },
   {
     "id": 19,
@@ -1150,7 +1438,25 @@
     ],
     "photo": "https://images.pexels.com/photos/1562058/pexels-photo-1562058.jpeg?auto=compress&cs=tinysrgb&w=1200",
     "budget": "$$$",
-    "ideal_days": 10
+    "ideal_days": 10,
+    "budget_breakdown": {
+      "lodging": {
+        "low": 108,
+        "high": 260
+      },
+      "food": {
+        "low": 43,
+        "high": 91
+      },
+      "fun": {
+        "low": 28,
+        "high": 65
+      },
+      "transport": {
+        "low": 16,
+        "high": 40
+      }
+    }
   },
   {
     "id": 20,
@@ -1205,7 +1511,25 @@
     ],
     "photo": "https://images.pexels.com/photos/380707/pexels-photo-380707.jpeg?auto=compress&cs=tinysrgb&w=1200",
     "budget": "$$",
-    "ideal_days": 7
+    "ideal_days": 7,
+    "budget_breakdown": {
+      "lodging": {
+        "low": 43,
+        "high": 86
+      },
+      "food": {
+        "low": 19,
+        "high": 38
+      },
+      "fun": {
+        "low": 14,
+        "high": 33
+      },
+      "transport": {
+        "low": 11,
+        "high": 28
+      }
+    }
   },
   {
     "id": 21,
@@ -1260,7 +1584,25 @@
     ],
     "photo": "https://images.pexels.com/photos/15193542/pexels-photo-15193542.jpeg?auto=compress&cs=tinysrgb&w=1200",
     "budget": "$",
-    "ideal_days": 10
+    "ideal_days": 10,
+    "budget_breakdown": {
+      "lodging": {
+        "low": 16,
+        "high": 38
+      },
+      "food": {
+        "low": 8,
+        "high": 17
+      },
+      "fun": {
+        "low": 5,
+        "high": 16
+      },
+      "transport": {
+        "low": 3,
+        "high": 10
+      }
+    }
   },
   {
     "id": 22,
@@ -1315,7 +1657,25 @@
     ],
     "photo": "https://images.pexels.com/photos/3873681/pexels-photo-3873681.jpeg?auto=compress&cs=tinysrgb&w=1200",
     "budget": "$",
-    "ideal_days": 10
+    "ideal_days": 10,
+    "budget_breakdown": {
+      "lodging": {
+        "low": 16,
+        "high": 38
+      },
+      "food": {
+        "low": 8,
+        "high": 18
+      },
+      "fun": {
+        "low": 5,
+        "high": 14
+      },
+      "transport": {
+        "low": 3,
+        "high": 9
+      }
+    }
   },
   {
     "id": 23,
@@ -1370,7 +1730,25 @@
     ],
     "photo": "https://images.pexels.com/photos/2818895/pexels-photo-2818895.jpeg?auto=compress&cs=tinysrgb&w=1200",
     "budget": "$$",
-    "ideal_days": 14
+    "ideal_days": 14,
+    "budget_breakdown": {
+      "lodging": {
+        "low": 46,
+        "high": 91
+      },
+      "food": {
+        "low": 19,
+        "high": 38
+      },
+      "fun": {
+        "low": 15,
+        "high": 36
+      },
+      "transport": {
+        "low": 11,
+        "high": 27
+      }
+    }
   },
   {
     "id": 24,
@@ -1425,7 +1803,25 @@
     ],
     "photo": "https://images.pexels.com/photos/945615/pexels-photo-945615.jpeg?auto=compress&cs=tinysrgb&w=1200",
     "budget": "$$$",
-    "ideal_days": 14
+    "ideal_days": 14,
+    "budget_breakdown": {
+      "lodging": {
+        "low": 98,
+        "high": 234
+      },
+      "food": {
+        "low": 37,
+        "high": 79
+      },
+      "fun": {
+        "low": 34,
+        "high": 78
+      },
+      "transport": {
+        "low": 18,
+        "high": 45
+      }
+    }
   },
   {
     "id": 25,
@@ -1480,7 +1876,25 @@
     ],
     "photo": "https://images.pexels.com/photos/30091818/pexels-photo-30091818.jpeg?auto=compress&cs=tinysrgb&w=1200",
     "budget": "$$",
-    "ideal_days": 7
+    "ideal_days": 7,
+    "budget_breakdown": {
+      "lodging": {
+        "low": 41,
+        "high": 81
+      },
+      "food": {
+        "low": 18,
+        "high": 36
+      },
+      "fun": {
+        "low": 14,
+        "high": 32
+      },
+      "transport": {
+        "low": 10,
+        "high": 26
+      }
+    }
   },
   {
     "id": 26,
@@ -1535,7 +1949,25 @@
     ],
     "photo": "https://images.pexels.com/photos/4185836/pexels-photo-4185836.jpeg?auto=compress&cs=tinysrgb&w=1200",
     "budget": "$",
-    "ideal_days": 14
+    "ideal_days": 14,
+    "budget_breakdown": {
+      "lodging": {
+        "low": 16,
+        "high": 37
+      },
+      "food": {
+        "low": 8,
+        "high": 18
+      },
+      "fun": {
+        "low": 4,
+        "high": 13
+      },
+      "transport": {
+        "low": 3,
+        "high": 10
+      }
+    }
   },
   {
     "id": 28,
@@ -1590,7 +2022,25 @@
     ],
     "photo": "https://images.pexels.com/photos/8804890/pexels-photo-8804890.jpeg?auto=compress&cs=tinysrgb&w=1200",
     "budget": "$",
-    "ideal_days": 7
+    "ideal_days": 7,
+    "budget_breakdown": {
+      "lodging": {
+        "low": 17,
+        "high": 39
+      },
+      "food": {
+        "low": 8,
+        "high": 18
+      },
+      "fun": {
+        "low": 6,
+        "high": 17
+      },
+      "transport": {
+        "low": 3,
+        "high": 11
+      }
+    }
   },
   {
     "id": 29,
@@ -1645,7 +2095,25 @@
     ],
     "photo": "https://images.pexels.com/photos/685766/pexels-photo-685766.jpeg?auto=compress&cs=tinysrgb&w=1200",
     "budget": "$$$",
-    "ideal_days": 7
+    "ideal_days": 7,
+    "budget_breakdown": {
+      "lodging": {
+        "low": 88,
+        "high": 212
+      },
+      "food": {
+        "low": 42,
+        "high": 90
+      },
+      "fun": {
+        "low": 31,
+        "high": 73
+      },
+      "transport": {
+        "low": 18,
+        "high": 45
+      }
+    }
   },
   {
     "id": 30,
@@ -1700,7 +2168,25 @@
     ],
     "photo": "https://images.pexels.com/photos/460672/pexels-photo-460672.jpeg?auto=compress&cs=tinysrgb&w=1200",
     "budget": "$$$",
-    "ideal_days": 10
+    "ideal_days": 10,
+    "budget_breakdown": {
+      "lodging": {
+        "low": 94,
+        "high": 227
+      },
+      "food": {
+        "low": 41,
+        "high": 88
+      },
+      "fun": {
+        "low": 27,
+        "high": 63
+      },
+      "transport": {
+        "low": 18,
+        "high": 44
+      }
+    }
   },
   {
     "id": 31,
@@ -1759,7 +2245,25 @@
     ],
     "photo": "https://images.pexels.com/photos/32131622/pexels-photo-32131622.jpeg?auto=compress&cs=tinysrgb&w=1200",
     "budget": "$$$",
-    "ideal_days": 14
+    "ideal_days": 14,
+    "budget_breakdown": {
+      "lodging": {
+        "low": 99,
+        "high": 237
+      },
+      "food": {
+        "low": 44,
+        "high": 94
+      },
+      "fun": {
+        "low": 33,
+        "high": 76
+      },
+      "transport": {
+        "low": 17,
+        "high": 42
+      }
+    }
   },
   {
     "id": 32,
@@ -1818,7 +2322,25 @@
     ],
     "photo": "https://images.pexels.com/photos/3262994/pexels-photo-3262994.jpeg?auto=compress&cs=tinysrgb&w=1200",
     "budget": "$$",
-    "ideal_days": 14
+    "ideal_days": 14,
+    "budget_breakdown": {
+      "lodging": {
+        "low": 45,
+        "high": 90
+      },
+      "food": {
+        "low": 18,
+        "high": 37
+      },
+      "fun": {
+        "low": 16,
+        "high": 38
+      },
+      "transport": {
+        "low": 11,
+        "high": 27
+      }
+    }
   },
   {
     "id": 33,
@@ -1877,7 +2399,25 @@
     ],
     "photo": "https://images.pexels.com/photos/18759055/pexels-photo-18759055.jpeg?auto=compress&cs=tinysrgb&w=1200",
     "budget": "$$",
-    "ideal_days": 7
+    "ideal_days": 7,
+    "budget_breakdown": {
+      "lodging": {
+        "low": 43,
+        "high": 86
+      },
+      "food": {
+        "low": 21,
+        "high": 41
+      },
+      "fun": {
+        "low": 15,
+        "high": 36
+      },
+      "transport": {
+        "low": 9,
+        "high": 23
+      }
+    }
   },
   {
     "id": 34,
@@ -1936,7 +2476,25 @@
     ],
     "photo": "https://images.pexels.com/photos/8482764/pexels-photo-8482764.jpeg?auto=compress&cs=tinysrgb&w=1200",
     "budget": "$$$",
-    "ideal_days": 5
+    "ideal_days": 5,
+    "budget_breakdown": {
+      "lodging": {
+        "low": 106,
+        "high": 255
+      },
+      "food": {
+        "low": 40,
+        "high": 86
+      },
+      "fun": {
+        "low": 32,
+        "high": 75
+      },
+      "transport": {
+        "low": 18,
+        "high": 45
+      }
+    }
   },
   {
     "id": 35,
@@ -1991,7 +2549,25 @@
     ],
     "photo": "https://images.pexels.com/photos/2792077/pexels-photo-2792077.jpeg?auto=compress&cs=tinysrgb&w=1200",
     "budget": "$$$",
-    "ideal_days": 5
+    "ideal_days": 5,
+    "budget_breakdown": {
+      "lodging": {
+        "low": 88,
+        "high": 211
+      },
+      "food": {
+        "low": 38,
+        "high": 81
+      },
+      "fun": {
+        "low": 27,
+        "high": 62
+      },
+      "transport": {
+        "low": 20,
+        "high": 50
+      }
+    }
   },
   {
     "id": 36,
@@ -2050,7 +2626,25 @@
     ],
     "photo": "https://images.pexels.com/photos/14676934/pexels-photo-14676934.jpeg?auto=compress&cs=tinysrgb&w=1200",
     "budget": "$$",
-    "ideal_days": 14
+    "ideal_days": 14,
+    "budget_breakdown": {
+      "lodging": {
+        "low": 49,
+        "high": 98
+      },
+      "food": {
+        "low": 22,
+        "high": 43
+      },
+      "fun": {
+        "low": 14,
+        "high": 33
+      },
+      "transport": {
+        "low": 9,
+        "high": 22
+      }
+    }
   },
   {
     "id": 37,
@@ -2107,7 +2701,25 @@
     ],
     "photo": "https://images.pexels.com/photos/2516418/pexels-photo-2516418.jpeg?auto=compress&cs=tinysrgb&w=1200",
     "budget": "$$",
-    "ideal_days": 12
+    "ideal_days": 12,
+    "budget_breakdown": {
+      "lodging": {
+        "low": 49,
+        "high": 98
+      },
+      "food": {
+        "low": 22,
+        "high": 44
+      },
+      "fun": {
+        "low": 14,
+        "high": 32
+      },
+      "transport": {
+        "low": 10,
+        "high": 25
+      }
+    }
   },
   {
     "id": 38,
@@ -2164,7 +2776,25 @@
     ],
     "photo": "https://images.pexels.com/photos/11815919/pexels-photo-11815919.jpeg?auto=compress&cs=tinysrgb&w=1200",
     "budget": "$",
-    "ideal_days": 10
+    "ideal_days": 10,
+    "budget_breakdown": {
+      "lodging": {
+        "low": 13,
+        "high": 31
+      },
+      "food": {
+        "low": 9,
+        "high": 19
+      },
+      "fun": {
+        "low": 5,
+        "high": 16
+      },
+      "transport": {
+        "low": 3,
+        "high": 9
+      }
+    }
   },
   {
     "id": 39,
@@ -2221,7 +2851,25 @@
     ],
     "photo": "https://images.pexels.com/photos/25067987/pexels-photo-25067987.jpeg?auto=compress&cs=tinysrgb&w=1200",
     "budget": "$$",
-    "ideal_days": 14
+    "ideal_days": 14,
+    "budget_breakdown": {
+      "lodging": {
+        "low": 45,
+        "high": 89
+      },
+      "food": {
+        "low": 20,
+        "high": 40
+      },
+      "fun": {
+        "low": 14,
+        "high": 33
+      },
+      "transport": {
+        "low": 11,
+        "high": 27
+      }
+    }
   },
   {
     "id": 40,
@@ -2278,7 +2926,25 @@
     ],
     "photo": "https://images.pexels.com/photos/4064211/pexels-photo-4064211.jpeg?auto=compress&cs=tinysrgb&w=1200",
     "budget": "$$",
-    "ideal_days": 14
+    "ideal_days": 14,
+    "budget_breakdown": {
+      "lodging": {
+        "low": 44,
+        "high": 88
+      },
+      "food": {
+        "low": 19,
+        "high": 37
+      },
+      "fun": {
+        "low": 15,
+        "high": 35
+      },
+      "transport": {
+        "low": 11,
+        "high": 26
+      }
+    }
   },
   {
     "id": 41,
@@ -2335,7 +3001,25 @@
     ],
     "photo": "https://images.pexels.com/photos/3529692/pexels-photo-3529692.jpeg?auto=compress&cs=tinysrgb&w=1200",
     "budget": "$$$",
-    "ideal_days": 10
+    "ideal_days": 10,
+    "budget_breakdown": {
+      "lodging": {
+        "low": 93,
+        "high": 223
+      },
+      "food": {
+        "low": 38,
+        "high": 81
+      },
+      "fun": {
+        "low": 34,
+        "high": 78
+      },
+      "transport": {
+        "low": 19,
+        "high": 47
+      }
+    }
   },
   {
     "id": 42,
@@ -2391,7 +3075,25 @@
     ],
     "photo": "https://images.pexels.com/photos/720254/pexels-photo-720254.jpeg?auto=compress&cs=tinysrgb&w=1200",
     "budget": "$$",
-    "ideal_days": 7
+    "ideal_days": 7,
+    "budget_breakdown": {
+      "lodging": {
+        "low": 44,
+        "high": 89
+      },
+      "food": {
+        "low": 20,
+        "high": 40
+      },
+      "fun": {
+        "low": 14,
+        "high": 32
+      },
+      "transport": {
+        "low": 9,
+        "high": 23
+      }
+    }
   },
   {
     "id": 43,
@@ -2448,7 +3150,25 @@
     ],
     "photo": "https://images.pexels.com/photos/14041994/pexels-photo-14041994.jpeg?auto=compress&cs=tinysrgb&w=1200",
     "budget": "$",
-    "ideal_days": 12
+    "ideal_days": 12,
+    "budget_breakdown": {
+      "lodging": {
+        "low": 14,
+        "high": 34
+      },
+      "food": {
+        "low": 8,
+        "high": 18
+      },
+      "fun": {
+        "low": 5,
+        "high": 14
+      },
+      "transport": {
+        "low": 3,
+        "high": 9
+      }
+    }
   },
   {
     "id": 44,
@@ -2505,7 +3225,25 @@
     ],
     "photo": "https://images.pexels.com/photos/2412711/pexels-photo-2412711.jpeg?auto=compress&cs=tinysrgb&w=1200",
     "budget": "$",
-    "ideal_days": 14
+    "ideal_days": 14,
+    "budget_breakdown": {
+      "lodging": {
+        "low": 13,
+        "high": 31
+      },
+      "food": {
+        "low": 8,
+        "high": 19
+      },
+      "fun": {
+        "low": 5,
+        "high": 14
+      },
+      "transport": {
+        "low": 3,
+        "high": 11
+      }
+    }
   },
   {
     "id": 45,
@@ -2562,7 +3300,25 @@
     ],
     "photo": "https://images.pexels.com/photos/13874296/pexels-photo-13874296.jpeg?auto=compress&cs=tinysrgb&w=1200",
     "budget": "$",
-    "ideal_days": 14
+    "ideal_days": 14,
+    "budget_breakdown": {
+      "lodging": {
+        "low": 16,
+        "high": 38
+      },
+      "food": {
+        "low": 7,
+        "high": 16
+      },
+      "fun": {
+        "low": 5,
+        "high": 14
+      },
+      "transport": {
+        "low": 3,
+        "high": 10
+      }
+    }
   },
   {
     "id": 46,
@@ -2619,7 +3375,25 @@
     ],
     "photo": "https://images.pexels.com/photos/15928898/pexels-photo-15928898.jpeg?auto=compress&cs=tinysrgb&w=1200",
     "budget": "$",
-    "ideal_days": 8
+    "ideal_days": 8,
+    "budget_breakdown": {
+      "lodging": {
+        "low": 14,
+        "high": 33
+      },
+      "food": {
+        "low": 7,
+        "high": 16
+      },
+      "fun": {
+        "low": 6,
+        "high": 17
+      },
+      "transport": {
+        "low": 3,
+        "high": 10
+      }
+    }
   },
   {
     "id": 47,
@@ -2676,7 +3450,25 @@
     ],
     "photo": "https://images.pexels.com/photos/16922751/pexels-photo-16922751.jpeg?auto=compress&cs=tinysrgb&w=1200",
     "budget": "$$",
-    "ideal_days": 6
+    "ideal_days": 6,
+    "budget_breakdown": {
+      "lodging": {
+        "low": 45,
+        "high": 89
+      },
+      "food": {
+        "low": 21,
+        "high": 43
+      },
+      "fun": {
+        "low": 16,
+        "high": 38
+      },
+      "transport": {
+        "low": 9,
+        "high": 23
+      }
+    }
   },
   {
     "id": 48,
@@ -2733,7 +3525,25 @@
     ],
     "photo": "https://images.pexels.com/photos/11932444/pexels-photo-11932444.jpeg?auto=compress&cs=tinysrgb&w=1200",
     "budget": "$$$",
-    "ideal_days": 7
+    "ideal_days": 7,
+    "budget_breakdown": {
+      "lodging": {
+        "low": 90,
+        "high": 217
+      },
+      "food": {
+        "low": 39,
+        "high": 84
+      },
+      "fun": {
+        "low": 29,
+        "high": 69
+      },
+      "transport": {
+        "low": 18,
+        "high": 45
+      }
+    }
   },
   {
     "id": 49,
@@ -2790,7 +3600,25 @@
     ],
     "photo": "https://images.pexels.com/photos/3700529/pexels-photo-3700529.jpeg?auto=compress&cs=tinysrgb&w=1200",
     "budget": "$$",
-    "ideal_days": 5
+    "ideal_days": 5,
+    "budget_breakdown": {
+      "lodging": {
+        "low": 47,
+        "high": 95
+      },
+      "food": {
+        "low": 21,
+        "high": 42
+      },
+      "fun": {
+        "low": 17,
+        "high": 39
+      },
+      "transport": {
+        "low": 9,
+        "high": 23
+      }
+    }
   },
   {
     "id": 50,
@@ -2847,7 +3675,25 @@
     ],
     "photo": "https://images.pexels.com/photos/29138603/pexels-photo-29138603.jpeg?auto=compress&cs=tinysrgb&w=1200",
     "budget": "$$$",
-    "ideal_days": 8
+    "ideal_days": 8,
+    "budget_breakdown": {
+      "lodging": {
+        "low": 98,
+        "high": 234
+      },
+      "food": {
+        "low": 38,
+        "high": 82
+      },
+      "fun": {
+        "low": 33,
+        "high": 76
+      },
+      "transport": {
+        "low": 17,
+        "high": 42
+      }
+    }
   },
   {
     "id": 51,
@@ -2904,7 +3750,25 @@
     ],
     "photo": "https://images.pexels.com/photos/5686514/pexels-photo-5686514.jpeg?auto=compress&cs=tinysrgb&w=1200",
     "budget": "$$$",
-    "ideal_days": 5
+    "ideal_days": 5,
+    "budget_breakdown": {
+      "lodging": {
+        "low": 93,
+        "high": 222
+      },
+      "food": {
+        "low": 40,
+        "high": 84
+      },
+      "fun": {
+        "low": 29,
+        "high": 69
+      },
+      "transport": {
+        "low": 17,
+        "high": 43
+      }
+    }
   },
   {
     "id": 52,
@@ -2961,7 +3825,25 @@
     ],
     "photo": "https://images.pexels.com/photos/16863807/pexels-photo-16863807.jpeg?auto=compress&cs=tinysrgb&w=1200",
     "budget": "$$",
-    "ideal_days": 10
+    "ideal_days": 10,
+    "budget_breakdown": {
+      "lodging": {
+        "low": 42,
+        "high": 85
+      },
+      "food": {
+        "low": 22,
+        "high": 44
+      },
+      "fun": {
+        "low": 15,
+        "high": 35
+      },
+      "transport": {
+        "low": 11,
+        "high": 27
+      }
+    }
   },
   {
     "id": 53,
@@ -3018,6 +3900,24 @@
     ],
     "photo": "https://images.pexels.com/photos/19606024/pexels-photo-19606024.jpeg?auto=compress&cs=tinysrgb&w=1200",
     "budget": "$",
-    "ideal_days": 7
+    "ideal_days": 7,
+    "budget_breakdown": {
+      "lodging": {
+        "low": 15,
+        "high": 35
+      },
+      "food": {
+        "low": 7,
+        "high": 16
+      },
+      "fun": {
+        "low": 6,
+        "high": 17
+      },
+      "transport": {
+        "low": 3,
+        "high": 11
+      }
+    }
   }
 ]
