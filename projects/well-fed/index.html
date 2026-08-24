@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Well Fed</title>
-<meta name="description" content="A supportive food companion — meal ideas that fit your real life, not a diet plan.">
+<title>Healthy Diet Tracker</title>
+<meta name="description" content="A supportive food companion — meal ideas and small swaps that fit your real life.">
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🍵</text></svg>">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -335,7 +335,7 @@ button{font-family:inherit}
   <div class="topbar-left">
     <a href="../../index.html" class="back-link">← Portfolio</a>
   </div>
-  <div class="topbar-title">🍵 Well Fed</div>
+  <div class="topbar-title">🍵 Healthy Diet Tracker</div>
   <div class="topbar-right">
     <button class="icon-btn" onclick="openSettings()" aria-label="Settings" title="Your profile">⚙</button>
     <button class="icon-btn" onclick="toggleTheme()" aria-label="Toggle theme">◐</button>
@@ -400,7 +400,7 @@ button{font-family:inherit}
   </div>
 
   <p class="disclaimer">
-    Well Fed offers general wellness support and is not a substitute for advice from a doctor, dietitian, or dentist.
+    Healthy Diet Tracker offers general wellness support and is not a substitute for advice from a doctor, dietitian, or dentist.
     It doesn't diagnose anything. If something here doesn't sit right for your body, trust yourself over the app.
   </p>
 
@@ -878,7 +878,7 @@ function renderNoticeBanner() {
     notes.push('recurring cavities');
   }
   if (!notes.length) { el.innerHTML = ''; return; }
-  el.innerHTML = `<div class="notice-banner"><span class="ni">💛</span><span>Just a gentle note: given ${notes.join(' and ')}, it's worth keeping in touch with your doctor or dentist alongside these food choices. Well Fed can help with the day-to-day, not the medical side.</span></div>`;
+  el.innerHTML = `<div class="notice-banner"><span class="ni">💛</span><span>Just a gentle note: given ${notes.join(' and ')}, it's worth keeping in touch with your doctor or dentist alongside these food choices. Healthy Diet Tracker can help with the day-to-day, not the medical side.</span></div>`;
 }
 
 // ══ BOOT ═══════════════════════════════════════════
