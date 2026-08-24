@@ -193,6 +193,10 @@ button{font-family:inherit}
 }
 .regen-btn:hover{border-color:var(--border-2);color:var(--text-1)}
 .option-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+.options-empty{
+  grid-column:1/-1;background:var(--surface);border:1px dashed var(--border-2);border-radius:16px;
+  padding:20px;font-size:.85rem;color:var(--text-3);line-height:1.6;text-align:center;
+}
 @media(max-width:700px){.option-grid{grid-template-columns:1fr}}
 .option-card{
   background:var(--surface);border:1px solid var(--border);border-radius:16px;
@@ -256,6 +260,30 @@ button{font-family:inherit}
 .quick-chip:hover{border-color:var(--sage);color:var(--text-1)}
 
 /* ══ TINY HABITS ══ */
+/* ══ FOOD LOG ══ */
+.log-section{margin-bottom:30px}
+.log-add-row{display:flex;gap:8px;margin-bottom:16px}
+.log-add-row .text-input{flex:1}
+.log-date-group{margin-bottom:14px}
+.log-date-label{font-size:.68rem;letter-spacing:.5px;text-transform:uppercase;color:var(--text-3);font-weight:600;margin-bottom:8px}
+.log-entry{
+  display:flex;align-items:center;gap:10px;
+  background:var(--surface);border:1px solid var(--border);border-radius:12px;
+  padding:10px 14px;font-size:.85rem;color:var(--text-1);margin-bottom:6px;
+}
+.log-entry-emoji{font-size:1rem;flex-shrink:0}
+.log-entry-text{flex:1}
+.log-entry-del{background:none;border:none;color:var(--text-4);cursor:pointer;font-size:.85rem;padding:0 2px;flex-shrink:0}
+.log-entry-del:hover{color:var(--coral)}
+.log-empty{font-size:.82rem;color:var(--text-4);font-style:normal}
+.log-this-btn{
+  width:100%;padding:11px;border-radius:12px;background:none;
+  border:1px solid var(--sage);color:var(--sage);font-weight:600;cursor:pointer;
+  font-family:'Oswald',sans-serif;transition:all .2s;margin-bottom:14px;
+}
+.log-this-btn:hover{background:var(--sage-dim)}
+.log-this-btn.logged{background:var(--sage);color:#fff;border-color:var(--sage)}
+
 .habits-section{margin-bottom:30px}
 .habits-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:14px}
 .shuffle-btn{
@@ -413,6 +441,18 @@ button{font-family:inherit}
 
   <div class="detail" id="detailSection"></div>
 
+  <div class="log-section">
+    <div class="habits-head">
+      <div class="section-heading heading" style="margin-bottom:0">What I've Eaten</div>
+    </div>
+    <p class="section-sub">Just a record, not a count. Private to this browser.</p>
+    <div class="log-add-row">
+      <input type="text" class="text-input" id="logInput" placeholder="Log something you ate…">
+      <button class="chat-send-btn" onclick="logManualEntry()">Add</button>
+    </div>
+    <div id="logList"></div>
+  </div>
+
   <div class="habits-section">
     <div class="habits-head">
       <div class="section-heading heading" style="margin-bottom:0">Tiny Habit Add-ons</div>
@@ -451,6 +491,9 @@ let currentOptions = [];
 let fridgeSelections = new Set(); // lowercased ingredient names the person has/likes
 let chatHistory = [];
 let lastHabitContext = ['general'];
+const LOG_KEY = 'wf-food-log';
+let foodLog = [];
+let currentChosenOpt = null;
 
 const MEAL_TYPES = [
   ['breakfast', 'Breakfast'], ['lunch', 'Lunch'], ['dinner', 'Dinner'],
@@ -473,13 +516,16 @@ const QUICK_CUISINES = ['Poke', 'Vietnamese', 'Chinese', 'Salad', 'Sandwich', 'S
 
 // ══ PROFILE ════════════════════════════════════════
 function defaultProfile() {
+  // Nothing here should reveal a real health detail by default — this ships
+  // publicly. Every priority starts unchecked; each visitor (including Anna,
+  // on her own browser) opts in privately via Settings.
   return {
-    priorities: ['cholesterol', 'dental', 'general'],
-    allergies: ['shellfish'],
+    priorities: ['general'],
+    allergies: [],
     otherAllergyNotes: '',
     cholesterolFocus: 'standard', // standard | extra
-    dentalHistory: 'some', // none | some | frequent
-    activity: { walkMiles: 2, sleepHours: '7-8', otherExercise: 'occasional' },
+    dentalHistory: 'none', // none | some | frequent
+    activity: { walkMiles: null, sleepHours: '', otherExercise: 'occasional' },
     supplements: '',
   };
 }
@@ -570,10 +616,19 @@ function surpriseMe() {
 // Free text, not a fixed picklist. Parsed into loose tokens that get
 // substring-matched against palette items when composing (see hasFridge()).
 let fridgeDebounce = null;
+const FRIDGE_SYNONYMS = {
+  steak: 'beef', ribeye: 'beef', sirloin: 'beef', 'ground beef': 'beef',
+  prawn: 'shrimp', prawns: 'shrimp', eggs: 'egg',
+  scallion: 'green onion', scallions: 'green onion',
+  cilantro: 'herbs', coriander: 'herbs', basil: 'herbs', mint: 'herbs',
+  garbanzo: 'chickpeas', 'garbanzo beans': 'chickpeas',
+};
 function parseFridgeInput() {
   const raw = document.getElementById('fridgeInput').value;
   const tokens = raw.toLowerCase().split(/[,\n]| and /).map(t => t.trim()).filter(t => t.length > 1);
-  fridgeSelections = new Set(tokens);
+  const expanded = new Set(tokens);
+  tokens.forEach(t => { if (FRIDGE_SYNONYMS[t]) expanded.add(FRIDGE_SYNONYMS[t]); });
+  fridgeSelections = expanded;
   updateFridgeCount();
 }
 function updateFridgeCount() {
@@ -641,12 +696,34 @@ function sendChat() {
 // ══ RECOMMENDATION ENGINE ══════════════════════════
 function findSystemKey(text) {
   const q = (text || '').trim().toLowerCase();
-  if (!q) return 'other';
-  for (const key in PALETTES) {
-    const sys = PALETTES[key];
-    if (sys.keywords && sys.keywords.some(k => q.includes(k) || k.includes(q))) return key;
+  if (q) {
+    for (const key in PALETTES) {
+      const sys = PALETTES[key];
+      if (sys.keywords && sys.keywords.some(k => q.includes(k) || k.includes(q))) return key;
+    }
+  }
+  // No cuisine typed (or nothing matched) — if fridge ingredients were given,
+  // let them pick whichever system actually has the most overlap, rather than
+  // always falling through to the generic "other" pool.
+  if (fridgeSelections.size) {
+    const best = bestFridgeSystem();
+    if (best) return best;
   }
   return 'other';
+}
+function bestFridgeSystem() {
+  let bestKey = null, bestCount = 0;
+  for (const key in PALETTES) {
+    if (key === 'matcha') continue; // fridge ingredients shouldn't auto-route to a drink
+    const sys = PALETTES[key];
+    let count = 0;
+    (sys.proteins || []).forEach(p => { if (hasFridge(p.name)) count++; });
+    (sys.bases || []).forEach(b => { if (hasFridge(b.name)) count++; });
+    (sys.veggies || []).forEach(v => { if (hasFridge(v)) count++; });
+    (sys.sauces || []).forEach(s => { if (hasFridge(s.name)) count++; });
+    if (count > bestCount) { bestCount = count; bestKey = key; }
+  }
+  return bestKey;
 }
 
 function availableProteins(sys) {
@@ -733,7 +810,7 @@ function composeMatcha(sys, ctx) {
     (profile.dentalHistory !== 'none' && s === 'Standard sweetness' ? 0.35 : 1)
   );
   const title = `${milk} Matcha, ${sweetness}`;
-  const score = clamp(6.8 + (sweetness === 'Unsweetened' ? 0.9 : sweetness.startsWith('Half') ? 0.4 : -0.6) + (milk === 'Whole milk' ? -0.3 : 0.2), 4, 10);
+  const score = clamp(7.2 + (sweetness === 'Unsweetened' ? 1.1 : sweetness.startsWith('Half') ? 0.5 : -0.7) + (milk === 'Whole milk' ? -0.3 : 0.4), 4, 10);
 
   const build = [
     `${milk} as the base`,
@@ -765,19 +842,30 @@ function isRefluxRisky(text) {
 }
 
 function scoreComposed(picks, ctx, sys) {
-  let score = 6.5;
-  if (picks.base.fiber) score += 0.5;
-  if (picks.protein.fiberBoost && ctx.goals.has('fiber')) score += 0.4;
-  if (picks.sauce.satFat === 'high' && (ctx.goals.has('cholesterol') || profile.cholesterolFocus === 'extra')) score -= 0.6;
-  if (picks.sauce.sugar === 'high' && (ctx.goals.has('cholesterol') || profile.cholesterolFocus === 'extra' || profile.dentalHistory !== 'none')) score -= 0.4;
-  if (picks.sauce.sodium === 'high' && ctx.mood === 'salty') score -= 0.2;
-  if (profile.priorities.includes('reflux') && (isRefluxRisky(picks.prep) || isRefluxRisky(picks.sauce.name))) score -= 0.7;
+  let score = 7.0;
+  if (picks.base.fiber) score += 0.6;
+  if (picks.protein.fiberBoost) score += 0.3;
+  if (picks.protein.fiberBoost && ctx.goals.has('fiber')) score += 0.3;
+  if (ctx.goals.has('cholesterol')) score += 0.3; // every protein here is already cholesterol-friendly by design
+  if (ctx.goals.has('dental') && picks.sauce.sugar !== 'high') score += 0.3;
   if (sys.effort === 'low' && ctx.goals.has('loweffort')) score += 0.3;
   if (ctx.mood === 'light' && picks.base.fiber) score += 0.2;
-  ctx.goals.forEach(g => { if (g === 'protein' && picks.protein) score += 0.2; });
+  if (ctx.mood === 'comforting' && !picks.base.fiber) score += 0.2;
+  ctx.goals.forEach(g => { if (g === 'protein') score += 0.2; });
+  // A pick that actually uses what's in the kitchen is a better fit, worth rewarding
+  let fridgeMatches = 0;
+  if (hasFridge(picks.protein.name)) fridgeMatches++;
+  if (hasFridge(picks.base.name)) fridgeMatches++;
+  (picks.veg || []).forEach(v => { if (hasFridge(v)) fridgeMatches++; });
+  score += Math.min(fridgeMatches, 3) * 0.25;
+
+  if (picks.sauce.satFat === 'high' && (ctx.goals.has('cholesterol') || profile.cholesterolFocus === 'extra')) score -= 0.7;
+  if (picks.sauce.sugar === 'high' && (ctx.goals.has('cholesterol') || profile.cholesterolFocus === 'extra' || profile.dentalHistory !== 'none')) score -= 0.5;
+  if (picks.sauce.sodium === 'high' && ctx.mood === 'salty') score -= 0.2;
+  if (profile.priorities.includes('reflux') && (isRefluxRisky(picks.prep) || isRefluxRisky(picks.sauce.name))) score -= 0.9;
   return clamp(Math.round(score * 10) / 10, 4, 10);
 }
-function scoreBand(score) { return score >= 7.8 ? 'high' : score >= 6 ? 'mid' : 'low'; }
+function scoreBand(score) { return score >= 8 ? 'high' : score >= 6.5 ? 'mid' : 'low'; }
 function capitalize(s) { return s.charAt(0).toUpperCase() + s.slice(1); }
 
 function buildDentalTip({ sauce, veg }) {
@@ -794,6 +882,26 @@ function buildCholesterolTip({ protein, base, sauce }) {
 }
 
 // ══ OPTIONS + DETAIL RENDER ════════════════════════
+const MIN_SCORE = 8; // only genuinely strong fits get shown, per Anna's request
+const MAX_ATTEMPTS = 40;
+
+function generateOptions(ctx, systemKey) {
+  const accepted = [];
+  const seenTitles = new Set();
+  const used = [];
+  let attempts = 0;
+  while (accepted.length < 3 && attempts < MAX_ATTEMPTS) {
+    attempts++;
+    const opt = composeOption(systemKey, ctx, used);
+    if (opt.score > MIN_SCORE && !seenTitles.has(opt.title)) {
+      accepted.push(opt);
+      seenTitles.add(opt.title);
+      if (opt.proteinName) used.push(opt.proteinName);
+    }
+  }
+  return accepted;
+}
+
 function runQuery(forcedSystemKey) {
   const ctx = {
     mealType: selected.mealType, setting: selected.setting,
@@ -801,12 +909,7 @@ function runQuery(forcedSystemKey) {
     goals: selected.goals, mood: selected.mood,
   };
   const systemKey = forcedSystemKey || findSystemKey(ctx.cuisineText);
-  const used = [];
-  currentOptions = [0, 1, 2].map(() => {
-    const opt = composeOption(systemKey, ctx, used);
-    if (opt.proteinName) used.push(opt.proteinName);
-    return opt;
-  });
+  currentOptions = generateOptions(ctx, systemKey);
   renderOptions();
   document.getElementById('detailSection').classList.remove('visible');
   document.getElementById('detailSection').innerHTML = '';
@@ -815,6 +918,19 @@ function runQuery(forcedSystemKey) {
 
 function renderOptions() {
   const grid = document.getElementById('optionGrid');
+  const head = document.getElementById('optionsSection').querySelector('.options-title');
+
+  if (!currentOptions.length) {
+    head.textContent = 'Nothing over 8/10 yet';
+    grid.innerHTML = `<div class="options-empty">
+      I couldn't land a strong enough match this time, only options over 8/10 get shown.
+      Try adding a goal or two (Lower cholesterol and High fiber tend to help), or hit Surprise me for a fresh pool to draw from.
+    </div>`;
+    document.getElementById('optionsSection').classList.add('visible');
+    return;
+  }
+
+  head.textContent = currentOptions.length === 1 ? 'One strong direction' : 'A few strong directions';
   grid.innerHTML = currentOptions.map((o, i) => `
     <div class="option-card" onclick="chooseOption(${i})" id="opt-${i}">
       <div class="option-top">
@@ -832,6 +948,7 @@ function renderOptions() {
 function chooseOption(i) {
   document.querySelectorAll('.option-card').forEach((el, idx) => el.classList.toggle('chosen', idx === i));
   const o = currentOptions[i];
+  currentChosenOpt = o;
   const bandLabel = o.band === 'high' ? 'Great fit' : o.band === 'mid' ? 'Good fit' : 'Fine choice';
   const habitCtx = [];
   if (o.sauceHighSugar) habitCtx.push('sweetdrink', 'sugary');
@@ -875,6 +992,7 @@ function chooseOption(i) {
         <div class="tip-card dental"><span class="tip-card-label">🦷 Dental tip</span>${esc(o.dentalTip)}</div>
         <div class="tip-card chol"><span class="tip-card-label">❤ Cholesterol tip</span>${esc(o.cholTip)}</div>
       </div>
+      <button class="log-this-btn" id="logThisBtn" onclick="logCurrentOption()">📝 Log this to today</button>
       <p class="reassurance">No single meal is a win or a failure. This is just one good direction among several.</p>
     </div>
   `;
@@ -892,6 +1010,71 @@ function renderTinyHabits(contextTags) {
   el.innerHTML = chosen.map(h => `<div class="habit-item"><span class="habit-dot">✓</span>${esc(h.text)}</div>`).join('');
 }
 function shuffleHabits() { renderTinyHabits(lastHabitContext); }
+
+// ══ FOOD LOG ═══════════════════════════════════════
+// A record, not a tracker: just what and when, no counts, no numbers.
+function loadFoodLog() {
+  try { return JSON.parse(localStorage.getItem(LOG_KEY) || '[]'); }
+  catch { return []; }
+}
+function saveFoodLog() { localStorage.setItem(LOG_KEY, JSON.stringify(foodLog)); }
+function todayStr() {
+  const d = new Date();
+  return `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}-${String(d.getDate()).padStart(2, '0')}`;
+}
+function formatLogDate(dateStr) {
+  const today = todayStr();
+  const yesterday = new Date(Date.now() - 86400000);
+  const yStr = `${yesterday.getFullYear()}-${String(yesterday.getMonth() + 1).padStart(2, '0')}-${String(yesterday.getDate()).padStart(2, '0')}`;
+  if (dateStr === today) return 'Today';
+  if (dateStr === yStr) return 'Yesterday';
+  const [y, m, d] = dateStr.split('-').map(Number);
+  return new Date(y, m - 1, d).toLocaleDateString(undefined, { weekday: 'short', month: 'short', day: 'numeric' });
+}
+function logEntry(text, emoji) {
+  if (!text || !text.trim()) return;
+  foodLog.unshift({ id: Date.now() + Math.random(), date: todayStr(), text: text.trim(), emoji: emoji || '🍽️' });
+  saveFoodLog();
+  renderFoodLog();
+}
+function logCurrentOption() {
+  if (!currentChosenOpt) return;
+  logEntry(currentChosenOpt.title, currentChosenOpt.emoji);
+  const btn = document.getElementById('logThisBtn');
+  if (btn) { btn.textContent = '✓ Logged to today'; btn.classList.add('logged'); }
+}
+function logManualEntry() {
+  const input = document.getElementById('logInput');
+  logEntry(input.value, '🍽️');
+  input.value = '';
+}
+function deleteLogEntry(id) {
+  foodLog = foodLog.filter(e => e.id !== id);
+  saveFoodLog();
+  renderFoodLog();
+}
+function renderFoodLog() {
+  const el = document.getElementById('logList');
+  if (!foodLog.length) {
+    el.innerHTML = '<p class="log-empty">Nothing logged yet. Add something you ate, or log one of the options above.</p>';
+    return;
+  }
+  const byDate = {};
+  foodLog.forEach(e => { (byDate[e.date] = byDate[e.date] || []).push(e); });
+  const dates = Object.keys(byDate).sort().reverse();
+  el.innerHTML = dates.map(date => `
+    <div class="log-date-group">
+      <div class="log-date-label">${esc(formatLogDate(date))}</div>
+      ${byDate[date].map(e => `
+        <div class="log-entry">
+          <span class="log-entry-emoji">${e.emoji}</span>
+          <span class="log-entry-text">${esc(e.text)}</span>
+          <button class="log-entry-del" onclick="deleteLogEntry(${e.id})" title="Remove">×</button>
+        </div>
+      `).join('')}
+    </div>
+  `).join('');
+}
 
 // ══ SETTINGS DRAWER ════════════════════════════════
 function openSettings() {
@@ -951,8 +1134,8 @@ function renderDrawer() {
 
     <div class="field-group">
       <span class="field-label">Activity & sleep</span>
-      <div class="lab-field"><label>Typical daily walking (miles)</label><input type="number" class="text-input" id="walkMiles" value="${p.activity.walkMiles}"></div>
-      <div class="lab-field"><label>Usual sleep</label><input type="text" class="text-input" id="sleepHours" value="${esc(p.activity.sleepHours)}"></div>
+      <div class="lab-field"><label>Typical daily walking (miles)</label><input type="number" class="text-input" id="walkMiles" value="${p.activity.walkMiles ?? ''}" placeholder="e.g. 2"></div>
+      <div class="lab-field"><label>Usual sleep</label><input type="text" class="text-input" id="sleepHours" value="${esc(p.activity.sleepHours)}" placeholder="e.g. 7-8 hours"></div>
       <div class="lab-field"><label>Other exercise</label>
         <select class="select-input" id="otherExercise">
           <option value="rarely" ${p.activity.otherExercise==='rarely'?'selected':''}>Rarely</option>
@@ -1028,6 +1211,9 @@ async function boot() {
   });
   appendChatMsg('bot', "Hi! Ask me something direct, like \"can I have spicy food today\" or \"is matcha okay right now.\"");
   document.getElementById('chatInput').addEventListener('keydown', e => { if (e.key === 'Enter') sendChat(); });
+  foodLog = loadFoodLog();
+  renderFoodLog();
+  document.getElementById('logInput').addEventListener('keydown', e => { if (e.key === 'Enter') logManualEntry(); });
 
   const [palettesRes, habitsRes] = await Promise.all([fetch('data/palettes.json'), fetch('data/habits.json')]);
   PALETTES = await palettesRes.json();
