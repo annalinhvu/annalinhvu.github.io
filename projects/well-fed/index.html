@@ -224,7 +224,6 @@ button{font-family:inherit}
 .reassurance{font-size:.8rem;color:var(--text-3);font-style:italic;text-align:center;padding-top:6px;border-top:1px dashed var(--border);font-family:'Fraunces',serif}
 
 /* ══ QUICK CUISINE ══ */
-.quick-row{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px}
 .quick-chip{
   font-size:.74rem;color:var(--text-3);background:var(--surface-2);
   border:1px solid var(--border);border-radius:14px;padding:5px 12px;
@@ -337,10 +336,10 @@ button{font-family:inherit}
     <div class="builder-section">
       <span class="builder-label">Cuisine or dish</span>
       <div class="cuisine-input-wrap">
-        <input type="text" class="cuisine-input" id="cuisineInput" list="cuisineList" placeholder="poke, Vietnamese, salad, matcha…">
+        <input type="text" class="cuisine-input" id="cuisineInput" list="cuisineList" placeholder="poke, Vietnamese, salad, matcha… or leave it blank">
         <datalist id="cuisineList"></datalist>
       </div>
-      <div class="quick-row" id="quickRow"></div>
+      <button type="button" class="quick-chip" id="surpriseBtn" onclick="surpriseMe()" style="margin-top:10px">🎲 Surprise me</button>
     </div>
     <div class="builder-section">
       <span class="builder-label">What matters most today</span>
@@ -503,10 +502,11 @@ function renderAllergyRow() {
   const text = bits.length ? `Avoiding: ${bits.join(', ')}` : 'No allergies set';
   el.innerHTML = `<span>${esc(text)}</span><button class="allergy-edit-link" onclick="openSettings()">edit</button>`;
 }
-function renderQuickRow() {
-  document.getElementById('quickRow').innerHTML = QUICK_CUISINES.map(c =>
-    `<button type="button" class="quick-chip" onclick="document.getElementById('cuisineInput').value='${c}'">${c}</button>`
-  ).join('');
+function surpriseMe() {
+  const keys = Object.keys(PALETTES);
+  if (!keys.length) return;
+  document.getElementById('cuisineInput').value = '';
+  runQuery(pick(keys));
 }
 
 // ══ RECOMMENDATION ENGINE ══════════════════════════
@@ -644,13 +644,13 @@ function buildCholesterolTip({ protein, base, sauce }) {
 }
 
 // ══ OPTIONS + DETAIL RENDER ════════════════════════
-function runQuery() {
+function runQuery(forcedSystemKey) {
   const ctx = {
     mealType: selected.mealType, setting: selected.setting,
     cuisineText: document.getElementById('cuisineInput').value,
     goals: selected.goals, mood: selected.mood,
   };
-  const systemKey = findSystemKey(ctx.cuisineText);
+  const systemKey = forcedSystemKey || findSystemKey(ctx.cuisineText);
   const used = [];
   currentOptions = [0, 1, 2].map(() => {
     const opt = composeOption(systemKey, ctx, used);
@@ -870,7 +870,6 @@ async function boot() {
   renderChipGroup('goalChips', GOALS, 'goal', true);
   renderChipGroup('moodChips', MOODS, 'mood', false);
   renderAllergyRow();
-  renderQuickRow();
   renderTinyHabits(['general']);
 
   const [palettesRes, habitsRes] = await Promise.all([fetch('data/palettes.json'), fetch('data/habits.json')]);
