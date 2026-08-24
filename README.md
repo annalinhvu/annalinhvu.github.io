@@ -94,7 +94,7 @@ A personal, non-ranked guide to vetted organizations across crisis relief, hunge
 ---
 
 ### Healthy Diet Tracker
-A food recommendation companion tuned to my own health priorities — cholesterol, dental health, steady energy. Tell it what you're eating and where, and it gives back a specific order, why it works, simple modifications, and a couple of small habit add-ons. No calorie counting, no guilt, no meal is ever a failure. Rule-based recommendation engine with a clean seam for swapping in an LLM later.
+A food recommendation companion tuned to my own health priorities — cholesterol, dental health, steady energy. Tell it what you're eating and where, and it generates a few different build-it-yourself options on the spot (not a fixed dish catalog), each with why it works, simple modifications, and a couple of small habit add-ons. No calorie counting, no guilt, no meal is ever a failure. Rule-based, generative recommendation engine with a clean seam for swapping in an LLM later.
 
 **Live:** https://annalinhvu.github.io/projects/well-fed/  
 **Stack:** HTML · JSON · Vanilla JS
