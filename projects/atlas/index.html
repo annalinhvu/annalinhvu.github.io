@@ -225,6 +225,13 @@ body {
 }
 .pin-saved-dot.visible { opacity: 1; }
 
+/* Status ring: only planning/booked/visited get an extra ring — dreaming (the
+   majority of pins) keeps the plain look so the map doesn't get noisy. */
+.pin-status-ring { opacity: 0; }
+.pin-status-ring.st-planning { stroke: var(--gold); stroke-dasharray: 2,2; opacity: 0.85; }
+.pin-status-ring.st-booked   { stroke: var(--gold); opacity: 0.85; }
+.pin-status-ring.st-visited  { stroke: var(--teal); opacity: 0.85; }
+
 .world-label {
   fill: var(--text-4);
   font-size: 3px;
@@ -398,6 +405,37 @@ body {
   font-size: 0.58rem; letter-spacing: 0.5px; padding: 2px 9px;
   border: 1px solid var(--border-2); color: var(--text-2);
 }
+
+/* Trip status pills */
+.status-pills { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 4px; }
+.status-pill {
+  font-family: 'Geist Mono', monospace;
+  font-size: 0.6rem; letter-spacing: 1px; text-transform: uppercase;
+  padding: 5px 12px; border: 1px solid var(--border); border-radius: 2px;
+  background: none; color: var(--text-3); cursor: pointer; transition: all 0.15s;
+}
+.status-pill:hover { border-color: var(--border-2); color: var(--text-1); }
+.status-pill.active {
+  color: var(--bg); background: var(--region-color, var(--gold));
+  border-color: var(--region-color, var(--gold)); font-weight: 600;
+}
+
+/* Passport-style "visited" stamp, fired over the boarding-pass header */
+.visited-stamp {
+  position: absolute; top: 22px; right: 30px;
+  transform: rotate(-13deg);
+  width: 78px; height: 78px;
+  border: 3px solid var(--teal); border-radius: 10px;
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  pointer-events: none; opacity: 0; z-index: 5;
+}
+.visited-stamp .stamp-check { font-size: 1.5rem; color: var(--teal); line-height: 1; }
+.visited-stamp .stamp-text {
+  font-size: 0.4rem; letter-spacing: 2px; text-transform: uppercase;
+  color: var(--teal); margin-top: 3px; font-family: 'Geist Mono', monospace;
+}
+.visited-stamp.stamping { animation: stampIn 0.5s cubic-bezier(0.2,0,0.4,1) forwards; }
+.visited-stamp.unstamping { animation: stampOut 0.3s ease-in forwards; }
 
 /* Filter selects */
 .filter-select {
@@ -1010,6 +1048,10 @@ const ALL_ISO_NAMES = {
 
 const NYC      = [-74.006, 40.7128];
 const LS_KEY   = 'atlas-wishlist';
+const STATUS_KEY = 'atlas-status-overrides';
+const STATUS_DEFS = [
+  ['dreaming', 'Dreaming'], ['planning', 'Planning'], ['booked', 'Booked'], ['visited', 'Visited'],
+];
 const THEME_KEY= 'atlas-theme';
 const CAL_KEY  = 'atlas-calendar-plan';
 const TRIP_DAYS_KEY = 'atlas-trip-days';
@@ -1116,6 +1158,7 @@ let activeStatus  = '';
 let showingSaved  = false;
 let currentId     = null;
 let savedIds      = new Set(JSON.parse(localStorage.getItem(LS_KEY) || '[]'));
+let statusOverrides = JSON.parse(localStorage.getItem(STATUS_KEY) || '{}');
 let mapSvg        = null;
 let mapG          = null;
 let pinLayer      = null;   // outside zoom transform — pins stay fixed size
@@ -1136,6 +1179,50 @@ const esc = s => String(s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replac
 const flightNo = id => 'DL ' + String(id).padStart(3,'0');
 function savePersist() { localStorage.setItem(LS_KEY, JSON.stringify([...savedIds])); }
 function updateBadge() { document.getElementById('savedCount').textContent = savedIds.size; }
+
+// A destination's status defaults to the editorial value in countries.json,
+// but any status a person sets from the panel overrides it from then on.
+function getStatus(c) { return statusOverrides[c.id] || c.status; }
+function saveStatusOverrides() { localStorage.setItem(STATUS_KEY, JSON.stringify(statusOverrides)); }
+
+function setStatus(id, status) {
+  const c = allCountries.find(x => x.id === id);
+  if (!c) return;
+  const prev = getStatus(c);
+  if (prev === status) return;
+  statusOverrides[id] = status;
+  saveStatusOverrides();
+  document.querySelectorAll('#statusPills .status-pill').forEach(p => {
+    p.classList.toggle('active', p.dataset.status === status);
+  });
+  updatePinStatus(id, status);
+  applyFilters();
+  if (status === 'visited' && prev !== 'visited') fireStatusStamp();
+}
+
+function updatePinStatus(id, status) {
+  if (!mapSvg) return;
+  mapSvg.selectAll('.pin-group').each(function() {
+    if (+this.getAttribute('data-id') !== id) return;
+    this.setAttribute('data-status', status);
+    d3.select(this).select('.pin-status-ring').attr('class', `pin-status-ring st-${status}`);
+  });
+}
+
+function fireStatusStamp() {
+  const s = document.getElementById('statusStamp');
+  if (!s) return;
+  s.classList.remove('stamping', 'unstamping');
+  void s.offsetWidth;
+  s.classList.add('stamping');
+  s.addEventListener('animationend', () => {
+    setTimeout(() => {
+      s.classList.remove('stamping');
+      s.classList.add('unstamping');
+      s.addEventListener('animationend', () => s.classList.remove('unstamping'), { once: true });
+    }, 900);
+  }, { once: true });
+}
 
 // ── THEME ─────────────────────────────────────────
 function toggleTheme() {
@@ -1342,7 +1429,7 @@ function drawAll(routeLayer, pins, nx, ny) {
         .attr('transform', `translate(${px},${py})`)
         .attr('data-id', c.id)
         .attr('data-region', c.region)
-        .attr('data-status', c.status)
+        .attr('data-status', getStatus(c))
         .attr('data-px', px)
         .attr('data-py', py)
         .style('opacity', 0)
@@ -1354,6 +1441,8 @@ function drawAll(routeLayer, pins, nx, ny) {
         .attr('stroke-width', 1)
         .attr('opacity', 0.2)
         .style('animation', `pinPulse 2.8s ${Math.random()*2}s ease-in-out infinite`);
+      pg.append('circle').attr('class', `pin-status-ring st-${getStatus(c)}`).attr('r', 8)
+        .attr('fill', 'none').attr('stroke-width', 1.4);
       pg.append('circle').attr('class', 'pin-ring').attr('r', 5.5)
         .attr('fill', 'none').attr('stroke', `var(--${c.region})`).attr('stroke-width', 1.5);
       pg.append('circle').attr('class', 'pin-dot').attr('r', 2.8)
@@ -1407,6 +1496,10 @@ function openPanel(id) {
 
   const rl     = REGIONS[c.region] || c.region;
   const saved  = savedIds.has(id);
+  const curStatus = getStatus(c);
+  const statusPills = STATUS_DEFS.map(([key, label]) =>
+    `<button class="status-pill${key===curStatus?' active':''}" data-status="${key}" onclick="setStatus(${c.id},'${key}')">${label}</button>`
+  ).join('');
   const lang   = c.language.split(',')[0].split('(')[0].trim();
   const vibes  = (c.vibe_tags||[]).map(v => `<span class="vibe-chip">${esc(v)}</span>`).join('');
   const budget = c.budget || '';
@@ -1469,9 +1562,17 @@ function openPanel(id) {
         <div class="panel-meta">${esc(rl)} &middot; ${flightNo(c.id)}</div>
         <div class="panel-country">${esc(c.name)}</div>
         <div class="panel-tagline">"${esc(c.tagline)}"</div>
+        <div id="statusStamp" class="visited-stamp">
+          <div class="stamp-check">&#10003;</div>
+          <div class="stamp-text">Visited</div>
+        </div>
       </div>
       <div class="panel-tear"></div>
       <div class="panel-fields">
+        <div class="panel-field" style="width:100%">
+          <div class="panel-field-label">&#9670; Trip Status</div>
+          <div class="status-pills" id="statusPills">${statusPills}</div>
+        </div>
         <div class="panel-field">
           <div class="panel-field-label">◷ Best Time</div>
           <div class="panel-field-value">${esc(c.best_time)}</div>
@@ -1691,7 +1792,7 @@ function applyFilters() {
 function matchesFilter(c, q) {
   if (activeRegion !== 'all' && c.region !== activeRegion) return false;
   if (showingSaved && !savedIds.has(c.id)) return false;
-  if (activeStatus && c.status !== activeStatus) return false;
+  if (activeStatus && getStatus(c) !== activeStatus) return false;
   if (activeMonth) {
     const months = BEST_MONTHS[c.name] || [];
     if (!months.includes(+activeMonth)) return false;
