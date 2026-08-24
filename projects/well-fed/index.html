@@ -1,0 +1,911 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Well Fed</title>
+<meta name="description" content="A supportive food companion — meal ideas that fit your real life, not a diet plan.">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🍵</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+
+:root[data-theme="light"]{
+  --bg:#fbf7f1;
+  --surface:#ffffff;
+  --surface-2:#f3ece1;
+  --text-1:#3a332c;
+  --text-2:#6b6156;
+  --text-3:#948a7d;
+  --text-4:#c4baa9;
+  --border:#e9e0d1;
+  --border-2:#dccdb3;
+  --sage:#7fa17b;
+  --sage-dim:rgba(127,161,123,0.14);
+  --coral:#d97f5c;
+  --coral-dim:rgba(217,127,92,0.14);
+  --gold:#c99327;
+  --gold-dim:rgba(201,147,39,0.14);
+  --rose:#c96f6f;
+  --rose-dim:rgba(201,111,111,0.14);
+  --blue:#5f8fa8;
+  --blue-dim:rgba(95,143,168,0.14);
+  --shadow:0 2px 10px rgba(58,51,44,0.06);
+  --shadow-lg:0 14px 40px rgba(58,51,44,0.16);
+}
+:root[data-theme="dark"]{
+  --bg:#201c17;
+  --surface:#2a251f;
+  --surface-2:#332c24;
+  --text-1:#f1e9dc;
+  --text-2:#cabfaf;
+  --text-3:#988e7f;
+  --text-4:#5c5346;
+  --border:#41392e;
+  --border-2:#4e453a;
+  --sage:#93b98e;
+  --sage-dim:rgba(147,185,142,0.16);
+  --coral:#e6a17e;
+  --coral-dim:rgba(230,161,126,0.16);
+  --gold:#dcac3f;
+  --gold-dim:rgba(220,172,63,0.16);
+  --rose:#dd9797;
+  --rose-dim:rgba(221,151,151,0.16);
+  --blue:#8fb9cf;
+  --blue-dim:rgba(143,185,207,0.16);
+  --shadow:0 2px 10px rgba(0,0,0,0.25);
+  --shadow-lg:0 16px 44px rgba(0,0,0,0.4);
+}
+
+body{
+  font-family:'Inter',system-ui,sans-serif;
+  background:var(--bg);color:var(--text-2);
+  min-height:100vh;transition:background .3s,color .3s;
+  -webkit-font-smoothing:antialiased;
+  padding-bottom:60px;
+}
+h1,h2,h3,.heading{font-family:'Quicksand',system-ui,sans-serif;font-weight:700;color:var(--text-1)}
+a{color:inherit}
+button{font-family:inherit}
+
+/* ══ TOPBAR ══ */
+.topbar{
+  position:sticky;top:0;z-index:100;
+  display:flex;align-items:center;justify-content:space-between;
+  padding:14px 20px;background:var(--bg);
+  border-bottom:1px solid var(--border);
+}
+.topbar-left{display:flex;align-items:center;gap:14px}
+.back-link{font-size:.78rem;color:var(--text-3);text-decoration:none;transition:color .2s}
+.back-link:hover{color:var(--coral)}
+.topbar-title{font-family:'Quicksand',sans-serif;font-weight:700;font-size:1.15rem;color:var(--text-1);letter-spacing:.2px;display:flex;align-items:center;gap:6px}
+.topbar-right{display:flex;align-items:center;gap:8px}
+.icon-btn{
+  width:36px;height:36px;border-radius:50%;
+  border:1px solid var(--border);background:var(--surface);
+  display:flex;align-items:center;justify-content:center;
+  cursor:pointer;font-size:1rem;color:var(--text-2);transition:all .2s;
+}
+.icon-btn:hover{border-color:var(--border-2);color:var(--text-1)}
+
+/* ══ LAYOUT ══ */
+.page{max-width:760px;margin:0 auto;padding:28px 20px 0}
+.hero{text-align:center;margin-bottom:22px}
+.hero-title{font-size:1.5rem;margin-bottom:6px}
+.hero-sub{font-size:.9rem;color:var(--text-3);max-width:440px;margin:0 auto;line-height:1.6}
+
+/* ══ GENTLE NOTICE BANNER ══ */
+.notice-banner{
+  background:var(--blue-dim);border:1px solid var(--blue);border-radius:16px;
+  padding:14px 18px;margin-bottom:22px;font-size:.82rem;color:var(--text-1);
+  line-height:1.6;display:flex;gap:10px;align-items:flex-start;
+}
+.notice-banner .ni{flex-shrink:0;font-size:1.1rem;margin-top:1px}
+
+/* ══ CARD BASE ══ */
+.card{
+  background:var(--surface);border:1px solid var(--border);
+  border-radius:20px;padding:22px;box-shadow:var(--shadow);
+}
+
+/* ══ QUERY BUILDER ══ */
+.builder{margin-bottom:26px}
+.builder-section{margin-bottom:18px}
+.builder-label{
+  font-size:.72rem;letter-spacing:.6px;text-transform:uppercase;
+  color:var(--text-3);font-weight:600;margin-bottom:9px;display:block;
+}
+.chip-row{display:flex;flex-wrap:wrap;gap:8px}
+.chip{
+  display:inline-flex;align-items:center;gap:5px;
+  padding:8px 15px;border-radius:20px;
+  border:1px solid var(--border);background:var(--surface-2);
+  font-size:.82rem;color:var(--text-2);cursor:pointer;
+  transition:all .18s;user-select:none;
+}
+.chip:hover{border-color:var(--border-2)}
+.chip.active{background:var(--sage);border-color:var(--sage);color:#fff;font-weight:600}
+.chip.active.mood{background:var(--coral);border-color:var(--coral)}
+
+.cuisine-input-wrap{position:relative}
+.cuisine-input{
+  width:100%;padding:11px 16px;border-radius:14px;
+  border:1px solid var(--border);background:var(--surface-2);
+  font-size:.9rem;color:var(--text-1);font-family:inherit;
+  transition:border-color .2s;
+}
+.cuisine-input::placeholder{color:var(--text-4)}
+.cuisine-input:focus{outline:none;border-color:var(--sage)}
+
+.allergy-row{
+  display:flex;align-items:center;gap:8px;flex-wrap:wrap;
+  font-size:.78rem;color:var(--text-3);
+}
+.allergy-pill{
+  display:inline-flex;align-items:center;gap:5px;
+  padding:5px 12px;border-radius:14px;background:var(--rose-dim);
+  color:var(--rose);font-weight:600;font-size:.75rem;
+}
+.allergy-edit-link{
+  font-size:.75rem;color:var(--text-3);text-decoration:underline;
+  background:none;border:none;cursor:pointer;
+}
+.allergy-edit-link:hover{color:var(--text-1)}
+
+.builder-submit{
+  width:100%;margin-top:6px;padding:14px;border-radius:16px;
+  background:var(--sage);color:#fff;border:none;
+  font-family:'Quicksand',sans-serif;font-weight:700;font-size:.95rem;
+  cursor:pointer;transition:all .2s;box-shadow:var(--shadow);
+}
+.builder-submit:hover{opacity:.92;transform:translateY(-1px)}
+.builder-submit:active{transform:translateY(0)}
+
+/* ══ RESULT ══ */
+.result{display:none;margin-bottom:30px;animation:fadeUp .35s ease}
+.result.visible{display:block}
+@keyframes fadeUp{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
+.result-head{
+  display:flex;align-items:center;justify-content:space-between;gap:14px;
+  margin-bottom:18px;flex-wrap:wrap;
+}
+.result-title-wrap{display:flex;align-items:center;gap:10px}
+.result-emoji{font-size:1.8rem}
+.result-title{font-size:1.25rem}
+.result-sub{font-size:.78rem;color:var(--text-3);margin-top:2px}
+
+.score-badge{
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+  width:64px;height:64px;border-radius:50%;flex-shrink:0;
+  font-family:'Quicksand',sans-serif;
+}
+.score-num{font-size:1.15rem;font-weight:700;line-height:1}
+.score-den{font-size:.55rem;opacity:.75}
+.score-band-high{background:var(--sage-dim);color:var(--sage)}
+.score-band-mid{background:var(--gold-dim);color:var(--gold)}
+.score-band-low{background:var(--rose-dim);color:var(--rose)}
+
+.result-section{margin-bottom:18px}
+.result-section-title{
+  font-size:.72rem;letter-spacing:.6px;text-transform:uppercase;
+  color:var(--text-3);font-weight:600;margin-bottom:10px;
+  display:flex;align-items:center;gap:6px;
+}
+.result-list{list-style:none;display:flex;flex-direction:column;gap:8px}
+.result-list li{
+  font-size:.86rem;color:var(--text-1);line-height:1.55;
+  padding-left:18px;position:relative;
+}
+.result-list li::before{
+  content:'';position:absolute;left:0;top:.55em;
+  width:6px;height:6px;border-radius:50%;background:var(--sage);
+}
+.result-list.watch li::before{background:var(--coral)}
+.allergy-flag{
+  margin-top:2px;background:var(--rose-dim);color:var(--rose);
+  border-radius:10px;padding:9px 12px;font-size:.8rem;font-weight:600;
+  display:flex;gap:8px;align-items:flex-start;line-height:1.5;
+}
+
+.tip-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:18px}
+@media(max-width:520px){.tip-grid{grid-template-columns:1fr}}
+.tip-card{border-radius:14px;padding:14px 16px;font-size:.82rem;line-height:1.55}
+.tip-card.dental{background:var(--blue-dim);color:var(--text-1)}
+.tip-card.chol{background:var(--sage-dim);color:var(--text-1)}
+.tip-card-label{
+  font-size:.68rem;letter-spacing:.5px;text-transform:uppercase;font-weight:700;
+  margin-bottom:6px;display:block;
+}
+.tip-card.dental .tip-card-label{color:var(--blue)}
+.tip-card.chol .tip-card-label{color:var(--sage)}
+
+.reassurance{
+  font-size:.8rem;color:var(--text-3);font-style:italic;
+  text-align:center;padding-top:6px;border-top:1px dashed var(--border);
+}
+
+/* ══ EXAMPLE GALLERY ══ */
+.section-heading{margin-bottom:4px;font-size:1.1rem}
+.section-sub{font-size:.82rem;color:var(--text-3);margin-bottom:16px}
+.gallery-grid{
+  display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin-bottom:34px;
+}
+@media(min-width:640px){.gallery-grid{grid-template-columns:repeat(3,1fr)}}
+.gallery-card{
+  background:var(--surface);border:1px solid var(--border);border-radius:16px;
+  padding:16px 14px;cursor:pointer;transition:all .2s;text-align:center;
+}
+.gallery-card:hover{border-color:var(--sage);transform:translateY(-2px);box-shadow:var(--shadow)}
+.gallery-emoji{font-size:1.7rem;margin-bottom:6px}
+.gallery-name{font-size:.8rem;color:var(--text-1);font-weight:600;line-height:1.3}
+
+/* ══ TINY HABITS ══ */
+.habits-section{margin-bottom:30px}
+.habits-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:14px}
+.shuffle-btn{
+  font-size:.72rem;color:var(--text-3);background:none;
+  border:1px solid var(--border);border-radius:20px;padding:6px 13px;
+  cursor:pointer;transition:all .2s;white-space:nowrap;
+}
+.shuffle-btn:hover{border-color:var(--border-2);color:var(--text-1)}
+.habit-list{display:flex;flex-direction:column;gap:10px}
+.habit-item{
+  display:flex;align-items:center;gap:12px;
+  background:var(--surface);border:1px solid var(--border);border-radius:14px;
+  padding:13px 16px;font-size:.85rem;color:var(--text-1);
+}
+.habit-dot{
+  width:26px;height:26px;border-radius:50%;background:var(--coral-dim);
+  color:var(--coral);display:flex;align-items:center;justify-content:center;
+  flex-shrink:0;font-size:.85rem;
+}
+
+/* ══ DISCLAIMER ══ */
+.disclaimer{
+  font-size:.74rem;color:var(--text-4);line-height:1.6;
+  text-align:center;padding:20px 12px 0;max-width:520px;margin:0 auto;
+}
+.disclaimer a{color:var(--text-3)}
+
+/* ══ SETTINGS DRAWER ══ */
+.overlay{
+  position:fixed;inset:0;background:rgba(0,0,0,.35);
+  opacity:0;pointer-events:none;transition:opacity .3s;z-index:200;
+}
+.overlay.visible{opacity:1;pointer-events:all}
+.drawer{
+  position:fixed;top:0;right:-420px;bottom:0;width:400px;max-width:92vw;
+  background:var(--bg);z-index:201;box-shadow:var(--shadow-lg);
+  transition:right .3s cubic-bezier(.4,0,.2,1);overflow-y:auto;
+}
+.drawer.open{right:0}
+.drawer-head{
+  position:sticky;top:0;background:var(--bg);z-index:2;
+  display:flex;align-items:center;justify-content:space-between;
+  padding:18px 22px;border-bottom:1px solid var(--border);
+}
+.drawer-title{font-size:1.05rem}
+.drawer-body{padding:20px 22px 40px}
+.field-group{margin-bottom:22px}
+.field-label{
+  font-size:.72rem;letter-spacing:.5px;text-transform:uppercase;
+  color:var(--text-3);font-weight:600;margin-bottom:10px;display:block;
+}
+.field-hint{font-size:.75rem;color:var(--text-4);margin-top:6px;line-height:1.5}
+.checkbox-row{display:flex;align-items:center;gap:10px;padding:8px 0;font-size:.86rem;color:var(--text-1)}
+.checkbox-row input{width:17px;height:17px;accent-color:var(--sage);cursor:pointer}
+.text-input,.select-input,.number-input{
+  width:100%;padding:10px 13px;border-radius:10px;
+  border:1px solid var(--border);background:var(--surface);
+  font-size:.85rem;color:var(--text-1);font-family:inherit;
+}
+.text-input:focus,.select-input:focus,.number-input:focus{outline:none;border-color:var(--sage)}
+.lab-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.lab-field label{font-size:.72rem;color:var(--text-3);margin-bottom:4px;display:block}
+.lab-note{
+  margin-top:8px;background:var(--blue-dim);color:var(--text-1);
+  border-radius:10px;padding:10px 12px;font-size:.76rem;line-height:1.5;
+}
+.save-btn{
+  width:100%;padding:13px;border-radius:14px;background:var(--sage);
+  color:#fff;border:none;font-weight:700;font-family:'Quicksand',sans-serif;
+  cursor:pointer;margin-top:6px;transition:opacity .2s;
+}
+.save-btn:hover{opacity:.9}
+.reset-link{
+  display:block;text-align:center;margin-top:14px;font-size:.76rem;
+  color:var(--text-4);background:none;border:none;cursor:pointer;text-decoration:underline;
+}
+.saved-flash{
+  text-align:center;font-size:.78rem;color:var(--sage);margin-top:10px;
+  opacity:0;transition:opacity .3s;height:16px;
+}
+.saved-flash.show{opacity:1}
+
+@media (prefers-reduced-motion: reduce){
+  *,*::before,*::after{animation-duration:.01ms !important;transition-duration:.01ms !important}
+}
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <div class="topbar-left">
+    <a href="../../index.html" class="back-link">← Portfolio</a>
+  </div>
+  <div class="topbar-title">🍵 Well Fed</div>
+  <div class="topbar-right">
+    <button class="icon-btn" onclick="openSettings()" aria-label="Settings" title="Your profile">⚙</button>
+    <button class="icon-btn" onclick="toggleTheme()" aria-label="Toggle theme">◐</button>
+  </div>
+</div>
+
+<div class="page">
+
+  <div class="hero">
+    <div class="hero-title heading">What are you in the mood for?</div>
+    <p class="hero-sub">Tell me a little about the meal and I'll help you make the version of it that works best for you — no calorie counting, no guilt.</p>
+  </div>
+
+  <div id="noticeBanner"></div>
+
+  <div class="builder card">
+    <div class="builder-section">
+      <span class="builder-label">Meal type</span>
+      <div class="chip-row" id="mealTypeChips" data-group="mealType"></div>
+    </div>
+    <div class="builder-section">
+      <span class="builder-label">Where are you eating</span>
+      <div class="chip-row" id="settingChips" data-group="setting"></div>
+    </div>
+    <div class="builder-section">
+      <span class="builder-label">Cuisine or dish</span>
+      <div class="cuisine-input-wrap">
+        <input type="text" class="cuisine-input" id="cuisineInput" list="cuisineList" placeholder="poke, Vietnamese, salad, matcha…">
+        <datalist id="cuisineList"></datalist>
+      </div>
+    </div>
+    <div class="builder-section">
+      <span class="builder-label">What matters most today</span>
+      <div class="chip-row" id="goalChips" data-group="goal"></div>
+    </div>
+    <div class="builder-section">
+      <span class="builder-label">Mood <span style="font-weight:400;text-transform:none;letter-spacing:0">(optional)</span></span>
+      <div class="chip-row" id="moodChips" data-group="mood"></div>
+    </div>
+    <div class="builder-section" style="margin-bottom:6px">
+      <span class="builder-label">Allergies applied</span>
+      <div class="allergy-row" id="allergyRow"></div>
+    </div>
+    <button class="builder-submit" onclick="runQuery()">Get my recommendation</button>
+  </div>
+
+  <div class="result" id="resultCard"></div>
+
+  <div class="gallery-section">
+    <div class="section-heading heading">Meals I actually eat</div>
+    <p class="section-sub">Tap one for an instant, tailored take on it.</p>
+    <div class="gallery-grid" id="galleryGrid"></div>
+  </div>
+
+  <div class="habits-section">
+    <div class="habits-head">
+      <div class="section-heading heading" style="margin-bottom:0">Tiny Habit Add-ons</div>
+      <button class="shuffle-btn" onclick="shuffleHabits()">↻ Shuffle</button>
+    </div>
+    <p class="section-sub">Small, realistic upgrades — not a checklist.</p>
+    <div class="habit-list" id="habitList"></div>
+  </div>
+
+  <p class="disclaimer">
+    Well Fed offers general wellness support and is not a substitute for advice from a doctor, dietitian, or dentist.
+    It doesn't diagnose anything. If something here doesn't sit right for your body, trust yourself over the app.
+  </p>
+
+</div>
+
+<div class="overlay" id="overlay" onclick="closeSettings()"></div>
+<div class="drawer" id="drawer">
+  <div class="drawer-head">
+    <div class="drawer-title heading">Your profile</div>
+    <button class="icon-btn" onclick="closeSettings()" aria-label="Close">✕</button>
+  </div>
+  <div class="drawer-body" id="drawerBody"></div>
+</div>
+
+<script>
+// ══ STATE ══════════════════════════════════════════
+const PROFILE_KEY = 'wf-profile';
+let DISHES = [];
+let GENERICS = {};
+let HABITS = [];
+let selected = { mealType: null, setting: null, goals: new Set(), mood: null };
+let lastHabitContext = ['general'];
+
+const MEAL_TYPES = [
+  ['breakfast', 'Breakfast'], ['lunch', 'Lunch'], ['dinner', 'Dinner'],
+  ['snack', 'Snack'], ['drink', 'Drink'],
+];
+const SETTINGS = [
+  ['home', 'Home'], ['restaurant', 'Restaurant'], ['fastcasual', 'Fast casual'],
+  ['office', 'Office lunch'], ['takeout', 'Takeout'],
+];
+const GOALS = [
+  ['cholesterol', 'Lower cholesterol'], ['dental', 'Protect teeth'], ['protein', 'High protein'],
+  ['fiber', 'High fiber'], ['loweffort', 'Low effort'], ['comfort', 'Warm comfort food'],
+  ['postwalk', 'Post-walk meal'], ['budget', 'Budget-friendly'],
+];
+const MOODS = [
+  ['tired', 'Tired'], ['stressed', 'Stressed'], ['salty', 'Craving salty'],
+  ['sweet', 'Craving sweet'], ['comforting', 'Want comfort'], ['light', 'Want light'],
+];
+
+// ══ PROFILE ════════════════════════════════════════
+function defaultProfile() {
+  return {
+    priorities: ['cholesterol', 'dental', 'general'],
+    allergies: ['shellfish'],
+    otherAllergyNotes: '',
+    labs: { ldl: null, apoB: null, totalChol: null, a1c: null },
+    dentalHistory: 'some', // none | some | frequent
+    activity: { walkMiles: 2, sleepHours: '7-8', otherExercise: 'occasional' },
+    supplements: '',
+  };
+}
+function loadProfile() {
+  try {
+    const stored = JSON.parse(localStorage.getItem(PROFILE_KEY));
+    return stored ? { ...defaultProfile(), ...stored } : defaultProfile();
+  } catch { return defaultProfile(); }
+}
+function saveProfileObj(p) { localStorage.setItem(PROFILE_KEY, JSON.stringify(p)); }
+let profile = loadProfile();
+
+// ══ THEME ══════════════════════════════════════════
+function toggleTheme() {
+  const next = document.documentElement.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+  document.documentElement.setAttribute('data-theme', next);
+  localStorage.setItem('wf-theme', next);
+}
+const _t = localStorage.getItem('wf-theme');
+if (_t) document.documentElement.setAttribute('data-theme', _t);
+
+// ══ UTIL ═══════════════════════════════════════════
+function esc(s) { const d = document.createElement('div'); d.textContent = s || ''; return d.innerHTML; }
+function clamp(n, lo, hi) { return Math.max(lo, Math.min(hi, n)); }
+function pickN(arr, n) {
+  const pool = [...arr];
+  const out = [];
+  while (pool.length && out.length < n) {
+    out.push(pool.splice(Math.floor(Math.random() * pool.length), 1)[0]);
+  }
+  return out;
+}
+
+// ══ BUILDER RENDER ═════════════════════════════════
+function renderChipGroup(containerId, items, group, multi) {
+  const el = document.getElementById(containerId);
+  el.innerHTML = items.map(([key, label]) =>
+    `<button type="button" class="chip${group==='mood'?' mood':''}" data-group="${group}" data-key="${key}">${esc(label)}</button>`
+  ).join('');
+  el.querySelectorAll('.chip').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const key = btn.dataset.key;
+      if (multi) {
+        if (selected.goals.has(key)) { selected.goals.delete(key); btn.classList.remove('active'); }
+        else { selected.goals.add(key); btn.classList.add('active'); }
+      } else if (group === 'mealType') {
+        selected.mealType = selected.mealType === key ? null : key;
+        syncSingleChips('mealTypeChips', selected.mealType);
+      } else if (group === 'setting') {
+        selected.setting = selected.setting === key ? null : key;
+        syncSingleChips('settingChips', selected.setting);
+      } else if (group === 'mood') {
+        selected.mood = selected.mood === key ? null : key;
+        syncSingleChips('moodChips', selected.mood);
+      }
+    });
+  });
+}
+function syncSingleChips(containerId, activeKey) {
+  document.getElementById(containerId).querySelectorAll('.chip').forEach(btn => {
+    btn.classList.toggle('active', btn.dataset.key === activeKey);
+  });
+}
+function renderAllergyRow() {
+  const el = document.getElementById('allergyRow');
+  const chips = profile.allergies.map(a =>
+    `<span class="allergy-pill">⚠ ${esc(a === 'shellfish' ? 'Shrimp / shellfish' : a)}</span>`
+  ).join('');
+  el.innerHTML = (chips || '<span style="color:var(--text-4)">None set</span>') +
+    '<button class="allergy-edit-link" onclick="openSettings()">edit in profile</button>';
+}
+
+// ══ RECOMMENDATION ENGINE ═════════════════════════
+function findDishMatch(text) {
+  const q = (text || '').trim().toLowerCase();
+  if (!q) return null;
+  // exact/keyword match first
+  let hit = DISHES.find(d => d.matchKeywords.some(k => q.includes(k) || k.includes(q)));
+  if (hit) return hit;
+  return null;
+}
+function pickGenericKey(text) {
+  const q = (text || '').trim().toLowerCase();
+  if (/chin/.test(q)) return 'chinese';
+  if (/sandwich|sub |hoagie/.test(q)) return 'sandwich';
+  if (/noodle|pasta|ramen|lo mein/.test(q)) return 'noodles';
+  return 'other';
+}
+
+function scoreItem(item, ctx) {
+  // item: dish or generic-template object; both share goalTags/cholesterolFriendly/dentalRisk when dish,
+  // generics don't carry those, so we score generics a bit more neutrally.
+  let score = 6.5;
+  const isDish = !!item.id;
+
+  if (isDish) {
+    ctx.goals.forEach(g => { if (item.goalTags.includes(g)) score += 0.5; });
+    if (ctx.mood && item.moodTags && item.moodTags.includes(ctx.mood)) score += 0.4;
+    if (item.effort === 'low' && ctx.goals.has('loweffort')) score += 0.4;
+
+    const wantsCholesterolFocus = ctx.goals.has('cholesterol') || (profile.priorities.includes('cholesterol'));
+    if (wantsCholesterolFocus) score += item.cholesterolFriendly ? 0.7 : -0.7;
+
+    const wantsDentalFocus = ctx.goals.has('dental') || profile.priorities.includes('dental');
+    if (wantsDentalFocus) {
+      if (item.dentalRisk === 'low') score += 0.5;
+      else if (item.dentalRisk === 'high') score -= 0.9;
+      else score -= 0.2;
+    }
+  } else {
+    // generic template: mild, even-handed baseline nudge
+    if (ctx.goals.has('loweffort')) score += 0.2;
+  }
+
+  return clamp(Math.round(score * 10) / 10, 4, 10);
+}
+function scoreBand(score) {
+  if (score >= 7.8) return 'high';
+  if (score >= 6) return 'mid';
+  return 'low';
+}
+
+function buildRecommendation(ctx, forcedDishId) {
+  let item, isDish, source;
+  if (forcedDishId) {
+    item = DISHES.find(d => d.id === forcedDishId);
+    isDish = true;
+  } else {
+    const dish = findDishMatch(ctx.cuisineText);
+    if (dish) { item = dish; isDish = true; }
+    else { item = GENERICS[pickGenericKey(ctx.cuisineText)]; isDish = false; }
+  }
+  source = item;
+
+  const score = scoreItem(item, ctx);
+  const band = scoreBand(score);
+
+  const hasShellfishAllergy = profile.allergies.includes('shellfish');
+  const allergyFlag = isDish && hasShellfishAllergy && item.allergenRisk && item.allergenRisk.includes('shellfish');
+
+  const habitCtx = [];
+  if (isDish) {
+    if (item.dentalRisk !== 'low' || profile.dentalHistory !== 'none') habitCtx.push('dental');
+    if (!item.goalTags.includes('fiber')) habitCtx.push('lowfiber');
+    if (!item.goalTags.includes('protein')) habitCtx.push('lowprotein');
+    if (item.cuisine === 'ricebowl' || item.cuisine === 'poke') habitCtx.push('ricebowl');
+    if (item.cuisine === 'matcha') habitCtx.push('sweetdrink');
+  }
+  if (ctx.mood === 'salty') habitCtx.push('salty');
+  if (ctx.setting === 'restaurant') habitCtx.push('largeportion');
+  habitCtx.push('general');
+  lastHabitContext = habitCtx;
+
+  return {
+    title: source.name,
+    emoji: source.emoji,
+    isDish,
+    score, band,
+    baseOrder: source.baseOrder,
+    whyItWorks: source.whyItWorks,
+    modifications: source.modifications,
+    watchOuts: source.watchOuts,
+    dentalTip: source.dentalTip,
+    cholesterolTip: source.cholesterolTip,
+    allergyFlag,
+  };
+}
+
+// ══ RESULT RENDER ══════════════════════════════════
+function renderResult(r) {
+  const el = document.getElementById('resultCard');
+  const bandLabel = r.band === 'high' ? 'Great fit' : r.band === 'mid' ? 'Good fit' : 'Fine choice';
+  el.innerHTML = `
+    <div class="card">
+      <div class="result-head">
+        <div class="result-title-wrap">
+          <span class="result-emoji">${r.emoji}</span>
+          <div>
+            <div class="result-title heading">${esc(r.title)}</div>
+            <div class="result-sub">${bandLabel} for what you're after right now</div>
+          </div>
+        </div>
+        <div class="score-badge score-band-${r.band}">
+          <span class="score-num">${r.score}</span>
+          <span class="score-den">/ 10</span>
+        </div>
+      </div>
+
+      ${r.allergyFlag ? `<div class="allergy-flag">⚠ This dish commonly includes shrimp or shellfish. Ask your server to leave it off and confirm no shared prep surfaces or fryer oil.</div>` : ''}
+
+      <div class="result-section">
+        <span class="result-section-title">✦ Recommended order</span>
+        <ul class="result-list">${r.baseOrder.map(x => `<li>${esc(x)}</li>`).join('')}</ul>
+      </div>
+
+      <div class="result-section">
+        <span class="result-section-title">💬 Why this works for you</span>
+        <ul class="result-list">${r.whyItWorks.map(x => `<li>${esc(x)}</li>`).join('')}</ul>
+      </div>
+
+      <div class="result-section">
+        <span class="result-section-title">🔧 Simple modifications</span>
+        <ul class="result-list">${r.modifications.map(x => `<li>${esc(x)}</li>`).join('')}</ul>
+      </div>
+
+      <div class="result-section">
+        <span class="result-section-title">👀 What to watch for</span>
+        <ul class="result-list watch">${r.watchOuts.map(x => `<li>${esc(x)}</li>`).join('')}</ul>
+      </div>
+
+      <div class="tip-grid">
+        <div class="tip-card dental">
+          <span class="tip-card-label">🦷 Dental tip</span>
+          ${esc(r.dentalTip)}
+        </div>
+        <div class="tip-card chol">
+          <span class="tip-card-label">❤ Cholesterol tip</span>
+          ${esc(r.cholesterolTip)}
+        </div>
+      </div>
+
+      <p class="reassurance">No single meal is a win or a failure — this is just one good option among many.</p>
+    </div>
+  `;
+  el.classList.add('visible');
+  renderTinyHabits(lastHabitContext);
+  el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+}
+
+function runQuery() {
+  const ctx = {
+    mealType: selected.mealType,
+    setting: selected.setting,
+    cuisineText: document.getElementById('cuisineInput').value,
+    goals: selected.goals,
+    mood: selected.mood,
+  };
+  const r = buildRecommendation(ctx, null);
+  renderResult(r);
+}
+
+function selectExample(dishId) {
+  const d = DISHES.find(x => x.id === dishId);
+  if (!d) return;
+  document.getElementById('cuisineInput').value = d.name;
+  selected.mealType = d.mealTypes[0];
+  selected.setting = d.settings[0];
+  syncSingleChips('mealTypeChips', selected.mealType);
+  syncSingleChips('settingChips', selected.setting);
+  const ctx = { mealType: selected.mealType, setting: selected.setting, cuisineText: d.name, goals: selected.goals, mood: selected.mood };
+  renderResult(buildRecommendation(ctx, dishId));
+}
+
+// ══ GALLERY ════════════════════════════════════════
+function renderGallery() {
+  const el = document.getElementById('galleryGrid');
+  el.innerHTML = DISHES.map(d => `
+    <div class="gallery-card" onclick="selectExample('${d.id}')">
+      <div class="gallery-emoji">${d.emoji}</div>
+      <div class="gallery-name">${esc(d.name)}</div>
+    </div>
+  `).join('');
+}
+
+// ══ TINY HABITS ════════════════════════════════════
+function renderTinyHabits(contextTags) {
+  const el = document.getElementById('habitList');
+  let matches = HABITS.filter(h => contextTags.includes(h.trigger));
+  if (matches.length < 3) {
+    const rest = HABITS.filter(h => !matches.includes(h));
+    matches = matches.concat(pickN(rest, 3 - matches.length));
+  }
+  const chosen = pickN(matches, Math.min(3, matches.length));
+  el.innerHTML = chosen.map(h => `
+    <div class="habit-item"><span class="habit-dot">✓</span>${esc(h.text)}</div>
+  `).join('');
+}
+function shuffleHabits() { renderTinyHabits(lastHabitContext); }
+
+// ══ SETTINGS DRAWER ════════════════════════════════
+function openSettings() {
+  renderDrawer();
+  document.getElementById('overlay').classList.add('visible');
+  document.getElementById('drawer').classList.add('open');
+}
+function closeSettings() {
+  document.getElementById('overlay').classList.remove('visible');
+  document.getElementById('drawer').classList.remove('open');
+}
+function renderDrawer() {
+  const p = profile;
+  const priorityDefs = [
+    ['cholesterol', 'Cholesterol health'], ['dental', 'Dental / cavity protection'],
+    ['energy', 'Steady energy'], ['general', 'General wellness'],
+  ];
+  const body = document.getElementById('drawerBody');
+  body.innerHTML = `
+    <div class="field-group">
+      <span class="field-label">Health priorities</span>
+      ${priorityDefs.map(([k, l]) => `
+        <label class="checkbox-row">
+          <input type="checkbox" data-priority="${k}" ${p.priorities.includes(k) ? 'checked' : ''}>
+          ${esc(l)}
+        </label>
+      `).join('')}
+    </div>
+
+    <div class="field-group">
+      <span class="field-label">Allergies</span>
+      <label class="checkbox-row">
+        <input type="checkbox" id="allergyShellfish" ${p.allergies.includes('shellfish') ? 'checked' : ''}>
+        Shrimp / shellfish
+      </label>
+      <input type="text" class="text-input" id="otherAllergies" placeholder="Other allergies (optional)" value="${esc(p.otherAllergyNotes)}" style="margin-top:8px">
+    </div>
+
+    <div class="field-group">
+      <span class="field-label">Dental history</span>
+      <select class="select-input" id="dentalHistory">
+        <option value="none" ${p.dentalHistory === 'none' ? 'selected' : ''}>No recent cavities</option>
+        <option value="some" ${p.dentalHistory === 'some' ? 'selected' : ''}>A few treated recently</option>
+        <option value="frequent" ${p.dentalHistory === 'frequent' ? 'selected' : ''}>Recurring / frequent cavities</option>
+      </select>
+      <div id="dentalNoteSlot"></div>
+    </div>
+
+    <div class="field-group">
+      <span class="field-label">Recent labs <span style="font-weight:400;text-transform:none">(optional, stays on this device)</span></span>
+      <div class="lab-grid">
+        <div class="lab-field"><label>LDL-C (mg/dL)</label><input type="number" class="number-input" id="labLdl" value="${p.labs.ldl ?? ''}" placeholder="e.g. 130"></div>
+        <div class="lab-field"><label>ApoB (mg/dL)</label><input type="number" class="number-input" id="labApoB" value="${p.labs.apoB ?? ''}" placeholder="e.g. 100"></div>
+        <div class="lab-field"><label>Total cholesterol</label><input type="number" class="number-input" id="labTotal" value="${p.labs.totalChol ?? ''}" placeholder="e.g. 190"></div>
+        <div class="lab-field"><label>A1C (%)</label><input type="number" step="0.1" class="number-input" id="labA1c" value="${p.labs.a1c ?? ''}" placeholder="e.g. 5.4"></div>
+      </div>
+      <div id="ldlNoteSlot"></div>
+      <p class="field-hint">These help tailor the cholesterol emphasis. Nothing here is stored anywhere but this browser.</p>
+    </div>
+
+    <div class="field-group">
+      <span class="field-label">Activity & sleep</span>
+      <div class="lab-field" style="margin-bottom:8px"><label>Typical daily walking (miles)</label>
+        <input type="number" class="number-input" id="walkMiles" value="${p.activity.walkMiles}"></div>
+      <div class="lab-field" style="margin-bottom:8px"><label>Usual sleep</label>
+        <input type="text" class="text-input" id="sleepHours" value="${esc(p.activity.sleepHours)}"></div>
+      <div class="lab-field"><label>Other exercise</label>
+        <select class="select-input" id="otherExercise">
+          <option value="rarely" ${p.activity.otherExercise==='rarely'?'selected':''}>Rarely</option>
+          <option value="occasional" ${p.activity.otherExercise==='occasional'?'selected':''}>Occasional (yoga/Pilates ~monthly)</option>
+          <option value="regular" ${p.activity.otherExercise==='regular'?'selected':''}>Regular (weekly+)</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="field-group">
+      <span class="field-label">Supplements / meds <span style="font-weight:400;text-transform:none">(for your own reference)</span></span>
+      <input type="text" class="text-input" id="supplements" value="${esc(p.supplements)}" placeholder="e.g. D3, fish oil, magnesium…">
+    </div>
+
+    <button class="save-btn" onclick="saveDrawer()">Save profile</button>
+    <button class="reset-link" onclick="resetProfile()">Reset to defaults</button>
+    <div class="saved-flash" id="savedFlash">Saved ✓</div>
+  `;
+  renderGentleNotes();
+}
+function renderGentleNotes() {
+  const ldlEl = document.getElementById('ldlNoteSlot');
+  const ldlVal = parseFloat(document.getElementById('labLdl').value);
+  if (ldlEl) {
+    ldlEl.innerHTML = (ldlVal && ldlVal >= 190)
+      ? `<div class="lab-note">An LDL-C at this level is worth a conversation with a doctor if you haven't recently — food choices help, but this range usually benefits from medical guidance too.</div>` : '';
+  }
+  const dentalEl = document.getElementById('dentalNoteSlot');
+  const dentalVal = document.getElementById('dentalHistory').value;
+  if (dentalEl) {
+    dentalEl.innerHTML = (dentalVal === 'frequent')
+      ? `<div class="lab-note">Recurring cavities are worth flagging to your dentist — there may be a saliva, enamel, or routine factor worth checking beyond food alone.</div>` : '';
+  }
+  document.getElementById('labLdl').addEventListener('input', renderGentleNotes);
+  document.getElementById('dentalHistory').addEventListener('change', renderGentleNotes);
+}
+function saveDrawer() {
+  const priorities = [...document.querySelectorAll('[data-priority]')].filter(i => i.checked).map(i => i.dataset.priority);
+  const allergies = [];
+  if (document.getElementById('allergyShellfish').checked) allergies.push('shellfish');
+  profile = {
+    priorities,
+    allergies,
+    otherAllergyNotes: document.getElementById('otherAllergies').value.trim(),
+    dentalHistory: document.getElementById('dentalHistory').value,
+    labs: {
+      ldl: parseFloat(document.getElementById('labLdl').value) || null,
+      apoB: parseFloat(document.getElementById('labApoB').value) || null,
+      totalChol: parseFloat(document.getElementById('labTotal').value) || null,
+      a1c: parseFloat(document.getElementById('labA1c').value) || null,
+    },
+    activity: {
+      walkMiles: parseFloat(document.getElementById('walkMiles').value) || 0,
+      sleepHours: document.getElementById('sleepHours').value.trim(),
+      otherExercise: document.getElementById('otherExercise').value,
+    },
+    supplements: document.getElementById('supplements').value.trim(),
+  };
+  saveProfileObj(profile);
+  renderAllergyRow();
+  renderNoticeBanner();
+  const flash = document.getElementById('savedFlash');
+  flash.classList.add('show');
+  setTimeout(() => flash.classList.remove('show'), 1600);
+}
+function resetProfile() {
+  profile = defaultProfile();
+  saveProfileObj(profile);
+  renderDrawer();
+  renderAllergyRow();
+  renderNoticeBanner();
+}
+
+function renderNoticeBanner() {
+  const el = document.getElementById('noticeBanner');
+  const notes = [];
+  if (profile.labs.ldl && profile.labs.ldl >= 190) {
+    notes.push('your last LDL-C reading');
+  }
+  if (profile.dentalHistory === 'frequent') {
+    notes.push('recurring cavities');
+  }
+  if (!notes.length) { el.innerHTML = ''; return; }
+  el.innerHTML = `<div class="notice-banner"><span class="ni">💛</span><span>Just a gentle note: given ${notes.join(' and ')}, it's worth keeping in touch with your doctor or dentist alongside these food choices. Well Fed can help with the day-to-day, not the medical side.</span></div>`;
+}
+
+// ══ BOOT ═══════════════════════════════════════════
+async function boot() {
+  renderChipGroup('mealTypeChips', MEAL_TYPES, 'mealType', false);
+  renderChipGroup('settingChips', SETTINGS, 'setting', false);
+  renderChipGroup('goalChips', GOALS, 'goal', true);
+  renderChipGroup('moodChips', MOODS, 'mood', false);
+  renderAllergyRow();
+  renderNoticeBanner();
+  renderTinyHabits(['general']);
+
+  const [dishesRes, genericsRes, habitsRes] = await Promise.all([
+    fetch('data/dishes.json'), fetch('data/generics.json'), fetch('data/habits.json'),
+  ]);
+  DISHES = await dishesRes.json();
+  GENERICS = await genericsRes.json();
+  HABITS = await habitsRes.json();
+
+  const dl = document.getElementById('cuisineList');
+  dl.innerHTML = ['Poke', 'Vietnamese', 'Japanese', 'Chinese', 'Salad', 'Sandwich', 'Rice bowl', 'Noodles', 'Soup', 'Matcha']
+    .map(c => `<option value="${c}">`).join('');
+
+  renderGallery();
+  renderTinyHabits(['general']);
+}
+boot();
+</script>
+</body>
+</html>

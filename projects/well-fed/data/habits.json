@@ -1,0 +1,62 @@
+[
+  {
+    "id": "water-after-salty",
+    "text": "Drink a glass of water after salty meals.",
+    "trigger": "salty"
+  },
+  {
+    "id": "add-produce",
+    "text": "Add one extra fruit or vegetable to your next meal.",
+    "trigger": "lowfiber"
+  },
+  {
+    "id": "add-protein",
+    "text": "If a meal is mostly carbs, add a protein source.",
+    "trigger": "lowprotein"
+  },
+  {
+    "id": "fluoride-mouthwash",
+    "text": "Use fluoride mouthwash at a different time than brushing, for extra cavity protection.",
+    "trigger": "dental"
+  },
+  {
+    "id": "two-min-strength",
+    "text": "Try a 2-minute strength routine, twice this week — it counts.",
+    "trigger": "general"
+  },
+  {
+    "id": "half-greens-half-rice",
+    "text": "Order half greens, half rice instead of all rice.",
+    "trigger": "ricebowl"
+  },
+  {
+    "id": "sauce-on-side",
+    "text": "Ask for sauce or dressing on the side so you're in control.",
+    "trigger": "saucy"
+  },
+  {
+    "id": "sip-vs-sit",
+    "text": "Drink sweet drinks in one sitting instead of sipping slowly for hours.",
+    "trigger": "sweetdrink"
+  },
+  {
+    "id": "walk-after-heavy",
+    "text": "Take a short walk after a heavier meal — even 5–10 minutes helps.",
+    "trigger": "heavy"
+  },
+  {
+    "id": "citrus-swap",
+    "text": "Swap one sugary sauce for a squeeze of citrus or vinegar instead.",
+    "trigger": "sugary"
+  },
+  {
+    "id": "box-half",
+    "text": "Box half of a large restaurant portion before you start eating, not after.",
+    "trigger": "largeportion"
+  },
+  {
+    "id": "water-first",
+    "text": "Have a glass of water before the meal — it's a small, easy way to slow down.",
+    "trigger": "general"
+  }
+]
