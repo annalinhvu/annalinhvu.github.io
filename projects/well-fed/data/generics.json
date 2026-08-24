@@ -1,0 +1,114 @@
+{
+  "chinese": {
+    "name": "Chinese-style Order",
+    "emoji": "🥡",
+    "baseOrder": [
+      "Steamed or stir-fried protein (chicken, tofu, shrimp-free seafood, or beef) over deep-fried",
+      "Brown rice if it's offered, or a smaller portion of white rice",
+      "A vegetable side (broccoli, bok choy, snap peas) in addition to the main",
+      "Sauce on the side — a little goes further than it looks",
+      "Skip the fried appetizer if the main dish is already fried"
+    ],
+    "whyItWorks": [
+      "Steamed and stir-fried dishes keep saturated fat much lower than deep-fried ones",
+      "Ordering a vegetable side is the single easiest fiber upgrade at most Chinese restaurants",
+      "Rice control is the biggest lever for keeping this meal from feeling heavy afterward"
+    ],
+    "modifications": [
+      "Ask for less oil or \"light sauce\" if the kitchen allows it",
+      "Order one fewer fried item and one more vegetable side",
+      "Split a large entree instead of finishing the whole portion in one sitting"
+    ],
+    "watchOuts": [
+      "Sauces are a major sodium and sugar source — sweet and sour, general tso's, and orange sauce especially",
+      "Fried rice and lo mein add up fast on refined carbs",
+      "If you have a shellfish allergy, double-check shared woks and fryer oil with the kitchen"
+    ],
+    "dentalTip": "Sticky sweet sauces are the main dental risk here — rinse with water after, especially if dessert-sweet sauces were involved.",
+    "cholesterolTip": "Steamed or stir-fried with sauce on the side keeps this genuinely reasonable for your LDL/ApoB goals. Fried plus heavy sauce is where it stops being that."
+  },
+  "sandwich": {
+    "name": "Sandwich",
+    "emoji": "🥪",
+    "baseOrder": [
+      "Whole grain or whole wheat bread over white",
+      "A real protein layer — turkey, chicken, egg, or hummus",
+      "Vegetables piled in — lettuce, tomato, cucumber, peppers",
+      "A thin spread rather than a thick layer of mayo or cheese",
+      "A side salad or fruit instead of chips, most of the time"
+    ],
+    "whyItWorks": [
+      "Whole grain bread adds fiber that white bread skips entirely",
+      "A real protein layer keeps you full instead of snacky an hour later",
+      "Piling on vegetables is free volume and free fiber"
+    ],
+    "modifications": [
+      "Ask for mayo or cheese on the side, or go half portion",
+      "Add an extra vegetable instead of an extra cheese slice",
+      "Choose a side salad or fruit cup over chips when it's an option"
+    ],
+    "watchOuts": [
+      "Double meat plus double cheese plus mayo adds up in saturated fat fast",
+      "Deli meats can be high in sodium — balance with lower-sodium sides",
+      "Chips and a sugary drink can quietly double the meal's impact"
+    ],
+    "dentalTip": "Bread is fairly gentle on teeth. If there's a sweet drink alongside, rinse with water after.",
+    "cholesterolTip": "The protein and spread choices matter most — lean protein and a light spread keep this solidly cholesterol-friendly."
+  },
+  "noodles": {
+    "name": "Noodle Dish",
+    "emoji": "🍝",
+    "baseOrder": [
+      "Broth-based or lightly-sauced noodles over cream-based or deep-fried",
+      "A real protein — chicken, tofu, egg, or lean beef",
+      "Vegetables mixed in, not just on the side",
+      "A smaller noodle portion with extra broth or vegetables to fill the bowl",
+      "Sauce or chili oil added a little at a time, not all at once"
+    ],
+    "whyItWorks": [
+      "Broth-based noodle dishes are naturally lighter than cream or deep-fried versions",
+      "Mixing vegetables directly in adds fiber without needing a separate side",
+      "A smaller noodle portion still feels like a full bowl once vegetables fill it out"
+    ],
+    "modifications": [
+      "Ask for a vegetable-forward version, or extra vegetables mixed in",
+      "Choose broth or light sauce over cream sauce when it's an option",
+      "Add protein if the dish is mostly noodles with little else"
+    ],
+    "watchOuts": [
+      "Cream sauces (alfredo-style, carbonara-style) are a major saturated fat source",
+      "Noodle dishes are easy to underestimate the sodium in — sauces and broths add up",
+      "A noodle-only bowl with little protein won't keep you full very long"
+    ],
+    "dentalTip": "Not much dental risk from the noodles themselves — watch for very acidic or spicy chili sauces if your teeth feel sensitive that day.",
+    "cholesterolTip": "Broth or light-sauce versions with real protein and vegetables are a solid choice. Cream sauce is the one thing worth trading up from most days."
+  },
+  "other": {
+    "name": "Your Meal",
+    "emoji": "🍽️",
+    "baseOrder": [
+      "A real protein source — fish, tofu, beans, chicken, or eggs",
+      "At least one serving of vegetables or fruit",
+      "A whole grain or fiber-rich carb over a refined one, when there's a choice",
+      "A sauce or dressing on the side so you're in control of it",
+      "Water alongside the meal, especially if anything is salty or sweet"
+    ],
+    "whyItWorks": [
+      "Protein plus fiber is the combination that keeps you full and your energy steady",
+      "Vegetables are one of the most reliable levers for both fiber and general wellness",
+      "Sauce on the side means the flavor is still there, just on your terms"
+    ],
+    "modifications": [
+      "Add a vegetable or fruit if the meal doesn't already have one",
+      "Add a protein source if the meal is mostly carbs",
+      "Ask for sauce or dressing on the side"
+    ],
+    "watchOuts": [
+      "Without seeing the specific dish, sodium and added sugar are the two things most worth a second look",
+      "If anything is fried, it's usually the biggest single lever on saturated fat",
+      "Double-check any shellfish-adjacent ingredients given your allergy"
+    ],
+    "dentalTip": "Drink water after the meal, and go easy on lingering over anything sweet or acidic.",
+    "cholesterolTip": "Lean toward fish, tofu, and beans over red meat and creamy sauces when you have the choice — small, repeatable swaps add up."
+  }
+}

@@ -1,0 +1,396 @@
+[
+  {
+    "id": "poke-bowl",
+    "name": "Poke Bowl",
+    "emoji": "🥣",
+    "cuisine": "poke",
+    "matchKeywords": ["poke", "hawaiian bowl", "hawaiian"],
+    "mealTypes": ["lunch", "dinner"],
+    "settings": ["restaurant", "fastcasual", "takeout"],
+    "goalTags": ["cholesterol", "protein", "fiber", "postwalk"],
+    "moodTags": ["light", "comforting"],
+    "effort": "low",
+    "cholesterolFriendly": true,
+    "dentalRisk": "low",
+    "allergenRisk": ["shellfish"],
+    "baseOrder": [
+      "Half rice, half greens or cabbage base",
+      "Salmon or tuna",
+      "Edamame",
+      "Cucumber",
+      "Seaweed",
+      "Avocado",
+      "Shredded carrot & cabbage",
+      "Ponzu or light soy sauce on the side",
+      "Skip the shrimp — ask staff about cross-contamination with shellfish"
+    ],
+    "whyItWorks": [
+      "Fish and edamame bring in real protein without saturated fat",
+      "Vegetables add fiber that helps carry cholesterol out of your system",
+      "Avocado is a heart-healthy fat, not a scary one",
+      "Lighter on refined carbs than a full rice bowl"
+    ],
+    "modifications": [
+      "Ask for sauce on the side so you control how much goes on",
+      "Swap in extra greens if you want more volume without more rice",
+      "Add a scoop of extra edamame for more protein"
+    ],
+    "watchOuts": [
+      "Poke sauces and seaweed salad often have added sugar and sodium",
+      "Easy to end up with two or three sauces, which adds up fast",
+      "Double-check with staff about shrimp cross-contamination on shared prep surfaces"
+    ],
+    "dentalTip": "Rinse with water after eating — sticky sauces cling to teeth more than you'd think.",
+    "cholesterolTip": "This bowl is already a solid cholesterol-friendly choice thanks to the fish and fiber. Ease up on any creamy or spicy-mayo toppings if offered."
+  },
+  {
+    "id": "bagel-lox",
+    "name": "Bagel with Lox",
+    "emoji": "🥯",
+    "cuisine": "bagel",
+    "matchKeywords": ["bagel", "lox", "smoked salmon", "bagel and lox"],
+    "mealTypes": ["breakfast", "lunch"],
+    "settings": ["home", "restaurant", "takeout", "office"],
+    "goalTags": ["protein", "comfort", "budget"],
+    "moodTags": ["comforting"],
+    "effort": "low",
+    "cholesterolFriendly": true,
+    "dentalRisk": "medium",
+    "allergenRisk": [],
+    "baseOrder": [
+      "Whole grain or everything bagel over plain white if you have the option",
+      "A thin layer of cream cheese, or swap half for avocado",
+      "Smoked salmon",
+      "Capers, red onion, tomato, cucumber",
+      "Skip the second smear of cream cheese if you already added avocado"
+    ],
+    "whyItWorks": [
+      "Salmon brings omega-3 fats that support your lipid panel",
+      "Whole grain bread adds fiber a plain white bagel skips",
+      "Capers and onion add flavor without needing more fat"
+    ],
+    "modifications": [
+      "Ask for a thin scrape of cream cheese instead of a full layer",
+      "Half avocado, half light cream cheese keeps the flavor without doubling the saturated fat",
+      "Add tomato and cucumber for volume and fiber"
+    ],
+    "watchOuts": [
+      "Full-fat cream cheese is a meaningful saturated fat source if piled on",
+      "Refined white bagels spike blood sugar faster than whole grain",
+      "Lox can be salty, especially paired with capers"
+    ],
+    "dentalTip": "Bagels are chewy and can lodge in back teeth — a quick water swish after helps, especially with your cavity history.",
+    "cholesterolTip": "The salmon here is genuinely great for your LDL/ApoB. The cream cheese amount is the one lever worth adjusting."
+  },
+  {
+    "id": "vietnamese-rice-bowl",
+    "name": "Vietnamese Rice Bowl",
+    "emoji": "🍚",
+    "cuisine": "vietnamese",
+    "matchKeywords": ["vietnamese", "com", "cơm", "rice bowl", "banh mi bowl"],
+    "mealTypes": ["lunch", "dinner"],
+    "settings": ["restaurant", "takeout", "office"],
+    "goalTags": ["protein", "fiber", "budget", "postwalk"],
+    "moodTags": ["comforting", "light"],
+    "effort": "low",
+    "cholesterolFriendly": true,
+    "dentalRisk": "low",
+    "allergenRisk": [],
+    "baseOrder": [
+      "Grilled lemongrass chicken, pork, or tofu",
+      "Steamed jasmine or brown rice (ask for brown if it's offered)",
+      "Pickled carrots & daikon (đồ chua)",
+      "Cucumber and fresh herbs",
+      "Fish sauce or nước chấm on the side",
+      "Skip the fried spring roll add-on if you want it lighter"
+    ],
+    "whyItWorks": [
+      "Grilled protein instead of fried keeps saturated fat lower",
+      "Pickled vegetables add fiber and a lot of flavor for very little effort",
+      "Herbs and citrus notes make it feel like more than \"diet food\""
+    ],
+    "modifications": [
+      "Ask for grilled instead of fried protein if there's a choice",
+      "Get sauce on the side — nước chấm can be sneaky sweet and salty",
+      "Add extra pickled vegetables instead of extra rice"
+    ],
+    "watchOuts": [
+      "Fried spring rolls or crispy pork add saturated fat fast",
+      "Nước chấm has sugar and fish sauce, both add up in sodium",
+      "Restaurant portions can run large — boxing half for later isn't a failure"
+    ],
+    "dentalTip": "Pickled vegetables are acidic — a sip of water afterward helps rebalance your mouth, especially with recent cavities.",
+    "cholesterolTip": "Grilled lean protein plus fiber-rich pickled vegetables is a genuinely strong combo for your LDL/ApoB goals."
+  },
+  {
+    "id": "pho",
+    "name": "Pho",
+    "emoji": "🍜",
+    "cuisine": "vietnamese",
+    "matchKeywords": ["pho", "phở", "vietnamese soup", "noodle soup"],
+    "mealTypes": ["lunch", "dinner"],
+    "settings": ["restaurant", "takeout"],
+    "goalTags": ["comfort", "protein", "postwalk"],
+    "moodTags": ["tired", "comforting"],
+    "effort": "low",
+    "cholesterolFriendly": true,
+    "dentalRisk": "low",
+    "allergenRisk": [],
+    "baseOrder": [
+      "Broth with lean beef (well-done cuts), chicken, or tofu",
+      "Rice noodles — ask for a smaller noodle portion if you want more broth-to-veg ratio",
+      "Bean sprouts, Thai basil, lime, jalapeño mixed in",
+      "Go easy on hoisin and sriracha — add a little at a time",
+      "A side of extra vegetables if it's offered"
+    ],
+    "whyItWorks": [
+      "Broth-based soups are naturally lower in saturated fat than fried options",
+      "Lean beef or chicken plus herbs gives you protein without heaviness",
+      "Warm and steady — a great match for a tired or low-energy day"
+    ],
+    "modifications": [
+      "Choose leaner cuts over fattier ones when there's a choice",
+      "Add extra bean sprouts and herbs for fiber and crunch",
+      "Go light on hoisin sauce, which is high in sugar and sodium"
+    ],
+    "watchOuts": [
+      "Pho broth is high in sodium, especially at restaurants",
+      "Hoisin and sriracha both add sugar and sodium fast if free-poured",
+      "Rice noodles are a refined carb — the herbs and veggies help balance that"
+    ],
+    "dentalTip": "The broth is hot and can be acidic with lime — rinse with plain water after to protect enamel.",
+    "cholesterolTip": "Lean protein choice matters most here. Let the broth, not fatty cuts, be where the richness comes from."
+  },
+  {
+    "id": "salad-bowl",
+    "name": "Salad Bowl",
+    "emoji": "🥗",
+    "cuisine": "salad",
+    "matchKeywords": ["salad", "greens bowl", "big salad"],
+    "mealTypes": ["lunch", "dinner"],
+    "settings": ["restaurant", "fastcasual", "office", "home"],
+    "goalTags": ["fiber", "cholesterol", "loweffort", "protein"],
+    "moodTags": ["light", "tired"],
+    "effort": "low",
+    "cholesterolFriendly": true,
+    "dentalRisk": "low",
+    "allergenRisk": [],
+    "baseOrder": [
+      "A big base of leafy greens, not just iceberg",
+      "Grilled chicken, salmon, chickpeas, or tofu for protein",
+      "A mix of colorful vegetables — the more colors, the more fiber",
+      "Nuts or seeds for healthy fat and crunch",
+      "Dressing on the side, vinaigrette over creamy or ranch"
+    ],
+    "whyItWorks": [
+      "Leafy greens and mixed vegetables are some of the best soluble-fiber sources for lowering LDL",
+      "A real protein portion keeps you full instead of snacky an hour later",
+      "Nuts and seeds add heart-healthy fat without needing creamy dressing"
+    ],
+    "modifications": [
+      "Swap creamy dressing for vinaigrette, or ask for it on the side",
+      "Add beans or lentils for extra fiber if the protein feels light",
+      "Skip the fried toppings (wonton strips, bacon bits) most of the time"
+    ],
+    "watchOuts": [
+      "Salads can quietly get high in sodium once cheese, bacon, and creamy dressing pile on",
+      "A salad with no real protein will leave you hungry within the hour",
+      "Croutons and candied nuts add sugar and refined carbs fast"
+    ],
+    "dentalTip": "Crunchy vegetables are great for your teeth. Just rinse with water after if the dressing was citrus-based.",
+    "cholesterolTip": "This is one of the most reliably cholesterol-friendly options on any menu. Dressing choice is the one thing worth being picky about."
+  },
+  {
+    "id": "matcha-drink",
+    "name": "Matcha Drink",
+    "emoji": "🍵",
+    "cuisine": "matcha",
+    "matchKeywords": ["matcha", "green tea latte", "matcha latte"],
+    "mealTypes": ["drink", "snack"],
+    "settings": ["restaurant", "fastcasual", "home", "office"],
+    "goalTags": ["loweffort"],
+    "moodTags": ["tired", "sweet"],
+    "effort": "low",
+    "cholesterolFriendly": true,
+    "dentalRisk": "medium",
+    "allergenRisk": [],
+    "baseOrder": [
+      "Matcha with oat, soy, or low-fat milk",
+      "Ask for less syrup — or half the usual pump count",
+      "Unsweetened or lightly sweetened over the standard sweet version",
+      "Enjoy it in one sitting rather than sipping for hours"
+    ],
+    "whyItWorks": [
+      "Matcha has antioxidants and a gentler caffeine curve than coffee — steadier energy, less of a crash",
+      "Plant milk keeps saturated fat low if you skip whole milk versions",
+      "A satisfying ritual that doesn't require a full meal to feel good"
+    ],
+    "modifications": [
+      "Ask for half sweetener — most shops default to quite sweet",
+      "Oat or soy milk over whole milk if you want it lighter",
+      "Add a splash of extra matcha if you want more flavor without more sugar"
+    ],
+    "watchOuts": [
+      "Standard sweetened matcha lattes can have as much sugar as a dessert",
+      "Sipping a sweet drink slowly over hours is harder on teeth than drinking it in one sitting",
+      "Some shops use flavored syrups with more sugar than the matcha itself"
+    ],
+    "dentalTip": "This is the one to watch most closely with your cavity history: drink it in one sitting rather than sipping for hours, and rinse with water after.",
+    "cholesterolTip": "Matcha itself is cholesterol-neutral to mildly favorable. The milk and sweetener choice is what shifts it either direction."
+  },
+  {
+    "id": "sushi",
+    "name": "Sushi",
+    "emoji": "🍣",
+    "cuisine": "japanese",
+    "matchKeywords": ["sushi", "sashimi", "japanese", "nigiri"],
+    "mealTypes": ["lunch", "dinner"],
+    "settings": ["restaurant", "takeout", "fastcasual"],
+    "goalTags": ["protein", "cholesterol", "postwalk"],
+    "moodTags": ["light", "comforting"],
+    "effort": "low",
+    "cholesterolFriendly": true,
+    "dentalRisk": "low",
+    "allergenRisk": ["shellfish"],
+    "baseOrder": [
+      "Sashimi or nigiri (salmon, tuna, yellowtail) over heavy rolls",
+      "A cucumber or avocado roll for lighter carbs",
+      "Edamame or seaweed salad on the side",
+      "Soy sauce lightly — wasabi and ginger for flavor, not a sodium habit",
+      "Skip shrimp/ebi and imitation crab — ask about shared prep surfaces for cross-contact"
+    ],
+    "whyItWorks": [
+      "Sashimi and nigiri are close to pure lean protein and healthy fat, very little refined carb",
+      "Edamame adds plant protein and fiber",
+      "Naturally lower sodium than fried or heavily sauced rolls"
+    ],
+    "modifications": [
+      "Choose nigiri or sashimi over tempura or spicy mayo rolls when possible",
+      "Ask for sauce or spicy mayo on the side instead of drizzled on",
+      "Add a cucumber roll instead of a second fried roll for volume"
+    ],
+    "watchOuts": [
+      "Fried rolls (tempura, crunch rolls) and spicy mayo add saturated fat and calories fast",
+      "Soy sauce is very high in sodium — a little goes a long way",
+      "Double-check shrimp and imitation crab (often contains shellfish) given your allergy"
+    ],
+    "dentalTip": "Pickled ginger is acidic — fine in small amounts, just rinse with water afterward rather than sipping soy-sauce-dipped bites over a long meal.",
+    "cholesterolTip": "Sashimi-forward orders are some of the best cholesterol-friendly restaurant food that exists. Fried rolls are where that stops being true."
+  },
+  {
+    "id": "lentil-soup",
+    "name": "Lentil Soup",
+    "emoji": "🍲",
+    "cuisine": "soup",
+    "matchKeywords": ["lentil soup", "lentil", "soup"],
+    "mealTypes": ["lunch", "dinner"],
+    "settings": ["home", "office", "restaurant", "takeout"],
+    "goalTags": ["fiber", "cholesterol", "loweffort", "budget", "comfort"],
+    "moodTags": ["tired", "stressed", "comforting"],
+    "effort": "low",
+    "cholesterolFriendly": true,
+    "dentalRisk": "low",
+    "allergenRisk": [],
+    "baseOrder": [
+      "A bowl of lentil soup as the base",
+      "A squeeze of lemon and fresh herbs if available",
+      "A small piece of whole grain bread if you want something to chew",
+      "A side salad if you want more volume and fiber"
+    ],
+    "whyItWorks": [
+      "Lentils are one of the best soluble-fiber foods for actively lowering LDL cholesterol",
+      "Plant protein plus fiber keeps you full for hours — great for steady energy",
+      "Warm and low-effort, easy to make in a big batch and reheat all week"
+    ],
+    "modifications": [
+      "Add extra vegetables (carrots, spinach) to boost fiber and volume for free",
+      "A drizzle of olive oil adds good fat without tipping into heavy",
+      "Pair with whole grain bread instead of white for extra fiber"
+    ],
+    "watchOuts": [
+      "Canned or restaurant versions can be higher in sodium than homemade",
+      "Cream-based lentil soups lose most of the cholesterol benefit — go for broth-based",
+      "Bread on the side adds up if it's more than one slice"
+    ],
+    "dentalTip": "Soft and easy on teeth — one of the more dental-friendly meals here. Still worth a water rinse if bread or fruit is alongside.",
+    "cholesterolTip": "This might be the single best food on this list for your LDL-C and ApoB specifically. Lentils are genuinely great here."
+  },
+  {
+    "id": "tofu-bowl",
+    "name": "Tofu Bowl",
+    "emoji": "🥢",
+    "cuisine": "ricebowl",
+    "matchKeywords": ["tofu bowl", "tofu", "buddha bowl"],
+    "mealTypes": ["lunch", "dinner"],
+    "settings": ["home", "fastcasual", "restaurant", "office"],
+    "goalTags": ["protein", "fiber", "cholesterol", "postwalk"],
+    "moodTags": ["light", "tired"],
+    "effort": "medium",
+    "cholesterolFriendly": true,
+    "dentalRisk": "low",
+    "allergenRisk": [],
+    "baseOrder": [
+      "Pan-seared or baked tofu (not deep-fried) as the protein",
+      "Brown rice, or half rice / half greens",
+      "Roasted or steamed vegetables — broccoli, carrots, bok choy",
+      "A light sesame-soy or peanut-lime sauce, on the side",
+      "Sesame seeds or crushed peanuts for texture"
+    ],
+    "whyItWorks": [
+      "Tofu is a complete plant protein with zero cholesterol and low saturated fat",
+      "Roasted vegetables add fiber and make the bowl feel substantial without more rice",
+      "A genuinely great post-walk refuel that won't sit heavy"
+    ],
+    "modifications": [
+      "Ask for tofu pan-seared or baked instead of fried when ordering out",
+      "Half rice, half greens if you want to lighten the carb load",
+      "Add extra vegetables instead of extra sauce for more volume"
+    ],
+    "watchOuts": [
+      "Fried tofu absorbs a lot of oil — nice texture, but it changes the nutrition profile a lot",
+      "Peanut and sesame sauces are easy to over-pour — ask for it on the side",
+      "Some sauces are surprisingly high in sugar (teriyaki especially)"
+    ],
+    "dentalTip": "A gentle, non-acidic meal overall — a good choice on a day your teeth feel sensitive.",
+    "cholesterolTip": "Tofu is one of the most direct swaps for animal protein if you're working on LDL/ApoB — it genuinely does the job here."
+  },
+  {
+    "id": "salmon-rice-bowl",
+    "name": "Salmon Rice Bowl",
+    "emoji": "🐟",
+    "cuisine": "ricebowl",
+    "matchKeywords": ["salmon bowl", "salmon rice bowl", "salmon"],
+    "mealTypes": ["lunch", "dinner"],
+    "settings": ["home", "fastcasual", "restaurant", "takeout"],
+    "goalTags": ["protein", "cholesterol", "postwalk", "fiber"],
+    "moodTags": ["light", "comforting", "tired"],
+    "effort": "medium",
+    "cholesterolFriendly": true,
+    "dentalRisk": "low",
+    "allergenRisk": [],
+    "baseOrder": [
+      "Grilled or baked salmon (skip crispy-fried-in-oil versions most days)",
+      "Half rice / half greens, or a full vegetable base",
+      "Avocado, cucumber, edamame, shredded carrot",
+      "A light soy-sesame or citrus dressing, on the side",
+      "A sprinkle of sesame seeds or seaweed flakes"
+    ],
+    "whyItWorks": [
+      "Salmon is one of the best omega-3 sources, which directly supports your lipid panel",
+      "Balanced macros — real protein, fiber from vegetables, healthy fat from fish and avocado",
+      "Filling enough to actually carry you through the afternoon"
+    ],
+    "modifications": [
+      "Ask for salmon grilled or baked rather than crispy-fried if ordering out",
+      "Add extra greens instead of extra rice for more volume and fiber",
+      "Go light on sweet glazes (teriyaki-style), which add sugar fast"
+    ],
+    "watchOuts": [
+      "Sweet glazes and teriyaki sauces add sugar quickly — ask for sauce on the side",
+      "Portions at some fast-casual spots run large on rice specifically — half rice half greens fixes this",
+      "Watch sodium if the salmon is heavily seasoned or the sauce is soy-based"
+    ],
+    "dentalTip": "A low-risk meal for your teeth overall. If the glaze is sweet, a water rinse after is a good habit.",
+    "cholesterolTip": "This is close to an ideal cholesterol-supportive meal already — the fish and fiber are doing real work for your LDL/ApoB."
+  }
+]

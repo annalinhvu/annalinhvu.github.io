@@ -1206,6 +1206,13 @@ body {
         <div class="col-status"><span class="live-dot"></span>live</div>
       </a>
 
+      <a href="projects/well-fed/" class="db-row std alt">
+        <div class="col-idx">11</div>
+        <div class="col-name"><span class="row-name">Well Fed</span><span class="row-desc">A food companion that recommends meals and small swaps based on your real priorities — cholesterol, dental health, steady energy — never calorie counting or guilt.</span><span class="row-link">view project →</span></div>
+        <div class="col-tech">Nutrition</div>
+        <div class="col-status"><span class="live-dot"></span>live</div>
+      </a>
+
       <div class="db-footer">
         <span>10 rows returned</span>
         <span class="ft-live">● all systems live</span>
@@ -2037,7 +2044,7 @@ function updateStatus(pane, rows) {
 var _origSwitch = switchPane;
 switchPane = function(id) {
   _origSwitch(id);
-  var rowCounts = {studio: 10, built: 15, career: 4};
+  var rowCounts = {studio: 11, built: 15, career: 4};
   updateStatus(id, rowCounts[id] || 0);
 };
 
@@ -2097,7 +2104,7 @@ switchPane = function(id) {
     moveIndicator(active);
     var pane = document.getElementById('pane-' + active.dataset.pane);
     if (pane) revealPane(pane);
-    var rowCounts = {studio: 10, built: 15, career: 4};
+    var rowCounts = {studio: 11, built: 15, career: 4};
     updateStatus(active.dataset.pane, rowCounts[active.dataset.pane] || 0);
   }
 })();
