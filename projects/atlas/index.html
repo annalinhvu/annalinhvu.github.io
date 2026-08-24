@@ -658,6 +658,66 @@ body {
 }
 .cal-chip-remove:hover { color: var(--gold); }
 
+/* ══ BUDGET VIEW ══ */
+.budget-view {
+  position: fixed; top: 52px; left: 0; right: 0; bottom: 0;
+  display: flex; flex-direction: column;
+  background: var(--bg);
+}
+.budget-empty {
+  flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: center;
+  gap: 10px; color: var(--text-4); text-align: center; padding: 20px;
+}
+.budget-empty-title { font-family: 'Bebas Neue', sans-serif; font-size: 1.6rem; letter-spacing: 2px; color: var(--text-2); }
+.budget-empty-sub { font-size: 0.72rem; letter-spacing: 0.5px; max-width: 360px; line-height: 1.6; }
+
+.budget-table-wrap { flex: 1; overflow: auto; }
+.budget-head-row, .budget-line-row {
+  display: grid;
+  grid-template-columns: 20px 1.3fr 80px 90px 90px 90px 90px 100px 26px;
+  gap: 12px; align-items: center;
+  padding: 10px 24px;
+  min-width: 820px;
+}
+.budget-head-row {
+  font-size: 0.54rem; letter-spacing: 1.5px; text-transform: uppercase; color: var(--text-4);
+  border-bottom: 1px solid var(--border);
+  position: sticky; top: 0; background: var(--bg); z-index: 2;
+}
+.budget-head-row span:not(:first-child) { text-align: right; }
+.budget-line-row { border-bottom: 1px solid var(--border); font-size: 0.78rem; color: var(--text-1); transition: background 0.15s; }
+.budget-line-row:hover { background: var(--bg-2); }
+.budget-line-dot { width: 7px; height: 7px; border-radius: 50%; background: var(--dot-color, var(--text-4)); }
+.budget-line-name { display: flex; align-items: baseline; gap: 8px; overflow: hidden; }
+.budget-line-name b { font-weight: 600; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.budget-line-month { font-size: 0.56rem; letter-spacing: 1px; color: var(--text-4); flex-shrink: 0; }
+.budget-line-days { display: flex; align-items: center; gap: 5px; justify-content: flex-end; }
+.budget-days-input {
+  width: 42px; padding: 3px 4px; text-align: right;
+  background: var(--surface); border: 1px solid var(--border); border-radius: 1px;
+  color: var(--text-1); font-size: 0.78rem; font-family: 'Geist Mono', monospace;
+}
+.budget-days-input:focus { outline: none; border-color: var(--gold); }
+.budget-line-days span { font-size: 0.6rem; color: var(--text-4); }
+.budget-line-cat { text-align: right; color: var(--text-3); }
+.budget-line-total { text-align: right; font-weight: 600; color: var(--text-1); }
+.budget-line-remove {
+  background: none; border: none; color: var(--text-4); cursor: pointer;
+  font-size: 0.85rem; line-height: 1; text-align: right; justify-self: end;
+}
+.budget-line-remove:hover { color: var(--gold); }
+
+.budget-footer {
+  flex-shrink: 0; border-top: 1px solid var(--border);
+  padding: 16px 24px; display: flex; align-items: center; justify-content: space-between; gap: 20px;
+  flex-wrap: wrap;
+}
+.budget-footer-note { font-size: 0.66rem; color: var(--text-3); letter-spacing: 0.5px; }
+.budget-footer-note b { color: var(--text-1); }
+.budget-footer-total { text-align: right; }
+.budget-footer-total-label { font-size: 0.55rem; letter-spacing: 2px; text-transform: uppercase; color: var(--text-4); }
+.budget-footer-total-value { font-family: 'Bebas Neue', sans-serif; font-size: 2rem; letter-spacing: 1px; color: var(--text-1); }
+
 /* ══ PANEL BUDGET/TIMING SIDEBAR ══ */
 .panel-month-strip { display: flex; gap: 3px; }
 .panel-month-cell {
@@ -710,6 +770,7 @@ body {
     <div class="view-toggle">
       <button class="view-toggle-btn active" id="viewMapBtn" onclick="switchView('map')">✈ Map</button>
       <button class="view-toggle-btn" id="viewCalBtn" onclick="switchView('calendar')">▦ Calendar</button>
+      <button class="view-toggle-btn" id="viewBudgetBtn" onclick="switchView('budget')">$ Budget</button>
     </div>
     <button class="random-btn" id="randomBtn" onclick="pickRandom()">✦ surprise me</button>
     <button class="saved-btn" id="savedBtn" onclick="toggleSavedFilter()">♥ <span id="savedCount">0</span></button>
@@ -794,6 +855,20 @@ body {
     </div>
     <div class="cal-grid" id="calGrid"></div>
   </div>
+</div>
+
+<!-- BUDGET VIEW -->
+<div class="budget-view" id="budgetView" style="display:none">
+  <div class="cal-toolbar">
+    <div class="cal-year-nav">
+      <button class="cal-year-btn" onclick="calYearShift(-1)" title="Previous year">←</button>
+      <span class="cal-year-label" id="budgetYearLabel"></span>
+      <button class="cal-year-btn" onclick="calYearShift(1)" title="Next year">→</button>
+    </div>
+    <span class="cal-hint">Estimates from each destination's daily budget range · edit days per trip</span>
+    <span class="cal-stats" id="budgetStats"></span>
+  </div>
+  <div id="budgetContent" style="flex:1; display:flex; flex-direction:column; overflow:hidden;"></div>
 </div>
 
 <!-- OVERLAY -->
@@ -926,6 +1001,10 @@ const NYC      = [-74.006, 40.7128];
 const LS_KEY   = 'atlas-wishlist';
 const THEME_KEY= 'atlas-theme';
 const CAL_KEY  = 'atlas-calendar-plan';
+const TRIP_DAYS_KEY = 'atlas-trip-days';
+const BUDGET_CAT_DEFS = [
+  ['lodging', 'Lodging'], ['food', 'Food'], ['fun', 'Fun'], ['transport', 'Transport'],
+];
 const MONTH_NAMES  = ['January','February','March','April','May','June','July','August','September','October','November','December'];
 const MONTH_ABBR   = ['JAN','FEB','MAR','APR','MAY','JUN','JUL','AUG','SEP','OCT','NOV','DEC'];
 const REGIONS  = { asia:'Asia', europe:'Europe', americas:'Americas', africa:'Africa', oceania:'Oceania' };
@@ -1033,6 +1112,8 @@ let calendarPlan  = JSON.parse(localStorage.getItem(CAL_KEY) || '{}');
 let calDraggedId  = null;
 let calSelectedId = null;
 let calSearch     = '';
+let calDragOriginMonth = null;
+let tripDays = JSON.parse(localStorage.getItem(TRIP_DAYS_KEY) || '{}');
 
 // ── UTILS ─────────────────────────────────────────
 const esc = s => String(s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
@@ -1659,20 +1740,25 @@ function toggleSavedFilter() {
 function switchView(mode) {
   viewMode = mode;
   const isMap = mode === 'map';
-  document.getElementById('mapWrap').style.display     = isMap ? '' : 'none';
-  document.getElementById('controlsBar').style.display  = isMap ? '' : 'none';
-  document.getElementById('calendarView').style.display = isMap ? 'none' : 'flex';
+  const isCal = mode === 'calendar';
+  const isBudget = mode === 'budget';
+  document.getElementById('mapWrap').style.display      = isMap ? '' : 'none';
+  document.getElementById('controlsBar').style.display   = isMap ? '' : 'none';
+  document.getElementById('calendarView').style.display  = isCal ? 'flex' : 'none';
+  document.getElementById('budgetView').style.display    = isBudget ? 'flex' : 'none';
   document.getElementById('viewMapBtn').classList.toggle('active', isMap);
-  document.getElementById('viewCalBtn').classList.toggle('active', !isMap);
+  document.getElementById('viewCalBtn').classList.toggle('active', isCal);
+  document.getElementById('viewBudgetBtn').classList.toggle('active', isBudget);
   document.getElementById('randomBtn').style.display = isMap ? '' : 'none';
   document.getElementById('savedBtn').style.display   = isMap ? '' : 'none';
-  if (!isMap) {
+  if (isCal) {
     calSelectedId = null;
     document.getElementById('calHint').textContent = ('ontouchstart' in window)
       ? 'Tap a destination, then tap a month to schedule it'
       : 'Drag a destination onto a month — or tap, then tap a month';
     renderCalendar();
   }
+  if (isBudget) renderBudget();
 }
 
 function calPlanKey() { return String(calYear); }
@@ -1726,7 +1812,8 @@ function calChipNameClick(id, month) {
 function calYearShift(dir) {
   calYear += dir;
   calSelectedId = null;
-  renderCalendar();
+  if (viewMode === 'budget') renderBudget();
+  else renderCalendar();
 }
 
 function renderCalendar() {
@@ -1876,6 +1963,108 @@ document.getElementById('calDeckList').addEventListener('drop', e => {
   if (id) removeFromMonth(id, calDragOriginMonth);
   calDragOriginMonth = null;
 });
+
+// ── BUDGET VIEW ───────────────────────────────────
+function saveTripDays() { localStorage.setItem(TRIP_DAYS_KEY, JSON.stringify(tripDays)); }
+function tripDaysKey(year, month, id) { return `${year}-${month}-${id}`; }
+
+function getTripDays(c, year, month) {
+  const override = tripDays[tripDaysKey(year, month, c.id)];
+  return override || c.ideal_days || 7;
+}
+
+function setTripDays(id, month, value) {
+  const c = allCountries.find(x => x.id === id);
+  if (!c) return;
+  const days = Math.max(1, Math.min(90, Math.round(+value) || c.ideal_days || 7));
+  tripDays[tripDaysKey(calYear, month, id)] = days;
+  saveTripDays();
+  renderBudget();
+}
+
+function budgetLineCost(c, days) {
+  const bb = c.budget_breakdown || {};
+  const nights = Math.max(days - 1, 1);
+  const avg = key => bb[key] ? (bb[key].low + bb[key].high) / 2 : 0;
+  const lodging   = avg('lodging') * nights;
+  const food      = avg('food') * days;
+  const fun       = avg('fun') * days;
+  const transport = avg('transport') * days;
+  return { lodging, food, fun, transport, total: lodging + food + fun + transport };
+}
+
+function fmt$(n) { return '$' + Math.round(n).toLocaleString('en-US'); }
+
+function renderBudget() {
+  if (!allCountries.length) return;
+  document.getElementById('budgetYearLabel').textContent = calYear;
+  const content = document.getElementById('budgetContent');
+  const plan = getYearPlan();
+
+  const lines = [];
+  for (let m = 1; m <= 12; m++) {
+    (plan[m] || []).forEach(id => {
+      const c = allCountries.find(x => x.id === id);
+      if (c) lines.push({ c, month: m });
+    });
+  }
+
+  if (!lines.length) {
+    content.innerHTML = `<div class="budget-empty">
+      <div class="budget-empty-title">No trips scheduled yet</div>
+      <div class="budget-empty-sub">Drag destinations onto months in the Calendar view first — this tab tallies up an estimated cost for whatever you've planned for ${calYear}.</div>
+    </div>`;
+    document.getElementById('budgetStats').textContent = '';
+    return;
+  }
+
+  lines.sort((a, b) => a.month - b.month || a.c.name.localeCompare(b.c.name));
+
+  let grandTotal = 0;
+  const catTotals = { lodging: 0, food: 0, fun: 0, transport: 0 };
+
+  const rows = lines.map(({ c, month }) => {
+    const days = getTripDays(c, calYear, month);
+    const cost = budgetLineCost(c, days);
+    grandTotal += cost.total;
+    BUDGET_CAT_DEFS.forEach(([key]) => catTotals[key] += cost[key]);
+    return `<div class="budget-line-row">
+      <span class="budget-line-dot" style="--dot-color:var(--${c.region})"></span>
+      <span class="budget-line-name"><b>${esc(c.name)}</b><span class="budget-line-month">${MONTH_ABBR[month-1]}</span></span>
+      <span class="budget-line-days">
+        <input class="budget-days-input" type="number" min="1" max="90" value="${days}"
+          onchange="setTripDays(${c.id},${month},this.value)"><span>days</span>
+      </span>
+      <span class="budget-line-cat">${fmt$(cost.lodging)}</span>
+      <span class="budget-line-cat">${fmt$(cost.food)}</span>
+      <span class="budget-line-cat">${fmt$(cost.fun)}</span>
+      <span class="budget-line-cat">${fmt$(cost.transport)}</span>
+      <span class="budget-line-total">${fmt$(cost.total)}</span>
+      <button class="budget-line-remove" onclick="removeFromMonth(${c.id},${month});renderBudget()" title="Remove">×</button>
+    </div>`;
+  }).join('');
+
+  content.innerHTML = `
+    <div class="budget-table-wrap">
+      <div class="budget-head-row">
+        <span></span><span>Trip</span><span>Days</span><span>Lodging</span><span>Food</span><span>Fun</span><span>Transport</span><span>Total</span><span></span>
+      </div>
+      ${rows}
+    </div>
+    <div class="budget-footer">
+      <div class="budget-footer-note">
+        <b>${fmt$(catTotals.lodging)}</b> lodging &middot; <b>${fmt$(catTotals.food)}</b> food &middot;
+        <b>${fmt$(catTotals.fun)}</b> fun &middot; <b>${fmt$(catTotals.transport)}</b> transport<br>
+        Save evenly across the year: <b>${fmt$(grandTotal/12)}</b>/month for ${calYear}
+      </div>
+      <div class="budget-footer-total">
+        <div class="budget-footer-total-label">Total for ${calYear}</div>
+        <div class="budget-footer-total-value">${fmt$(grandTotal)}</div>
+      </div>
+    </div>`;
+
+  document.getElementById('budgetStats').textContent = `${lines.length} trip${lines.length===1?'':'s'} planned`;
+}
 
 // ── KEYBOARD ──────────────────────────────────────
 document.addEventListener('keydown', e => {
