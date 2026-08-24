@@ -1682,17 +1682,17 @@ function getYearPlan() {
 }
 function saveCalendarPlan() { localStorage.setItem(CAL_KEY, JSON.stringify(calendarPlan)); }
 
-function findScheduled(id) {
+function findScheduledMonths(id) {
   const plan = getYearPlan();
-  for (const m in plan) { if ((plan[m]||[]).includes(id)) return +m; }
-  return null;
+  const months = [];
+  for (const m in plan) { if ((plan[m]||[]).includes(id)) months.push(+m); }
+  return months.sort((a, b) => a - b);
 }
 
 function assignToMonth(id, month) {
   const plan = getYearPlan();
-  Object.keys(plan).forEach(m => { plan[m] = (plan[m]||[]).filter(x => x !== id); });
   if (!plan[month]) plan[month] = [];
-  plan[month].push(id);
+  if (!plan[month].includes(id)) plan[month].push(id);
   saveCalendarPlan();
   renderCalendar();
 }
@@ -1702,6 +1702,25 @@ function removeFromMonth(id, month) {
   if (plan[month]) plan[month] = plan[month].filter(x => x !== id);
   saveCalendarPlan();
   renderCalendar();
+}
+
+function moveToMonth(id, fromMonth, toMonth) {
+  if (fromMonth === toMonth) return;
+  const plan = getYearPlan();
+  if (plan[fromMonth]) plan[fromMonth] = plan[fromMonth].filter(x => x !== id);
+  assignToMonth(id, toMonth);
+}
+
+// Clicking an existing chip's name normally opens its panel, but if a
+// destination is currently selected (tap-to-assign mode), that selection
+// takes priority so tapping near an occupied month still schedules it.
+function calChipNameClick(id, month) {
+  if (calSelectedId !== null) {
+    assignToMonth(calSelectedId, month);
+    calSelectedId = null;
+  } else {
+    openPanel(id);
+  }
 }
 
 function calYearShift(dir) {
@@ -1726,8 +1745,10 @@ function renderCalDeck() {
     .sort((a, b) => a.name.localeCompare(b.name));
 
   list.innerHTML = items.map(c => {
-    const month = findScheduled(c.id);
-    const badge = month !== null ? `<span class="cal-deck-badge">${MONTH_ABBR[month-1]}</span>` : '';
+    const months = findScheduledMonths(c.id);
+    const badgeText = months.length === 1 ? MONTH_ABBR[months[0]-1]
+      : months.length > 1 ? `${MONTH_ABBR[months[0]-1]} +${months.length-1}` : '';
+    const badge = badgeText ? `<span class="cal-deck-badge">${badgeText}</span>` : '';
     return `<div class="cal-deck-item${c.id===calSelectedId?' selected':''}" draggable="true"
         data-id="${c.id}" style="--dot-color:var(--${c.region})">
       <span class="cal-deck-dot"></span>
@@ -1740,11 +1761,12 @@ function renderCalDeck() {
     const id = +el.dataset.id;
     el.addEventListener('dragstart', e => {
       calDraggedId = id;
+      calDragOriginMonth = null;
       el.classList.add('dragging');
       e.dataTransfer.setData('text/plain', String(id));
       e.dataTransfer.effectAllowed = 'move';
     });
-    el.addEventListener('dragend', () => { el.classList.remove('dragging'); calDraggedId = null; });
+    el.addEventListener('dragend', () => { el.classList.remove('dragging'); calDraggedId = null; calDragOriginMonth = null; });
     el.addEventListener('click', () => {
       calSelectedId = calSelectedId === id ? null : id;
       renderCalDeck();
@@ -1764,8 +1786,8 @@ function renderCalGrid() {
     const chips = ids.map(id => {
       const c = allCountries.find(x => x.id === id);
       if (!c) return '';
-      return `<div class="cal-chip" style="--dot-color:var(--${c.region})" data-id="${id}">
-        <span class="cal-chip-name" onclick="event.stopPropagation();openPanel(${id})">${esc(c.name)}</span>
+      return `<div class="cal-chip" draggable="true" style="--dot-color:var(--${c.region})" data-id="${id}" data-month="${month}">
+        <span class="cal-chip-name" onclick="event.stopPropagation();calChipNameClick(${id},${month})">${esc(c.name)}</span>
         <button class="cal-chip-remove" onclick="event.stopPropagation();removeFromMonth(${id},${month})" title="Remove">×</button>
       </div>`;
     }).join('');
@@ -1779,6 +1801,23 @@ function renderCalGrid() {
   }).join('');
 
   document.getElementById('calStats').textContent = `${scheduledCount} / ${allCountries.length} scheduled`;
+
+  grid.querySelectorAll('.cal-chip').forEach(chipEl => {
+    const id    = +chipEl.dataset.id;
+    const month = +chipEl.dataset.month;
+    chipEl.addEventListener('dragstart', e => {
+      calDraggedId = id;
+      calDragOriginMonth = month;
+      chipEl.classList.add('dragging');
+      e.dataTransfer.setData('text/plain', String(id));
+      e.dataTransfer.effectAllowed = 'move';
+    });
+    chipEl.addEventListener('dragend', () => {
+      chipEl.classList.remove('dragging');
+      calDraggedId = null;
+      calDragOriginMonth = null;
+    });
+  });
 
   grid.querySelectorAll('.cal-month').forEach(cell => {
     const month = +cell.dataset.month;
@@ -1797,7 +1836,13 @@ function renderCalGrid() {
       e.preventDefault();
       cell.classList.remove('drag-over', 'ideal');
       const id = +(e.dataTransfer.getData('text/plain') || calDraggedId || 0);
-      if (id) assignToMonth(id, month);
+      if (!id) return;
+      if (calDragOriginMonth !== null) {
+        moveToMonth(id, calDragOriginMonth, month);
+      } else {
+        assignToMonth(id, month);
+      }
+      calDragOriginMonth = null;
     });
     cell.addEventListener('click', () => {
       if (calSelectedId !== null) {
@@ -1811,6 +1856,25 @@ function renderCalGrid() {
 document.getElementById('calSearchInput').addEventListener('input', e => {
   calSearch = e.target.value.trim();
   renderCalDeck();
+});
+
+// Drop a chip dragged out of a month back onto the deck to unschedule it
+document.getElementById('calDeckList').addEventListener('dragover', e => {
+  if (calDragOriginMonth === null) return; // only accept chips dragged out of a month
+  e.preventDefault();
+  e.dataTransfer.dropEffect = 'move';
+  document.getElementById('calDeckList').classList.add('drag-over');
+});
+document.getElementById('calDeckList').addEventListener('dragleave', () => {
+  document.getElementById('calDeckList').classList.remove('drag-over');
+});
+document.getElementById('calDeckList').addEventListener('drop', e => {
+  document.getElementById('calDeckList').classList.remove('drag-over');
+  if (calDragOriginMonth === null) return;
+  e.preventDefault();
+  const id = +(e.dataTransfer.getData('text/plain') || calDraggedId || 0);
+  if (id) removeFromMonth(id, calDragOriginMonth);
+  calDragOriginMonth = null;
 });
 
 // ── KEYBOARD ──────────────────────────────────────
