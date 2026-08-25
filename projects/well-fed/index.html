@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Healthy Diet Tracker</title>
+<title>Well Fed</title>
 <meta name="description" content="A supportive food companion: meal ideas and small swaps that fit your real life.">
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🍵</text></svg>">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -19,8 +19,8 @@
   --surface-sage:#eef2e5;
   --text-1:#252a1f;
   --text-2:#464c3b;
-  --text-3:#71765f;
-  --text-4:#96967d;
+  --text-3:#5c6049;
+  --text-4:#7d7f66;
   --border:#e6e0cf;
   --border-strong:#d6cdb2;
   --sage:#3f7d4a;
@@ -43,8 +43,8 @@
   --surface-sage:rgba(110,168,99,0.10);
   --text-1:#f2efe2;
   --text-2:#d3cebb;
-  --text-3:#a3a088;
-  --text-4:#75735f;
+  --text-3:#aeab93;
+  --text-4:#8f8c74;
   --border:#383d2e;
   --border-strong:#484e3a;
   --sage:#7fc06e;
@@ -80,28 +80,30 @@ button{font-family:inherit}
 /* ══ TOPBAR ══ */
 .topbar{
   position:sticky;top:0;z-index:100;
-  background:var(--bg);border-bottom:1px solid var(--border);
+  background:var(--bg);
 }
 .topbar-inner{
-  max-width:760px;margin:0 auto;padding:12px 20px;
+  max-width:760px;margin:0 auto;padding:10px 20px;
   display:flex;align-items:center;justify-content:space-between;
 }
-.topbar-left{display:flex;align-items:center;gap:12px}
+.topbar-left{display:flex;align-items:center;gap:10px}
 .icon-btn{
-  width:40px;height:40px;min-width:40px;border-radius:50%;
+  width:34px;height:34px;min-width:34px;border-radius:50%;
   border:1px solid var(--border);background:var(--surface);
   display:flex;align-items:center;justify-content:center;
   cursor:pointer;color:var(--text-2);transition:border-color .18s,color .18s,background .18s;
   text-decoration:none;
 }
 .icon-btn:hover{border-color:var(--border-strong);color:var(--text-1);background:var(--surface-2)}
-.wordmark{display:flex;align-items:center;gap:9px}
+.icon-btn-plain{border:none;background:none}
+.icon-btn-plain:hover{background:var(--surface-2)}
+.wordmark{display:flex;align-items:center;gap:8px}
 .wordmark-mark{
-  width:32px;height:32px;border-radius:9px;background:var(--sage-dim);
+  width:28px;height:28px;border-radius:8px;background:var(--sage-dim);
   color:var(--sage);display:flex;align-items:center;justify-content:center;flex-shrink:0;
 }
-.wordmark-text{font-size:1.02rem;font-weight:600;color:var(--text-1)}
-.topbar-right{display:flex;align-items:center;gap:8px}
+.wordmark-text{font-size:1rem;font-weight:600;color:var(--text-1)}
+.topbar-right{display:flex;align-items:center;gap:6px}
 
 /* ══ LAYOUT ══ */
 .page{max-width:760px;margin:0 auto;padding:30px 20px 0}
@@ -109,9 +111,9 @@ button{font-family:inherit}
 section+section{margin-top:26px}
 
 /* ══ HERO ══ */
-.hero{margin-bottom:22px}
-.hero-eyebrow{font-size:.82rem;color:var(--text-3);margin-bottom:6px;font-weight:500}
-.hero-title{font-size:1.7rem;margin-bottom:8px;line-height:1.2}
+.hero{margin-bottom:14px}
+.hero-eyebrow{font-size:.82rem;color:var(--text-3);margin-bottom:4px;font-weight:500}
+.hero-title{font-size:1.7rem;margin-bottom:6px;line-height:1.2}
 .hero-sub{font-size:.92rem;color:var(--text-3);max-width:480px;line-height:1.6}
 
 /* ══ SURFACE CARD ══ */
@@ -124,19 +126,19 @@ section+section{margin-top:26px}
 /* ══ STUDIO / PRIMARY INPUT ══ */
 .studio-label{
   display:flex;align-items:center;gap:8px;
-  font-size:.92rem;font-weight:600;color:var(--text-1);margin-bottom:10px;
+  font-size:.92rem;font-weight:600;color:var(--text-1);margin-bottom:8px;
 }
 .studio-label .icon{color:var(--sage)}
 .kitchen-textarea{
-  width:100%;resize:vertical;min-height:88px;line-height:1.55;font-family:inherit;
-  padding:14px 16px;border-radius:16px;
+  width:100%;resize:vertical;min-height:72px;line-height:1.55;font-family:inherit;
+  padding:12px 16px;border-radius:16px;
   border:1px solid var(--border);background:var(--surface-2);
   font-size:.95rem;color:var(--text-1);
   transition:border-color .18s,background .18s;
 }
 .kitchen-textarea::placeholder{color:var(--text-4)}
 .kitchen-textarea:focus{outline:none;border-color:var(--sage);background:var(--surface)}
-.kitchen-hint{font-size:.78rem;color:var(--text-4);margin-top:9px;line-height:1.5}
+.kitchen-hint{font-size:.78rem;color:var(--text-4);margin-top:7px;line-height:1.5}
 .kitchen-hint .fridge-clear{background:none;border:none;color:var(--text-4);font-size:.78rem;text-decoration:underline;cursor:pointer;margin-left:4px}
 
 .studio-actions{display:flex;gap:10px;margin-top:16px;flex-wrap:wrap}
@@ -155,13 +157,19 @@ section+section{margin-top:26px}
 .btn-outline:hover{background:var(--sage-dim)}
 .btn-outline.logged{background:var(--sage);color:#fff;border-color:var(--sage)}
 
-.health-context{
-  display:flex;align-items:flex-start;gap:8px;margin-top:16px;
-  font-size:.8rem;color:var(--text-3);line-height:1.55;
+.personalized-badge{
+  display:inline-flex;align-items:center;gap:7px;margin-top:14px;
+  padding:6px 6px 6px 12px;border-radius:999px;border:none;
+  background:var(--sage-dim);color:var(--sage-strong);
+  font-size:.78rem;font-weight:600;cursor:pointer;transition:opacity .16s;
+  font-family:inherit;
 }
-.health-context .icon{color:var(--sage);margin-top:1px}
-.link-btn{background:none;border:none;color:var(--text-2);font-weight:600;font-size:.8rem;cursor:pointer;text-decoration:underline;padding:0}
-.link-btn:hover{color:var(--sage)}
+.personalized-badge:hover{opacity:.85}
+.personalized-badge .icon{color:var(--sage)}
+.personalized-badge .badge-edit{
+  background:var(--surface);color:var(--text-2);font-weight:600;
+  padding:4px 10px;border-radius:999px;font-size:.72rem;
+}
 
 /* ══ PERSONALIZE (details/summary) ══ */
 .personalize{margin-top:18px;border-top:1px dashed var(--border);padding-top:16px}
@@ -280,6 +288,16 @@ section+section{margin-top:26px}
 .dish-glyph{
   width:38px;height:38px;border-radius:11px;background:var(--surface-2);
   display:flex;align-items:center;justify-content:center;font-size:1.2rem;flex-shrink:0;
+  transition:transform .18s;
+}
+.option-card:hover .dish-glyph{transform:scale(1.08)}
+.dish-glyph.fit-high{background:var(--sage-dim)}
+.dish-glyph.fit-mid{background:var(--clay-dim)}
+.dish-glyph.fit-low{background:var(--rose-dim)}
+.uses-badge{
+  display:inline-flex;align-items:center;gap:4px;width:fit-content;
+  background:var(--sage-dim);color:var(--sage-strong);
+  font-size:.7rem;font-weight:600;padding:3px 9px;border-radius:999px;
 }
 .fit-pill{
   flex-shrink:0;font-size:.72rem;font-weight:600;padding:4px 9px;border-radius:999px;
@@ -289,7 +307,10 @@ section+section{margin-top:26px}
 .fit-low{background:var(--rose-dim);color:var(--rose)}
 .option-name{font-size:1rem;font-family:'Fraunces',serif;font-weight:600;color:var(--text-1);line-height:1.3}
 .option-meta{font-size:.74rem;color:var(--text-4)}
-.option-build{font-size:.78rem;color:var(--text-3);line-height:1.55}
+.option-build{
+  font-size:.8rem;color:var(--text-2);line-height:1.5;
+  display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;
+}
 .option-cta{font-size:.78rem;color:var(--sage);font-weight:600;display:flex;align-items:center;gap:5px;margin-top:2px}
 
 /* ══ FULL DETAIL ══ */
@@ -301,8 +322,12 @@ section+section{margin-top:26px}
   width:52px;height:52px;border-radius:15px;background:var(--surface-2);
   display:flex;align-items:center;justify-content:center;font-size:1.6rem;flex-shrink:0;
 }
+.dish-glyph-lg.fit-high{background:var(--sage-dim)}
+.dish-glyph-lg.fit-mid{background:var(--clay-dim)}
+.dish-glyph-lg.fit-low{background:var(--rose-dim)}
 .result-title{font-size:1.35rem;line-height:1.25}
 .result-sub{font-size:.8rem;color:var(--text-3);margin-top:4px}
+.result-blurb{font-size:.98rem;color:var(--text-1);line-height:1.65;margin-bottom:22px}
 .score-badge{
   display:flex;flex-direction:column;align-items:center;justify-content:center;
   width:48px;height:48px;border-radius:14px;flex-shrink:0;
@@ -418,10 +443,10 @@ section+section{margin-top:26px}
 <header class="topbar">
   <div class="topbar-inner">
     <div class="topbar-left">
-      <a href="../../index.html" class="icon-btn" data-icon="arrow-left" aria-label="Back to portfolio" title="Back to portfolio"></a>
+      <a href="../../index.html" class="icon-btn icon-btn-plain" data-icon="arrow-left" aria-label="Back to portfolio" title="Back to portfolio"></a>
       <div class="wordmark">
         <span class="wordmark-mark" data-icon="leaf" aria-hidden="true"></span>
-        <span class="wordmark-text heading">Healthy Diet Tracker</span>
+        <span class="wordmark-text heading">Well Fed</span>
       </div>
     </div>
     <div class="topbar-right">
@@ -449,10 +474,11 @@ section+section{margin-top:26px}
       <button type="button" class="btn btn-primary" onclick="runQuery()"><span data-icon="sparkles"></span> Find my meals</button>
     </div>
 
-    <p class="health-context">
+    <button type="button" class="personalized-badge" onclick="openSettings()" aria-label="View or edit your saved health preferences">
       <span data-icon="shield" aria-hidden="true"></span>
-      <span>Recommendations already consider your saved health preferences. <button class="link-btn" onclick="openSettings()">View or edit</button></span>
-    </p>
+      <span>Personalized to you</span>
+      <span class="badge-edit">Edit</span>
+    </button>
 
     <details class="personalize" id="personalizeDetails">
       <summary>
@@ -492,7 +518,7 @@ section+section{margin-top:26px}
   <section class="ask-panel">
     <div class="ask-head">
       <label class="studio-label" for="chatInput"><span data-icon="message-circle"></span> Ask about food</label>
-      <p class="ask-note">A lightweight, rule-based assistant tuned to your allergies, cholesterol, dental, and reflux priorities. Not a full AI yet, and not a doctor.</p>
+      <p class="ask-note">Answers shaped by what you've told me about your priorities and allergies. Not a substitute for your doctor, just a friendly second thought before you eat.</p>
     </div>
     <div class="chat-log" id="chatLog"></div>
     <div class="chat-input-row">
@@ -533,7 +559,7 @@ section+section{margin-top:26px}
   <div class="disclaimer-wrap">
     <span data-icon="shield" aria-hidden="true"></span>
     <p class="disclaimer">
-      Healthy Diet Tracker offers general wellness support and is not a substitute for advice from a doctor, dietitian, or dentist. It doesn't diagnose anything.
+      Well Fed offers general wellness support and is not a substitute for advice from a doctor, dietitian, or dentist. It doesn't diagnose anything.
       If any of your health priorities ever seem to need more than food adjustments, a conversation with a professional is always worth it.
       And if something here doesn't sit right for your body, trust yourself over the app. No single meal is a win or a failure.
     </p>
@@ -793,24 +819,24 @@ const QA_RULES = [
       ? `A few of the most common reflux triggers are spicy food, citrus, tomato-heavy dishes, caffeine, and eating a big meal right before lying down. None of that means cutting them out forever, just noticing patterns and maybe keeping the heavier or spicier version to earlier in the day.`
       : `You haven't flagged acid reflux as a priority yet. If it's something you're managing, add it under Health Priorities in your profile and I'll start steering suggestions around it.` },
   { test: /matcha|caffeine|coffee/i,
-    answer: p => `Matcha's a good habit to keep: steadier energy than coffee, and cholesterol-neutral to mildly favorable on its own. The milk and sweetener are what shift it either way, so oat or soy milk with less syrup keeps it in your favor.` },
+    answer: p => `Matcha's a nice habit to keep: it tends to feel like steadier energy than coffee, and on its own it's generally considered easy on cholesterol. The milk and sweetener are what shift it either way, so oat or soy milk with less syrup keeps it in your favor.` },
   { test: /cholesterol|ldl|apob|heart/i,
     answer: p => p.cholesterolFocus === 'extra'
-      ? `Since you're giving cholesterol extra attention, leaning toward fish, tofu, beans, and fiber-forward bases over red meat and creamy sauces is the highest-leverage habit, more than any single meal will move the needle.`
+      ? `Since you're giving cholesterol extra attention, leaning toward fish, tofu, beans, and fiber-forward bases over red meat and creamy sauces tends to matter more, over time, than any single meal.`
       : `Cholesterol is one of your standing priorities, so the suggestions here already lean toward fish, tofu, and fiber-forward bases. The pattern over time matters more than any one meal.` },
   { test: /tooth|teeth|cavit|dental|sugar/i,
-    answer: p => `Given your dental history, the habits that matter most are rinsing with water after anything sweet or acidic, and not sipping sugary drinks slowly over a long stretch. Neither one means cutting things out.` },
+    answer: p => `Given your dental history, a couple of small habits tend to help most: rinsing with water after anything sweet or acidic, and not sipping sugary drinks slowly over a long stretch. Neither one means cutting things out.` },
   { test: /alcohol|wine|beer|cocktail/i,
     answer: p => `Alcohol isn't something this app tracks closely. That's more "everything in moderation" territory, and worth a direct conversation with your doctor if you want guidance tied to your labs specifically.` },
   { test: /walk|exercise|workout|gym|yoga|pilates/i,
-    answer: p => `A short walk after a heavier meal, even 5-10 minutes, genuinely helps with energy and digestion, and it fits right into the walking you're already doing most days.` },
+    answer: p => `A short walk after a heavier meal, even 5-10 minutes, tends to help with energy and digestion, and it fits right into the walking you're already doing most days.` },
   { test: /fried|fry|fast food|burger|pizza/i,
     answer: p => `Nothing here is off-limits. Fried food and fast food just tend to be heavier on saturated fat and sodium than the everyday choice. Enjoying it sometimes isn't a setback; the pattern over weeks is what counts.` },
 ];
 function answerQuestion(text) {
   const rule = QA_RULES.find(r => r.test.test(text));
   if (rule) return rule.answer(profile);
-  return `I'm a lightweight, rule-based assistant today. I can speak to cholesterol, dental health, allergies, matcha, and general food choices. Try asking about something specific, or check with a doctor or dietitian for anything beyond that.`;
+  return `I can help most with cholesterol, dental health, allergies, matcha, and everyday food choices. Try asking about something specific, or bring anything bigger to a doctor or dietitian.`;
 }
 function renderChatLog() {
   const log = document.getElementById('chatLog');
@@ -915,6 +941,8 @@ function composeOption(systemKey, ctx, excludeProteinNames) {
   const title = prep ? `${prep} ${protein.name} ${sys.titleNoun}` : `${protein.name} ${sys.titleNoun}`;
   const score = scoreComposed({ protein, base, sauce, veg, prep }, ctx, sys);
 
+  const blurb = `${capitalize(prep ? prep + ' ' + protein.name : protein.name)} over ${base.name.toLowerCase()}, with ${veg.slice(0, 2).map(v => v.toLowerCase()).join(' and ')}${veg.length > 2 ? ' and more' : ''}, finished with ${sauce.name.toLowerCase()}.`;
+
   const build = [
     { text: base.name, have: hasFridge(base.name) },
     { text: `${prep ? prep + ' ' : ''}${protein.name}`, have: hasFridge(protein.name) },
@@ -924,7 +952,7 @@ function composeOption(systemKey, ctx, excludeProteinNames) {
 
   const why = [
     protein.note ? capitalize(protein.note) + '.' : null,
-    base.fiber ? 'The base here leans fiber-forward, which helps steady energy and supports cholesterol at the same time.' : 'Simple and quick. Sometimes low effort is exactly the right goal.',
+    base.fiber ? 'The base here leans fiber-forward, which tends to help steady energy and is generally kinder to cholesterol.' : 'Simple and quick. Sometimes low effort is exactly the right goal.',
     veg.length >= 2 ? 'A good spread of vegetables adds volume and fiber for very little extra effort.' : null,
   ].filter(Boolean);
 
@@ -945,7 +973,7 @@ function composeOption(systemKey, ctx, excludeProteinNames) {
 
   return {
     title, emoji: sys.emoji, score, band: scoreBand(score),
-    effort: sys.effort, systemLabel: sys.label,
+    effort: sys.effort, systemLabel: sys.label, blurb,
     build, why, mods, watch, dentalTip, cholTip,
     proteinName: protein.name, sauceHighSugar: sauce.sugar === 'high',
     system: systemKey,
@@ -959,6 +987,7 @@ function composeMatcha(sys, ctx) {
   );
   const title = `${milk} Matcha, ${sweetness}`;
   const score = clamp(7.2 + (sweetness === 'Unsweetened' ? 1.1 : sweetness.startsWith('Half') ? 0.5 : -0.7) + (milk === 'Whole milk' ? -0.3 : 0.4), 4, 10);
+  const blurb = `Whisked ${milk.toLowerCase()} matcha, ${sweetness.toLowerCase()}, made to sip slowly rather than rush through.`;
 
   const build = [
     { text: `${milk} as the base`, have: hasFridge(milk) },
@@ -966,7 +995,7 @@ function composeMatcha(sys, ctx) {
     { text: 'Enjoyed in one sitting rather than sipped for hours', have: false },
   ];
   const why = [
-    'Matcha has a gentler caffeine curve than coffee: steadier energy, less of a crash.',
+    'Matcha tends to have a gentler caffeine curve than coffee, so steadier energy with less of a crash for a lot of people.',
     milk === 'Whole milk' ? 'Whole milk adds richness, worth knowing if you\'re watching saturated fat closely.' : 'A lighter milk keeps this easy on saturated fat.',
     'A satisfying ritual that doesn\'t need to be a full meal to feel like something.',
   ];
@@ -980,11 +1009,11 @@ function composeMatcha(sys, ctx) {
   const dentalTip = sweetness !== 'Unsweetened'
     ? 'This is the one to watch most closely for your teeth: drink it in one sitting rather than sipping for hours, and rinse with water after.'
     : 'Unsweetened keeps this genuinely low-risk for your teeth either way.';
-  const cholTip = 'Matcha itself is cholesterol-neutral to mildly favorable. The milk and sweetener are what shift it either direction.';
+  const cholTip = 'Matcha itself is generally considered easy on cholesterol. The milk and sweetener are what shift it either direction.';
 
   return {
     title, emoji: sys.emoji, score, band: scoreBand(score),
-    effort: sys.effort, systemLabel: sys.label,
+    effort: sys.effort, systemLabel: sys.label, blurb,
     build, why, mods, watch, dentalTip, cholTip, proteinName: null, sauceHighSugar: sweetness !== 'Unsweetened', system: 'matcha',
   };
 }
@@ -1022,13 +1051,13 @@ function capitalize(s) { return s.charAt(0).toUpperCase() + s.slice(1); }
 
 function buildDentalTip({ sauce, veg }) {
   if (sauce.sugar === 'high') return 'There\'s some sugar in that sauce. A rinse with water afterward is worth the ten seconds it takes.';
-  if (sauce.acidic || (veg || []).some(v => /pickled|citrus|lemon/i.test(v))) return 'A little acidity here. Water afterward helps rebalance things before it lingers.';
+  if (sauce.acidic || (veg || []).some(v => /pickled|citrus|lemon/i.test(v))) return 'A little acidity here. Water afterward can help rebalance things before it lingers.';
   return 'A fairly gentle option for your teeth. Nothing special needed beyond your normal routine.';
 }
 function buildCholesterolTip({ protein, base, sauce }) {
   const bits = [];
   bits.push(protein.note ? capitalize(protein.note) : 'A solid protein choice');
-  if (base.fiber) bits.push('the fiber-forward base is doing real work here too');
+  if (base.fiber) bits.push('the fiber-forward base helps too');
   if (sauce.satFat === 'high') bits.push('the sauce is the one place worth going lighter if cholesterol is top of mind');
   return bits.join('; ') + '.';
 }
@@ -1085,18 +1114,22 @@ function renderOptions() {
   }
 
   head.textContent = currentOptions.length === 1 ? 'One strong direction' : 'A few strong directions';
-  grid.innerHTML = currentOptions.map((o, i) => `
+  grid.innerHTML = currentOptions.map((o, i) => {
+    const haveCount = o.build.filter(b => b.have).length;
+    return `
     <button type="button" class="option-card" onclick="chooseOption(${i})" id="opt-${i}">
       <div class="option-top">
-        <span class="dish-glyph">${o.emoji}</span>
+        <span class="dish-glyph fit-${o.band}">${o.emoji}</span>
         <span class="fit-pill fit-${o.band}">${fitLabel(o.band)}</span>
       </div>
       <div class="option-name">${esc(o.title)}</div>
       <div class="option-meta">${esc(o.systemLabel || '')} · ${esc(effortLabel(o.effort))}</div>
-      <div class="option-build">${o.build.slice(0, 3).map(b => esc(b.text)).join(' · ')}</div>
+      <div class="option-build">${esc(o.blurb)}</div>
+      ${fridgeSelections.size && haveCount ? `<span class="uses-badge">${icon('check-circle', 12)} Uses ${haveCount} thing${haveCount > 1 ? 's' : ''} you have</span>` : ''}
       <div class="option-cta">See the full picture ${icon('arrow-right', 14)}</div>
     </button>
-  `).join('');
+  `;
+  }).join('');
   document.getElementById('optionsSection').classList.add('visible');
 }
 
@@ -1120,7 +1153,7 @@ function chooseOption(i) {
     <div class="card">
       <div class="result-head">
         <div class="result-title-wrap">
-          <span class="dish-glyph-lg">${o.emoji}</span>
+          <span class="dish-glyph-lg fit-${o.band}">${o.emoji}</span>
           <div>
             <div class="result-title heading">${esc(o.title)}</div>
             <div class="result-sub">${esc(fitLabel(o.band))} · ${esc(o.systemLabel || '')} · ${esc(effortLabel(o.effort))}</div>
@@ -1130,6 +1163,8 @@ function chooseOption(i) {
           <span class="score-num">${o.score}</span><span class="score-den">/ 10</span>
         </div>
       </div>
+
+      <p class="result-blurb">${esc(o.blurb)}</p>
 
       <div class="result-section">
         <span class="result-section-title">${icon('sparkles', 15)} Why this works for you</span>
