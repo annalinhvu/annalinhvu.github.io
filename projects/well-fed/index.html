@@ -357,8 +357,16 @@ section+section{margin-top:26px}
 .reassurance{font-size:.8rem;color:var(--text-4);text-align:center;line-height:1.6}
 
 /* ══ FOOD LOG ══ */
+.log-head{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:4px}
+.balance-pill{
+  display:inline-flex;align-items:baseline;gap:2px;flex-shrink:0;
+  font-family:'Fraunces',serif;font-weight:600;font-size:.85rem;
+  padding:5px 13px;border-radius:999px;
+}
+.balance-den{font-size:.65rem;font-weight:500;opacity:.75;font-family:'Inter',sans-serif}
 .log-add-row{display:flex;gap:8px;margin-bottom:16px}
 .log-add-row .text-input{flex:1;border-radius:999px;padding-left:16px}
+.log-add-row .cal-input{flex:0 0 78px;padding-left:10px;padding-right:10px;text-align:center}
 .log-date-group{margin-bottom:14px}
 .log-date-label{font-size:.68rem;letter-spacing:.5px;text-transform:uppercase;color:var(--text-3);font-weight:600;margin-bottom:8px}
 .log-entry{
@@ -367,7 +375,8 @@ section+section{margin-top:26px}
   padding:11px 14px;font-size:.86rem;color:var(--text-1);margin-bottom:6px;
 }
 .log-entry-emoji{font-size:1rem;flex-shrink:0}
-.log-entry-text{flex:1}
+.log-entry-text{flex:1;display:flex;flex-direction:column;gap:2px}
+.log-entry-cal{font-size:.72rem;color:var(--text-4);font-weight:500}
 .log-entry-del{
   background:none;border:none;color:var(--text-4);cursor:pointer;padding:6px;flex-shrink:0;
   display:flex;border-radius:8px;transition:color .16s,background .16s;
@@ -538,10 +547,14 @@ section+section{margin-top:26px}
   <section class="detail" id="detailSection" aria-live="polite"></section>
 
   <section class="log-section">
-    <div class="section-heading heading">What I've Eaten</div>
-    <p class="section-sub">Just a record, not a count. Private to this browser.</p>
+    <div class="log-head">
+      <div class="section-heading heading" style="margin-bottom:0">What I've Eaten</div>
+      <div id="dailyBalance"></div>
+    </div>
+    <p class="section-sub">A gentle running sense of today, alongside a private log of what you ate. Estimates, not exact numbers.</p>
     <div class="log-add-row">
       <input type="text" class="text-input" id="logInput" placeholder="Log something you ate…" aria-label="Log something you ate">
+      <input type="number" class="text-input cal-input" id="logCalInput" placeholder="cal?" aria-label="Rough calories, optional" min="0">
       <button class="send-btn" onclick="logManualEntry()" aria-label="Add to log" data-icon="plus"></button>
     </div>
     <div id="logList"></div>
@@ -940,6 +953,7 @@ function composeOption(systemKey, ctx, excludeProteinNames) {
   const prep = sys.preps ? weightedPick(sys.preps, p => fridgeWeight(p) * (wantsGentle && isRefluxRisky(p) ? 0.3 : 1)) : '';
   const title = prep ? `${prep} ${protein.name} ${sys.titleNoun}` : `${protein.name} ${sys.titleNoun}`;
   const score = scoreComposed({ protein, base, sauce, veg, prep }, ctx, sys);
+  const calRange = sumRanges([calProtein(protein), calBase(base), ...veg.map(calVeg), calSauce(sauce)]);
 
   const blurb = `${capitalize(prep ? prep + ' ' + protein.name : protein.name)} over ${base.name.toLowerCase()}, with ${veg.slice(0, 2).map(v => v.toLowerCase()).join(' and ')}${veg.length > 2 ? ' and more' : ''}, finished with ${sauce.name.toLowerCase()}.`;
 
@@ -973,7 +987,7 @@ function composeOption(systemKey, ctx, excludeProteinNames) {
 
   return {
     title, emoji: sys.emoji, score, band: scoreBand(score),
-    effort: sys.effort, systemLabel: sys.label, blurb,
+    effort: sys.effort, systemLabel: sys.label, blurb, calRange,
     build, why, mods, watch, dentalTip, cholTip,
     proteinName: protein.name, sauceHighSugar: sauce.sugar === 'high',
     system: systemKey,
@@ -987,6 +1001,7 @@ function composeMatcha(sys, ctx) {
   );
   const title = `${milk} Matcha, ${sweetness}`;
   const score = clamp(7.2 + (sweetness === 'Unsweetened' ? 1.1 : sweetness.startsWith('Half') ? 0.5 : -0.7) + (milk === 'Whole milk' ? -0.3 : 0.4), 4, 10);
+  const calRange = calMatcha(milk, sweetness);
   const blurb = `Whisked ${milk.toLowerCase()} matcha, ${sweetness.toLowerCase()}, made to sip slowly rather than rush through.`;
 
   const build = [
@@ -1013,7 +1028,7 @@ function composeMatcha(sys, ctx) {
 
   return {
     title, emoji: sys.emoji, score, band: scoreBand(score),
-    effort: sys.effort, systemLabel: sys.label, blurb,
+    effort: sys.effort, systemLabel: sys.label, blurb, calRange,
     build, why, mods, watch, dentalTip, cholTip, proteinName: null, sauceHighSugar: sweetness !== 'Unsweetened', system: 'matcha',
   };
 }
@@ -1060,6 +1075,126 @@ function buildCholesterolTip({ protein, base, sauce }) {
   if (base.fiber) bits.push('the fiber-forward base helps too');
   if (sauce.satFat === 'high') bits.push('the sauce is the one place worth going lighter if cholesterol is top of mind');
   return bits.join('; ') + '.';
+}
+
+// ══ CALORIE ESTIMATE ═══════════════════════════════
+// Rough ranges built from the same ingredient tags the recommendation
+// engine already uses (fiberBoost, fiber/refined, sugar/satFat) — never
+// exact, always shown as "~lo-hi cal, rough estimate". There's no
+// nutrition database here, so this is pattern-based, not measured.
+function roundTo(n, step) { return Math.round(n / step) * step; }
+function sumRanges(ranges) { return ranges.reduce((acc, r) => [acc[0] + r[0], acc[1] + r[1]], [0, 0]); }
+function calProtein(protein) {
+  const n = (protein.name || '').toLowerCase();
+  if (protein.fiberBoost || /tofu|tempeh|edamame|chickpea|lentil|bean/.test(n)) return [160, 220];
+  if (/salmon|tuna|cod|fish|shrimp|scallop|tilapia|seafood/.test(n)) return [180, 250];
+  if (/chicken|turkey/.test(n)) return [190, 260];
+  if (/beef|pork|steak|lamb|sausage|bacon/.test(n)) return [240, 330];
+  if (/egg/.test(n)) return [140, 190];
+  return [180, 250];
+}
+function calBase(base) {
+  const n = (base.name || '').toLowerCase();
+  if (/greens|lettuce|cabbage base/.test(n)) return [30, 90];
+  if (base.refined) return [210, 270];
+  if (base.fiber) return [190, 240];
+  return [180, 240];
+}
+function calVeg() { return [20, 35]; }
+function calSauce(sauce) {
+  if (sauce.satFat === 'high') return [100, 160];
+  if (sauce.sugar === 'high') return [90, 140];
+  return [30, 70];
+}
+function calMatcha(milk, sweetness) {
+  let lo = 5, hi = 15;
+  const m = (milk || '').toLowerCase();
+  if (/whole/.test(m)) { lo += 110; hi += 150; }
+  else if (/oat|soy|almond|2%|skim|nonfat|low.?fat/.test(m)) { lo += 45; hi += 90; }
+  else { lo += 40; hi += 80; }
+  if (sweetness === 'Unsweetened') { hi += 10; }
+  else if ((sweetness || '').startsWith('Half')) { lo += 40; hi += 60; }
+  else { lo += 80; hi += 120; }
+  return [lo, hi];
+}
+function formatCal(entry) {
+  if (!entry || !entry.calRange) return null;
+  const [lo, hi] = entry.calRange;
+  if (entry.calExact) return `${Math.round(lo)} cal`;
+  const rl = roundTo(lo, 10), rh = roundTo(hi, 10);
+  return rl === rh ? `~${rl} cal` : `~${rl}-${rh} cal`;
+}
+
+// A small curated table of everyday foods for free-typed log entries,
+// since a fridge/palette match won't cover "pizza" or "burger". Lean is
+// on the same 4-10 scale as the recommendation fit score (7.0 neutral) -
+// used only to nudge the private daily balance, never shown as a label.
+const COMMON_FOODS = [
+  { terms: ['pizza'], cal: [250, 350], lean: 6.2 },
+  { terms: ['cheeseburger', 'burger'], cal: [450, 650], lean: 5.8 },
+  { terms: ['french fries', 'fries'], cal: [300, 450], lean: 5.5 },
+  { terms: ['salad'], cal: [200, 400], lean: 8.3 },
+  { terms: ['sandwich'], cal: [350, 550], lean: 7.0 },
+  { terms: ['soup'], cal: [150, 300], lean: 7.8 },
+  { terms: ['spaghetti', 'pasta'], cal: [400, 650], lean: 6.8 },
+  { terms: ['sushi'], cal: [300, 500], lean: 8.2 },
+  { terms: ['tacos', 'taco'], cal: [300, 500], lean: 7.0 },
+  { terms: ['burrito'], cal: [500, 750], lean: 6.8 },
+  { terms: ['oatmeal'], cal: [200, 350], lean: 8.3 },
+  { terms: ['yogurt'], cal: [120, 250], lean: 8.0 },
+  { terms: ['smoothie'], cal: [200, 400], lean: 7.6 },
+  { terms: ['toast'], cal: [150, 300], lean: 7.0 },
+  { terms: ['cereal'], cal: [200, 350], lean: 6.6 },
+  { terms: ['ice cream'], cal: [250, 450], lean: 5.5 },
+  { terms: ['cookies', 'cookie'], cal: [150, 300], lean: 5.6 },
+  { terms: ['chocolate'], cal: [150, 300], lean: 5.8 },
+  { terms: ['chips'], cal: [200, 350], lean: 5.4 },
+  { terms: ['soda', 'coke', 'pepsi'], cal: [140, 220], lean: 5.0 },
+  { terms: ['beer'], cal: [150, 220], lean: 6.2 },
+  { terms: ['wine'], cal: [120, 180], lean: 6.6 },
+  { terms: ['steak'], cal: [400, 650], lean: 6.8 },
+  { terms: ['pancakes', 'waffles'], cal: [350, 550], lean: 6.2 },
+  { terms: ['bagel'], cal: [250, 400], lean: 6.6 },
+];
+let INGREDIENT_INDEX = [];
+function buildIngredientIndex() {
+  // The same ingredient name (e.g. "Chicken") appears in many systems -
+  // dedupe by term so a free-text match only counts it once.
+  const byTerm = new Map();
+  for (const key in PALETTES) {
+    if (key === 'matcha') continue;
+    const sys = PALETTES[key];
+    (sys.proteins || []).forEach(p => byTerm.set(p.name.toLowerCase(), { term: p.name.toLowerCase(), cal: calProtein(p), lean: p.fiberBoost ? 0.4 : 0 }));
+    (sys.bases || []).forEach(b => byTerm.set(b.name.toLowerCase(), { term: b.name.toLowerCase(), cal: calBase(b), lean: b.fiber ? 0.3 : (b.refined ? -0.2 : 0) }));
+    (sys.sauces || []).forEach(s => byTerm.set(s.name.toLowerCase(), { term: s.name.toLowerCase(), cal: calSauce(s), lean: (s.satFat === 'high' || s.sugar === 'high') ? -0.4 : 0.1 }));
+    (sys.veggies || []).forEach(v => byTerm.set(v.toLowerCase(), { term: v.toLowerCase(), cal: calVeg(), lean: 0.3 }));
+  }
+  const idx = Array.from(byTerm.values());
+  idx.sort((a, b) => b.term.length - a.term.length);
+  INGREDIENT_INDEX = idx;
+}
+// Best-effort read of a free-typed log entry: matches known foods/
+// ingredients by name, sums a rough calorie range, and derives a quality
+// lean from the same tags the recommendation engine uses. Returns nulls
+// (not a fabricated guess) when nothing recognizable is found.
+function estimateMealFromText(text) {
+  const q = (text || '').toLowerCase().trim();
+  if (!q) return { calRange: null, quality: null };
+
+  const foodMatches = COMMON_FOODS.filter(f => f.terms.some(t => q.includes(t)));
+  const ingredientMatches = INGREDIENT_INDEX.filter(i => q.includes(i.term)).slice(0, 4);
+  if (!foodMatches.length && !ingredientMatches.length) return { calRange: null, quality: null };
+
+  const calParts = [...foodMatches.map(f => f.cal), ...ingredientMatches.map(i => i.cal)].slice(0, 4);
+  const calRange = calParts.length ? sumRanges(calParts) : null;
+
+  let quality;
+  if (foodMatches.length) {
+    quality = foodMatches.reduce((a, f) => a + f.lean, 0) / foodMatches.length;
+  } else {
+    quality = 7.0 + ingredientMatches.reduce((a, i) => a + i.lean, 0) / ingredientMatches.length;
+  }
+  return { calRange, quality: clamp(Math.round(quality * 10) / 10, 4, 10) };
 }
 
 // ══ OPTIONS + DETAIL RENDER ════════════════════════
@@ -1123,7 +1258,7 @@ function renderOptions() {
         <span class="fit-pill fit-${o.band}">${fitLabel(o.band)}</span>
       </div>
       <div class="option-name">${esc(o.title)}</div>
-      <div class="option-meta">${esc(o.systemLabel || '')} · ${esc(effortLabel(o.effort))}</div>
+      <div class="option-meta">${esc(o.systemLabel || '')} · ${esc(effortLabel(o.effort))} · ${esc(formatCal({ calRange: o.calRange }))}</div>
       <div class="option-build">${esc(o.blurb)}</div>
       ${fridgeSelections.size && haveCount ? `<span class="uses-badge">${icon('check-circle', 12)} Uses ${haveCount} thing${haveCount > 1 ? 's' : ''} you have</span>` : ''}
       <div class="option-cta">See the full picture ${icon('arrow-right', 14)}</div>
@@ -1156,7 +1291,7 @@ function chooseOption(i) {
           <span class="dish-glyph-lg fit-${o.band}">${o.emoji}</span>
           <div>
             <div class="result-title heading">${esc(o.title)}</div>
-            <div class="result-sub">${esc(fitLabel(o.band))} · ${esc(o.systemLabel || '')} · ${esc(effortLabel(o.effort))}</div>
+            <div class="result-sub">${esc(fitLabel(o.band))} · ${esc(o.systemLabel || '')} · ${esc(effortLabel(o.effort))} · ${esc(formatCal({ calRange: o.calRange }))}</div>
           </div>
         </div>
         <div class="score-badge fit-${o.band}">
@@ -1224,7 +1359,11 @@ function renderTinyHabits(contextTags) {
 function shuffleHabits() { renderTinyHabits(lastHabitContext); }
 
 // ══ FOOD LOG ═══════════════════════════════════════
-// A record, not a tracker: just what and when, no counts, no numbers.
+// A private, rough sense of the day: a calorie estimate where one can
+// be made, and a quality "lean" (reusing the same fiber/sugar/satFat
+// tags the recommendation engine already scores with) that feeds a
+// running daily balance. Never exact, never shown as a grade on any
+// single meal.
 function loadFoodLog() {
   try { return JSON.parse(localStorage.getItem(LOG_KEY) || '[]'); }
   catch { return []; }
@@ -1243,30 +1382,54 @@ function formatLogDate(dateStr) {
   const [y, m, d] = dateStr.split('-').map(Number);
   return new Date(y, m - 1, d).toLocaleDateString(undefined, { weekday: 'short', month: 'short', day: 'numeric' });
 }
-function logEntry(text, emoji) {
+function logEntry(text, emoji, calRange, quality, calExact) {
   if (!text || !text.trim()) return;
-  foodLog.unshift({ id: Date.now() + Math.random(), date: todayStr(), text: text.trim(), emoji: emoji || '🍽️' });
+  foodLog.unshift({
+    id: Date.now() + Math.random(), date: todayStr(), text: text.trim(), emoji: emoji || '🍽️',
+    calRange: calRange || null, calExact: !!calExact,
+    quality: (typeof quality === 'number') ? quality : null,
+  });
   saveFoodLog();
   renderFoodLog();
 }
 function logCurrentOption() {
   if (!currentChosenOpt) return;
-  logEntry(currentChosenOpt.title, currentChosenOpt.emoji);
+  logEntry(currentChosenOpt.title, currentChosenOpt.emoji, currentChosenOpt.calRange, currentChosenOpt.score, false);
   const btn = document.getElementById('logThisBtn');
   if (btn) { btn.innerHTML = `${icon('check', 16)} Logged to today`; btn.classList.add('logged'); }
 }
 function logManualEntry() {
   const input = document.getElementById('logInput');
-  logEntry(input.value, '🍽️');
+  const calInput = document.getElementById('logCalInput');
+  const text = input.value;
+  const manualCal = parseInt(calInput.value, 10);
+  const est = estimateMealFromText(text);
+  const hasManualCal = Number.isFinite(manualCal) && manualCal > 0;
+  logEntry(text, '🍽️', hasManualCal ? [manualCal, manualCal] : est.calRange, est.quality, hasManualCal);
   input.value = '';
+  calInput.value = '';
 }
 function deleteLogEntry(id) {
   foodLog = foodLog.filter(e => e.id !== id);
   saveFoodLog();
   renderFoodLog();
 }
+function computeDailyBalance() {
+  const today = todayStr();
+  const scored = foodLog.filter(e => e.date === today && typeof e.quality === 'number');
+  if (!scored.length) return null;
+  return Math.round((scored.reduce((a, e) => a + e.quality, 0) / scored.length) * 10) / 10;
+}
+function renderDailyBalance() {
+  const el = document.getElementById('dailyBalance');
+  const balance = computeDailyBalance();
+  if (balance === null) { el.innerHTML = ''; return; }
+  const band = scoreBand(balance);
+  el.innerHTML = `<span class="balance-pill fit-${band}" title="A running average of today's scored meals">Today · ${balance}<span class="balance-den">/10</span></span>`;
+}
 function renderFoodLog() {
   const el = document.getElementById('logList');
+  renderDailyBalance();
   if (!foodLog.length) {
     el.innerHTML = '<p class="log-empty">Nothing logged yet. Add something you ate, or log one of the options above.</p>';
     return;
@@ -1280,7 +1443,7 @@ function renderFoodLog() {
       ${byDate[date].map(e => `
         <div class="log-entry">
           <span class="log-entry-emoji">${e.emoji}</span>
-          <span class="log-entry-text">${esc(e.text)}</span>
+          <span class="log-entry-text">${esc(e.text)}${formatCal(e) ? `<span class="log-entry-cal">${esc(formatCal(e))}</span>` : ''}</span>
           <button class="log-entry-del" onclick="deleteLogEntry(${e.id})" title="Remove" aria-label="Remove entry">${icon('x', 15)}</button>
         </div>
       `).join('')}
@@ -1429,6 +1592,7 @@ async function boot() {
   const [palettesRes, habitsRes] = await Promise.all([fetch('data/palettes.json'), fetch('data/habits.json')]);
   PALETTES = await palettesRes.json();
   HABITS = await habitsRes.json();
+  buildIngredientIndex();
 
   document.getElementById('cuisineList').innerHTML = QUICK_CUISINES
     .map(c => `<option value="${c}">`).join('');
