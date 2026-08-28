@@ -1,0 +1,2073 @@
+[
+  {
+    "id": "citrus-salmon-bowl",
+    "name": "Citrus-Marinated Salmon Bowl",
+    "cuisine": "Japanese-inspired",
+    "emoji": "🥣",
+    "mealTypes": [
+      "lunch",
+      "dinner"
+    ],
+    "effort": "low",
+    "description": "Salmon marinated in orange and soy, seared quick and served over brown rice with avocado, cucumber, and pickled ginger.",
+    "why": "Salmon's omega-3s and a fiber-forward brown rice base make this steady and satisfying without asking you to give up flavor.",
+    "ingredients": [
+      "Salmon",
+      "Brown rice",
+      "Avocado",
+      "Cucumber",
+      "Pickled ginger",
+      "Soy-citrus marinade"
+    ],
+    "mods": [
+      "Ask for the marinade on the side to control saltiness.",
+      "Swap in shredded cabbage for extra crunch and fiber."
+    ],
+    "watch": "The soy marinade carries more sodium than it looks like it would.",
+    "tags": {
+      "cholesterol": true,
+      "dental": true,
+      "fiber": true,
+      "protein": true,
+      "loweffort": true,
+      "budget": false,
+      "comfort": false
+    },
+    "allergens": [],
+    "refluxRisky": false,
+    "calories": [
+      430,
+      570
+    ]
+  },
+  {
+    "id": "miso-tofu-bowl",
+    "name": "Miso-Glazed Tofu Bowl",
+    "cuisine": "Japanese-inspired",
+    "emoji": "🥣",
+    "mealTypes": [
+      "lunch",
+      "dinner"
+    ],
+    "effort": "low",
+    "description": "Pan-seared tofu brushed with a sweet-savory miso glaze, over rice with edamame, carrots, and a scatter of sesame seeds.",
+    "why": "A complete plant protein with zero cholesterol, plus a genuinely fiber-forward bowl if you want a break from meat.",
+    "ingredients": [
+      "Tofu",
+      "Brown rice",
+      "Edamame",
+      "Shredded carrot",
+      "Miso glaze",
+      "Sesame seeds"
+    ],
+    "mods": [
+      "Add extra vegetables instead of more rice if you want more volume.",
+      "A squeeze of lime brightens it up, skip if reflux is flaring."
+    ],
+    "watch": "",
+    "tags": {
+      "cholesterol": true,
+      "dental": true,
+      "fiber": true,
+      "protein": true,
+      "loweffort": true,
+      "budget": true,
+      "comfort": false
+    },
+    "allergens": [],
+    "refluxRisky": false,
+    "calories": [
+      420,
+      560
+    ]
+  },
+  {
+    "id": "teriyaki-chicken-bowl",
+    "name": "Teriyaki Chicken Rice Bowl",
+    "cuisine": "Japanese-inspired",
+    "emoji": "🥣",
+    "mealTypes": [
+      "lunch",
+      "dinner"
+    ],
+    "effort": "low",
+    "description": "Grilled chicken thigh glazed with teriyaki, over rice with steamed broccoli and a sprinkle of sesame.",
+    "why": "A reliable, familiar bowl. The teriyaki brings real flavor, so the rest of the plate can stay simple.",
+    "ingredients": [
+      "Chicken thigh",
+      "White or brown rice",
+      "Steamed broccoli",
+      "Teriyaki glaze",
+      "Sesame seeds"
+    ],
+    "mods": [
+      "Ask for the glaze on the side, most places pour it on heavy.",
+      "Brown rice or a half-rice-half-greens swap adds fiber."
+    ],
+    "watch": "Teriyaki glaze is one of the sneakier sources of added sugar on a menu.",
+    "tags": {
+      "cholesterol": false,
+      "dental": false,
+      "fiber": false,
+      "protein": true,
+      "loweffort": true,
+      "budget": true,
+      "comfort": true
+    },
+    "allergens": [],
+    "refluxRisky": false,
+    "calories": [
+      520,
+      680
+    ]
+  },
+  {
+    "id": "spicy-tuna-poke",
+    "name": "Spicy Tuna Poke Bowl",
+    "cuisine": "Hawaiian-inspired",
+    "emoji": "🥣",
+    "mealTypes": [
+      "lunch",
+      "dinner"
+    ],
+    "effort": "low",
+    "description": "Cubed raw tuna tossed in spicy mayo, served over rice with avocado, cucumber, and seaweed salad.",
+    "why": "Tuna is lean and dense with almost no saturated fat, the spicy mayo is what to watch, not the fish.",
+    "ingredients": [
+      "Tuna",
+      "White rice",
+      "Avocado",
+      "Cucumber",
+      "Seaweed salad",
+      "Spicy mayo"
+    ],
+    "mods": [
+      "Ask for sauce on the side and add it yourself, a little goes a long way.",
+      "Half rice, half greens keeps this lighter without losing the bowl feel."
+    ],
+    "watch": "Spicy mayo is a rich sauce, easy to overpour without noticing.",
+    "tags": {
+      "cholesterol": false,
+      "dental": true,
+      "fiber": false,
+      "protein": true,
+      "loweffort": true,
+      "budget": false,
+      "comfort": false
+    },
+    "allergens": [],
+    "refluxRisky": true,
+    "calories": [
+      480,
+      640
+    ]
+  },
+  {
+    "id": "sesame-beef-bibimbap",
+    "name": "Sesame Beef Bibimbap",
+    "cuisine": "Korean-inspired",
+    "emoji": "🥣",
+    "mealTypes": [
+      "lunch",
+      "dinner"
+    ],
+    "effort": "medium",
+    "description": "Thin-sliced beef with sesame oil, over rice with sautéed spinach, carrots, bean sprouts, and a fried egg on top.",
+    "why": "A genuinely balanced plate: protein, a fried egg, and three different vegetables in one bowl.",
+    "ingredients": [
+      "Beef",
+      "White rice",
+      "Spinach",
+      "Carrot",
+      "Bean sprouts",
+      "Fried egg",
+      "Gochujang"
+    ],
+    "mods": [
+      "Choose a leaner cut and let the vegetables and sauce carry the richness.",
+      "Ask for gochujang on the side if you want to control the heat."
+    ],
+    "watch": "Gochujang brings real heat and sodium both, a little covers the whole bowl.",
+    "tags": {
+      "cholesterol": false,
+      "dental": true,
+      "fiber": true,
+      "protein": true,
+      "loweffort": false,
+      "budget": false,
+      "comfort": true
+    },
+    "allergens": [],
+    "refluxRisky": true,
+    "calories": [
+      550,
+      720
+    ]
+  },
+  {
+    "id": "furikake-salmon-bowl",
+    "name": "Furikake Salmon Rice Bowl",
+    "cuisine": "Japanese-inspired",
+    "emoji": "🥣",
+    "mealTypes": [
+      "lunch",
+      "dinner",
+      "breakfast"
+    ],
+    "effort": "low",
+    "description": "Flaked salmon over warm rice with a generous dusting of furikake, avocado, and a drizzle of sesame-soy.",
+    "why": "Simple and quick. Sometimes low effort is exactly the right goal, and the salmon still does real work here.",
+    "ingredients": [
+      "Salmon",
+      "Brown rice",
+      "Furikake",
+      "Avocado",
+      "Sesame-soy drizzle"
+    ],
+    "mods": [
+      "Add a fried or soft-boiled egg for extra staying power.",
+      "Cucumber or radish adds crunch without much effort."
+    ],
+    "watch": "",
+    "tags": {
+      "cholesterol": true,
+      "dental": true,
+      "fiber": true,
+      "protein": true,
+      "loweffort": true,
+      "budget": false,
+      "comfort": false
+    },
+    "allergens": [],
+    "refluxRisky": false,
+    "calories": [
+      400,
+      540
+    ]
+  },
+  {
+    "id": "ginger-shrimp-fried-rice",
+    "name": "Ginger Shrimp Fried Rice",
+    "cuisine": "Chinese-inspired",
+    "emoji": "🥡",
+    "mealTypes": [
+      "lunch",
+      "dinner"
+    ],
+    "effort": "medium",
+    "description": "Wok-tossed rice with shrimp, egg, peas, and a generous amount of fresh ginger and scallion.",
+    "why": "A classic wok pairing if shellfish isn't a concern for you, and the ginger does a lot of flavor work without added fat.",
+    "ingredients": [
+      "Shrimp",
+      "White rice",
+      "Egg",
+      "Peas",
+      "Ginger",
+      "Scallion",
+      "Light soy sauce"
+    ],
+    "mods": [
+      "Ask for light oil, fried rice can go heavy fast.",
+      "Add extra vegetables (carrot, cabbage) for more volume and fiber."
+    ],
+    "watch": "Restaurant fried rice often uses more oil and sodium than a home version would.",
+    "tags": {
+      "cholesterol": false,
+      "dental": true,
+      "fiber": false,
+      "protein": true,
+      "loweffort": false,
+      "budget": true,
+      "comfort": true
+    },
+    "allergens": [
+      "shellfish"
+    ],
+    "refluxRisky": false,
+    "calories": [
+      500,
+      660
+    ]
+  },
+  {
+    "id": "pho-ga",
+    "name": "Phở Gà",
+    "cuisine": "Vietnamese",
+    "emoji": "🍜",
+    "mealTypes": [
+      "lunch",
+      "dinner",
+      "breakfast"
+    ],
+    "effort": "low",
+    "description": "Chicken pho: a clear, ginger-and-star-anise broth over rice noodles with shredded chicken, herbs, and lime.",
+    "why": "A light, plant-forward broth base with real herbs and a lean protein. Easy on the stomach and genuinely restorative.",
+    "ingredients": [
+      "Chicken",
+      "Rice noodles",
+      "Chicken broth",
+      "Bean sprouts",
+      "Thai basil",
+      "Lime",
+      "Scallion"
+    ],
+    "mods": [
+      "Ask for less noodles, more broth and herbs if you want it lighter.",
+      "Skip the hoisin and sriracha table sauces if reflux is a concern today."
+    ],
+    "watch": "The broth can carry more sodium than it tastes like, especially at restaurants.",
+    "tags": {
+      "cholesterol": true,
+      "dental": true,
+      "fiber": false,
+      "protein": true,
+      "loweffort": true,
+      "budget": true,
+      "comfort": true
+    },
+    "allergens": [],
+    "refluxRisky": false,
+    "calories": [
+      380,
+      520
+    ]
+  },
+  {
+    "id": "bun-cha",
+    "name": "Bún Chả",
+    "cuisine": "Vietnamese",
+    "emoji": "🍜",
+    "mealTypes": [
+      "lunch",
+      "dinner"
+    ],
+    "effort": "medium",
+    "description": "Grilled pork patties and pork belly over cool vermicelli noodles with herbs, pickled carrot and daikon, and a tangy nước chấm on the side.",
+    "why": "The grilling keeps this leaner than it tastes, and the herbs and pickle add real freshness against the richness of the pork.",
+    "ingredients": [
+      "Pork",
+      "Vermicelli noodles",
+      "Herbs (mint, basil, cilantro)",
+      "Pickled carrot and daikon",
+      "Nước chấm"
+    ],
+    "mods": [
+      "Choose a leaner cut and let the herbs and nước chấm carry the flavor.",
+      "Ask for nước chấm on the side so you control how much goes in."
+    ],
+    "watch": "Nước chấm is easy to underestimate: sugar and sodium both hide in there.",
+    "tags": {
+      "cholesterol": false,
+      "dental": false,
+      "fiber": false,
+      "protein": true,
+      "loweffort": false,
+      "budget": true,
+      "comfort": true
+    },
+    "allergens": [],
+    "refluxRisky": false,
+    "calories": [
+      550,
+      720
+    ]
+  },
+  {
+    "id": "goi-cuon",
+    "name": "Gỏi Cuốn",
+    "cuisine": "Vietnamese",
+    "emoji": "🍜",
+    "mealTypes": [
+      "lunch",
+      "snack"
+    ],
+    "effort": "medium",
+    "description": "Fresh spring rolls: shrimp and pork wrapped in rice paper with vermicelli, herbs, and lettuce, served with peanut sauce.",
+    "why": "Nothing here is fried. It's about as light and vegetable-forward as a wrapped roll gets.",
+    "ingredients": [
+      "Shrimp",
+      "Pork",
+      "Vermicelli noodles",
+      "Lettuce",
+      "Herbs",
+      "Rice paper",
+      "Peanut sauce"
+    ],
+    "mods": [
+      "Ask for peanut sauce on the side, it's the richest part of the dish by far.",
+      "Add extra herbs and lettuce for more volume per roll."
+    ],
+    "watch": "Peanut sauce is thick with sugar and fat both, a little goes a long way per roll.",
+    "tags": {
+      "cholesterol": true,
+      "dental": true,
+      "fiber": true,
+      "protein": false,
+      "loweffort": false,
+      "budget": true,
+      "comfort": false
+    },
+    "allergens": [
+      "shellfish"
+    ],
+    "refluxRisky": false,
+    "calories": [
+      180,
+      280
+    ]
+  },
+  {
+    "id": "com-tam-suon-nuong",
+    "name": "Cơm Tấm Sườn Nướng",
+    "cuisine": "Vietnamese",
+    "emoji": "🍜",
+    "mealTypes": [
+      "lunch",
+      "dinner"
+    ],
+    "effort": "medium",
+    "description": "Grilled pork chop over broken rice, with a fried egg, pickled vegetables, and a side of nước chấm.",
+    "why": "A hearty, genuinely satisfying plate. The grilled pork and pickled vegetables balance each other well.",
+    "ingredients": [
+      "Pork chop",
+      "Broken rice",
+      "Fried egg",
+      "Pickled carrot and daikon",
+      "Nước chấm",
+      "Cucumber"
+    ],
+    "mods": [
+      "Ask for a smaller portion of rice and more pickled vegetables.",
+      "Nước chấm on the side, same as always, so you're in control."
+    ],
+    "watch": "This is one of the larger portions on the menu, boxing half before you start is worth it.",
+    "tags": {
+      "cholesterol": false,
+      "dental": false,
+      "fiber": false,
+      "protein": true,
+      "loweffort": false,
+      "budget": true,
+      "comfort": true
+    },
+    "allergens": [],
+    "refluxRisky": false,
+    "calories": [
+      600,
+      780
+    ]
+  },
+  {
+    "id": "bun-bo-hue",
+    "name": "Bún Bò Huế",
+    "cuisine": "Vietnamese",
+    "emoji": "🍜",
+    "mealTypes": [
+      "lunch",
+      "dinner"
+    ],
+    "effort": "medium",
+    "description": "A spicier, lemongrass-forward beef and pork noodle soup from central Vietnam, with thick round noodles and herbs.",
+    "why": "Bold and warming, with real depth from the lemongrass and chili oil. Worth knowing it runs spicier than phở.",
+    "ingredients": [
+      "Beef",
+      "Pork",
+      "Round rice noodles",
+      "Lemongrass broth",
+      "Chili oil",
+      "Herbs",
+      "Banana blossom"
+    ],
+    "mods": [
+      "Ask for chili oil on the side if you want to dial down the heat.",
+      "Extra herbs and bean sprouts add freshness and volume."
+    ],
+    "watch": "This runs spicier and richer than a typical phở, and the broth carries real sodium.",
+    "tags": {
+      "cholesterol": false,
+      "dental": false,
+      "fiber": false,
+      "protein": true,
+      "loweffort": false,
+      "budget": true,
+      "comfort": true
+    },
+    "allergens": [],
+    "refluxRisky": true,
+    "calories": [
+      480,
+      640
+    ]
+  },
+  {
+    "id": "canh-chua-ca",
+    "name": "Canh Chua Cá",
+    "cuisine": "Vietnamese",
+    "emoji": "🍜",
+    "mealTypes": [
+      "lunch",
+      "dinner"
+    ],
+    "effort": "medium",
+    "description": "Sweet and sour fish soup with tamarind, pineapple, tomato, okra, and bean sprouts, served with rice on the side.",
+    "why": "A genuinely vegetable-forward soup. The tamarind's sourness is bright rather than heavy, and the fish keeps it light.",
+    "ingredients": [
+      "Fish",
+      "Tamarind broth",
+      "Pineapple",
+      "Tomato",
+      "Okra",
+      "Bean sprouts",
+      "Rice"
+    ],
+    "mods": [
+      "Ask for a milder tamarind balance if you're sensitive to sour and spicy together.",
+      "Extra bean sprouts and herbs stretch the bowl without adding rice."
+    ],
+    "watch": "The tamarind and pineapple make this one of the more acidic dishes on this list.",
+    "tags": {
+      "cholesterol": true,
+      "dental": false,
+      "fiber": true,
+      "protein": true,
+      "loweffort": false,
+      "budget": true,
+      "comfort": false
+    },
+    "allergens": [],
+    "refluxRisky": true,
+    "calories": [
+      320,
+      460
+    ]
+  },
+  {
+    "id": "ca-kho-to",
+    "name": "Cá Kho Tộ",
+    "cuisine": "Vietnamese",
+    "emoji": "🍜",
+    "mealTypes": [
+      "lunch",
+      "dinner"
+    ],
+    "effort": "medium",
+    "description": "Fish braised in a clay pot with caramelized fish sauce, black pepper, and a little sugar, served over rice.",
+    "why": "Deeply savory in a small amount, this dish is built to be eaten with a lot of rice and isn't trying to be a big portion of fish.",
+    "ingredients": [
+      "Fish",
+      "Caramel fish sauce",
+      "Black pepper",
+      "Rice",
+      "Scallion"
+    ],
+    "mods": [
+      "A small portion goes a long way, let the rice and a side vegetable round out the plate.",
+      "Add a simple stir-fried green vegetable on the side for fiber."
+    ],
+    "watch": "The caramelized sauce is concentrated in sodium and sugar, this is a flavor-in-small-doses dish.",
+    "tags": {
+      "cholesterol": true,
+      "dental": false,
+      "fiber": false,
+      "protein": true,
+      "loweffort": false,
+      "budget": true,
+      "comfort": true
+    },
+    "allergens": [],
+    "refluxRisky": false,
+    "calories": [
+      420,
+      560
+    ]
+  },
+  {
+    "id": "kung-pao-chicken",
+    "name": "Kung Pao Chicken",
+    "cuisine": "Chinese-inspired",
+    "emoji": "🥡",
+    "mealTypes": [
+      "lunch",
+      "dinner"
+    ],
+    "effort": "medium",
+    "description": "Diced chicken stir-fried with peanuts, dried chilies, and scallion in a savory-sweet sauce.",
+    "why": "Takes on sauce beautifully without adding cholesterol. The peanuts add texture and a little staying power.",
+    "ingredients": [
+      "Chicken",
+      "Peanuts",
+      "Dried chilies",
+      "Scallion",
+      "Kung pao sauce",
+      "Rice"
+    ],
+    "mods": [
+      "Ask for the sauce on the lighter side, it's easy to overpour.",
+      "Half rice, half steamed vegetables lightens the plate."
+    ],
+    "watch": "Dried chilies and a rich sauce together make this one to notice if you're sensitive to spice.",
+    "tags": {
+      "cholesterol": false,
+      "dental": true,
+      "fiber": false,
+      "protein": true,
+      "loweffort": false,
+      "budget": true,
+      "comfort": true
+    },
+    "allergens": [],
+    "refluxRisky": true,
+    "calories": [
+      480,
+      640
+    ]
+  },
+  {
+    "id": "steamed-fish-ginger-scallion",
+    "name": "Steamed Fish with Ginger and Scallion",
+    "cuisine": "Chinese-inspired",
+    "emoji": "🥡",
+    "mealTypes": [
+      "lunch",
+      "dinner"
+    ],
+    "effort": "medium",
+    "description": "A whole or filleted fish steamed simply with ginger, scallion, and a light soy drizzle.",
+    "why": "Stays well ahead of anything deep-fried. About as gentle a preparation as this list has.",
+    "ingredients": [
+      "Fish",
+      "Ginger",
+      "Scallion",
+      "Light soy sauce",
+      "Rice"
+    ],
+    "mods": [
+      "Ask for the soy drizzle on the side, this dish is meant to taste like the fish.",
+      "A side of steamed greens rounds this out well."
+    ],
+    "watch": "",
+    "tags": {
+      "cholesterol": true,
+      "dental": true,
+      "fiber": false,
+      "protein": true,
+      "loweffort": true,
+      "budget": false,
+      "comfort": false
+    },
+    "allergens": [],
+    "refluxRisky": false,
+    "calories": [
+      300,
+      420
+    ]
+  },
+  {
+    "id": "mapo-tofu",
+    "name": "Mapo Tofu",
+    "cuisine": "Chinese-inspired",
+    "emoji": "🥡",
+    "mealTypes": [
+      "lunch",
+      "dinner"
+    ],
+    "effort": "medium",
+    "description": "Soft tofu simmered in a spicy, numbing sauce with ground pork and scallion, served over rice.",
+    "why": "A satisfying option as long as it isn't breaded and fried first, and the tofu keeps this lighter than it tastes.",
+    "ingredients": [
+      "Tofu",
+      "Ground pork",
+      "Doubanjiang",
+      "Sichuan peppercorn",
+      "Scallion",
+      "Rice"
+    ],
+    "mods": [
+      "Ask for a milder spice level if the numbing heat is a lot for you today.",
+      "A side of steamed vegetables adds volume without adding sauce."
+    ],
+    "watch": "This is genuinely spicy and a common one to notice if you're managing reflux.",
+    "tags": {
+      "cholesterol": false,
+      "dental": true,
+      "fiber": false,
+      "protein": true,
+      "loweffort": false,
+      "budget": true,
+      "comfort": true
+    },
+    "allergens": [],
+    "refluxRisky": true,
+    "calories": [
+      450,
+      600
+    ]
+  },
+  {
+    "id": "beef-broccoli-stirfry",
+    "name": "Beef and Broccoli Stir-fry",
+    "cuisine": "Chinese-inspired",
+    "emoji": "🥡",
+    "mealTypes": [
+      "lunch",
+      "dinner"
+    ],
+    "effort": "medium",
+    "description": "Thin-sliced beef and broccoli tossed in a garlic-soy sauce, served over rice.",
+    "why": "A familiar, easy protein-and-vegetable combination. Choosing a leaner cut keeps this genuinely balanced.",
+    "ingredients": [
+      "Beef",
+      "Broccoli",
+      "Garlic-soy sauce",
+      "Rice"
+    ],
+    "mods": [
+      "Choose a leaner cut and let the sauce and broccoli carry the dish.",
+      "Extra broccoli in place of some rice adds fiber for free."
+    ],
+    "watch": "",
+    "tags": {
+      "cholesterol": false,
+      "dental": true,
+      "fiber": true,
+      "protein": true,
+      "loweffort": false,
+      "budget": true,
+      "comfort": true
+    },
+    "allergens": [],
+    "refluxRisky": false,
+    "calories": [
+      420,
+      580
+    ]
+  },
+  {
+    "id": "egg-drop-soup",
+    "name": "Egg Drop Soup",
+    "cuisine": "Chinese-inspired",
+    "emoji": "🥡",
+    "mealTypes": [
+      "lunch",
+      "dinner",
+      "snack"
+    ],
+    "effort": "low",
+    "description": "A light chicken broth thickened slightly and swirled with beaten egg, with scallion on top.",
+    "why": "Creamy texture without any actual cream. A gentle, low-effort option when you want something warm and light.",
+    "ingredients": [
+      "Chicken broth",
+      "Egg",
+      "Cornstarch",
+      "Scallion"
+    ],
+    "mods": [
+      "Add tofu or extra vegetables to make this more of a full meal.",
+      ""
+    ],
+    "watch": "Restaurant broth can run higher in sodium than the light taste suggests.",
+    "tags": {
+      "cholesterol": true,
+      "dental": true,
+      "fiber": false,
+      "protein": false,
+      "loweffort": true,
+      "budget": true,
+      "comfort": true
+    },
+    "allergens": [],
+    "refluxRisky": false,
+    "calories": [
+      110,
+      180
+    ]
+  },
+  {
+    "id": "cold-sesame-noodles",
+    "name": "Cold Sesame Noodles",
+    "cuisine": "Chinese-inspired",
+    "emoji": "🍝",
+    "mealTypes": [
+      "lunch",
+      "snack"
+    ],
+    "effort": "low",
+    "description": "Chilled wheat noodles tossed in a sesame-peanut sauce with cucumber and scallion.",
+    "why": "Simple and quick, a good choice when you want something cool and don't need much active cooking.",
+    "ingredients": [
+      "Wheat noodles",
+      "Sesame-peanut sauce",
+      "Cucumber",
+      "Scallion"
+    ],
+    "mods": [
+      "Add shredded chicken or tofu to round this into a full meal.",
+      "Extra cucumber and shredded carrot add crunch and volume."
+    ],
+    "watch": "Sesame-peanut sauce is rich, a little dressing goes a long way here.",
+    "tags": {
+      "cholesterol": false,
+      "dental": false,
+      "fiber": false,
+      "protein": false,
+      "loweffort": true,
+      "budget": true,
+      "comfort": true
+    },
+    "allergens": [],
+    "refluxRisky": false,
+    "calories": [
+      420,
+      560
+    ]
+  },
+  {
+    "id": "grilled-chicken-cobb-salad",
+    "name": "Grilled Chicken Cobb Salad",
+    "cuisine": "American",
+    "emoji": "🥗",
+    "mealTypes": [
+      "lunch",
+      "dinner"
+    ],
+    "effort": "low",
+    "description": "Grilled chicken over mixed greens with tomato, egg, avocado, and a light vinaigrette.",
+    "why": "A reliable lean option that still feels like a real meal, not just a side salad.",
+    "ingredients": [
+      "Chicken",
+      "Mixed greens",
+      "Tomato",
+      "Egg",
+      "Avocado",
+      "Vinaigrette"
+    ],
+    "mods": [
+      "Skip the bacon and cheese if they're on the version you're ordering, they're the biggest swing on saturated fat.",
+      "Ask for dressing on the side."
+    ],
+    "watch": "Cobb salads at restaurants often come loaded with bacon and cheese by default, worth asking what's included.",
+    "tags": {
+      "cholesterol": true,
+      "dental": true,
+      "fiber": true,
+      "protein": true,
+      "loweffort": true,
+      "budget": false,
+      "comfort": false
+    },
+    "allergens": [],
+    "refluxRisky": false,
+    "calories": [
+      420,
+      580
+    ]
+  },
+  {
+    "id": "salmon-avocado-salad",
+    "name": "Salmon and Avocado Salad",
+    "cuisine": "American",
+    "emoji": "🥗",
+    "mealTypes": [
+      "lunch",
+      "dinner"
+    ],
+    "effort": "low",
+    "description": "Flaked salmon over greens with avocado, cucumber, and a citrus vinaigrette.",
+    "why": "Omega-3s that work directly in your favor, paired with a genuinely fiber-forward plate.",
+    "ingredients": [
+      "Salmon",
+      "Mixed greens",
+      "Avocado",
+      "Cucumber",
+      "Citrus vinaigrette"
+    ],
+    "mods": [
+      "Add a scoop of quinoa or chickpeas if you want more staying power.",
+      ""
+    ],
+    "watch": "",
+    "tags": {
+      "cholesterol": true,
+      "dental": true,
+      "fiber": true,
+      "protein": true,
+      "loweffort": true,
+      "budget": false,
+      "comfort": false
+    },
+    "allergens": [],
+    "refluxRisky": false,
+    "calories": [
+      400,
+      550
+    ]
+  },
+  {
+    "id": "chickpea-kale-salad",
+    "name": "Chickpea and Kale Salad",
+    "cuisine": "Mediterranean-inspired",
+    "emoji": "🥗",
+    "mealTypes": [
+      "lunch",
+      "dinner"
+    ],
+    "effort": "low",
+    "description": "Massaged kale with roasted chickpeas, feta, and a lemon-olive oil dressing.",
+    "why": "Plant protein and fiber in the same scoop. A genuinely filling salad, not just leaves.",
+    "ingredients": [
+      "Kale",
+      "Chickpeas",
+      "Feta",
+      "Lemon-olive oil dressing",
+      "Red onion"
+    ],
+    "mods": [
+      "Skip or go light on feta if watching saturated fat closely.",
+      "Add roasted sweet potato for more substance."
+    ],
+    "watch": "",
+    "tags": {
+      "cholesterol": true,
+      "dental": true,
+      "fiber": true,
+      "protein": false,
+      "loweffort": true,
+      "budget": true,
+      "comfort": false
+    },
+    "allergens": [],
+    "refluxRisky": false,
+    "calories": [
+      350,
+      480
+    ]
+  },
+  {
+    "id": "shrimp-mango-salad",
+    "name": "Shrimp and Mango Salad",
+    "cuisine": "Southeast Asian-inspired",
+    "emoji": "🥗",
+    "mealTypes": [
+      "lunch",
+      "dinner"
+    ],
+    "effort": "medium",
+    "description": "Grilled shrimp over greens with mango, red pepper, herbs, and a lime-fish sauce dressing.",
+    "why": "A classic pick if shellfish isn't a concern for you, and the mango adds natural sweetness without added sugar.",
+    "ingredients": [
+      "Shrimp",
+      "Mango",
+      "Mixed greens",
+      "Red pepper",
+      "Herbs",
+      "Lime-fish sauce dressing"
+    ],
+    "mods": [
+      "Ask for dressing on the side, lime and fish sauce dressings can be poured heavy.",
+      ""
+    ],
+    "watch": "The lime-forward dressing is bright but acidic, worth noticing if reflux is a priority today.",
+    "tags": {
+      "cholesterol": true,
+      "dental": false,
+      "fiber": true,
+      "protein": true,
+      "loweffort": false,
+      "budget": false,
+      "comfort": false
+    },
+    "allergens": [
+      "shellfish"
+    ],
+    "refluxRisky": true,
+    "calories": [
+      320,
+      460
+    ]
+  },
+  {
+    "id": "quinoa-tabbouleh-chicken",
+    "name": "Quinoa Tabbouleh with Chicken",
+    "cuisine": "Mediterranean-inspired",
+    "emoji": "🥗",
+    "mealTypes": [
+      "lunch",
+      "dinner"
+    ],
+    "effort": "low",
+    "description": "Grilled chicken over quinoa tabbouleh with parsley, tomato, cucumber, and lemon.",
+    "why": "Plant protein and fiber working together in the quinoa base, plus a real dose of vegetables.",
+    "ingredients": [
+      "Chicken",
+      "Quinoa",
+      "Parsley",
+      "Tomato",
+      "Cucumber",
+      "Lemon-olive oil dressing"
+    ],
+    "mods": [
+      "Extra parsley and cucumber add volume without adding much else.",
+      ""
+    ],
+    "watch": "",
+    "tags": {
+      "cholesterol": true,
+      "dental": true,
+      "fiber": true,
+      "protein": true,
+      "loweffort": true,
+      "budget": true,
+      "comfort": false
+    },
+    "allergens": [],
+    "refluxRisky": false,
+    "calories": [
+      420,
+      560
+    ]
+  },
+  {
+    "id": "bo-nuong-salad",
+    "name": "Vietnamese Grilled Beef Salad",
+    "cuisine": "Vietnamese",
+    "emoji": "🥗",
+    "mealTypes": [
+      "lunch",
+      "dinner"
+    ],
+    "effort": "medium",
+    "description": "Grilled lemongrass beef over rice vermicelli noodles and greens, topped with peanuts, herbs, and nước chấm.",
+    "why": "Choose a leaner cut and let the herbs and broth-style dressing carry the richness, this stays lighter than it tastes.",
+    "ingredients": [
+      "Beef",
+      "Vermicelli noodles",
+      "Mixed greens",
+      "Herbs",
+      "Peanuts",
+      "Nước chấm"
+    ],
+    "mods": [
+      "Ask for nước chấm on the side so you're deciding how much goes on.",
+      "Extra herbs and greens in place of some noodles adds fiber."
+    ],
+    "watch": "",
+    "tags": {
+      "cholesterol": false,
+      "dental": true,
+      "fiber": true,
+      "protein": true,
+      "loweffort": false,
+      "budget": true,
+      "comfort": false
+    },
+    "allergens": [],
+    "refluxRisky": false,
+    "calories": [
+      420,
+      580
+    ]
+  },
+  {
+    "id": "chicken-avocado-wrap",
+    "name": "Grilled Chicken and Avocado Wrap",
+    "cuisine": "American",
+    "emoji": "🥪",
+    "mealTypes": [
+      "lunch",
+      "snack"
+    ],
+    "effort": "low",
+    "description": "Grilled chicken, avocado, lettuce, and tomato rolled in a whole wheat wrap.",
+    "why": "A solid protein base, especially with extra vegetables piled on. Easy to take with you.",
+    "ingredients": [
+      "Chicken",
+      "Avocado",
+      "Lettuce",
+      "Tomato",
+      "Whole wheat wrap"
+    ],
+    "mods": [
+      "Skip the mayo or ask for it on the side, avocado already brings the creaminess.",
+      ""
+    ],
+    "watch": "",
+    "tags": {
+      "cholesterol": true,
+      "dental": true,
+      "fiber": true,
+      "protein": true,
+      "loweffort": true,
+      "budget": true,
+      "comfort": false
+    },
+    "allergens": [],
+    "refluxRisky": false,
+    "calories": [
+      420,
+      570
+    ]
+  },
+  {
+    "id": "tuna-salad-sandwich",
+    "name": "Tuna Salad Sandwich",
+    "cuisine": "American",
+    "emoji": "🥪",
+    "mealTypes": [
+      "lunch",
+      "snack"
+    ],
+    "effort": "low",
+    "description": "Tuna salad on whole wheat bread with lettuce and tomato.",
+    "why": "Lean and dense, almost no saturated fat in the tuna itself, the mayo is the one place worth going light.",
+    "ingredients": [
+      "Tuna",
+      "Whole wheat bread",
+      "Mayo",
+      "Lettuce",
+      "Tomato"
+    ],
+    "mods": [
+      "Ask for light mayo or half mayo, half Greek yogurt if you're making it at home.",
+      ""
+    ],
+    "watch": "",
+    "tags": {
+      "cholesterol": false,
+      "dental": true,
+      "fiber": true,
+      "protein": true,
+      "loweffort": true,
+      "budget": true,
+      "comfort": true
+    },
+    "allergens": [],
+    "refluxRisky": false,
+    "calories": [
+      380,
+      500
+    ]
+  },
+  {
+    "id": "turkey-hummus-wrap",
+    "name": "Turkey and Hummus Wrap",
+    "cuisine": "American",
+    "emoji": "🥪",
+    "mealTypes": [
+      "lunch",
+      "snack"
+    ],
+    "effort": "low",
+    "description": "Sliced turkey with hummus, spinach, and cucumber in a whole wheat wrap.",
+    "why": "Lean and simple, a dependable everyday choice, and the hummus adds fiber the deli meat alone wouldn't.",
+    "ingredients": [
+      "Turkey",
+      "Hummus",
+      "Spinach",
+      "Cucumber",
+      "Whole wheat wrap"
+    ],
+    "mods": [
+      "Pile on extra spinach and cucumber for more volume at no extra cost.",
+      ""
+    ],
+    "watch": "Deli turkey can run higher in sodium than home-roasted, worth keeping in mind if it's a frequent lunch.",
+    "tags": {
+      "cholesterol": true,
+      "dental": true,
+      "fiber": true,
+      "protein": true,
+      "loweffort": true,
+      "budget": true,
+      "comfort": false
+    },
+    "allergens": [],
+    "refluxRisky": false,
+    "calories": [
+      380,
+      520
+    ]
+  },
+  {
+    "id": "egg-salad-sandwich",
+    "name": "Egg Salad Sandwich",
+    "cuisine": "American",
+    "emoji": "🥪",
+    "mealTypes": [
+      "lunch",
+      "breakfast",
+      "snack"
+    ],
+    "effort": "low",
+    "description": "Egg salad on whole wheat bread with lettuce.",
+    "why": "A reliable, familiar sandwich. Eggs bring genuine protein without needing much else.",
+    "ingredients": [
+      "Egg",
+      "Mayo",
+      "Whole wheat bread",
+      "Lettuce"
+    ],
+    "mods": [
+      "Mash in avocado instead of some of the mayo for a lighter version.",
+      ""
+    ],
+    "watch": "",
+    "tags": {
+      "cholesterol": false,
+      "dental": true,
+      "fiber": true,
+      "protein": true,
+      "loweffort": true,
+      "budget": true,
+      "comfort": true
+    },
+    "allergens": [],
+    "refluxRisky": false,
+    "calories": [
+      350,
+      460
+    ]
+  },
+  {
+    "id": "falafel-wrap",
+    "name": "Falafel Wrap with Tahini",
+    "cuisine": "Mediterranean-inspired",
+    "emoji": "🥪",
+    "mealTypes": [
+      "lunch",
+      "dinner"
+    ],
+    "effort": "medium",
+    "description": "Falafel with lettuce, tomato, pickles, and tahini sauce in a warm pita.",
+    "why": "Plant protein and fiber that doubles as the spread. A genuinely filling vegetarian option.",
+    "ingredients": [
+      "Falafel",
+      "Pita",
+      "Lettuce",
+      "Tomato",
+      "Pickles",
+      "Tahini sauce"
+    ],
+    "mods": [
+      "Ask for tahini on the side, it's rich and easy to overpour.",
+      "A side salad instead of fries keeps this lighter."
+    ],
+    "watch": "Falafel is typically fried, worth knowing going in even though the chickpea base is a plus.",
+    "tags": {
+      "cholesterol": true,
+      "dental": false,
+      "fiber": true,
+      "protein": false,
+      "loweffort": false,
+      "budget": true,
+      "comfort": true
+    },
+    "allergens": [],
+    "refluxRisky": false,
+    "calories": [
+      480,
+      640
+    ]
+  },
+  {
+    "id": "lentil-vegetable-soup",
+    "name": "Lentil and Vegetable Soup",
+    "cuisine": "American",
+    "emoji": "🍲",
+    "mealTypes": [
+      "lunch",
+      "dinner"
+    ],
+    "effort": "low",
+    "description": "A hearty lentil soup with carrot, celery, and tomato in a light vegetable broth.",
+    "why": "One of the best soluble-fiber foods out there, often linked to healthier cholesterol numbers, and this soup leans on it heavily.",
+    "ingredients": [
+      "Lentils",
+      "Carrot",
+      "Celery",
+      "Tomato",
+      "Vegetable broth",
+      "Garlic"
+    ],
+    "mods": [
+      "Add a piece of crusty whole grain bread on the side if you want more staying power.",
+      ""
+    ],
+    "watch": "",
+    "tags": {
+      "cholesterol": true,
+      "dental": true,
+      "fiber": true,
+      "protein": false,
+      "loweffort": true,
+      "budget": true,
+      "comfort": true
+    },
+    "allergens": [],
+    "refluxRisky": false,
+    "calories": [
+      280,
+      380
+    ]
+  },
+  {
+    "id": "chicken-rice-soup",
+    "name": "Chicken and Rice Soup",
+    "cuisine": "American",
+    "emoji": "🍲",
+    "mealTypes": [
+      "lunch",
+      "dinner"
+    ],
+    "effort": "low",
+    "description": "Shredded chicken and rice in a light broth with carrot, celery, and dill.",
+    "why": "A familiar, easy protein to add to any broth. Gentle and warming when you want something simple.",
+    "ingredients": [
+      "Chicken",
+      "Rice",
+      "Carrot",
+      "Celery",
+      "Chicken broth",
+      "Dill"
+    ],
+    "mods": [
+      "Add extra vegetables for more fiber and volume without more rice.",
+      ""
+    ],
+    "watch": "",
+    "tags": {
+      "cholesterol": true,
+      "dental": true,
+      "fiber": false,
+      "protein": true,
+      "loweffort": true,
+      "budget": true,
+      "comfort": true
+    },
+    "allergens": [],
+    "refluxRisky": false,
+    "calories": [
+      280,
+      400
+    ]
+  },
+  {
+    "id": "miso-soup-tofu",
+    "name": "Miso Soup with Tofu and Seaweed",
+    "cuisine": "Japanese-inspired",
+    "emoji": "🍲",
+    "mealTypes": [
+      "lunch",
+      "dinner",
+      "breakfast"
+    ],
+    "effort": "low",
+    "description": "A light miso broth with soft tofu, wakame seaweed, and scallion.",
+    "why": "Soaks up broth flavor while adding plant protein. About as gentle a starter or light meal as it gets.",
+    "ingredients": [
+      "Miso paste",
+      "Tofu",
+      "Wakame seaweed",
+      "Scallion",
+      "Dashi broth"
+    ],
+    "mods": [
+      "Pair with a rice bowl if you want this to be more of a full meal.",
+      ""
+    ],
+    "watch": "Miso broth is concentrated in sodium even though the flavor reads as mild.",
+    "tags": {
+      "cholesterol": true,
+      "dental": true,
+      "fiber": false,
+      "protein": false,
+      "loweffort": true,
+      "budget": true,
+      "comfort": true
+    },
+    "allergens": [],
+    "refluxRisky": false,
+    "calories": [
+      90,
+      160
+    ]
+  },
+  {
+    "id": "butternut-squash-soup",
+    "name": "Butternut Squash Soup",
+    "cuisine": "American",
+    "emoji": "🍲",
+    "mealTypes": [
+      "lunch",
+      "dinner"
+    ],
+    "effort": "low",
+    "description": "Roasted butternut squash blended smooth with onion, garlic, and a touch of nutmeg.",
+    "why": "Creamy texture without any actual cream if made with a light hand. A genuinely comforting, fiber-forward soup.",
+    "ingredients": [
+      "Butternut squash",
+      "Onion",
+      "Garlic",
+      "Vegetable broth",
+      "Nutmeg"
+    ],
+    "mods": [
+      "Ask if it's made with cream, and if so, ask for a smaller portion or split it.",
+      ""
+    ],
+    "watch": "Restaurant versions sometimes add cream for texture, worth asking about if cholesterol is top of mind.",
+    "tags": {
+      "cholesterol": true,
+      "dental": true,
+      "fiber": true,
+      "protein": false,
+      "loweffort": true,
+      "budget": true,
+      "comfort": true
+    },
+    "allergens": [],
+    "refluxRisky": false,
+    "calories": [
+      180,
+      280
+    ]
+  },
+  {
+    "id": "black-bean-soup",
+    "name": "Black Bean Soup",
+    "cuisine": "Latin American-inspired",
+    "emoji": "🍲",
+    "mealTypes": [
+      "lunch",
+      "dinner"
+    ],
+    "effort": "low",
+    "description": "Black beans simmered with onion, garlic, and cumin, topped with a squeeze of lime and cilantro.",
+    "why": "A clean, cholesterol-free protein option that's genuinely filling on its own, thanks to the fiber.",
+    "ingredients": [
+      "Black beans",
+      "Onion",
+      "Garlic",
+      "Cumin",
+      "Vegetable broth",
+      "Lime",
+      "Cilantro"
+    ],
+    "mods": [
+      "Add a spoonful of Greek yogurt in place of sour cream for extra protein.",
+      ""
+    ],
+    "watch": "",
+    "tags": {
+      "cholesterol": true,
+      "dental": true,
+      "fiber": true,
+      "protein": false,
+      "loweffort": true,
+      "budget": true,
+      "comfort": true
+    },
+    "allergens": [],
+    "refluxRisky": false,
+    "calories": [
+      260,
+      360
+    ]
+  },
+  {
+    "id": "pad-thai-shrimp",
+    "name": "Pad Thai with Shrimp",
+    "cuisine": "Thai-inspired",
+    "emoji": "🍝",
+    "mealTypes": [
+      "lunch",
+      "dinner"
+    ],
+    "effort": "medium",
+    "description": "Rice noodles stir-fried with shrimp, egg, bean sprouts, and a tamarind-fish sauce dressing, topped with peanuts and lime.",
+    "why": "A classic pick if shellfish isn't a concern for you, and the tamarind sauce adds brightness without cream or heavy oil.",
+    "ingredients": [
+      "Shrimp",
+      "Rice noodles",
+      "Egg",
+      "Bean sprouts",
+      "Tamarind sauce",
+      "Peanuts",
+      "Lime"
+    ],
+    "mods": [
+      "Ask for less oil, pad thai can be made much lighter than the typical restaurant version.",
+      "Extra bean sprouts and vegetables add volume for the same noodle portion."
+    ],
+    "watch": "Restaurant pad thai often runs sweeter and oilier than a home version.",
+    "tags": {
+      "cholesterol": false,
+      "dental": false,
+      "fiber": false,
+      "protein": true,
+      "loweffort": false,
+      "budget": true,
+      "comfort": true
+    },
+    "allergens": [
+      "shellfish"
+    ],
+    "refluxRisky": true,
+    "calories": [
+      550,
+      720
+    ]
+  },
+  {
+    "id": "peanut-sesame-noodles-chicken",
+    "name": "Peanut Sesame Noodles with Chicken",
+    "cuisine": "Chinese-inspired",
+    "emoji": "🍝",
+    "mealTypes": [
+      "lunch",
+      "dinner"
+    ],
+    "effort": "medium",
+    "description": "Wheat noodles tossed in a peanut-sesame sauce with shredded chicken, cucumber, and carrot.",
+    "why": "An easy way to add protein to almost any noodle bowl, and the vegetables add real crunch and volume.",
+    "ingredients": [
+      "Wheat noodles",
+      "Chicken",
+      "Peanut-sesame sauce",
+      "Cucumber",
+      "Shredded carrot"
+    ],
+    "mods": [
+      "Ask for sauce on the side, peanut-based dressings are rich and easy to overpour.",
+      ""
+    ],
+    "watch": "The peanut-sesame sauce is the richest part of this dish by a wide margin.",
+    "tags": {
+      "cholesterol": false,
+      "dental": false,
+      "fiber": false,
+      "protein": true,
+      "loweffort": false,
+      "budget": true,
+      "comfort": true
+    },
+    "allergens": [],
+    "refluxRisky": false,
+    "calories": [
+      520,
+      680
+    ]
+  },
+  {
+    "id": "garlic-noodles-tofu",
+    "name": "Garlic Noodles with Tofu",
+    "cuisine": "Vietnamese-American",
+    "emoji": "🍝",
+    "mealTypes": [
+      "lunch",
+      "dinner"
+    ],
+    "effort": "low",
+    "description": "Egg noodles tossed in a garlicky butter-soy sauce with crispy tofu and scallion.",
+    "why": "A plant-based option that holds up well in sauce, keeps the bowl from being carb-only.",
+    "ingredients": [
+      "Egg noodles",
+      "Tofu",
+      "Garlic",
+      "Butter-soy sauce",
+      "Scallion"
+    ],
+    "mods": [
+      "Ask for the sauce lighter, it's a butter-forward dish by design.",
+      "Add steamed broccoli or bok choy for fiber and volume."
+    ],
+    "watch": "This dish is built around butter and garlic, it leans rich no matter how it's ordered.",
+    "tags": {
+      "cholesterol": false,
+      "dental": false,
+      "fiber": false,
+      "protein": false,
+      "loweffort": true,
+      "budget": true,
+      "comfort": true
+    },
+    "allergens": [],
+    "refluxRisky": false,
+    "calories": [
+      480,
+      640
+    ]
+  },
+  {
+    "id": "dan-dan-noodles",
+    "name": "Dan Dan Noodles",
+    "cuisine": "Chinese-inspired",
+    "emoji": "🍝",
+    "mealTypes": [
+      "lunch",
+      "dinner"
+    ],
+    "effort": "medium",
+    "description": "Wheat noodles in a spicy sesame-chili sauce with ground pork and preserved vegetables.",
+    "why": "Keeps the bowl from being carb-only thanks to the ground pork, but this one runs genuinely spicy.",
+    "ingredients": [
+      "Wheat noodles",
+      "Ground pork",
+      "Sesame-chili sauce",
+      "Preserved vegetables",
+      "Scallion"
+    ],
+    "mods": [
+      "Ask for less chili oil if you want to dial the heat down.",
+      "A side of steamed greens balances the richness of the sauce."
+    ],
+    "watch": "This is one of the spicier options here, worth noticing if reflux is a priority today.",
+    "tags": {
+      "cholesterol": false,
+      "dental": true,
+      "fiber": false,
+      "protein": true,
+      "loweffort": false,
+      "budget": true,
+      "comfort": true
+    },
+    "allergens": [],
+    "refluxRisky": true,
+    "calories": [
+      520,
+      680
+    ]
+  },
+  {
+    "id": "soba-edamame",
+    "name": "Soba Noodles with Edamame",
+    "cuisine": "Japanese-inspired",
+    "emoji": "🍝",
+    "mealTypes": [
+      "lunch",
+      "dinner"
+    ],
+    "effort": "low",
+    "description": "Chilled soba noodles with edamame, cucumber, and a light sesame-soy dressing.",
+    "why": "A plant-based option that holds up well cold, and buckwheat soba brings more fiber than a typical wheat noodle.",
+    "ingredients": [
+      "Soba noodles",
+      "Edamame",
+      "Cucumber",
+      "Sesame-soy dressing",
+      "Nori"
+    ],
+    "mods": [
+      "Add grilled tofu or salmon if you want more protein.",
+      ""
+    ],
+    "watch": "",
+    "tags": {
+      "cholesterol": true,
+      "dental": true,
+      "fiber": true,
+      "protein": false,
+      "loweffort": true,
+      "budget": true,
+      "comfort": false
+    },
+    "allergens": [],
+    "refluxRisky": false,
+    "calories": [
+      380,
+      500
+    ]
+  },
+  {
+    "id": "overnight-oats-berries",
+    "name": "Overnight Oats with Berries",
+    "cuisine": "American",
+    "emoji": "🥣",
+    "mealTypes": [
+      "breakfast",
+      "snack"
+    ],
+    "effort": "low",
+    "description": "Rolled oats soaked overnight in milk with mixed berries, chia seeds, and a drizzle of honey.",
+    "why": "A genuinely fiber-forward start to the day, and it's ready before you are since it's made the night before.",
+    "ingredients": [
+      "Rolled oats",
+      "Milk",
+      "Mixed berries",
+      "Chia seeds",
+      "Honey"
+    ],
+    "mods": [
+      "Use oat or almond milk instead of whole milk if you're watching saturated fat.",
+      "Skip the honey, the berries bring plenty of natural sweetness."
+    ],
+    "watch": "",
+    "tags": {
+      "cholesterol": true,
+      "dental": false,
+      "fiber": true,
+      "protein": false,
+      "loweffort": true,
+      "budget": true,
+      "comfort": true
+    },
+    "allergens": [],
+    "refluxRisky": false,
+    "calories": [
+      320,
+      420
+    ]
+  },
+  {
+    "id": "veggie-egg-white-omelet",
+    "name": "Veggie Egg White Omelet",
+    "cuisine": "American",
+    "emoji": "🥣",
+    "mealTypes": [
+      "breakfast"
+    ],
+    "effort": "low",
+    "description": "Egg whites folded around spinach, mushroom, and tomato, with a side of whole grain toast.",
+    "why": "One of the more reliably cholesterol-friendly proteins around, plus a real dose of vegetables before noon.",
+    "ingredients": [
+      "Egg whites",
+      "Spinach",
+      "Mushroom",
+      "Tomato",
+      "Whole grain toast"
+    ],
+    "mods": [
+      "Add avocado on the toast for healthy fat and fiber together.",
+      ""
+    ],
+    "watch": "",
+    "tags": {
+      "cholesterol": true,
+      "dental": true,
+      "fiber": true,
+      "protein": true,
+      "loweffort": true,
+      "budget": true,
+      "comfort": false
+    },
+    "allergens": [],
+    "refluxRisky": false,
+    "calories": [
+      280,
+      380
+    ]
+  },
+  {
+    "id": "greek-yogurt-parfait",
+    "name": "Greek Yogurt Parfait",
+    "cuisine": "American",
+    "emoji": "🥣",
+    "mealTypes": [
+      "breakfast",
+      "snack"
+    ],
+    "effort": "low",
+    "description": "Greek yogurt layered with granola and fresh berries.",
+    "why": "Plain Greek yogurt is genuinely high in protein and low in the added sugar flavored versions carry.",
+    "ingredients": [
+      "Greek yogurt",
+      "Granola",
+      "Mixed berries",
+      "Honey"
+    ],
+    "mods": [
+      "Choose plain yogurt and add your own honey to control the sugar.",
+      "Go light on granola, it's the most calorie-dense part of the bowl."
+    ],
+    "watch": "Flavored yogurt and store-bought granola can both carry more added sugar than expected.",
+    "tags": {
+      "cholesterol": true,
+      "dental": false,
+      "fiber": false,
+      "protein": true,
+      "loweffort": true,
+      "budget": true,
+      "comfort": false
+    },
+    "allergens": [],
+    "refluxRisky": false,
+    "calories": [
+      260,
+      360
+    ]
+  },
+  {
+    "id": "avocado-toast-egg",
+    "name": "Avocado Toast with Egg",
+    "cuisine": "American",
+    "emoji": "🥣",
+    "mealTypes": [
+      "breakfast",
+      "lunch"
+    ],
+    "effort": "low",
+    "description": "Mashed avocado on whole grain toast, topped with a fried or poached egg and chili flake.",
+    "why": "A reliable, satisfying combination: healthy fat, fiber, and a real protein all in one plate.",
+    "ingredients": [
+      "Avocado",
+      "Whole grain bread",
+      "Egg",
+      "Lemon",
+      "Chili flake"
+    ],
+    "mods": [
+      "Add tomato or microgreens for more volume without much effort.",
+      ""
+    ],
+    "watch": "",
+    "tags": {
+      "cholesterol": true,
+      "dental": true,
+      "fiber": true,
+      "protein": true,
+      "loweffort": true,
+      "budget": true,
+      "comfort": false
+    },
+    "allergens": [],
+    "refluxRisky": false,
+    "calories": [
+      340,
+      460
+    ]
+  },
+  {
+    "id": "congee-ginger-scallion",
+    "name": "Congee with Ginger and Scallion",
+    "cuisine": "Chinese-inspired",
+    "emoji": "🥣",
+    "mealTypes": [
+      "breakfast",
+      "dinner"
+    ],
+    "effort": "low",
+    "description": "Slow-simmered rice porridge topped with ginger, scallion, and a soft egg.",
+    "why": "About as gentle on the stomach as a meal gets, a good choice on a day when you want something easy to digest.",
+    "ingredients": [
+      "Rice",
+      "Ginger",
+      "Scallion",
+      "Egg",
+      "Chicken broth"
+    ],
+    "mods": [
+      "Add shredded chicken or tofu for more protein.",
+      ""
+    ],
+    "watch": "This is a lighter meal on its own, worth pairing with a protein if it's your main meal of the day.",
+    "tags": {
+      "cholesterol": true,
+      "dental": true,
+      "fiber": false,
+      "protein": false,
+      "loweffort": true,
+      "budget": true,
+      "comfort": true
+    },
+    "allergens": [],
+    "refluxRisky": false,
+    "calories": [
+      220,
+      320
+    ]
+  },
+  {
+    "id": "smoked-salmon-bagel",
+    "name": "Smoked Salmon Bagel",
+    "cuisine": "American",
+    "emoji": "🥣",
+    "mealTypes": [
+      "breakfast",
+      "lunch"
+    ],
+    "effort": "low",
+    "description": "A toasted bagel with cream cheese, smoked salmon, capers, and red onion.",
+    "why": "Smoked salmon still brings real omega-3s, the cream cheese is the one place worth going lighter.",
+    "ingredients": [
+      "Bagel",
+      "Cream cheese",
+      "Smoked salmon",
+      "Capers",
+      "Red onion"
+    ],
+    "mods": [
+      "Ask for light or half cream cheese, the salmon and capers carry plenty of flavor on their own.",
+      "A half bagel with extra salmon shifts the balance in a good direction."
+    ],
+    "watch": "Smoked salmon and capers both bring real sodium, worth knowing if you're having this often.",
+    "tags": {
+      "cholesterol": true,
+      "dental": false,
+      "fiber": false,
+      "protein": true,
+      "loweffort": true,
+      "budget": false,
+      "comfort": true
+    },
+    "allergens": [],
+    "refluxRisky": false,
+    "calories": [
+      420,
+      560
+    ]
+  },
+  {
+    "id": "oat-milk-matcha-latte",
+    "name": "Iced Oat Milk Matcha Latte",
+    "cuisine": "Matcha",
+    "emoji": "🍵",
+    "mealTypes": [
+      "drink",
+      "breakfast",
+      "snack"
+    ],
+    "effort": "low",
+    "description": "Whisked matcha over ice with oat milk and a light drizzle of honey.",
+    "why": "A gentler caffeine curve than coffee for a lot of people, and oat milk keeps this easy on saturated fat.",
+    "ingredients": [
+      "Matcha",
+      "Oat milk",
+      "Honey",
+      "Ice"
+    ],
+    "mods": [
+      "Ask for half the usual sweetener, most shops default to quite sweet.",
+      "Unsweetened with a splash of extra matcha adds flavor without adding sugar."
+    ],
+    "watch": "",
+    "tags": {
+      "cholesterol": true,
+      "dental": false,
+      "fiber": false,
+      "protein": false,
+      "loweffort": true,
+      "budget": true,
+      "comfort": false
+    },
+    "allergens": [],
+    "refluxRisky": false,
+    "calories": [
+      90,
+      160
+    ]
+  },
+  {
+    "id": "unsweetened-matcha-almond",
+    "name": "Unsweetened Matcha with Almond Milk",
+    "cuisine": "Matcha",
+    "emoji": "🍵",
+    "mealTypes": [
+      "drink",
+      "breakfast"
+    ],
+    "effort": "low",
+    "description": "Whisked matcha with unsweetened almond milk, no added sweetener.",
+    "why": "This is the one to feel best about for your teeth either way, genuinely low-sugar without losing the ritual.",
+    "ingredients": [
+      "Matcha",
+      "Unsweetened almond milk"
+    ],
+    "mods": [
+      "A splash of vanilla extract adds warmth without adding sugar.",
+      ""
+    ],
+    "watch": "",
+    "tags": {
+      "cholesterol": true,
+      "dental": true,
+      "fiber": false,
+      "protein": false,
+      "loweffort": true,
+      "budget": true,
+      "comfort": false
+    },
+    "allergens": [],
+    "refluxRisky": false,
+    "calories": [
+      30,
+      60
+    ]
+  },
+  {
+    "id": "golden-turmeric-latte",
+    "name": "Golden Turmeric Latte",
+    "cuisine": "Drinks",
+    "emoji": "🍵",
+    "mealTypes": [
+      "drink",
+      "snack"
+    ],
+    "effort": "low",
+    "description": "Steamed milk whisked with turmeric, ginger, cinnamon, and a touch of honey.",
+    "why": "A warming, caffeine-free ritual drink, a good option later in the day when you want something soothing.",
+    "ingredients": [
+      "Milk",
+      "Turmeric",
+      "Ginger",
+      "Cinnamon",
+      "Honey"
+    ],
+    "mods": [
+      "Oat or almond milk keeps this lighter than a whole milk version.",
+      ""
+    ],
+    "watch": "",
+    "tags": {
+      "cholesterol": false,
+      "dental": false,
+      "fiber": false,
+      "protein": false,
+      "loweffort": true,
+      "budget": true,
+      "comfort": true
+    },
+    "allergens": [],
+    "refluxRisky": false,
+    "calories": [
+      110,
+      180
+    ]
+  },
+  {
+    "id": "ginger-lemon-tea",
+    "name": "Ginger Lemon Tea",
+    "cuisine": "Drinks",
+    "emoji": "🍵",
+    "mealTypes": [
+      "drink"
+    ],
+    "effort": "low",
+    "description": "Fresh ginger and lemon steeped in hot water with a small amount of honey.",
+    "why": "Genuinely soothing for digestion for a lot of people, and essentially calorie-free on its own.",
+    "ingredients": [
+      "Ginger",
+      "Lemon",
+      "Honey",
+      "Hot water"
+    ],
+    "mods": [
+      "Skip the honey entirely if you want this completely unsweetened.",
+      ""
+    ],
+    "watch": "The lemon makes this one to notice if citrus tends to trigger reflux for you.",
+    "tags": {
+      "cholesterol": true,
+      "dental": false,
+      "fiber": false,
+      "protein": false,
+      "loweffort": true,
+      "budget": true,
+      "comfort": false
+    },
+    "allergens": [],
+    "refluxRisky": true,
+    "calories": [
+      10,
+      40
+    ]
+  }
+]

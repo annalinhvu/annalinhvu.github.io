@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Well Fed</title>
-<meta name="description" content="A supportive food companion: meal ideas and small swaps that fit your real life.">
+<meta name="description" content="A supportive food companion: real dishes, tagged by what they actually support.">
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🍵</text></svg>">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -123,23 +123,22 @@ section+section{margin-top:26px}
 }
 @media(max-width:600px){.card{padding:20px}}
 
-/* ══ STUDIO / PRIMARY INPUT ══ */
+/* ══ STUDIO / SEARCH ══ */
 .studio-label{
   display:flex;align-items:center;gap:8px;
   font-size:.92rem;font-weight:600;color:var(--text-1);margin-bottom:8px;
 }
 .studio-label .icon{color:var(--sage)}
-.kitchen-textarea{
-  width:100%;resize:vertical;min-height:72px;line-height:1.55;font-family:inherit;
+.search-input{
+  width:100%;min-height:50px;font-family:inherit;
   padding:12px 16px;border-radius:16px;
   border:1px solid var(--border);background:var(--surface-2);
   font-size:.95rem;color:var(--text-1);
   transition:border-color .18s,background .18s;
 }
-.kitchen-textarea::placeholder{color:var(--text-4)}
-.kitchen-textarea:focus{outline:none;border-color:var(--sage);background:var(--surface)}
-.kitchen-hint{font-size:.78rem;color:var(--text-4);margin-top:7px;line-height:1.5}
-.kitchen-hint .fridge-clear{background:none;border:none;color:var(--text-4);font-size:.78rem;text-decoration:underline;cursor:pointer;margin-left:4px}
+.search-input::placeholder{color:var(--text-4)}
+.search-input:focus{outline:none;border-color:var(--sage);background:var(--surface)}
+.search-hint{font-size:.78rem;color:var(--text-4);margin-top:7px;line-height:1.5}
 
 .studio-actions{display:flex;gap:10px;margin-top:16px;flex-wrap:wrap}
 .btn{
@@ -230,92 +229,42 @@ section+section{margin-top:26px}
 .text-input::placeholder{color:var(--text-4)}
 .text-input:focus,.select-input:focus{outline:none;border-color:var(--sage)}
 
-/* ══ ASK ABOUT FOOD ══ */
-.ask-panel{
-  background:var(--surface-sage);border-radius:22px;padding:24px;
+/* ══ CATALOG (real, curated dishes) ══ */
+.catalog-head{display:flex;align-items:baseline;justify-content:space-between;margin-bottom:12px;gap:10px}
+.catalog-title{font-size:1.15rem}
+.catalog-count{font-size:.78rem;color:var(--text-3);white-space:nowrap}
+.dish-list{display:flex;flex-direction:column}
+.dish-row{
+  display:flex;align-items:flex-start;gap:13px;
+  padding:15px 6px;border-top:1px solid var(--border);
+  cursor:pointer;background:none;border-left:none;border-right:none;border-bottom:none;
+  text-align:left;width:100%;transition:background .15s;border-radius:10px;
 }
-@media(max-width:600px){.ask-panel{padding:18px}}
-.ask-head{margin-bottom:14px}
-.ask-head .studio-label{margin-bottom:3px}
-.ask-note{font-size:.76rem;color:var(--text-4);line-height:1.5}
-.chat-log{min-height:44px;margin-bottom:12px}
-.chat-suggestions{display:flex;flex-wrap:wrap;gap:8px}
-.suggestion-chip{
-  min-height:40px;background:var(--surface);border:1px solid var(--border);
-  border-radius:999px;padding:8px 14px;font-size:.8rem;color:var(--text-2);
-  cursor:pointer;transition:all .16s;
+.dish-row:last-child{border-bottom:1px solid var(--border)}
+.dish-row:hover{background:var(--surface-2)}
+.dish-row-emoji{font-size:1.3rem;flex-shrink:0;margin-top:1px}
+.dish-row-main{flex:1;min-width:0}
+.dish-row-name{font-family:'Fraunces',serif;font-weight:600;font-size:1rem;color:var(--text-1);line-height:1.3}
+.dish-row-desc{
+  font-size:.83rem;color:var(--text-3);line-height:1.5;margin-top:3px;
+  display:-webkit-box;-webkit-line-clamp:1;-webkit-box-orient:vertical;overflow:hidden;
 }
-.suggestion-chip:hover{border-color:var(--sage);color:var(--text-1)}
-.chat-thread{display:flex;flex-direction:column;gap:10px;max-height:280px;overflow-y:auto;padding-right:2px}
-.chat-msg{font-size:.85rem;line-height:1.55;padding:10px 14px;border-radius:14px;max-width:88%}
-.chat-msg.bot{align-self:flex-start;background:var(--surface);color:var(--text-1);border-bottom-left-radius:4px}
-.chat-msg.user{align-self:flex-end;background:var(--sage);color:#fff;border-bottom-right-radius:4px}
-.chat-input-row{display:flex;gap:8px}
-.chat-input-row .text-input{flex:1;border-radius:999px;padding-left:16px}
-.send-btn{
-  width:44px;height:44px;min-width:44px;border-radius:50%;background:var(--sage);
-  color:#fff;border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;
-  transition:background .16s;
-}
-.send-btn:hover{background:var(--sage-strong)}
-
-/* ══ OPTIONS (preview cards) ══ */
-.options{display:none}
-.options.visible{display:block;animation:fadeUp .3s ease}
-@keyframes fadeUp{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
-.options-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:14px;flex-wrap:wrap;gap:10px}
-.options-title{font-size:1.15rem}
-.regen-btn{
-  min-height:40px;font-size:.78rem;color:var(--text-3);background:var(--surface);
-  border:1px solid var(--border);border-radius:999px;padding:8px 15px;
-  cursor:pointer;transition:all .18s;white-space:nowrap;display:inline-flex;align-items:center;gap:6px;
-}
-.regen-btn:hover{border-color:var(--border-strong);color:var(--text-1)}
-.option-grid{display:grid;grid-template-columns:1fr;gap:12px}
-@media(min-width:640px){.option-grid{grid-template-columns:repeat(3,1fr)}}
-.options-empty{
-  background:var(--surface);border:1px dashed var(--border-strong);border-radius:18px;
-  padding:22px;font-size:.86rem;color:var(--text-3);line-height:1.65;text-align:center;
-}
-.option-card{
-  background:var(--surface);border:1px solid var(--border);border-radius:18px;
-  padding:17px;cursor:pointer;transition:all .18s;display:flex;flex-direction:column;gap:10px;
-  text-align:left;width:100%;min-height:44px;
-}
-.option-card:hover{border-color:var(--sage);transform:translateY(-2px);box-shadow:var(--shadow-md)}
-.option-card.chosen{border-color:var(--sage);background:var(--sage-dim)}
-.option-top{display:flex;align-items:flex-start;justify-content:space-between;gap:8px}
-.dish-glyph{
-  width:38px;height:38px;border-radius:11px;background:var(--surface-2);
-  display:flex;align-items:center;justify-content:center;font-size:1.2rem;flex-shrink:0;
-  transition:transform .18s;
-}
-.option-card:hover .dish-glyph{transform:scale(1.08)}
-.dish-glyph.fit-high{background:var(--sage-dim)}
-.dish-glyph.fit-mid{background:var(--clay-dim)}
-.dish-glyph.fit-low{background:var(--rose-dim)}
-.uses-badge{
-  display:inline-flex;align-items:center;gap:4px;width:fit-content;
-  background:var(--sage-dim);color:var(--sage-strong);
-  font-size:.7rem;font-weight:600;padding:3px 9px;border-radius:999px;
-}
+.dish-row-meta{font-size:.72rem;color:var(--text-4);margin-top:6px}
 .fit-pill{
-  flex-shrink:0;font-size:.72rem;font-weight:600;padding:4px 9px;border-radius:999px;
+  flex-shrink:0;font-size:.72rem;font-weight:600;padding:4px 9px;border-radius:999px;white-space:nowrap;
 }
 .fit-high{background:var(--sage-dim);color:var(--sage)}
 .fit-mid{background:var(--clay-dim);color:var(--clay)}
 .fit-low{background:var(--rose-dim);color:var(--rose)}
-.option-name{font-size:1rem;font-family:'Fraunces',serif;font-weight:600;color:var(--text-1);line-height:1.3}
-.option-meta{font-size:.74rem;color:var(--text-4)}
-.option-build{
-  font-size:.8rem;color:var(--text-2);line-height:1.5;
-  display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;
+.catalog-empty{
+  background:var(--surface);border:1px dashed var(--border-strong);border-radius:18px;
+  padding:22px;font-size:.86rem;color:var(--text-3);line-height:1.65;text-align:center;
 }
-.option-cta{font-size:.78rem;color:var(--sage);font-weight:600;display:flex;align-items:center;gap:5px;margin-top:2px}
 
 /* ══ FULL DETAIL ══ */
 .detail{display:none}
 .detail.visible{display:block;animation:fadeUp .3s ease}
+@keyframes fadeUp{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
 .result-head{display:flex;align-items:flex-start;justify-content:space-between;gap:14px;margin-bottom:20px;flex-wrap:wrap}
 .result-title-wrap{display:flex;align-items:flex-start;gap:13px}
 .dish-glyph-lg{
@@ -327,7 +276,12 @@ section+section{margin-top:26px}
 .dish-glyph-lg.fit-low{background:var(--rose-dim)}
 .result-title{font-size:1.35rem;line-height:1.25}
 .result-sub{font-size:.8rem;color:var(--text-3);margin-top:4px}
-.result-blurb{font-size:.98rem;color:var(--text-1);line-height:1.65;margin-bottom:22px}
+.result-blurb{font-size:.98rem;color:var(--text-1);line-height:1.65;margin-bottom:14px}
+.uses-badge{
+  display:inline-flex;align-items:center;gap:4px;width:fit-content;margin-bottom:18px;
+  background:var(--sage-dim);color:var(--sage-strong);
+  font-size:.72rem;font-weight:600;padding:4px 10px;border-radius:999px;
+}
 .score-badge{
   display:flex;flex-direction:column;align-items:center;justify-content:center;
   width:48px;height:48px;border-radius:14px;flex-shrink:0;
@@ -470,17 +424,16 @@ section+section{margin-top:26px}
   <div class="hero">
     <p class="hero-eyebrow" id="heroEyebrow">Hi there</p>
     <h1 class="hero-title heading">What sounds good today?</h1>
-    <p class="hero-sub">Tell me what you have, what you're craving, or how you want to feel, and I'll put together a few real options. No calorie counting, nothing pre-decided for you.</p>
+    <p class="hero-sub">A real collection of dishes, each tagged by what it actually supports. Search an ingredient or a craving, or just browse.</p>
   </div>
 
   <section class="card">
-    <label class="studio-label" for="fridgeInput"><span data-icon="sparkles"></span> What's in your kitchen, or what are you craving?</label>
-    <textarea class="kitchen-textarea" id="fridgeInput" rows="3" placeholder="salmon, avocado, brown rice… or 'something light and citrusy'" aria-describedby="fridgeCount"></textarea>
-    <p class="kitchen-hint" id="fridgeCount"></p>
+    <label class="studio-label" for="searchInput"><span data-icon="sparkles"></span> What are you craving, or what do you have?</label>
+    <input type="text" class="search-input" id="searchInput" placeholder="salmon, noodles, something citrusy… or leave it blank to browse" aria-describedby="searchHint">
+    <p class="search-hint" id="searchHint">Matches dish names, ingredients, and cuisines.</p>
 
     <div class="studio-actions">
-      <button type="button" class="btn btn-ghost" onclick="surpriseMe()"><span data-icon="dice"></span> Surprise me</button>
-      <button type="button" class="btn btn-primary" onclick="runQuery()"><span data-icon="sparkles"></span> Find my meals</button>
+      <button type="button" class="btn btn-primary" onclick="surpriseMe()"><span data-icon="dice"></span> Surprise me</button>
     </div>
 
     <button type="button" class="personalized-badge" onclick="openSettings()" aria-label="View or edit your saved health preferences">
@@ -494,7 +447,7 @@ section+section{margin-top:26px}
         <span class="summary-icon" data-icon="sliders" aria-hidden="true"></span>
         <span class="summary-main">
           <span class="summary-label">Personalize</span>
-          <span class="summary-text" id="personalizeSummaryText">Meal type, priorities, mood… all optional</span>
+          <span class="summary-text" id="personalizeSummaryText">Meal type, priorities… all optional</span>
         </span>
         <span class="chevron" data-icon="chevron-down" aria-hidden="true"></span>
       </summary>
@@ -504,44 +457,19 @@ section+section{margin-top:26px}
           <div class="segmented" id="mealTypeChips" role="group" aria-label="Meal type"></div>
         </div>
         <div>
-          <span class="field-block-label">Where you're eating</span>
-          <div class="segmented" id="settingChips" role="group" aria-label="Where you're eating"></div>
-        </div>
-        <div>
-          <span class="field-block-label">Cuisine or dish <span class="optional">(optional)</span></span>
-          <input type="text" class="text-input" id="cuisineInput" list="cuisineList" placeholder="poke, Vietnamese, salad, matcha…" aria-label="Cuisine or dish, optional">
-          <datalist id="cuisineList"></datalist>
-        </div>
-        <div>
           <span class="field-block-label">What matters most today</span>
           <div class="chip-row" id="goalChips" role="group" aria-label="Priorities, select any"></div>
-        </div>
-        <div>
-          <span class="field-block-label">Mood <span class="optional">(optional)</span></span>
-          <div class="segmented" id="moodChips" role="group" aria-label="Mood"></div>
         </div>
       </div>
     </details>
   </section>
 
-  <section class="ask-panel">
-    <div class="ask-head">
-      <label class="studio-label" for="chatInput"><span data-icon="message-circle"></span> Ask about food</label>
-      <p class="ask-note">Answers shaped by what you've told me about your priorities and allergies. Not a substitute for your doctor, just a friendly second thought before you eat.</p>
+  <section class="catalog-section" id="catalogSection">
+    <div class="catalog-head">
+      <div class="catalog-title heading">Browse the collection</div>
+      <span class="catalog-count" id="catalogCount">Loading…</span>
     </div>
-    <div class="chat-log" id="chatLog"></div>
-    <div class="chat-input-row">
-      <input type="text" class="text-input" id="chatInput" placeholder="Ask a quick question…" aria-label="Ask a question about food">
-      <button class="send-btn" onclick="sendChat()" aria-label="Send question" data-icon="send"></button>
-    </div>
-  </section>
-
-  <section class="options" id="optionsSection" aria-live="polite">
-    <div class="options-head">
-      <div class="options-title heading">A few directions to try</div>
-      <button class="regen-btn" onclick="runQuery()"><span data-icon="refresh"></span> Different options</button>
-    </div>
-    <div class="option-grid" id="optionGrid"></div>
+    <div class="dish-list" id="dishList"></div>
   </section>
 
   <section class="detail" id="detailSection" aria-live="polite"></section>
@@ -594,21 +522,17 @@ section+section{margin-top:26px}
 const ICONS = {
   'leaf': '<path d="M11 20A7 7 0 0 1 4 13c0-4.5 3.5-9 10-9 3 0 5 1 5 1s0 2-1 5c-1.5 5-5 10-8 10Z"/><path d="M5 21c3-3 5-6 6-9"/>',
   'arrow-left': '<path d="M19 12H5"/><path d="M12 19l-7-7 7-7"/>',
-  'arrow-right': '<path d="M5 12h14"/><path d="M12 5l7 7-7 7"/>',
   'settings': '<circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.7 1.7 0 0 0 .34 1.87l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.7 1.7 0 0 0-1.87-.34 1.7 1.7 0 0 0-1.04 1.56V21a2 2 0 1 1-4 0v-.09A1.7 1.7 0 0 0 8.96 19.9a1.7 1.7 0 0 0-1.87.34l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06A1.7 1.7 0 0 0 4.6 15a1.7 1.7 0 0 0-1.56-1.04H3a2 2 0 1 1 0-4h.09A1.7 1.7 0 0 0 4.6 8.96a1.7 1.7 0 0 0-.34-1.87l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06A1.7 1.7 0 0 0 9 4.6a1.7 1.7 0 0 0 1.04-1.56V3a2 2 0 1 1 4 0v.09A1.7 1.7 0 0 0 15.04 4.6a1.7 1.7 0 0 0 1.87-.34l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06A1.7 1.7 0 0 0 19.4 9a1.7 1.7 0 0 0 1.56 1.04H21a2 2 0 1 1 0 4h-.09A1.7 1.7 0 0 0 19.4 15Z"/>',
   'sun': '<circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/>',
   'moon': '<path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8Z"/>',
   'dice': '<rect x="3" y="3" width="18" height="18" rx="4"/><circle cx="8" cy="8" r="1.2" fill="currentColor" stroke="none"/><circle cx="16" cy="8" r="1.2" fill="currentColor" stroke="none"/><circle cx="12" cy="12" r="1.2" fill="currentColor" stroke="none"/><circle cx="8" cy="16" r="1.2" fill="currentColor" stroke="none"/><circle cx="16" cy="16" r="1.2" fill="currentColor" stroke="none"/>',
   'sparkles': '<path d="M12 3l1.6 4.8L18 9l-4.4 1.6L12 15l-1.6-4.4L6 9l4.4-1.2L12 3Z"/><path d="M19 15l.8 2.2L22 18l-2.2.8L19 21l-.8-2.2L16 18l2.2-.8L19 15Z"/>',
-  'message-circle': '<path d="M21 11.5a8.38 8.38 0 0 1-8.5 8.4 8.5 8.5 0 0 1-4-.94L3 21l1.3-4.3A8.38 8.38 0 0 1 3.5 11.5 8.5 8.5 0 0 1 12 3a8.4 8.4 0 0 1 9 8.5Z"/>',
-  'send': '<path d="M22 2 11 13"/><path d="M22 2 15 22l-4-9-9-4 20-7Z"/>',
   'chevron-down': '<path d="M6 9l6 6 6-6"/>',
   'sliders': '<path d="M4 6h6M16 6h4M4 12h10M18 12h2M4 18h4M12 18h8"/><circle cx="12" cy="6" r="2" fill="currentColor" stroke="none"/><circle cx="14" cy="12" r="2" fill="currentColor" stroke="none"/><circle cx="8" cy="18" r="2" fill="currentColor" stroke="none"/>',
   'check-circle': '<path d="M22 11.1V12a10 10 0 1 1-5.9-9.1"/><path d="M22 4 12 14.1l-3-3"/>',
   'check': '<path d="M20 6 9 17l-5-5"/>',
   'shopping-bag': '<path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"/><path d="M3 6h18"/><path d="M16 10a4 4 0 0 1-8 0"/>',
   'bookmark': '<path d="M19 21 12 16l-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2Z"/>',
-  'refresh': '<path d="M21 12a9 9 0 1 1-2.6-6.4"/><path d="M21 3v6h-6"/>',
   'shuffle': '<path d="M2 6h3l8 12h5"/><path d="M14 6h5v5"/><path d="M2 18h3l3-4.5"/><path d="M14 18h5v-5"/><path d="M16 4l3 2-3 2"/><path d="M16 20l3-2-3-2"/>',
   'x': '<path d="M18 6 6 18"/><path d="M6 6l12 12"/>',
   'plus': '<path d="M12 5v14"/><path d="M5 12h14"/>',
@@ -616,8 +540,6 @@ const ICONS = {
   'eye': '<path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7-10-7-10-7Z"/><circle cx="12" cy="12" r="3"/>',
   'heart': '<path d="M12 21s-7-4.5-9.5-9C.7 8.2 2.4 4.5 6 4a5 5 0 0 1 6 3 5 5 0 0 1 6-3c3.6.5 5.3 4.2 3.5 8-2.5 4.5-9.5 9-9.5 9Z"/>',
   'smile': '<circle cx="12" cy="12" r="10"/><path d="M8 14s1.5 2 4 2 4-2 4-2"/><path d="M9 9h.01M15 9h.01"/>',
-  'clock': '<circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/>',
-  'trash': '<path d="M3 6h18"/><path d="M8 6V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/><path d="M19 6l-1 14a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2L5 6"/>',
 };
 function icon(name, size) {
   const inner = ICONS[name] || '';
@@ -635,39 +557,23 @@ function renderThemeIcon() {
 
 // ══ STATE ══════════════════════════════════════════
 const PROFILE_KEY = 'wf-profile';
-let PALETTES = {};
+let DISHES = [];
 let HABITS = [];
-let selected = { mealType: null, setting: null, goals: new Set(), mood: null };
-let currentOptions = [];
-let fridgeSelections = new Set(); // lowercased ingredient names the person has/likes
-let chatHistory = [];
+let selected = { mealType: null, goals: new Set() };
+let currentCatalog = [];
+let currentChosenDish = null;
 let lastHabitContext = ['general'];
+let searchDebounce = null;
 const LOG_KEY = 'wf-food-log';
 let foodLog = [];
-let currentChosenOpt = null;
 
 const MEAL_TYPES = [
   ['breakfast', 'Breakfast'], ['lunch', 'Lunch'], ['dinner', 'Dinner'],
   ['snack', 'Snack'], ['drink', 'Drink'],
 ];
-const SETTINGS = [
-  ['home', 'Home'], ['restaurant', 'Restaurant'], ['fastcasual', 'Fast casual'],
-  ['office', 'Office lunch'], ['takeout', 'Takeout'],
-];
 const GOALS = [
-  ['cholesterol', 'Lower cholesterol'], ['dental', 'Protect teeth'], ['protein', 'High protein'],
-  ['fiber', 'High fiber'], ['loweffort', 'Low effort'], ['comfort', 'Warm comfort food'],
-  ['postwalk', 'Post-walk meal'], ['budget', 'Budget-friendly'],
-];
-const MOODS = [
-  ['tired', 'Tired'], ['stressed', 'Stressed'], ['salty', 'Craving salty'],
-  ['sweet', 'Craving sweet'], ['comforting', 'Want comfort'], ['light', 'Want light'],
-];
-const QUICK_CUISINES = ['Poke', 'Vietnamese', 'Chinese', 'Salad', 'Sandwich', 'Soup', 'Noodles', 'Matcha'];
-const SUGGESTED_QUESTIONS = [
-  'Can I have spicy food today?',
-  'Is matcha okay right now?',
-  'What can I make with cabbage and noodles?',
+  ['cholesterol', 'Lower cholesterol'], ['dental', 'Protect teeth'], ['fiber', 'High fiber'],
+  ['protein', 'High protein'], ['loweffort', 'Low effort'], ['budget', 'Budget-friendly'], ['comfort', 'Comfort food'],
 ];
 
 // ══ PROFILE ════════════════════════════════════════
@@ -708,23 +614,6 @@ if (_t) document.documentElement.setAttribute('data-theme', _t);
 function esc(s) { const d = document.createElement('div'); d.textContent = s || ''; return d.innerHTML; }
 function clamp(n, lo, hi) { return Math.max(lo, Math.min(hi, n)); }
 function pick(arr) { return arr[Math.floor(Math.random() * arr.length)]; }
-function pickN(arr, n) {
-  const pool = [...arr]; const out = [];
-  while (pool.length && out.length < n) out.push(pool.splice(Math.floor(Math.random() * pool.length), 1)[0]);
-  return out;
-}
-function weightedPick(arr, weightFn) {
-  const weights = arr.map(x => Math.max(0.1, weightFn(x)));
-  const total = weights.reduce((a, b) => a + b, 0);
-  let r = Math.random() * total;
-  for (let i = 0; i < arr.length; i++) { r -= weights[i]; if (r <= 0) return arr[i]; }
-  return arr[arr.length - 1];
-}
-function pickVeggies(veggies, n) {
-  const have = veggies.filter(v => hasFridge(v));
-  const rest = veggies.filter(v => !have.includes(v));
-  return have.length >= n ? have : have.concat(pickN(rest, n - have.length));
-}
 function labelFor(arr, key) { const f = arr.find(x => x[0] === key); return f ? f[1] : key; }
 function greeting() {
   const h = new Date().getHours();
@@ -732,6 +621,17 @@ function greeting() {
 }
 function effortLabel(effort) {
   return effort === 'low' ? '~10-15 min · low effort' : effort === 'medium' ? '~20-25 min · some effort' : '~20 min';
+}
+function scoreBand(score) { return score >= 8 ? 'high' : score >= 6.5 ? 'mid' : 'low'; }
+function fitLabel(band) { return band === 'high' ? 'Great fit' : band === 'mid' ? 'Good fit' : 'Fine choice'; }
+function roundTo(n, step) { return Math.round(n / step) * step; }
+function sumRanges(ranges) { return ranges.reduce((acc, r) => [acc[0] + r[0], acc[1] + r[1]], [0, 0]); }
+function formatCal(entry) {
+  if (!entry || !entry.calRange) return null;
+  const [lo, hi] = entry.calRange;
+  if (entry.calExact) return `${Math.round(lo)} cal`;
+  const rl = roundTo(lo, 10), rh = roundTo(hi, 10);
+  return rl === rh ? `~${rl} cal` : `~${rl}-${rh} cal`;
 }
 
 // ══ BUILDER RENDER ═════════════════════════════════
@@ -746,6 +646,7 @@ function renderSegmented(containerId, items, group) {
       selected[group] = selected[group] === key ? null : key;
       syncSegmented(containerId, selected[group]);
       updatePersonalizeSummary();
+      renderCatalog();
     });
   });
 }
@@ -769,366 +670,206 @@ function renderMultiChips(containerId, items) {
       btn.classList.toggle('active', !wasOn);
       btn.setAttribute('aria-pressed', (!wasOn).toString());
       updatePersonalizeSummary();
+      renderCatalog();
     });
   });
 }
 function updatePersonalizeSummary() {
   const bits = [];
   if (selected.mealType) bits.push(labelFor(MEAL_TYPES, selected.mealType));
-  if (selected.setting) bits.push(labelFor(SETTINGS, selected.setting));
   if (selected.goals.size) bits.push(Array.from(selected.goals).map(g => labelFor(GOALS, g)).join(', '));
-  if (selected.mood) bits.push(labelFor(MOODS, selected.mood));
   const el = document.getElementById('personalizeSummaryText');
-  el.textContent = bits.length ? bits.join(' · ') : 'Meal type, priorities, mood… all optional';
-}
-function surpriseMe() {
-  const keys = Object.keys(PALETTES);
-  if (!keys.length) return;
-  document.getElementById('cuisineInput').value = '';
-  runQuery(pick(keys));
+  el.textContent = bits.length ? bits.join(' · ') : 'Meal type, priorities… all optional';
 }
 
-// ══ FRIDGE / INGREDIENTS TOOL ══════════════════════
-// Free text, not a fixed picklist. Parsed into loose tokens that get
-// substring-matched against palette items when composing (see hasFridge()).
-let fridgeDebounce = null;
-const FRIDGE_SYNONYMS = {
-  steak: 'beef', ribeye: 'beef', sirloin: 'beef', 'ground beef': 'beef',
-  prawn: 'shrimp', prawns: 'shrimp', eggs: 'egg',
-  scallion: 'green onion', scallions: 'green onion',
-  cilantro: 'herbs', coriander: 'herbs', basil: 'herbs', mint: 'herbs',
-  garbanzo: 'chickpeas', 'garbanzo beans': 'chickpeas',
-};
-function parseFridgeInput() {
-  const raw = document.getElementById('fridgeInput').value;
-  const tokens = raw.toLowerCase().split(/[,\n]| and /).map(t => t.trim()).filter(t => t.length > 1);
-  const expanded = new Set(tokens);
-  tokens.forEach(t => { if (FRIDGE_SYNONYMS[t]) expanded.add(FRIDGE_SYNONYMS[t]); });
-  fridgeSelections = expanded;
-  updateFridgeCount();
+// ══ CATALOG (real, curated dishes — no generation) ═
+function searchTokens() {
+  const raw = (document.getElementById('searchInput').value || '').toLowerCase().trim();
+  if (!raw) return [];
+  return raw.split(/[,\n]| and /).map(t => t.trim()).filter(t => t.length > 1);
 }
-function updateFridgeCount() {
-  const el = document.getElementById('fridgeCount');
-  if (!fridgeSelections.size) { el.textContent = "Nothing typed yet. Options will be generated freely."; return; }
-  el.innerHTML = `Noted. I'll lean toward that where it fits. <button class="fridge-clear" onclick="clearFridge()">clear</button>`;
+function dishSearchText(d) {
+  return `${d.name} ${d.cuisine} ${d.ingredients.join(' ')}`.toLowerCase();
 }
-function clearFridge() {
-  document.getElementById('fridgeInput').value = '';
-  fridgeSelections = new Set();
-  updateFridgeCount();
-}
-
-// ══ QUICK-ANSWER CHAT (rule-based today; same seam as the ══
-// ══ recommendation engine for a real LLM later) ════════════
-const QA_RULES = [
-  { test: /shrimp|shellfish|prawn|crab|lobster/i,
-    answer: p => `You've flagged shellfish as an allergy, so it's best to skip shrimp, crab, lobster, and the like, not just for cholesterol or dental reasons, but for safety. Salmon, tofu, or chicken cover the same ground.` },
-  { test: /spicy|hot sauce|chili|chilli|jalapeno|jalapeño/i,
-    answer: p => p.priorities.includes('reflux')
-      ? `Since acid reflux is one of your priorities, spicy food is one of the more common triggers. Not off-limits forever, but this is more of a "notice how you feel" food than an everyday one, especially later in the day.`
-      : `Nothing in your profile points away from spicy food. It's not a cholesterol, dental, or allergy concern here. If it ever upsets your stomach, that's worth listening to, but otherwise, go for it.` },
-  { test: /reflux|heartburn|acid\b/i,
-    answer: p => p.priorities.includes('reflux')
-      ? `A few of the most common reflux triggers are spicy food, citrus, tomato-heavy dishes, caffeine, and eating a big meal right before lying down. None of that means cutting them out forever, just noticing patterns and maybe keeping the heavier or spicier version to earlier in the day.`
-      : `You haven't flagged acid reflux as a priority yet. If it's something you're managing, add it under Health Priorities in your profile and I'll start steering suggestions around it.` },
-  { test: /matcha|caffeine|coffee/i,
-    answer: p => `Matcha's a nice habit to keep: it tends to feel like steadier energy than coffee, and on its own it's generally considered easy on cholesterol. The milk and sweetener are what shift it either way, so oat or soy milk with less syrup keeps it in your favor.` },
-  { test: /cholesterol|ldl|apob|heart/i,
-    answer: p => p.cholesterolFocus === 'extra'
-      ? `Since you're giving cholesterol extra attention, leaning toward fish, tofu, beans, and fiber-forward bases over red meat and creamy sauces tends to matter more, over time, than any single meal.`
-      : `Cholesterol is one of your standing priorities, so the suggestions here already lean toward fish, tofu, and fiber-forward bases. The pattern over time matters more than any one meal.` },
-  { test: /tooth|teeth|cavit|dental|sugar/i,
-    answer: p => `Given your dental history, a couple of small habits tend to help most: rinsing with water after anything sweet or acidic, and not sipping sugary drinks slowly over a long stretch. Neither one means cutting things out.` },
-  { test: /alcohol|wine|beer|cocktail/i,
-    answer: p => `Alcohol isn't something this app tracks closely. That's more "everything in moderation" territory, and worth a direct conversation with your doctor if you want guidance tied to your labs specifically.` },
-  { test: /walk|exercise|workout|gym|yoga|pilates/i,
-    answer: p => `A short walk after a heavier meal, even 5-10 minutes, tends to help with energy and digestion, and it fits right into the walking you're already doing most days.` },
-  { test: /fried|fry|fast food|burger|pizza/i,
-    answer: p => `Nothing here is off-limits. Fried food and fast food just tend to be heavier on saturated fat and sodium than the everyday choice. Enjoying it sometimes isn't a setback; the pattern over weeks is what counts.` },
-];
-function answerQuestion(text) {
-  const rule = QA_RULES.find(r => r.test.test(text));
-  if (rule) return rule.answer(profile);
-  return `I can help most with cholesterol, dental health, allergies, matcha, and everyday food choices. Try asking about something specific, or bring anything bigger to a doctor or dietitian.`;
-}
-function renderChatLog() {
-  const log = document.getElementById('chatLog');
-  if (!chatHistory.length) {
-    log.innerHTML = `<div class="chat-suggestions">${SUGGESTED_QUESTIONS.map(q => `<button type="button" class="suggestion-chip" data-q="${esc(q)}">${esc(q)}</button>`).join('')}</div>`;
-    log.querySelectorAll('.suggestion-chip').forEach(b => b.addEventListener('click', () => askSuggested(b.dataset.q)));
-    return;
-  }
-  log.innerHTML = `<div class="chat-thread">${chatHistory.map(m => `<div class="chat-msg ${m.role}">${esc(m.text)}</div>`).join('')}</div>`;
-  const thread = log.querySelector('.chat-thread');
-  thread.scrollTop = thread.scrollHeight;
-}
-function appendChatMsg(role, text) {
-  chatHistory.push({ role, text });
-  renderChatLog();
-}
-function askSuggested(text) {
-  document.getElementById('chatInput').value = text;
-  sendChat();
-}
-function sendChat() {
-  const input = document.getElementById('chatInput');
-  const text = input.value.trim();
-  if (!text) return;
-  appendChatMsg('user', text);
-  input.value = '';
-  setTimeout(() => appendChatMsg('bot', answerQuestion(text)), 250);
-}
-
-// ══ RECOMMENDATION ENGINE ══════════════════════════
-function findSystemKey(text) {
-  const q = (text || '').trim().toLowerCase();
-  if (q) {
-    for (const key in PALETTES) {
-      const sys = PALETTES[key];
-      if (sys.keywords && sys.keywords.some(k => q.includes(k) || k.includes(q))) return key;
-    }
-  }
-  // No cuisine typed (or nothing matched) — if fridge ingredients were given,
-  // let them pick whichever system actually has the most overlap, rather than
-  // always falling through to the generic "other" pool.
-  if (fridgeSelections.size) {
-    const best = bestFridgeSystem();
-    if (best) return best;
-  }
-  return 'other';
-}
-function bestFridgeSystem() {
-  let bestKey = null, bestCount = 0;
-  for (const key in PALETTES) {
-    if (key === 'matcha') continue; // fridge ingredients shouldn't auto-route to a drink
-    const sys = PALETTES[key];
-    let count = 0;
-    (sys.proteins || []).forEach(p => { if (hasFridge(p.name)) count++; });
-    (sys.bases || []).forEach(b => { if (hasFridge(b.name)) count++; });
-    (sys.veggies || []).forEach(v => { if (hasFridge(v)) count++; });
-    (sys.sauces || []).forEach(s => { if (hasFridge(s.name)) count++; });
-    if (count > bestCount) { bestCount = count; bestKey = key; }
-  }
-  return bestKey;
-}
-
-function availableProteins(sys) {
-  return sys.proteins.filter(p => !p.allergens.some(a => profile.allergies.includes(a)));
-}
-function hasFridge(name) {
-  const n = name.toLowerCase();
-  for (const tok of fridgeSelections) {
-    if (tok.length >= 3 && (n.includes(tok) || tok.includes(n))) return true;
-  }
-  return false;
-}
-function fridgeWeight(name) { return hasFridge(name) ? 5 : 1; }
-
-function composeOption(systemKey, ctx, excludeProteinNames) {
-  const sys = PALETTES[systemKey];
-
-  if (systemKey === 'matcha') return composeMatcha(sys, ctx);
-
-  let pool = availableProteins(sys);
-  const fresh = pool.filter(p => !excludeProteinNames.includes(p.name));
-  if (fresh.length) pool = fresh;
-  const wantsFiber = ctx.goals.has('fiber') || profile.priorities.includes('cholesterol');
-  const wantsProtein = ctx.goals.has('protein');
-  const protein = weightedPick(pool, p => (wantsFiber && p.fiberBoost ? 1.6 : 1) * (wantsProtein ? 1.2 : 1) * fridgeWeight(p.name));
-
-  const wantsFiberBase = ctx.goals.has('fiber') || ctx.goals.has('cholesterol') || profile.priorities.includes('cholesterol');
-  const base = weightedPick(sys.bases, b => (wantsFiberBase && b.fiber ? 1.8 : 1) * (b.refined ? 0.7 : 1) * fridgeWeight(b.name));
-
-  const veg = pickVeggies(sys.veggies, 3);
-
-  const wantsGentle = profile.priorities.includes('reflux');
-  const wantsLowSugar = ctx.goals.has('cholesterol') || profile.cholesterolFocus === 'extra' || profile.dentalHistory !== 'none';
-  const sauce = weightedPick(sys.sauces, s =>
-    (wantsLowSugar && s.sugar === 'high' ? 0.35 : 1) *
-    (s.satFat === 'high' && (ctx.goals.has('cholesterol') || profile.cholesterolFocus === 'extra') ? 0.4 : 1) *
-    (wantsGentle && isRefluxRisky(s.name) ? 0.3 : 1) *
-    fridgeWeight(s.name)
-  );
-
-  const prep = sys.preps ? weightedPick(sys.preps, p => fridgeWeight(p) * (wantsGentle && isRefluxRisky(p) ? 0.3 : 1)) : '';
-  const title = prep ? `${prep} ${protein.name} ${sys.titleNoun}` : `${protein.name} ${sys.titleNoun}`;
-  const score = scoreComposed({ protein, base, sauce, veg, prep }, ctx, sys);
-  const calRange = sumRanges([calProtein(protein), calBase(base), ...veg.map(calVeg), calSauce(sauce)]);
-
-  const blurb = `${capitalize(prep ? prep + ' ' + protein.name : protein.name)} over ${base.name.toLowerCase()}, with ${veg.slice(0, 2).map(v => v.toLowerCase()).join(' and ')}${veg.length > 2 ? ' and more' : ''}, finished with ${sauce.name.toLowerCase()}.`;
-
-  const build = [
-    { text: base.name, have: hasFridge(base.name) },
-    { text: `${prep ? prep + ' ' : ''}${protein.name}`, have: hasFridge(protein.name) },
-    ...veg.map(v => ({ text: v, have: hasFridge(v) })),
-    { text: `${sauce.name}, on the side if you can`, have: hasFridge(sauce.name) },
-  ];
-
-  const why = [
-    protein.note ? capitalize(protein.note) + '.' : null,
-    base.fiber ? 'The base here leans fiber-forward, which tends to help steady energy and is generally kinder to cholesterol.' : 'Simple and quick. Sometimes low effort is exactly the right goal.',
-    veg.length >= 2 ? 'A good spread of vegetables adds volume and fiber for very little extra effort.' : null,
-  ].filter(Boolean);
-
-  const mods = [
-    `Ask for ${sauce.name.toLowerCase()} on the side so you're the one deciding how much goes on.`,
-    base.fiber ? `Add extra vegetables instead of more ${base.name.toLowerCase()} if you want more volume.` : `A fiber-forward base (ask what whole-grain or vegetable-forward options exist) would round this out further.`,
-    'Add an extra scoop of protein if you want this to carry you further into the afternoon.',
-  ];
-
-  const watch = pickN(sys.watchNotes, Math.min(2, sys.watchNotes.length));
-  if (sauce.satFat === 'high') watch.push(`${sauce.name} in particular leans rich. A little covers a lot of ground.`);
-  if (wantsGentle && (isRefluxRisky(prep) || isRefluxRisky(sauce.name))) {
-    watch.push('This leans acidic or spicy, a common reflux trigger. Worth noticing how it sits, or asking for it milder.');
-  }
-
-  const dentalTip = buildDentalTip({ sauce, veg });
-  const cholTip = buildCholesterolTip({ protein, base, sauce });
-
-  return {
-    title, emoji: sys.emoji, score, band: scoreBand(score),
-    effort: sys.effort, systemLabel: sys.label, blurb, calRange,
-    build, why, mods, watch, dentalTip, cholTip,
-    proteinName: protein.name, sauceHighSugar: sauce.sugar === 'high',
-    system: systemKey,
-  };
-}
-
-function composeMatcha(sys, ctx) {
-  const milk = pick(sys.milks);
-  const sweetness = weightedPick(sys.sweetness, s =>
-    (profile.dentalHistory !== 'none' && s === 'Standard sweetness' ? 0.35 : 1)
-  );
-  const title = `${milk} Matcha, ${sweetness}`;
-  const score = clamp(7.2 + (sweetness === 'Unsweetened' ? 1.1 : sweetness.startsWith('Half') ? 0.5 : -0.7) + (milk === 'Whole milk' ? -0.3 : 0.4), 4, 10);
-  const calRange = calMatcha(milk, sweetness);
-  const blurb = `Whisked ${milk.toLowerCase()} matcha, ${sweetness.toLowerCase()}, made to sip slowly rather than rush through.`;
-
-  const build = [
-    { text: `${milk} as the base`, have: hasFridge(milk) },
-    { text: sweetness, have: hasFridge(sweetness) },
-    { text: 'Enjoyed in one sitting rather than sipped for hours', have: false },
-  ];
-  const why = [
-    'Matcha tends to have a gentler caffeine curve than coffee, so steadier energy with less of a crash for a lot of people.',
-    milk === 'Whole milk' ? 'Whole milk adds richness, worth knowing if you\'re watching saturated fat closely.' : 'A lighter milk keeps this easy on saturated fat.',
-    'A satisfying ritual that doesn\'t need to be a full meal to feel like something.',
-  ];
-  const mods = [
-    'Ask for half the usual sweetener. Most shops default to quite sweet.',
-    'Oat or soy milk over whole milk if you want it lighter.',
-    'A splash of extra matcha adds flavor without adding sugar.',
-  ];
-  const watch = pickN(sys.watchNotes, 2);
-  if (profile.priorities.includes('reflux')) watch.push('Caffeine, even the gentler kind in matcha, can be a reflux trigger for some people. Worth noticing if this is a better morning drink than an evening one for you.');
-  const dentalTip = sweetness !== 'Unsweetened'
-    ? 'This is the one to watch most closely for your teeth: drink it in one sitting rather than sipping for hours, and rinse with water after.'
-    : 'Unsweetened keeps this genuinely low-risk for your teeth either way.';
-  const cholTip = 'Matcha itself is generally considered easy on cholesterol. The milk and sweetener are what shift it either direction.';
-
-  return {
-    title, emoji: sys.emoji, score, band: scoreBand(score),
-    effort: sys.effort, systemLabel: sys.label, blurb, calRange,
-    build, why, mods, watch, dentalTip, cholTip, proteinName: null, sauceHighSugar: sweetness !== 'Unsweetened', system: 'matcha',
-  };
-}
-
-function isRefluxRisky(text) {
-  return /citrus|lemon|lime|chili|chilli|spicy|vinegar|kung pao/i.test(text || '');
-}
-
-function scoreComposed(picks, ctx, sys) {
+function dishQuality(dish) {
+  // A stable, per-dish score from your saved profile and this dish's fixed
+  // tags — not a random combinatorial guess. Same dish, same profile,
+  // same number every time.
   let score = 7.0;
-  if (picks.base.fiber) score += 0.6;
-  if (picks.protein.fiberBoost) score += 0.3;
-  if (picks.protein.fiberBoost && ctx.goals.has('fiber')) score += 0.3;
-  if (ctx.goals.has('cholesterol')) score += 0.3; // every protein here is already cholesterol-friendly by design
-  if (ctx.goals.has('dental') && picks.sauce.sugar !== 'high') score += 0.3;
-  if (sys.effort === 'low' && ctx.goals.has('loweffort')) score += 0.3;
-  if (ctx.mood === 'light' && picks.base.fiber) score += 0.2;
-  if (ctx.mood === 'comforting' && !picks.base.fiber) score += 0.2;
-  ctx.goals.forEach(g => { if (g === 'protein') score += 0.2; });
-  // A pick that actually uses what's in the kitchen is a better fit, worth rewarding
-  let fridgeMatches = 0;
-  if (hasFridge(picks.protein.name)) fridgeMatches++;
-  if (hasFridge(picks.base.name)) fridgeMatches++;
-  (picks.veg || []).forEach(v => { if (hasFridge(v)) fridgeMatches++; });
-  score += Math.min(fridgeMatches, 3) * 0.25;
-
-  if (picks.sauce.satFat === 'high' && (ctx.goals.has('cholesterol') || profile.cholesterolFocus === 'extra')) score -= 0.7;
-  if (picks.sauce.sugar === 'high' && (ctx.goals.has('cholesterol') || profile.cholesterolFocus === 'extra' || profile.dentalHistory !== 'none')) score -= 0.5;
-  if (picks.sauce.sodium === 'high' && ctx.mood === 'salty') score -= 0.2;
-  if (profile.priorities.includes('reflux') && (isRefluxRisky(picks.prep) || isRefluxRisky(picks.sauce.name))) score -= 0.9;
+  if (dish.tags.fiber) score += 0.5;
+  if (dish.tags.protein) score += 0.2;
+  if (dish.tags.cholesterol && (profile.priorities.includes('cholesterol') || profile.cholesterolFocus === 'extra')) score += 0.5;
+  if (!dish.tags.cholesterol && profile.cholesterolFocus === 'extra') score -= 0.4;
+  if (dish.tags.dental && profile.dentalHistory !== 'none') score += 0.4;
+  if (!dish.tags.dental && profile.dentalHistory !== 'none') score -= 0.3;
+  if (profile.priorities.includes('reflux') && dish.refluxRisky) score -= 0.9;
   return clamp(Math.round(score * 10) / 10, 4, 10);
 }
-function scoreBand(score) { return score >= 8 ? 'high' : score >= 6.5 ? 'mid' : 'low'; }
-function capitalize(s) { return s.charAt(0).toUpperCase() + s.slice(1); }
-
-function buildDentalTip({ sauce, veg }) {
-  if (sauce.sugar === 'high') return 'There\'s some sugar in that sauce. A rinse with water afterward is worth the ten seconds it takes.';
-  if (sauce.acidic || (veg || []).some(v => /pickled|citrus|lemon/i.test(v))) return 'A little acidity here. Water afterward can help rebalance things before it lingers.';
-  return 'A fairly gentle option for your teeth. Nothing special needed beyond your normal routine.';
+function filteredDishes() {
+  const q = searchTokens();
+  let list = DISHES.filter(d => !d.allergens.some(a => profile.allergies.includes(a)));
+  if (selected.mealType) list = list.filter(d => d.mealTypes.includes(selected.mealType));
+  if (q.length) list = list.filter(d => q.some(tok => dishSearchText(d).includes(tok)));
+  selected.goals.forEach(g => { list = list.filter(d => d.tags[g]); });
+  return list.slice().sort((a, b) => dishQuality(b) - dishQuality(a));
 }
-function buildCholesterolTip({ protein, base, sauce }) {
+function renderCatalog() {
+  if (!DISHES.length) return;
+  currentCatalog = filteredDishes();
+  const listEl = document.getElementById('dishList');
+  const countEl = document.getElementById('catalogCount');
+
+  if (!currentCatalog.length) {
+    countEl.textContent = '';
+    listEl.innerHTML = `<div class="catalog-empty">Nothing matches all of that right now. Try clearing a priority, or a different search.</div>`;
+    return;
+  }
+  countEl.textContent = `${currentCatalog.length} dish${currentCatalog.length === 1 ? '' : 'es'}`;
+  listEl.innerHTML = currentCatalog.map(d => {
+    const band = scoreBand(dishQuality(d));
+    return `
+    <button type="button" class="dish-row" onclick="chooseDish('${d.id}')">
+      <span class="dish-row-emoji">${d.emoji}</span>
+      <div class="dish-row-main">
+        <div class="dish-row-name">${esc(d.name)}</div>
+        <div class="dish-row-desc">${esc(d.description)}</div>
+        <div class="dish-row-meta">${esc(d.cuisine)} · ${esc(effortLabel(d.effort))} · ${esc(formatCal({ calRange: d.calories }))}</div>
+      </div>
+      <span class="fit-pill fit-${band}">${fitLabel(band)}</span>
+    </button>`;
+  }).join('');
+}
+function surpriseMe() {
+  const safe = DISHES.filter(d => !d.allergens.some(a => profile.allergies.includes(a)));
+  const pool = filteredDishes().length ? filteredDishes() : safe;
+  if (!pool.length) return;
+  chooseDish(pick(pool).id);
+}
+
+function dentalTipFor(dish) {
+  if (dish.tags.dental) return 'A dental-friendly pick overall, nothing here leans hard on sugar or acid.';
+  if (dish.refluxRisky) return 'Some acidity or heat here. A rinse with water afterward helps offset it before it lingers.';
+  return 'Nothing especially risky here, just keep up with your normal routine.';
+}
+function cholTipFor(dish) {
+  if (dish.tags.cholesterol) return 'A cholesterol-friendly choice overall, especially if you go light on any extra sauce.';
+  return 'Nothing here is off-limits on its own, just one to balance with lighter choices around it.';
+}
+function matchedPriorityText(dish) {
+  const labels = { cholesterol: 'lower cholesterol', dental: 'protecting your teeth', fiber: 'high fiber', protein: 'high protein', loweffort: 'low effort', budget: 'budget-friendly', comfort: 'comfort food' };
   const bits = [];
-  bits.push(protein.note ? capitalize(protein.note) : 'A solid protein choice');
-  if (base.fiber) bits.push('the fiber-forward base helps too');
-  if (sauce.satFat === 'high') bits.push('the sauce is the one place worth going lighter if cholesterol is top of mind');
-  return bits.join('; ') + '.';
+  Object.keys(dish.tags).forEach(k => { if (dish.tags[k] && selected.goals.has(k)) bits.push(labels[k]); });
+  return bits.length ? `This is one of today's matches for ${bits.join(' and ')}.` : null;
 }
 
-// ══ CALORIE ESTIMATE ═══════════════════════════════
-// Rough ranges built from the same ingredient tags the recommendation
-// engine already uses (fiberBoost, fiber/refined, sugar/satFat) — never
-// exact, always shown as "~lo-hi cal, rough estimate". There's no
-// nutrition database here, so this is pattern-based, not measured.
-function roundTo(n, step) { return Math.round(n / step) * step; }
-function sumRanges(ranges) { return ranges.reduce((acc, r) => [acc[0] + r[0], acc[1] + r[1]], [0, 0]); }
-function calProtein(protein) {
-  const n = (protein.name || '').toLowerCase();
-  if (protein.fiberBoost || /tofu|tempeh|edamame|chickpea|lentil|bean/.test(n)) return [160, 220];
-  if (/salmon|tuna|cod|fish|shrimp|scallop|tilapia|seafood/.test(n)) return [180, 250];
-  if (/chicken|turkey/.test(n)) return [190, 260];
-  if (/beef|pork|steak|lamb|sausage|bacon/.test(n)) return [240, 330];
-  if (/egg/.test(n)) return [140, 190];
-  return [180, 250];
+function chooseDish(id) {
+  const dish = DISHES.find(d => d.id === id);
+  if (!dish) return;
+  currentChosenDish = dish;
+
+  const habitCtx = [];
+  if (!dish.tags.dental) habitCtx.push('dental', 'sugary');
+  if (dish.tags.comfort && !dish.tags.fiber) habitCtx.push('heavy');
+  if (!dish.tags.fiber) habitCtx.push('lowfiber');
+  if (!dish.tags.protein) habitCtx.push('lowprotein');
+  if (/bowl/i.test(dish.name)) habitCtx.push('ricebowl');
+  habitCtx.push('general');
+  lastHabitContext = habitCtx;
+
+  const q = dishQuality(dish);
+  const band = scoreBand(q);
+
+  const why = [dish.why];
+  const matched = matchedPriorityText(dish);
+  if (matched) why.push(matched);
+
+  const watchList = [];
+  if (dish.watch) watchList.push(dish.watch);
+  if (profile.priorities.includes('reflux') && dish.refluxRisky) {
+    watchList.push('This one runs spicy or acidic, a common reflux trigger. Worth noticing how it sits, or asking for it milder.');
+  }
+
+  const terms = searchTokens();
+  const matchedIngredients = terms.length ? dish.ingredients.filter(i => terms.some(t => i.toLowerCase().includes(t))) : [];
+  const mods = dish.mods.filter(Boolean);
+
+  document.getElementById('detailSection').innerHTML = `
+    <div class="card">
+      <div class="result-head">
+        <div class="result-title-wrap">
+          <span class="dish-glyph-lg fit-${band}">${dish.emoji}</span>
+          <div>
+            <div class="result-title heading">${esc(dish.name)}</div>
+            <div class="result-sub">${esc(dish.cuisine)} · ${esc(effortLabel(dish.effort))} · ${esc(formatCal({ calRange: dish.calories }))}</div>
+          </div>
+        </div>
+        <div class="score-badge fit-${band}">
+          <span class="score-num">${q}</span><span class="score-den">/ 10</span>
+        </div>
+      </div>
+
+      <p class="result-blurb">${esc(dish.description)}</p>
+      ${matchedIngredients.length ? `<span class="uses-badge">${icon('check-circle', 12)} Matches what you searched for</span>` : ''}
+
+      <div class="result-section">
+        <span class="result-section-title">${icon('sparkles', 15)} Why this works for you</span>
+        <ul class="result-list">${why.map(x => `<li>${esc(x)}</li>`).join('')}</ul>
+      </div>
+
+      <div class="result-section">
+        <span class="result-section-title">${icon('shopping-bag', 15)} What's in it</span>
+        <ul class="result-list">${dish.ingredients.map(x => `<li>${esc(x)}</li>`).join('')}</ul>
+      </div>
+
+      ${mods.length ? `
+      <div class="result-section">
+        <span class="result-section-title">${icon('sliders', 15)} Simple modifications</span>
+        <ul class="result-list">${mods.map(x => `<li>${esc(x)}</li>`).join('')}</ul>
+      </div>` : ''}
+
+      ${watchList.length ? `
+      <div class="result-section" style="margin-bottom:22px">
+        <span class="result-section-title watch">${icon('eye', 15)} Worth noticing</span>
+        <ul class="result-list watch">${watchList.map(x => `<li>${esc(x)}</li>`).join('')}</ul>
+      </div>` : ''}
+
+      <div class="tip-grid">
+        <div class="tip-card dental"><span class="tip-card-label">${icon('smile', 14)} Dental tip</span>${esc(dentalTipFor(dish))}</div>
+        <div class="tip-card chol"><span class="tip-card-label">${icon('heart', 14)} Cholesterol tip</span>${esc(cholTipFor(dish))}</div>
+      </div>
+
+      <div class="detail-actions">
+        <button class="btn btn-ghost" onclick="backToCatalog()">${icon('arrow-left', 16)} Back to the list</button>
+        <button class="btn btn-outline" id="logThisBtn" onclick="logCurrentDish()">${icon('bookmark', 16)} Log this to today</button>
+      </div>
+      <p class="reassurance">No single meal is a win or a failure. This is just one good direction among many.</p>
+    </div>
+  `;
+  document.getElementById('detailSection').classList.add('visible');
+  renderTinyHabits(lastHabitContext);
+  document.getElementById('detailSection').scrollIntoView({ behavior: 'smooth', block: 'start' });
 }
-function calBase(base) {
-  const n = (base.name || '').toLowerCase();
-  if (/greens|lettuce|cabbage base/.test(n)) return [30, 90];
-  if (base.refined) return [210, 270];
-  if (base.fiber) return [190, 240];
-  return [180, 240];
-}
-function calVeg() { return [20, 35]; }
-function calSauce(sauce) {
-  if (sauce.satFat === 'high') return [100, 160];
-  if (sauce.sugar === 'high') return [90, 140];
-  return [30, 70];
-}
-function calMatcha(milk, sweetness) {
-  let lo = 5, hi = 15;
-  const m = (milk || '').toLowerCase();
-  if (/whole/.test(m)) { lo += 110; hi += 150; }
-  else if (/oat|soy|almond|2%|skim|nonfat|low.?fat/.test(m)) { lo += 45; hi += 90; }
-  else { lo += 40; hi += 80; }
-  if (sweetness === 'Unsweetened') { hi += 10; }
-  else if ((sweetness || '').startsWith('Half')) { lo += 40; hi += 60; }
-  else { lo += 80; hi += 120; }
-  return [lo, hi];
-}
-function formatCal(entry) {
-  if (!entry || !entry.calRange) return null;
-  const [lo, hi] = entry.calRange;
-  if (entry.calExact) return `${Math.round(lo)} cal`;
-  const rl = roundTo(lo, 10), rh = roundTo(hi, 10);
-  return rl === rh ? `~${rl} cal` : `~${rl}-${rh} cal`;
+function backToCatalog() {
+  document.getElementById('catalogSection').scrollIntoView({ behavior: 'smooth', block: 'start' });
 }
 
-// A small curated table of everyday foods for free-typed log entries,
-// since a fridge/palette match won't cover "pizza" or "burger". Lean is
-// on the same 4-10 scale as the recommendation fit score (7.0 neutral) -
-// used only to nudge the private daily balance, never shown as a label.
+// ══ TINY HABITS ════════════════════════════════════
+function renderTinyHabits(contextTags) {
+  const el = document.getElementById('habitList');
+  let matches = HABITS.filter(h => contextTags.includes(h.trigger));
+  const pool = HABITS.filter(h => !matches.includes(h));
+  while (matches.length < 3 && pool.length) matches.push(pool.splice(Math.floor(Math.random() * pool.length), 1)[0]);
+  const chosen = [];
+  const src = [...matches];
+  while (chosen.length < Math.min(3, src.length)) chosen.push(src.splice(Math.floor(Math.random() * src.length), 1)[0]);
+  el.innerHTML = chosen.map(h => `<div class="habit-item"><span class="entry-dot">${icon('check', 14)}</span>${esc(h.text)}</div>`).join('');
+}
+function shuffleHabits() { renderTinyHabits(lastHabitContext); }
+
+// ══ CALORIE / QUALITY ESTIMATE FOR FREE-TYPED LOG ENTRIES ══
+// No structured data behind free text, so this is intentionally light:
+// a small table of everyday foods, plus a handful of ingredient-keyword
+// hints. Nothing recognized means no number shown, never a fabricated one.
 const COMMON_FOODS = [
   { terms: ['pizza'], cal: [250, 350], lean: 6.2 },
   { terms: ['cheeseburger', 'burger'], cal: [450, 650], lean: 5.8 },
@@ -1156,214 +897,36 @@ const COMMON_FOODS = [
   { terms: ['pancakes', 'waffles'], cal: [350, 550], lean: 6.2 },
   { terms: ['bagel'], cal: [250, 400], lean: 6.6 },
 ];
-let INGREDIENT_INDEX = [];
-function buildIngredientIndex() {
-  // The same ingredient name (e.g. "Chicken") appears in many systems -
-  // dedupe by term so a free-text match only counts it once.
-  const byTerm = new Map();
-  for (const key in PALETTES) {
-    if (key === 'matcha') continue;
-    const sys = PALETTES[key];
-    (sys.proteins || []).forEach(p => byTerm.set(p.name.toLowerCase(), { term: p.name.toLowerCase(), cal: calProtein(p), lean: p.fiberBoost ? 0.4 : 0 }));
-    (sys.bases || []).forEach(b => byTerm.set(b.name.toLowerCase(), { term: b.name.toLowerCase(), cal: calBase(b), lean: b.fiber ? 0.3 : (b.refined ? -0.2 : 0) }));
-    (sys.sauces || []).forEach(s => byTerm.set(s.name.toLowerCase(), { term: s.name.toLowerCase(), cal: calSauce(s), lean: (s.satFat === 'high' || s.sugar === 'high') ? -0.4 : 0.1 }));
-    (sys.veggies || []).forEach(v => byTerm.set(v.toLowerCase(), { term: v.toLowerCase(), cal: calVeg(), lean: 0.3 }));
-  }
-  const idx = Array.from(byTerm.values());
-  idx.sort((a, b) => b.term.length - a.term.length);
-  INGREDIENT_INDEX = idx;
-}
-// Best-effort read of a free-typed log entry: matches known foods/
-// ingredients by name, sums a rough calorie range, and derives a quality
-// lean from the same tags the recommendation engine uses. Returns nulls
-// (not a fabricated guess) when nothing recognizable is found.
+const CAL_KEYWORDS = [
+  { test: /salmon|tuna|fish|cod|shrimp|scallop/i, cal: [180, 260], lean: 0.4 },
+  { test: /tofu|tempeh|edamame|chickpea|lentil|bean/i, cal: [160, 220], lean: 0.4 },
+  { test: /chicken|turkey/i, cal: [190, 260], lean: 0.1 },
+  { test: /beef|pork|steak|lamb|sausage|bacon/i, cal: [240, 330], lean: -0.1 },
+  { test: /egg/i, cal: [140, 190], lean: 0.2 },
+  { test: /rice|noodle|pasta|bread|bagel|potato/i, cal: [200, 280], lean: 0 },
+  { test: /greens|salad|lettuce|vegetable|veggie/i, cal: [40, 100], lean: 0.4 },
+  { test: /fried|fries|crispy/i, cal: [250, 400], lean: -0.5 },
+  { test: /sauce|dressing|mayo|cream/i, cal: [60, 140], lean: -0.2 },
+];
 function estimateMealFromText(text) {
   const q = (text || '').toLowerCase().trim();
   if (!q) return { calRange: null, quality: null };
-
   const foodMatches = COMMON_FOODS.filter(f => f.terms.some(t => q.includes(t)));
-  const ingredientMatches = INGREDIENT_INDEX.filter(i => q.includes(i.term)).slice(0, 4);
-  if (!foodMatches.length && !ingredientMatches.length) return { calRange: null, quality: null };
-
-  const calParts = [...foodMatches.map(f => f.cal), ...ingredientMatches.map(i => i.cal)].slice(0, 4);
+  const keywordMatches = CAL_KEYWORDS.filter(k => k.test.test(q));
+  if (!foodMatches.length && !keywordMatches.length) return { calRange: null, quality: null };
+  const calParts = [...foodMatches.map(f => f.cal), ...keywordMatches.map(k => k.cal)];
   const calRange = calParts.length ? sumRanges(calParts) : null;
-
   let quality;
-  if (foodMatches.length) {
-    quality = foodMatches.reduce((a, f) => a + f.lean, 0) / foodMatches.length;
-  } else {
-    quality = 7.0 + ingredientMatches.reduce((a, i) => a + i.lean, 0) / ingredientMatches.length;
-  }
+  if (foodMatches.length) quality = foodMatches.reduce((a, f) => a + f.lean, 0) / foodMatches.length;
+  else quality = 7.0 + keywordMatches.reduce((a, k) => a + k.lean, 0) / keywordMatches.length;
   return { calRange, quality: clamp(Math.round(quality * 10) / 10, 4, 10) };
 }
 
-// ══ OPTIONS + DETAIL RENDER ════════════════════════
-const MIN_SCORE = 8; // only genuinely strong fits get shown, per Anna's request
-const MAX_ATTEMPTS = 40;
-
-function generateOptions(ctx, systemKey) {
-  const accepted = [];
-  const seenTitles = new Set();
-  const used = [];
-  let attempts = 0;
-  while (accepted.length < 3 && attempts < MAX_ATTEMPTS) {
-    attempts++;
-    const opt = composeOption(systemKey, ctx, used);
-    if (opt.score > MIN_SCORE && !seenTitles.has(opt.title)) {
-      accepted.push(opt);
-      seenTitles.add(opt.title);
-      if (opt.proteinName) used.push(opt.proteinName);
-    }
-  }
-  return accepted;
-}
-
-function runQuery(forcedSystemKey) {
-  const ctx = {
-    mealType: selected.mealType, setting: selected.setting,
-    cuisineText: document.getElementById('cuisineInput').value,
-    goals: selected.goals, mood: selected.mood,
-  };
-  const systemKey = forcedSystemKey || findSystemKey(ctx.cuisineText);
-  currentOptions = generateOptions(ctx, systemKey);
-  renderOptions();
-  document.getElementById('detailSection').classList.remove('visible');
-  document.getElementById('detailSection').innerHTML = '';
-  document.getElementById('optionsSection').scrollIntoView({ behavior: 'smooth', block: 'start' });
-}
-
-function fitLabel(band) { return band === 'high' ? 'Great fit' : band === 'mid' ? 'Good fit' : 'Fine choice'; }
-
-function renderOptions() {
-  const grid = document.getElementById('optionGrid');
-  const head = document.getElementById('optionsSection').querySelector('.options-title');
-
-  if (!currentOptions.length) {
-    head.textContent = 'Nothing over 8/10 yet';
-    grid.innerHTML = `<div class="options-empty">
-      I couldn't land a strong enough match this time, only options over 8/10 get shown.
-      Try adding a goal or two (Lower cholesterol and High fiber tend to help), or hit Surprise me for a fresh pool to draw from.
-    </div>`;
-    document.getElementById('optionsSection').classList.add('visible');
-    return;
-  }
-
-  head.textContent = currentOptions.length === 1 ? 'One strong direction' : 'A few strong directions';
-  grid.innerHTML = currentOptions.map((o, i) => {
-    const haveCount = o.build.filter(b => b.have).length;
-    return `
-    <button type="button" class="option-card" onclick="chooseOption(${i})" id="opt-${i}">
-      <div class="option-top">
-        <span class="dish-glyph fit-${o.band}">${o.emoji}</span>
-        <span class="fit-pill fit-${o.band}">${fitLabel(o.band)}</span>
-      </div>
-      <div class="option-name">${esc(o.title)}</div>
-      <div class="option-meta">${esc(o.systemLabel || '')} · ${esc(effortLabel(o.effort))} · ${esc(formatCal({ calRange: o.calRange }))}</div>
-      <div class="option-build">${esc(o.blurb)}</div>
-      ${fridgeSelections.size && haveCount ? `<span class="uses-badge">${icon('check-circle', 12)} Uses ${haveCount} thing${haveCount > 1 ? 's' : ''} you have</span>` : ''}
-      <div class="option-cta">See the full picture ${icon('arrow-right', 14)}</div>
-    </button>
-  `;
-  }).join('');
-  document.getElementById('optionsSection').classList.add('visible');
-}
-
-function chooseOption(i) {
-  document.querySelectorAll('.option-card').forEach((el, idx) => el.classList.toggle('chosen', idx === i));
-  const o = currentOptions[i];
-  currentChosenOpt = o;
-  const habitCtx = [];
-  if (o.sauceHighSugar) habitCtx.push('sweetdrink', 'sugary');
-  if (o.system === 'eastAsianBowl') habitCtx.push('ricebowl');
-  if (selected.setting === 'restaurant') habitCtx.push('largeportion');
-  if (selected.mood === 'salty') habitCtx.push('salty');
-  habitCtx.push('dental', 'general');
-  lastHabitContext = habitCtx;
-
-  const haveItems = o.build.filter(b => b.have);
-  const missingItems = o.build.filter(b => !b.have);
-  const showSplit = fridgeSelections.size > 0 && haveItems.length > 0;
-
-  document.getElementById('detailSection').innerHTML = `
-    <div class="card">
-      <div class="result-head">
-        <div class="result-title-wrap">
-          <span class="dish-glyph-lg fit-${o.band}">${o.emoji}</span>
-          <div>
-            <div class="result-title heading">${esc(o.title)}</div>
-            <div class="result-sub">${esc(fitLabel(o.band))} · ${esc(o.systemLabel || '')} · ${esc(effortLabel(o.effort))} · ${esc(formatCal({ calRange: o.calRange }))}</div>
-          </div>
-        </div>
-        <div class="score-badge fit-${o.band}">
-          <span class="score-num">${o.score}</span><span class="score-den">/ 10</span>
-        </div>
-      </div>
-
-      <p class="result-blurb">${esc(o.blurb)}</p>
-
-      <div class="result-section">
-        <span class="result-section-title">${icon('sparkles', 15)} Why this works for you</span>
-        <ul class="result-list">${o.why.map(x => `<li>${esc(x)}</li>`).join('')}</ul>
-      </div>
-
-      ${showSplit ? `
-      <div class="result-section">
-        <span class="result-section-title">${icon('check-circle', 15)} Already in your kitchen</span>
-        <ul class="result-list">${haveItems.map(x => `<li>${esc(x.text)}</li>`).join('')}</ul>
-      </div>` : ''}
-
-      <div class="result-section">
-        <span class="result-section-title">${icon('shopping-bag', 15)} ${showSplit ? 'Rest of the build' : 'The build'}</span>
-        <ul class="result-list">${(showSplit ? missingItems : o.build).map(x => `<li>${esc(x.text)}</li>`).join('')}</ul>
-      </div>
-
-      <div class="result-section">
-        <span class="result-section-title">${icon('sliders', 15)} Simple modifications</span>
-        <ul class="result-list">${o.mods.map(x => `<li>${esc(x)}</li>`).join('')}</ul>
-      </div>
-
-      <div class="result-section" style="margin-bottom:22px">
-        <span class="result-section-title watch">${icon('eye', 15)} Worth noticing</span>
-        <ul class="result-list watch">${o.watch.map(x => `<li>${esc(x)}</li>`).join('')}</ul>
-      </div>
-
-      <div class="tip-grid">
-        <div class="tip-card dental"><span class="tip-card-label">${icon('smile', 14)} Dental tip</span>${esc(o.dentalTip)}</div>
-        <div class="tip-card chol"><span class="tip-card-label">${icon('heart', 14)} Cholesterol tip</span>${esc(o.cholTip)}</div>
-      </div>
-
-      <div class="detail-actions">
-        <button class="btn btn-ghost" onclick="backToOptions()">${icon('arrow-left', 16)} Back to options</button>
-        <button class="btn btn-outline" id="logThisBtn" onclick="logCurrentOption()">${icon('bookmark', 16)} Log this to today</button>
-      </div>
-      <p class="reassurance">No single meal is a win or a failure. This is just one good direction among several.</p>
-    </div>
-  `;
-  document.getElementById('detailSection').classList.add('visible');
-  renderTinyHabits(lastHabitContext);
-  document.getElementById('detailSection').scrollIntoView({ behavior: 'smooth', block: 'start' });
-}
-
-function backToOptions() {
-  document.getElementById('optionsSection').scrollIntoView({ behavior: 'smooth', block: 'start' });
-}
-
-// ══ TINY HABITS ════════════════════════════════════
-function renderTinyHabits(contextTags) {
-  const el = document.getElementById('habitList');
-  let matches = HABITS.filter(h => contextTags.includes(h.trigger));
-  if (matches.length < 3) matches = matches.concat(pickN(HABITS.filter(h => !matches.includes(h)), 3 - matches.length));
-  const chosen = pickN(matches, Math.min(3, matches.length));
-  el.innerHTML = chosen.map(h => `<div class="habit-item"><span class="entry-dot">${icon('check', 14)}</span>${esc(h.text)}</div>`).join('');
-}
-function shuffleHabits() { renderTinyHabits(lastHabitContext); }
-
 // ══ FOOD LOG ═══════════════════════════════════════
 // A private, rough sense of the day: a calorie estimate where one can
-// be made, and a quality "lean" (reusing the same fiber/sugar/satFat
-// tags the recommendation engine already scores with) that feeds a
-// running daily balance. Never exact, never shown as a grade on any
-// single meal.
+// be made, and a quality "lean" (the same tags dishes carry, or a light
+// text match for free-typed entries) that feeds a running daily
+// balance. Never exact, never shown as a grade on any single meal.
 function loadFoodLog() {
   try { return JSON.parse(localStorage.getItem(LOG_KEY) || '[]'); }
   catch { return []; }
@@ -1392,9 +955,9 @@ function logEntry(text, emoji, calRange, quality, calExact) {
   saveFoodLog();
   renderFoodLog();
 }
-function logCurrentOption() {
-  if (!currentChosenOpt) return;
-  logEntry(currentChosenOpt.title, currentChosenOpt.emoji, currentChosenOpt.calRange, currentChosenOpt.score, false);
+function logCurrentDish() {
+  if (!currentChosenDish) return;
+  logEntry(currentChosenDish.name, currentChosenDish.emoji, currentChosenDish.calories, dishQuality(currentChosenDish), false);
   const btn = document.getElementById('logThisBtn');
   if (btn) { btn.innerHTML = `${icon('check', 16)} Logged to today`; btn.classList.add('logged'); }
 }
@@ -1431,7 +994,7 @@ function renderFoodLog() {
   const el = document.getElementById('logList');
   renderDailyBalance();
   if (!foodLog.length) {
-    el.innerHTML = '<p class="log-empty">Nothing logged yet. Add something you ate, or log one of the options above.</p>';
+    el.innerHTML = '<p class="log-empty">Nothing logged yet. Add something you ate, or log a dish from the collection.</p>';
     return;
   }
   const byDate = {};
@@ -1559,6 +1122,7 @@ function saveDrawer() {
     supplements: document.getElementById('supplements').value.trim(),
   };
   saveProfileObj(profile);
+  renderCatalog();
   const flash = document.getElementById('savedFlash');
   flash.classList.add('show');
   setTimeout(() => flash.classList.remove('show'), 1600);
@@ -1567,36 +1131,29 @@ function resetProfile() {
   profile = defaultProfile();
   saveProfileObj(profile);
   renderDrawer();
+  renderCatalog();
 }
 
 // ══ BOOT ═══════════════════════════════════════════
 async function boot() {
   document.getElementById('heroEyebrow').textContent = greeting();
   renderSegmented('mealTypeChips', MEAL_TYPES, 'mealType');
-  renderSegmented('settingChips', SETTINGS, 'setting');
   renderMultiChips('goalChips', GOALS);
-  renderSegmented('moodChips', MOODS, 'mood');
   updatePersonalizeSummary();
   renderTinyHabits(['general']);
-  updateFridgeCount();
-  document.getElementById('fridgeInput').addEventListener('input', () => {
-    clearTimeout(fridgeDebounce);
-    fridgeDebounce = setTimeout(parseFridgeInput, 300);
-  });
-  renderChatLog();
-  document.getElementById('chatInput').addEventListener('keydown', e => { if (e.key === 'Enter') sendChat(); });
   foodLog = loadFoodLog();
   renderFoodLog();
   document.getElementById('logInput').addEventListener('keydown', e => { if (e.key === 'Enter') logManualEntry(); });
+  document.getElementById('searchInput').addEventListener('input', () => {
+    clearTimeout(searchDebounce);
+    searchDebounce = setTimeout(renderCatalog, 250);
+  });
 
-  const [palettesRes, habitsRes] = await Promise.all([fetch('data/palettes.json'), fetch('data/habits.json')]);
-  PALETTES = await palettesRes.json();
+  const [dishesRes, habitsRes] = await Promise.all([fetch('data/dishes.json'), fetch('data/habits.json')]);
+  DISHES = await dishesRes.json();
   HABITS = await habitsRes.json();
-  buildIngredientIndex();
 
-  document.getElementById('cuisineList').innerHTML = QUICK_CUISINES
-    .map(c => `<option value="${c}">`).join('');
-
+  renderCatalog();
   renderTinyHabits(lastHabitContext);
 }
 applyIcons();
