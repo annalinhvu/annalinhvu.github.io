@@ -94,7 +94,7 @@ A personal, non-ranked guide to vetted organizations across crisis relief, hunge
 ---
 
 ### Well Fed
-A food recommendation companion tuned to whatever health priorities you set for yourself, all private to your own browser. Tell it what you're eating and where, and it generates a few different build-it-yourself options on the spot (not a fixed dish catalog), each with why it works, simple modifications, and a couple of small habit add-ons. No calorie counting, no guilt, no meal is ever a failure. Rule-based, generative recommendation engine with a clean seam for swapping in an LLM later.
+A real, curated collection of dishes, tagged by what each one actually supports (cholesterol, dental, fiber, protein, effort, budget) and filtered by whatever health priorities you set for yourself, all private to your own browser. Search an ingredient or a craving, filter by what matters today, and get a real dish back, not a randomly generated one, with why it fits, what's in it, and a couple of small habit add-ons. A private daily log estimates rough calories and tracks a gentle running balance. No shame, no meal is ever a failure.
 
 **Live:** https://annalinhvu.github.io/projects/well-fed/  
 **Stack:** HTML · JSON · Vanilla JS
