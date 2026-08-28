@@ -670,6 +670,19 @@ body {
 }
 .ft-live{color:var(--g-text);}
 
+.db-empty{
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+  text-align:center;padding:70px 26px;gap:10px;
+}
+.db-empty-icon{font-size:22px;color:var(--t4);opacity:.7;}
+.db-empty-title{
+  font-family:'Geist Mono',monospace;
+  font-size:12px;letter-spacing:1.8px;text-transform:uppercase;color:var(--t4);
+}
+.db-empty-desc{
+  font-size:14px;color:var(--t3);max-width:420px;line-height:1.6;
+}
+
 
 /* ══════════════════════════════════════════════════════════
    WORK TAB  (professional + academic projects)
@@ -1003,6 +1016,7 @@ body {
   <nav class="top-tabs" role="tablist">
     <button class="top-tab"        data-pane="studio"  role="tab">studio</button>
     <button class="top-tab active" data-pane="built"   role="tab">built</button>
+    <button class="top-tab"        data-pane="skills"  role="tab">skills</button>
     <button class="top-tab"        data-pane="career"  role="tab">career</button>
     <button class="top-tab"        data-pane="console"    role="tab">terminal</button>
     <div class="tab-indicator"></div>
@@ -1368,6 +1382,34 @@ body {
             <div class="proj-metrics"><div><div class="pm-v">0</div><div class="pm-u">frameworks</div></div><div><div class="pm-v">2</div><div class="pm-u">themes</div></div></div>
           </div>
         </div>
+      </div>
+    </section>
+
+    <!-- ════ AI SKILLS (Claude Skills packages) ══════ -->
+    <section class="tab-pane" id="pane-skills" role="tabpanel">
+      <div class="query-bar">
+        <span class="kw">SELECT</span><span>&nbsp;*&nbsp;</span>
+        <span class="kw">FROM</span><span>&nbsp;</span>
+        <span class="tbl">anna_vu.ai_skills</span><span>&nbsp;</span>
+        <span class="kw">ORDER BY</span><span>&nbsp;published_at&nbsp;</span>
+        <span class="kw">DESC</span>
+        <span class="cmt">-- 0 rows returned</span>
+      </div>
+      <div class="db-head">
+        <span>#</span><span>SKILL</span>
+        <span>CATEGORY</span><span>STATUS</span>
+      </div>
+
+      <div class="db-empty">
+        <div class="db-empty-icon">⚙</div>
+        <div class="db-empty-title">table is empty</div>
+        <div class="db-empty-desc">Starting to build Claude Skills, packaged and reusable. First one lands here soon.</div>
+      </div>
+
+      <div class="db-footer">
+        <span>0 rows returned</span>
+        <span class="ft-live">● table exists, no records yet</span>
+        <span>last updated August 2026</span>
       </div>
     </section>
 
@@ -2015,7 +2057,7 @@ function toggleTheme() {
 /* ── Arrow key nav ── */
 document.addEventListener('keydown', function(e) {
   if (document.activeElement && document.activeElement.id === 'console-input') return;
-  var tabs = ['studio','built','career','console'];
+  var tabs = ['studio','built','skills','career','console'];
   var active = document.querySelector('.top-tab.active');
   if (!active) return;
   var idx = tabs.indexOf(active.dataset.pane);
@@ -2044,7 +2086,7 @@ function updateStatus(pane, rows) {
 var _origSwitch = switchPane;
 switchPane = function(id) {
   _origSwitch(id);
-  var rowCounts = {studio: 11, built: 15, career: 4};
+  var rowCounts = {studio: 11, built: 15, skills: 0, career: 4};
   updateStatus(id, rowCounts[id] || 0);
 };
 
@@ -2104,7 +2146,7 @@ switchPane = function(id) {
     moveIndicator(active);
     var pane = document.getElementById('pane-' + active.dataset.pane);
     if (pane) revealPane(pane);
-    var rowCounts = {studio: 11, built: 15, career: 4};
+    var rowCounts = {studio: 11, built: 15, skills: 0, career: 4};
     updateStatus(active.dataset.pane, rowCounts[active.dataset.pane] || 0);
   }
 })();
@@ -2276,6 +2318,7 @@ switchPane = function(id) {
   var NAV_MSGS = {
     studio: "Built for curiosity, not deadlines. ✨",
     built:  "Five years of production data engineering. Featured projects up top, then the full stack. 💼",
+    skills: "Empty table for now. First Claude Skill is coming. 🛠️",
     career: null,
     console:"Honestly the terminal tab is my favorite. Try <code>anna.skills()</code> in Python mode. 💻"
   };
@@ -2411,6 +2454,7 @@ switchPane = function(id) {
     return '<div class="pet-nav">' +
       '<button class="pet-nav-btn" onclick="petNav(\'studio\')">Studio</button>' +
       '<button class="pet-nav-btn" onclick="petNav(\'built\')">Built</button>' +
+      '<button class="pet-nav-btn" onclick="petNav(\'skills\')">Skills</button>' +
       '<button class="pet-nav-btn" onclick="petNav(\'career\')">Career</button>' +
       '</div>';
   }
