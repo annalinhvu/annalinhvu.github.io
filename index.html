@@ -2664,6 +2664,7 @@ switchPane = function(id) {
     role:'Principal Data Engineer', origin:'Hanoi, Vietnam',
     email:'vuhongnhatlinh@gmail.com', linkedin:'linkedin.com/in/annalinhvu', github:'github.com/annalinhvu',
     status:'open_to_work',
+    target_roles:['Data Engineer','AI Engineer','Forward Deployed Engineer','Technical Project Manager','Data Manager'],
     grad_school:'University of Pennsylvania',
     grad_degree:'M.A.Sc. Computer Science · Artificial Intelligence',
     undergrad_school:'Vanderbilt University',
@@ -2781,7 +2782,7 @@ switchPane = function(id) {
     if(descM) {
       var t=descM[1].toLowerCase();
       var schemas={
-        anna:['name','location','role','origin','email','linkedin','github','status','grad_school','grad_degree','undergrad_school','undergrad_degree'],
+        anna:['name','location','role','origin','email','linkedin','github','status','target_roles','grad_school','grad_degree','undergrad_school','undergrad_degree'],
         skills:['category','skill'],experience:['title','company','location','period'],projects:['title','type','tech','status']
       };
       if(!schemas[t]) return '<div class="res-error">ERROR 1146: table \''+esc(t)+'\' doesn\'t exist.</div>';
@@ -2867,7 +2868,7 @@ switchPane = function(id) {
     if(/^anna\.coffee_count/.test(cu)) return '<div class="res-success">∞</div>';
     if(/^anna\.years_of_experience\s*\(\s*\)/.test(cu)) return '<div class="res-success">5</div>';
     if(/^anna\.dream_job\s*\(\s*\)/.test(cu)) return '<div class="res-success">\'principal engineer building data systems that actually matter\'</div>';
-    if(/^anna\.availability\s*\(\s*\)/.test(cu)) return '<div class="res-success">{\'status\': \'open_to_work\', \'location\': \'NYC or remote\', \'contact\': \'vuhongnhatlinh@gmail.com\'}</div>';
+    if(/^anna\.availability\s*\(\s*\)/.test(cu)) return '<div class="res-success">{\'status\': \'open_to_work\', \'roles\': '+JSON.stringify(ANNA.target_roles)+', \'location\': \'NYC or remote\', \'contact\': \'vuhongnhatlinh@gmail.com\'}</div>';
     if(/^anna\.clone\s*\(\s*\)/.test(cu)) return '<div class="res-error">NotImplementedError: not possible... yet.</div>';
     if(/^anna\.__repr__\s*\(\s*\)/.test(cu)) return '<div class="res-success">\'&lt;Anna Vu: DataEngineer @ NYC | open_to_work&gt;\'</div>';
     if(/^anna\.bugs_fixed/.test(cu)) return '<div class="res-success">247  # and counting</div>';
@@ -3042,7 +3043,7 @@ switchPane = function(id) {
       var lines=PROJECTS.map(function(p){return '&nbsp;&nbsp;new Project("'+esc(p.title)+'", "'+esc(p.status)+'")';});
       return '<div class="res-success">ArrayList&lt;Project&gt; [<br>'+lines.join(',<br>')+'<br>]</div>';
     }
-    if(/^anna\.getAvailability\s*\(\s*\)/.test(cu)) return '<div class="res-success">Status.OPEN_TO_WORK // NYC or remote · vuhongnhatlinh@gmail.com</div>';
+    if(/^anna\.getAvailability\s*\(\s*\)/.test(cu)) return '<div class="res-success">Status.OPEN_TO_WORK // '+ANNA.target_roles.join(' · ')+' · NYC or remote · vuhongnhatlinh@gmail.com</div>';
     if(/^anna\.getDreamJob\s*\(\s*\)/.test(cu)) return '<div class="res-success">"principal engineer building data systems that actually matter"</div>';
     if(/^anna\.yearsOfExperience\s*\(\s*\)/.test(cu)) return '<div class="res-success">5 // int, not long — still growing</div>';
     if(/^anna\.getCoffeeCount\s*\(\s*\)/.test(cu)) return '<div class="res-success">Integer.MAX_VALUE // ∞</div>';
