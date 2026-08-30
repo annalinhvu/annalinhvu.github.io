@@ -783,6 +783,27 @@ body {
 .budget-total-label { font-size: 0.58rem; letter-spacing: 1.5px; text-transform: uppercase; color: var(--text-4); }
 .budget-total-value { font-family: 'Bebas Neue', sans-serif; font-size: 1.3rem; letter-spacing: 1px; color: var(--text-1); }
 
+/* ══ PANEL U.S. STATES MAP ══ */
+.us-states-header { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-bottom: 12px; }
+.us-states-clear-btn {
+  font-size: 0.56rem; letter-spacing: 1px; text-transform: uppercase;
+  color: var(--text-4); cursor: pointer; transition: color 0.15s; flex-shrink: 0;
+}
+.us-states-clear-btn:hover { color: var(--gold); }
+.us-map-wrap { position: relative; width: 100%; background: var(--surface); border: 1px solid var(--border); border-radius: 6px; padding: 10px; }
+#usMapSvg { width: 100%; height: auto; display: block; }
+.us-map-loading {
+  position: absolute; inset: 0; display: flex; align-items: center; justify-content: center;
+  font-size: 0.6rem; letter-spacing: 1px; text-transform: uppercase; color: var(--text-4);
+}
+.us-state { fill: var(--surface-2); stroke: var(--border); stroke-width: 0.75px; cursor: pointer; transition: fill 0.15s; }
+.us-state:hover { fill: var(--border-2); }
+.us-state.visited { fill: var(--region-color, var(--americas)); stroke: var(--region-color, var(--americas)); }
+.us-states-list { display: flex; flex-wrap: wrap; gap: 5px; margin-top: 12px; }
+.us-state-chip { cursor: pointer; transition: all 0.15s; }
+.us-state-chip:hover { border-color: var(--gold); color: var(--gold); }
+.us-states-empty { font-size: 0.72rem; color: var(--text-4); margin-top: 12px; }
+
 /* ══ RESPONSIVE ══ */
 @media (max-width: 640px) {
   body { overflow: auto; }
@@ -1159,6 +1180,15 @@ let showingSaved  = false;
 let currentId     = null;
 let savedIds      = new Set(JSON.parse(localStorage.getItem(LS_KEY) || '[]'));
 let statusOverrides = JSON.parse(localStorage.getItem(STATUS_KEY) || '{}');
+const US_STATES_KEY = 'atlas-us-states-visited';
+// Seeded from Anna's travel history (2017-2026) the first time this loads in a browser;
+// any later add/remove is what persists in localStorage after that.
+const US_STATES_DEFAULT = ['California','Connecticut','District of Columbia','Florida','Hawaii',
+  'Illinois','Louisiana','Maine','Massachusetts','New Jersey','New York','Pennsylvania',
+  'Rhode Island','Tennessee','Washington'];
+const _usStatesSaved = localStorage.getItem(US_STATES_KEY);
+let visitedStates = new Set(_usStatesSaved !== null ? JSON.parse(_usStatesSaved) : US_STATES_DEFAULT);
+let usStatesFeatures = null;
 let mapSvg        = null;
 let mapG          = null;
 let pinLayer      = null;   // outside zoom transform — pins stay fixed size
@@ -1604,6 +1634,7 @@ function openPanel(id) {
         ${food   ? `<button class="panel-tab-btn" onclick="switchTab('tab-food',this)">Food</button>` : ''}
         ${tips   ? `<button class="panel-tab-btn" onclick="switchTab('tab-tips',this)">Tips</button>` : ''}
         <button class="panel-tab-btn" onclick="switchTab('tab-budget',this)">Budget &amp; Timing</button>
+        ${c.code === 'US' ? `<button class="panel-tab-btn" onclick="switchTab('tab-usmap',this); initUsStatesMap();">My U.S. Map</button>` : ''}
       </div>
       <div id="tab-overview" class="panel-tab-content">
         <div class="panel-section-text">${esc(c.description)}</div>
@@ -1630,6 +1661,21 @@ function openPanel(id) {
       </div>` : ''}
       ${tips ? `<div id="tab-tips" class="panel-tab-content" style="display:none">
         <div class="tips-list">${tips}</div>
+        <div style="height:8px"></div>
+      </div>` : ''}
+      ${c.code === 'US' ? `<div id="tab-usmap" class="panel-tab-content" style="display:none">
+        <div>
+          <div class="panel-section-label">My U.S. Map</div>
+          <div class="us-states-header">
+            <div class="panel-section-text" style="font-size:0.76rem">Click a state to mark it visited. <span id="usStatesCount">0</span> so far.</div>
+            <span class="us-states-clear-btn" onclick="clearUsStates()">Clear</span>
+          </div>
+          <div id="usMapWrap" class="us-map-wrap">
+            <svg id="usMapSvg"></svg>
+            <div id="usMapLoading" class="us-map-loading">Loading map&hellip;</div>
+          </div>
+          <div id="usStatesList" class="us-states-list"></div>
+        </div>
         <div style="height:8px"></div>
       </div>` : ''}
     </div>`;
@@ -1845,6 +1891,77 @@ function switchTab(id, btn) {
   document.querySelectorAll('#panelInner .panel-tab-btn').forEach(el => el.classList.remove('active'));
   document.getElementById(id).style.display = '';
   btn.classList.add('active');
+}
+
+function saveVisitedStates() { localStorage.setItem(US_STATES_KEY, JSON.stringify([...visitedStates])); }
+
+function renderVisitedStatesList() {
+  const countEl = document.getElementById('usStatesCount');
+  if (countEl) countEl.textContent = visitedStates.size;
+  const listEl = document.getElementById('usStatesList');
+  if (!listEl) return;
+  if (visitedStates.size === 0) {
+    listEl.innerHTML = `<div class="us-states-empty">No states marked yet.</div>`;
+    return;
+  }
+  listEl.innerHTML = [...visitedStates].sort().map(name =>
+    `<span class="vibe-chip us-state-chip" data-state="${esc(name)}">${esc(name)}</span>`
+  ).join('');
+  listEl.querySelectorAll('.us-state-chip').forEach(el => {
+    el.addEventListener('click', () => toggleUsState(el.dataset.state));
+  });
+}
+
+function toggleUsState(name) {
+  if (visitedStates.has(name)) visitedStates.delete(name); else visitedStates.add(name);
+  saveVisitedStates();
+  d3.selectAll('#usMapSvg path.us-state')
+    .filter(d => d.properties.name === name)
+    .classed('visited', visitedStates.has(name));
+  renderVisitedStatesList();
+}
+
+function clearUsStates() {
+  if (visitedStates.size === 0) return;
+  visitedStates.clear();
+  saveVisitedStates();
+  d3.selectAll('#usMapSvg path.us-state').classed('visited', false);
+  renderVisitedStatesList();
+}
+
+async function initUsStatesMap() {
+  const wrap = document.getElementById('usMapWrap');
+  if (!wrap) return;
+  const loading = document.getElementById('usMapLoading');
+
+  if (!usStatesFeatures) {
+    try {
+      const us = await d3.json('https://cdn.jsdelivr.net/npm/us-atlas@3/states-10m.json');
+      usStatesFeatures = topojson.feature(us, us.objects.states).features;
+    } catch (e) {
+      if (loading) loading.textContent = 'Could not load map data.';
+      return;
+    }
+    if (document.getElementById('usMapWrap') !== wrap) return; // panel moved on while loading
+  }
+
+  if (loading) loading.style.display = 'none';
+
+  const width = wrap.clientWidth || 520, height = 320;
+  const svg = d3.select('#usMapSvg').attr('viewBox', `0 0 ${width} ${height}`);
+  const projection = d3.geoAlbersUsa().fitSize([width, height], { type: 'FeatureCollection', features: usStatesFeatures });
+  const path = d3.geoPath(projection);
+
+  const stateSel = svg.selectAll('path.us-state')
+    .data(usStatesFeatures)
+    .join('path')
+      .attr('class', d => `us-state${visitedStates.has(d.properties.name) ? ' visited' : ''}`)
+      .attr('d', path)
+      .on('click', (event, d) => toggleUsState(d.properties.name));
+  stateSel.selectAll('title').remove();
+  stateSel.append('title').text(d => d.properties.name);
+
+  renderVisitedStatesList();
 }
 
 function toggleSavedFilter() {
