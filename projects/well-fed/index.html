@@ -368,7 +368,7 @@ button,textarea,input{font-family:inherit}
     <h1 class="composer-title heading">What should I eat right now?</h1>
 
     <div class="card">
-      <textarea class="composer-input" id="composerInput" placeholder="I have cabbage and don't want to cook much…"></textarea>
+      <textarea class="composer-input" id="composerInput" placeholder="I have cabbage and don't want to cook much…" autocomplete="off"></textarea>
       <div class="composer-row">
         <div class="time-chips" id="timeChips" role="group" aria-label="How much time"></div>
         <select class="mealtype-select" id="mealTypeSelect" aria-label="Meal"></select>
@@ -385,7 +385,7 @@ button,textarea,input{font-family:inherit}
     <div class="refine-row">
       <div class="refine-chips" id="refineChips"></div>
       <div class="refine-input-row">
-        <input type="text" class="refine-input" id="refineInput" placeholder="faster, warmer, use my cabbage, something Vietnamese…" aria-label="Refine your results">
+        <input type="text" class="refine-input" id="refineInput" placeholder="faster, warmer, use my cabbage, something Vietnamese…" aria-label="Refine your results" autocomplete="off">
         <button type="button" class="send-btn" id="refineSendBtn" aria-label="Refine" data-icon="send"></button>
       </div>
     </div>
@@ -1019,8 +1019,8 @@ function renderSavedPane() {
   if (balance !== null) html += `<span class="balance-pill" title="A running average of today's scored meals">Today · ${balance}<span class="balance-den">/10</span></span>`;
   html += `
     <div class="log-add-row">
-      <input type="text" class="text-input" id="logInput" placeholder="Log something you ate…" aria-label="Log something you ate">
-      <input type="number" class="text-input cal-input" id="logCalInput" placeholder="cal?" aria-label="Rough calories, optional" min="0">
+      <input type="text" class="text-input" id="logInput" placeholder="Log something you ate…" aria-label="Log something you ate" autocomplete="off">
+      <input type="number" class="text-input cal-input" id="logCalInput" placeholder="cal?" aria-label="Rough calories, optional" min="0" autocomplete="off">
       <button class="icon-btn" onclick="logManualEntry()" aria-label="Add to log" data-icon="check"></button>
     </div>
     <div id="logList"></div>
@@ -1107,7 +1107,7 @@ function renderProfilePane() {
         <input type="checkbox" id="allergyShellfish" ${p.allergies.includes('shellfish') ? 'checked' : ''}>
         Shrimp / shellfish
       </label>
-      <input type="text" class="text-input" id="otherAllergies" placeholder="Other allergies (optional)" value="${esc(p.otherAllergyNotes)}" style="margin-top:8px">
+      <input type="text" class="text-input" id="otherAllergies" placeholder="Other allergies (optional)" value="${esc(p.otherAllergyNotes)}" autocomplete="off" style="margin-top:8px">
     </div>
 
     <div class="field-group">
@@ -1130,8 +1130,8 @@ function renderProfilePane() {
 
     <div class="field-group">
       <span class="field-label">Activity & sleep</span>
-      <div class="lab-field"><label>Typical daily walking (miles)</label><input type="number" class="text-input" id="walkMiles" value="${p.activity.walkMiles ?? ''}" placeholder="e.g. 2"></div>
-      <div class="lab-field"><label>Usual sleep</label><input type="text" class="text-input" id="sleepHours" value="${esc(p.activity.sleepHours)}" placeholder="e.g. 7-8 hours"></div>
+      <div class="lab-field"><label>Typical daily walking (miles)</label><input type="number" class="text-input" id="walkMiles" value="${p.activity.walkMiles ?? ''}" placeholder="e.g. 2" autocomplete="off"></div>
+      <div class="lab-field"><label>Usual sleep</label><input type="text" class="text-input" id="sleepHours" value="${esc(p.activity.sleepHours)}" placeholder="e.g. 7-8 hours" autocomplete="off"></div>
       <div class="lab-field"><label>Other exercise</label>
         <select class="select-input" id="otherExercise">
           <option value="rarely" ${p.activity.otherExercise === 'rarely' ? 'selected' : ''}>Rarely</option>
@@ -1143,7 +1143,7 @@ function renderProfilePane() {
 
     <div class="field-group">
       <span class="field-label">Notes to self <span style="font-weight:400;text-transform:none">(optional, private to you)</span></span>
-      <input type="text" class="text-input" id="supplements" value="${esc(p.supplements)}" placeholder="Anything you want to remember…">
+      <input type="text" class="text-input" id="supplements" value="${esc(p.supplements)}" placeholder="Anything you want to remember…" autocomplete="off">
     </div>
 
     <button class="save-btn" onclick="saveProfilePane()">Save profile</button>
