@@ -44,12 +44,12 @@
   --surface:  #fff5eb;
   --surface-2:#fae8d8;
 
-  --border:   #e8c8a8;
-  --border-2: #d8a880;
+  --border:   #d8b088;
+  --border-2: #c89860;
   --text-1:   #1a0808;
   --text-2:   #3a2010;
   --text-3:   #6a4428;
-  --text-4:   #9a7860;
+  --text-4:   #7d5a3c;
   --gold:     #e03808;
   --gold-dim: rgba(224,56,8,0.09);
   --teal:     #007870;
@@ -173,9 +173,9 @@ body {
   66%       { fill: #081218; }
 }
 @keyframes ocean-light {
-  0%, 100% { fill: #ffe8d8; }
-  33%       { fill: #ffddc8; }
-  66%       { fill: #fff0e4; }
+  0%, 100% { fill: #f0d2b0; }
+  33%       { fill: #ecc8a0; }
+  66%       { fill: #f4dcbc; }
 }
 @keyframes graticule-drift {
   0%, 100% { opacity: 0.35; }
@@ -185,7 +185,7 @@ body {
 :root[data-theme="light"] .sphere { animation: ocean-light 9s ease-in-out infinite; }
 .sphere-atmo { pointer-events: none; }
 :root .sphere-atmo { fill: #ff5030; opacity: 0.07; filter: blur(22px); }
-:root[data-theme="light"] .sphere-atmo { fill: #ff7040; opacity: 0.09; filter: blur(22px); }
+:root[data-theme="light"] .sphere-atmo { fill: #ff7040; opacity: 0.06; filter: blur(22px); }
 .graticule { fill: none; stroke: var(--border); stroke-width: 0.3px; animation: graticule-drift 12s ease-in-out infinite; }
 .land      { fill: var(--surface); stroke: var(--border); stroke-width: 0.4px; }
 #world-map .land.destination { cursor: pointer; fill: var(--surface-2); transition: fill 0.2s; }
@@ -255,8 +255,8 @@ body {
 /* ══ SIDE PANEL ══ */
 .side-panel {
   position: fixed;
-  right: -680px; top: 0; bottom: 0;
-  width: 640px;
+  right: -800px; top: 0; bottom: 0;
+  width: 760px;
   background: var(--bg);
   border-left: 1px solid var(--border);
   z-index: 200;
@@ -787,7 +787,7 @@ body {
 .us-states-header { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-bottom: 12px; }
 .us-states-clear-btn {
   font-size: 0.56rem; letter-spacing: 1px; text-transform: uppercase;
-  color: var(--text-4); cursor: pointer; transition: color 0.15s; flex-shrink: 0;
+  color: var(--text-3); cursor: pointer; transition: color 0.15s; flex-shrink: 0;
 }
 .us-states-clear-btn:hover { color: var(--gold); }
 .us-map-wrap { position: relative; width: 100%; background: var(--surface); border: 1px solid var(--border); border-radius: 6px; padding: 10px; }
@@ -799,8 +799,20 @@ body {
 .us-state { fill: var(--surface-2); stroke: var(--border); stroke-width: 0.75px; cursor: pointer; transition: fill 0.15s; }
 .us-state:hover { fill: var(--border-2); }
 .us-state.visited { fill: var(--region-color, var(--americas)); stroke: var(--region-color, var(--americas)); }
+.us-state-abbr {
+  font-family: 'Geist Mono', monospace;
+  font-size: 7.5px;
+  fill: var(--text-2);
+  text-anchor: middle;
+  dominant-baseline: middle;
+  pointer-events: none;
+  paint-order: stroke fill;
+  stroke: var(--bg);
+  stroke-width: 2.5px;
+  stroke-linejoin: round;
+}
 .us-states-list { display: flex; flex-wrap: wrap; gap: 5px; margin-top: 12px; }
-.us-state-chip { cursor: pointer; transition: all 0.15s; }
+.us-state-chip { cursor: pointer; transition: all 0.15s; color: var(--text-1); border-color: var(--border-2); }
 .us-state-chip:hover { border-color: var(--gold); color: var(--gold); }
 .us-states-empty { font-size: 0.72rem; color: var(--text-4); margin-top: 12px; }
 
@@ -1183,6 +1195,20 @@ let showingSaved  = false;
 let currentId     = null;
 let savedIds      = new Set(JSON.parse(localStorage.getItem(LS_KEY) || '[]'));
 let statusOverrides = JSON.parse(localStorage.getItem(STATUS_KEY) || '{}');
+const STATE_ABBR = {
+  'Alabama':'AL','Alaska':'AK','Arizona':'AZ','Arkansas':'AR','California':'CA',
+  'Colorado':'CO','Connecticut':'CT','Delaware':'DE','District of Columbia':'DC',
+  'Florida':'FL','Georgia':'GA','Hawaii':'HI','Idaho':'ID','Illinois':'IL',
+  'Indiana':'IN','Iowa':'IA','Kansas':'KS','Kentucky':'KY','Louisiana':'LA',
+  'Maine':'ME','Maryland':'MD','Massachusetts':'MA','Michigan':'MI','Minnesota':'MN',
+  'Mississippi':'MS','Missouri':'MO','Montana':'MT','Nebraska':'NE','Nevada':'NV',
+  'New Hampshire':'NH','New Jersey':'NJ','New Mexico':'NM','New York':'NY',
+  'North Carolina':'NC','North Dakota':'ND','Ohio':'OH','Oklahoma':'OK','Oregon':'OR',
+  'Pennsylvania':'PA','Rhode Island':'RI','South Carolina':'SC','South Dakota':'SD',
+  'Tennessee':'TN','Texas':'TX','Utah':'UT','Vermont':'VT','Virginia':'VA',
+  'Washington':'WA','West Virginia':'WV','Wisconsin':'WI','Wyoming':'WY',
+  'Puerto Rico':'PR',
+};
 const US_STATES_KEY = 'atlas-us-states-visited';
 // Seeded from Anna's travel history (2017-2026) the first time this loads in a browser;
 // any later add/remove is what persists in localStorage after that.
@@ -1670,7 +1696,7 @@ function openPanel(id) {
         <div>
           <div class="panel-section-label">My U.S. Map</div>
           <div class="us-states-header">
-            <div class="panel-section-text" style="font-size:0.76rem">Click a state to mark it visited. <span id="usStatesCount">0</span> so far.</div>
+            <div class="panel-section-text" style="font-size:0.76rem; color:var(--text-1)">Click a state to mark it visited. <span id="usStatesCount">0</span> so far.</div>
             <span class="us-states-clear-btn" onclick="clearUsStates()">Clear</span>
           </div>
           <div id="usMapWrap" class="us-map-wrap">
@@ -1963,6 +1989,14 @@ async function initUsStatesMap() {
       .on('click', (event, d) => toggleUsState(d.properties.name));
   stateSel.selectAll('title').remove();
   stateSel.append('title').text(d => d.properties.name);
+
+  svg.selectAll('text.us-state-abbr')
+    .data(usStatesFeatures)
+    .join('text')
+      .attr('class', 'us-state-abbr')
+      .attr('x', d => path.centroid(d)[0])
+      .attr('y', d => path.centroid(d)[1])
+      .text(d => STATE_ABBR[d.properties.name] || '');
 
   renderVisitedStatesList();
 }
