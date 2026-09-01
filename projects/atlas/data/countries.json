@@ -26,6 +26,10 @@
       {
         "name": "Hakone",
         "notes": "Ryokan with an onsen overlooking Fuji on a clear morning — one of those experiences that becomes a benchmark for everything after."
+      },
+      {
+        "name": "Nara",
+        "notes": "Wild deer bow for rice crackers in the park before you've even reached Tōdai-ji's giant bronze Buddha. An easy day trip from Kyoto that feels like its own separate world."
       }
     ],
     "food": [
@@ -113,6 +117,14 @@
       {
         "name": "Sicily",
         "notes": "Arancini, cannoli, ancient Greek temples overlooking the sea. A separate universe from the north, and proudly so."
+      },
+      {
+        "name": "Florence",
+        "notes": "The Uffizi and the Duomo get the fame, but the real trick is a sunset at Piazzale Michelangelo with a cheap bottle of Chianti. Renaissance density, pocket-sized city."
+      },
+      {
+        "name": "Venice",
+        "notes": "No cars, no roads, just canals and bridges and the strange quiet of a city built on water. Get lost in Cannaregio at dawn, before the day-trip crowds arrive."
       }
     ],
     "food": [
@@ -200,6 +212,10 @@
       {
         "name": "Jiufen",
         "notes": "Hillside tea houses with red lanterns and mountain views over the sea. The inspiration behind a certain Miyazaki film."
+      },
+      {
+        "name": "Sun Moon Lake",
+        "notes": "A cable car ride over tea plantations drops you at a lake so still it earns its name twice over. Rent a bike and circle the whole thing in an afternoon."
       }
     ],
     "food": [
@@ -287,6 +303,10 @@
       {
         "name": "Kilkenny",
         "notes": "Medieval city with a castle, a medieval mile, and some of the best craft beer in the country."
+      },
+      {
+        "name": "Ring of Kerry",
+        "notes": "A single coastal road that keeps outdoing itself: cliffs, sheep, stone forts, then more cliffs. Best done slow, with the windows down and no fixed itinerary."
       }
     ],
     "food": [
@@ -370,6 +390,10 @@
       {
         "name": "Crete",
         "notes": "The largest island: ancient Minoan palaces, gorge hikes through Samaria, and a food culture distinct from the rest of the country."
+      },
+      {
+        "name": "Mykonos",
+        "notes": "Whitewashed alleys built to confuse pirates now just confuse tourists, in the best way. Little Venice at sunset, then a taverna table that doesn't empty out until 2am."
       }
     ],
     "food": [
@@ -457,6 +481,14 @@
       {
         "name": "Bordeaux",
         "notes": "Wine country, grand architecture, and a regenerated waterfront. A city that aged better than most."
+      },
+      {
+        "name": "Nice",
+        "notes": "The Promenade des Anglais at golden hour, pastel buildings stacked up the hill, the Mediterranean doing its best impression of a postcard. A short train from Cannes and Monaco both."
+      },
+      {
+        "name": "Provence",
+        "notes": "Lavender fields in July that turn the whole region purple and impossibly fragrant. Hilltop villages like Gordes and Roussillon look edited, but they're just built that way."
       }
     ],
     "food": [
@@ -544,6 +576,18 @@
       {
         "name": "Hà Giang",
         "notes": "The far north: rice terraces cut into limestone mountains, winding passes, almost no tourists. The most dramatic landscape in the country."
+      },
+      {
+        "name": "Da Nang",
+        "notes": "Marble Mountain's caves, the golden Dragon Bridge that breathes fire on weekends, and a long beach the locals actually use. The easy-going middle child between Hanoi and Saigon."
+      },
+      {
+        "name": "Phu Quoc",
+        "notes": "An island in the Gulf of Thailand where the pace drops to almost nothing. Fishing villages, night markets selling squid straight off the boat, water clear enough to see your feet."
+      },
+      {
+        "name": "Ha Long Bay",
+        "notes": "Thousands of limestone karsts rising straight out of emerald water, best seen from an overnight boat with the engine cut and nothing but the sound of it."
       }
     ],
     "food": [
@@ -631,6 +675,10 @@
       {
         "name": "Sahara (Merzouga)",
         "notes": "Dunes at sunrise, a night in a desert camp under a star sky that urban life has made you forget exists."
+      },
+      {
+        "name": "Essaouira",
+        "notes": "A windswept fishing port with blue boats, Portuguese ramparts, and none of Marrakech's hustle. Grilled sardines on the harbor front and gulls circling for scraps."
       }
     ],
     "food": [
@@ -718,6 +766,10 @@
       {
         "name": "Algarve",
         "notes": "The southern coast: limestone cliffs, hidden sea caves, and towns that haven't fully given in to the resorts."
+      },
+      {
+        "name": "Sintra",
+        "notes": "Fairy-tale palaces in every color stacked on a fog-covered hillside, an hour from Lisbon by train. Pena Palace looks fake until you're standing in front of it."
       }
     ],
     "food": [
@@ -805,6 +857,10 @@
       {
         "name": "El Calafate / El Chaltén",
         "notes": "The Perito Moreno Glacier calves ice into the water. The Fitz Roy range at dawn in El Chaltén looks like a painting no one would believe."
+      },
+      {
+        "name": "Iguazu Falls",
+        "notes": "Bigger than Niagara and louder than words describe. Hike the catwalks until you're standing in the spray, or take a boat straight into it."
       }
     ],
     "food": [
@@ -888,6 +944,10 @@
       {
         "name": "Mumbai",
         "notes": "The city that never sleeps, means it. Dharavi, Marine Drive at night, street food at Mohammed Ali Road, the art deco Oval Maidan."
+      },
+      {
+        "name": "Agra",
+        "notes": "The Taj Mahal at sunrise, before the heat and the crowds, is worth setting an alarm for. Everything else in the city exists a little in its shadow."
       }
     ],
     "food": [
@@ -975,6 +1035,10 @@
       {
         "name": "Rotorua",
         "notes": "Geothermal landscape: bubbling mud pools, geysers, sulfur in the air. The Māori cultural experience here is the most accessible in the country."
+      },
+      {
+        "name": "Milford Sound",
+        "notes": "Waterfalls pour off sheer cliffs into a fjord Rudyard Kipling called the eighth wonder of the world. Go by boat, ideally in the rain, when the falls multiply."
       }
     ],
     "food": [
@@ -1058,6 +1122,10 @@
       {
         "name": "Landmannalaugar",
         "notes": "Multicolored rhyolite mountains in the highland interior. The start of the Laugavegur Trek and one of the most alien landscapes on earth."
+      },
+      {
+        "name": "Westfjords",
+        "notes": "The remote arm of Iceland most tourists skip, which is exactly the point. Empty fjord roads, seal colonies, and a silence you can't find on the Ring Road."
       }
     ],
     "food": [
@@ -1141,6 +1209,10 @@
       {
         "name": "San Cristóbal de las Casas",
         "notes": "Highland Chiapas town surrounded by indigenous Maya communities. Amber, textiles, cold nights, and some of the best coffee in Mexico."
+      },
+      {
+        "name": "Tulum",
+        "notes": "Mayan ruins on a clifftop above turquoise water, then cenotes hidden in the jungle just inland. Rent a bike and spend the day moving between both."
       }
     ],
     "food": [
@@ -1228,6 +1300,10 @@
       {
         "name": "Krabi / Railay",
         "notes": "Limestone sea cliffs, long-tail boats, beaches only accessible by water. The standard for what a Thai beach is supposed to be."
+      },
+      {
+        "name": "Ayutthaya",
+        "notes": "The ruined former capital, an easy day trip from Bangkok, where Buddha heads grow out of tree roots and crumbling temple spires catch the late sun."
       }
     ],
     "food": [
@@ -1315,6 +1391,10 @@
       {
         "name": "Granada",
         "notes": "The Alhambra at dawn, the Albaicín neighborhood across the valley, and tapas that come free with every drink."
+      },
+      {
+        "name": "Madrid",
+        "notes": "The Prado on one afternoon, tapas-hopping through La Latina that night, and a siesta somewhere in between. Spain's capital moves later and louder than anywhere else in the country."
       }
     ],
     "food": [
@@ -1402,6 +1482,10 @@
       {
         "name": "Lofoten Islands",
         "notes": "Fishing villages on dramatic rocky peaks surrounded by sea. The most photogenic place in Norway and possibly in Europe."
+      },
+      {
+        "name": "Oslo",
+        "notes": "A capital surrounded by fjord and forest, where you can be swimming in the harbor at lunch and hiking above the treeline by evening."
       }
     ],
     "food": [
@@ -1481,6 +1565,10 @@
       {
         "name": "Gyeongju",
         "notes": "Ancient Silla capital with royal tombs rising from the city floor like green hills. History you can walk through."
+      },
+      {
+        "name": "Jeju Island",
+        "notes": "Volcanic coastline, tangerine orchards, and waterfalls that locals treat the way others treat a weekend beach trip. Hallasan looms over all of it."
       }
     ],
     "food": [
@@ -1554,6 +1642,10 @@
       {
         "name": "Göreme",
         "notes": "Base for Cappadocia — stay in a cave hotel carved from the tufa rock. Worth every cliché."
+      },
+      {
+        "name": "Pamukkale",
+        "notes": "Terraces of white mineral pools cascading down a hillside, warm enough to wade through. Ancient Hierapolis sits at the top, ruins scattered among the travertine."
       }
     ],
     "food": [
@@ -1627,6 +1719,10 @@
       {
         "name": "Aswan",
         "notes": "Slower, quieter, and deeply Nubian. The Philae temple island at dusk is otherworldly."
+      },
+      {
+        "name": "Alexandria",
+        "notes": "The Mediterranean coast's answer to Cairo's chaos: a corniche for evening walks, faded colonial architecture, and the ghost of the ancient library everywhere you look."
       }
     ],
     "food": [
@@ -1700,6 +1796,10 @@
       {
         "name": "Manaus",
         "notes": "Gateway to the Amazon. A 19th-century opera house in the middle of the jungle that still doesn't make sense."
+      },
+      {
+        "name": "Iguaçu Falls",
+        "notes": "The Brazilian side gives you the panoramic view the Argentine side can't: hundreds of waterfalls spread across nearly two miles of jungle-lined cliff."
       }
     ],
     "food": [
@@ -1773,6 +1873,10 @@
       {
         "name": "Uluru",
         "notes": "The sandstone monolith at sunrise and sunset, as the color shifts from amber to deep red to violet. Cannot be photographed adequately."
+      },
+      {
+        "name": "Cairns / Great Barrier Reef",
+        "notes": "Snorkel or dive straight off a boat into the world's largest reef system before it changes any further. Cairns is the easy jumping-off point."
       }
     ],
     "food": [
@@ -1846,6 +1950,10 @@
       {
         "name": "Hvar",
         "notes": "Lavender fields, Venetian architecture, and the kind of swimming spots that make you understand why people move here."
+      },
+      {
+        "name": "Plitvice Lakes",
+        "notes": "Sixteen terraced lakes connected by waterfalls and wooden footbridges, the water an impossible shade of turquoise-green. Go early, or go in shoulder season, it gets packed."
       }
     ],
     "food": [
@@ -1919,6 +2027,10 @@
       {
         "name": "Namche Bazaar",
         "notes": "The Sherpa trading hub on the way to Everest — the last real town before the altitude becomes serious."
+      },
+      {
+        "name": "Chitwan National Park",
+        "notes": "Swap the mountains for the jungle: rhinos, elephants, and if you're lucky, a Bengal tiger, all spotted from a dugout canoe or jeep safari."
       }
     ],
     "food": [
@@ -1992,6 +2104,10 @@
       {
         "name": "Viñales",
         "notes": "Tobacco farms in a valley of limestone mogotes. The cigars rolled by hand here are the ones worth bringing home."
+      },
+      {
+        "name": "Varadero",
+        "notes": "The beach Cuba is famous for: white sand, turquoise water, and resorts. Drive twenty minutes and you're back in the real, unpolished country."
       }
     ],
     "food": [
@@ -2065,6 +2181,10 @@
       {
         "name": "Lucerne",
         "notes": "Chapel Bridge, the lake, the medieval walls — the most classically Swiss of the cities, in the best way."
+      },
+      {
+        "name": "Interlaken",
+        "notes": "Wedged between two lakes with the Jungfrau massif looming behind it, the unofficial adventure capital of Switzerland. Paraglide in, hike out."
       }
     ],
     "food": [
@@ -2138,6 +2258,10 @@
       {
         "name": "Glasgow",
         "notes": "Art Nouveau architecture, the best live music scene in the UK outside London, and food that has quietly improved enormously."
+      },
+      {
+        "name": "Bath",
+        "notes": "Roman baths steaming beneath Georgian crescents, all built from the same honey-colored stone. Small enough to see in a day trip from London."
       }
     ],
     "food": [
@@ -2215,6 +2339,10 @@
       {
         "name": "Banff",
         "notes": "Turquoise glacial lakes, elk on the main street, and mountain views that feel excessive in the best way."
+      },
+      {
+        "name": "Toronto",
+        "notes": "Canada's biggest city, endlessly multicultural: Kensington Market for vintage and food stalls, the islands for a ferry-ride escape, the CN Tower for the view everyone takes anyway."
       }
     ],
     "food": [
@@ -2292,6 +2420,10 @@
       {
         "name": "Guilin",
         "notes": "Karst limestone peaks rising from rice fields and the Li River — the landscape that fills Chinese classical paintings. Genuinely looks like that."
+      },
+      {
+        "name": "Xi'an",
+        "notes": "Home to the Terracotta Army: thousands of life-size soldiers buried for over two thousand years and rediscovered by a farmer digging a well."
       }
     ],
     "food": [
@@ -2369,6 +2501,10 @@
       {
         "name": "Cologne",
         "notes": "The cathedral that took 632 years to finish, the Rhine promenade, and the base for exploring the Rhineland wine country."
+      },
+      {
+        "name": "Füssen / Neuschwanstein",
+        "notes": "The castle that inspired Disney's, perched on a cliff above an alpine lake. Hike up to Marienbrücke for the view postcards can't quite capture."
       }
     ],
     "food": [
@@ -2442,6 +2578,10 @@
       {
         "name": "Gardens by the Bay",
         "notes": "The Supertrees are cheesy until you're standing underneath them at night with the light show playing and you realize they absolutely work."
+      },
+      {
+        "name": "Sentosa Island",
+        "notes": "A resort island connected by cable car, with a beach, a casino, and a nightly light show, all within sight of the container ships in the strait."
       }
     ],
     "food": [
@@ -2519,6 +2659,10 @@
       {
         "name": "Keukenhof",
         "notes": "Only open March–May, but if you're there for tulip season, the garden near Lisse is a genuine spectacle. 7 million bulbs in bloom."
+      },
+      {
+        "name": "Giethoorn",
+        "notes": "A village with no roads, only canals and footbridges connecting thatched-roof farmhouses. Rent a quiet electric boat and drift through it."
       }
     ],
     "food": [
@@ -2596,6 +2740,14 @@
       {
         "name": "Savannah",
         "notes": "Spanish moss, historic squares, and slow Southern time."
+      },
+      {
+        "name": "San Francisco",
+        "notes": "Fog rolling over the Golden Gate Bridge, steep hills that make every walk a workout, and a burrito in the Mission worth the calories."
+      },
+      {
+        "name": "Grand Canyon",
+        "notes": "A mile deep and impossible to photograph in a way that captures it. Watch the light change the color of the rock at sunrise, sunset, or both."
       }
     ],
     "food": [
@@ -2669,6 +2821,10 @@
       {
         "name": "Arequipa",
         "notes": "The White City — built from volcanic sillar stone, framed by three volcanoes. Quieter than Cusco and a base for trekking Colca Canyon."
+      },
+      {
+        "name": "Machu Picchu",
+        "notes": "The Inca citadel in the clouds, reachable by train or a multi-day trek. Arrive at dawn, before the crowds, when the ruins are still wrapped in mist."
       }
     ],
     "food": [
@@ -2744,6 +2900,10 @@
       {
         "name": "Salento",
         "notes": "The heart of the coffee region — steep hills, wax palms in the Cocora Valley, and fincas where you can watch coffee go from cherry to cup."
+      },
+      {
+        "name": "Tayrona National Park",
+        "notes": "Jungle meets Caribbean coastline: hike an hour or two through rainforest and come out on a beach with no roads in or out."
       }
     ],
     "food": [
@@ -2819,6 +2979,10 @@
       {
         "name": "San Pedro de Atacama",
         "notes": "Desert oasis and stargazing capital. The Valle de la Luna at sunset, geysers at 4am, and salt flats that stretch to Bolivia."
+      },
+      {
+        "name": "Easter Island",
+        "notes": "Nearly 900 moai statues scattered across a volcanic island in the middle of the Pacific, more remote and more mysterious than any photo prepares you for."
       }
     ],
     "food": [
@@ -2894,6 +3058,10 @@
       {
         "name": "Knysna",
         "notes": "The jewel of the Garden Route — a lagoon flanked by forest, oyster farms, and hiking trails in the Tsitsikamma section of the national park."
+      },
+      {
+        "name": "Kruger National Park",
+        "notes": "The Big Five, genuinely all five, spotted from a jeep or a self-drive rental. Stay inside the park at dawn and dusk, when the animals move most."
       }
     ],
     "food": [
@@ -2969,6 +3137,10 @@
       {
         "name": "Lamu",
         "notes": "A UNESCO-listed Swahili island town with no cars, donkeys for transport, and some of the most atmospheric seafood restaurants in Africa."
+      },
+      {
+        "name": "Amboseli National Park",
+        "notes": "Elephant herds walking in front of Kilimanjaro's snowcapped peak, a combination that looks staged but happens daily. Quieter and smaller than the Mara."
       }
     ],
     "food": [
@@ -3044,6 +3216,10 @@
       {
         "name": "Wadi Rum",
         "notes": "Vast red desert valleys, Bedouin camps under a sky full of stars, and Jeep tours through rock formations named after Lawrence of Arabia. Sleep in a camp — worth it."
+      },
+      {
+        "name": "Dead Sea",
+        "notes": "Float without trying, the salt doing all the work, then cake yourself in mineral mud on the shore. The lowest point on Earth, and it feels like it."
       }
     ],
     "food": [
@@ -3118,6 +3294,10 @@
       {
         "name": "Galle",
         "notes": "A Dutch colonial fort town on the south coast — whitewashed ramparts, a lighthouse, boutique hotels in colonial buildings, and excellent cafes."
+      },
+      {
+        "name": "Ella",
+        "notes": "Tea plantations climbing every hillside, a train ride through them that's more scenic than the destination, and the Nine Arch Bridge everyone photographs from the same spot."
       }
     ],
     "food": [
@@ -3193,6 +3373,10 @@
       {
         "name": "Labuan Bajo",
         "notes": "The jumping-off point for Komodo National Park. Pink beach, manta ray snorkeling, and komodo dragons lumbering through scrub under a blinding sun."
+      },
+      {
+        "name": "Uluwatu",
+        "notes": "Clifftop temple, sunset Kecak fire dance, and surf breaks below that draw people from across the world. The most dramatic edge of Bali."
       }
     ],
     "food": [
@@ -3268,6 +3452,10 @@
       {
         "name": "Vigan",
         "notes": "A UNESCO-listed Spanish colonial city in Ilocos — cobblestone streets, horse-drawn calesas, and preserved 18th-century mestizo architecture intact from the colonial era."
+      },
+      {
+        "name": "Boracay",
+        "notes": "White Beach lives up to its name, powder-fine and impossibly long, though it's busier and glossier than the rest of the Philippines' island scene."
       }
     ],
     "food": [
@@ -3343,6 +3531,10 @@
       {
         "name": "Kampot",
         "notes": "A sleepy river town in the south, famous for Kampot pepper — considered the world's best. Rent a bicycle, visit a pepper farm, and eat crab on the coast in nearby Kep."
+      },
+      {
+        "name": "Battambang",
+        "notes": "Colonial shophouses, a bamboo train that's more thrill ride than transport, and a countryside pace that Siem Reap's temple crowds have already left behind."
       }
     ],
     "food": [
@@ -3418,6 +3610,10 @@
       {
         "name": "Karlovy Vary",
         "notes": "The grandest of the Czech spa towns — colonnaded promenades, hot spring pavilions, and the Becherovka herbal liqueur distillery. Feels like a sanitarium in the best possible sense."
+      },
+      {
+        "name": "Kutná Hora",
+        "notes": "A UNESCO old town, and just outside it, a chapel decorated entirely in human bones. Stranger and less crowded than most Prague day trips."
       }
     ],
     "food": [
@@ -3493,6 +3689,10 @@
       {
         "name": "Hallstatt",
         "notes": "A postcard village clinging to a clifftop above a glacial lake. It is as beautiful in person as in photos, which is saying something. Go on a weekday before it fills."
+      },
+      {
+        "name": "Innsbruck",
+        "notes": "The Alps practically inside the city limits: a cable car from downtown puts you above the clouds in twenty minutes."
       }
     ],
     "food": [
@@ -3568,6 +3768,10 @@
       {
         "name": "Lake Balaton",
         "notes": "Central Europe's largest lake and Hungary's summer playground — thermal waters, lavender fields in the Tihany peninsula, and excellent local wines on the northern shore."
+      },
+      {
+        "name": "Tokaj",
+        "notes": "Hungary's wine country, famous for sweet Tokaji Aszú that kings once demanded by the barrel. Cellar tours through hillside towns most tourists never reach."
       }
     ],
     "food": [
@@ -3643,6 +3847,10 @@
       {
         "name": "Kiruna / Abisko",
         "notes": "Above the Arctic Circle — the ICEHOTEL, northern lights tours in February, and in June, 24 hours of daylight over mountains that look like another planet."
+      },
+      {
+        "name": "Visby",
+        "notes": "A medieval walled town on the island of Gotland, roses climbing over ruins, summer light that barely fades before it's morning again."
       }
     ],
     "food": [
@@ -3718,6 +3926,10 @@
       {
         "name": "Al Ain",
         "notes": "The Garden City — an oasis settlement with date palms, falconry markets, a UNESCO-listed fort complex, and a pace of life that feels centuries away from Dubai."
+      },
+      {
+        "name": "Ras Al Khaimah",
+        "notes": "The UAE's quieter, wilder emirate: the Hajar Mountains, the world's longest zipline, and beaches with a fraction of Dubai's crowd."
       }
     ],
     "food": [
@@ -3793,6 +4005,10 @@
       {
         "name": "Manuel Antonio",
         "notes": "A small national park on the Pacific where monkeys steal your lunch on the beach. White sand, turquoise water, dense wildlife in the surrounding jungle."
+      },
+      {
+        "name": "Osa Peninsula",
+        "notes": "National Geographic once called it the most biologically intense place on Earth. Corcovado's trails are thick with monkeys, tapirs, and scarlet macaws."
       }
     ],
     "food": [
@@ -3868,6 +4084,10 @@
       {
         "name": "Gdańsk",
         "notes": "A Hanseatic port city on the Baltic — amber shops, Long Street's coloured facades, and the Solidarity Museum in the shipyard where Polish communism began to unravel."
+      },
+      {
+        "name": "Zakopane",
+        "notes": "The gateway to the Tatra Mountains, wooden highlander architecture, and oscypek cheese sold smoking hot off the grill in the main square."
       }
     ],
     "food": [
@@ -3943,6 +4163,10 @@
       {
         "name": "Brussels",
         "notes": "Skip the EU quarter. The Grand Place at night, the comic strip murals scattered through downtown, and Sainte-Catherine's seafood restaurants are the real draw."
+      },
+      {
+        "name": "Antwerp",
+        "notes": "A fashion and diamond capital with a Gothic cathedral at its center and a port that's shaped the city's wealth for centuries."
       }
     ],
     "food": [
@@ -4020,6 +4244,10 @@
       {
         "name": "Odense",
         "notes": "Hans Christian Andersen's hometown, with a well-preserved old quarter that's easy to see in half a day between Copenhagen and Aarhus."
+      },
+      {
+        "name": "Skagen",
+        "notes": "The northernmost tip of Denmark, where the North Sea and Baltic literally collide in a visible line of clashing waves. Light so famous it made the town's name among painters."
       }
     ],
     "food": [
