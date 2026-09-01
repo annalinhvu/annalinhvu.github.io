@@ -657,6 +657,18 @@ body {
   border: 1px solid var(--teal); border-radius: 1px; padding: 2px 5px;
   flex-shrink: 0;
 }
+.cal-deck-toggle {
+  background: none; border: none; color: var(--text-4); cursor: pointer;
+  font-size: 0.6rem; width: 14px; flex-shrink: 0; padding: 0;
+  display: flex; align-items: center; justify-content: center;
+}
+.cal-deck-toggle:hover { color: var(--text-1); }
+.cal-deck-toggle-spacer { width: 14px; flex-shrink: 0; }
+.cal-deck-item.cal-deck-city {
+  margin-left: 22px; padding: 6px 12px; background: transparent; border-style: dashed;
+}
+.cal-deck-item.cal-deck-city .cal-deck-dot { width: 5px; height: 5px; opacity: 0.75; }
+.cal-deck-item.cal-deck-city .cal-deck-name { font-size: 0.78rem; color: var(--text-2); }
 
 .cal-grid {
   flex: 1; overflow: auto; padding: 14px;
@@ -691,6 +703,7 @@ body {
   cursor: pointer;
 }
 .cal-chip-name { flex: 1; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.cal-chip-sub { font-size: 0.6rem; color: var(--text-4); margin-left: 5px; }
 .cal-chip-remove {
   background: none; border: none; color: var(--text-4); cursor: pointer;
   font-size: 0.85rem; line-height: 1; padding: 0 2px; flex-shrink: 0;
@@ -729,6 +742,7 @@ body {
 .budget-line-dot { width: 7px; height: 7px; border-radius: 50%; background: var(--dot-color, var(--text-4)); }
 .budget-line-name { display: flex; align-items: baseline; gap: 8px; overflow: hidden; }
 .budget-line-name b { font-weight: 600; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.budget-line-sub { font-size: 0.62rem; color: var(--text-4); flex-shrink: 0; }
 .budget-line-month { font-size: 0.56rem; letter-spacing: 1px; color: var(--text-4); flex-shrink: 0; }
 .budget-line-days { display: flex; align-items: center; gap: 5px; justify-content: flex-end; }
 .budget-days-input {
@@ -1230,6 +1244,8 @@ let calDraggedId  = null;
 let calSelectedId = null;
 let calSearch     = '';
 let calDragOriginMonth = null;
+let calExpandedIds = new Set();
+let calTotalItemCount = 0;
 let tripDays = JSON.parse(localStorage.getItem(TRIP_DAYS_KEY) || '{}');
 let tripBudgetOverrides = JSON.parse(localStorage.getItem(TRIP_BUDGET_KEY) || '{}');
 
@@ -2008,6 +2024,35 @@ function toggleSavedFilter() {
 }
 
 // ── CALENDAR VIEW ─────────────────────────────────
+// Cities are scheduled as their own deck items, distinguished from country
+// ids (numbers) by a string id of the form "city:<countryId>:<cityIndex>".
+function calCityId(countryId, idx) { return `city:${countryId}:${idx}`; }
+
+function calFindItem(id) {
+  if (typeof id === 'number') return allCountries.find(x => x.id === id) || null;
+  const m = /^city:(-?\d+):(\d+)$/.exec(id || '');
+  if (!m) return null;
+  const c = allCountries.find(x => x.id === +m[1]);
+  if (!c) return null;
+  const city = (c.cities || [])[+m[2]];
+  if (!city) return null;
+  return {
+    id, name: city.name, region: c.region, isCity: true,
+    parentId: c.id, parentName: c.name,
+    ideal_days: Math.min(c.ideal_days || 7, 4) || 4,
+    budget_breakdown: c.budget_breakdown,
+    bestMonthsName: c.name,
+  };
+}
+
+// Deck ids arrive from dataset attributes as strings — reconstruct the
+// number/string split calFindItem expects.
+function parseId(s) { return s && s.startsWith('city:') ? s : +s; }
+
+// Safe to embed directly in an onclick="..." (double-quoted) attribute —
+// city ids never contain a quote character.
+function idLit(id) { return typeof id === 'string' ? `'${id}'` : String(id); }
+
 function switchView(mode) {
   viewMode = mode;
   const isMap = mode === 'map';
@@ -2080,7 +2125,8 @@ function calChipNameClick(id, month) {
     assignToMonth(calSelectedId, month);
     calSelectedId = null;
   } else {
-    openPanel(id);
+    const item = calFindItem(id);
+    openPanel(item && item.isCity ? item.parentId : id);
   }
 }
 
@@ -2098,29 +2144,63 @@ function renderCalendar() {
   renderCalGrid();
 }
 
+function calDeckBadge(id) {
+  const months = findScheduledMonths(id);
+  const badgeText = months.length === 1 ? MONTH_ABBR[months[0]-1]
+    : months.length > 1 ? `${MONTH_ABBR[months[0]-1]} +${months.length-1}` : '';
+  return badgeText ? `<span class="cal-deck-badge">${badgeText}</span>` : '';
+}
+
 function renderCalDeck() {
   const list = document.getElementById('calDeckList');
   const q = calSearch.toLowerCase();
-  const items = allCountries
-    .filter(c => !q || c.name.toLowerCase().includes(q))
-    .slice()
-    .sort((a, b) => a.name.localeCompare(b.name));
 
-  list.innerHTML = items.map(c => {
-    const months = findScheduledMonths(c.id);
-    const badgeText = months.length === 1 ? MONTH_ABBR[months[0]-1]
-      : months.length > 1 ? `${MONTH_ABBR[months[0]-1]} +${months.length-1}` : '';
-    const badge = badgeText ? `<span class="cal-deck-badge">${badgeText}</span>` : '';
-    return `<div class="cal-deck-item${c.id===calSelectedId?' selected':''}" draggable="true"
+  const items = allCountries.map(c => {
+    const cities = (c.cities || []).map((city, idx) => ({ city, idx }));
+    const countryMatches = !q || c.name.toLowerCase().includes(q);
+    const matchingCities = q ? cities.filter(({ city }) => city.name.toLowerCase().includes(q)) : cities;
+    if (q && !countryMatches && !matchingCities.length) return null;
+    return {
+      c, cities: countryMatches ? cities : matchingCities,
+      autoExpand: q && !countryMatches && matchingCities.length > 0,
+    };
+  }).filter(Boolean).sort((a, b) => a.c.name.localeCompare(b.c.name));
+
+  list.innerHTML = items.map(({ c, cities, autoExpand }) => {
+    const expanded = cities.length > 0 && (autoExpand || calExpandedIds.has(c.id));
+    const toggle = cities.length
+      ? `<button class="cal-deck-toggle" type="button" data-toggle="${c.id}" title="${expanded ? 'Hide' : 'Show'} cities">${expanded ? '▾' : '▸'}</button>`
+      : `<span class="cal-deck-toggle-spacer"></span>`;
+    const countryRow = `<div class="cal-deck-item${c.id===calSelectedId?' selected':''}" draggable="true"
         data-id="${c.id}" style="--dot-color:var(--${c.region})">
+      ${toggle}
       <span class="cal-deck-dot"></span>
       <span class="cal-deck-name">${esc(c.name)}</span>
-      ${badge}
+      ${calDeckBadge(c.id)}
     </div>`;
+    const cityRows = expanded ? cities.map(({ city, idx }) => {
+      const cid = calCityId(c.id, idx);
+      return `<div class="cal-deck-item cal-deck-city${cid===calSelectedId?' selected':''}" draggable="true"
+          data-id="${cid}" style="--dot-color:var(--${c.region})">
+        <span class="cal-deck-dot"></span>
+        <span class="cal-deck-name">${esc(city.name)}</span>
+        ${calDeckBadge(cid)}
+      </div>`;
+    }).join('') : '';
+    return countryRow + cityRows;
   }).join('');
 
+  list.querySelectorAll('.cal-deck-toggle').forEach(btn => {
+    btn.addEventListener('click', e => {
+      e.stopPropagation();
+      const cid = +btn.dataset.toggle;
+      if (calExpandedIds.has(cid)) calExpandedIds.delete(cid); else calExpandedIds.add(cid);
+      renderCalDeck();
+    });
+  });
+
   list.querySelectorAll('.cal-deck-item').forEach(el => {
-    const id = +el.dataset.id;
+    const id = parseId(el.dataset.id);
     el.addEventListener('dragstart', e => {
       calDraggedId = id;
       calDragOriginMonth = null;
@@ -2129,7 +2209,8 @@ function renderCalDeck() {
       e.dataTransfer.effectAllowed = 'move';
     });
     el.addEventListener('dragend', () => { el.classList.remove('dragging'); calDraggedId = null; calDragOriginMonth = null; });
-    el.addEventListener('click', () => {
+    el.addEventListener('click', e => {
+      if (e.target.closest('.cal-deck-toggle')) return;
       calSelectedId = calSelectedId === id ? null : id;
       renderCalDeck();
     });
@@ -2146,11 +2227,12 @@ function renderCalGrid() {
     const ids = plan[month] || [];
     scheduledCount += ids.length;
     const chips = ids.map(id => {
-      const c = allCountries.find(x => x.id === id);
+      const c = calFindItem(id);
       if (!c) return '';
-      return `<div class="cal-chip" draggable="true" style="--dot-color:var(--${c.region})" data-id="${id}" data-month="${month}">
-        <span class="cal-chip-name" onclick="event.stopPropagation();calChipNameClick(${id},${month})">${esc(c.name)}</span>
-        <button class="cal-chip-remove" onclick="event.stopPropagation();removeFromMonth(${id},${month})" title="Remove">×</button>
+      const sub = c.isCity ? `<span class="cal-chip-sub">${esc(c.parentName)}</span>` : '';
+      return `<div class="cal-chip${c.isCity?' cal-chip-city':''}" draggable="true" style="--dot-color:var(--${c.region})" data-id="${id}" data-month="${month}">
+        <span class="cal-chip-name" onclick="event.stopPropagation();calChipNameClick(${idLit(id)},${month})">${esc(c.name)}${sub}</span>
+        <button class="cal-chip-remove" onclick="event.stopPropagation();removeFromMonth(${idLit(id)},${month})" title="Remove">×</button>
       </div>`;
     }).join('');
     return `<div class="cal-month" data-month="${month}">
@@ -2162,10 +2244,10 @@ function renderCalGrid() {
     </div>`;
   }).join('');
 
-  document.getElementById('calStats').textContent = `${scheduledCount} / ${allCountries.length} scheduled`;
+  document.getElementById('calStats').textContent = `${scheduledCount} / ${calTotalItemCount} scheduled`;
 
   grid.querySelectorAll('.cal-chip').forEach(chipEl => {
-    const id    = +chipEl.dataset.id;
+    const id    = parseId(chipEl.dataset.id);
     const month = +chipEl.dataset.month;
     chipEl.addEventListener('dragstart', e => {
       calDraggedId = id;
@@ -2188,8 +2270,8 @@ function renderCalGrid() {
       e.dataTransfer.dropEffect = 'move';
       cell.classList.add('drag-over');
       if (calDraggedId !== null) {
-        const c = allCountries.find(x => x.id === calDraggedId);
-        const ideal = c && (BEST_MONTHS[c.name]||[]).includes(month);
+        const c = calFindItem(calDraggedId);
+        const ideal = c && (BEST_MONTHS[c.bestMonthsName || c.name]||[]).includes(month);
         cell.classList.toggle('ideal', !!ideal);
       }
     });
@@ -2197,8 +2279,8 @@ function renderCalGrid() {
     cell.addEventListener('drop', e => {
       e.preventDefault();
       cell.classList.remove('drag-over', 'ideal');
-      const id = +(e.dataTransfer.getData('text/plain') || calDraggedId || 0);
-      if (!id) return;
+      const id = calDraggedId;
+      if (id === null || id === undefined) return;
       if (calDragOriginMonth !== null) {
         moveToMonth(id, calDragOriginMonth, month);
       } else {
@@ -2234,8 +2316,8 @@ document.getElementById('calDeckList').addEventListener('drop', e => {
   document.getElementById('calDeckList').classList.remove('drag-over');
   if (calDragOriginMonth === null) return;
   e.preventDefault();
-  const id = +(e.dataTransfer.getData('text/plain') || calDraggedId || 0);
-  if (id) removeFromMonth(id, calDragOriginMonth);
+  const id = calDraggedId;
+  if (id !== null && id !== undefined) removeFromMonth(id, calDragOriginMonth);
   calDragOriginMonth = null;
 });
 
@@ -2249,7 +2331,7 @@ function getTripDays(c, year, month) {
 }
 
 function setTripDays(id, month, value) {
-  const c = allCountries.find(x => x.id === id);
+  const c = calFindItem(id);
   if (!c) return;
   const days = Math.max(1, Math.min(90, Math.round(+value) || c.ideal_days || 7));
   tripDays[tripDaysKey(calYear, month, id)] = days;
@@ -2312,7 +2394,7 @@ function renderBudget() {
   const lines = [];
   for (let m = 1; m <= 12; m++) {
     (plan[m] || []).forEach(id => {
-      const c = allCountries.find(x => x.id === id);
+      const c = calFindItem(id);
       if (c) lines.push({ c, month: m });
     });
   }
@@ -2333,7 +2415,7 @@ function renderBudget() {
 
   const catInput = (c, month, key, value) => `<span class="budget-line-cat">
     <span class="budget-cat-prefix">$</span><input class="budget-cat-input" type="number" min="0" step="10" value="${Math.round(value)}"
-      onchange="setTripCategory(${c.id},${month},'${key}',this.value)">
+      onchange="setTripCategory(${idLit(c.id)},${month},'${key}',this.value)">
   </span>`;
 
   const rows = lines.map(({ c, month }) => {
@@ -2341,19 +2423,20 @@ function renderBudget() {
     const cost = getLineCost(c, calYear, month, days);
     grandTotal += cost.total;
     BUDGET_CAT_DEFS.forEach(([key]) => catTotals[key] += cost[key]);
+    const sub = c.isCity ? `<span class="budget-line-sub">${esc(c.parentName)}</span>` : '';
     return `<div class="budget-line-row">
       <span class="budget-line-dot" style="--dot-color:var(--${c.region})"></span>
-      <span class="budget-line-name"><b>${esc(c.name)}</b><span class="budget-line-month">${MONTH_ABBR[month-1]}</span></span>
+      <span class="budget-line-name"><b>${esc(c.name)}</b>${sub}<span class="budget-line-month">${MONTH_ABBR[month-1]}</span></span>
       <span class="budget-line-days">
         <input class="budget-days-input" type="number" min="1" max="90" value="${days}"
-          onchange="setTripDays(${c.id},${month},this.value)"><span>days</span>
+          onchange="setTripDays(${idLit(c.id)},${month},this.value)"><span>days</span>
       </span>
       ${catInput(c, month, 'lodging', cost.lodging)}
       ${catInput(c, month, 'food', cost.food)}
       ${catInput(c, month, 'fun', cost.fun)}
       ${catInput(c, month, 'transport', cost.transport)}
       <span class="budget-line-total">${fmt$(cost.total)}</span>
-      <button class="budget-line-remove" onclick="removeFromMonth(${c.id},${month});renderBudget()" title="Remove">×</button>
+      <button class="budget-line-remove" onclick="removeFromMonth(${idLit(c.id)},${month});renderBudget()" title="Remove">×</button>
     </div>`;
   }).join('');
 
@@ -2409,6 +2492,7 @@ fetch('data/countries.json')
   .then(r => r.json())
   .then(async data => {
     allCountries = data;
+    calTotalItemCount = allCountries.length + allCountries.reduce((s, c) => s + (c.cities||[]).length, 0);
     updateBadge();
     updateStats();
     // Populate vibe dropdown — top 10 vibes by frequency
