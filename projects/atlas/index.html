@@ -726,10 +726,10 @@ body {
 .budget-table-wrap { flex: 1; overflow: auto; }
 .budget-head-row, .budget-line-row {
   display: grid;
-  grid-template-columns: 20px 1.3fr 80px 96px 96px 96px 96px 100px 26px;
+  grid-template-columns: 20px 1.2fr 80px 96px 96px 96px 96px 96px 100px 26px;
   gap: 12px; align-items: center;
   padding: 10px 24px;
-  min-width: 870px;
+  min-width: 980px;
 }
 .budget-head-row {
   font-size: 0.54rem; letter-spacing: 1.5px; text-transform: uppercase; color: var(--text-4);
@@ -796,6 +796,8 @@ body {
 .budget-total { display: flex; justify-content: space-between; align-items: baseline; padding-top: 10px; border-top: 1px solid var(--border); margin-top: 2px; }
 .budget-total-label { font-size: 0.58rem; letter-spacing: 1.5px; text-transform: uppercase; color: var(--text-4); }
 .budget-total-value { font-family: 'Bebas Neue', sans-serif; font-size: 1.3rem; letter-spacing: 1px; color: var(--text-1); }
+.budget-flight-note { display: flex; justify-content: space-between; align-items: baseline; font-size: 0.68rem; color: var(--text-3); margin-top: 10px; }
+.budget-flight-note b { color: var(--text-1); font-weight: 600; }
 
 /* ══ PANEL U.S. STATES MAP ══ */
 .us-states-header { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-bottom: 12px; }
@@ -1106,7 +1108,7 @@ const CAL_KEY  = 'atlas-calendar-plan';
 const TRIP_DAYS_KEY = 'atlas-trip-days';
 const TRIP_BUDGET_KEY = 'atlas-trip-budget';
 const BUDGET_CAT_DEFS = [
-  ['lodging', 'Lodging'], ['food', 'Food'], ['fun', 'Fun'], ['transport', 'Transport'],
+  ['flight', 'Flight'], ['lodging', 'Lodging'], ['food', 'Food'], ['fun', 'Fun'], ['transport', 'Transport'],
 ];
 const MONTH_NAMES  = ['January','February','March','April','May','June','July','August','September','October','November','December'];
 const MONTH_ABBR   = ['JAN','FEB','MAR','APR','MAY','JUN','JUL','AUG','SEP','OCT','NOV','DEC'];
@@ -1617,8 +1619,13 @@ function openPanel(id) {
         <div class="budget-value">$${v.low}–${v.high}${unit}</div>
       </div>`;
     }).join('');
+    const flight = bb.flight;
     budgetSection = `
       <div class="budget-bars">${rows}</div>
+      ${flight ? `<div class="budget-flight-note">
+        <span>✈ Round-trip flight from NYC</span>
+        <b>$${flight.low}–${flight.high}</b>
+      </div>` : ''}
       <div class="budget-total">
         <span class="budget-total-label">Est. daily average</span>
         <span class="budget-total-value">~$${Math.round(dailyTotal)}/day</span>
@@ -2372,16 +2379,18 @@ function setTripCategory(id, month, category, value) {
 // increments so totals read like round trip-planning numbers without
 // zeroing out low-cost categories (transport in budget countries, say)
 // on short city/state trips the way $100 rounding did.
+// Flight is a flat one-time round-trip cost, not scaled by trip length.
 function budgetLineCost(c, days) {
   const bb = c.budget_breakdown || {};
   const nights = Math.max(days - 1, 1);
   const rate = key => bb[key] ? bb[key].high : 0;
   const round10 = n => Math.round(n / 10) * 10;
+  const flight    = round10(rate('flight'));
   const lodging   = round10(rate('lodging')   * nights);
   const food      = round10(rate('food')      * days);
   const fun       = round10(rate('fun')       * days);
   const transport = round10(rate('transport') * days);
-  return { lodging, food, fun, transport, total: lodging + food + fun + transport };
+  return { flight, lodging, food, fun, transport, total: flight + lodging + food + fun + transport };
 }
 
 function fmt$(n) { return '$' + Math.round(n).toLocaleString('en-US'); }
@@ -2412,7 +2421,7 @@ function renderBudget() {
   lines.sort((a, b) => a.month - b.month || a.c.name.localeCompare(b.c.name));
 
   let grandTotal = 0;
-  const catTotals = { lodging: 0, food: 0, fun: 0, transport: 0 };
+  const catTotals = { flight: 0, lodging: 0, food: 0, fun: 0, transport: 0 };
 
   const catInput = (c, month, key, value) => `<span class="budget-line-cat">
     <span class="budget-cat-prefix">$</span><input class="budget-cat-input" type="number" min="0" step="10" value="${Math.round(value)}"
@@ -2432,6 +2441,7 @@ function renderBudget() {
         <input class="budget-days-input" type="number" min="1" max="90" value="${days}"
           onchange="setTripDays(${idLit(c.id)},${month},this.value)"><span>days</span>
       </span>
+      ${catInput(c, month, 'flight', cost.flight)}
       ${catInput(c, month, 'lodging', cost.lodging)}
       ${catInput(c, month, 'food', cost.food)}
       ${catInput(c, month, 'fun', cost.fun)}
@@ -2444,13 +2454,13 @@ function renderBudget() {
   content.innerHTML = `
     <div class="budget-table-wrap">
       <div class="budget-head-row">
-        <span></span><span>Trip</span><span>Days</span><span>Lodging</span><span>Food</span><span>Fun</span><span>Transport</span><span>Total</span><span></span>
+        <span></span><span>Trip</span><span>Days</span><span>Flight</span><span>Lodging</span><span>Food</span><span>Fun</span><span>Transport</span><span>Total</span><span></span>
       </div>
       ${rows}
     </div>
     <div class="budget-footer">
       <div class="budget-footer-note">
-        <b>${fmt$(catTotals.lodging)}</b> lodging &middot; <b>${fmt$(catTotals.food)}</b> food &middot;
+        <b>${fmt$(catTotals.flight)}</b> flight &middot; <b>${fmt$(catTotals.lodging)}</b> lodging &middot; <b>${fmt$(catTotals.food)}</b> food &middot;
         <b>${fmt$(catTotals.fun)}</b> fun &middot; <b>${fmt$(catTotals.transport)}</b> transport<br>
         Save evenly across the year: <b>${fmt$(Math.ceil(grandTotal/12/25)*25)}</b>/month for ${calYear}
       </div>
