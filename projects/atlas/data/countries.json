@@ -2881,24 +2881,24 @@
       "vast landscapes"
     ],
     "photo": "https://images.pexels.com/photos/14676934/pexels-photo-14676934.jpeg?auto=compress&cs=tinysrgb&w=1200",
-    "budget": "$$",
+    "budget": "$$$",
     "ideal_days": 14,
     "budget_breakdown": {
       "lodging": {
-        "low": 49,
-        "high": 98
+        "low": 100,
+        "high": 245
       },
       "food": {
-        "low": 22,
-        "high": 43
+        "low": 40,
+        "high": 85
       },
       "fun": {
-        "low": 14,
-        "high": 33
+        "low": 25,
+        "high": 60
       },
       "transport": {
-        "low": 9,
-        "high": 22
+        "low": 15,
+        "high": 38
       }
     }
   },
@@ -2964,20 +2964,20 @@
     "ideal_days": 12,
     "budget_breakdown": {
       "lodging": {
-        "low": 49,
-        "high": 98
+        "low": 20,
+        "high": 45
       },
       "food": {
-        "low": 22,
-        "high": 44
+        "low": 12,
+        "high": 24
       },
       "fun": {
-        "low": 14,
-        "high": 32
+        "low": 18,
+        "high": 40
       },
       "transport": {
-        "low": 10,
-        "high": 25
+        "low": 6,
+        "high": 16
       }
     }
   },
