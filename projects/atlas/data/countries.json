@@ -2748,6 +2748,106 @@
       {
         "name": "Grand Canyon",
         "notes": "A mile deep and impossible to photograph in a way that captures it. Watch the light change the color of the rock at sunrise, sunset, or both."
+      },
+      {
+        "name": "California",
+        "notes": "Coastline that runs from redwood forests to desert dunes, wine country in the middle, and cities that could not be more different from each other. Los Angeles, San Francisco, and Yosemite all in one state."
+      },
+      {
+        "name": "Florida",
+        "notes": "Beaches on two different oceans, the Everglades' swamp wilderness, and Miami's Latin American energy all packed into one long peninsula. The theme parks get the headlines, but the Keys are the real draw."
+      },
+      {
+        "name": "Texas",
+        "notes": "Big enough to swallow whole countries: Austin's live music, Houston's diversity, San Antonio's Riverwalk, and hundreds of empty highway miles between them."
+      },
+      {
+        "name": "New York",
+        "notes": "Niagara Falls roaring on one end, the Adirondacks' quiet lakes in the middle, Hudson Valley wineries an hour from the city. Manhattan is only the loudest part of it."
+      },
+      {
+        "name": "Nevada",
+        "notes": "Vegas gets the neon, but drive an hour out and it's Red Rock Canyon and star-filled desert silence. The strip is a trip unto itself either way."
+      },
+      {
+        "name": "Pennsylvania",
+        "notes": "Philadelphia's history, Pittsburgh's reinvented steel-town grit, and Amish farmland rolling by in between. More range than most people give it credit for."
+      },
+      {
+        "name": "Illinois",
+        "notes": "Chicago's skyline from the lake, deep-dish arguments nobody wins, and a river that famously runs backward. The rest of the state is quiet farmland by comparison."
+      },
+      {
+        "name": "Ohio",
+        "notes": "Cleveland's Rock and Roll Hall of Fame lit up on the lake at night, Cincinnati's chili, and the Midwest at its most unpretentious."
+      },
+      {
+        "name": "Georgia",
+        "notes": "Atlanta's Southern hospitality wrapped around a genuinely international city, then Savannah's moss-draped squares a few hours south."
+      },
+      {
+        "name": "North Carolina",
+        "notes": "Blue Ridge Parkway views for days, Asheville's mountain-town weirdness, and the Outer Banks' wild horses and empty dunes on the coast."
+      },
+      {
+        "name": "Michigan",
+        "notes": "Great Lakes coastline that feels like an ocean, Detroit's music history, and Mackinac Island, where cars are still banned."
+      },
+      {
+        "name": "New Jersey",
+        "notes": "Boardwalk towns strung along the shore, diners open at 3am everywhere, and the Pine Barrens' quiet, empty woods just inland."
+      },
+      {
+        "name": "Virginia",
+        "notes": "Blue Ridge mountains, Colonial Williamsburg's history brought back to life, and Virginia Beach's boardwalk on the coast."
+      },
+      {
+        "name": "Arizona",
+        "notes": "The Grand Canyon anchors it, but Sedona's red rocks and the saguaro-lined desert around Phoenix are worth the extra days."
+      },
+      {
+        "name": "Massachusetts",
+        "notes": "Boston's history walkable in an afternoon, then Cape Cod's beach towns and the whale-watching waters off Provincetown."
+      },
+      {
+        "name": "Tennessee",
+        "notes": "Nashville's honky-tonks never stop, Memphis has the blues and the barbecue, and the Great Smoky Mountains are the most visited national park in the country for a reason."
+      },
+      {
+        "name": "Washington",
+        "notes": "Seattle's coffee and rain, the Olympic Peninsula's actual rainforest, and Mount Rainier looming over all of it on a clear day."
+      },
+      {
+        "name": "Colorado",
+        "notes": "Rocky Mountain peaks, Denver's laid-back energy, and ski towns that turn into hiking towns the moment the snow melts."
+      },
+      {
+        "name": "South Carolina",
+        "notes": "Charleston's cobblestones and horse carriages, then Myrtle Beach's boardwalk arcade energy a few hours up the coast."
+      },
+      {
+        "name": "Louisiana",
+        "notes": "New Orleans gets the spotlight, but Cajun country out west has its own zydeco, crawfish boils, and swamp tours worth the detour."
+      },
+      {
+        "name": "Missouri",
+        "notes": "The Gateway Arch in St. Louis, Kansas City's barbecue rivalry with everywhere else, and the Ozarks' lake towns in between."
+      },
+      {
+        "name": "Maryland",
+        "notes": "Chesapeake Bay crab feasts, Annapolis's sailboat-lined harbor, and Baltimore's rowhouses and harbor front."
+      },
+      {
+        "name": "Wisconsin",
+        "notes": "Cheese curds, the Door County peninsula's orchards and lighthouses, and Milwaukee's lakefront beer gardens."
+      },
+      {
+        "name": "Indiana",
+        "notes": "The Indy 500's roar every May, and the dunes along Lake Michigan that most people don't expect to find in the Midwest."
+      },
+      {
+        "name": "Hawaii",
+        "notes": "Volcanoes still actively reshaping the Big Island, Maui's road to Hana switchbacks, and Oahu's surf breaks, all within one ocean-locked state."
       }
     ],
     "food": [
