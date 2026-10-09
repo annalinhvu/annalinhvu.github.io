@@ -1241,7 +1241,7 @@ body {
         <span class="tbl">anna_vu.projects</span><span>&nbsp;</span>
         <span class="kw">ORDER BY</span><span>&nbsp;year&nbsp;</span>
         <span class="kw">DESC</span>
-        <span class="cmt">-- 16 rows · engineering + academic</span>
+        <span class="cmt">-- 15 rows · engineering + academic</span>
       </div>
       <div class="work-wrap">
         <div class="pipeline-wrap">
@@ -1287,17 +1287,6 @@ body {
             <div class="proj-tags"><span class="proj-tag">SQL</span><span class="proj-tag">Python</span><span class="proj-tag">Snowflake</span><span class="proj-tag">Matillion</span><span class="proj-tag">Slack API</span></div>
             <div class="proj-desc">A suite of production alerting pipelines that notify the right teams in Slack when something needs attention. Covers SFTP file arrival monitoring, KPI anomaly detection across platforms and geos, data change detection in reporting docs, and taxonomy/match-table validation that flags incorrect ad naming to the Media team before it hits reporting.</div>
             <div class="proj-metrics"><div><div class="pm-v">4+</div><div class="pm-u">alert types</div></div><div><div class="pm-v">Multi-team</div><div class="pm-u">routing</div></div><div><div class="pm-v">Config-driven</div><div class="pm-u">thresholds</div></div></div>
-          </div>
-        </div>
-
-        <div class="work-section-hd">ai-assisted engineering</div>
-        <div class="proj-grid">
-          <div class="proj-card proj-card-wow">
-            <div class="proj-title">AI Engineering &amp; Agentic Workflows</div>
-            <div class="proj-ctx">2025–Present</div>
-            <div class="proj-tags"><span class="proj-tag">Claude Code</span><span class="proj-tag">OpenAI Codex</span><span class="proj-tag">Agent Skills</span><span class="proj-tag">Plugins</span><span class="proj-tag">Agent Harnesses</span><span class="proj-tag">Python</span><span class="proj-tag">SQL</span><span class="proj-tag">Git</span></div>
-            <div class="proj-desc">I use AI coding agents and developer tools to streamline data engineering workflows, from building SQL/Python pipelines to validating data quality and maintaining documentation. My work includes Claude Code, OpenAI Codex, reusable agent skills, plugins, and agent harnesses, with a focus on making AI-assisted development more practical, consistent, and repeatable.</div>
-            <div class="proj-metrics"><div><div class="pm-v">SQL/Python</div><div class="pm-u">development</div></div><div><div class="pm-v">Data QA</div><div class="pm-u">validation</div></div><div><div class="pm-v">Docs</div><div class="pm-u">maintenance</div></div></div>
           </div>
         </div>
 
@@ -2069,7 +2058,7 @@ function updateStatus(pane, rows) {
 var _origSwitch = switchPane;
 switchPane = function(id) {
   _origSwitch(id);
-  var rowCounts = {studio: 11, built: 16, career: 4};
+  var rowCounts = {studio: 11, built: 15, career: 4};
   updateStatus(id, rowCounts[id] || 0);
 };
 
@@ -2129,7 +2118,7 @@ switchPane = function(id) {
     moveIndicator(active);
     var pane = document.getElementById('pane-' + active.dataset.pane);
     if (pane) revealPane(pane);
-    var rowCounts = {studio: 11, built: 16, career: 4};
+    var rowCounts = {studio: 11, built: 15, career: 4};
     updateStatus(active.dataset.pane, rowCounts[active.dataset.pane] || 0);
   }
 })();
