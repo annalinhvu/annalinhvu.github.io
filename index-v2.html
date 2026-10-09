@@ -772,6 +772,7 @@ body {
 .res-row:nth-child(even){background:var(--zebra);}
 .res-row span{color:var(--t2);}
 .res-footer{color:var(--t4);margin-top:6px;font-size:11px;}
+.res-ascii{white-space:pre;color:var(--amber);line-height:1.35;overflow-x:auto;}
 .console-input-row{
   display:flex;align-items:center;gap:8px;flex-shrink:0;
   border-top:1px solid var(--bd);padding-top:12px;margin-top:4px;padding-bottom:20px;
@@ -2686,14 +2687,14 @@ switchPane = function(id) {
     {title:'NYC Adventure Log',type:'City',tech:'HTML · Vanilla JS',status:'live'},
     {title:'NYC Food Help Map',type:'Civic',tech:'HTML · JSON · Leaflet.js',status:'live'}
   ];
-  var TABLES = ['anna','skills','experience','projects'];
+  var TABLES = ['anna','skills','experience','projects','pumkin'];
 
   /* ── Helpers ── */
   function esc(s) {
     return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
   }
-  function renderTable(cols, rows) {
-    if (!rows.length) return '<div class="res-info">-- 0 rows returned</div>';
+  function renderTable(cols, rows, note) {
+    if (!rows.length) return '<div class="res-info">-- 0 rows returned'+(note?' ('+note+')':'')+'</div>';
     var h = '<div class="res-table"><div class="res-thead">';
     cols.forEach(function(c){h+='<span>'+esc(c)+'</span>';});
     h+='</div>';
@@ -2706,13 +2707,325 @@ switchPane = function(id) {
       });
       h+='</div>';
     });
-    h+='<div class="res-footer">-- '+rows.length+' row'+(rows.length!==1?'s':'')+' in set</div></div>';
+    h+='<div class="res-footer">-- '+rows.length+' row'+(rows.length!==1?'s':'')+' in set'+(note?' ('+note+')':'')+'</div></div>';
     return h;
   }
   function uniqueCats() {
     var seen={},cats=[];
     SKILLS.forEach(function(s){if(!seen[s.category]){seen[s.category]=1;cats.push(s.category);}});
     return cats;
+  }
+
+
+  /* ── Mini SQL engine: SELECT over the tables above ── */
+  var PUMKIN = [
+    {trait:'name',value:'Pumkin'},
+    {trait:'spelling',value:'one p. Anna decided. Pumkin has accepted it.'},
+    {trait:'species',value:'data sprite'},
+    {trait:'job',value:'self-appointed guide'},
+    {trait:'speaks',value:'emoji'},
+    {trait:'dreams_about',value:'NULL values, clean schemas'}
+  ];
+  var ANNA_COLS = ['name','location','role','origin','email','linkedin','github','status','target_roles','grad_school','grad_degree','undergrad_school','undergrad_degree'];
+  var SQL_TABLES = {
+    anna:       function(){ return {cols:ANNA_COLS, rows:[ANNA]}; },
+    skills:     function(){ return {cols:['category','skill'], rows:SKILLS}; },
+    experience: function(){ return {cols:['title','company','location','period'], rows:EXPERIENCE}; },
+    projects:   function(){ return {cols:['title','type','tech','status'], rows:PROJECTS}; },
+    pumkin:     function(){ return {cols:['trait','value'], rows:PUMKIN}; }
+  };
+  var SQL_KW = {SELECT:1,FROM:1,WHERE:1,GROUP:1,ORDER:1,BY:1,HAVING:1,LIMIT:1,AND:1,OR:1,NOT:1,AS:1,ASC:1,DESC:1,LIKE:1,ILIKE:1,IN:1,IS:1,NULL:1,DISTINCT:1,BETWEEN:1};
+  var SQL_AGG = {COUNT:1,MIN:1,MAX:1};
+
+  function SqlError(code, msg) { this.code = code; this.msg = msg; }
+
+  function editDist(a, b) {
+    var d = [], i, j;
+    for (i = 0; i <= a.length; i++) { d[i] = [i]; }
+    for (j = 1; j <= b.length; j++) d[0][j] = j;
+    for (i = 1; i <= a.length; i++) for (j = 1; j <= b.length; j++)
+      d[i][j] = Math.min(d[i-1][j]+1, d[i][j-1]+1, d[i-1][j-1]+(a[i-1]===b[j-1]?0:1));
+    return d[a.length][b.length];
+  }
+  function didYouMean(word, options) {
+    var best = null, bd = 3;
+    options.forEach(function(o){ var dd = editDist(word.toLowerCase(), o.toLowerCase()); if (dd < bd) { bd = dd; best = o; } });
+    return best ? ' did you mean \'' + best + '\'?' : '';
+  }
+
+  function sqlTokenize(src) {
+    var re = /\s*(?:('(?:[^']|'')*')|(\d+(?:\.\d+)?)|([A-Za-z_][\w.]*)|(<=|>=|<>|!=|=|<|>|\(|\)|,|\*|;))/y;
+    var toks = [], m;
+    src = src.trim();
+    re.lastIndex = 0;
+    while (re.lastIndex < src.length) {
+      var at = re.lastIndex;
+      m = re.exec(src);
+      if (!m) throw new SqlError(1064, 'syntax error near \'' + src.slice(at).trim().slice(0, 12) + '\'');
+      if (m[1] !== undefined) toks.push({t:'str', v:m[1].slice(1, -1).replace(/''/g, "'")});
+      else if (m[2] !== undefined) toks.push({t:'num', v:parseFloat(m[2])});
+      else if (m[3] !== undefined) toks.push({t:'id', v:m[3]});
+      else toks.push({t:'op', v:m[4]});
+    }
+    return toks;
+  }
+
+  function sqlParse(toks) {
+    var i = 0;
+    function isKw(w) { var t = toks[i]; return t && t.t === 'id' && t.v.toUpperCase() === w; }
+    function kw(w) { if (isKw(w)) { i++; return true; } return false; }
+    function isOp(v) { var t = toks[i]; return t && t.t === 'op' && t.v === v; }
+    function op(v) { if (isOp(v)) { i++; return true; } return false; }
+    function fail() {
+      var t = toks[i];
+      throw new SqlError(1064, 'syntax error near \'' + (t ? t.v : 'end of query') + '\'. try HELP.');
+    }
+    function need(v) { if (!op(v)) fail(); }
+
+    function primary() {
+      var t = toks[i];
+      if (!t) fail();
+      if (t.t === 'str' || t.t === 'num') { i++; return {k:'lit', v:t.v}; }
+      if (op('(')) { var e = orExpr(); need(')'); return e; }
+      if (t.t === 'id') {
+        var up = t.v.toUpperCase();
+        if (up === 'NULL') { i++; return {k:'lit', v:null}; }
+        if (SQL_KW[up]) fail();
+        i++;
+        if (op('(')) {
+          var args = [], distinct = false;
+          if (op('*')) args.push({k:'star'});
+          else if (!isOp(')')) {
+            distinct = kw('DISTINCT');
+            args.push(orExpr());
+            while (op(',')) args.push(orExpr());
+          }
+          need(')');
+          return {k:'fn', name:up, args:args, distinct:distinct};
+        }
+        return {k:'col', name:t.v.split('.').pop()};
+      }
+      fail();
+    }
+    function compare() {
+      var left = primary(), neg;
+      var t = toks[i];
+      if (t && t.t === 'op' && /^(=|!=|<>|<|>|<=|>=)$/.test(t.v)) { i++; return {k:'cmp', op:t.v, a:left, b:primary()}; }
+      if (kw('IS')) { neg = kw('NOT'); if (!kw('NULL')) fail(); return {k:'isnull', a:left, neg:neg}; }
+      neg = kw('NOT');
+      if (kw('LIKE') || kw('ILIKE')) return {k:'like', a:left, b:primary(), neg:neg};
+      if (kw('IN')) {
+        need('('); var list = [primary()];
+        while (op(',')) list.push(primary());
+        need(')');
+        return {k:'in', a:left, list:list, neg:neg};
+      }
+      if (kw('BETWEEN')) { var lo = primary(); if (!kw('AND')) fail(); return {k:'between', a:left, lo:lo, hi:primary(), neg:neg}; }
+      if (neg) fail();
+      return left;
+    }
+    function notExpr() { return kw('NOT') ? {k:'not', a:notExpr()} : compare(); }
+    function andExpr() { var e = notExpr(); while (kw('AND')) e = {k:'and', a:e, b:notExpr()}; return e; }
+    function orExpr() { var e = andExpr(); while (kw('OR')) e = {k:'or', a:e, b:andExpr()}; return e; }
+
+    var q = {items:[], star:false, distinct:false, table:null, where:null, group:[], having:null, order:[], limit:null};
+    if (!kw('SELECT')) fail();
+    q.distinct = kw('DISTINCT');
+    if (op('*')) q.star = true;
+    else {
+      do {
+        var e = orExpr(), alias = null;
+        if (kw('AS')) { var a = toks[i]; if (!a || (a.t !== 'id' && a.t !== 'str')) fail(); alias = a.v; i++; }
+        else if (toks[i] && toks[i].t === 'id' && !SQL_KW[toks[i].v.toUpperCase()]) { alias = toks[i].v; i++; }
+        q.items.push({e:e, alias:alias});
+      } while (op(','));
+    }
+    if (kw('FROM')) {
+      var tt = toks[i];
+      if (!tt || tt.t !== 'id') fail();
+      q.table = tt.v.split('.').pop().toLowerCase(); i++;
+    }
+    if (kw('WHERE')) q.where = orExpr();
+    if (kw('GROUP')) { if (!kw('BY')) fail(); do { q.group.push(orExpr()); } while (op(',')); }
+    if (kw('HAVING')) q.having = orExpr();
+    if (kw('ORDER')) {
+      if (!kw('BY')) fail();
+      do {
+        var oe = orExpr(), desc = false;
+        if (kw('DESC')) desc = true; else kw('ASC');
+        q.order.push({e:oe, desc:desc});
+      } while (op(','));
+    }
+    if (kw('LIMIT')) { var n = toks[i]; if (!n || n.t !== 'num') fail(); q.limit = n.v; i++; }
+    op(';');
+    if (i < toks.length) fail();
+    return q;
+  }
+
+  function sqlText(e) {
+    if (e.k === 'col') return e.name;
+    if (e.k === 'star') return '*';
+    if (e.k === 'lit') return e.v === null ? 'NULL' : (typeof e.v === 'string' ? '\'' + e.v + '\'' : String(e.v));
+    if (e.k === 'fn') return e.name + '(' + (e.distinct ? 'DISTINCT ' : '') + e.args.map(sqlText).join(', ') + ')';
+    return 'expr';
+  }
+  function hasAgg(e) {
+    if (!e || typeof e !== 'object') return false;
+    if (e.k === 'fn' && SQL_AGG[e.name]) return true;
+    return ['a','b','lo','hi'].some(function(k){ return hasAgg(e[k]); })
+      || (e.list || []).some(hasAgg) || (e.args || []).some(hasAgg);
+  }
+  function sqlStr(v) { return v === null || v === undefined ? null : Array.isArray(v) ? v.join(', ') : String(v); }
+  function sqlEq(x, y) {
+    if (x === null || y === null) return false;
+    if (Array.isArray(x)) return x.some(function(el){ return sqlEq(el, y); });
+    if (typeof x === 'number' && typeof y === 'number') return x === y;
+    return String(x).toLowerCase() === String(y).toLowerCase();
+  }
+  function sqlCmp(x, y) {
+    if (x === null || x === undefined) return y === null || y === undefined ? 0 : 1;
+    if (y === null || y === undefined) return -1;
+    if (typeof x === 'number' && typeof y === 'number') return x - y;
+    return sqlStr(x).toLowerCase().localeCompare(sqlStr(y).toLowerCase());
+  }
+
+  function sqlEval(e, ctx) {
+    switch (e.k) {
+      case 'lit': return e.v;
+      case 'col':
+        if (ctx.out && Object.prototype.hasOwnProperty.call(ctx.out, e.name)) return ctx.out[e.name];
+        var row = ctx.row || (ctx.group && ctx.group[0]);
+        var key = ctx.colMap[e.name.toLowerCase()];
+        if (!key) throw new SqlError(1054, 'unknown column \'' + e.name + '\' in \'' + ctx.table + '\'.'
+          + (didYouMean(e.name, ctx.cols) || ' columns: ' + ctx.cols.join(', ')));
+        return row ? row[key] : null;
+      case 'cmp':
+        var x = sqlEval(e.a, ctx), y = sqlEval(e.b, ctx);
+        if (x === null || y === null) return null;
+        if (e.op === '=') return sqlEq(x, y);
+        if (e.op === '!=' || e.op === '<>') return !sqlEq(x, y);
+        var c = sqlCmp(x, y);
+        return e.op === '<' ? c < 0 : e.op === '>' ? c > 0 : e.op === '<=' ? c <= 0 : c >= 0;
+      case 'like':
+        var s = sqlStr(sqlEval(e.a, ctx)), p = sqlStr(sqlEval(e.b, ctx));
+        if (s === null || p === null) return null;
+        var rx = new RegExp('^' + p.replace(/[.+?^${}()|[\]\\*]/g, '\\$&').replace(/%/g, '.*').replace(/_/g, '.') + '$', 'i');
+        return rx.test(s) !== e.neg;
+      case 'in':
+        var v = sqlEval(e.a, ctx);
+        return e.list.some(function(l){ return sqlEq(v, sqlEval(l, ctx)); }) !== e.neg;
+      case 'between':
+        var bv = sqlEval(e.a, ctx);
+        return (sqlCmp(bv, sqlEval(e.lo, ctx)) >= 0 && sqlCmp(bv, sqlEval(e.hi, ctx)) <= 0) !== e.neg;
+      case 'isnull':
+        var nv = sqlEval(e.a, ctx);
+        return (nv === null || nv === undefined || nv === '') !== e.neg;
+      case 'not': return !sqlEval(e.a, ctx);
+      case 'and': return !!(sqlEval(e.a, ctx) && sqlEval(e.b, ctx));
+      case 'or':  return !!(sqlEval(e.a, ctx) || sqlEval(e.b, ctx));
+      case 'fn':  return sqlFn(e, ctx);
+    }
+    throw new SqlError(1064, 'syntax error. try HELP.');
+  }
+  function sqlFn(e, ctx) {
+    if (SQL_AGG[e.name]) {
+      if (!ctx.group) throw new SqlError(1111, 'invalid use of group function ' + e.name + '().');
+      var vals = ctx.group.map(function(r){
+        return e.args[0].k === 'star' ? 1 : sqlEval(e.args[0], {row:r, colMap:ctx.colMap, cols:ctx.cols, table:ctx.table});
+      }).filter(function(v){ return v !== null && v !== undefined; });
+      if (e.distinct) { var seen = {}; vals = vals.filter(function(v){ var k = sqlStr(v).toLowerCase(); return seen[k] ? false : (seen[k] = 1); }); }
+      if (e.name === 'COUNT') return vals.length;
+      if (!vals.length) return null;
+      return vals.reduce(function(m, v){ return (e.name === 'MIN' ? sqlCmp(v, m) < 0 : sqlCmp(v, m) > 0) ? v : m; });
+    }
+    var a = e.args.map(function(x){ return x.k === 'star' ? null : sqlEval(x, ctx); });
+    switch (e.name) {
+      case 'UPPER':  return a[0] === null ? null : sqlStr(a[0]).toUpperCase();
+      case 'LOWER':  return a[0] === null ? null : sqlStr(a[0]).toLowerCase();
+      case 'LENGTH': case 'LEN': return a[0] === null ? null : sqlStr(a[0]).length;
+      case 'CONCAT': return a.map(function(v){ return sqlStr(v) || ''; }).join('');
+      case 'COALESCE': for (var k = 0; k < a.length; k++) if (a[k] !== null && a[k] !== undefined) return a[k]; return null;
+      case 'RANDOM': case 'RAND': return Math.random();
+    }
+    throw new SqlError(1305, 'function ' + e.name + ' does not exist. try UPPER, LOWER, LENGTH, CONCAT, COALESCE, COUNT, MIN, MAX.');
+  }
+
+  function sqlRun(src) {
+    var t0 = performance.now();
+    var q = sqlParse(sqlTokenize(src));
+    var tbl;
+    if (q.table) {
+      if (!SQL_TABLES[q.table]) throw new SqlError(1146, 'table \'anna_vu.' + q.table + '\' doesn\'t exist.'
+        + (didYouMean(q.table, TABLES) || ' try SHOW TABLES.'));
+      tbl = SQL_TABLES[q.table]();
+    } else {
+      if (q.star) throw new SqlError(1096, 'no tables used.');
+      tbl = {cols:[], rows:[{}]};
+    }
+    var allCols = tbl.cols.slice();
+    tbl.rows.forEach(function(r){ Object.keys(r).forEach(function(k){ if (allCols.indexOf(k) < 0) allCols.push(k); }); });
+    var colMap = {};
+    allCols.forEach(function(c){ colMap[c.toLowerCase()] = c; });
+    var base = {colMap:colMap, cols:tbl.cols, table:q.table || 'dual'};
+    function ctxFor(extra) { var c = {colMap:base.colMap, cols:base.cols, table:base.table}; for (var k in extra) c[k] = extra[k]; return c; }
+
+    var rows = tbl.rows.filter(function(r){
+      if (!q.where) return true;
+      if (hasAgg(q.where)) throw new SqlError(1111, 'invalid use of group function in WHERE. try HAVING.');
+      return sqlEval(q.where, ctxFor({row:r})) === true;
+    });
+
+    var items = q.star ? tbl.cols.map(function(c){ return {e:{k:'col', name:c}, alias:null}; }) : q.items;
+    var headers = items.map(function(it){ return it.alias || sqlText(it.e); });
+    var grouped = q.group.length || items.some(function(it){ return hasAgg(it.e); }) || q.having;
+    var units;
+    if (grouped) {
+      var groups = {}, order = [];
+      rows.forEach(function(r){
+        var key = JSON.stringify(q.group.map(function(g){ return sqlStr(sqlEval(g, ctxFor({row:r}))); }).map(function(v){ return v && v.toLowerCase(); }));
+        if (!groups[key]) { groups[key] = []; order.push(key); }
+        groups[key].push(r);
+      });
+      if (!q.group.length && !order.length) { groups['[]'] = []; order.push('[]'); }
+      units = order.map(function(k){ return ctxFor({group:groups[k]}); });
+      if (q.having) units = units.filter(function(u){ return sqlEval(q.having, u) === true; });
+    } else {
+      units = rows.map(function(r){ return ctxFor({row:r}); });
+    }
+
+    var out = units.map(function(u){
+      var o = {};
+      items.forEach(function(it, ix){ var v = sqlEval(it.e, u); o[headers[ix]] = v === null || v === undefined ? 'NULL' : v; });
+      u.out = o;
+      return u;
+    });
+    if (q.distinct) {
+      var seenRows = {};
+      out = out.filter(function(u){ var k = JSON.stringify(u.out); return seenRows[k] ? false : (seenRows[k] = 1); });
+    }
+    if (q.order.length) {
+      var keyed = out.map(function(u){
+        return {u:u, keys:q.order.map(function(o){
+          if (o.e.k === 'lit' && typeof o.e.v === 'number') {
+            var h = headers[o.e.v - 1];
+            if (h === undefined) throw new SqlError(1054, 'unknown column \'' + o.e.v + '\' in ORDER BY.');
+            return u.out[h];
+          }
+          return sqlEval(o.e, u);
+        })};
+      });
+      keyed.sort(function(x, y){
+        for (var k = 0; k < q.order.length; k++) {
+          var c = sqlCmp(x.keys[k], y.keys[k]);
+          if (c) return q.order[k].desc ? -c : c;
+        }
+        return 0;
+      });
+      out = keyed.map(function(k){ return k.u; });
+    }
+    if (q.limit !== null) out = out.slice(0, q.limit);
+    var ms = (performance.now() - t0).toFixed(1);
+    return {html:renderTable(headers, out.map(function(u){ return u.out; }), ms + ' ms'), q:q};
   }
 
   /* ── SQL interpreter ── */
@@ -2749,45 +3062,22 @@ switchPane = function(id) {
         +'+----------+------+-------+-------+------------------+</div>';
     if(/^(SHOW\s+TABLES|SHOW\s+DATABASES)/i.test(cu))
       return renderTable(['Tables_in_anna_vu'], TABLES.map(function(t){return{'Tables_in_anna_vu':t};}));
-    var descM = cu.match(/^(?:DESCRIBE|DESC)\s+(\w+)/i);
+    var descM = cu.match(/^(?:DESCRIBE|DESC)\s+([\w.]+)/i);
     if(descM) {
-      var t=descM[1].toLowerCase();
-      var schemas={
-        anna:['name','location','role','origin','email','linkedin','github','status','target_roles','grad_school','grad_degree','undergrad_school','undergrad_degree'],
-        skills:['category','skill'],experience:['title','company','location','period'],projects:['title','type','tech','status']
-      };
-      if(!schemas[t]) return '<div class="res-error">ERROR 1146: table \''+esc(t)+'\' doesn\'t exist.</div>';
-      return renderTable(['Field','Type'],schemas[t].map(function(f){return{Field:f,Type:'varchar(255)'};}));
+      var t=descM[1].split('.').pop().toLowerCase();
+      if(!SQL_TABLES[t]) return '<div class="res-error">ERROR 1146: table \''+esc(t)+'\' doesn\'t exist.'+esc(didYouMean(t,TABLES))+'</div>';
+      var d=SQL_TABLES[t]();
+      return renderTable(['Field','Type'],d.cols.map(function(f){
+        var v=d.rows[0]&&d.rows[0][f];
+        return{Field:f,Type:Array.isArray(v)?'array':typeof v==='number'?'int':'varchar(255)'};
+      }));
     }
-    var cntM = cu.match(/SELECT\s+COUNT\(\*\)\s+FROM\s+(\w+)/i);
-    if(cntM) {
-      var t=cntM[1].toLowerCase();
-      var cnt={anna:1,skills:SKILLS.length,experience:EXPERIENCE.length,projects:PROJECTS.length};
-      if(cnt[t]===undefined) return '<div class="res-error">ERROR 1146: table \''+esc(t)+'\' doesn\'t exist.</div>';
-      return renderTable(['COUNT(*)'], [{'COUNT(*)':cnt[t]}]);
-    }
-    if(/SELECT\s+DISTINCT\s+category\s+FROM\s+(anna\.)?skills/i.test(cu))
-      return renderTable(['category'], uniqueCats().map(function(c){return{category:c};}));
-    var swM = cu.match(/FROM\s+(anna\.)?skills\s+WHERE\s+category\s*=\s*['"]([^'"]+)['"]/i);
-    if(swM) {
-      var cat=swM[2], rows=SKILLS.filter(function(s){return s.category.toLowerCase()===cat.toLowerCase();});
-      if(!rows.length) return '<div class="res-info">-- 0 rows. categories: '+uniqueCats().join(', ')+'</div>';
-      return renderTable(['category','skill'],rows);
-    }
-    if(/FROM\s+(anna\.)?skills/i.test(cu)) return renderTable(['category','skill'],SKILLS);
-    if(/FROM\s+(anna\.)?experience/i.test(cu)) return renderTable(['title','company','location','period'],EXPERIENCE);
-    if(/FROM\s+(anna\.)?projects/i.test(cu)) return renderTable(['title','type','tech','status'],PROJECTS);
-    if(/SELECT\s+\*\s+FROM\s+(anna\.)?anna\b/i.test(cu)) {
-      var cols=Object.keys(ANNA).filter(function(k){return k!=='hobbies'&&k!=='languages_spoken';});
-      var row={};cols.forEach(function(k){row[k]=ANNA[k];});
-      return renderTable(cols,[row]);
-    }
-    var selM = cu.match(/SELECT\s+([\w\s,]+)\s+FROM\s+(anna\.)?anna\b/i);
-    if(selM) {
-      var cols=selM[1].split(',').map(function(s){return s.trim().toLowerCase();}).filter(function(k){return ANNA[k]!==undefined;});
-      if(!cols.length) return '<div class="res-error">ERROR 1054: unknown column. try DESCRIBE anna.</div>';
-      var row={};cols.forEach(function(k){row[k]=ANNA[k];});
-      return renderTable(cols,[row]);
+    if(/^SELECT\b/i.test(cu)) {
+      try { return sqlRun(cu).html; }
+      catch(err) {
+        if(err instanceof SqlError) return '<div class="res-error">ERROR '+err.code+': '+esc(err.msg)+'</div>';
+        throw err;
+      }
     }
     var insM = cu.match(/INSERT\s+INTO\s+messages\s*\([^)]+\)\s*VALUES\s*\(\s*['"]([^'"]*)['"]\s*,\s*['"]([^'"]*)['"]\s*\)/i);
     if(insM) {
@@ -2798,13 +3088,16 @@ switchPane = function(id) {
     }
     if(/INSERT\s+INTO\s+messages/i.test(cu))
       return '<div class="res-info">-- format: INSERT INTO messages (from_name, message) VALUES (\'your name\', \'hi anna!\')</div>';
-    if(/^HELP$/i.test(cu.trim()))
-      return '<div class="res-info">-- available tables: '+TABLES.join(', ')+'<br>'
-        +'-- SHOW TABLES<br>-- SELECT * FROM anna<br>-- SELECT * FROM skills<br>'
-        +'-- SELECT * FROM skills WHERE category = \'Languages\'<br>'
-        +'-- SELECT * FROM experience<br>-- SELECT * FROM projects<br>'
+    if(/^HELP\s*;?$/i.test(cu))
+      return '<div class="res-info">-- tables: '+TABLES.join(', ')+'<br>'
+        +'-- SHOW TABLES · DESCRIBE &lt;table&gt;<br>'
+        +'-- SELECT [DISTINCT] cols | * | COUNT(*) | MIN() | MAX() [AS alias]<br>'
+        +'--&nbsp;&nbsp;&nbsp;FROM table [WHERE ...] [GROUP BY ...] [HAVING ...] [ORDER BY ... ASC|DESC] [LIMIT n]<br>'
+        +'-- WHERE supports = != &lt; &gt; LIKE IN BETWEEN IS NULL, joined with AND / OR / NOT<br>'
+        +'-- functions: UPPER LOWER LENGTH CONCAT COALESCE RANDOM<br>'
+        +'-- e.g. SELECT category, COUNT(*) AS n FROM skills GROUP BY category ORDER BY n DESC<br>'
         +'-- INSERT INTO messages (from_name, message) VALUES (\'name\', \'hello!\')<br>'
-        +'-- DESCRIBE anna</div>';
+        +'-- pumkinsay \'hi\' works in every mode</div>';
     var fmM = cu.match(/FROM\s+(anna\.)?(\w+)/i);
     if(fmM && !TABLES.includes(fmM[2].toLowerCase()) && fmM[2].toLowerCase()!=='messages')
       return '<div class="res-error">ERROR 1146: table \'anna_vu.'+esc(fmM[2])+'\' doesn\'t exist. try SHOW TABLES.</div>';
@@ -2900,9 +3193,53 @@ switchPane = function(id) {
   }
 
   /* ── Render command block ── */
+  function pumkinSay(text) {
+    var words = String(text).split(/\s+/), lines = [], cur = '';
+    words.forEach(function(w){
+      if ((cur + ' ' + w).trim().length > 34 && cur) { lines.push(cur); cur = w; }
+      else cur = (cur + ' ' + w).trim();
+    });
+    if (cur) lines.push(cur);
+    var w = Math.max.apply(null, lines.map(function(l){ return l.length; }));
+    var bar = new Array(w + 3).join('-');
+    var body = lines.length === 1 ? ['< ' + lines[0] + ' >']
+      : lines.map(function(l, ix){
+          var pad = l + new Array(w - l.length + 1).join(' ');
+          var o = ix === 0 ? ['/', '\\'] : ix === lines.length - 1 ? ['\\', '/'] : ['|', '|'];
+          return o[0] + ' ' + pad + ' ' + o[1];
+        });
+    var art = [' ' + bar.replace(/-/g, '_')].concat(body, [' ' + bar,
+      '       \\     o',
+      '        \\   _|_',
+      '          [ o_o ]',
+      '           /|_|\\',
+      '            d b']).join('\n');
+    return '<div class="res-ascii">' + esc(art) + '</div>';
+  }
+
+  /* Pumkin chimes in on a few terminal moments, once each per visit (errors excepted) */
+  var petSeen = {}, errStreak = 0;
+  function petOnce(key, msg) {
+    if (petSeen[key] || typeof window.petReact !== 'function') return;
+    petSeen[key] = 1;
+    window.petReact(msg);
+  }
+  function reactToQuery(cmd, result) {
+    var isErr = result.indexOf('res-error') > -1;
+    errStreak = isErr ? errStreak + 1 : 0;
+    if (/^(DROP|DELETE|TRUNCATE)\b|^del\s+anna|^free\s*\(\s*anna/i.test(cmd)) return petOnce('drop', "Hey! I live in there. 😤");
+    if (/UPDATE\s+anna\s+SET\s+status\s*=\s*['"]hired['"]/i.test(cmd)) return petOnce('hired', "Wait, really?! 🎉 Okay okay, the email is right there.");
+    if (/FROM\s+(anna\.)?pumkin\b/i.test(cmd) && !isErr) return petOnce('me', "That's me! Hi. 👾");
+    if (errStreak >= 3) { errStreak = 0; if (typeof window.petReact === 'function') window.petReact("Stuck? Type <code>HELP</code>. I won't tell anyone. 👾"); return; }
+    if (consoleMode === 'sql' && !isErr && /\b(GROUP\s+BY|HAVING)\b/i.test(cmd)) return petOnce('group', "GROUP BY on a portfolio. You've done this before. 🤓");
+    if (consoleMode === 'sql' && !isErr && /\bWHERE\b/i.test(cmd)) return petOnce('where', "Ooh, a WHERE clause. Filtering like a pro. 🔍");
+  }
+
   function runCmd(cmd) {
     var result;
-    if(consoleMode==='sql') result=runSQL(cmd);
+    var sayM = cmd.match(/^(?:pumkinsay|cowsay)\s*(?:\(\s*)?(['"]?)(.*?)\1\s*\)?\s*;?$/i);
+    if(sayM) result=pumkinSay(sayM[2] || 'hi! 👾');
+    else if(consoleMode==='sql') result=runSQL(cmd);
     else if(consoleMode==='python') result=runPython(cmd);
     else if(consoleMode==='java') result=runJava(cmd);
     else result=runC(cmd);
@@ -2913,6 +3250,7 @@ switchPane = function(id) {
       +'<div class="cmd-result">'+result+'</div>';
     coutput.appendChild(block);
     coutput.scrollTop = coutput.scrollHeight;
+    reactToQuery(cmd, result);
   }
 
   /* ── Guide data ── */
@@ -2921,11 +3259,13 @@ switchPane = function(id) {
       ['SHOW TABLES','show all tables'],
       ['SELECT * FROM anna','full profile'],
       ['SELECT * FROM skills','all skills'],
-      ["SELECT * FROM skills WHERE category = 'Languages'",'filtered skills'],
+      ["SELECT skill FROM skills WHERE category LIKE '%cloud%'",'filter with LIKE'],
+      ['SELECT category, COUNT(*) AS n FROM skills GROUP BY category ORDER BY n DESC','group + sort'],
       ['SELECT * FROM experience','work history'],
       ['SELECT * FROM projects','creative projects'],
       ['DESCRIBE anna','table schema'],
-      ['EXPLAIN SELECT * FROM anna','query plan'],
+      ['SELECT * FROM pumkin','meet pumkin'],
+      ["pumkinsay 'hello!'",'any mode'],
       ["UPDATE anna SET status = 'hired'",'make it happen ;)'],
       ["INSERT INTO messages (from_name, message) VALUES ('your name', 'hello!')",'contact anna'],
       ['PLAY GAME','🐍 secret']
