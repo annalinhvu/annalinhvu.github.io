@@ -1,182 +1,112 @@
 # annalinhvu.github.io
 
-**[Visit my little corner of the internet ↗](https://annalinhvu.github.io)**
+**[View Portfolio ↗](https://annalinhvu.github.io/)**
 
-Hi, I'm Anna (Linh)! I'm a data engineer based in New York City, originally from Hanoi.
+Hi, I'm Anna (Linh), a data engineer based in New York City, originally from Vietnam. I build data infrastructure and analytics systems for enterprise clients, and outside of work, I enjoy creating small tools and databases inspired by my interests in cinema, photography, food, travel, and NYC.
 
-I spend my working hours building data infrastructure, pipelines, and analytics systems for enterprise clients. Outside of work, I like making little tools and databases for things I'm interested in: movies, film photography, Vietnamese food, exploring NYC, and planning trips I may or may not actually take.
-
-This website is where I put all of that.
-
-It's mostly built with HTML, CSS, and JavaScript. No frameworks, no complicated setup. Just a collection of things I've worked on, things I've made for fun, and things I wanted to exist.
+This portfolio brings together my professional work, academic projects, and personal experiments. It's built with HTML, CSS, and JavaScript, with no frameworks or complicated setup.
 
 ---
 
-## A little tour
+## What's inside
 
-There are three sections:
+The portfolio is organized into three sections:
 
-- **built**: The professional stuff. Data engineering, analytics, dashboards, and some academic projects from Penn Engineering.
-- **studio**: My personal playground. Small projects that usually start with me thinking, "I wish there were a website for this."
-- **career**: Where I've worked and what I've been up to professionally.
+- **built**: Professional data engineering work, including ETL pipelines, Snowflake warehouses, dashboards, API integrations, and academic projects from Penn Engineering.
+- **studio**: Personal projects exploring film, photography, travel, food, and community resources.
+- **career**: My professional background and experience.
 
 ---
 
-## Things I've made for fun
+## Personal Projects
 
-Most of these started because I had a spreadsheet, a messy Notes app, or way too many browser tabs open and decided to do something about it.
+### Film Festival Tracker
 
-### 🎬 Film Festival Tracker
+A searchable directory of documentary and experimental film festivals worldwide, built to make tracking submission deadlines, fees, and requirements easier. Browse festivals by category, region, tier, and premiere status.
 
-I love films, especially documentaries and experimental cinema, and I wanted an easier way to keep track of film festivals around the world.
+**Stack:** HTML · JSON · JavaScript
 
-So I started collecting them. Deadlines, submission fees, premiere requirements, what kinds of films they screen, all of it.
+### Analog Film Stock Database
 
-Now it's a searchable directory that I can filter depending on what I'm looking for.
+A database for comparing analog film stocks, prices, and availability across vendors, along with a directory of film development labs. Search by film format, processing type (C-41, E-6, B&W, ECN-2), and other specifications.
 
-`HTML · JSON · JavaScript`
+**Stack:** HTML · JSON · JavaScript
 
-### 🎞️ Analog Film Stock Database
+### NYC Film Scene Map
 
-Film photography is one of my favorite (and unfortunately expensive) hobbies.
+An interactive map of New York City's independent film community, including cinemas, screening spaces, workshops, darkrooms, film labs, galleries, and community organizations. Browse locations by category and borough.
 
-I got tired of jumping between websites to compare film stocks, prices, and development labs, so I made my own little database.
+**Stack:** HTML · JSON · Leaflet.js
 
-It has different film stocks, vendors, and labs, including which processes they support (C-41, E-6, B&W, ECN-2).
+### Auteurs
 
-Basically, a very elaborate solution to my habit of buying more film.
+A personal filmography archive featuring directors and performers whose work I admire. Includes biographies, curated filmographies, synopses, and photography, with options to explore by era, nationality, and style.
 
-`HTML · JSON · JavaScript`
+**Stack:** HTML · JSON · JavaScript
 
-### 📍 NYC Film Scene Map
+### NYC Food Help Map
 
-One of my favorite things about New York is how much is happening in the film community, if you know where to look.
+[View Project ↗](https://annalinhvu.github.io/projects/nyc-food-help/)
 
-I wanted a map of all the places where people can actually watch, make, develop, and learn about film.
+A public directory of free food assistance resources across NYC's five boroughs, including food pantries, soup kitchens, community meals, mobile programs, and home delivery services. Built to make existing community resources easier to find and navigate.
 
-So I put together one with independent cinemas, screening spaces, darkrooms, labs, galleries, workshops, and community spaces across the city.
+**Stack:** HTML · JSON · Leaflet.js
 
-`HTML · JSON · Leaflet.js`
+### NYC Adventure Log
 
-### 🎥 Auteurs
+[View Project ↗](https://annalinhvu.github.io/projects/nyc-adventure/)
 
-I have a growing list of directors and actors whose work I keep coming back to.
+A collection of things to see and do around New York City, from independent cinemas and exhibitions to restaurants, classes, and weekend trips. Organized by category and season, with a random activity picker for discovering something new.
 
-This is my attempt to organize that obsession into something useful: a little filmography archive with biographies, film lists, synopses, and portraits.
+**Stack:** HTML · JavaScript
 
-You can explore by era, nationality, or style. Mostly, it's an excuse for me to discover more films.
+### Only Good Things
 
-`HTML · JSON · JavaScript`
+A collection of small activities and self-care ideas inspired by a daily calendar. Browse suggestions by season, mood, duration, and setting, with daily recommendations and local progress tracking.
 
-### 🍎 NYC Food Help Map
+**Stack:** HTML · JSON · JavaScript
 
-**[Explore the map ↗](https://annalinhvu.github.io/projects/nyc-food-help/)**
+### Cơm Nhà
 
-There are so many food assistance programs in NYC, but finding the right information isn't always easy.
+A Vietnamese recipe collection organized by region: Miền Bắc, Miền Trung, and Miền Nam. Search recipes by ingredient or category, save favorites, and explore regional dishes. Originally created as a way to organize recipes from home.
 
-I wanted to make these resources a little more accessible, so I built a directory of food pantries, soup kitchens, community meals, mobile programs, and delivery services across the five boroughs.
+**Stack:** HTML · JSON · JavaScript
 
-It's a small project, but one I hope can be genuinely useful to someone.
+### Departure Lounge
 
-`HTML · JSON · Leaflet.js`
+A travel wish list and planning tool inspired by airline boarding passes. Explore destinations, save places and experiences, estimate travel budgets, and organize future trips with an interactive calendar and destination tracker.
 
-### 🗽 NYC Adventure Log
+**Stack:** HTML · JSON · D3.js
 
-**[Find something to do ↗](https://annalinhvu.github.io/projects/nyc-adventure/)**
+### Global Donation Guide
 
-I've lived in New York for years, and I still have an endless list of things I want to do here.
+[View Project ↗](https://annalinhvu.github.io/projects/global-donation-guide/)
 
-This is where I keep them all: movies, restaurants, museums, exhibitions, day trips, classes, and random little adventures.
+An independently researched directory of nonprofit organizations working in humanitarian relief, hunger and poverty, and animal welfare. Each entry includes information about the organization and a direct donation link, without rankings or affiliate partnerships.
 
-There's also a surprise button for those days when I want to go somewhere but can't decide where.
+**Stack:** HTML · JavaScript
 
-`HTML · JavaScript`
+### Well Fed
 
-### 🌷 Only Good Things
+[View Project ↗](https://annalinhvu.github.io/projects/well-fed/)
 
-A little reminder to do nice things for myself.
+A curated food and nutrition tool focused on practical, everyday eating. Browse meals by ingredients, dietary priorities, budget, and preparation effort, with personalized filtering and a private daily food log. Designed to make healthy eating more approachable without rigid meal plans.
 
-Inspired by a wall calendar, this is a collection of small activities organized by mood, season, time, and setting.
-
-Some take five minutes. Others are more of an afternoon commitment.
-
-There's a daily suggestion and a way to keep track of what you've tried. Nothing too serious. Just a reminder that there are plenty of good things to do on an ordinary day.
-
-`HTML · JSON · JavaScript`
-
-### 🍚 Cơm Nhà
-
-Cơm nhà roughly means home-cooked food in Vietnamese.
-
-I grew up in Hanoi, and Vietnamese food will always be my comfort food. I wanted a place to collect recipes without constantly digging through my Notes app or old messages.
-
-The recipes are organized by region: Miền Bắc, Miền Trung, and Miền Nam.
-
-You can browse, search by ingredient, and save your favorites.
-
-This one makes me a little homesick.
-
-`HTML · JSON · JavaScript`
-
-### ✈️ Departure Lounge
-
-I love traveling. I also love planning trips, sometimes more than actually booking them.
-
-Departure Lounge is my growing travel wish list, designed to look like a collection of boarding passes.
-
-Every destination has cities I want to visit, food I want to try, and reasons I want to go.
-
-There's also a trip planner, a budget estimator, and a way to track where I've been versus where I'm still dreaming of going.
-
-Essentially, I turned my travel daydreaming into a website.
-
-`HTML · JSON · D3.js`
-
-### 🌍 Global Donation Guide
-
-**[Explore the guide ↗](https://annalinhvu.github.io/projects/global-donation-guide/)**
-
-I wanted a simple place to keep track of organizations doing meaningful work around the world.
-
-This is a personally researched collection of nonprofits working in humanitarian relief, hunger and poverty, and animal welfare.
-
-No rankings, affiliate links, or sponsored placements. Just information about organizations and links to support their work.
-
-`HTML · JavaScript`
-
-### 🥗 Well Fed
-
-**[Explore Well Fed ↗](https://annalinhvu.github.io/projects/well-fed/)**
-
-I've been trying to be more intentional about what I eat, but I find most nutrition apps a little overwhelming.
-
-I wanted something that focused on actual meals instead of turning food into a bunch of numbers.
-
-Well Fed is my collection of dishes, organized by things like fiber, protein, cholesterol, budget, and how much effort I feel like putting into cooking.
-
-You can search for ingredients, find meals based on your priorities, and keep a private daily food log.
-
-No food guilt, no complicated rules. Just trying to eat well and enjoy it.
-
-`HTML · JSON · JavaScript`
+**Stack:** HTML · JSON · JavaScript
 
 ---
 
-## A few technical details
+## Tech
 
-The site is intentionally simple. Most of it is plain HTML, CSS, and JavaScript, with JSON files holding the project data.
+The portfolio is built primarily with vanilla HTML, CSS, and JavaScript, using JSON for structured data, Leaflet.js for interactive maps, and D3.js for visualizations. Everything is hosted on GitHub Pages.
 
-I use Leaflet for maps, D3.js for some visualizations, and GitHub Pages to host everything.
-
-At work, my toolkit looks a little different: Snowflake, Matillion, Python, AWS, SQL, Looker, Tableau, and plenty of APIs.
-
-I'm also studying computer science at Penn Engineering, so some of my coursework and experiments end up here too.
+My professional work involves Python, SQL, Snowflake, BigQuery, Matillion, AWS, REST APIs, Tableau, and Looker, with a focus on data engineering, analytics, and automation.
 
 ---
 
-## Running it locally
+## Running locally
 
-If you'd like to poke around:
+Clone the repository and start a local server:
 
 ```bash
 git clone https://github.com/annalinhvu/annalinhvu.github.io.git
@@ -184,8 +114,4 @@ cd annalinhvu.github.io
 python3 -m http.server 8080
 ```
 
-Then open [http://localhost:8080](http://localhost:8080). No dependencies to install.
-
----
-
-That's about it! This website is a work in progress, and I like keeping it that way. I'll probably keep adding things whenever I find a new interest, need a little tool, or have an idea I can't stop thinking about.
+Then open [http://localhost:8080](http://localhost:8080).
