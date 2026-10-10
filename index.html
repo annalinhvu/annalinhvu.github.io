@@ -983,7 +983,7 @@ body {
 .proj-desc{font-size:14px;}
 .sch-intro,.sch-desc{font-size:15px;}
 
-/* ── Compact rows for earlier work and coursework: same cards (filters, playground,
+/* ── Compact rows for earlier work and coursework: same cards (filters, terminal,
       prototypes still work), shown as one-line rows so the recent work leads ── */
 .proj-grid.compact{display:flex;flex-direction:column;gap:0;border:1px solid var(--bd);border-radius:12px;overflow:hidden;background:var(--surface);}
 .proj-grid.compact .proj-card{display:grid;grid-template-columns:minmax(0,1fr) auto;column-gap:16px;row-gap:3px;padding:13px 20px;border:none;border-radius:0;border-bottom:1px solid var(--bd);background:transparent;box-shadow:none;}
@@ -1159,7 +1159,7 @@ body {
     <button class="top-tab"        data-pane="career"  role="tab">experience</button>
     <button class="top-tab"        data-pane="studio"  role="tab">side projects</button>
     <button class="top-tab"        data-pane="architecture" role="tab">architecture</button>
-    <button class="top-tab"        data-pane="console" role="tab">playground</button>
+    <button class="top-tab"        data-pane="console" role="tab">terminal</button>
     <div class="tab-indicator"></div>
   </nav>
 
@@ -1373,7 +1373,7 @@ body {
       <div class="work-wrap">
         <div class="intro">
           <p class="intro-lead">Hi, I'm Anna, a Principal Data Engineer based in New York City. I work at a growth marketing company, building the data platforms behind enterprise clients that spend billions on marketing.</p>
-          <p class="intro-sub">My work is below. If you'd like to go deeper, <a href="#" class="intro-link" data-go="architecture">architecture</a> shows how I design these systems, and the <a href="#" class="intro-link" data-go="console">playground</a> lets you query this site in SQL, Python, Java, or C.</p>
+          <p class="intro-sub">My work is below. If you'd like to go deeper, <a href="#" class="intro-link" data-go="architecture">architecture</a> shows how I design these systems, and the <a href="#" class="intro-link" data-go="console">terminal</a> lets you query this site in SQL, Python, Java, or C.</p>
           <div class="intro-actions">
             <a href="#" class="cta-btn cta-primary" data-go="career">see experience →</a>
           </div>
@@ -2938,7 +2938,7 @@ document.addEventListener('click', function(e) {
   };
 
   var TIPS = [
-    "The playground tab is real. Type <code>anna.skills()</code> in Python mode. 💻",
+    "The terminal tab is real. Type <code>anna.skills()</code> in Python mode. 💻",
     "There's a hidden game somewhere on this page. I am not going to tell you where. 👀",
     "She once refactored an entire data warehouse. 1,000+ tables. Just... tidied them all up. 🧹",
     "The Cơm Nhà recipe app exists because she kept losing recipes in her notes app. Relatable. 🍜",
@@ -2963,7 +2963,7 @@ document.addEventListener('click', function(e) {
     built:  "Five years of production data engineering. Featured projects up top, then the full stack. 💼",
     career: null,
     architecture: "How the data actually moves. Click any table and follow it downstream. 🗂️",
-    console:"Honestly the playground is my favorite. Try <code>anna.skills()</code> in Python mode. 💻"
+    console:"Honestly the terminal is my favorite. Try <code>anna.skills()</code> in Python mode. 💻"
   };
 
   function getGreeting() {
