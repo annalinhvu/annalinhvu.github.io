@@ -88,14 +88,6 @@ An independently researched directory of nonprofit organizations working in huma
 
 **Stack:** HTML · JavaScript
 
-### Well Fed
-
-[View Project ↗](https://annalinhvu.github.io/projects/well-fed/)
-
-A curated food and nutrition tool focused on practical, everyday eating. Browse meals by ingredients, dietary priorities, budget, and preparation effort, with personalized filtering and a private daily food log. Designed to make healthy eating more approachable without rigid meal plans.
-
-**Stack:** HTML · JSON · JavaScript
-
 ---
 
 ## Tech
