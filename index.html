@@ -889,6 +889,63 @@ body {
 .res-row.res-link{cursor:pointer;}
 .res-row.res-link:hover span{color:var(--amber);}
 
+/* ── Schema tab ── */
+.sch-wrap{padding:24px 44px 40px;}
+.sch-intro{font-size:13.5px;color:var(--t3);line-height:1.7;margin-bottom:16px;max-width:760px;}
+.sch-graph-wrap{overflow-x:auto;border:1px solid var(--bd);border-radius:10px;background:rgba(128,128,128,.03);padding:12px 8px;margin-bottom:22px;}
+.sch-graph{display:block;width:100%;min-width:760px;height:auto;}
+.sch-colhd{font-family:'Geist Mono',monospace;font-size:9.5px;letter-spacing:1.6px;fill:var(--t4);text-anchor:middle;}
+.sch-edge{fill:none;stroke:var(--bd-hi);stroke-width:1.2;transition:stroke .2s,opacity .2s;}
+.sch-edge.on{stroke:var(--amber);stroke-width:1.6;}
+.sch-graph:has(.sch-node.sel) .sch-edge:not(.on){opacity:.35;}
+.sch-node{cursor:pointer;outline:none;transition:opacity .2s;}
+.sch-node rect{fill:var(--surface);stroke-width:1.4;transition:fill .15s,stroke .15s;}
+.sch-node text{font-family:'Geist Mono',monospace;font-size:11px;fill:var(--t2);text-anchor:middle;pointer-events:none;}
+.sch-node:hover rect,.sch-node:focus-visible rect{fill:rgba(128,128,128,.14);}
+.sch-node.sel rect{stroke:var(--amber);fill:rgba(200,120,94,.14);stroke-width:1.8;}
+.sch-node.sel text{fill:var(--t1);}
+.sch-node.off{opacity:.3;}
+.lay-source rect{stroke:var(--t4);stroke-dasharray:3 3;}
+.lay-staging rect{stroke:rgba(94,122,98,.75);}
+.lay-intermediate rect{stroke:rgba(122,106,150,.8);}
+.lay-dimension rect,.lay-fact rect{stroke:rgba(200,168,56,.7);}
+.lay-qa rect{stroke:rgba(212,112,128,.7);}
+.lay-exposure rect{stroke:var(--t3);stroke-dasharray:1 3;stroke-linecap:round;}
+.sch-detail{border:1px solid var(--bd);border-radius:12px;background:var(--surface);padding:22px 24px;}
+.sch-hd{display:flex;align-items:baseline;gap:10px;flex-wrap:wrap;margin-bottom:8px;}
+.sch-name{font-family:'Geist Mono',monospace;font-size:16px;font-weight:600;color:var(--t1);}
+.sch-badge,.sch-mat{font-family:'Geist Mono',monospace;font-size:10px;padding:2px 9px;border:1px solid var(--tag-bd);border-radius:7px;color:var(--tag-col);}
+.sch-badge.lay-qa{color:var(--rose);border-color:var(--rose);}
+.sch-badge.lay-fact,.sch-badge.lay-dimension{color:var(--amber);border-color:var(--amber);}
+.sch-mat{color:var(--t3);}
+.sch-desc{font-size:13.5px;color:var(--t2);line-height:1.75;margin-bottom:16px;max-width:820px;}
+.sch-body{display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,1fr);gap:28px;}
+.sch-sub{font-family:'Geist Mono',monospace;font-size:10px;letter-spacing:1.8px;text-transform:uppercase;color:var(--amber);margin:14px 0 8px;}
+.sch-body > div > .sch-sub:first-child{margin-top:0;}
+.sch-cols{font-family:'Geist Mono',monospace;font-size:12px;}
+.sch-col{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,.8fr) minmax(0,1.1fr);gap:10px;padding:4px 0;border-bottom:1px solid var(--bd);}
+.sch-col:last-child{border-bottom:none;}
+.sch-cn{color:var(--t1);overflow-wrap:anywhere;}
+.sch-ct{color:var(--mono-g);}
+.sch-cnote{color:var(--t4);font-size:11px;}
+.sch-fact{font-family:'Geist Mono',monospace;font-size:12px;color:var(--t2);margin-top:10px;}
+.sch-fact span{color:var(--t4);margin-right:8px;}
+.sch-tests{font-family:'Geist Mono',monospace;font-size:11.5px;color:var(--accent);line-height:1.9;}
+.sch-chips{display:flex;flex-wrap:wrap;gap:6px;}
+.sch-chip{font-family:'Geist Mono',monospace;font-size:10.5px;padding:3px 10px;border:1px solid var(--bd-hi);border-radius:7px;background:none;color:var(--t2);cursor:pointer;transition:color .12s,border-color .12s;}
+.sch-chip:hover{color:var(--amber);border-color:var(--amber);}
+.sch-none{font-family:'Geist Mono',monospace;font-size:11px;color:var(--t4);}
+.sch-sql{font-family:'Geist Mono',monospace;font-size:12px;line-height:1.7;color:var(--t2);background:var(--panel-hd);border:1px solid var(--bd);border-radius:8px;padding:14px 16px;overflow-x:auto;white-space:pre;margin:0;}
+.sq-k{color:var(--amber);}
+.sq-s{color:var(--accent);}
+.sq-j{color:var(--mono-g);font-style:italic;}
+.sq-c{color:var(--t4);font-style:italic;}
+@media (max-width: 768px) {
+  .sch-wrap{padding:16px;}
+  .sch-body{grid-template-columns:1fr;gap:6px;}
+  .sch-detail{padding:18px 16px;}
+}
+
 /* ── LEARNING skill dim ── */
 .panel-skill-line.learning{opacity:.45;font-style:italic;}
 
@@ -1038,6 +1095,7 @@ body {
     <button class="top-tab"        data-pane="studio"  role="tab">studio</button>
     <button class="top-tab active" data-pane="built"   role="tab">built</button>
     <button class="top-tab"        data-pane="career"  role="tab">career</button>
+    <button class="top-tab"        data-pane="schema"  role="tab">schema</button>
     <button class="top-tab"        data-pane="console"    role="tab">terminal</button>
     <div class="tab-indicator"></div>
   </nav>
@@ -1492,6 +1550,21 @@ body {
       </div>
     </section>
 
+
+    <!-- ════ SCHEMA (data model explorer) ═══════════ -->
+    <section class="tab-pane" id="pane-schema" role="tabpanel">
+      <div class="query-bar">
+        <span class="kw">SELECT</span><span>&nbsp;*&nbsp;</span>
+        <span class="kw">FROM</span><span>&nbsp;</span>
+        <span class="tbl">anna_vu.lineage</span>
+        <span class="cmt">-- illustrative model · generic names, no client data</span>
+      </div>
+      <div class="sch-wrap">
+        <p class="sch-intro">An illustrative model of the kind of marketing warehouse I build: ad platforms and web analytics in, one tested reporting layer out. Click any table to trace its lineage and read its SQL.</p>
+        <div class="sch-graph-wrap"><svg class="sch-graph" id="sch-graph" role="group" aria-label="Warehouse lineage graph"></svg></div>
+        <div class="sch-detail" id="sch-detail"></div>
+      </div>
+    </section>
 
     <!-- ════ CONSOLE (interactive query) ═══════════ -->
     <section class="tab-pane" id="pane-console" role="tabpanel">
@@ -2050,7 +2123,7 @@ function toggleTheme() {
 /* ── Arrow key nav ── */
 document.addEventListener('keydown', function(e) {
   if (document.activeElement && document.activeElement.id === 'console-input') return;
-  var tabs = ['studio','built','career','console'];
+  var tabs = ['studio','built','career','schema','console'];
   var active = document.querySelector('.top-tab.active');
   if (!active) return;
   var idx = tabs.indexOf(active.dataset.pane);
@@ -2080,6 +2153,7 @@ function paneCount(id) {
   if (id === 'studio') return [].filter.call(document.querySelectorAll('#pane-studio .db-row'), function(r) { return r.style.display !== 'none'; }).length;
   if (id === 'built')  return [].filter.call(document.querySelectorAll('#pane-built .proj-card'), function(c) { return !c.hidden; }).length;
   if (id === 'career') return document.querySelectorAll('#pane-career .exp-item').length;
+  if (id === 'schema') return document.querySelectorAll('#sch-graph .sch-node').length;
   return 0;
 }
 
@@ -2275,6 +2349,254 @@ switchPane = function(id) {
   render();
 })();
 
+/* ── Schema tab: an illustrative marketing warehouse, explorable by lineage ── */
+(function() {
+  var graph = document.getElementById('sch-graph');
+  var detail = document.getElementById('sch-detail');
+  if (!graph || !detail) return;
+
+  var LAYERS = {
+    source:       {label:'source',       col:'SOURCES'},
+    staging:      {label:'staging',      col:'STAGING'},
+    intermediate: {label:'intermediate', col:'INTERMEDIATE'},
+    dimension:    {label:'dimension',    col:'DIMENSIONS'},
+    fact:         {label:'fact',         col:'FACTS & QA'},
+    qa:           {label:'data quality', col:'FACTS & QA'},
+    exposure:     {label:'exposure',     col:'EXPOSURES'}
+  };
+  var COLS = ['SOURCES','STAGING','INTERMEDIATE','DIMENSIONS','FACTS & QA','EXPOSURES'];
+
+  function stg(platform, srcTable, dateExpr, campaignName, spendExpr) {
+    return "select\n"
+      + "    " + dateExpr + " as date_day,\n"
+      + "    '" + platform + "' as platform,\n"
+      + "    campaign_id::varchar as campaign_id,\n"
+      + "    " + campaignName + " as campaign_name,\n"
+      + "    " + spendExpr + " as spend,\n"
+      + "    impressions::int as impressions,\n"
+      + "    clicks::int as clicks\n"
+      + "from {{ source('" + platform + "', '" + srcTable + "') }}";
+  }
+  var STD_COLS = [['date_day','date'],['platform','varchar'],['campaign_id','varchar'],['campaign_name','varchar'],['spend','number(18,2)','in USD'],['impressions','int'],['clicks','int']];
+  var STD_TESTS = ['not_null(date_day)','not_null(campaign_id)','spend >= 0'];
+
+  var MODELS = [
+    /* sources */
+    {id:'google_ads.ad_stats', label:'google_ads', layer:'source', col:0, row:0, loaded:'Python API connector', fresh:'warn 12h · error 24h',
+      desc:'Campaign stats from the Google Ads API, landed as-is.',
+      cols:[['customer_id','varchar'],['campaign_id','number'],['campaign_name','varchar'],['segments_date','date'],['cost_micros','number','spend × 1,000,000'],['impressions','number'],['clicks','number']]},
+    {id:'meta_ads.ad_insights', label:'meta_ads', layer:'source', col:0, row:1, loaded:'Python API connector', fresh:'warn 12h · error 24h',
+      desc:'Campaign insights from the Meta Marketing API.',
+      cols:[['account_id','varchar'],['campaign_id','varchar'],['campaign_name','varchar'],['date_start','varchar'],['spend','varchar'],['impressions','varchar'],['clicks','varchar']]},
+    {id:'cm360.delivery', label:'cm360', layer:'source', col:0, row:2, loaded:'SFTP file drop, loaded by Matillion', fresh:'warn 24h · error 48h',
+      desc:'Daily delivery report from Campaign Manager 360, arriving as files over SFTP.',
+      cols:[['advertiser_id','number'],['campaign_id','number'],['campaign','varchar'],['date','date'],['media_cost','number'],['impressions','number'],['clicks','number']]},
+    {id:'tiktok_ads.ad_stats', label:'tiktok_ads', layer:'source', col:0, row:3, loaded:'Python API connector', fresh:'warn 12h · error 24h',
+      desc:'Campaign stats from the TikTok Marketing API.',
+      cols:[['advertiser_id','varchar'],['campaign_id','varchar'],['campaign_name','varchar'],['stat_time_day','timestamp'],['spend','float'],['impressions','int'],['clicks','int']]},
+    {id:'ga4.events', label:'ga4', layer:'source', col:0, row:4, loaded:'GA4 export to BigQuery, synced to Snowflake', fresh:'warn 24h · error 48h',
+      desc:'Event-level web analytics: one row per event, nested parameters in a variant column.',
+      cols:[['event_date','varchar','YYYYMMDD'],['event_name','varchar'],['user_pseudo_id','varchar'],['session_id','number'],['traffic_source','variant','utm fields']]},
+    {id:'sheets.taxonomy_match_table', label:'sheets', layer:'source', col:0, row:5, loaded:'Google Sheets, synced by Apps Script', fresh:'warn 7d',
+      desc:'The match table the Media team maintains: what each campaign code means.',
+      cols:[['campaign_code','varchar'],['brand','varchar'],['market','varchar'],['objective','varchar']]},
+
+    /* staging: one view per source, renamed and typed into a shared shape */
+    {id:'stg_google_ads', layer:'staging', col:1, row:0, mat:'view', grain:'campaign × day', up:['google_ads.ad_stats'],
+      desc:'Google Ads in the standard ad-spend shape. Cost arrives in micros, so it is divided here once.',
+      cols:STD_COLS, tests:STD_TESTS, sql:stg('google_ads','ad_stats','segments_date','campaign_name','cost_micros / 1e6')},
+    {id:'stg_meta_ads', layer:'staging', col:1, row:1, mat:'view', grain:'campaign × day', up:['meta_ads.ad_insights'],
+      desc:'Meta in the standard shape. The API returns everything as strings, so types are cast here.',
+      cols:STD_COLS, tests:STD_TESTS, sql:stg('meta_ads','ad_insights','date_start::date','campaign_name','spend::number(18,2)')},
+    {id:'stg_cm360', layer:'staging', col:1, row:2, mat:'view', grain:'campaign × day', up:['cm360.delivery'],
+      desc:'CM360 delivery in the standard shape.',
+      cols:STD_COLS, tests:STD_TESTS, sql:stg('cm360','delivery','date','campaign','media_cost')},
+    {id:'stg_tiktok_ads', layer:'staging', col:1, row:3, mat:'view', grain:'campaign × day', up:['tiktok_ads.ad_stats'],
+      desc:'TikTok in the standard shape. Timestamps are truncated to the reporting day.',
+      cols:STD_COLS, tests:STD_TESTS, sql:stg('tiktok_ads','ad_stats','stat_time_day::date','campaign_name','spend::number(18,2)')},
+    {id:'stg_ga4_sessions', layer:'staging', col:1, row:4, mat:'view', grain:'session', up:['ga4.events'],
+      desc:'GA4 events rolled up to sessions, with the campaign that brought each one in.',
+      cols:[['date_day','date'],['session_key','varchar','user + session id'],['utm_campaign','varchar'],['is_conversion','boolean']],
+      tests:['unique(session_key)','not_null(date_day)'],
+      sql:"select\n    to_date(event_date, 'YYYYMMDD') as date_day,\n    user_pseudo_id || '-' || session_id as session_key,\n    any_value(traffic_source:campaign::varchar) as utm_campaign,\n    boolor_agg(event_name = 'purchase') as is_conversion\nfrom {{ source('ga4', 'events') }}\ngroup by 1, 2"},
+    {id:'stg_taxonomy', layer:'staging', col:1, row:5, mat:'view', grain:'campaign code', up:['sheets.taxonomy_match_table'],
+      desc:'The match table, cleaned up. Spreadsheets drift, so codes are trimmed and upper-cased.',
+      cols:[['campaign_code','varchar'],['brand','varchar'],['market','varchar'],['objective','varchar']],
+      tests:['unique(campaign_code)','not_null(campaign_code)'],
+      sql:"select\n    upper(trim(campaign_code)) as campaign_code,\n    brand,\n    upper(market) as market,\n    lower(objective) as objective\nfrom {{ source('sheets', 'taxonomy_match_table') }}\nwhere campaign_code is not null"},
+
+    /* intermediate */
+    {id:'int_ad_spend_unioned', layer:'intermediate', col:2, row:1.5, mat:'view', grain:'platform × campaign × day',
+      up:['stg_google_ads','stg_meta_ads','stg_cm360','stg_tiktok_ads'],
+      desc:'Every ad platform stacked into one shape, so nothing downstream needs to know where spend came from. Adding a platform means adding one staging model and one line here.',
+      cols:STD_COLS, tests:["accepted_values(platform, ['google_ads','meta_ads','cm360','tiktok_ads'])"],
+      sql:"{% set platforms = ['stg_google_ads', 'stg_meta_ads', 'stg_cm360', 'stg_tiktok_ads'] %}\n\n{% for p in platforms %}\nselect date_day, platform, campaign_id, campaign_name, spend, impressions, clicks\nfrom {{ ref(p) }}\n{% if not loop.last %}union all{% endif %}\n{% endfor %}"},
+
+    /* dimensions */
+    {id:'dim_campaign', layer:'dimension', col:3, row:3.2, mat:'table', grain:'campaign', up:['int_ad_spend_unioned','stg_taxonomy'],
+      desc:'One row per campaign. Names follow BRAND_MARKET_OBJECTIVE_CODE, so the code is parsed out and joined to the match table to fill in brand, market and objective.',
+      cols:[['campaign_key','varchar','PK · md5(platform, id)'],['platform','varchar'],['campaign_id','varchar'],['campaign_name','varchar'],['brand','varchar'],['market','varchar'],['objective','varchar'],['is_valid_name','boolean'],['is_mapped','boolean']],
+      tests:['unique(campaign_key)','not_null(campaign_key)'],
+      sql:"with campaigns as (\n    select platform, campaign_id, campaign_name\n    from {{ ref('int_ad_spend_unioned') }}\n    -- names can change mid-flight; keep the latest\n    qualify row_number() over (\n        partition by platform, campaign_id order by date_day desc\n    ) = 1\n)\n\nselect\n    md5(c.platform || '|' || c.campaign_id) as campaign_key,\n    c.platform,\n    c.campaign_id,\n    c.campaign_name,\n    coalesce(t.brand, 'unmapped') as brand,\n    t.market,\n    t.objective,\n    regexp_like(c.campaign_name, '^[A-Z0-9]+_[A-Z]{2}_[A-Z]+_[A-Z0-9]+$') as is_valid_name,\n    t.campaign_code is not null as is_mapped\nfrom campaigns c\nleft join {{ ref('stg_taxonomy') }} t\n    on split_part(c.campaign_name, '_', 4) = t.campaign_code"},
+    {id:'dim_date', layer:'dimension', col:3, row:4.5, mat:'table', grain:'calendar day', up:[],
+      desc:'A date spine, so reports can show weeks and months with no gaps, even on days nothing ran.',
+      cols:[['date_day','date','PK'],['week_start','date'],['month_start','date'],['quarter','int'],['is_weekend','boolean']],
+      tests:['unique(date_day)','not_null(date_day)'],
+      sql:"with spine as (\n    select dateadd(day, seq4(), '2020-01-01'::date) as date_day\n    from table(generator(rowcount => 3653))\n)\n\nselect\n    date_day,\n    date_trunc('week', date_day) as week_start,\n    date_trunc('month', date_day) as month_start,\n    quarter(date_day) as quarter,\n    dayofweekiso(date_day) in (6, 7) as is_weekend\nfrom spine"},
+
+    /* facts + data quality */
+    {id:'qa_kpi_anomalies', layer:'qa', col:4, row:0, mat:'view', grain:'campaign × day (flagged only)', up:['int_ad_spend_unioned'],
+      desc:'Days where a campaign\'s spend moves more than 3 standard deviations from its trailing two weeks. A non-empty result posts to Slack.',
+      cols:[['platform','varchar'],['campaign_id','varchar'],['date_day','date'],['spend','number'],['trailing_avg','number'],['z_score','float']],
+      tests:[],
+      sql:"with daily as (\n    select platform, campaign_id, date_day, sum(spend) as spend\n    from {{ ref('int_ad_spend_unioned') }}\n    group by 1, 2, 3\n),\n\nscored as (\n    select\n        *,\n        avg(spend) over (\n            partition by platform, campaign_id order by date_day\n            rows between 14 preceding and 1 preceding\n        ) as trailing_avg,\n        stddev(spend) over (\n            partition by platform, campaign_id order by date_day\n            rows between 14 preceding and 1 preceding\n        ) as trailing_sd\n    from daily\n)\n\nselect\n    platform, campaign_id, date_day, spend, trailing_avg,\n    (spend - trailing_avg) / nullif(trailing_sd, 0) as z_score\nfrom scored\nwhere abs(z_score) > 3\n  and date_day >= current_date - 3"},
+    {id:'qa_taxonomy_violations', layer:'qa', col:4, row:1, mat:'view', grain:'campaign (flagged only)', up:['dim_campaign'],
+      desc:'Campaigns the Media team needs to fix before they reach reporting: badly formed names, or codes missing from the match table.',
+      cols:[['campaign_key','varchar'],['platform','varchar'],['campaign_name','varchar'],['reason','varchar']],
+      tests:[],
+      sql:"select\n    campaign_key,\n    platform,\n    campaign_name,\n    case\n        when not is_valid_name then 'name does not follow BRAND_MARKET_OBJECTIVE_CODE'\n        when not is_mapped then 'campaign code missing from match table'\n    end as reason\nfrom {{ ref('dim_campaign') }}\nwhere not is_valid_name or not is_mapped"},
+    {id:'fct_daily_spend', layer:'fact', col:4, row:2.5, mat:'incremental', grain:'campaign × day', up:['int_ad_spend_unioned','dim_campaign'],
+      desc:'The core reporting table: spend and delivery for every campaign on every day, across all platforms.',
+      cols:[['campaign_key','varchar','FK → dim_campaign'],['date_day','date','FK → dim_date'],['spend','number(18,2)'],['impressions','int'],['clicks','int'],['ctr','float'],['cpc','number']],
+      tests:['unique(campaign_key, date_day)','relationships(campaign_key → dim_campaign)','relationships(date_day → dim_date)','spend >= 0'],
+      sql:"{{ config(materialized='incremental', unique_key=['campaign_key', 'date_day']) }}\n\nselect\n    c.campaign_key,\n    s.date_day,\n    sum(s.spend) as spend,\n    sum(s.impressions) as impressions,\n    sum(s.clicks) as clicks,\n    div0(sum(s.clicks), sum(s.impressions)) as ctr,\n    div0(sum(s.spend), sum(s.clicks)) as cpc\nfrom {{ ref('int_ad_spend_unioned') }} s\njoin {{ ref('dim_campaign') }} c\n    on s.platform = c.platform\n   and s.campaign_id = c.campaign_id\n{% if is_incremental() %}\n-- platforms restate recent days, so reprocess a trailing week\nwhere s.date_day >= (select dateadd(day, -7, max(date_day)) from {{ this }})\n{% endif %}\ngroup by 1, 2"},
+    {id:'fct_daily_conversions', layer:'fact', col:4, row:4, mat:'table', grain:'campaign × day', up:['stg_ga4_sessions','dim_campaign'],
+      desc:'Sessions and conversions from the website, credited to the campaign that drove them.',
+      cols:[['campaign_key','varchar','FK → dim_campaign'],['date_day','date','FK → dim_date'],['sessions','int'],['conversions','int']],
+      tests:['unique(campaign_key, date_day)','relationships(campaign_key → dim_campaign)'],
+      sql:"select\n    c.campaign_key,\n    s.date_day,\n    count(distinct s.session_key) as sessions,\n    count_if(s.is_conversion) as conversions\nfrom {{ ref('stg_ga4_sessions') }} s\njoin {{ ref('dim_campaign') }} c\n    on lower(s.utm_campaign) = lower(c.campaign_name)\ngroup by 1, 2"},
+
+    /* exposures */
+    {id:'Slack · #media-alerts', label:'Slack', layer:'exposure', col:5, row:0.5, up:['qa_kpi_anomalies','qa_taxonomy_violations'], owner:'Media team',
+      desc:'A bot posts here whenever either QA model returns rows, so problems get fixed before anyone sees them in a dashboard.'},
+    {id:'Looker · Performance', label:'Looker', layer:'exposure', col:5, row:2.5, up:['fct_daily_spend','fct_daily_conversions'], owner:'Client strategy',
+      desc:'Day-to-day performance: spend, delivery, conversions and cost per result by platform, brand and market.'},
+    {id:'Tableau · Pacing', label:'Tableau', layer:'exposure', col:5, row:4, up:['fct_daily_spend','dim_date'], owner:'Activation team',
+      desc:'Budget pacing: month-to-date spend against plan, so over- and under-delivery shows up early.'}
+  ];
+
+  var byId = {};
+  MODELS.forEach(function(m) { byId[m.id] = m; m.up = m.up || []; m.down = []; });
+  MODELS.forEach(function(m) { m.up.forEach(function(u) { byId[u].down.push(m.id); }); });
+
+  /* ── Graph ── */
+  var COLW = [104, 132, 158, 122, 172, 92], H = 30, GAP = 26, ROW = 44, TOP = 34, PAD = 8;
+  var COLX = [], acc = PAD;
+  COLW.forEach(function(w) { COLX.push(acc); acc += w + GAP; });
+  var VW = acc - GAP + PAD, VH = TOP + 5 * ROW + H + PAD;
+  function nx(m) { return COLX[m.col]; }
+  function nw(m) { return COLW[m.col]; }
+  function ny(m) { return TOP + m.row * ROW; }
+  function escHtml(t) { return String(t).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;'); }
+
+  var svg = '';
+  COLS.forEach(function(c, i) {
+    svg += '<text class="sch-colhd" x="' + (COLX[i] + COLW[i] / 2) + '" y="14">' + c + '</text>';
+  });
+  MODELS.forEach(function(m) {
+    m.up.forEach(function(u) {
+      var a = byId[u];
+      var x1 = nx(a) + nw(a), y1 = ny(a) + H / 2, x2 = nx(m), y2 = ny(m) + H / 2, xm = (x1 + x2) / 2;
+      svg += '<path class="sch-edge" data-from="' + escHtml(u) + '" data-to="' + escHtml(m.id) + '" d="M' + x1 + ',' + y1 + ' C' + xm + ',' + y1 + ' ' + xm + ',' + y2 + ' ' + x2 + ',' + y2 + '"/>';
+    });
+  });
+  MODELS.forEach(function(m) {
+    svg += '<g class="sch-node lay-' + m.layer + '" data-id="' + escHtml(m.id) + '" tabindex="0" role="button" aria-label="' + escHtml(m.id) + ', ' + LAYERS[m.layer].label + '">'
+      + '<rect x="' + nx(m) + '" y="' + ny(m) + '" width="' + nw(m) + '" height="' + H + '" rx="7"/>'
+      + '<text x="' + (nx(m) + nw(m) / 2) + '" y="' + (ny(m) + H / 2 + 4) + '">' + escHtml(m.label || m.id) + '</text></g>';
+  });
+  graph.setAttribute('viewBox', '0 0 ' + VW + ' ' + VH);
+  graph.innerHTML = svg;
+
+  function walk(id, dir, seen) {
+    byId[id][dir].forEach(function(n) { if (!seen[n]) { seen[n] = 1; walk(n, dir, seen); } });
+    return seen;
+  }
+
+  /* ── Detail panel ── */
+  var KW = 'select|from|where|join|left|on|and|or|not|as|with|group|by|order|partition|over|rows|between|preceding|union|all|case|when|then|else|end|is|null|in|distinct|qualify|table|set|for|if|endif|endfor';
+  var SQL_RX = new RegExp("(--[^\\n]*)|('[^'\\n]*')|(\\{\\{[\\s\\S]*?\\}\\}|\\{%[\\s\\S]*?%\\})|\\b(" + KW + ")\\b", 'gi');
+  function hl(sql) {
+    return escHtml(sql).replace(SQL_RX, function(m, c, s, j, k) {
+      if (c) return '<span class="sq-c">' + c + '</span>';
+      if (s) return '<span class="sq-s">' + s + '</span>';
+      if (j) return '<span class="sq-j">' + j + '</span>';
+      return '<span class="sq-k">' + k + '</span>';
+    });
+  }
+  function chips(ids) {
+    if (!ids.length) return '<span class="sch-none">none</span>';
+    return ids.map(function(id) { return '<button type="button" class="sch-chip" data-id="' + escHtml(id) + '">' + escHtml(id) + '</button>'; }).join('');
+  }
+  function fact(k, v) { return v ? '<div class="sch-fact"><span>' + k + '</span>' + escHtml(v) + '</div>' : ''; }
+
+  function renderDetail(m) {
+    var h = '<div class="sch-hd"><span class="sch-name">' + escHtml(m.id) + '</span>'
+      + '<span class="sch-badge lay-' + m.layer + '">' + LAYERS[m.layer].label + '</span>'
+      + (m.mat ? '<span class="sch-mat">' + m.mat + '</span>' : '') + '</div>'
+      + '<p class="sch-desc">' + escHtml(m.desc) + '</p>'
+      + '<div class="sch-body"><div>';
+    if (m.cols) {
+      h += '<div class="sch-sub">columns</div><div class="sch-cols">'
+        + m.cols.map(function(c) {
+            return '<div class="sch-col"><span class="sch-cn">' + escHtml(c[0]) + '</span><span class="sch-ct">' + escHtml(c[1]) + '</span><span class="sch-cnote">' + escHtml(c[2] || '') + '</span></div>';
+          }).join('') + '</div>';
+    }
+    h += fact('grain', m.grain) + fact('loaded by', m.loaded) + fact('freshness', m.fresh) + fact('owner', m.owner) + '</div><div>';
+    if (m.tests && m.tests.length) {
+      h += '<div class="sch-sub">tests</div><div class="sch-tests">' + m.tests.map(function(t) { return '<div>✓ ' + escHtml(t) + '</div>'; }).join('') + '</div>';
+    }
+    h += '<div class="sch-sub">upstream</div><div class="sch-chips">' + chips(m.up) + '</div>'
+      + '<div class="sch-sub">downstream</div><div class="sch-chips">' + chips(m.down) + '</div>'
+      + '</div></div>';
+    if (m.sql) h += '<div class="sch-sub">' + escHtml(m.id) + '.sql</div><pre class="sch-sql">' + hl(m.sql) + '</pre>';
+    detail.innerHTML = h;
+  }
+
+  function select(id) {
+    var m = byId[id];
+    if (!m) return;
+    var up = walk(id, 'up', {}), down = walk(id, 'down', {});
+    graph.querySelectorAll('.sch-node').forEach(function(n) {
+      var nid = n.getAttribute('data-id');
+      n.classList.toggle('sel', nid === id);
+      n.classList.toggle('off', nid !== id && !up[nid] && !down[nid]);
+    });
+    graph.querySelectorAll('.sch-edge').forEach(function(e) {
+      var f = e.getAttribute('data-from'), t = e.getAttribute('data-to');
+      var on = ((up[f] || f === id) && (up[t] || t === id)) || ((down[f] || f === id) && (down[t] || t === id));
+      e.classList.toggle('on', !!on);
+    });
+    renderDetail(m);
+  }
+
+  graph.addEventListener('click', function(e) {
+    var n = e.target.closest('.sch-node');
+    if (n) select(n.getAttribute('data-id'));
+  });
+  graph.addEventListener('keydown', function(e) {
+    var n = e.target.closest('.sch-node');
+    if (n && (e.key === 'Enter' || e.key === ' ')) { e.preventDefault(); select(n.getAttribute('data-id')); }
+  });
+  detail.addEventListener('click', function(e) {
+    var c = e.target.closest('.sch-chip');
+    if (c) select(c.getAttribute('data-id'));
+  });
+
+  window.SCHEMA = {
+    models: MODELS,
+    open: function(id) {
+      switchPane('schema');
+      select(id);
+      setTimeout(function() {
+        var n = graph.querySelector('.sch-node.sel');
+        if (n) n.scrollIntoView({block:'nearest', inline:'center', behavior:'smooth'});
+      }, 120);
+    }
+  };
+  select('fct_daily_spend');
+})();
+
 /* ── Init ── */
 (function() {
   var active = document.querySelector('.top-tab.active');
@@ -2454,6 +2776,7 @@ switchPane = function(id) {
     studio: "Built for curiosity, not deadlines. ✨",
     built:  "Five years of production data engineering. Featured projects up top, then the full stack. 💼",
     career: null,
+    schema: "How the data actually moves. Click any table and follow it downstream. 🗂️",
     console:"Honestly the terminal tab is my favorite. Try <code>anna.skills()</code> in Python mode. 💻"
   };
 
@@ -2806,7 +3129,7 @@ switchPane = function(id) {
     languages_spoken:['English','Vietnamese']
   };
   /* ── Live data: read from the page so the tables never go stale ── */
-  var SKILLS = [], EXPERIENCE = [], BUILT = [], STUDIO = [], PROJECTS = [];
+  var SKILLS = [], EXPERIENCE = [], BUILT = [], STUDIO = [], PROJECTS = [], MODELS = [];
   function txt(el, sel) { var n = sel ? el.querySelector(sel) : el; return n ? n.textContent.trim() : ''; }
   function tagList(el, sel) { return [].map.call(el.querySelectorAll(sel), function(t){ return t.textContent.trim(); }); }
   function titleCase(str) {
@@ -2842,11 +3165,15 @@ switchPane = function(id) {
       return withRef({title:txt(el, '.row-name'), category:txt(el, '.col-tech'), status:txt(el, '.col-status'),
         description:txt(el, '.row-desc'), url:el.getAttribute('href') || ''}, function(){ showOnPage('studio', el); });
     });
+    MODELS = (window.SCHEMA ? window.SCHEMA.models : []).map(function(m){
+      return withRef({name:m.id, layer:m.layer, materialized:m.mat || '', grain:m.grain || '', upstream:m.up.slice(), downstream:m.down.slice()},
+        function(){ window.SCHEMA.open(m.id); });
+    });
     PROJECTS = BUILT.map(function(x){ return withRef({title:x.title, tab:'built', category:x.section}, x._ref); })
       .concat(STUDIO.map(function(x){ return withRef({title:x.title, tab:'studio', category:x.category}, x._ref); }));
   }
   syncData();
-  var TABLES = ['anna','built','studio','projects','experience','skills','pumkin'];
+  var TABLES = ['anna','built','studio','projects','experience','skills','models','pumkin'];
 
   var ROW_REFS = [];
 
@@ -2897,6 +3224,7 @@ switchPane = function(id) {
     projects:   function(){ return {cols:['title','tab','category'], rows:PROJECTS}; },
     experience: function(){ return {cols:['title','company','location','period','stack'], rows:EXPERIENCE}; },
     skills:     function(){ return {cols:['category','skill'], rows:SKILLS}; },
+    models:     function(){ return {cols:['name','layer','materialized','grain','upstream','downstream'], rows:MODELS}; },
     pumkin:     function(){ return {cols:['trait','value'], rows:PUMKIN}; }
   };
   var SQL_KW = {SELECT:1,FROM:1,WHERE:1,GROUP:1,ORDER:1,BY:1,HAVING:1,LIMIT:1,AND:1,OR:1,NOT:1,AS:1,ASC:1,DESC:1,LIKE:1,ILIKE:1,IN:1,IS:1,NULL:1,DISTINCT:1,BETWEEN:1};
@@ -3432,6 +3760,7 @@ switchPane = function(id) {
       ["SELECT title, period FROM built WHERE stack = 'Snowflake'",'click a row'],
       ["SELECT title FROM studio WHERE category = 'Film'",'personal projects'],
       ['DESCRIBE built','table schema'],
+      ["SELECT name, grain FROM models WHERE layer = 'fact'",'warehouse lineage'],
       ['SELECT * FROM pumkin','meet pumkin'],
       ["pumkinsay 'hello!'",'any mode'],
       ["UPDATE anna SET status = 'hired'",'make it happen ;)'],
