@@ -20,6 +20,10 @@
   src:url(https://cdn.jsdelivr.net/fontsource/fonts/geist:vf@latest/latin-wght-normal.woff2) format('woff2-variations');
 }
 @font-face {
+  font-family:'Source Serif 4'; font-style:normal; font-display:swap; font-weight:200 900;
+  src:url(https://cdn.jsdelivr.net/fontsource/fonts/source-serif-4:vf@latest/latin-wght-normal.woff2) format('woff2-variations');
+}
+@font-face {
   font-family:'Geist Mono'; font-style:normal; font-display:swap; font-weight:100 900;
   src:url(https://cdn.jsdelivr.net/fontsource/fonts/geist-mono:vf@latest/latin-wght-normal.woff2) format('woff2-variations');
 }
@@ -1032,7 +1036,8 @@ body {
 
 /* ── Profile tagline ── */
 .profile-tagline {
-  font-size:12.5px;color:var(--t3);margin-top:6px;line-height:1.55;
+  font-family:'Source Serif 4',Georgia,'Times New Roman',serif;
+  font-size:14px;color:var(--t3);margin-top:6px;line-height:1.55;
 }
 
 /* ── CTA row ── */
@@ -1214,7 +1219,7 @@ body {
         <span class="tbl">anna_vu.creative_projects</span><span>&nbsp;</span>
         <span class="kw">ORDER BY</span><span>&nbsp;year&nbsp;</span>
         <span class="kw">DESC</span>
-        <span class="cmt">-- personal projects · 11 rows returned</span>
+        <span class="cmt">-- personal projects · 10 rows returned</span>
       </div>
       <div class="filter-bar">
         <span class="filter-kw"><span class="kw">WHERE</span>&nbsp;project_name&nbsp;<span class="kw">LIKE</span>&nbsp;'%</span>
@@ -1291,38 +1296,31 @@ body {
         <div class="col-status"><span class="live-dot"></span>live</div>
       </a>
 
-      <a href="projects/well-fed/" class="db-row std">
+      <a href="projects/recipes/" class="db-row std">
         <div class="col-idx">08</div>
-        <div class="col-name"><span class="row-name">Well Fed</span><span class="row-desc">A real, curated collection of dishes filtered by whatever health priorities you set. No random generation, no guilt.</span><span class="row-link">view project →</span></div>
-        <div class="col-tech">Wellness</div>
-        <div class="col-status"><span class="live-dot"></span>live</div>
-      </a>
-
-      <a href="projects/recipes/" class="db-row std alt">
-        <div class="col-idx">09</div>
         <div class="col-name"><span class="row-name">Cơm Nhà</span><span class="row-desc">Vietnamese recipes from Miền Bắc, Miền Trung, and Miền Nam. Browse by region, search by ingredient.</span><span class="row-link">view project →</span></div>
         <div class="col-tech">Food</div>
         <div class="col-status"><span class="live-dot"></span>live</div>
       </a>
 
-      <a href="projects/atlas/" class="db-row std">
-        <div class="col-idx">10</div>
+      <a href="projects/atlas/" class="db-row std alt">
+        <div class="col-idx">09</div>
         <div class="col-name"><span class="row-name">Departure Lounge</span><span class="row-desc">Destinations as boarding passes, with a calendar and budget planner for actually booking the trip.</span><span class="row-link">view project →</span></div>
         <div class="col-tech">Travel</div>
         <div class="col-status"><span class="live-dot"></span>live</div>
       </a>
 
-      <a href="projects/global-donation-guide/" class="db-row std alt">
-        <div class="col-idx">11</div>
+      <a href="projects/global-donation-guide/" class="db-row std">
+        <div class="col-idx">10</div>
         <div class="col-name"><span class="row-name">Global Donation Guide</span><span class="row-desc">Curated directory of humanitarian relief, global hunger, and animal welfare organizations worldwide. Each one researched individually, with direct donation links.</span><span class="row-link">view project →</span></div>
         <div class="col-tech">Giving</div>
         <div class="col-status"><span class="live-dot"></span>live</div>
       </a>
 
       <div class="db-footer">
-        <span>11 rows returned</span>
+        <span>10 rows returned</span>
         <span class="ft-live">● all systems live</span>
-        <span>last updated August 2026</span>
+        <span>last updated October 2026</span>
       </div>
     </section>
 
