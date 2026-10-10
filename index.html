@@ -906,7 +906,7 @@ body {
 .res-row.res-link{cursor:pointer;}
 .res-row.res-link:hover span{color:var(--amber);}
 
-/* ── Schema tab ── */
+/* ── Architecture tab ── */
 .sch-wrap{padding:24px 44px 40px;}
 .sch-intro{font-size:13.5px;color:var(--t3);line-height:1.7;margin-bottom:16px;max-width:760px;}
 .sch-graph-wrap{overflow-x:auto;border:1px solid var(--bd);border-radius:10px;background:rgba(128,128,128,.03);padding:12px 4px;margin-bottom:22px;}
@@ -962,6 +962,14 @@ body {
   .sch-body{grid-template-columns:1fr;gap:6px;}
   .sch-detail{padding:18px 16px;}
 }
+
+/* ── Serif for reading text (titles, bullets, prose); UI and data stay in Geist / Geist Mono ── */
+.proj-title,.exp-bullets li,.proj-desc,.sch-intro,.sch-desc{font-family:'Source Serif 4',Georgia,'Times New Roman',serif;}
+.proj-title{font-size:16.5px;letter-spacing:-.005em;}
+.exp-bullets li{font-size:15px;}
+.exp-bullets li::before{top:11px;}
+.proj-desc{font-size:14px;}
+.sch-intro,.sch-desc{font-size:15px;}
 
 /* ── LEARNING skill dim ── */
 .panel-skill-line.learning{opacity:.45;font-style:italic;}
@@ -1114,7 +1122,7 @@ body {
     <button class="top-tab"        data-pane="studio"  role="tab">studio</button>
     <button class="top-tab active" data-pane="built"   role="tab">built</button>
     <button class="top-tab"        data-pane="career"  role="tab">career</button>
-    <button class="top-tab"        data-pane="schema"  role="tab">schema</button>
+    <button class="top-tab"        data-pane="architecture" role="tab">architecture</button>
     <button class="top-tab"        data-pane="console"    role="tab">terminal</button>
     <div class="tab-indicator"></div>
   </nav>
@@ -1542,8 +1550,8 @@ body {
     </section>
 
 
-    <!-- ════ SCHEMA (data model explorer) ═══════════ -->
-    <section class="tab-pane" id="pane-schema" role="tabpanel">
+    <!-- ════ ARCHITECTURE (platform + data model explorer) ═══════════ -->
+    <section class="tab-pane" id="pane-architecture" role="tabpanel">
       <div class="query-bar">
         <span class="kw">SELECT</span><span>&nbsp;*&nbsp;</span>
         <span class="kw">FROM</span><span>&nbsp;</span>
@@ -2119,7 +2127,7 @@ function toggleTheme() {
 /* ── Arrow key nav ── */
 document.addEventListener('keydown', function(e) {
   if (document.activeElement && document.activeElement.id === 'console-input') return;
-  var tabs = ['studio','built','career','schema','console'];
+  var tabs = ['studio','built','career','architecture','console'];
   var active = document.querySelector('.top-tab.active');
   if (!active) return;
   var idx = tabs.indexOf(active.dataset.pane);
@@ -2149,7 +2157,7 @@ function paneCount(id) {
   if (id === 'studio') return [].filter.call(document.querySelectorAll('#pane-studio .db-row'), function(r) { return r.style.display !== 'none'; }).length;
   if (id === 'built')  return [].filter.call(document.querySelectorAll('#pane-built .proj-card'), function(c) { return !c.hidden; }).length;
   if (id === 'career') return document.querySelectorAll('#pane-career .exp-item').length;
-  if (id === 'schema') return document.querySelectorAll('#sch-graph .sch-node').length;
+  if (id === 'architecture') return document.querySelectorAll('#sch-graph .sch-node').length;
   return 0;
 }
 
@@ -2473,7 +2481,7 @@ switchPane = function(id) {
   render();
 })();
 
-/* ── Schema tab: an illustrative marketing warehouse, explorable by lineage ── */
+/* ── Architecture tab: an illustrative marketing warehouse, explorable by lineage ── */
 (function() {
   var graph = document.getElementById('sch-graph');
   var detail = document.getElementById('sch-detail');
@@ -2713,7 +2721,7 @@ switchPane = function(id) {
   window.SCHEMA = {
     models: MODELS,
     open: function(id) {
-      switchPane('schema');
+      switchPane('architecture');
       select(id);
       setTimeout(function() {
         var n = graph.querySelector('.sch-node.sel');
@@ -2903,7 +2911,7 @@ switchPane = function(id) {
     studio: "Built for curiosity, not deadlines. ✨",
     built:  "Five years of production data engineering. Featured projects up top, then the full stack. 💼",
     career: null,
-    schema: "How the data actually moves. Click any table and follow it downstream. 🗂️",
+    architecture: "How the data actually moves. Click any table and follow it downstream. 🗂️",
     console:"Honestly the terminal tab is my favorite. Try <code>anna.skills()</code> in Python mode. 💻"
   };
 
