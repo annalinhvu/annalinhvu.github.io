@@ -943,6 +943,12 @@ body {
 .lay-dimension rect,.lay-fact rect{stroke:rgba(200,168,56,.7);}
 .lay-qa rect{stroke:rgba(212,112,128,.7);}
 .lay-exposure rect{stroke:var(--t3);stroke-dasharray:1 3;stroke-linecap:round;}
+.sch-decisions{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin-bottom:22px;}
+.decision{text-align:left;font:inherit;color:inherit;background:var(--surface);border:1px solid var(--bd);border-radius:10px;padding:14px 16px;cursor:pointer;transition:border-color .15s;}
+.decision:hover,.decision:focus-visible{border-color:var(--amber);outline:none;}
+.decision-t{font-size:14px;font-weight:600;color:var(--t1);margin-bottom:5px;}
+.decision-d{font-size:13px;line-height:1.6;color:var(--t3);}
+.decision-k{font-family:'Geist Mono',monospace;font-size:10.5px;color:var(--amber);margin-top:9px;}
 .sch-detail{border:1px solid var(--bd);border-radius:12px;background:var(--surface);padding:22px 24px;}
 .sch-hd{display:flex;align-items:baseline;gap:10px;flex-wrap:wrap;margin-bottom:8px;}
 .sch-name{font-family:'Geist Mono',monospace;font-size:16px;font-weight:600;color:var(--t1);}
@@ -975,6 +981,7 @@ body {
 @media (max-width: 768px) {
   .sch-wrap{padding:16px;}
   .sch-body{grid-template-columns:1fr;gap:6px;}
+  .sch-decisions{grid-template-columns:1fr;}
   .sch-detail{padding:18px 16px;}
 }
 
@@ -1605,6 +1612,13 @@ body {
         </div>
         <div class="work-section-hd">one reporting model, up close</div>
         <p class="sch-intro">A simplified, anonymized version of the reporting model I own: nine ad networks and a client's first-party data, normalized, matched, deduplicated, and conformed into one daily reporting table. Names are generic and there's no client data. Click any table to trace its lineage and read its SQL.</p>
+        <div class="sch-sub">design decisions</div>
+        <div class="sch-decisions">
+          <button type="button" class="decision" data-model="int_media_all"><div class="decision-t">Never drop first-party outcomes</div><div class="decision-d">Days with client outcomes but no ad spend used to vanish from reporting. They're now appended with zero media metrics and flagged, so totals reconcile with the client's own numbers.</div><div class="decision-k">int_media_all →</div></button>
+          <button type="button" class="decision" data-model="dim_classification_asof"><div class="decision-t">History stays as it was known</div><div class="decision-d">Campaign classifications are joined as of each reporting date, carrying the latest earlier value forward. A relabel today never rewrites last quarter.</div><div class="decision-k">dim_class_asof →</div></button>
+          <button type="button" class="decision" data-model="fct_campaign_daily"><div class="decision-t">No double counting</div><div class="decision-d">First-party outcomes attach only to delivery rows, not to every conversion row of the same campaign-day. Counts are summed; rates and coefficients are never added together.</div><div class="decision-k">fct_campaign_daily →</div></button>
+          <button type="button" class="decision" data-model="int_first_party_matched"><div class="decision-t">IDs first, names as a fallback</div><div class="decision-d">Renames apply from their effective date, then records match on campaign ID. Name matching is a last resort for records with no usable ID, because names drift and IDs don't.</div><div class="decision-k">int_1p_matched →</div></button>
+        </div>
         <div class="sch-graph-wrap"><svg class="sch-graph" id="sch-graph" role="group" aria-label="Warehouse lineage graph"></svg></div>
         <div class="sch-detail" id="sch-detail"></div>
       </div>
@@ -2519,9 +2533,9 @@ switchPane = function(id) {
       sql:"{% for p in ad_networks %}\nselect\n    d.date,\n    '{{ p.name }}' as platform,\n    f.account_id::varchar as account_id,\n    f.campaign_name as campaign,\n    f.campaign_id::varchar as campaign_id,\n    sum(zeroifnull(f.impressions)) as impressions,\n    sum(zeroifnull(f.clicks)) as clicks,\n    sum(zeroifnull(f.cost)) / {{ p.cost_divisor }} as cost,\n    -- rates can't be summed; weight by impressions so they can be re-averaged downstream\n    sum(zeroifnull(f.video_q25_rate) * zeroifnull(f.impressions)) as video_25,\n    sum(zeroifnull(f.impression_share) * zeroifnull(f.impressions)) as weighted_impr_share\nfrom {{ source('dwh', p.metrics_fact) }} f\njoin {{ source('dwh', 'dim_date') }} d on f.date_id = d.date_id\nwhere abs(zeroifnull(f.impressions) + zeroifnull(f.clicks) + zeroifnull(f.cost)) > 0\ngroup by 1, 2, 3, 4, 5\n{% if not loop.last %}union all{% endif %}\n{% endfor %}"},
     {id:'stg_ad_conversions', layer:'staging', col:1, row:1, mat:'view', grain:'network × campaign × day × conversion', up:['dwh.ad_conversion_facts','dwh.dim_date'],
       desc:'Conversions in one long shape with one shared vocabulary. Network-specific action names map to standard names with pattern rules, wide tables are unpivoted, and networks that report a fixed set of actions are fanned out with a values list.',
-      cols:[['date','date'],['platform','varchar'],['campaign_id','varchar'],['conversion_name','varchar','standardized'],['conversions','number'],['view_through','number']],
+      cols:[['date','date'],['platform','varchar'],['account_id','varchar'],['campaign','varchar'],['campaign_id','varchar'],['conversion_name','varchar','standardized'],['conversions','number']],
       tests:["accepted_values(conversion_name, ['Install','Sign Up','Lead','Purchase','Subscription'])"],
-      sql:"-- long-format networks: map raw action names to the shared vocabulary\nselect\n    d.date,\n    f.platform,\n    f.campaign_id::varchar as campaign_id,\n    case\n        when f.conversion_action ilike any ('%install%', '%first_open%') then 'Install'\n        when f.conversion_action ilike any ('%sign%up%', '%registration%') then 'Sign Up'\n        when f.conversion_action ilike '%lead%' then 'Lead'\n        when f.conversion_action ilike any ('%purchase%', '%checkout%') then 'Purchase'\n        else 'Other'\n    end as conversion_name,\n    sum(zeroifnull(f.conversions)) as conversions\nfrom {{ source('dwh', 'ad_conversion_facts') }} f\njoin {{ source('dwh', 'dim_date') }} d on f.date_id = d.date_id\ngroup by 1, 2, 3, 4\n\nunion all\n\n-- wide-format network: one column per action, unpivoted to rows\nselect d.date, 'network_w', campaign_id::varchar, conversion_name, sum(conversions)\nfrom {{ source('dwh', 'wide_conversion_fact') }}\n    unpivot (conversions for conversion_name in (sign_up, lead, purchase)) w\njoin {{ source('dwh', 'dim_date') }} d on w.date_id = d.date_id\ngroup by 1, 2, 3, 4"},
+      sql:"-- long-format networks: map raw action names to the shared vocabulary\nselect\n    d.date,\n    f.platform,\n    f.account_id::varchar as account_id,\n    f.campaign_name as campaign,\n    f.campaign_id::varchar as campaign_id,\n    case\n        when f.conversion_action ilike any ('%install%', '%first_open%') then 'Install'\n        when f.conversion_action ilike any ('%sign%up%', '%registration%') then 'Sign Up'\n        when f.conversion_action ilike '%lead%' then 'Lead'\n        when f.conversion_action ilike any ('%purchase%', '%checkout%') then 'Purchase'\n        else 'Other'\n    end as conversion_name,\n    sum(zeroifnull(f.conversions)) as conversions\nfrom {{ source('dwh', 'ad_conversion_facts') }} f\njoin {{ source('dwh', 'dim_date') }} d on f.date_id = d.date_id\ngroup by 1, 2, 3, 4, 5, 6\n\nunion all\n\n-- wide-format network: one column per action, unpivoted to rows\nselect\n    d.date,\n    'network_w' as platform,\n    w.account_id::varchar,\n    w.campaign_name,\n    w.campaign_id::varchar,\n    w.conversion_name,\n    sum(w.conversions)\nfrom {{ source('dwh', 'wide_conversion_fact') }}\n    unpivot (conversions for conversion_name in (sign_up, lead, purchase)) w\njoin {{ source('dwh', 'dim_date') }} d on w.date_id = d.date_id\ngroup by 1, 2, 3, 4, 5, 6"},
     {id:'stg_campaign_dictionary', label:'stg_dictionary', layer:'staging', col:1, row:3, mat:'view', grain:'campaign', up:['ref.campaign_dictionary'],
       desc:'The dictionary deduplicated in both directions, so each ID maps to one name and each name to one ID.',
       cols:[['campaign','varchar','unique'],['campaign_id','varchar','unique'],['platform','varchar']],
@@ -2531,12 +2545,12 @@ switchPane = function(id) {
       desc:'The data share collapsed to one row per campaign and day. Additive outcomes are summed; rates and coefficients are single-valued per key, so they take MAX instead of being wrongly added together.',
       cols:[['date','date'],['campaign','varchar'],['campaign_id','varchar'],['outcomes','number','summed'],['rates','float','max'],['classification','varchar']],
       tests:['unique(date, campaign, campaign_id)'],
-      sql:"select\n    date,\n    campaign,\n    campaign_id,\n    -- additive outcomes: shadow rows add up\n    sum(sign_ups) as sign_ups,\n    sum(subscriptions) as subscriptions,\n    sum(leads) as leads,\n    -- non-additive: expected to be single-valued for the key\n    max(lift_coefficient) as lift_coefficient,\n    max(conversion_rate) as conversion_rate\nfrom {{ source('share', 'client_first_party') }}\ngroup by 1, 2, 3"},
+      sql:"select\n    date,\n    campaign,\n    campaign_id,\n    -- additive outcomes: shadow rows add up\n    sum(sign_ups) as sign_ups,\n    sum(subscriptions) as subscriptions,\n    sum(leads) as leads,\n    -- non-additive: expected to be single-valued for the key\n    max(lift_coefficient) as lift_coefficient,\n    max(conversion_rate) as conversion_rate,\n    -- client-owned labels, single-valued per campaign-day\n    max(classification) as classification,\n    max(market_group) as market_group\nfrom {{ source('share', 'client_first_party') }}\ngroup by 1, 2, 3"},
     {id:'stg_match_table', layer:'staging', col:1, row:5, mat:'view', grain:'campaign', up:['ref.match_table'],
       desc:'The taxonomy, trimmed and typed, one row per campaign name.',
       cols:[['campaign','varchar','unique'],['channel','varchar'],['objective','varchar'],['region','varchar']],
       tests:['unique(campaign)'],
-      sql:"select\n    trim(campaign) as campaign,\n    channel, publisher, objective, targeting, region, audience, budget_type\nfrom {{ source('ref', 'match_table') }}\nqualify row_number() over (partition by trim(campaign) order by updated_at desc) = 1"},
+      sql:"select\n    trim(campaign) as campaign,\n    channel, publisher, objective, targeting, region, audience, budget_type\nfrom {{ source('ref', 'match_table') }}\nwhere campaign is not null"},
     {id:'stg_campaign_renames', label:'stg_renames', layer:'staging', col:1, row:6, mat:'view', grain:'rename', up:['ref.campaign_renames'],
       desc:'Renames typed and ordered by effective date.',
       cols:[['old_campaign','varchar'],['new_campaign','varchar'],['effective_date','date']],
@@ -2551,9 +2565,9 @@ switchPane = function(id) {
     /* intermediate */
     {id:'int_media', layer:'intermediate', col:2, row:0.5, mat:'view', grain:'campaign × day × conversion', up:['stg_ad_metrics','stg_ad_conversions'],
       desc:'Delivery and conversions stacked into one media layer. Some networks report several IDs for one campaign name on the same day, so one ID is picked deterministically.',
-      cols:[['date','date'],['platform','varchar'],['campaign','varchar'],['campaign_id','varchar'],['conversion_name','varchar'],['delivery metrics','number'],['conversions','number']],
+      cols:[['date','date'],['platform','varchar'],['account_id','varchar'],['campaign','varchar'],['campaign_id','varchar','one per name per day'],['delivery metrics','number'],['conversion_name','varchar','null on delivery rows'],['conversions','number']],
       tests:['unique(date, platform, campaign, conversion_name)'],
-      sql:"with stacked as (\n    select *, null as conversion_name, 0 as conversions from {{ ref('stg_ad_metrics') }}\n    union all\n    select date, platform, null, null, campaign_id, 0, 0, 0, 0, 0,\n           conversion_name, conversions\n    from {{ ref('stg_ad_conversions') }}\n)\n\nselect *\nfrom stacked\n-- one campaign name can carry several IDs on the same day: keep one\nqualify row_number() over (\n    partition by date, platform, campaign order by campaign_id\n) = 1 or conversion_name is not null"},
+      sql:"with stacked as (\n    -- delivery rows carry no conversion name\n    select date, platform, account_id, campaign, campaign_id,\n           impressions, clicks, cost, video_25, weighted_impr_share,\n           null::varchar as conversion_name, 0 as conversions\n    from {{ ref('stg_ad_metrics') }}\n    union all\n    select date, platform, account_id, campaign, campaign_id,\n           0, 0, 0, 0, 0,\n           conversion_name, conversions\n    from {{ ref('stg_ad_conversions') }}\n),\n\n-- some networks report several IDs for one campaign name on the same day: pick one\ncanonical_id as (\n    select date, platform, campaign, min(campaign_id) as campaign_id\n    from stacked\n    group by 1, 2, 3\n)\n\nselect\n    s.date, s.platform, s.account_id, s.campaign, c.campaign_id,\n    sum(s.impressions) as impressions,\n    sum(s.clicks) as clicks,\n    sum(s.cost) as cost,\n    sum(s.video_25) as video_25,\n    sum(s.weighted_impr_share) as weighted_impr_share,\n    s.conversion_name,\n    sum(s.conversions) as conversions\nfrom stacked s\njoin canonical_id c\n    on s.date = c.date and s.platform = c.platform and s.campaign = c.campaign\ngroup by s.date, s.platform, s.account_id, s.campaign, c.campaign_id, s.conversion_name"},
     {id:'int_first_party_matched', label:'int_1p_matched', layer:'intermediate', col:2, row:4.5, mat:'view', grain:'campaign × day', up:['stg_first_party','stg_campaign_renames','stg_campaign_dictionary'],
       desc:'First-party rows reconciled to the media identity. Renames apply as of their effective date, then campaigns match on ID first and fall back to the dictionary by name only when the ID is missing.',
       cols:[['date','date'],['campaign','varchar','canonical'],['campaign_id','varchar','recovered when missing'],['outcomes','number']],
@@ -2565,7 +2579,7 @@ switchPane = function(id) {
       desc:'Media rows plus first-party campaign-days that had no media activity. Without this step, outcomes on days with zero spend silently disappeared from reporting.',
       cols:[['date','date'],['campaign_id','varchar'],['is_first_party_only','boolean'],['media metrics','number','0 on appended rows']],
       tests:['not_null(campaign_id)'],
-      sql:"with media_days as (\n    select distinct date, campaign_id from {{ ref('int_media') }}\n),\n\norphans as (\n    select fp.date, fp.campaign_id\n    from {{ ref('int_first_party_matched') }} fp\n    left join media_days m using (date, campaign_id)\n    where m.campaign_id is null\n),\n\nidentity as (\n    select * from {{ ref('int_media') }}\n    qualify row_number() over (partition by campaign_id order by date desc) = 1\n)\n\nselect *, false as is_first_party_only from {{ ref('int_media') }}\nunion all\nselect\n    o.date, i.platform, i.campaign, o.campaign_id,\n    0, 0, 0, 0, 0, null, 0,\n    true\nfrom orphans o\njoin identity i using (campaign_id)"},
+      sql:"with media_days as (\n    select distinct date, campaign_id from {{ ref('int_media') }}\n),\n\norphans as (\n    select fp.date, fp.campaign_id\n    from {{ ref('int_first_party_matched') }} fp\n    left join media_days m\n        on fp.date = m.date and fp.campaign_id = m.campaign_id\n    where m.campaign_id is null\n),\n\n-- latest known identity for each campaign, to label the appended rows\nidentity as (\n    select platform, account_id, campaign, campaign_id\n    from {{ ref('int_media') }}\n    qualify row_number() over (partition by campaign_id order by date desc) = 1\n)\n\nselect\n    date, platform, account_id, campaign, campaign_id,\n    impressions, clicks, cost, video_25, weighted_impr_share,\n    conversion_name, conversions,\n    false as is_first_party_only\nfrom {{ ref('int_media') }}\n\nunion all\n\n-- first-party days with no media activity: zero media metrics, delivery-row shape\nselect\n    o.date, i.platform, i.account_id, i.campaign, o.campaign_id,\n    0, 0, 0, 0, 0,\n    null, 0,\n    true\nfrom orphans o\njoin identity i on o.campaign_id = i.campaign_id"},
     {id:'dim_classification_asof', label:'dim_class_asof', layer:'dimension', col:3, row:4, mat:'view', grain:'campaign × day', up:['stg_first_party','int_media_all'],
       desc:'The client\'s campaign classification as it stood on each reporting date: the same-day value when one exists, otherwise the most recent earlier one. Future values never leak into history.',
       cols:[['date','date'],['campaign_id','varchar'],['classification','varchar'],['market_group','varchar']],
@@ -2587,7 +2601,7 @@ switchPane = function(id) {
       desc:'The one wide reporting table everything reads from: media delivery and conversions from every network, first-party outcomes, the campaign taxonomy, point-in-time classification, and outcome values for the date range each one was valid.',
       cols:[['date','date'],['account_id','varchar'],['campaign','varchar'],['conversion_name','varchar'],['taxonomy dims','varchar','~20 columns'],['media metrics','number'],['first-party outcomes','number'],['outcome value','number','value × count']],
       tests:['unique(date, account_id, campaign_id, conversion_name)','relationships(campaign → dim_campaign)','cost >= 0'],
-      sql:"select\n    m.date, m.account_id, m.platform, m.campaign, m.campaign_id,\n    t.channel, t.objective, t.targeting, t.region, t.audience,\n    c.classification, c.market_group,\n    m.conversion_name,\n    sum(m.impressions) as impressions,\n    sum(m.clicks) as clicks,\n    sum(m.cost) as cost,\n    sum(m.conversions) as conversions,\n    coalesce(sum(fp.sign_ups), 0) as sign_ups,\n    coalesce(sum(fp.subscriptions), 0) as subscriptions,\n    coalesce(sum(fp.subscriptions), 0) * any_value(v.value) as subscription_value\nfrom {{ ref('int_media_all') }} m\nleft join {{ ref('dim_campaign') }} t on m.campaign = t.campaign\nleft join {{ ref('int_first_party_matched') }} fp\n    on m.date = fp.date and m.campaign_id = fp.campaign_id\nleft join {{ ref('dim_classification_asof') }} c\n    on m.date = c.date and m.campaign_id = c.campaign_id\n-- value valid on that date (open-ended windows still apply)\nleft join {{ ref('stg_conversion_values') }} v\n    on v.outcome = 'subscription'\n   and m.date >= v.start_date\n   and (v.end_date is null or m.date <= v.end_date)\ngroup by 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13"},
+      sql:"select\n    m.date, m.account_id, m.platform, m.campaign, m.campaign_id,\n    t.channel, t.objective, t.targeting, t.region, t.audience,\n    c.classification, c.market_group,\n    m.conversion_name,\n    sum(m.impressions) as impressions,\n    sum(m.clicks) as clicks,\n    sum(m.cost) as cost,\n    sum(m.conversions) as conversions,\n    coalesce(sum(fp.sign_ups), 0) as sign_ups,\n    coalesce(sum(fp.subscriptions), 0) as subscriptions,\n    coalesce(sum(fp.subscriptions), 0) * any_value(v.value) as subscription_value\nfrom {{ ref('int_media_all') }} m\nleft join {{ ref('dim_campaign') }} t on m.campaign = t.campaign\n-- first-party outcomes attach to delivery rows only, so they are never\n-- repeated across the conversion rows of the same campaign-day\nleft join {{ ref('int_first_party_matched') }} fp\n    on m.date = fp.date\n   and m.campaign_id = fp.campaign_id\n   and m.conversion_name is null\nleft join {{ ref('dim_classification_asof') }} c\n    on m.date = c.date and m.campaign_id = c.campaign_id\n-- value valid on that date (open-ended windows still apply)\nleft join {{ ref('stg_conversion_values') }} v\n    on v.outcome = 'subscription'\n   and m.date >= v.start_date\n   and (v.end_date is null or m.date <= v.end_date)\ngroup by 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13"},
     {id:'qa_taxonomy_violations', label:'qa_taxonomy', layer:'qa', col:4, row:5, mat:'view', grain:'campaign (flagged only)', up:['int_media_all','dim_campaign'],
       desc:'Campaigns spending money that the match table doesn\'t know about yet, flagged to the media team before they show up as "unmapped" in reporting.',
       cols:[['platform','varchar'],['campaign','varchar'],['first_seen','date'],['cost_to_date','number']],
@@ -2713,6 +2727,13 @@ switchPane = function(id) {
   detail.addEventListener('click', function(e) {
     var c = e.target.closest('.sch-chip');
     if (c) select(c.getAttribute('data-id'));
+  });
+
+  document.querySelectorAll('.decision[data-model]').forEach(function(btn) {
+    btn.addEventListener('click', function() {
+      select(btn.getAttribute('data-model'));
+      graph.parentElement.scrollIntoView({block:'start', behavior:'smooth'});
+    });
   });
 
   window.SCHEMA = {
