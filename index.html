@@ -995,6 +995,14 @@ body {
 .proj-grid.compact .proj-desc{grid-column:1 / -1;grid-row:2;font-family:'Geist',sans-serif;font-size:13px;line-height:1.6;color:var(--t3);margin:0;max-width:900px;}
 .proj-grid.compact .proj-tags,.proj-grid.compact .proj-metrics{display:none;}
 
+.course-block[hidden]{display:none!important;}
+.course-list{border:1px solid var(--bd);border-radius:12px;overflow:hidden;background:var(--surface);}
+.course-row{display:grid;grid-template-columns:minmax(0,1fr) auto;column-gap:16px;row-gap:3px;padding:13px 20px;border-bottom:1px solid var(--bd);}
+.course-row:last-child{border-bottom:none;}
+.course-name{font-size:14.5px;font-weight:600;color:var(--t1);}
+.course-when{font-family:'Geist Mono',monospace;font-size:12px;color:var(--t4);white-space:nowrap;}
+.course-learned{grid-column:1 / -1;font-size:13px;line-height:1.6;color:var(--t3);max-width:900px;}
+
 /* ── LEARNING skill dim ── */
 .panel-skill-line.learning{opacity:.45;font-style:italic;}
 
@@ -1368,7 +1376,7 @@ body {
         <span class="tbl">anna_vu.projects</span><span>&nbsp;</span>
         <span class="kw">ORDER BY</span><span>&nbsp;year&nbsp;</span>
         <span class="kw">DESC</span>
-        <span class="cmt">-- 21 rows · engineering + academic</span>
+        <span class="cmt">-- 14 rows · engineering + academic</span>
       </div>
       <div class="work-wrap">
         <div class="intro">
@@ -1453,21 +1461,14 @@ body {
           </div>
         </div>
 
-        <div class="work-section-hd">academic · penn engineering</div>
+        <div class="work-section-hd">penn engineering · projects</div>
         <div class="proj-grid compact">
-          <div class="proj-card">
-            <div class="proj-title">LC4 Disassembler</div>
-            <div class="proj-ctx">2026</div>
-            <div class="proj-tags"><span class="proj-tag">C</span><span class="proj-tag">Linked Lists</span><span class="proj-tag">Binary File I/O</span><span class="proj-tag">Valgrind</span><span class="proj-tag">GDB</span></div>
-            <div class="proj-desc">The other half of the LC4 assembler: reads binary .obj files from PennSim, loads them into a linked list that models the LC4's program and data memory, and disassembles each instruction back into readable assembly. Written solo in C with manual memory management; all 14 Valgrind memory checks pass.</div>
-            <div class="proj-metrics"><div><div class="pm-v">14/14</div><div class="pm-u">valgrind checks</div></div><div><div class="pm-v">C</div><div class="pm-u">manual memory</div></div></div>
-          </div>
           <div class="proj-card" data-demo="lc4asm">
-            <div class="proj-title">LC4 Assembler</div>
+            <div class="proj-title">LC4 Toolchain: Assembler &amp; Disassembler</div>
             <div class="proj-ctx">2026</div>
-            <div class="proj-tags"><span class="proj-tag">C</span><span class="proj-tag">Binary I/O</span><span class="proj-tag">ISA</span><span class="proj-tag">File Parsing</span><span class="proj-tag">Makefile</span></div>
-            <div class="proj-desc">Mini-assembler in C that reads LC4 assembly text files and emits binary .obj machine code files consumable by PennSim. Implements a full two-pass parser: tokenizes instructions, encodes each opcode and operand into 16-bit binary, and handles .CODE/.DATA/.SYMBOL section headers with proper endianness.</div>
-            <div class="proj-metrics"><div><div class="pm-v">30+</div><div class="pm-u">opcodes</div></div><div><div class="pm-v">2</div><div class="pm-u">file formats</div></div></div>
+            <div class="proj-tags"><span class="proj-tag">C</span><span class="proj-tag">ISA</span><span class="proj-tag">Binary I/O</span><span class="proj-tag">Linked Lists</span><span class="proj-tag">Valgrind</span><span class="proj-tag">GDB</span></div>
+            <div class="proj-desc">Both directions of the LC4 toolchain, in C. The assembler runs a two-pass parse over assembly source and encodes every instruction into 16-bit machine code in PennSim's .obj format, handling .CODE/.DATA/.SYMBOL sections and endianness. The disassembler reads those binary files back into a linked list that models program and data memory and prints readable assembly; written solo with manual memory management, it passes all 14 Valgrind memory checks.</div>
+            <div class="proj-metrics"><div><div class="pm-v">30+</div><div class="pm-u">opcodes</div></div><div><div class="pm-v">14/14</div><div class="pm-u">valgrind checks</div></div></div>
           </div>
           <div class="proj-card" data-demo="covid">
             <div class="proj-title">COVID & Property Analytics Platform</div>
@@ -1497,47 +1498,15 @@ body {
             <div class="proj-desc">Analysis methods for directed and undirected graphs stored as adjacency sets: breadth-first search for the shortest distance between two nodes, every node within k hops, and a Hamiltonian cycle checker that reports exactly why a path fails (wrong length, not a cycle, or an unknown node).</div>
             <div class="proj-metrics"><div><div class="pm-v">3</div><div class="pm-u">algorithms</div></div><div><div class="pm-v">BFS</div><div class="pm-u">traversal</div></div></div>
           </div>
-          <div class="proj-card">
-            <div class="proj-title">Word-Level Sentiment Analyzer</div>
-            <div class="proj-ctx">2025</div>
-            <div class="proj-tags"><span class="proj-tag">Java</span><span class="proj-tag">Collections</span><span class="proj-tag">Regex</span></div>
-            <div class="proj-desc">Learns how positive or negative each word is from a file of sentences scored -2 to +2, then predicts the sentiment of new text. Built on Java's List, Set, and Map interfaces: tally every observation of each word, average them into word scores, and score unseen sentences from the words they contain.</div>
-            <div class="proj-metrics"><div><div class="pm-v">-2 → +2</div><div class="pm-u">score range</div></div></div>
-          </div>
-          <div class="proj-card">
-            <div class="proj-title">Binary Search & Splay Trees</div>
-            <div class="proj-ctx">2025</div>
-            <div class="proj-tags"><span class="proj-tag">Java</span><span class="proj-tag">Trees</span><span class="proj-tag">Recursion</span></div>
-            <div class="proj-desc">A binary search tree with insert, search, delete, and in-, pre-, and post-order traversal, extended into a self-adjusting splay tree for extra credit: every access rotates the element to the root, so frequently used values stay quick to reach.</div>
-            <div class="proj-metrics"><div><div class="pm-v">2</div><div class="pm-u">tree types</div></div></div>
-          </div>
-          <div class="proj-card" data-demo="studemgmt">
-            <div class="proj-title">Student Management System</div>
-            <div class="proj-ctx">2024</div>
-            <div class="proj-tags"><span class="proj-tag">Java</span><span class="proj-tag">OOP</span><span class="proj-tag">HashMap</span><span class="proj-tag">Auth</span><span class="proj-tag">JUnit 5</span></div>
-            <div class="proj-desc">Full-featured academic management system with role-based access control. Admins create/delete courses and users. Professors manage enrolled students and grades. Students view schedules, enroll/drop, and check grades. File-based persistence with comprehensive test coverage.</div>
-            <div class="proj-metrics"><div><div class="pm-v">3</div><div class="pm-u">user roles</div></div><div><div class="pm-v">7</div><div class="pm-u">test suites</div></div></div>
-          </div>
-          <div class="proj-card" data-demo="movietrivia">
-            <div class="proj-title">Movie Trivia Database Engine</div>
-            <div class="proj-ctx">2024</div>
-            <div class="proj-tags"><span class="proj-tag">Java</span><span class="proj-tag">ArrayList</span><span class="proj-tag">File I/O</span><span class="proj-tag">JUnit</span></div>
-            <div class="proj-desc">Movie database system implementing complex query operations without a traditional RDBMS. Supports actor-movie lookups, co-actor discovery, common movie searches, rating filters (critics vs. audience), and mean rating calculations.</div>
-            <div class="proj-metrics"><div><div class="pm-v">8</div><div class="pm-u">query types</div></div></div>
-          </div>
-          <div class="proj-card">
-            <div class="proj-title">Battleship</div>
-            <div class="proj-ctx">2024</div>
-            <div class="proj-tags"><span class="proj-tag">Java</span><span class="proj-tag">OOP</span><span class="proj-tag">Inheritance</span><span class="proj-tag">JUnit</span></div>
-            <div class="proj-desc">Battleship against the computer, built with a partner: the computer hides a ten-ship fleet on a 10x10 ocean and the player hunts it shot by shot. An abstract Ship class with Battleship, Cruiser, Destroyer, Submarine, and EmptySea subclasses keeps hit and sink logic polymorphic, with JUnit tests for the ocean and ships.</div>
-            <div class="proj-metrics"><div><div class="pm-v">10</div><div class="pm-u">ships</div></div><div><div class="pm-v">10x10</div><div class="pm-u">ocean</div></div></div>
-          </div>
-          <div class="proj-card" data-demo="portfolio">
-            <div class="proj-title">Personal Portfolio Website</div>
-            <div class="proj-ctx">2025–Present</div>
-            <div class="proj-tags"><span class="proj-tag">HTML</span><span class="proj-tag">CSS</span><span class="proj-tag">JavaScript</span><span class="proj-tag">SVG</span></div>
-            <div class="proj-desc">This site! Single-page portfolio with tabbed navigation, dark/light theme toggle, animated pipeline visualization, data studio aesthetic, and responsive layout. Built from scratch with vanilla HTML, CSS, and JS.</div>
-            <div class="proj-metrics"><div><div class="pm-v">0</div><div class="pm-u">frameworks</div></div><div><div class="pm-v">2</div><div class="pm-u">themes</div></div></div>
+        </div>
+
+        <div class="course-block">
+          <div class="work-section-hd">penn engineering · coursework</div>
+          <div class="course-list">
+            <div class="course-row"><div class="course-name">CIT 5920 · Mathematical Foundations of Computer Science</div><div class="course-when">2026 · in progress</div><div class="course-learned">Counting and combinatorics, propositional logic, proof techniques (direct, contradiction, cases, induction), binomial coefficients, functions and bijections, inclusion-exclusion, the pigeonhole principle, and probability, written up in LaTeX.</div></div>
+            <div class="course-row"><div class="course-name">CIT 5930 · Introduction to Computer Systems</div><div class="course-when">2026</div><div class="course-learned">Binary and floating-point representation, logic gates and sequential circuits, the LC4 datapath and instruction set, assembly language, traps and I/O, the call stack, and C: pointers, strings, file I/O, dynamic memory, and function pointers, debugged with GDB and Valgrind.</div></div>
+            <div class="course-row"><div class="course-name">CIT 5940 · Data Structures and Software Design</div><div class="course-when">2025</div><div class="course-learned">Dynamic arrays, linked lists, stacks and queues, lists, sets, and maps, binary search and splay trees, tries, graphs and BFS, parsing with state machines, plus software design patterns, refactoring, efficiency, and concurrency in Java.</div></div>
+            <div class="course-row"><div class="course-name">CIT 5910 · Introduction to Software Development</div><div class="course-when">2024</div><div class="course-learned">Python and Java from the ground up: control flow, functions, files, object-oriented design with inheritance, polymorphism, abstract classes, and interfaces, exceptions, and unit testing, plus optional modules on data analysis, SQL, and Git.</div></div>
           </div>
         </div>
       </div>
@@ -2054,52 +2023,6 @@ function toggleTheme() {
       + '<div class="demo-kpi"><div class="demo-kpi-v">Factory</div><div class="demo-kpi-l">Reader Pattern</div></div>'
       + '</div></div>',
 
-    studemgmt: '<div class="demo-wrap">'
-      + '<div class="demo-topbar"><span style="color:var(--t2);font-size:11px">Student Management System · 2025</span><span class="demo-env-label">Java · OOP · JUnit 5</span></div>'
-      + '<div style="display:flex;gap:8px;margin-bottom:12px">'
-      + '<div style="padding:4px 14px;border-radius:5px;font-size:11px;background:var(--panel-hd);color:var(--t4);border:1px solid var(--bd)">Admin</div>'
-      + '<div style="padding:4px 14px;border-radius:5px;font-size:11px;background:var(--panel-hd);color:var(--t4);border:1px solid var(--bd)">Professor</div>'
-      + '<div style="padding:4px 14px;border-radius:5px;font-size:11px;background:var(--surface);color:var(--accent);border:1px solid var(--accent)">Student ●</div>'
-      + '</div>'
-      + '<div style="font-size:11px;color:var(--t4);margin-bottom:10px">Logged in as: <span style="color:var(--t2)">linh.vu@penn.edu</span></div>'
-      + '<div style="border:1px solid var(--bd);border-radius:8px;overflow:hidden;margin-bottom:12px">'
-      + '<div class="demo-tbl-head" style="display:grid;grid-template-columns:1.5fr 1fr 1fr 1fr"><span>Course</span><span>Credits</span><span>Grade</span><span>Status</span></div>'
-      + '<div class="demo-tbl-row" style="display:grid;grid-template-columns:1.5fr 1fr 1fr 1fr"><span>CIT 591 — Java</span><span>1.5 CU</span><span style="color:var(--accent)">A</span><span class="demo-log-ok">Enrolled</span></div>'
-      + '<div class="demo-tbl-row" style="display:grid;grid-template-columns:1.5fr 1fr 1fr 1fr"><span>CIT 592 — Data Structures</span><span>1.5 CU</span><span style="color:var(--accent)">A−</span><span class="demo-log-ok">Enrolled</span></div>'
-      + '<div class="demo-tbl-row" style="display:grid;grid-template-columns:1.5fr 1fr 1fr 1fr"><span>CIS 550 — Databases</span><span>1.0 CU</span><span style="color:var(--t4)">—</span><span style="color:var(--amber)">Waitlisted</span></div>'
-      + '<div class="demo-tbl-row" style="display:grid;grid-template-columns:1.5fr 1fr 1fr 1fr"><span>CIT 593 — Systems</span><span>1.5 CU</span><span style="color:var(--t4)">—</span><span style="color:var(--t4)">Dropped</span></div>'
-      + '</div>'
-      + '<div class="demo-kpis">'
-      + '<div class="demo-kpi"><div class="demo-kpi-v">3</div><div class="demo-kpi-l">User Roles</div></div>'
-      + '<div class="demo-kpi"><div class="demo-kpi-v">RBAC</div><div class="demo-kpi-l">Access Control</div></div>'
-      + '<div class="demo-kpi"><div class="demo-kpi-v">File I/O</div><div class="demo-kpi-l">Persistence</div></div>'
-      + '<div class="demo-kpi"><div class="demo-kpi-v">7</div><div class="demo-kpi-l">Test Suites</div></div>'
-      + '</div></div>',
-
-    movietrivia: '<div class="demo-wrap">'
-      + '<div class="demo-topbar"><span style="color:var(--t2);font-size:11px">Movie Trivia Database Engine · 2025</span><span class="demo-env-label">Java · ArrayList · File I/O</span></div>'
-      + '<div style="display:flex;gap:8px;align-items:center;margin-bottom:12px;flex-wrap:wrap">'
-      + '<div style="font-size:10px;color:var(--t4);letter-spacing:1px;text-transform:uppercase">Query:</div>'
-      + '<div style="padding:4px 12px;border-radius:5px;font-size:11px;background:var(--surface);color:var(--accent);border:1px solid var(--accent)">Actor → Movies</div>'
-      + '<div style="padding:4px 12px;border-radius:5px;font-size:11px;background:var(--panel-hd);color:var(--t4);border:1px solid var(--bd)">Co-Actors</div>'
-      + '<div style="padding:4px 12px;border-radius:5px;font-size:11px;background:var(--panel-hd);color:var(--t4);border:1px solid var(--bd)">Rating Filter</div>'
-      + '<div style="padding:4px 12px;border-radius:5px;font-size:11px;background:var(--panel-hd);color:var(--t4);border:1px solid var(--bd)">Common Movies</div>'
-      + '</div>'
-      + '<div style="font-size:11px;color:var(--t4);margin-bottom:8px">Actor: <span style="color:var(--t2);font-style:italic">Meryl Streep</span></div>'
-      + '<div style="border:1px solid var(--bd);border-radius:8px;overflow:hidden;margin-bottom:12px">'
-      + '<div class="demo-tbl-head demo-tbl-4"><span>Movie</span><span>Year</span><span>Critic</span><span>Audience</span></div>'
-      + '<div class="demo-tbl-row demo-tbl-4"><span>The Devil Wears Prada</span><span>2006</span><span style="color:var(--accent)">75</span><span style="color:var(--accent)">85</span></div>'
-      + '<div class="demo-tbl-row demo-tbl-4"><span>Kramer vs. Kramer</span><span>1979</span><span style="color:var(--accent)">90</span><span style="color:var(--accent)">88</span></div>'
-      + '<div class="demo-tbl-row demo-tbl-4"><span>Sophie\'s Choice</span><span>1982</span><span style="color:var(--accent)">86</span><span style="color:var(--accent)">91</span></div>'
-      + '<div class="demo-tbl-row demo-tbl-4"><span>Doubt</span><span>2008</span><span style="color:var(--amber)">79</span><span style="color:var(--amber)">72</span></div>'
-      + '</div>'
-      + '<div class="demo-kpis">'
-      + '<div class="demo-kpi"><div class="demo-kpi-v">8</div><div class="demo-kpi-l">Query Types</div></div>'
-      + '<div class="demo-kpi"><div class="demo-kpi-v">No SQL</div><div class="demo-kpi-l">Pure Java</div></div>'
-      + '<div class="demo-kpi"><div class="demo-kpi-v">Critic</div><div class="demo-kpi-l">vs. Audience</div></div>'
-      + '<div class="demo-kpi"><div class="demo-kpi-v">Mean</div><div class="demo-kpi-l">Rating Calc</div></div>'
-      + '</div></div>',
-
     lc4asm: '<div class="demo-wrap">'
       + '<div class="demo-topbar"><span style="color:var(--t2);font-size:11px">LC4 Assembler · 2026</span><span class="demo-env-label">C · Binary I/O · ISA</span></div>'
       + '<div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:12px">'
@@ -2131,29 +2054,6 @@ function toggleTheme() {
       + '<div class="demo-kpi"><div class="demo-kpi-v">16-bit</div><div class="demo-kpi-l">Instruction Width</div></div>'
       + '<div class="demo-kpi"><div class="demo-kpi-v">2-pass</div><div class="demo-kpi-l">Parser</div></div>'
       + '<div class="demo-kpi"><div class="demo-kpi-v">.asm → .obj</div><div class="demo-kpi-l">Output</div></div>'
-      + '</div></div>',
-
-    portfolio: '<div class="demo-wrap">'
-      + '<div class="demo-topbar"><span style="color:var(--t2);font-size:11px">annalinhvu.github.io · 2025–Present</span><span class="demo-env-label">HTML · CSS · JS</span></div>'
-      + '<div class="demo-log" style="margin-bottom:12px">'
-      + '<div class="demo-log-line"><span class="demo-log-dim">→</span> meta: <span style="color:var(--accent)">you\'re looking at it right now!</span></div>'
-      + '<div class="demo-log-line"><span class="demo-log-dim">→</span> frameworks loaded: <span style="color:var(--accent)">0</span></div>'
-      + '<div class="demo-log-line"><span class="demo-log-dim">→</span> build tools: <span style="color:var(--accent)">none</span></div>'
-      + '<div class="demo-log-line"><span class="demo-log-dim">→</span> dark / light theme: <span style="color:var(--accent)">✓</span></div>'
-      + '<div class="demo-log-line"><span class="demo-log-dim">→</span> virtual pet (Pumkin): <span style="color:var(--accent)">online</span></div>'
-      + '</div>'
-      + '<div style="border:1px solid var(--bd);border-radius:8px;overflow:hidden;margin-bottom:12px">'
-      + '<div class="demo-tbl-head demo-tbl-4"><span>Feature</span><span>Tech</span><span>Lines</span><span>Status</span></div>'
-      + '<div class="demo-tbl-row demo-tbl-4"><span>Tabbed navigation</span><span>Vanilla JS</span><span>~80</span><span class="demo-log-ok">Live</span></div>'
-      + '<div class="demo-tbl-row demo-tbl-4"><span>Pipeline SVG viz</span><span>SVG · CSS</span><span>~200</span><span class="demo-log-ok">Live</span></div>'
-      + '<div class="demo-tbl-row demo-tbl-4"><span>Prototype modals</span><span>JS · HTML</span><span>~400</span><span class="demo-log-ok">Live</span></div>'
-      + '<div class="demo-tbl-row demo-tbl-4"><span>Virtual pet</span><span>Canvas · JS</span><span>~150</span><span class="demo-log-ok">Live</span></div>'
-      + '</div>'
-      + '<div class="demo-kpis">'
-      + '<div class="demo-kpi"><div class="demo-kpi-v">0</div><div class="demo-kpi-l">Frameworks</div></div>'
-      + '<div class="demo-kpi"><div class="demo-kpi-v">2</div><div class="demo-kpi-l">Themes</div></div>'
-      + '<div class="demo-kpi"><div class="demo-kpi-v">1 file</div><div class="demo-kpi-l">Single HTML</div></div>'
-      + '<div class="demo-kpi"><div class="demo-kpi-v">15</div><div class="demo-kpi-l">Prototypes</div></div>'
       + '</div></div>'
   };
 
@@ -2493,6 +2393,8 @@ switchPane = function(id) {
     document.querySelectorAll('#pipe-svg .pl-node[data-tag], #pipe-svg .pl-plat[data-tag]').forEach(function(g) {
       g.classList.toggle('p-hit', !!active && !!active.keys[norm(g.getAttribute('data-tag'))]);
     });
+    var courses = document.querySelector('.course-block');
+    if (courses) courses.hidden = !!active;
     empty.hidden = !active || nb > 0;
     if (active && !nb) empty.innerHTML = '-- 0 rows returned. ' + (nr ? 'this one shows up in <button type="button">experience →</button>' : '');
     var whereHtml = active ? '<span class="kw">WHERE</span>&nbsp;' + escHtml(active.where) + '&nbsp;' : '';
