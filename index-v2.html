@@ -1368,7 +1368,7 @@ body {
         <span class="tbl">anna_vu.projects</span><span>&nbsp;</span>
         <span class="kw">ORDER BY</span><span>&nbsp;year&nbsp;</span>
         <span class="kw">DESC</span>
-        <span class="cmt">-- 15 rows · engineering + academic</span>
+        <span class="cmt">-- 21 rows · engineering + academic</span>
       </div>
       <div class="work-wrap">
         <div class="intro">
@@ -1455,6 +1455,20 @@ body {
 
         <div class="work-section-hd">academic · penn engineering</div>
         <div class="proj-grid compact">
+          <div class="proj-card">
+            <div class="proj-title">LC4 Disassembler</div>
+            <div class="proj-ctx">2026</div>
+            <div class="proj-tags"><span class="proj-tag">C</span><span class="proj-tag">Linked Lists</span><span class="proj-tag">Binary File I/O</span><span class="proj-tag">Valgrind</span><span class="proj-tag">GDB</span></div>
+            <div class="proj-desc">The other half of the LC4 assembler: reads binary .obj files from PennSim, loads them into a linked list that models the LC4's program and data memory, and disassembles each instruction back into readable assembly. Written solo in C with manual memory management; all 14 Valgrind memory checks pass.</div>
+            <div class="proj-metrics"><div><div class="pm-v">14/14</div><div class="pm-u">valgrind checks</div></div><div><div class="pm-v">C</div><div class="pm-u">manual memory</div></div></div>
+          </div>
+          <div class="proj-card" data-demo="lc4asm">
+            <div class="proj-title">LC4 Assembler</div>
+            <div class="proj-ctx">2026</div>
+            <div class="proj-tags"><span class="proj-tag">C</span><span class="proj-tag">Binary I/O</span><span class="proj-tag">ISA</span><span class="proj-tag">File Parsing</span><span class="proj-tag">Makefile</span></div>
+            <div class="proj-desc">Mini-assembler in C that reads LC4 assembly text files and emits binary .obj machine code files consumable by PennSim. Implements a full two-pass parser: tokenizes instructions, encodes each opcode and operand into 16-bit binary, and handles .CODE/.DATA/.SYMBOL section headers with proper endianness.</div>
+            <div class="proj-metrics"><div><div class="pm-v">30+</div><div class="pm-u">opcodes</div></div><div><div class="pm-v">2</div><div class="pm-u">file formats</div></div></div>
+          </div>
           <div class="proj-card" data-demo="covid">
             <div class="proj-title">COVID & Property Analytics Platform</div>
             <div class="proj-ctx">2025</div>
@@ -1469,26 +1483,54 @@ body {
             <div class="proj-desc">Analyzes geotagged tweets for flu-related content using regex pattern matching (handling edge cases like "fluent" vs "#flu"). Maps matches to the nearest U.S. state via Cartesian distance. Polymorphic Reader interface supports JSON and TXT formats.</div>
             <div class="proj-metrics"><div><div class="pm-v">50</div><div class="pm-u">states mapped</div></div><div><div class="pm-v">2</div><div class="pm-u">input formats</div></div></div>
           </div>
+          <div class="proj-card">
+            <div class="proj-title">RFC 4180 CSV Parser</div>
+            <div class="proj-ctx">2025</div>
+            <div class="proj-tags"><span class="proj-tag">Java</span><span class="proj-tag">State Machine</span><span class="proj-tag">Parsing</span></div>
+            <div class="proj-desc">A CSV reader built as a four-state finite state machine that follows RFC 4180: quoted fields with embedded commas and line breaks, doubled quotes as escapes, CRLF and LF row endings, and malformed input rejected with an error that pinpoints the line and column.</div>
+            <div class="proj-metrics"><div><div class="pm-v">4</div><div class="pm-u">parser states</div></div><div><div class="pm-v">RFC 4180</div><div class="pm-u">spec</div></div></div>
+          </div>
+          <div class="proj-card">
+            <div class="proj-title">Graph Traversal Algorithms</div>
+            <div class="proj-ctx">2025</div>
+            <div class="proj-tags"><span class="proj-tag">Java</span><span class="proj-tag">Graphs</span><span class="proj-tag">BFS</span></div>
+            <div class="proj-desc">Analysis methods for directed and undirected graphs stored as adjacency sets: breadth-first search for the shortest distance between two nodes, every node within k hops, and a Hamiltonian cycle checker that reports exactly why a path fails (wrong length, not a cycle, or an unknown node).</div>
+            <div class="proj-metrics"><div><div class="pm-v">3</div><div class="pm-u">algorithms</div></div><div><div class="pm-v">BFS</div><div class="pm-u">traversal</div></div></div>
+          </div>
+          <div class="proj-card">
+            <div class="proj-title">Word-Level Sentiment Analyzer</div>
+            <div class="proj-ctx">2025</div>
+            <div class="proj-tags"><span class="proj-tag">Java</span><span class="proj-tag">Collections</span><span class="proj-tag">Regex</span></div>
+            <div class="proj-desc">Learns how positive or negative each word is from a file of sentences scored -2 to +2, then predicts the sentiment of new text. Built on Java's List, Set, and Map interfaces: tally every observation of each word, average them into word scores, and score unseen sentences from the words they contain.</div>
+            <div class="proj-metrics"><div><div class="pm-v">-2 → +2</div><div class="pm-u">score range</div></div></div>
+          </div>
+          <div class="proj-card">
+            <div class="proj-title">Binary Search & Splay Trees</div>
+            <div class="proj-ctx">2025</div>
+            <div class="proj-tags"><span class="proj-tag">Java</span><span class="proj-tag">Trees</span><span class="proj-tag">Recursion</span></div>
+            <div class="proj-desc">A binary search tree with insert, search, delete, and in-, pre-, and post-order traversal, extended into a self-adjusting splay tree for extra credit: every access rotates the element to the root, so frequently used values stay quick to reach.</div>
+            <div class="proj-metrics"><div><div class="pm-v">2</div><div class="pm-u">tree types</div></div></div>
+          </div>
           <div class="proj-card" data-demo="studemgmt">
             <div class="proj-title">Student Management System</div>
-            <div class="proj-ctx">2025</div>
+            <div class="proj-ctx">2024</div>
             <div class="proj-tags"><span class="proj-tag">Java</span><span class="proj-tag">OOP</span><span class="proj-tag">HashMap</span><span class="proj-tag">Auth</span><span class="proj-tag">JUnit 5</span></div>
             <div class="proj-desc">Full-featured academic management system with role-based access control. Admins create/delete courses and users. Professors manage enrolled students and grades. Students view schedules, enroll/drop, and check grades. File-based persistence with comprehensive test coverage.</div>
             <div class="proj-metrics"><div><div class="pm-v">3</div><div class="pm-u">user roles</div></div><div><div class="pm-v">7</div><div class="pm-u">test suites</div></div></div>
           </div>
           <div class="proj-card" data-demo="movietrivia">
             <div class="proj-title">Movie Trivia Database Engine</div>
-            <div class="proj-ctx">2025</div>
+            <div class="proj-ctx">2024</div>
             <div class="proj-tags"><span class="proj-tag">Java</span><span class="proj-tag">ArrayList</span><span class="proj-tag">File I/O</span><span class="proj-tag">JUnit</span></div>
             <div class="proj-desc">Movie database system implementing complex query operations without a traditional RDBMS. Supports actor-movie lookups, co-actor discovery, common movie searches, rating filters (critics vs. audience), and mean rating calculations.</div>
             <div class="proj-metrics"><div><div class="pm-v">8</div><div class="pm-u">query types</div></div></div>
           </div>
-          <div class="proj-card" data-demo="lc4asm">
-            <div class="proj-title">LC4 Assembler</div>
-            <div class="proj-ctx">2026</div>
-            <div class="proj-tags"><span class="proj-tag">C</span><span class="proj-tag">Binary I/O</span><span class="proj-tag">ISA</span><span class="proj-tag">File Parsing</span><span class="proj-tag">Makefile</span></div>
-            <div class="proj-desc">Mini-assembler in C that reads LC4 assembly text files and emits binary .obj machine code files consumable by PennSim. Implements a full two-pass parser: tokenizes instructions, encodes each opcode and operand into 16-bit binary, and handles .CODE/.DATA/.SYMBOL section headers with proper endianness.</div>
-            <div class="proj-metrics"><div><div class="pm-v">30+</div><div class="pm-u">opcodes</div></div><div><div class="pm-v">2</div><div class="pm-u">file formats</div></div></div>
+          <div class="proj-card">
+            <div class="proj-title">Battleship</div>
+            <div class="proj-ctx">2024</div>
+            <div class="proj-tags"><span class="proj-tag">Java</span><span class="proj-tag">OOP</span><span class="proj-tag">Inheritance</span><span class="proj-tag">JUnit</span></div>
+            <div class="proj-desc">Battleship against the computer, built with a partner: the computer hides a ten-ship fleet on a 10x10 ocean and the player hunts it shot by shot. An abstract Ship class with Battleship, Cruiser, Destroyer, Submarine, and EmptySea subclasses keeps hit and sink logic polymorphic, with JUnit tests for the ocean and ships.</div>
+            <div class="proj-metrics"><div><div class="pm-v">10</div><div class="pm-u">ships</div></div><div><div class="pm-v">10x10</div><div class="pm-u">ocean</div></div></div>
           </div>
           <div class="proj-card" data-demo="portfolio">
             <div class="proj-title">Personal Portfolio Website</div>
