@@ -12,11 +12,11 @@ This portfolio brings together my professional work, academic projects, and pers
 
 The portfolio is organized into these sections:
 
-- **built**: Professional data engineering work, including ETL pipelines, Snowflake warehouses, dashboards, API integrations, and academic projects from Penn Engineering.
-- **studio**: Personal projects exploring film, photography, travel, food, and community resources.
-- **career**: My professional background and experience.
+- **work**: Professional data engineering work, including ETL pipelines, Snowflake warehouses, dashboards, API integrations, and academic projects from Penn Engineering. Click any tech tag to filter.
+- **experience**: My professional background and experience.
+- **side projects**: Personal projects exploring film, photography, travel, food, and community resources.
 - **architecture**: A data platform diagram (sources, ingest, a bronze/silver/gold medallion on Snowflake, BigQuery, or Databricks, visualize, analyze, and data transfer along the way), plus an interactive, illustrative model of a marketing warehouse. Click any table to trace its lineage, columns, tests, and SQL.
-- **terminal**: A small SQL engine (plus Python, Java, and C easter eggs) for querying the portfolio itself.
+- **playground**: A small SQL engine (plus Python, Java, and C easter eggs) for querying the portfolio itself.
 
 ---
 

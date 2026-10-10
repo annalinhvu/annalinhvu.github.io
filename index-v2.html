@@ -220,6 +220,19 @@ body {
   font-size:11px; color:var(--t3); letter-spacing:.3px;
 }
 .panel-body{padding:18px;flex:1;}
+.panel-top{flex:none;padding-bottom:0;}
+.panel-top .profile-row{margin-bottom:0;padding-bottom:16px;border-bottom:1px solid var(--bd);}
+.facts{margin:0 0 4px;font-size:13px;}
+.facts > div{display:grid;grid-template-columns:92px 1fr;gap:10px;padding:5px 0;}
+.facts dt{font-family:'Geist Mono',monospace;font-size:10.5px;letter-spacing:.5px;color:var(--t4);padding-top:2px;}
+.facts dd{margin:0;color:var(--t2);line-height:1.5;}
+.intro{max-width:880px;margin-bottom:34px;padding-bottom:26px;border-bottom:1px solid var(--bd);}
+.intro-lead{font-family:'Source Serif 4',Georgia,'Times New Roman',serif;font-size:19px;line-height:1.5;color:var(--t1);margin:0 0 10px;}
+.intro-sub{font-family:'Source Serif 4',Georgia,'Times New Roman',serif;font-size:15px;line-height:1.7;color:var(--t3);margin:0 0 16px;}
+.intro-link{color:var(--amber);text-decoration:none;border-bottom:1px solid rgba(200,120,94,.4);}
+.intro-link:hover{border-bottom-color:var(--amber);}
+.intro-actions{display:flex;gap:8px;flex-wrap:wrap;}
+.intro-actions .cta-btn{font-size:11px;padding:6px 13px;}
 
 /* Avatar */
 .profile-row{display:flex;gap:13px;align-items:flex-start;margin-bottom:16px;}
@@ -987,13 +1000,24 @@ body {
     border-right:none;border-bottom:1px solid var(--bd-hi);
     overflow-y:visible;max-height:none;
   }
+  /* Mobile reading order: who you are, then the work, then the details */
+  .layout{display:flex;flex-direction:column;}
+  .left-panel{display:contents;}
+  .panel-titlebar{order:0;position:static;}
+  .panel-top{order:1;background:var(--panel);padding-bottom:16px;}
+  .panel-top .profile-row{border-bottom:none;padding-bottom:0;}
+  .main-panel{order:2;}
+  .panel-more{order:3;background:var(--panel);border-top:1px solid var(--bd-hi);}
+  .intro-lead{font-size:17px;}
+  .top-tabs{overflow-x:auto;scrollbar-width:none;margin:0;}
+  .top-tabs::-webkit-scrollbar{display:none;}
 
   .main-panel{overflow-y:visible;flex:none;min-height:auto;}
   .tab-pane{flex:none !important;min-height:auto !important;}
   .tab-pane.active{display:flex;}
 
   /* Top bar */
-  .top-tab{font-size:0.65rem;padding:0 9px;letter-spacing:0;}
+  .top-tab{font-size:10px;padding:0 7px;letter-spacing:0;}
   .terminal-path{font-size:10px;letter-spacing:0;}
 
   /* Project table */
@@ -1116,11 +1140,11 @@ body {
   <div class="terminal-path">~/anna-vu<span class="cursor"></span></div>
 
   <nav class="top-tabs" role="tablist">
-    <button class="top-tab"        data-pane="studio"  role="tab">studio</button>
-    <button class="top-tab active" data-pane="built"   role="tab">built</button>
-    <button class="top-tab"        data-pane="career"  role="tab">career</button>
+    <button class="top-tab active" data-pane="built"   role="tab">work</button>
+    <button class="top-tab"        data-pane="career"  role="tab">experience</button>
+    <button class="top-tab"        data-pane="studio"  role="tab">side projects</button>
     <button class="top-tab"        data-pane="architecture" role="tab">architecture</button>
-    <button class="top-tab"        data-pane="console"    role="tab">terminal</button>
+    <button class="top-tab"        data-pane="console" role="tab">playground</button>
     <div class="tab-indicator"></div>
   </nav>
 
@@ -1143,7 +1167,7 @@ body {
       <span class="panel-filename">profile.json</span>
     </div>
 
-    <div class="panel-body">
+    <div class="panel-body panel-top">
       <div class="profile-row">
         <div class="avatar">
           <img src="profile.png" alt="Anna Vu" onerror="this.style.display='none'">
@@ -1161,6 +1185,15 @@ body {
           </div>
         </div>
       </div>
+    </div>
+
+    <div class="panel-body panel-more">
+      <div class="metric-lbl">-- at a glance</div>
+      <dl class="facts">
+        <div><dt>based in</dt><dd>New York City · open to remote</dd></div>
+        <div><dt>looking for</dt><dd>Data engineering, BI, and analytics roles</dd></div>
+        <div><dt>education</dt><dd>M.A.Sc. Computer Science, UPenn<br>B.A. Economics, Vanderbilt</dd></div>
+      </dl>
 
       <hr class="p-rule">
 
@@ -1170,22 +1203,6 @@ body {
         <div class="stat-item"><div class="stat-v">100+</div><div class="stat-l">clients supported</div></div>
         <div class="stat-item"><div class="stat-v">$2B+</div><div class="stat-l">ad spend analyzed</div></div>
         <div class="stat-item"><div class="stat-v">50+</div><div class="stat-l">data sources integrated</div></div>
-      </div>
-
-      <hr class="p-rule">
-
-      <div class="json-block">
-        <span class="j-punc">{</span><br>
-        &nbsp;&nbsp;<span class="j-key">"location"</span><span class="j-punc">: </span><span class="j-str">"New York City, NY"</span><span class="j-punc">,</span><br>
-        &nbsp;&nbsp;<span class="j-key">"education"</span><span class="j-punc">: [</span><br>
-        &nbsp;&nbsp;&nbsp;&nbsp;<span class="j-str">"M.A.Sc. Computer Science @ UPenn"</span><span class="j-punc">,</span><br>
-        &nbsp;&nbsp;&nbsp;&nbsp;<span class="j-str">"B.A. Economics @ Vanderbilt"</span><br>
-        &nbsp;&nbsp;<span class="j-punc">],</span><br>
-        &nbsp;&nbsp;<span class="j-key">"status"</span><span class="j-punc">: [</span><br>
-        &nbsp;&nbsp;&nbsp;&nbsp;<span class="j-punc">(</span><span class="j-str">"open_to_work"</span><span class="j-punc">,&nbsp;</span><span class="j-str">"data engineering · BI · analytics"</span><span class="j-punc">),</span><br>
-        &nbsp;&nbsp;&nbsp;&nbsp;<span class="j-punc">(</span><span class="j-str">"open_to_connect"</span><span class="j-punc">,&nbsp;</span><span class="j-str">"linkedin.com/in/annalinhvu"</span><span class="j-punc">)</span><br>
-        &nbsp;&nbsp;<span class="j-punc">]</span><br>
-        <span class="j-punc">}</span>
       </div>
 
       <hr class="p-rule">
@@ -1340,27 +1357,36 @@ body {
         <span class="cmt">-- 15 rows · engineering + academic</span>
       </div>
       <div class="work-wrap">
+        <div class="intro">
+          <p class="intro-lead">Hi, I'm Anna. I'm a Principal Data Engineer at DEPT® in New York, where I own the data platforms behind $2B+ in annual marketing spend for enterprise clients, including OpenAI.</p>
+          <p class="intro-sub">I'm open to data engineering, BI, and analytics roles, in NYC or remote. My work is below. If you'd like to go deeper, <a href="#" class="intro-link" data-go="architecture">architecture</a> shows how I design these systems, and the <a href="#" class="intro-link" data-go="console">playground</a> lets you query this site in SQL.</p>
+          <div class="intro-actions">
+            <a href="#" class="cta-btn cta-primary" data-go="career">see experience →</a>
+            <a href="mailto:vuhongnhatlinh@gmail.com" class="cta-btn">email me</a>
+            <a href="https://www.linkedin.com/in/annalinhvu" class="cta-btn" target="_blank" rel="noopener">linkedin ↗</a>
+          </div>
+        </div>
         <div class="work-section-hd hd-featured">featured projects</div>
         <div class="proj-grid">
           <div class="proj-card" data-demo="pipeline">
             <div class="proj-title">Data Pipelines & Client Dashboard Suite</div>
             <div class="proj-ctx">2022–Present</div>
             <div class="proj-tags"><span class="proj-tag">Snowflake</span><span class="proj-tag">Python</span><span class="proj-tag">Matillion</span><span class="proj-tag">Looker</span><span class="proj-tag">Tableau</span></div>
-            <div class="proj-desc">Data infrastructure for a major enterprise marketing client. Ingests from 50+ sources into Snowflake, powering Tableau & Looker dashboards, automated reports, and ad-hoc pulls for 100+ clients. I own it end to end.</div>
+            <div class="proj-desc">A major enterprise marketing client needed one trustworthy view of performance across every platform. I own the infrastructure end to end: 50+ sources ingested into Snowflake and modeled once, powering Tableau and Looker dashboards, automated reports, and ad-hoc pulls for 100+ clients.</div>
             <div class="proj-metrics"><div><div class="pm-v">50+</div><div class="pm-u">sources</div></div><div><div class="pm-v">100+</div><div class="pm-u">clients</div></div><div><div class="pm-v">$2B+</div><div class="pm-u">ad spend</div></div></div>
           </div>
           <div class="proj-card" data-demo="rawdata">
             <div class="proj-title">Raw Data Request Builder</div>
             <div class="proj-ctx">2026</div>
             <div class="proj-tags"><span class="proj-tag">AWS Amplify</span><span class="proj-tag">Lambda</span><span class="proj-tag">Docker</span><span class="proj-tag">Snowflake</span><span class="proj-tag">Python</span></div>
-            <div class="proj-desc">Internal tool for Client Services to query Snowflake and export data without going through engineering. Amplify frontend, Dockerized Lambda backend, parameterized queries, exports to CSV/Excel/JSON with automatic S3 staging and Google Drive delivery. Audit log written back to Snowflake on each request.</div>
+            <div class="proj-desc">Client Services used to wait on engineering for every raw data pull. Now they pick the data and get the file themselves. Amplify frontend, a Dockerized Python Lambda running parameterized Snowflake queries, CSV/Excel/JSON exports staged to S3 and delivered to Google Drive, and an audit log written back to Snowflake on every request.</div>
             <div class="proj-metrics"><div><div class="pm-v">3</div><div class="pm-u">export formats</div></div><div><div class="pm-v">S3 + Drive</div><div class="pm-u">delivery</div></div><div><div class="pm-v">Zero-code</div><div class="pm-u">for end users</div></div></div>
           </div>
           <div class="proj-card" data-demo="slack">
             <div class="proj-title">Automated Slack Alerting Suite</div>
             <div class="proj-ctx">2022–Present</div>
             <div class="proj-tags"><span class="proj-tag">SQL</span><span class="proj-tag">Python</span><span class="proj-tag">Snowflake</span><span class="proj-tag">Matillion</span><span class="proj-tag">Slack API</span></div>
-            <div class="proj-desc">A suite of production alerting pipelines that notify the right teams in Slack when something needs attention. Covers SFTP file arrival monitoring, KPI anomaly detection across platforms and geos, data change detection in reporting docs, and taxonomy/match-table validation that flags incorrect ad naming to the Media team before it hits reporting.</div>
+            <div class="proj-desc">Data issues used to surface when someone spotted a broken dashboard. These production alerting pipelines catch them first and route them to the right team in Slack: SFTP file arrivals, KPI anomalies across platforms and geos, changes in reporting docs, and taxonomy/match-table checks that flag bad ad naming to the Media team before it reaches reporting.</div>
             <div class="proj-metrics"><div><div class="pm-v">4+</div><div class="pm-u">alert types</div></div><div><div class="pm-v">Multi-team</div><div class="pm-u">routing</div></div><div><div class="pm-v">Config-driven</div><div class="pm-u">thresholds</div></div></div>
           </div>
         </div>
@@ -1371,42 +1397,42 @@ body {
             <div class="proj-title">Snowflake Warehouse Optimization</div>
             <div class="proj-ctx">2023–2024</div>
             <div class="proj-tags"><span class="proj-tag">Snowflake</span><span class="proj-tag">SQL</span></div>
-            <div class="proj-desc">Years of ungoverned growth left the warehouse with duplicate views, inconsistent naming, and no ownership tracking. Audited 1,000+ tables and views, consolidated redundant logic, standardized naming, and removed unused objects. Compute costs dropped 30%.</div>
+            <div class="proj-desc">Years of ungoverned growth left the warehouse full of duplicate views, inconsistent naming, and objects nobody owned. I audited 1,000+ tables and views, consolidated redundant logic, standardized naming, and removed unused objects. Compute costs dropped 30%.</div>
             <div class="proj-metrics"><div><div class="pm-v">30%</div><div class="pm-u">cost reduction</div></div><div><div class="pm-v">1,000+</div><div class="pm-u">tables audited</div></div></div>
           </div>
           <div class="proj-card" data-demo="sheets">
             <div class="proj-title">Google Sheets Data Pull Tool</div>
             <div class="proj-ctx">2024</div>
             <div class="proj-tags"><span class="proj-tag">Apps Script</span><span class="proj-tag">Matillion</span><span class="proj-tag">Snowflake</span><span class="proj-tag">Google Sheets</span><span class="proj-tag">SQL</span></div>
-            <div class="proj-desc">Self-serve reporting tool built inside Google Sheets. Dimension and metric selections trigger Apps Script and Matillion pipelines that generate Snowflake views and write results back to the sheet automatically. Cut turnaround time by 80%.</div>
+            <div class="proj-desc">Teams worked in Google Sheets but had to request Snowflake data by hand. I built self-serve reporting inside Sheets: choosing dimensions and metrics triggers Apps Script and Matillion pipelines that generate Snowflake views and write results back to the sheet. Turnaround time dropped 80%.</div>
             <div class="proj-metrics"><div><div class="pm-v">80%</div><div class="pm-u">less manual work</div></div><div><div class="pm-v">80%</div><div class="pm-u">faster turnaround</div></div></div>
           </div>
           <div class="proj-card" data-demo="api">
             <div class="proj-title">Custom API Ingestion & Data Processing</div>
             <div class="proj-ctx">2022–2023</div>
             <div class="proj-tags"><span class="proj-tag">Python</span><span class="proj-tag">Pandas</span><span class="proj-tag">REST APIs</span><span class="proj-tag">Snowflake</span></div>
-            <div class="proj-desc">Python connectors for 6+ marketing platforms (Google Ads, CM360, Meta, DV360) handling OAuth, pagination, rate limiting, and Snowflake ingestion. Built modularly so adding a new source doesn't mean starting from scratch each time.</div>
+            <div class="proj-desc">Every new marketing platform used to mean a connector built from scratch. I built modular Python connectors for 6+ platforms (Google Ads, CM360, Meta, DV360) that handle OAuth, pagination, and rate limits and load into Snowflake, so onboarding a new source takes hours, not days.</div>
             <div class="proj-metrics"><div><div class="pm-v">6+</div><div class="pm-u">platforms</div></div><div><div class="pm-v">days → hrs</div><div class="pm-u">onboarding</div></div></div>
           </div>
           <div class="proj-card" data-demo="esov">
             <div class="proj-title">ESOV Media Spend Analysis</div>
             <div class="proj-ctx">2022</div>
             <div class="proj-tags"><span class="proj-tag">R</span><span class="proj-tag">Kantar</span><span class="proj-tag">Pathmatics</span><span class="proj-tag">Google Trends</span></div>
-            <div class="proj-desc">Analysis for media budget planning using Kantar, Pathmatics, and Google Trends data: ESOV models, CDI/BDI scatter plots, and competitor salience benchmarks built in R. Delivered to brand teams for annual budget strategy.</div>
+            <div class="proj-desc">Brand teams needed evidence for how much to spend in their annual budgets. I built the analysis in R on Kantar, Pathmatics, and Google Trends data: ESOV models, CDI/BDI scatter plots, and competitor salience benchmarks that fed annual budget strategy.</div>
             <div class="proj-metrics"><div><div class="pm-v">3</div><div class="pm-u">data sources</div></div><div><div class="pm-v">Competitive</div><div class="pm-u">intel framework</div></div></div>
           </div>
           <div class="proj-card" data-demo="social">
             <div class="proj-title">Social Listening & Audience Insights</div>
             <div class="proj-ctx">2022</div>
             <div class="proj-tags"><span class="proj-tag">Brandwatch</span><span class="proj-tag">Python</span><span class="proj-tag">Jupyter</span></div>
-            <div class="proj-desc">Brandwatch dashboards for social listening across client brands. Python scripts to pull data, generate charts, and draft narratives for 10+ new business pitch decks.</div>
+            <div class="proj-desc">New business pitches needed audience insight, fast. I built Brandwatch social listening dashboards across client brands, plus Python scripts that pulled the data, generated charts, and drafted narratives for 10+ pitch decks.</div>
             <div class="proj-metrics"><div><div class="pm-v">10+</div><div class="pm-u">insights decks</div></div></div>
           </div>
           <div class="proj-card" data-demo="trafficking">
             <div class="proj-title">Media Campaign Trafficking</div>
             <div class="proj-ctx">2021–2022</div>
             <div class="proj-tags"><span class="proj-tag">Prisma/MediaOcean</span><span class="proj-tag">Campaign Manager 360</span><span class="proj-tag">Google Ads</span></div>
-            <div class="proj-desc">Campaign operations across 20+ media vendors: IO setup, budget pacing, pixel trafficking, tag QA, and post-campaign analysis across digital, OOH, and print.</div>
+            <div class="proj-desc">Where I started: campaign operations across 20+ media vendors in digital, OOH, and print. IO setup, budget pacing, pixel trafficking, tag QA, and post-campaign analysis.</div>
             <div class="proj-metrics"><div><div class="pm-v">20+</div><div class="pm-u">vendors</div></div><div><div class="pm-v">Multi-channel</div><div class="pm-u">digital · OOH · print</div></div></div>
           </div>
         </div>
@@ -1652,7 +1678,7 @@ function moveIndicator(tab) {
   var nav = tab.parentElement;
   var nr = nav.getBoundingClientRect();
   var tr = tab.getBoundingClientRect();
-  ind.style.left  = (tr.left - nr.left) + 'px';
+  ind.style.left  = (tr.left - nr.left + nav.scrollLeft) + 'px';
   ind.style.width = tr.width + 'px';
 }
 
@@ -1673,7 +1699,10 @@ function switchPane(id) {
     var on = t.dataset.pane === id;
     t.classList.toggle('active', on);
     t.setAttribute('aria-selected', on);
-    if (on) moveIndicator(t);
+    if (on) {
+      moveIndicator(t);
+      if (t.parentElement.scrollWidth > t.parentElement.clientWidth) t.scrollIntoView({inline:'nearest', block:'nearest'});
+    }
   });
   document.querySelectorAll('.tab-pane').forEach(function(p) {
     var on = p.id === 'pane-' + id;
@@ -2124,7 +2153,7 @@ function toggleTheme() {
 /* ── Arrow key nav ── */
 document.addEventListener('keydown', function(e) {
   if (document.activeElement && document.activeElement.id === 'console-input') return;
-  var tabs = ['studio','built','career','architecture','console'];
+  var tabs = ['built','career','studio','architecture','console'];
   var active = document.querySelector('.top-tab.active');
   if (!active) return;
   var idx = tabs.indexOf(active.dataset.pane);
@@ -2144,7 +2173,8 @@ function updateStatus(pane, rows) {
   var paneEl = document.getElementById('sb-pane');
   var rowsEl = document.getElementById('sb-rows');
   var timeEl = document.getElementById('sb-time');
-  if (paneEl) paneEl.textContent = pane;
+  var tabBtn = document.querySelector('.top-tab[data-pane="' + pane + '"]');
+  if (paneEl) paneEl.textContent = tabBtn ? tabBtn.textContent.trim() : pane;
   if (rowsEl) rowsEl.textContent = rows + ' rows';
   if (timeEl) timeEl.textContent = ms + 'ms';
 }
@@ -2406,7 +2436,7 @@ switchPane = function(id) {
       g.classList.toggle('p-hit', !!active && !!active.keys[norm(g.getAttribute('data-tag'))]);
     });
     empty.hidden = !active || nb > 0;
-    if (active && !nb) empty.innerHTML = '-- 0 rows returned. ' + (nr ? 'this one shows up in <button type="button">career →</button>' : '');
+    if (active && !nb) empty.innerHTML = '-- 0 rows returned. ' + (nr ? 'this one shows up in <button type="button">experience →</button>' : '');
     var whereHtml = active ? '<span class="kw">WHERE</span>&nbsp;' + escHtml(active.where) + '&nbsp;' : '';
     ['built','career'].forEach(function(k) { bars[k].where.innerHTML = whereHtml; bars[k].btn.hidden = !active; });
     bars.built.cmt.textContent = active ? '-- ' + nb + ' of ' + cards.length + ' rows' : '-- ' + cards.length + ' rows · engineering + academic';
@@ -2729,6 +2759,14 @@ switchPane = function(id) {
   select('fct_daily_spend');
 })();
 
+/* ── In-page links that switch tabs ── */
+document.addEventListener('click', function(e) {
+  var a = e.target.closest && e.target.closest('[data-go]');
+  if (!a) return;
+  e.preventDefault();
+  switchPane(a.getAttribute('data-go'));
+});
+
 /* ── Init ── */
 (function() {
   var active = document.querySelector('.top-tab.active');
@@ -2884,7 +2922,7 @@ switchPane = function(id) {
   };
 
   var TIPS = [
-    "The terminal tab is real. Type <code>anna.skills()</code> in Python mode. 💻",
+    "The playground tab is real. Type <code>anna.skills()</code> in Python mode. 💻",
     "There's a hidden game somewhere on this page. I am not going to tell you where. 👀",
     "She once refactored an entire data warehouse. 1,000+ tables. Just... tidied them all up. 🧹",
     "The Cơm Nhà recipe app exists because she kept losing recipes in her notes app. Relatable. 🍜",
@@ -2909,7 +2947,7 @@ switchPane = function(id) {
     built:  "Five years of production data engineering. Featured projects up top, then the full stack. 💼",
     career: null,
     architecture: "How the data actually moves. Click any table and follow it downstream. 🗂️",
-    console:"Honestly the terminal tab is my favorite. Try <code>anna.skills()</code> in Python mode. 💻"
+    console:"Honestly the playground is my favorite. Try <code>anna.skills()</code> in Python mode. 💻"
   };
 
   function getGreeting() {
@@ -3041,9 +3079,9 @@ switchPane = function(id) {
   /* ── Bubble ── */
   function navHtml() {
     return '<div class="pet-nav">' +
-      '<button class="pet-nav-btn" onclick="petNav(\'studio\')">Studio</button>' +
-      '<button class="pet-nav-btn" onclick="petNav(\'built\')">Built</button>' +
-      '<button class="pet-nav-btn" onclick="petNav(\'career\')">Career</button>' +
+      '<button class="pet-nav-btn" onclick="petNav(\'built\')">Work</button>' +
+      '<button class="pet-nav-btn" onclick="petNav(\'career\')">Experience</button>' +
+      '<button class="pet-nav-btn" onclick="petNav(\'studio\')">Side projects</button>' +
       '</div>';
   }
   function openBubble() {
@@ -3252,7 +3290,7 @@ switchPane = function(id) {
     role:'Principal Data Engineer', origin:'Hanoi, Vietnam',
     email:'vuhongnhatlinh@gmail.com', linkedin:'linkedin.com/in/annalinhvu', github:'github.com/annalinhvu',
     status:'open_to_work',
-    target_roles:['Data Engineer','AI Engineer','Forward Deployed Engineer','Technical Project Manager','Data Manager'],
+    target_roles:['Data Engineering','BI','Analytics'],
     grad_school:'University of Pennsylvania',
     grad_degree:'M.A.Sc. Computer Science · Artificial Intelligence',
     undergrad_school:'Vanderbilt University',
