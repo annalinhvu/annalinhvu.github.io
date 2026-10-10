@@ -983,6 +983,19 @@ body {
 .proj-desc{font-size:14px;}
 .sch-intro,.sch-desc{font-size:15px;}
 
+/* ── Compact rows for earlier work and coursework: same cards (filters, playground,
+      prototypes still work), shown as one-line rows so the recent work leads ── */
+.proj-grid.compact{display:flex;flex-direction:column;gap:0;border:1px solid var(--bd);border-radius:12px;overflow:hidden;background:var(--surface);}
+.proj-grid.compact .proj-card{display:grid;grid-template-columns:minmax(0,1fr) auto;column-gap:16px;row-gap:3px;padding:13px 20px;border:none;border-radius:0;border-bottom:1px solid var(--bd);background:transparent;box-shadow:none;}
+.proj-grid.compact .proj-card:last-child{border-bottom:none;}
+.proj-grid.compact .proj-card:hover{background:rgba(128,128,128,.06);box-shadow:none;}
+.proj-grid.compact .proj-card.bouncing{animation:none;}
+.proj-grid.compact .proj-title{grid-column:1;grid-row:1;font-size:14.5px;margin:0;}
+.proj-grid.compact .proj-ctx{grid-column:2;grid-row:1;margin:0;text-align:right;white-space:nowrap;}
+.proj-grid.compact .proj-ctx::after{content:'  →';color:var(--t4);}
+.proj-grid.compact .proj-desc{grid-column:1 / -1;grid-row:2;font-family:'Geist',sans-serif;font-size:13px;color:var(--t3);margin:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+.proj-grid.compact .proj-tags,.proj-grid.compact .proj-metrics{display:none;}
+
 /* ── LEARNING skill dim ── */
 .panel-skill-line.learning{opacity:.45;font-style:italic;}
 
@@ -1414,6 +1427,10 @@ body {
             <div class="proj-desc">Every new marketing platform used to mean a connector built from scratch. I built modular Python connectors for 6+ platforms (Google Ads, CM360, Meta, DV360) that handle OAuth, pagination, and rate limits and load into Snowflake, so onboarding a new source takes hours, not days.</div>
             <div class="proj-metrics"><div><div class="pm-v">6+</div><div class="pm-u">platforms</div></div><div><div class="pm-v">days → hrs</div><div class="pm-u">onboarding</div></div></div>
           </div>
+        </div>
+
+        <div class="work-section-hd">earlier work</div>
+        <div class="proj-grid compact">
           <div class="proj-card" data-demo="esov">
             <div class="proj-title">ESOV Media Spend Analysis</div>
             <div class="proj-ctx">2022</div>
@@ -1437,8 +1454,8 @@ body {
           </div>
         </div>
 
-        <div class="work-section-hd" style="margin-top:44px">academic · penn engineering</div>
-        <div class="proj-grid">
+        <div class="work-section-hd">academic · penn engineering</div>
+        <div class="proj-grid compact">
           <div class="proj-card" data-demo="covid">
             <div class="proj-title">COVID & Property Analytics Platform</div>
             <div class="proj-ctx">2025</div>
