@@ -314,7 +314,7 @@ body {
 .pipeline-lbl{font-family:'Geist Mono',monospace;font-size:10px;color:var(--t4);letter-spacing:2px;text-transform:uppercase;margin-bottom:12px;}
 .pipeline-svg{width:100%;display:block;}
 .p-stage{fill:rgba(128,128,128,.04);stroke-width:1.5;transition:fill .2s;}
-.p-grp{cursor:default;}
+.p-grp{cursor:pointer;}
 .p-grp:hover .p-stage{fill:rgba(128,128,128,.09);}
 .p-grp:hover .p-sub{opacity:1;}
 .ps1{stroke:rgba(94,122,98,.5);}
@@ -346,6 +346,7 @@ body {
   overflow-x:auto; flex-shrink:0;
   transition:background .3s;
 }
+.query-bar > *{flex-shrink:0;white-space:nowrap;}
 .kw  {color:var(--amber);}
 .tbl {color:var(--mono-g);}
 .cmt {color:var(--t4);margin-left:10px;}
@@ -868,6 +869,25 @@ body {
 .exp-win{display:flex;flex-direction:column;gap:3px;}
 .exp-win-v{font-family:'Geist Mono',monospace;font-size:22px;font-weight:600;color:var(--amber);line-height:1;}
 .exp-win-u{font-size:10px;color:var(--t4);text-transform:uppercase;letter-spacing:.5px;}
+
+/* ── Tech filter (tags, skills, pipeline stages) ── */
+.proj-tag,.exp-tag{cursor:pointer;transition:color .12s,border-color .12s,background .12s;}
+.proj-tag:hover,.exp-tag:hover{color:var(--amber);border-color:var(--amber);}
+.proj-tag.tag-hit,.exp-tag.tag-hit{color:var(--amber);border-color:var(--amber);background:rgba(200,120,94,.08);}
+.exp-item{transition:opacity .2s;}
+.exp-item.tech-dim{opacity:.35;}
+.proj-grid[hidden],.proj-card[hidden],.work-section-hd[hidden],.qb-clear[hidden]{display:none!important;}
+.skill-link{font:inherit;color:inherit;background:none;border:none;padding:0;cursor:pointer;transition:color .12s;}
+.skill-link:hover,.skill-link.tag-hit{color:var(--amber);}
+.p-grp.p-active .p-stage{fill:rgba(200,120,94,.12);stroke:var(--amber);}
+.qb-clear{opacity:1;pointer-events:auto;margin-left:auto;flex-shrink:0;position:sticky;right:-26px;padding:0 0 0 14px;background:linear-gradient(90deg,transparent,var(--panel-hd) 12px);}
+.tech-empty{font-family:'Geist Mono',monospace;font-size:12.5px;color:var(--t3);padding:8px 0 24px;}
+.tech-empty button{font:inherit;color:var(--amber);background:none;border:none;padding:0;cursor:pointer;}
+.tech-empty[hidden]{display:none!important;}
+.flash-hit{animation:flashHit 1.8s ease;}
+@keyframes flashHit{0%,45%{box-shadow:0 0 0 2px var(--amber);}100%{box-shadow:0 0 0 2px transparent;}}
+.res-row.res-link{cursor:pointer;}
+.res-row.res-link:hover span{color:var(--amber);}
 
 /* ── LEARNING skill dim ── */
 .panel-skill-line.learning{opacity:.45;font-style:italic;}
@@ -2055,12 +2075,19 @@ function updateStatus(pane, rows) {
   if (timeEl) timeEl.textContent = ms + 'ms';
 }
 
+/* ── Row counts come from the page itself ── */
+function paneCount(id) {
+  if (id === 'studio') return [].filter.call(document.querySelectorAll('#pane-studio .db-row'), function(r) { return r.style.display !== 'none'; }).length;
+  if (id === 'built')  return [].filter.call(document.querySelectorAll('#pane-built .proj-card'), function(c) { return !c.hidden; }).length;
+  if (id === 'career') return document.querySelectorAll('#pane-career .exp-item').length;
+  return 0;
+}
+
 /* ── Wire status into switchPane ── */
 var _origSwitch = switchPane;
 switchPane = function(id) {
   _origSwitch(id);
-  var rowCounts = {studio: 11, built: 15, career: 4};
-  updateStatus(id, rowCounts[id] || 0);
+  updateStatus(id, paneCount(id));
 };
 
 /* ── Live filter on projects table ── */
@@ -2088,7 +2115,7 @@ switchPane = function(id) {
       if (show) count++;
     });
     var isFiltered = q || activeCat !== 'all';
-    var label = isFiltered ? '-- ' + count + ' row' + (count !== 1 ? 's' : '') + ' returned' : '-- 11 rows returned';
+    var label = isFiltered ? '-- ' + count + ' row' + (count !== 1 ? 's' : '') + ' returned' : '-- ' + rows.length + ' rows returned';
     if (cmt)    cmt.textContent = label;
     if (footer) footer.textContent = count + ' rows returned';
     clear.classList.toggle('visible', !!q);
@@ -2112,6 +2139,142 @@ switchPane = function(id) {
   });
 })();
 
+/* ── Tech filter: click any tag, sidebar skill, or pipeline stage ── */
+(function() {
+  var ALIAS = {'aws amplify':'amplify','aws s3':'s3','aws ecr':'ecr','openai codex':'codex','campaign manager 360':'campaign manager'};
+  function norm(t) { t = t.trim().toLowerCase(); return ALIAS[t] || t; }
+  var STAGES = {
+    INGEST:    ['REST APIs','S3','Lambda','Pandas'],
+    TRANSFORM: ['Python','Matillion','Snowflake','SQL'],
+    VISUALIZE: ['Looker','Tableau','Google Sheets','Domo'],
+    ANALYZE:   ['R','Kantar','Pathmatics','Google Trends','Brandwatch','Slack API']
+  };
+  var cards = document.querySelectorAll('#pane-built .proj-card');
+  var roles = document.querySelectorAll('#pane-career .exp-item');
+  var active = null;
+  if (!cards.length) return;
+
+  function escHtml(t) { return String(t).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); }
+  function tagsOf(el, sel) { return [].map.call(el.querySelectorAll(sel), function(t) { return norm(t.textContent); }); }
+  function hits(el, sel) { return !active || tagsOf(el, sel).some(function(t) { return active.keys[t]; }); }
+
+  var known = {};
+  [].forEach.call(document.querySelectorAll('.proj-tag, .exp-tag'), function(t) {
+    known[norm(t.textContent)] = 1;
+    t.title = 'filter by ' + t.textContent.trim();
+  });
+  document.querySelectorAll('.p-grp').forEach(function(g) {
+    var lbl = g.querySelector('.p-lbl');
+    if (lbl) g.insertAdjacentHTML('afterbegin', '<title>show ' + lbl.textContent.trim().toLowerCase() + ' work</title>');
+  });
+
+  /* WHERE clause + clear button live inside each pane's query bar */
+  function wireBar(paneId) {
+    var bar = document.querySelector('#pane-' + paneId + ' .query-bar');
+    var where = document.createElement('span');
+    var orderKw = [].filter.call(bar.querySelectorAll('.kw'), function(k) { return k.textContent === 'ORDER BY'; })[0];
+    bar.insertBefore(where, orderKw);
+    var btn = document.createElement('button');
+    btn.className = 'filter-clear qb-clear';
+    btn.textContent = '× clear';
+    btn.hidden = true;
+    btn.addEventListener('click', function() { setFilter(null); });
+    bar.appendChild(btn);
+    return {where:where, btn:btn, cmt:bar.querySelector('.cmt')};
+  }
+  var bars = {built:wireBar('built'), career:wireBar('career')};
+
+  /* Shown on built when the filter only matches roles */
+  var empty = document.createElement('div');
+  empty.className = 'tech-empty';
+  empty.hidden = true;
+  var pipe = document.querySelector('#pane-built .pipeline-wrap');
+  pipe.parentNode.insertBefore(empty, pipe.nextSibling);
+  empty.addEventListener('click', function(e) { if (e.target.tagName === 'BUTTON') switchPane('career'); });
+
+  function render() {
+    var nb = 0, nr = 0;
+    cards.forEach(function(c) { c.hidden = !hits(c, '.proj-tag'); if (!c.hidden) nb++; });
+    document.querySelectorAll('#pane-built .proj-grid').forEach(function(g) {
+      var any = [].some.call(g.querySelectorAll('.proj-card'), function(c) { return !c.hidden; });
+      g.hidden = !any;
+      var hd = g.previousElementSibling;
+      if (hd && hd.classList.contains('work-section-hd')) hd.hidden = !any;
+    });
+    roles.forEach(function(r) { var on = hits(r, '.exp-tag'); r.classList.toggle('tech-dim', !on); if (on) nr++; });
+    document.querySelectorAll('.proj-tag, .exp-tag, .skill-link').forEach(function(t) {
+      t.classList.toggle('tag-hit', !!active && !!active.keys[norm(t.textContent)]);
+    });
+    document.querySelectorAll('.p-grp').forEach(function(g) {
+      var lbl = g.querySelector('.p-lbl');
+      g.classList.toggle('p-active', !!active && active.stage === (lbl && lbl.textContent.trim()));
+    });
+    empty.hidden = !active || nb > 0;
+    if (active && !nb) empty.innerHTML = '-- 0 rows returned. ' + (nr ? 'this one shows up in <button type="button">career →</button>' : '');
+    var whereHtml = active ? '<span class="kw">WHERE</span>&nbsp;' + escHtml(active.where) + '&nbsp;' : '';
+    ['built','career'].forEach(function(k) { bars[k].where.innerHTML = whereHtml; bars[k].btn.hidden = !active; });
+    bars.built.cmt.textContent = active ? '-- ' + nb + ' of ' + cards.length + ' rows' : '-- ' + cards.length + ' rows · engineering + academic';
+    bars.career.cmt.textContent = active ? '-- ' + nr + ' of ' + roles.length + ' records' : '-- ' + roles.length + ' records';
+    var cur = document.querySelector('.tab-pane.active');
+    if (cur && cur.id === 'pane-built') updateStatus('built', nb);
+    return {built:nb, career:nr};
+  }
+
+  function setFilter(f) {
+    if (active && f && active.id === f.id) f = null; /* clicking the same thing again clears it */
+    active = f;
+    return render();
+  }
+  function forTag(name) {
+    var k = {}; k[norm(name)] = 1;
+    return {id:'tag:' + norm(name), keys:k, where:"'" + name.trim() + "' IN stack"};
+  }
+  function forStage(st) {
+    var k = {}; STAGES[st].forEach(function(t) { k[norm(t)] = 1; });
+    return {id:'stage:' + st, keys:k, where:"stage = '" + st + "'", stage:st};
+  }
+  window.clearTechFilter = function() { if (active) setFilter(null); };
+
+  /* Tags on cards, roles, and inside the project modal (capture so the card itself doesn't open) */
+  document.addEventListener('click', function(e) {
+    var t = e.target.closest && e.target.closest('.proj-tag, .exp-tag');
+    if (!t) return;
+    e.stopPropagation();
+    if (t.closest('#proj-modal') && window.closeProjModal) window.closeProjModal();
+    setFilter(forTag(t.textContent));
+  }, true);
+
+  /* Sidebar skills become buttons when something on the page uses them */
+  document.querySelectorAll('.panel-skill-line').forEach(function(line) {
+    var parts = line.textContent.split('·').map(function(x) { return x.trim(); }).filter(Boolean);
+    if (!parts.some(function(x) { return known[norm(x)]; })) return;
+    line.innerHTML = parts.map(function(x) {
+      return known[norm(x)] ? '<button class="skill-link" type="button" title="show work using ' + escHtml(x) + '">' + escHtml(x) + '</button>' : escHtml(x);
+    }).join(' · ');
+  });
+  document.querySelectorAll('.skill-link').forEach(function(b) {
+    b.addEventListener('click', function() {
+      var r = setFilter(forTag(b.textContent));
+      if (!active) return;
+      switchPane(r.built ? 'built' : 'career');
+      if (window.innerWidth <= 768) {
+        var mp = document.querySelector('.main-panel');
+        if (mp) mp.scrollIntoView({behavior:'smooth'});
+      }
+    });
+  });
+
+  /* Pipeline stages filter by the tools used at that stage */
+  document.querySelectorAll('.p-grp').forEach(function(g) {
+    var lbl = g.querySelector('.p-lbl');
+    var st = lbl && lbl.textContent.trim();
+    if (!STAGES[st]) return;
+    g.addEventListener('click', function() { setFilter(forStage(st)); });
+  });
+
+  render();
+})();
+
 /* ── Init ── */
 (function() {
   var active = document.querySelector('.top-tab.active');
@@ -2119,8 +2282,7 @@ switchPane = function(id) {
     moveIndicator(active);
     var pane = document.getElementById('pane-' + active.dataset.pane);
     if (pane) revealPane(pane);
-    var rowCounts = {studio: 11, built: 15, career: 4};
-    updateStatus(active.dataset.pane, rowCounts[active.dataset.pane] || 0);
+    updateStatus(active.dataset.pane, paneCount(active.dataset.pane));
   }
 })();
 </script>
@@ -2643,51 +2805,50 @@ switchPane = function(id) {
     hobbies:['analog film','photography','community volunteering'],
     languages_spoken:['English','Vietnamese']
   };
-  var SKILLS = [
-    {category:'Languages',skill:'SQL'},{category:'Languages',skill:'Python'},
-    {category:'Languages',skill:'Java'},{category:'Languages',skill:'JavaScript'},
-    {category:'Languages',skill:'HTML'},{category:'Languages',skill:'CSS'},
-    {category:'Data Warehousing',skill:'Snowflake'},{category:'Data Warehousing',skill:'BigQuery'},
-    {category:'ETL & Data Engineering',skill:'Matillion'},{category:'ETL & Data Engineering',skill:'REST APIs'},
-    {category:'ETL & Data Engineering',skill:'Apps Script'},{category:'ETL & Data Engineering',skill:'dbt'},
-    {category:'Cloud & Infra',skill:'Docker'},{category:'Cloud & Infra',skill:'AWS S3'},
-    {category:'Cloud & Infra',skill:'AWS ECR'},{category:'Cloud & Infra',skill:'EC2'},
-    {category:'Cloud & Infra',skill:'EMR'},{category:'Cloud & Infra',skill:'Lambda'},
-    {category:'Cloud & Infra',skill:'Amplify'},
-    {category:'AI & Developer Tooling',skill:'Claude Code'},{category:'AI & Developer Tooling',skill:'OpenAI Codex'},
-    {category:'AI & Developer Tooling',skill:'Agent Skills'},{category:'AI & Developer Tooling',skill:'Plugins'},
-    {category:'AI & Developer Tooling',skill:'Agent Harnesses'},
-    {category:'Visualization',skill:'Looker'},{category:'Visualization',skill:'Tableau'},
-    {category:'Visualization',skill:'Domo'},{category:'Visualization',skill:'Google Sheets'},
-    {category:'Developer Tools',skill:'Git'},{category:'Developer Tools',skill:'Postman'},
-    {category:'Developer Tools',skill:'JIRA'},{category:'Developer Tools',skill:'Confluence'},
-    {category:'Developer Tools',skill:'DBeaver'},{category:'Developer Tools',skill:'Jupyter'},
-    {category:'Developer Tools',skill:'PyCharm'},{category:'Developer Tools',skill:'Eclipse'},
-    {category:'Developer Tools',skill:'IntelliJ'},
-    {category:'Marketing Analytics',skill:'Google Analytics 4'},{category:'Marketing Analytics',skill:'Campaign Manager'},
-    {category:'Marketing Analytics',skill:'Google Ads'},{category:'Marketing Analytics',skill:'Brandwatch'},
-    {category:'Marketing Analytics',skill:'Prisma/MediaOcean'},{category:'Marketing Analytics',skill:'Kochava'},
-    {category:'Marketing Analytics',skill:'Kantar'},{category:'Marketing Analytics',skill:'MRI Simmons'},
-    {category:'Learning',skill:'Airflow'}
-  ];
-  var EXPERIENCE = [
-    {title:'Principal Data Engineer',company:'DEPT® Agency',location:'New York, NY',period:'Aug 2025 – Present'},
-    {title:'Senior Business Intelligence Engineer',company:'DEPT® Agency',location:'New York, NY',period:'Jun 2024 – Aug 2025'},
-    {title:'Business Intelligence Engineer',company:'DEPT® Agency',location:'New York, NY',period:'Oct 2022 – Jun 2024'},
-    {title:'Data Analyst',company:'FIG Agency',location:'New York, NY',period:'Jun 2021 – Jun 2022'}
-  ];
-  var PROJECTS = [
-    {title:'Film Festival Tracker',type:'Film',tech:'HTML · JSON · Vanilla JS',status:'live'},
-    {title:'Analog Film Stock Database',type:'Film',tech:'HTML · JSON · Vanilla JS',status:'live'},
-    {title:'NYC Analog Film Map',type:'Film',tech:'HTML · JSON · Leaflet.js',status:'live'},
-    {title:'Auteurs',type:'Film',tech:'HTML · JSON',status:'live'},
-    {title:'Self-Care Tracker',type:'Wellness',tech:'HTML · JSON · Vanilla JS',status:'live'},
-    {title:'Recipe Book',type:'Food',tech:'HTML · JSON · Vanilla JS',status:'live'},
-    {title:'World Atlas',type:'Travel',tech:'HTML · JSON · Vanilla JS',status:'live'},
-    {title:'NYC Adventure Log',type:'City',tech:'HTML · Vanilla JS',status:'live'},
-    {title:'NYC Food Help Map',type:'Civic',tech:'HTML · JSON · Leaflet.js',status:'live'}
-  ];
-  var TABLES = ['anna','skills','experience','projects','pumkin'];
+  /* ── Live data: read from the page so the tables never go stale ── */
+  var SKILLS = [], EXPERIENCE = [], BUILT = [], STUDIO = [], PROJECTS = [];
+  function txt(el, sel) { var n = sel ? el.querySelector(sel) : el; return n ? n.textContent.trim() : ''; }
+  function tagList(el, sel) { return [].map.call(el.querySelectorAll(sel), function(t){ return t.textContent.trim(); }); }
+  function titleCase(str) {
+    return str.toLowerCase().replace(/[a-z]+/g, function(w){ return /^(etl|ai|bi)$/.test(w) ? w.toUpperCase() : w.charAt(0).toUpperCase() + w.slice(1); });
+  }
+  function withRef(row, fn) { Object.defineProperty(row, '_ref', {value:fn}); return row; }
+  function showOnPage(pane, el, open) {
+    if (el.hidden && window.clearTechFilter) window.clearTechFilter();
+    switchPane(pane);
+    setTimeout(function(){
+      el.scrollIntoView({block:'center', behavior:'smooth'});
+      el.classList.remove('flash-hit'); void el.offsetWidth; el.classList.add('flash-hit');
+      if (open) setTimeout(function(){ el.click(); }, 500);
+    }, 120);
+  }
+  function syncData() {
+    SKILLS = []; var cat = null;
+    document.querySelectorAll('.panel-skill-grp, .panel-skill-line').forEach(function(el){
+      if (el.classList.contains('panel-skill-grp')) { cat = titleCase(el.textContent.trim()); return; }
+      el.textContent.split('·').forEach(function(x){ x = x.trim(); if (x) SKILLS.push({category:cat, skill:x}); });
+    });
+    EXPERIENCE = [].map.call(document.querySelectorAll('#pane-career .exp-item'), function(el){
+      var meta = txt(el, '.exp-meta').split(' · ');
+      return withRef({title:txt(el, '.exp-role-title'), company:meta[0] || '', location:meta[1] || '',
+        period:meta.slice(2).join(' · '), stack:tagList(el, '.exp-tag')}, function(){ showOnPage('career', el); });
+    });
+    BUILT = [].map.call(document.querySelectorAll('#pane-built .proj-card'), function(el){
+      var hd = el.closest('.proj-grid').previousElementSibling;
+      return withRef({title:txt(el, '.proj-title'), section:hd ? hd.textContent.trim() : '', period:txt(el, '.proj-ctx'),
+        stack:tagList(el, '.proj-tag'), description:txt(el, '.proj-desc')}, function(){ showOnPage('built', el, true); });
+    });
+    STUDIO = [].map.call(document.querySelectorAll('#pane-studio .db-row'), function(el){
+      return withRef({title:txt(el, '.row-name'), category:txt(el, '.col-tech'), status:txt(el, '.col-status'),
+        description:txt(el, '.row-desc'), url:el.getAttribute('href') || ''}, function(){ showOnPage('studio', el); });
+    });
+    PROJECTS = BUILT.map(function(x){ return withRef({title:x.title, tab:'built', category:x.section}, x._ref); })
+      .concat(STUDIO.map(function(x){ return withRef({title:x.title, tab:'studio', category:x.category}, x._ref); }));
+  }
+  syncData();
+  var TABLES = ['anna','built','studio','projects','experience','skills','pumkin'];
+
+  var ROW_REFS = [];
 
   /* ── Helpers ── */
   function esc(s) {
@@ -2698,8 +2859,10 @@ switchPane = function(id) {
     var h = '<div class="res-table"><div class="res-thead">';
     cols.forEach(function(c){h+='<span>'+esc(c)+'</span>';});
     h+='</div>';
+    var linked = false;
     rows.forEach(function(row){
-      h+='<div class="res-row">';
+      if (row._ref) { linked = true; h+='<div class="res-row res-link" data-ref="'+(ROW_REFS.push(row._ref)-1)+'" title="open on the page">'; }
+      else h+='<div class="res-row">';
       cols.forEach(function(c){
         var v=row[c]!==undefined?row[c]:'';
         if(Array.isArray(v))v=v.join(', ');
@@ -2707,7 +2870,7 @@ switchPane = function(id) {
       });
       h+='</div>';
     });
-    h+='<div class="res-footer">-- '+rows.length+' row'+(rows.length!==1?'s':'')+' in set'+(note?' ('+note+')':'')+'</div></div>';
+    h+='<div class="res-footer">-- '+rows.length+' row'+(rows.length!==1?'s':'')+' in set'+(note?' ('+note+')':'')+(linked?' · click a row to open it':'')+'</div></div>';
     return h;
   }
   function uniqueCats() {
@@ -2729,9 +2892,11 @@ switchPane = function(id) {
   var ANNA_COLS = ['name','location','role','origin','email','linkedin','github','status','target_roles','grad_school','grad_degree','undergrad_school','undergrad_degree'];
   var SQL_TABLES = {
     anna:       function(){ return {cols:ANNA_COLS, rows:[ANNA]}; },
+    built:      function(){ return {cols:['title','section','period','stack','description'], rows:BUILT}; },
+    studio:     function(){ return {cols:['title','category','status','description','url'], rows:STUDIO}; },
+    projects:   function(){ return {cols:['title','tab','category'], rows:PROJECTS}; },
+    experience: function(){ return {cols:['title','company','location','period','stack'], rows:EXPERIENCE}; },
     skills:     function(){ return {cols:['category','skill'], rows:SKILLS}; },
-    experience: function(){ return {cols:['title','company','location','period'], rows:EXPERIENCE}; },
-    projects:   function(){ return {cols:['title','type','tech','status'], rows:PROJECTS}; },
     pumkin:     function(){ return {cols:['trait','value'], rows:PUMKIN}; }
   };
   var SQL_KW = {SELECT:1,FROM:1,WHERE:1,GROUP:1,ORDER:1,BY:1,HAVING:1,LIMIT:1,AND:1,OR:1,NOT:1,AS:1,ASC:1,DESC:1,LIKE:1,ILIKE:1,IN:1,IS:1,NULL:1,DISTINCT:1,BETWEEN:1};
@@ -2996,6 +3161,7 @@ switchPane = function(id) {
     var out = units.map(function(u){
       var o = {};
       items.forEach(function(it, ix){ var v = sqlEval(it.e, u); o[headers[ix]] = v === null || v === undefined ? 'NULL' : v; });
+      if (u.row && u.row._ref) Object.defineProperty(o, '_ref', {value:u.row._ref});
       u.out = o;
       return u;
     });
@@ -3166,7 +3332,7 @@ switchPane = function(id) {
       return '<div class="res-success">[<br>'+lines.join(',<br>')+'<br>]</div>';
     }
     if(/^anna\.projects\s*\(\s*\)/.test(cu)) {
-      var lines=PROJECTS.map(function(p){return '&nbsp;&nbsp;{\'title\': \''+esc(p.title)+'\', \'status\': \''+esc(p.status)+'\'}';});
+      var lines=PROJECTS.map(function(p){return '&nbsp;&nbsp;{\'title\': \''+esc(p.title)+'\', \'tab\': \''+esc(p.tab)+'\'}';});
       return '<div class="res-success">[<br>'+lines.join(',<br>')+'<br>]</div>';
     }
     if(/^anna\.hobbies\s*\(\s*\)/.test(cu)) return '<div class="res-success">'+JSON.stringify(ANNA.hobbies)+'</div>';
@@ -3237,6 +3403,7 @@ switchPane = function(id) {
 
   function runCmd(cmd) {
     var result;
+    syncData();
     var sayM = cmd.match(/^(?:pumkinsay|cowsay)\s*(?:\(\s*)?(['"]?)(.*?)\1\s*\)?\s*;?$/i);
     if(sayM) result=pumkinSay(sayM[2] || 'hi! 👾');
     else if(consoleMode==='sql') result=runSQL(cmd);
@@ -3262,8 +3429,9 @@ switchPane = function(id) {
       ["SELECT skill FROM skills WHERE category LIKE '%cloud%'",'filter with LIKE'],
       ['SELECT category, COUNT(*) AS n FROM skills GROUP BY category ORDER BY n DESC','group + sort'],
       ['SELECT * FROM experience','work history'],
-      ['SELECT * FROM projects','creative projects'],
-      ['DESCRIBE anna','table schema'],
+      ["SELECT title, period FROM built WHERE stack = 'Snowflake'",'click a row'],
+      ["SELECT title FROM studio WHERE category = 'Film'",'personal projects'],
+      ['DESCRIBE built','table schema'],
       ['SELECT * FROM pumkin','meet pumkin'],
       ["pumkinsay 'hello!'",'any mode'],
       ["UPDATE anna SET status = 'hired'",'make it happen ;)'],
@@ -3351,7 +3519,7 @@ switchPane = function(id) {
       return '<div class="res-success">ArrayList&lt;Job&gt; [<br>'+lines.join(',<br>')+'<br>]</div>';
     }
     if(/^anna\.getProjects\s*\(\s*\)/.test(cu)) {
-      var lines=PROJECTS.map(function(p){return '&nbsp;&nbsp;new Project("'+esc(p.title)+'", "'+esc(p.status)+'")';});
+      var lines=PROJECTS.map(function(p){return '&nbsp;&nbsp;new Project("'+esc(p.title)+'", "'+esc(p.tab)+'")';});
       return '<div class="res-success">ArrayList&lt;Project&gt; [<br>'+lines.join(',<br>')+'<br>]</div>';
     }
     if(/^anna\.getAvailability\s*\(\s*\)/.test(cu)) return '<div class="res-success">Status.OPEN_TO_WORK // '+ANNA.target_roles.join(' · ')+' · NYC or remote · vuhongnhatlinh@gmail.com</div>';
@@ -3475,7 +3643,12 @@ switchPane = function(id) {
   };
   window.clearConsole = function() {
     if(coutput) coutput.innerHTML = '';
+    ROW_REFS = [];
   };
+  if(coutput) coutput.addEventListener('click', function(e) {
+    var r = e.target.closest('.res-row[data-ref]');
+    if(r && ROW_REFS[+r.dataset.ref]) { e.stopPropagation(); ROW_REFS[+r.dataset.ref](); }
+  });
 
   /* ── Focus input on console pane click ── */
   var consoleWrap = document.querySelector('.console-wrap');
