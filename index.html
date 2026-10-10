@@ -989,11 +989,10 @@ body {
 .proj-grid.compact .proj-card{display:grid;grid-template-columns:minmax(0,1fr) auto;column-gap:16px;row-gap:3px;padding:13px 20px;border:none;border-radius:0;border-bottom:1px solid var(--bd);background:transparent;box-shadow:none;}
 .proj-grid.compact .proj-card:last-child{border-bottom:none;}
 .proj-grid.compact .proj-card:hover{background:rgba(128,128,128,.06);box-shadow:none;}
-.proj-grid.compact .proj-card.bouncing{animation:none;}
 .proj-grid.compact .proj-title{grid-column:1;grid-row:1;font-size:14.5px;margin:0;}
 .proj-grid.compact .proj-ctx{grid-column:2;grid-row:1;margin:0;text-align:right;white-space:nowrap;}
 .proj-grid.compact .proj-ctx::after{content:'  →';color:var(--t4);}
-.proj-grid.compact .proj-desc{grid-column:1 / -1;grid-row:2;font-family:'Geist',sans-serif;font-size:13px;color:var(--t3);margin:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+.proj-grid.compact .proj-desc{grid-column:1 / -1;grid-row:2;font-family:'Geist',sans-serif;font-size:13px;line-height:1.6;color:var(--t3);margin:0;max-width:900px;}
 .proj-grid.compact .proj-tags,.proj-grid.compact .proj-metrics{display:none;}
 
 /* ── LEARNING skill dim ── */
@@ -2149,7 +2148,7 @@ function toggleTheme() {
 
   document.querySelectorAll('.proj-card').forEach(function(card) {
     card.addEventListener('mousedown', function() {
-      if (card.classList.contains('bouncing')) return;
+      if (card.classList.contains('bouncing') || card.closest('.compact')) return;
       card.classList.add('bouncing');
     });
     card.addEventListener('animationend', function(e) {
