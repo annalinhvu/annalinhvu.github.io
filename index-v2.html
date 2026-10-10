@@ -320,7 +320,7 @@ body {
 .pd1{fill:var(--accent);}.pd2{fill:var(--indigo);}.pd3{fill:var(--amber2);}.pd4{fill:var(--rose);}
 .pipe-scroll{overflow-x:auto;}
 .pipe-scroll .pipeline-svg{min-width:640px;}
-.pl-hd{font-family:'Geist Mono',monospace;font-size:9.5px;letter-spacing:1.6px;fill:var(--t4);text-anchor:middle;cursor:pointer;transition:fill .15s;}
+.pl-hd{font-family:'Geist Mono',monospace;font-size:10px;letter-spacing:1.6px;fill:var(--t4);text-anchor:middle;cursor:pointer;transition:fill .15s;}
 .pl-hd:hover,.pl-hd.p-active{fill:var(--amber);}
 .pl-edge{fill:none;stroke:var(--t4);stroke-width:1.1;stroke-dasharray:3 3;opacity:.45;}
 .pl-wh-box{fill:rgba(122,106,150,.05);stroke:rgba(122,106,150,.45);stroke-width:1.2;}
@@ -334,8 +334,8 @@ body {
 .pl-node[data-tag]{cursor:pointer;}
 .pl-node[data-tag]:hover rect{fill:rgba(128,128,128,.12);}
 .pl-node.p-hit rect{stroke:var(--amber);fill:rgba(200,120,94,.12);}
-.pl-lbl{font-family:'Geist Mono',monospace;font-size:11px;text-anchor:middle;fill:var(--t2);pointer-events:none;}
-.pl-sub{font-family:'Geist Mono',monospace;font-size:8.8px;text-anchor:middle;fill:var(--t4);pointer-events:none;}
+.pl-lbl{font-family:'Geist Mono',monospace;font-size:11.5px;text-anchor:middle;fill:var(--t2);pointer-events:none;}
+.pl-sub{font-family:'Geist Mono',monospace;font-size:9.5px;text-anchor:middle;fill:var(--t4);pointer-events:none;}
 .pl-src rect{stroke:var(--t4);stroke-dasharray:3 3;}
 .pl-ing rect{stroke:rgba(94,122,98,.6);}
 .pl-wh rect{stroke:rgba(122,106,150,.6);}
@@ -909,15 +909,15 @@ body {
 /* ── Schema tab ── */
 .sch-wrap{padding:24px 44px 40px;}
 .sch-intro{font-size:13.5px;color:var(--t3);line-height:1.7;margin-bottom:16px;max-width:760px;}
-.sch-graph-wrap{overflow-x:auto;border:1px solid var(--bd);border-radius:10px;background:rgba(128,128,128,.03);padding:12px 8px;margin-bottom:22px;}
-.sch-graph{display:block;width:100%;min-width:760px;height:auto;}
-.sch-colhd{font-family:'Geist Mono',monospace;font-size:9.5px;letter-spacing:1.6px;fill:var(--t4);text-anchor:middle;}
+.sch-graph-wrap{overflow-x:auto;border:1px solid var(--bd);border-radius:10px;background:rgba(128,128,128,.03);padding:12px 4px;margin-bottom:22px;}
+.sch-graph{display:block;width:100%;min-width:820px;height:auto;}
+.sch-colhd{font-family:'Geist Mono',monospace;font-size:10.5px;letter-spacing:1.4px;fill:var(--t4);text-anchor:middle;}
 .sch-edge{fill:none;stroke:var(--bd-hi);stroke-width:1.2;transition:stroke .2s,opacity .2s;}
 .sch-edge.on{stroke:var(--amber);stroke-width:1.6;}
 .sch-graph:has(.sch-node.sel) .sch-edge:not(.on){opacity:.35;}
 .sch-node{cursor:pointer;outline:none;transition:opacity .2s;}
 .sch-node rect{fill:var(--surface);stroke-width:1.4;transition:fill .15s,stroke .15s;}
-.sch-node text{font-family:'Geist Mono',monospace;font-size:11px;fill:var(--t2);text-anchor:middle;pointer-events:none;}
+.sch-node text{font-family:'Geist Mono',monospace;font-size:12.5px;fill:var(--t2);text-anchor:middle;pointer-events:none;}
 .sch-node:hover rect,.sch-node:focus-visible rect{fill:rgba(128,128,128,.14);}
 .sch-node.sel rect{stroke:var(--amber);fill:rgba(200,120,94,.14);stroke-width:1.8;}
 .sch-node.sel text{fill:var(--t1);}
@@ -2223,12 +2223,12 @@ switchPane = function(id) {
   /* tag: the project/role tag a component filters by (clickable only if something on the page uses it) */
   var NODES = [
     {id:'api',   lane:0, y:26,  label:'Ad platform APIs', sub:'google · meta · tiktok', tag:'REST APIs'},
-    {id:'sftp',  lane:0, y:66,  label:'SFTP drops',       sub:'cm360 · vendor reports'},
+    {id:'sftp',  lane:0, y:66,  label:'SFTP drops',       sub:'cm360 · vendors'},
     {id:'web',   lane:0, y:106, label:'Web analytics',    sub:'ga4 events'},
     {id:'sheet', lane:0, y:146, label:'Google Sheets',    sub:'match tables · plans', tag:'Google Sheets'},
     {id:'synd',  lane:0, y:186, label:'Syndicated data',  sub:'kantar · pathmatics', tag:'Kantar'},
 
-    {id:'py',    lane:1, y:26,  label:'Python connectors', sub:'oauth · paging · retries', tag:'Python'},
+    {id:'py',    lane:1, y:26,  label:'Python connectors', sub:'oauth · paging · retry', tag:'Python'},
     {id:'mat',   lane:1, y:80,  label:'Matillion',         sub:'scheduled loads', tag:'Matillion'},
     {id:'gas',   lane:1, y:134, label:'Apps Script',       sub:'sheets sync', tag:'Apps Script'},
     {id:'stage', lane:1, y:186, label:'Cloud stage',       sub:'s3 · gcs', tag:'S3'},
@@ -2240,7 +2240,7 @@ switchPane = function(id) {
     {id:'looker',lane:3, y:26,  label:'Looker',       sub:'self-serve explores', tag:'Looker'},
     {id:'tab',   lane:3, y:80,  label:'Tableau',      sub:'executive dashboards', tag:'Tableau'},
     {id:'domo',  lane:3, y:134, label:'Domo',         sub:'client reporting', tag:'Domo'},
-    {id:'slack', lane:3, y:186, label:'Slack alerts', sub:'kpi · taxonomy · freshness', tag:'Slack API'},
+    {id:'slack', lane:3, y:186, label:'Slack alerts', sub:'kpi · taxonomy · sla', tag:'Slack API'},
 
     {id:'perf',  lane:4, y:26,  label:'Performance',    sub:'roas · cpa · ctr'},
     {id:'pace',  lane:4, y:80,  label:'Budget pacing',  sub:'plan vs actual'},
@@ -2248,8 +2248,8 @@ switchPane = function(id) {
     {id:'triage',lane:4, y:186, label:'Anomaly triage', sub:'root cause · fixes'},
 
     /* data transfer lane: how data moves between systems along the way */
-    {id:'t-sftp', x:0,   w:150, y:256, label:'SFTP in / out',        sub:'vendor + partner files', cls:'pl-xfer', stage:'DATA TRANSFER'},
-    {id:'t-stage',x:186, w:150, y:256, label:'Stage → COPY INTO',    sub:'s3 · gcs · external tables', cls:'pl-xfer', stage:'DATA TRANSFER', tag:'S3'},
+    {id:'t-sftp', x:0,   w:150, y:256, label:'SFTP in / out',        sub:'vendor + partner', cls:'pl-xfer', stage:'DATA TRANSFER'},
+    {id:'t-stage',x:186, w:150, y:256, label:'Stage → COPY INTO',    sub:'s3 · gcs · ext. tables', cls:'pl-xfer', stage:'DATA TRANSFER', tag:'S3'},
     {id:'t-sync', x:372, w:212, y:256, label:'Cross-platform sync',  sub:'bigquery ↔ snowflake ↔ databricks', cls:'pl-xfer', stage:'DATA TRANSFER', tag:'BigQuery'},
     {id:'t-exp',  x:620, w:336, y:256, label:'Self-serve exports',   sub:'csv · excel · json → s3 · drive · sftp', cls:'pl-xfer', stage:'DATA TRANSFER', tag:'AWS Amplify'}
   ];
@@ -2313,7 +2313,7 @@ switchPane = function(id) {
     h += '<g class="pl-node ' + n.cls + (n.bar ? ' pl-bar' : '') + '"' + (n.tag ? ' data-tag="' + esc(n.tag) + '"' : '') + '>'
       + '<rect x="' + n.x + '" y="' + n.y + '" width="' + n.w + '" height="' + n.h + '" rx="' + (n.bar ? 6 : 8) + '"/>'
       + '<text class="pl-lbl" x="' + cx + '" y="' + (n.y + 13) + '">' + esc(n.label) + '</text>'
-      + '<text class="pl-sub" x="' + cx + '" y="' + (n.y + 25) + '">' + esc(n.sub) + '</text></g>';
+      + '<text class="pl-sub" x="' + cx + '" y="' + (n.y + 26) + '">' + esc(n.sub) + '</text></g>';
   });
   FLOWS.forEach(function(f, i) {
     [0, f.dur / 2].forEach(function(off) {
@@ -2604,7 +2604,10 @@ switchPane = function(id) {
   MODELS.forEach(function(m) { m.up.forEach(function(u) { byId[u].down.push(m.id); }); });
 
   /* ── Graph ── */
-  var COLW = [104, 132, 158, 122, 172, 92], H = 30, GAP = 26, ROW = 44, TOP = 34, PAD = 8;
+  /* each column is as wide as its longest label at FONT (Geist Mono is ~0.6em per char), so text can stay large */
+  var FONT = 12.5, H = 34, GAP = 22, ROW = 48, TOP = 38, PAD = 8, MIN_W = 84;
+  var COLW = [0, 0, 0, 0, 0, 0];
+  MODELS.forEach(function(m) { COLW[m.col] = Math.max(COLW[m.col], MIN_W, Math.ceil((m.label || m.id).length * FONT * 0.6) + 18); });
   var COLX = [], acc = PAD;
   COLW.forEach(function(w) { COLX.push(acc); acc += w + GAP; });
   var VW = acc - GAP + PAD, VH = TOP + 5 * ROW + H + PAD;
@@ -2615,7 +2618,7 @@ switchPane = function(id) {
 
   var svg = '';
   COLS.forEach(function(c, i) {
-    svg += '<text class="sch-colhd" x="' + (COLX[i] + COLW[i] / 2) + '" y="14">' + c + '</text>';
+    svg += '<text class="sch-colhd" x="' + (COLX[i] + COLW[i] / 2) + '" y="16">' + c + '</text>';
   });
   MODELS.forEach(function(m) {
     m.up.forEach(function(u) {
@@ -2627,7 +2630,7 @@ switchPane = function(id) {
   MODELS.forEach(function(m) {
     svg += '<g class="sch-node lay-' + m.layer + '" data-id="' + escHtml(m.id) + '" tabindex="0" role="button" aria-label="' + escHtml(m.id) + ', ' + LAYERS[m.layer].label + '">'
       + '<rect x="' + nx(m) + '" y="' + ny(m) + '" width="' + nw(m) + '" height="' + H + '" rx="7"/>'
-      + '<text x="' + (nx(m) + nw(m) / 2) + '" y="' + (ny(m) + H / 2 + 4) + '">' + escHtml(m.label || m.id) + '</text></g>';
+      + '<text x="' + (nx(m) + nw(m) / 2) + '" y="' + (ny(m) + H / 2 + 4.5) + '">' + escHtml(m.label || m.id) + '</text></g>';
   });
   graph.setAttribute('viewBox', '0 0 ' + VW + ' ' + VH);
   graph.innerHTML = svg;
