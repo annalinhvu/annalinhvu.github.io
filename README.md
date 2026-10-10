@@ -16,7 +16,7 @@ The portfolio is organized into these sections:
 - **experience**: My professional background and experience.
 - **side projects**: Personal projects exploring film, photography, travel, food, and community resources.
 - **architecture**: A data platform diagram (sources, ingest, a bronze/silver/gold medallion on Snowflake, BigQuery, or Databricks, visualize, analyze, and data transfer along the way), plus an interactive, illustrative model of a marketing warehouse. Click any table to trace its lineage, columns, tests, and SQL.
-- **playground**: A small SQL engine (plus Python, Java, and C easter eggs) for querying the portfolio itself.
+- **terminal**: A small SQL engine (plus Python, Java, and C easter eggs) for querying the portfolio itself.
 
 ---
 
