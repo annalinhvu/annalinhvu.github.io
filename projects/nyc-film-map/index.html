@@ -341,14 +341,19 @@ function toggleTheme(){
   localStorage.setItem('nyc-map-theme', next);
   if (tileLayer) {
     map.removeLayer(tileLayer);
-    tileLayer = L.tileLayer(
-      next === 'dark'
-        ? 'https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png'
-        : 'https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png',
-      {attribution:'&copy; <a href="https://www.openstreetmap.org/copyright">OSM</a> &copy; <a href="https://carto.com/">CARTO</a>',subdomains:'abcd',maxZoom:19}
-    ).addTo(map);
-    markerLayer.bringToFront();
+    tileLayer = makeTiles(next).addTo(map);
   }
+}
+
+// ── Basemap: Esri gray canvas (no API key needed), base + labels ──
+function makeTiles(theme){
+  const shade = theme === 'dark' ? 'Dark' : 'Light';
+  const url = layer => 'https://server.arcgisonline.com/ArcGIS/rest/services/Canvas/World_' + shade + '_Gray_' + layer + '/MapServer/tile/{z}/{y}/{x}';
+  const opts = {maxNativeZoom:16, maxZoom:19};
+  return L.layerGroup([
+    L.tileLayer(url('Base'), Object.assign({attribution:'Tiles &copy; Esri &mdash; Esri, HERE, Garmin, &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'}, opts)),
+    L.tileLayer(url('Reference'), opts)
+  ]);
 }
 
 // ── Leaflet Map ──
@@ -357,14 +362,7 @@ function initMap(){
   document.documentElement.dataset.theme = savedTheme;
 
   map = L.map('map',{zoomControl:true}).setView([40.730,-73.975],12);
-  const tileUrl = savedTheme === 'dark'
-    ? 'https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png'
-    : 'https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png';
-  tileLayer = L.tileLayer(tileUrl,{
-    attribution:'&copy; <a href="https://www.openstreetmap.org/copyright">OSM</a> &copy; <a href="https://carto.com/">CARTO</a>',
-    subdomains:'abcd',
-    maxZoom:19
-  }).addTo(map);
+  tileLayer = makeTiles(savedTheme).addTo(map);
   markerLayer = L.layerGroup().addTo(map);
 }
 
