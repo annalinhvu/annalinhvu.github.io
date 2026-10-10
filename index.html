@@ -923,6 +923,9 @@ body {
 
 /* ── Architecture tab ── */
 .sch-wrap{padding:24px 44px 40px;}
+.sch-intro strong{color:var(--t1);font-weight:600;}
+.term{border-bottom:1px dotted var(--t4);cursor:help;position:relative;}
+.term:hover::after,.term:focus::after{content:attr(data-tip);position:absolute;left:0;top:calc(100% + 6px);z-index:30;width:250px;max-width:70vw;padding:8px 11px;background:var(--panel-hd);border:1px solid var(--bd-hi);border-radius:8px;box-shadow:0 6px 18px var(--shadow-sm);font-family:'Geist',sans-serif;font-size:12.5px;font-weight:400;line-height:1.5;color:var(--t2);white-space:normal;text-transform:none;letter-spacing:0;}
 .sch-intro{font-size:13.5px;color:var(--t3);line-height:1.7;margin-bottom:16px;max-width:760px;}
 .sch-graph-wrap{overflow-x:auto;border:1px solid var(--bd);border-radius:10px;background:rgba(128,128,128,.03);padding:12px 4px;margin-bottom:22px;}
 .sch-graph{display:block;width:100%;min-width:820px;height:auto;}
@@ -946,6 +949,7 @@ body {
 .sch-decisions{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin-bottom:22px;}
 .decision{text-align:left;font:inherit;color:inherit;background:var(--surface);border:1px solid var(--bd);border-radius:10px;padding:14px 16px;cursor:pointer;transition:border-color .15s;}
 .decision:hover,.decision:focus-visible{border-color:var(--amber);outline:none;}
+.decision-p{font-family:'Geist Mono',monospace;font-size:10px;letter-spacing:.8px;text-transform:uppercase;color:var(--t4);margin-bottom:6px;}
 .decision-t{font-size:14px;font-weight:600;color:var(--t1);margin-bottom:5px;}
 .decision-d{font-size:13px;line-height:1.6;color:var(--t3);}
 .decision-k{font-family:'Geist Mono',monospace;font-size:10.5px;color:var(--amber);margin-top:9px;}
@@ -1611,13 +1615,13 @@ body {
           <div class="pipe-scroll"><svg class="pipeline-svg" id="pipe-svg" role="img" aria-label="Data platform: sources, ingestion, a bronze-silver-gold medallion on Snowflake, BigQuery or Databricks, visualization, analysis, and data transfer between systems"></svg></div>
         </div>
         <div class="work-section-hd">one reporting model, up close</div>
-        <p class="sch-intro">A simplified, anonymized version of the reporting model I own: nine ad networks and a client's first-party data, normalized, matched, deduplicated, and conformed into one daily reporting table. Names are generic and there's no client data. Click any table to trace its lineage and read its SQL.</p>
+        <p class="sch-intro"><strong>The problem:</strong> nine ad platforms and a client's <span class="term" tabindex="0" data-tip="The client&#39;s own records of what users did, such as sign-ups and subscriptions, shared directly into our warehouse.">first-party data</span> describe the same campaigns with different schemas, IDs, and names, and all of them change over time. This model, a simplified version of one I own, merges them into one daily table that's correct as of every date, without losing or double counting anything. Click any table to trace its lineage and SQL.</p>
         <div class="sch-sub">design decisions</div>
         <div class="sch-decisions">
-          <button type="button" class="decision" data-model="int_media_all"><div class="decision-t">Never drop first-party outcomes</div><div class="decision-d">Days with client outcomes but no ad spend used to vanish from reporting. They're now appended with zero media metrics and flagged, so totals reconcile with the client's own numbers.</div><div class="decision-k">int_media_all →</div></button>
-          <button type="button" class="decision" data-model="dim_classification_asof"><div class="decision-t">History stays as it was known</div><div class="decision-d">Campaign classifications are joined as of each reporting date, carrying the latest earlier value forward. A relabel today never rewrites last quarter.</div><div class="decision-k">dim_class_asof →</div></button>
-          <button type="button" class="decision" data-model="fct_campaign_daily"><div class="decision-t">No double counting</div><div class="decision-d">First-party outcomes attach only to delivery rows, not to every conversion row of the same campaign-day. Counts are summed; rates and coefficients are never added together.</div><div class="decision-k">fct_campaign_daily →</div></button>
-          <button type="button" class="decision" data-model="int_first_party_matched"><div class="decision-t">IDs first, names as a fallback</div><div class="decision-d">Renames apply from their effective date, then records match on campaign ID. Name matching is a last resort for records with no usable ID, because names drift and IDs don't.</div><div class="decision-k">int_1p_matched →</div></button>
+          <button type="button" class="decision" data-model="int_media_all"><div class="decision-p">orphan / late-arriving records</div><div class="decision-t">Never drop first-party outcomes</div><div class="decision-d">Days with client outcomes but no ad spend used to vanish from reporting. They're now appended with zero media metrics and flagged, so totals reconcile with the client's own numbers.</div><div class="decision-k">int_media_all →</div></button>
+          <button type="button" class="decision" data-model="dim_classification_asof"><div class="decision-p">point-in-time join · slowly changing dimension</div><div class="decision-t">History stays as it was known</div><div class="decision-d">Campaign classifications are joined as of each reporting date, carrying the latest earlier value forward. A relabel today never rewrites last quarter.</div><div class="decision-k">dim_class_asof →</div></button>
+          <button type="button" class="decision" data-model="fct_campaign_daily"><div class="decision-p">grain management · fan-out</div><div class="decision-t">No double counting</div><div class="decision-d">First-party outcomes attach only to <span class="term" data-tip="Stats about the ads themselves: impressions, clicks, and cost.">delivery</span> rows, not to every <span class="term" data-tip="A user action after seeing an ad, like an install or a sign-up, as each ad platform reports it.">conversion</span> row of the same campaign-day. Counts are summed; rates and coefficients are never added together.</div><div class="decision-k">fct_campaign_daily →</div></button>
+          <button type="button" class="decision" data-model="int_first_party_matched"><div class="decision-p">entity resolution</div><div class="decision-t">IDs first, names as a fallback</div><div class="decision-d">Renames apply from their effective date, then records match on campaign ID. Name matching is a last resort for records with no usable ID, because names drift and IDs don't.</div><div class="decision-k">int_1p_matched →</div></button>
         </div>
         <div class="sch-graph-wrap"><svg class="sch-graph" id="sch-graph" role="group" aria-label="Warehouse lineage graph"></svg></div>
         <div class="sch-detail" id="sch-detail"></div>
@@ -2232,7 +2236,7 @@ switchPane = function(id) {
     {id:'sftp',  lane:0, y:66,  label:'SFTP drops',       sub:'cm360 · vendors'},
     {id:'web',   lane:0, y:106, label:'Web analytics',    sub:'ga4 events'},
     {id:'sheet', lane:0, y:146, label:'Google Sheets',    sub:'match tables · plans', tag:'Google Sheets'},
-    {id:'synd',  lane:0, y:186, label:'Syndicated data',  sub:'kantar · pathmatics', tag:'Kantar'},
+    {id:'synd',  lane:0, y:186, label:'Market research',  sub:'competitor ad spend', tag:'Kantar'},
 
     {id:'py',    lane:1, y:26,  label:'Python connectors', sub:'oauth · paging · retry', tag:'Python'},
     {id:'mat',   lane:1, y:80,  label:'Matillion',         sub:'scheduled loads', tag:'Matillion'},
@@ -2248,15 +2252,15 @@ switchPane = function(id) {
     {id:'domo',  lane:3, y:134, label:'Domo',         sub:'client reporting', tag:'Domo'},
     {id:'slack', lane:3, y:186, label:'Slack alerts', sub:'kpi · taxonomy · sla', tag:'Slack API'},
 
-    {id:'perf',  lane:4, y:26,  label:'Performance',    sub:'roas · cpa · ctr'},
+    {id:'perf',  lane:4, y:26,  label:'Performance',    sub:'return · cost per result'},
     {id:'pace',  lane:4, y:80,  label:'Budget pacing',  sub:'plan vs actual'},
-    {id:'mix',   lane:4, y:134, label:'Media mix',      sub:'esov · cdi / bdi', tag:'R'},
+    {id:'mix',   lane:4, y:134, label:'Share of voice', sub:'spend vs competitors', tag:'R'},
     {id:'triage',lane:4, y:186, label:'Anomaly triage', sub:'root cause · fixes'},
 
     /* data transfer lane: how data moves between systems along the way */
     {id:'t-sftp', x:0,   w:150, y:256, label:'SFTP in / out',        sub:'vendor + partner', cls:'pl-xfer', stage:'DATA TRANSFER'},
     {id:'t-stage',x:186, w:150, y:256, label:'Stage → COPY INTO',    sub:'s3 · gcs · ext. tables', cls:'pl-xfer', stage:'DATA TRANSFER', tag:'S3'},
-    {id:'t-sync', x:372, w:212, y:256, label:'Data shares & sync',  sub:'client 1p data · cross-platform', cls:'pl-xfer', stage:'DATA TRANSFER', tag:'BigQuery'},
+    {id:'t-sync', x:372, w:212, y:256, label:'Data shares & sync',  sub:'client data · cross-platform', cls:'pl-xfer', stage:'DATA TRANSFER', tag:'BigQuery'},
     {id:'t-exp',  x:620, w:336, y:256, label:'Self-serve exports',   sub:'csv · excel · json → s3 · drive · sftp', cls:'pl-xfer', stage:'DATA TRANSFER', tag:'AWS Amplify'}
   ];
   var BOX = 32;
