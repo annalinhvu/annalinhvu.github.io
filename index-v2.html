@@ -1710,6 +1710,15 @@ function revealPane(pane) {
   });
 }
 
+/* Once an item has faded in, drop the reveal class: it starts at opacity 0, so any later
+   animation (like the card click bounce) would otherwise flash the item invisible */
+document.addEventListener('animationend', function(e) {
+  if (e.animationName === 'staggerIn') {
+    e.target.classList.remove('stagger-item');
+    e.target.style.animationDelay = '';
+  }
+});
+
 /* ── Switch pane ── */
 function switchPane(id) {
   document.querySelectorAll('.top-tab').forEach(function(t) {
@@ -2747,6 +2756,8 @@ document.addEventListener('click', function(e) {
   z-index:999;
   display:flex; flex-direction:column; align-items:flex-end; gap:10px;
 }
+/* phones: Pumkin covered the intro; the mobile rule above loses to this block, so restate it here */
+@media (max-width: 768px) { #pet-wrap{display:none;} }
 #pet-bubble {
   background:var(--panel);
   border:1px solid var(--bd-hi);
@@ -3945,7 +3956,7 @@ document.addEventListener('click', function(e) {
     var left = cmds.slice(0, half), right = cmds.slice(half);
     function row(c) {
       var safe = c[0].replace(/\\/g,'\\\\').replace(/'/g,"\\'");
-      return '<span class="guide-cmd" onclick="fillCmd(\''+safe+'\',\''+m+'\')">'
+      return '<span class="guide-cmd" onclick="fillCmd(\''+esc(safe)+'\',\''+m+'\')">'
         +esc(c[0])+' <span class="gc-comment">-- '+esc(c[1])+'</span></span>';
     }
     g.innerHTML = '<div class="guide-col"><div class="guide-col-hd">'+m.toUpperCase()+'</div>'
