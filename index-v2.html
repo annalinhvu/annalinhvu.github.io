@@ -996,12 +996,8 @@ body {
 .proj-grid.compact .proj-tags,.proj-grid.compact .proj-metrics{display:none;}
 
 .course-block[hidden]{display:none!important;}
-.course-list{border:1px solid var(--bd);border-radius:12px;overflow:hidden;background:var(--surface);}
-.course-row{display:grid;grid-template-columns:minmax(0,1fr) auto;column-gap:16px;row-gap:3px;padding:13px 20px;border-bottom:1px solid var(--bd);}
-.course-row:last-child{border-bottom:none;}
-.course-name{font-size:14.5px;font-weight:600;color:var(--t1);}
-.course-when{font-family:'Geist Mono',monospace;font-size:12px;color:var(--t4);white-space:nowrap;}
-.course-learned{grid-column:1 / -1;font-size:13px;line-height:1.6;color:var(--t3);max-width:900px;}
+.course-line{font-size:13.5px;line-height:1.7;color:var(--t3);margin:14px 2px 0;max-width:900px;}
+.course-lbl{font-family:'Geist Mono',monospace;font-size:10.5px;letter-spacing:1px;text-transform:uppercase;color:var(--amber);margin-right:10px;}
 
 /* ── LEARNING skill dim ── */
 .panel-skill-line.learning{opacity:.45;font-style:italic;}
@@ -1501,13 +1497,7 @@ body {
         </div>
 
         <div class="course-block">
-          <div class="work-section-hd">penn engineering · coursework</div>
-          <div class="course-list">
-            <div class="course-row"><div class="course-name">CIT 5920 · Mathematical Foundations of Computer Science</div><div class="course-when">2026 · in progress</div><div class="course-learned">Counting and combinatorics, propositional logic, proof techniques (direct, contradiction, cases, induction), binomial coefficients, functions and bijections, inclusion-exclusion, the pigeonhole principle, and probability, written up in LaTeX.</div></div>
-            <div class="course-row"><div class="course-name">CIT 5930 · Introduction to Computer Systems</div><div class="course-when">2026</div><div class="course-learned">Binary and floating-point representation, logic gates and sequential circuits, the LC4 datapath and instruction set, assembly language, traps and I/O, the call stack, and C: pointers, strings, file I/O, dynamic memory, and function pointers, debugged with GDB and Valgrind.</div></div>
-            <div class="course-row"><div class="course-name">CIT 5940 · Data Structures and Software Design</div><div class="course-when">2025</div><div class="course-learned">Dynamic arrays, linked lists, stacks and queues, lists, sets, and maps, binary search and splay trees, tries, graphs and BFS, parsing with state machines, plus software design patterns, refactoring, efficiency, and concurrency in Java.</div></div>
-            <div class="course-row"><div class="course-name">CIT 5910 · Introduction to Software Development</div><div class="course-when">2024</div><div class="course-learned">Python and Java from the ground up: control flow, functions, files, object-oriented design with inheritance, polymorphism, abstract classes, and interfaces, exceptions, and unit testing, plus optional modules on data analysis, SQL, and Git.</div></div>
-          </div>
+          <p class="course-line"><span class="course-lbl">also studied</span>data structures and algorithms · computer systems, C, and assembly · discrete math, proofs, and probability · object-oriented design in Python and Java</p>
         </div>
       </div>
     </section>
@@ -1606,15 +1596,15 @@ body {
         <span class="kw">SELECT</span><span>&nbsp;*&nbsp;</span>
         <span class="kw">FROM</span><span>&nbsp;</span>
         <span class="tbl">anna_vu.lineage</span>
-        <span class="cmt">-- illustrative model · generic names, no client data</span>
+        <span class="cmt">-- anonymized model · generic names, no client data</span>
       </div>
       <div class="sch-wrap">
         <div class="pipeline-wrap">
           <div class="pipeline-lbl">Data platform · click any stage or component to see related projects</div>
           <div class="pipe-scroll"><svg class="pipeline-svg" id="pipe-svg" role="img" aria-label="Data platform: sources, ingestion, a bronze-silver-gold medallion on Snowflake, BigQuery or Databricks, visualization, analysis, and data transfer between systems"></svg></div>
         </div>
-        <div class="work-section-hd">one warehouse, up close</div>
-        <p class="sch-intro">An illustrative model of the kind of marketing warehouse I build: ad platforms and web analytics in, one tested reporting layer out. Click any table to trace its lineage and read its SQL.</p>
+        <div class="work-section-hd">one reporting model, up close</div>
+        <p class="sch-intro">A simplified, anonymized version of the reporting model I own: nine ad networks and a client's first-party data, normalized, matched, deduplicated, and conformed into one daily reporting table. Names are generic and there's no client data. Click any table to trace its lineage and read its SQL.</p>
         <div class="sch-graph-wrap"><svg class="sch-graph" id="sch-graph" role="group" aria-label="Warehouse lineage graph"></svg></div>
         <div class="sch-detail" id="sch-detail"></div>
       </div>
@@ -2243,7 +2233,7 @@ switchPane = function(id) {
     /* data transfer lane: how data moves between systems along the way */
     {id:'t-sftp', x:0,   w:150, y:256, label:'SFTP in / out',        sub:'vendor + partner', cls:'pl-xfer', stage:'DATA TRANSFER'},
     {id:'t-stage',x:186, w:150, y:256, label:'Stage → COPY INTO',    sub:'s3 · gcs · ext. tables', cls:'pl-xfer', stage:'DATA TRANSFER', tag:'S3'},
-    {id:'t-sync', x:372, w:212, y:256, label:'Cross-platform sync',  sub:'bigquery ↔ snowflake ↔ databricks', cls:'pl-xfer', stage:'DATA TRANSFER', tag:'BigQuery'},
+    {id:'t-sync', x:372, w:212, y:256, label:'Data shares & sync',  sub:'client 1p data · cross-platform', cls:'pl-xfer', stage:'DATA TRANSFER', tag:'BigQuery'},
     {id:'t-exp',  x:620, w:336, y:256, label:'Self-serve exports',   sub:'csv · excel · json → s3 · drive · sftp', cls:'pl-xfer', stage:'DATA TRANSFER', tag:'AWS Amplify'}
   ];
   var BOX = 32;
@@ -2475,123 +2465,133 @@ switchPane = function(id) {
   if (!graph || !detail) return;
 
   var LAYERS = {
-    source:       {label:'source',       col:'SOURCES'},
-    staging:      {label:'staging',      col:'STAGING'},
-    intermediate: {label:'intermediate', col:'INTERMEDIATE'},
-    dimension:    {label:'dimension',    col:'DIMENSIONS'},
-    fact:         {label:'fact',         col:'FACTS & QA'},
-    qa:           {label:'data quality', col:'FACTS & QA'},
-    exposure:     {label:'exposure',     col:'EXPOSURES'}
+    source:       {label:'source'},
+    staging:      {label:'staging'},
+    intermediate: {label:'intermediate'},
+    dimension:    {label:'dimension'},
+    fact:         {label:'fact'},
+    qa:           {label:'data quality'},
+    exposure:     {label:'exposure'}
   };
-  var COLS = ['SOURCES','STAGING','INTERMEDIATE','DIMENSIONS','FACTS & QA','EXPOSURES'];
-
-  function stg(platform, srcTable, dateExpr, campaignName, spendExpr) {
-    return "select\n"
-      + "    " + dateExpr + " as date_day,\n"
-      + "    '" + platform + "' as platform,\n"
-      + "    campaign_id::varchar as campaign_id,\n"
-      + "    " + campaignName + " as campaign_name,\n"
-      + "    " + spendExpr + " as spend,\n"
-      + "    impressions::int as impressions,\n"
-      + "    clicks::int as clicks\n"
-      + "from {{ source('" + platform + "', '" + srcTable + "') }}";
-  }
-  var STD_COLS = [['date_day','date'],['platform','varchar'],['campaign_id','varchar'],['campaign_name','varchar'],['spend','number(18,2)','in USD'],['impressions','int'],['clicks','int']];
-  var STD_TESTS = ['not_null(date_day)','not_null(campaign_id)','spend >= 0'];
+  var COLS = ['SOURCES','STAGING','INTERMEDIATE','CONFORMED','REPORTING & QA','EXPOSURES'];
 
   var MODELS = [
-    /* sources */
-    {id:'google_ads.ad_stats', label:'google_ads', layer:'source', col:0, row:0, loaded:'Python API connector', fresh:'warn 12h · error 24h',
-      desc:'Campaign stats from the Google Ads API, landed as-is.',
-      cols:[['customer_id','varchar'],['campaign_id','number'],['campaign_name','varchar'],['segments_date','date'],['cost_micros','number','spend × 1,000,000'],['impressions','number'],['clicks','number']]},
-    {id:'meta_ads.ad_insights', label:'meta_ads', layer:'source', col:0, row:1, loaded:'Python API connector', fresh:'warn 12h · error 24h',
-      desc:'Campaign insights from the Meta Marketing API.',
-      cols:[['account_id','varchar'],['campaign_id','varchar'],['campaign_name','varchar'],['date_start','varchar'],['spend','varchar'],['impressions','varchar'],['clicks','varchar']]},
-    {id:'cm360.delivery', label:'cm360', layer:'source', col:0, row:2, loaded:'SFTP file drop, loaded by Matillion', fresh:'warn 24h · error 48h',
-      desc:'Daily delivery report from Campaign Manager 360, arriving as files over SFTP.',
-      cols:[['advertiser_id','number'],['campaign_id','number'],['campaign','varchar'],['date','date'],['media_cost','number'],['impressions','number'],['clicks','number']]},
-    {id:'tiktok_ads.ad_stats', label:'tiktok_ads', layer:'source', col:0, row:3, loaded:'Python API connector', fresh:'warn 12h · error 24h',
-      desc:'Campaign stats from the TikTok Marketing API.',
-      cols:[['advertiser_id','varchar'],['campaign_id','varchar'],['campaign_name','varchar'],['stat_time_day','timestamp'],['spend','float'],['impressions','int'],['clicks','int']]},
-    {id:'ga4.events', label:'ga4', layer:'source', col:0, row:4, loaded:'GA4 export to BigQuery, synced to Snowflake', fresh:'warn 24h · error 48h',
-      desc:'Event-level web analytics: one row per event, nested parameters in a variant column.',
-      cols:[['event_date','varchar','YYYYMMDD'],['event_name','varchar'],['user_pseudo_id','varchar'],['session_id','number'],['traffic_source','variant','utm fields']]},
-    {id:'sheets.taxonomy_match_table', label:'sheets', layer:'source', col:0, row:5, loaded:'Google Sheets, synced by Apps Script', fresh:'warn 7d',
-      desc:'The match table the Media team maintains: what each campaign code means.',
-      cols:[['campaign_code','varchar'],['brand','varchar'],['market','varchar'],['objective','varchar']]},
+    /* sources: warehouse fact tables per ad network, plus client-owned inputs */
+    {id:'dwh.ad_metrics_facts', label:'ad metrics ×9', layer:'source', col:0, row:0, loaded:'API connectors, one fact table per ad network', fresh:'warn 12h · error 24h',
+      desc:'Daily delivery stats for nine ad networks across search, social, and app stores. Each network lands in its own fact table with its own column names, units, and quirks.',
+      cols:[['date_id','int','FK → dim_date'],['account_id','varchar'],['campaign_id','varchar'],['campaign_name','varchar'],['impressions','number'],['clicks','number'],['cost','number','units vary by network'],['video_* rates','float','quartile completion rates']]},
+    {id:'dwh.ad_conversion_facts', label:'ad conversions ×9', layer:'source', col:0, row:1, loaded:'API connectors, one fact table per ad network', fresh:'warn 12h · error 24h',
+      desc:'Conversion events per network. Some arrive long (one row per conversion action), some wide (one column per action), and each network names the same action differently.',
+      cols:[['date_id','int','FK → dim_date'],['campaign_id','varchar'],['conversion_action','varchar','network-specific names'],['conversions','number'],['view_through','number']]},
+    {id:'dwh.dim_date', label:'dim_date', layer:'source', col:0, row:2, loaded:'warehouse date dimension',
+      desc:'The shared calendar dimension every fact table joins to through a surrogate date key.',
+      cols:[['date_id','int','PK'],['date','date'],['week_start','date'],['month','int'],['year','int']]},
+    {id:'ref.campaign_dictionary', label:'campaign dictionary', layer:'source', col:0, row:3, loaded:'maintained reference table',
+      desc:'Known campaign name and ID pairs, used to recover an ID when a record only carries a name.',
+      cols:[['campaign','varchar'],['campaign_id','varchar'],['platform','varchar']]},
+    {id:'share.client_first_party', label:'1P data share', layer:'source', col:0, row:4, loaded:'secure data share from the client', fresh:'warn 24h',
+      desc:'The client\'s own first-party outcomes (sign-ups, subscriptions, leads, and modeled lift) at campaign and day grain, shared directly into the warehouse. Can contain duplicate shadow rows.',
+      cols:[['date','date'],['campaign','varchar'],['campaign_id','varchar','often missing'],['additive outcomes','number','counts'],['rates & coefficients','float','non-additive'],['classification','varchar','client-owned']]},
+    {id:'ref.match_table', label:'match table', layer:'source', col:0, row:5, loaded:'maintained by the media team',
+      desc:'The campaign taxonomy: channel, publisher, objective, targeting, region, audience, and budget type for every campaign name.',
+      cols:[['campaign','varchar'],['channel','varchar'],['objective','varchar'],['targeting','varchar'],['region','varchar'],['audience','varchar']]},
+    {id:'ref.campaign_renames', label:'name mappings', layer:'source', col:0, row:6, loaded:'maintained reference table',
+      desc:'Campaign renames with the date each one took effect, so old and new names reconcile to one identity.',
+      cols:[['old_campaign','varchar'],['new_campaign','varchar'],['effective_date','date']]},
+    {id:'ref.conversion_values', label:'conversion values', layer:'source', col:0, row:7, loaded:'maintained reference table',
+      desc:'The value assigned to each outcome type, valid for a start and end date.',
+      cols:[['outcome','varchar'],['value','number'],['start_date','date'],['end_date','date','null = current']]},
 
-    /* staging: one view per source, renamed and typed into a shared shape */
-    {id:'stg_google_ads', layer:'staging', col:1, row:0, mat:'view', grain:'campaign × day', up:['google_ads.ad_stats'],
-      desc:'Google Ads in the standard ad-spend shape. Cost arrives in micros, so it is divided here once.',
-      cols:STD_COLS, tests:STD_TESTS, sql:stg('google_ads','ad_stats','segments_date','campaign_name','cost_micros / 1e6')},
-    {id:'stg_meta_ads', layer:'staging', col:1, row:1, mat:'view', grain:'campaign × day', up:['meta_ads.ad_insights'],
-      desc:'Meta in the standard shape. The API returns everything as strings, so types are cast here.',
-      cols:STD_COLS, tests:STD_TESTS, sql:stg('meta_ads','ad_insights','date_start::date','campaign_name','spend::number(18,2)')},
-    {id:'stg_cm360', layer:'staging', col:1, row:2, mat:'view', grain:'campaign × day', up:['cm360.delivery'],
-      desc:'CM360 delivery in the standard shape.',
-      cols:STD_COLS, tests:STD_TESTS, sql:stg('cm360','delivery','date','campaign','media_cost')},
-    {id:'stg_tiktok_ads', layer:'staging', col:1, row:3, mat:'view', grain:'campaign × day', up:['tiktok_ads.ad_stats'],
-      desc:'TikTok in the standard shape. Timestamps are truncated to the reporting day.',
-      cols:STD_COLS, tests:STD_TESTS, sql:stg('tiktok_ads','ad_stats','stat_time_day::date','campaign_name','spend::number(18,2)')},
-    {id:'stg_ga4_sessions', layer:'staging', col:1, row:4, mat:'view', grain:'session', up:['ga4.events'],
-      desc:'GA4 events rolled up to sessions, with the campaign that brought each one in.',
-      cols:[['date_day','date'],['session_key','varchar','user + session id'],['utm_campaign','varchar'],['is_conversion','boolean']],
-      tests:['unique(session_key)','not_null(date_day)'],
-      sql:"select\n    to_date(event_date, 'YYYYMMDD') as date_day,\n    user_pseudo_id || '-' || session_id as session_key,\n    any_value(traffic_source:campaign::varchar) as utm_campaign,\n    boolor_agg(event_name = 'purchase') as is_conversion\nfrom {{ source('ga4', 'events') }}\ngroup by 1, 2"},
-    {id:'stg_taxonomy', layer:'staging', col:1, row:5, mat:'view', grain:'campaign code', up:['sheets.taxonomy_match_table'],
-      desc:'The match table, cleaned up. Spreadsheets drift, so codes are trimmed and upper-cased.',
-      cols:[['campaign_code','varchar'],['brand','varchar'],['market','varchar'],['objective','varchar']],
-      tests:['unique(campaign_code)','not_null(campaign_code)'],
-      sql:"select\n    upper(trim(campaign_code)) as campaign_code,\n    brand,\n    upper(market) as market,\n    lower(objective) as objective\nfrom {{ source('sheets', 'taxonomy_match_table') }}\nwhere campaign_code is not null"},
+    /* staging */
+    {id:'stg_ad_metrics', layer:'staging', col:1, row:0, mat:'view', grain:'network × campaign × day', up:['dwh.ad_metrics_facts','dwh.dim_date'],
+      desc:'Every network in one shape. Units are normalized, video completion rates become counts by weighting with impressions, impression share is impression-weighted so it can be re-averaged later, and all-zero rows are dropped.',
+      cols:[['date','date'],['platform','varchar'],['account_id','varchar'],['campaign','varchar'],['campaign_id','varchar'],['impressions','number'],['clicks','number'],['cost','number(18,2)'],['video_25..100','number','counts']],
+      tests:['not_null(date)','not_null(campaign_id)','cost >= 0'],
+      sql:"{% for p in ad_networks %}\nselect\n    d.date,\n    '{{ p.name }}' as platform,\n    f.account_id::varchar as account_id,\n    f.campaign_name as campaign,\n    f.campaign_id::varchar as campaign_id,\n    sum(zeroifnull(f.impressions)) as impressions,\n    sum(zeroifnull(f.clicks)) as clicks,\n    sum(zeroifnull(f.cost)) / {{ p.cost_divisor }} as cost,\n    -- rates can't be summed; weight by impressions so they can be re-averaged downstream\n    sum(zeroifnull(f.video_q25_rate) * zeroifnull(f.impressions)) as video_25,\n    sum(zeroifnull(f.impression_share) * zeroifnull(f.impressions)) as weighted_impr_share\nfrom {{ source('dwh', p.metrics_fact) }} f\njoin {{ source('dwh', 'dim_date') }} d on f.date_id = d.date_id\nwhere abs(zeroifnull(f.impressions) + zeroifnull(f.clicks) + zeroifnull(f.cost)) > 0\ngroup by 1, 2, 3, 4, 5\n{% if not loop.last %}union all{% endif %}\n{% endfor %}"},
+    {id:'stg_ad_conversions', layer:'staging', col:1, row:1, mat:'view', grain:'network × campaign × day × conversion', up:['dwh.ad_conversion_facts','dwh.dim_date'],
+      desc:'Conversions in one long shape with one shared vocabulary. Network-specific action names map to standard names with pattern rules, wide tables are unpivoted, and networks that report a fixed set of actions are fanned out with a values list.',
+      cols:[['date','date'],['platform','varchar'],['campaign_id','varchar'],['conversion_name','varchar','standardized'],['conversions','number'],['view_through','number']],
+      tests:["accepted_values(conversion_name, ['Install','Sign Up','Lead','Purchase','Subscription'])"],
+      sql:"-- long-format networks: map raw action names to the shared vocabulary\nselect\n    d.date,\n    f.platform,\n    f.campaign_id::varchar as campaign_id,\n    case\n        when f.conversion_action ilike any ('%install%', '%first_open%') then 'Install'\n        when f.conversion_action ilike any ('%sign%up%', '%registration%') then 'Sign Up'\n        when f.conversion_action ilike '%lead%' then 'Lead'\n        when f.conversion_action ilike any ('%purchase%', '%checkout%') then 'Purchase'\n        else 'Other'\n    end as conversion_name,\n    sum(zeroifnull(f.conversions)) as conversions\nfrom {{ source('dwh', 'ad_conversion_facts') }} f\njoin {{ source('dwh', 'dim_date') }} d on f.date_id = d.date_id\ngroup by 1, 2, 3, 4\n\nunion all\n\n-- wide-format network: one column per action, unpivoted to rows\nselect d.date, 'network_w', campaign_id::varchar, conversion_name, sum(conversions)\nfrom {{ source('dwh', 'wide_conversion_fact') }}\n    unpivot (conversions for conversion_name in (sign_up, lead, purchase)) w\njoin {{ source('dwh', 'dim_date') }} d on w.date_id = d.date_id\ngroup by 1, 2, 3, 4"},
+    {id:'stg_campaign_dictionary', label:'stg_dictionary', layer:'staging', col:1, row:3, mat:'view', grain:'campaign', up:['ref.campaign_dictionary'],
+      desc:'The dictionary deduplicated in both directions, so each ID maps to one name and each name to one ID.',
+      cols:[['campaign','varchar','unique'],['campaign_id','varchar','unique'],['platform','varchar']],
+      tests:['unique(campaign)','unique(campaign_id)'],
+      sql:"select * from (\n    select * from {{ source('ref', 'campaign_dictionary') }}\n    qualify row_number() over (partition by campaign_id order by campaign, platform) = 1\n)\nqualify row_number() over (partition by campaign order by campaign_id, platform) = 1"},
+    {id:'stg_first_party', layer:'staging', col:1, row:4, mat:'view', grain:'campaign × day', up:['share.client_first_party'],
+      desc:'The data share collapsed to one row per campaign and day. Additive outcomes are summed; rates and coefficients are single-valued per key, so they take MAX instead of being wrongly added together.',
+      cols:[['date','date'],['campaign','varchar'],['campaign_id','varchar'],['outcomes','number','summed'],['rates','float','max'],['classification','varchar']],
+      tests:['unique(date, campaign, campaign_id)'],
+      sql:"select\n    date,\n    campaign,\n    campaign_id,\n    -- additive outcomes: shadow rows add up\n    sum(sign_ups) as sign_ups,\n    sum(subscriptions) as subscriptions,\n    sum(leads) as leads,\n    -- non-additive: expected to be single-valued for the key\n    max(lift_coefficient) as lift_coefficient,\n    max(conversion_rate) as conversion_rate\nfrom {{ source('share', 'client_first_party') }}\ngroup by 1, 2, 3"},
+    {id:'stg_match_table', layer:'staging', col:1, row:5, mat:'view', grain:'campaign', up:['ref.match_table'],
+      desc:'The taxonomy, trimmed and typed, one row per campaign name.',
+      cols:[['campaign','varchar','unique'],['channel','varchar'],['objective','varchar'],['region','varchar']],
+      tests:['unique(campaign)'],
+      sql:"select\n    trim(campaign) as campaign,\n    channel, publisher, objective, targeting, region, audience, budget_type\nfrom {{ source('ref', 'match_table') }}\nqualify row_number() over (partition by trim(campaign) order by updated_at desc) = 1"},
+    {id:'stg_campaign_renames', label:'stg_renames', layer:'staging', col:1, row:6, mat:'view', grain:'rename', up:['ref.campaign_renames'],
+      desc:'Renames typed and ordered by effective date.',
+      cols:[['old_campaign','varchar'],['new_campaign','varchar'],['effective_date','date']],
+      tests:['not_null(effective_date)'],
+      sql:"select old_campaign, new_campaign, effective_date::date as effective_date\nfrom {{ source('ref', 'campaign_renames') }}"},
+    {id:'stg_conversion_values', label:'stg_values', layer:'staging', col:1, row:7, mat:'view', grain:'outcome × validity window', up:['ref.conversion_values'],
+      desc:'Outcome values with open-ended windows kept open (a null end date means still current).',
+      cols:[['outcome','varchar'],['value','number'],['start_date','date'],['end_date','date']],
+      tests:['not_null(start_date)'],
+      sql:"select outcome, value, start_date, end_date\nfrom {{ source('ref', 'conversion_values') }}"},
 
     /* intermediate */
-    {id:'int_ad_spend_unioned', layer:'intermediate', col:2, row:1.5, mat:'view', grain:'platform × campaign × day',
-      up:['stg_google_ads','stg_meta_ads','stg_cm360','stg_tiktok_ads'],
-      desc:'Every ad platform stacked into one shape, so nothing downstream needs to know where spend came from. Adding a platform means adding one staging model and one line here.',
-      cols:STD_COLS, tests:["accepted_values(platform, ['google_ads','meta_ads','cm360','tiktok_ads'])"],
-      sql:"{% set platforms = ['stg_google_ads', 'stg_meta_ads', 'stg_cm360', 'stg_tiktok_ads'] %}\n\n{% for p in platforms %}\nselect date_day, platform, campaign_id, campaign_name, spend, impressions, clicks\nfrom {{ ref(p) }}\n{% if not loop.last %}union all{% endif %}\n{% endfor %}"},
+    {id:'int_media', layer:'intermediate', col:2, row:0.5, mat:'view', grain:'campaign × day × conversion', up:['stg_ad_metrics','stg_ad_conversions'],
+      desc:'Delivery and conversions stacked into one media layer. Some networks report several IDs for one campaign name on the same day, so one ID is picked deterministically.',
+      cols:[['date','date'],['platform','varchar'],['campaign','varchar'],['campaign_id','varchar'],['conversion_name','varchar'],['delivery metrics','number'],['conversions','number']],
+      tests:['unique(date, platform, campaign, conversion_name)'],
+      sql:"with stacked as (\n    select *, null as conversion_name, 0 as conversions from {{ ref('stg_ad_metrics') }}\n    union all\n    select date, platform, null, null, campaign_id, 0, 0, 0, 0, 0,\n           conversion_name, conversions\n    from {{ ref('stg_ad_conversions') }}\n)\n\nselect *\nfrom stacked\n-- one campaign name can carry several IDs on the same day: keep one\nqualify row_number() over (\n    partition by date, platform, campaign order by campaign_id\n) = 1 or conversion_name is not null"},
+    {id:'int_first_party_matched', label:'int_1p_matched', layer:'intermediate', col:2, row:4.5, mat:'view', grain:'campaign × day', up:['stg_first_party','stg_campaign_renames','stg_campaign_dictionary'],
+      desc:'First-party rows reconciled to the media identity. Renames apply as of their effective date, then campaigns match on ID first and fall back to the dictionary by name only when the ID is missing.',
+      cols:[['date','date'],['campaign','varchar','canonical'],['campaign_id','varchar','recovered when missing'],['outcomes','number']],
+      tests:['not_null(campaign)'],
+      sql:"with renamed as (\n    select\n        fp.*,\n        coalesce(r.new_campaign, fp.campaign) as campaign_mapped\n    from {{ ref('stg_first_party') }} fp\n    left join {{ ref('stg_campaign_renames') }} r\n        on fp.campaign = r.old_campaign\n       and fp.date >= r.effective_date\n    -- latest rename that was already in effect on that day\n    qualify row_number() over (\n        partition by fp.date, fp.campaign_id, fp.campaign\n        order by r.effective_date desc nulls last\n    ) = 1\n)\n\nselect\n    r.date,\n    coalesce(d.campaign, r.campaign_mapped) as campaign,\n    coalesce(r.campaign_id, d.campaign_id) as campaign_id,\n    r.sign_ups, r.subscriptions, r.leads\nfrom renamed r\nleft join {{ ref('stg_campaign_dictionary') }} d\n    on r.campaign_id = d.campaign_id\n    -- name fallback only when there is no usable ID\n    or (r.campaign_id is null and d.campaign ilike r.campaign_mapped)"},
 
-    /* dimensions */
-    {id:'dim_campaign', layer:'dimension', col:3, row:3.2, mat:'table', grain:'campaign', up:['int_ad_spend_unioned','stg_taxonomy'],
-      desc:'One row per campaign. Names follow BRAND_MARKET_OBJECTIVE_CODE, so the code is parsed out and joined to the match table to fill in brand, market and objective.',
-      cols:[['campaign_key','varchar','PK · md5(platform, id)'],['platform','varchar'],['campaign_id','varchar'],['campaign_name','varchar'],['brand','varchar'],['market','varchar'],['objective','varchar'],['is_valid_name','boolean'],['is_mapped','boolean']],
-      tests:['unique(campaign_key)','not_null(campaign_key)'],
-      sql:"with campaigns as (\n    select platform, campaign_id, campaign_name\n    from {{ ref('int_ad_spend_unioned') }}\n    -- names can change mid-flight; keep the latest\n    qualify row_number() over (\n        partition by platform, campaign_id order by date_day desc\n    ) = 1\n)\n\nselect\n    md5(c.platform || '|' || c.campaign_id) as campaign_key,\n    c.platform,\n    c.campaign_id,\n    c.campaign_name,\n    coalesce(t.brand, 'unmapped') as brand,\n    t.market,\n    t.objective,\n    regexp_like(c.campaign_name, '^[A-Z0-9]+_[A-Z]{2}_[A-Z]+_[A-Z0-9]+$') as is_valid_name,\n    t.campaign_code is not null as is_mapped\nfrom campaigns c\nleft join {{ ref('stg_taxonomy') }} t\n    on split_part(c.campaign_name, '_', 4) = t.campaign_code"},
-    {id:'dim_date', layer:'dimension', col:3, row:4.5, mat:'table', grain:'calendar day', up:[],
-      desc:'A date spine, so reports can show weeks and months with no gaps, even on days nothing ran.',
-      cols:[['date_day','date','PK'],['week_start','date'],['month_start','date'],['quarter','int'],['is_weekend','boolean']],
-      tests:['unique(date_day)','not_null(date_day)'],
-      sql:"with spine as (\n    select dateadd(day, seq4(), '2020-01-01'::date) as date_day\n    from table(generator(rowcount => 3653))\n)\n\nselect\n    date_day,\n    date_trunc('week', date_day) as week_start,\n    date_trunc('month', date_day) as month_start,\n    quarter(date_day) as quarter,\n    dayofweekiso(date_day) in (6, 7) as is_weekend\nfrom spine"},
+    /* conformed */
+    {id:'int_media_all', layer:'intermediate', col:3, row:1.5, mat:'view', grain:'campaign × day × conversion', up:['int_media','int_first_party_matched'],
+      desc:'Media rows plus first-party campaign-days that had no media activity. Without this step, outcomes on days with zero spend silently disappeared from reporting.',
+      cols:[['date','date'],['campaign_id','varchar'],['is_first_party_only','boolean'],['media metrics','number','0 on appended rows']],
+      tests:['not_null(campaign_id)'],
+      sql:"with media_days as (\n    select distinct date, campaign_id from {{ ref('int_media') }}\n),\n\norphans as (\n    select fp.date, fp.campaign_id\n    from {{ ref('int_first_party_matched') }} fp\n    left join media_days m using (date, campaign_id)\n    where m.campaign_id is null\n),\n\nidentity as (\n    select * from {{ ref('int_media') }}\n    qualify row_number() over (partition by campaign_id order by date desc) = 1\n)\n\nselect *, false as is_first_party_only from {{ ref('int_media') }}\nunion all\nselect\n    o.date, i.platform, i.campaign, o.campaign_id,\n    0, 0, 0, 0, 0, null, 0,\n    true\nfrom orphans o\njoin identity i using (campaign_id)"},
+    {id:'dim_classification_asof', label:'dim_class_asof', layer:'dimension', col:3, row:4, mat:'view', grain:'campaign × day', up:['stg_first_party','int_media_all'],
+      desc:'The client\'s campaign classification as it stood on each reporting date: the same-day value when one exists, otherwise the most recent earlier one. Future values never leak into history.',
+      cols:[['date','date'],['campaign_id','varchar'],['classification','varchar'],['market_group','varchar']],
+      tests:['unique(date, campaign_id)'],
+      sql:"select\n    e.date,\n    e.campaign_id,\n    d.classification,\n    d.market_group\nfrom (select distinct date, campaign_id from {{ ref('int_media_all') }}) e\nleft join {{ ref('stg_first_party') }} d\n    on d.campaign_id = e.campaign_id\n   and d.date <= e.date          -- never look into the future\nqualify row_number() over (\n    partition by e.date, e.campaign_id\n    order by d.date desc         -- exact day first, else latest prior\n) = 1"},
+    {id:'dim_campaign', layer:'dimension', col:3, row:5.5, mat:'table', grain:'campaign', up:['stg_match_table'],
+      desc:'The campaign taxonomy as a dimension, joined onto every media row by campaign name.',
+      cols:[['campaign','varchar','PK'],['channel','varchar'],['objective','varchar'],['targeting','varchar'],['region','varchar'],['audience','varchar']],
+      tests:['unique(campaign)','not_null(channel)'],
+      sql:"select * from {{ ref('stg_match_table') }}"},
 
-    /* facts + data quality */
-    {id:'qa_kpi_anomalies', layer:'qa', col:4, row:0, mat:'view', grain:'campaign × day (flagged only)', up:['int_ad_spend_unioned'],
-      desc:'Days where a campaign\'s spend moves more than 3 standard deviations from its trailing two weeks. A non-empty result posts to Slack.',
-      cols:[['platform','varchar'],['campaign_id','varchar'],['date_day','date'],['spend','number'],['trailing_avg','number'],['z_score','float']],
+    /* reporting + data quality */
+    {id:'qa_kpi_anomalies', label:'qa_anomalies', layer:'qa', col:4, row:0, mat:'view', grain:'campaign × day (flagged only)', up:['int_media_all'],
+      desc:'Days where a campaign\'s spend or delivery moves more than 3 standard deviations from its trailing two weeks. A non-empty result posts to Slack.',
+      cols:[['platform','varchar'],['campaign_id','varchar'],['date','date'],['metric','varchar'],['value','number'],['z_score','float']],
       tests:[],
-      sql:"with daily as (\n    select platform, campaign_id, date_day, sum(spend) as spend\n    from {{ ref('int_ad_spend_unioned') }}\n    group by 1, 2, 3\n),\n\nscored as (\n    select\n        *,\n        avg(spend) over (\n            partition by platform, campaign_id order by date_day\n            rows between 14 preceding and 1 preceding\n        ) as trailing_avg,\n        stddev(spend) over (\n            partition by platform, campaign_id order by date_day\n            rows between 14 preceding and 1 preceding\n        ) as trailing_sd\n    from daily\n)\n\nselect\n    platform, campaign_id, date_day, spend, trailing_avg,\n    (spend - trailing_avg) / nullif(trailing_sd, 0) as z_score\nfrom scored\nwhere abs(z_score) > 3\n  and date_day >= current_date - 3"},
-    {id:'qa_taxonomy_violations', layer:'qa', col:4, row:1, mat:'view', grain:'campaign (flagged only)', up:['dim_campaign'],
-      desc:'Campaigns the Media team needs to fix before they reach reporting: badly formed names, or codes missing from the match table.',
-      cols:[['campaign_key','varchar'],['platform','varchar'],['campaign_name','varchar'],['reason','varchar']],
+      sql:"with daily as (\n    select platform, campaign_id, date, sum(cost) as cost\n    from {{ ref('int_media_all') }}\n    group by 1, 2, 3\n),\n\nscored as (\n    select *,\n        avg(cost) over (partition by platform, campaign_id order by date\n                        rows between 14 preceding and 1 preceding) as trailing_avg,\n        stddev(cost) over (partition by platform, campaign_id order by date\n                           rows between 14 preceding and 1 preceding) as trailing_sd\n    from daily\n)\n\nselect platform, campaign_id, date, 'cost' as metric, cost as value,\n       (cost - trailing_avg) / nullif(trailing_sd, 0) as z_score\nfrom scored\nwhere abs(z_score) > 3 and date >= current_date - 3"},
+    {id:'fct_campaign_daily', layer:'fact', col:4, row:2.5, mat:'table', grain:'date × account × campaign × conversion', up:['int_media_all','int_first_party_matched','dim_classification_asof','dim_campaign','stg_conversion_values'],
+      desc:'The one wide reporting table everything reads from: media delivery and conversions from every network, first-party outcomes, the campaign taxonomy, point-in-time classification, and outcome values for the date range each one was valid.',
+      cols:[['date','date'],['account_id','varchar'],['campaign','varchar'],['conversion_name','varchar'],['taxonomy dims','varchar','~20 columns'],['media metrics','number'],['first-party outcomes','number'],['outcome value','number','value × count']],
+      tests:['unique(date, account_id, campaign_id, conversion_name)','relationships(campaign → dim_campaign)','cost >= 0'],
+      sql:"select\n    m.date, m.account_id, m.platform, m.campaign, m.campaign_id,\n    t.channel, t.objective, t.targeting, t.region, t.audience,\n    c.classification, c.market_group,\n    m.conversion_name,\n    sum(m.impressions) as impressions,\n    sum(m.clicks) as clicks,\n    sum(m.cost) as cost,\n    sum(m.conversions) as conversions,\n    coalesce(sum(fp.sign_ups), 0) as sign_ups,\n    coalesce(sum(fp.subscriptions), 0) as subscriptions,\n    coalesce(sum(fp.subscriptions), 0) * any_value(v.value) as subscription_value\nfrom {{ ref('int_media_all') }} m\nleft join {{ ref('dim_campaign') }} t on m.campaign = t.campaign\nleft join {{ ref('int_first_party_matched') }} fp\n    on m.date = fp.date and m.campaign_id = fp.campaign_id\nleft join {{ ref('dim_classification_asof') }} c\n    on m.date = c.date and m.campaign_id = c.campaign_id\n-- value valid on that date (open-ended windows still apply)\nleft join {{ ref('stg_conversion_values') }} v\n    on v.outcome = 'subscription'\n   and m.date >= v.start_date\n   and (v.end_date is null or m.date <= v.end_date)\ngroup by 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13"},
+    {id:'qa_taxonomy_violations', label:'qa_taxonomy', layer:'qa', col:4, row:5, mat:'view', grain:'campaign (flagged only)', up:['int_media_all','dim_campaign'],
+      desc:'Campaigns spending money that the match table doesn\'t know about yet, flagged to the media team before they show up as "unmapped" in reporting.',
+      cols:[['platform','varchar'],['campaign','varchar'],['first_seen','date'],['cost_to_date','number']],
       tests:[],
-      sql:"select\n    campaign_key,\n    platform,\n    campaign_name,\n    case\n        when not is_valid_name then 'name does not follow BRAND_MARKET_OBJECTIVE_CODE'\n        when not is_mapped then 'campaign code missing from match table'\n    end as reason\nfrom {{ ref('dim_campaign') }}\nwhere not is_valid_name or not is_mapped"},
-    {id:'fct_daily_spend', layer:'fact', col:4, row:2.5, mat:'incremental', grain:'campaign × day', up:['int_ad_spend_unioned','dim_campaign'],
-      desc:'The core reporting table: spend and delivery for every campaign on every day, across all platforms.',
-      cols:[['campaign_key','varchar','FK → dim_campaign'],['date_day','date','FK → dim_date'],['spend','number(18,2)'],['impressions','int'],['clicks','int'],['ctr','float'],['cpc','number']],
-      tests:['unique(campaign_key, date_day)','relationships(campaign_key → dim_campaign)','relationships(date_day → dim_date)','spend >= 0'],
-      sql:"{{ config(materialized='incremental', unique_key=['campaign_key', 'date_day']) }}\n\nselect\n    c.campaign_key,\n    s.date_day,\n    sum(s.spend) as spend,\n    sum(s.impressions) as impressions,\n    sum(s.clicks) as clicks,\n    div0(sum(s.clicks), sum(s.impressions)) as ctr,\n    div0(sum(s.spend), sum(s.clicks)) as cpc\nfrom {{ ref('int_ad_spend_unioned') }} s\njoin {{ ref('dim_campaign') }} c\n    on s.platform = c.platform\n   and s.campaign_id = c.campaign_id\n{% if is_incremental() %}\n-- platforms restate recent days, so reprocess a trailing week\nwhere s.date_day >= (select dateadd(day, -7, max(date_day)) from {{ this }})\n{% endif %}\ngroup by 1, 2"},
-    {id:'fct_daily_conversions', layer:'fact', col:4, row:4, mat:'table', grain:'campaign × day', up:['stg_ga4_sessions','dim_campaign'],
-      desc:'Sessions and conversions from the website, credited to the campaign that drove them.',
-      cols:[['campaign_key','varchar','FK → dim_campaign'],['date_day','date','FK → dim_date'],['sessions','int'],['conversions','int']],
-      tests:['unique(campaign_key, date_day)','relationships(campaign_key → dim_campaign)'],
-      sql:"select\n    c.campaign_key,\n    s.date_day,\n    count(distinct s.session_key) as sessions,\n    count_if(s.is_conversion) as conversions\nfrom {{ ref('stg_ga4_sessions') }} s\njoin {{ ref('dim_campaign') }} c\n    on lower(s.utm_campaign) = lower(c.campaign_name)\ngroup by 1, 2"},
+      sql:"select m.platform, m.campaign, min(m.date) as first_seen, sum(m.cost) as cost_to_date\nfrom {{ ref('int_media_all') }} m\nleft join {{ ref('dim_campaign') }} t on m.campaign = t.campaign\nwhere t.campaign is null and m.cost > 0\ngroup by 1, 2"},
 
     /* exposures */
-    {id:'Slack · #media-alerts', label:'Slack', layer:'exposure', col:5, row:0.5, up:['qa_kpi_anomalies','qa_taxonomy_violations'], owner:'Media team',
-      desc:'A bot posts here whenever either QA model returns rows, so problems get fixed before anyone sees them in a dashboard.'},
-    {id:'Looker · Performance', label:'Looker', layer:'exposure', col:5, row:2.5, up:['fct_daily_spend','fct_daily_conversions'], owner:'Client strategy',
-      desc:'Day-to-day performance: spend, delivery, conversions and cost per result by platform, brand and market.'},
-    {id:'Tableau · Pacing', label:'Tableau', layer:'exposure', col:5, row:4, up:['fct_daily_spend','dim_date'], owner:'Activation team',
-      desc:'Budget pacing: month-to-date spend against plan, so over- and under-delivery shows up early.'}
+    {id:'Slack · alerts', label:'Slack', layer:'exposure', col:5, row:0.5, up:['qa_kpi_anomalies','qa_taxonomy_violations'], owner:'Media and analytics teams',
+      desc:'A bot posts whenever a QA model returns rows, so problems are fixed before anyone sees them in a dashboard.'},
+    {id:'Dashboards · Looker & Tableau', label:'Dashboards', layer:'exposure', col:5, row:2.5, up:['fct_campaign_daily'], owner:'Client strategy',
+      desc:'Performance, pacing, and outcome reporting across every network from one table.'},
+    {id:'Self-serve exports', label:'Exports', layer:'exposure', col:5, row:4, up:['fct_campaign_daily'], owner:'Client services',
+      desc:'The Raw Data Request app: teams pick fields, filters, and dates and get CSV, Excel, or JSON without waiting on engineering.'}
   ];
 
   var byId = {};
@@ -2605,7 +2605,8 @@ switchPane = function(id) {
   MODELS.forEach(function(m) { COLW[m.col] = Math.max(COLW[m.col], MIN_W, Math.ceil((m.label || m.id).length * FONT * 0.6) + 18); });
   var COLX = [], acc = PAD;
   COLW.forEach(function(w) { COLX.push(acc); acc += w + GAP; });
-  var VW = acc - GAP + PAD, VH = TOP + 5 * ROW + H + PAD;
+  var MAX_ROW = Math.max.apply(null, MODELS.map(function(m) { return m.row; }));
+  var VW = acc - GAP + PAD, VH = TOP + MAX_ROW * ROW + H + PAD;
   function nx(m) { return COLX[m.col]; }
   function nw(m) { return COLW[m.col]; }
   function ny(m) { return TOP + m.row * ROW; }
@@ -2716,7 +2717,7 @@ switchPane = function(id) {
       }, 120);
     }
   };
-  select('fct_daily_spend');
+  select('fct_campaign_daily');
 })();
 
 /* ── In-page links that switch tabs ── */
