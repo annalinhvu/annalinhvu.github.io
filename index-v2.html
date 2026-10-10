@@ -221,7 +221,9 @@ body {
 }
 .panel-body{padding:18px;flex:1;}
 .panel-top{flex:none;padding-bottom:0;}
+.glance{padding:14px 0 16px;border-bottom:1px solid var(--bd);}
 .panel-top .profile-row{margin-bottom:0;padding-bottom:16px;border-bottom:1px solid var(--bd);}
+.glance .facts{margin-bottom:0;}
 .facts{margin:0 0 4px;font-size:13px;}
 .facts > div{display:grid;grid-template-columns:92px 1fr;gap:10px;padding:5px 0;}
 .facts dt{font-family:'Geist Mono',monospace;font-size:10.5px;letter-spacing:.5px;color:var(--t4);padding-top:2px;}
@@ -1005,7 +1007,7 @@ body {
   .left-panel{display:contents;}
   .panel-titlebar{order:0;position:static;}
   .panel-top{order:1;background:var(--panel);padding-bottom:16px;}
-  .panel-top .profile-row{border-bottom:none;padding-bottom:0;}
+  .glance{border-bottom:none;padding-bottom:0;}
   .main-panel{order:2;}
   .panel-more{order:3;background:var(--panel);border-top:1px solid var(--bd-hi);}
   .intro-lead{font-size:17px;}
@@ -1186,18 +1188,17 @@ body {
           </div>
         </div>
       </div>
+      <div class="glance">
+        <div class="metric-lbl">-- at a glance</div>
+        <dl class="facts">
+          <div><dt>based in</dt><dd>New York City · open to remote</dd></div>
+          <div><dt>looking for</dt><dd>Data engineering, BI, and analytics roles</dd></div>
+          <div><dt>education</dt><dd>M.A.Sc. Computer Science, UPenn<br>B.A. Economics, Vanderbilt</dd></div>
+        </dl>
+      </div>
     </div>
 
     <div class="panel-body panel-more">
-      <div class="metric-lbl">-- at a glance</div>
-      <dl class="facts">
-        <div><dt>based in</dt><dd>New York City · open to remote</dd></div>
-        <div><dt>looking for</dt><dd>Data engineering, BI, and analytics roles</dd></div>
-        <div><dt>education</dt><dd>M.A.Sc. Computer Science, UPenn<br>B.A. Economics, Vanderbilt</dd></div>
-      </dl>
-
-      <hr class="p-rule">
-
       <div class="metric-lbl">-- impact</div>
       <div class="stats-grid">
         <div class="stat-item"><div class="stat-v">5+</div><div class="stat-l">years building</div></div>
@@ -1359,12 +1360,10 @@ body {
       </div>
       <div class="work-wrap">
         <div class="intro">
-          <p class="intro-lead">Hi, I'm Anna. I'm a Principal Data Engineer at DEPT® in New York, where I own the data platforms behind $2B+ in annual marketing spend for enterprise clients, including OpenAI.</p>
-          <p class="intro-sub">I'm open to data engineering, BI, and analytics roles, in NYC or remote. My work is below. If you'd like to go deeper, <a href="#" class="intro-link" data-go="architecture">architecture</a> shows how I design these systems, and the <a href="#" class="intro-link" data-go="console">playground</a> lets you query this site in SQL.</p>
+          <p class="intro-lead">Hi, I'm Anna. At DEPT®, I own the data platforms enterprise clients like OpenAI use to track and report on their marketing.</p>
+          <p class="intro-sub">The work is below, problem first. If you'd like to go deeper, <a href="#" class="intro-link" data-go="architecture">architecture</a> shows how I design these systems, and the <a href="#" class="intro-link" data-go="console">playground</a> lets you query this site in SQL.</p>
           <div class="intro-actions">
             <a href="#" class="cta-btn cta-primary" data-go="career">see experience →</a>
-            <a href="mailto:vuhongnhatlinh@gmail.com" class="cta-btn">email me</a>
-            <a href="https://www.linkedin.com/in/annalinhvu" class="cta-btn" target="_blank" rel="noopener">linkedin ↗</a>
           </div>
         </div>
         <div class="work-section-hd hd-featured">featured projects</div>
