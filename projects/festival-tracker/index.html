@@ -116,7 +116,7 @@
     transition: background 0.3s, border-color 0.3s;
   }
   .back-link {
-    font-family: 'Geist Mono', monospace; font-size: 0.6rem;
+    font-family: 'Geist Mono', monospace; font-size: 0.66rem;
     letter-spacing: 1.5px; text-transform: uppercase;
     color: var(--text-3); text-decoration: none; transition: color 0.2s;
     display: flex; align-items: center; gap: 6px;
@@ -261,7 +261,7 @@
   }
   .prestige-dot.filled { background: var(--accent); }
   .acceptance-label {
-    font-family: 'Geist Mono', monospace; font-size: 0.58rem;
+    font-family: 'Geist Mono', monospace; font-size: 0.66rem;
     color: var(--text-4); letter-spacing: 0.5px; text-transform: uppercase;
   }
 
@@ -277,7 +277,7 @@
 
   /* ── Tier badges ── */
   .tier-badge {
-    font-family: 'Geist Mono', monospace; font-size: 0.58rem;
+    font-family: 'Geist Mono', monospace; font-size: 0.66rem;
     padding: 3px 10px; border-radius: 4px;
     text-transform: uppercase; letter-spacing: 1.5px; font-weight: 500;
   }
@@ -374,7 +374,7 @@
   .deadlines-card { padding: 24px; margin-bottom: 14px; }
   .deadlines-table { width: 100%; border-collapse: collapse; }
   .deadlines-table th {
-    font-family: 'Geist Mono', monospace; font-size: 0.58rem;
+    font-family: 'Geist Mono', monospace; font-size: 0.66rem;
     letter-spacing: 2px; text-transform: uppercase;
     color: var(--text-4); text-align: left; padding: 10px 14px;
     border-bottom: 1px solid var(--border);
@@ -385,7 +385,7 @@
     border-bottom: 1px solid var(--border);
   }
   .deadlines-table tr:last-child td { border-bottom: none; }
-  .deadline-past td { opacity: 0.3; }
+  .deadline-past td { opacity: 0.55; }
   .deadline-tier-early { color: var(--accent); font-weight: 500; }
   .deadline-tier-late { color: var(--red); font-weight: 500; }
 
@@ -403,7 +403,7 @@
     background: var(--accent-bg);
   }
   .category-runtime {
-    color: var(--text-4); font-size: 0.58rem; margin-left: 5px;
+    color: var(--text-4); font-size: 0.66rem; margin-left: 5px;
     letter-spacing: 0.5px;
   }
 
@@ -428,7 +428,7 @@
     #calendar-view { overflow-x: auto; -webkit-overflow-scrolling: touch; }
     .cal-grid { min-width: 540px; }
     .cal-day { min-height: 80px; padding: 7px 6px 5px; }
-    .cal-event { font-size: 0.55rem; }
+    .cal-event { font-size: 0.62rem; }
   }
   @media (max-width: 768px) {
     .festival-grid { grid-template-columns: repeat(2, 1fr); }
@@ -491,7 +491,7 @@
     font-weight: 600;
   }
   .cal-today-btn {
-    font-family: 'Geist Mono', monospace; font-size: 0.6rem;
+    font-family: 'Geist Mono', monospace; font-size: 0.66rem;
     letter-spacing: 1.2px; text-transform: uppercase;
     background: none; border: none; color: var(--accent); cursor: pointer;
     padding: 4px 0; transition: opacity 0.15s;
@@ -510,7 +510,7 @@
     gap: 3px; margin-bottom: 24px;
   }
   .cal-dow {
-    font-family: 'Geist Mono', monospace; font-size: 0.55rem;
+    font-family: 'Geist Mono', monospace; font-size: 0.62rem;
     color: var(--text-1); text-align: center; padding: 9px 4px 8px;
     letter-spacing: 2px; text-transform: uppercase; font-weight: 600;
     background: var(--accent-bg); border: 1px solid var(--border);
@@ -540,7 +540,7 @@
   }
   .cal-events { display: flex; flex-direction: column; gap: 2px; }
   .cal-event {
-    font-size: 0.6rem; line-height: 1.3;
+    font-size: 0.66rem; line-height: 1.3;
     padding: 1px 4px; border-radius: 3px;
     white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
     border-left: 2px solid transparent;
@@ -550,7 +550,7 @@
   .cal-event.regular{ background: var(--accent-bg); border-left-color: var(--accent); color: var(--accent); }
   .cal-event.late   { background: var(--red-bg);    border-left-color: var(--red);    color: var(--red); }
   .cal-event-more {
-    font-family: 'Geist Mono', monospace; font-size: 0.52rem;
+    font-family: 'Geist Mono', monospace; font-size: 0.62rem;
     color: var(--text-4); padding-left: 4px;
   }
 
@@ -576,7 +576,7 @@
   .cal-panel-item:last-child { border-bottom: none; padding-bottom: 0; }
   .cal-panel-item:hover .cal-panel-name { color: var(--accent); }
   .cal-panel-tier {
-    font-family: 'Geist Mono', monospace; font-size: 0.58rem;
+    font-family: 'Geist Mono', monospace; font-size: 0.66rem;
     letter-spacing: 1px; text-transform: uppercase;
     padding: 3px 9px; border-radius: 4px; white-space: nowrap; flex-shrink: 0;
   }
@@ -594,7 +594,7 @@
   @media (max-width: 640px) {
     .cal-day { min-height: 64px; padding: 5px 4px; }
     .cal-day-num { font-size: 0.62rem; width: 18px; height: 18px; }
-    .cal-event { font-size: 0.52rem; }
+    .cal-event { font-size: 0.62rem; }
     .cal-panel-item { flex-wrap: wrap; gap: 8px; }
     .controls-top { flex-direction: column; align-items: flex-start; }
   }
@@ -615,19 +615,25 @@
   }
   .card-fee {
     font-family: 'Geist Mono', monospace;
-    font-size: 0.58rem; color: var(--text-4); letter-spacing: 0.5px; white-space: nowrap;
+    font-size: 0.66rem; color: var(--text-4); letter-spacing: 0.5px; white-space: nowrap;
   }
 
   /* ── Deadline chip (card list) ── */
   .dl-chip {
     font-family: 'Geist Mono', monospace;
-    font-size: 0.58rem; padding: 3px 8px; border-radius: 3px;
+    font-size: 0.66rem; padding: 3px 8px; border-radius: 3px;
     letter-spacing: 0.5px; display: inline-flex; align-items: center; gap: 4px; white-space: nowrap;
   }
   .dl-chip.urgent  { background: var(--red-bg);    border: 1px solid var(--red-border);    color: var(--red); }
   .dl-chip.soon    { background: var(--accent-bg);  border: 1px solid var(--tag-border);    color: var(--accent); }
   .dl-chip.far     { background: var(--indigo-bg);  border: 1px solid var(--indigo-border); color: var(--indigo); }
-  .dl-chip.no-dl   { background: none; border: 1px solid var(--border); color: var(--text-4); opacity: 0.45; }
+  .dl-chip.no-dl   { background: none; border: 1px solid var(--border); color: var(--text-4); }
+  .est-note { max-width: 62em; margin: -4px 0 14px; font-size: 0.74rem; line-height: 1.6; color: var(--text-4); }
+  .est-note span { font-family: 'Geist Mono', monospace; font-size: 0.66rem; padding: 1px 6px; border: 1px dashed var(--border-hover); border-radius: 3px; color: var(--text-3); }
+  .dl-chip.est     { background: none; border: 1px dashed var(--border-hover); color: var(--text-3); }
+  .qf-dl-chip.est  { background: none; border: 1px dashed var(--border-hover); }
+  .qf-dl-chip.est .qf-dl-tier, .qf-dl-chip.est .qf-dl-date, .qf-dl-chip.est .qf-dl-days { color: var(--text-3); }
+  .cal-event.est   { background: none; border-left-style: dashed; opacity: .85; }
 
   /* ── Detail 2-col grid ── */
   .detail-grid { display: grid; grid-template-columns: 1fr 260px; gap: 14px; margin-bottom: 14px; }
@@ -637,7 +643,7 @@
   .quick-facts-card { padding: 20px; }
   .qf-head {
     font-family: 'Geist Mono', monospace;
-    font-size: 0.56rem; letter-spacing: 2.5px; text-transform: uppercase;
+    font-size: 0.66rem; letter-spacing: 2.5px; text-transform: uppercase;
     color: var(--accent); margin-bottom: 12px; padding-bottom: 10px;
     border-bottom: 1px solid var(--border);
   }
@@ -648,7 +654,7 @@
   .qf-row:last-child { border-bottom: none; padding-bottom: 0; }
   .qf-label {
     font-family: 'Geist Mono', monospace;
-    font-size: 0.56rem; letter-spacing: 1px; text-transform: uppercase;
+    font-size: 0.66rem; letter-spacing: 1px; text-transform: uppercase;
     color: var(--text-4); white-space: nowrap; padding-top: 2px; flex-shrink: 0;
   }
   .qf-value { font-size: 0.78rem; color: var(--text-2); text-align: right; line-height: 1.5; }
@@ -664,7 +670,7 @@
   .qf-dl-chip.soon   { background: var(--accent-bg); border: 1px solid var(--tag-border); }
   .qf-dl-chip.far    { background: var(--indigo-bg); border: 1px solid var(--indigo-border); }
   .qf-dl-chip.no-dl  { background: none; border: 1px solid var(--border); }
-  .qf-dl-tier { font-size: 0.54rem; letter-spacing: 1.5px; text-transform: uppercase; opacity: 0.65; }
+  .qf-dl-tier { font-size: 0.62rem; letter-spacing: 1.5px; text-transform: uppercase; opacity: 0.85; }
   .qf-dl-date { font-size: 0.82rem; font-weight: 600; }
   .qf-dl-days { font-size: 0.62rem; opacity: 0.7; }
   .qf-dl-chip.urgent .qf-dl-tier, .qf-dl-chip.urgent .qf-dl-date, .qf-dl-chip.urgent .qf-dl-days { color: var(--red); }
@@ -700,6 +706,7 @@
       </div>
     </div>
     <div class="stats-row" id="stats-row"></div>
+    <p class="est-note">Dates marked <span>est.</span> are carried forward from a festival's last known deadline, because the new one is not on record yet. Confirm on the festival's site before you submit.</p>
     <div class="filter-bar" id="filter-bar">
       <select id="filter-tier"><option value="">Tier</option></select>
       <select id="filter-country"><option value="">Country</option></select>
@@ -900,12 +907,27 @@ function applyFilters() {
 
 /* ── Deadline helpers ── */
 function nextUpcomingDeadline(f) {
-  var now = new Date();
   var upcoming = (f.deadlines || [])
     .filter(function(d) { return d.deadline && !isPast(d.deadline); })
     .sort(function(a, b) { return a.deadline.localeCompare(b.deadline); });
-  return upcoming[0] || null;
+  return upcoming[0] || expectedDeadlines(f)[0] || null;
 }
+
+/* Festivals repeat yearly. When no confirmed date is ahead, carry the most recent cycle's dates
+   forward to their next occurrence and mark them as estimates, so the tracker never goes blank
+   between the data being updated. Returns [] when a confirmed upcoming date exists. */
+function expectedDeadlines(f) {
+  var all = (f.deadlines || []).filter(function(d) { return d.deadline; });
+  if (!all.length || all.some(function(d) { return !isPast(d.deadline); })) return [];
+  var lastYear = Math.max.apply(null, all.map(function(d) { return +d.deadline.slice(0, 4); }));
+  return all.filter(function(d) { return +d.deadline.slice(0, 4) === lastYear; }).map(function(d) {
+    var y = lastYear, iso = d.deadline;
+    while (isPast(iso)) { y++; iso = y + d.deadline.slice(4); }
+    if (iso.slice(5) === '02-29' && new Date(iso + 'T00:00:00').getMonth() !== 1) iso = y + '-02-28';
+    return { tier: d.tier, deadline: iso, fee_usd: d.fee_usd, estimated: true, basedOn: lastYear };
+  }).sort(function(a, b) { return a.deadline.localeCompare(b.deadline); });
+}
+function formatMonthDay(iso) { return formatDate(iso).replace(/,\s*\d{4}$/, ''); }
 
 function daysUntil(iso) {
   var d = new Date(iso + 'T00:00:00');
@@ -938,8 +960,12 @@ function feeRangeStr(f) {
 
 function dlChipHtml(f) {
   var dl = nextUpcomingDeadline(f);
-  if (!dl) return '<span class="dl-chip no-dl">No upcoming deadlines</span>';
+  if (!dl) return '<span class="dl-chip no-dl">No deadline on record</span>';
   var days = daysUntil(dl.deadline);
+  if (dl.estimated) {
+    return '<span class="dl-chip est" title="Estimated from the ' + dl.basedOn + ' deadline. Not confirmed yet.">'
+      + escapeHtml(dl.tier) + ' · around ' + formatDate(dl.deadline) + ' · est.</span>';
+  }
   var cls = dlClass(days);
   return '<span class="dl-chip ' + cls + '">' + escapeHtml(dl.tier) + ' · ' + formatDate(dl.deadline) + ' · ' + dlDaysStr(days) + '</span>';
 }
@@ -1047,7 +1073,7 @@ function renderDetail(f) {
   // ── Quick-facts sidebar data ──
   var dl = nextUpcomingDeadline(f);
   var dlDays = dl ? daysUntil(dl.deadline) : null;
-  var dlCls = dlClass(dlDays);
+  var dlCls = dl && dl.estimated ? 'est' : dlClass(dlDays);
   var fee = feeRangeStr(f);
 
   // ── 2-col grid: header card + sidebar ──
@@ -1086,13 +1112,15 @@ function renderDetail(f) {
       '<div class="qf-row"><span class="qf-label">Premiere</span><span class="qf-value">' + escapeHtml(f.premiere_req && f.premiere_req !== 'none' ? f.premiere_req.replace(/_/g, ' ') : 'None required') + '</span></div>' +
       '<div class="qf-row"><span class="qf-label">Entry Fee</span><span class="qf-value">' + escapeHtml(fee || 'See site') + '</span></div>' +
       '<div class="qf-deadline-block">' +
-        '<div class="qf-head" style="margin-bottom:8px;padding-bottom:0;border-bottom:none">Next Deadline</div>' +
+        '<div class="qf-head" style="margin-bottom:8px;padding-bottom:0;border-bottom:none">' + (dl && dl.estimated ? 'Expected next deadline' : 'Next Deadline') + '</div>' +
         '<div class="qf-dl-chip ' + dlCls + '">' +
           (dl
             ? '<span class="qf-dl-tier">' + escapeHtml(dl.tier) + '</span>' +
-              '<span class="qf-dl-date">' + formatDate(dl.deadline) + '</span>' +
-              (dlDaysStr(dlDays) ? '<span class="qf-dl-days">' + dlDaysStr(dlDays) + '</span>' : '')
-            : '<span class="qf-dl-days">No upcoming deadlines</span>'
+              '<span class="qf-dl-date">' + (dl.estimated ? 'around ' : '') + formatDate(dl.deadline) + '</span>' +
+              (dl.estimated
+                ? '<span class="qf-dl-days">estimated from ' + dl.basedOn + ', not confirmed</span>'
+                : (dlDaysStr(dlDays) ? '<span class="qf-dl-days">' + dlDaysStr(dlDays) + '</span>' : ''))
+            : '<span class="qf-dl-days">No deadline on record</span>'
           ) +
         '</div>' +
       '</div>' +
@@ -1208,6 +1236,10 @@ function renderCalendar() {
       if (!deadlineMap[date]) deadlineMap[date] = [];
       deadlineMap[date].push({ festival: f, tier: dl.tier || 'regular', fee: dl.fee_usd });
     });
+    expectedDeadlines(f).forEach(function(dl) {
+      if (!deadlineMap[dl.deadline]) deadlineMap[dl.deadline] = [];
+      deadlineMap[dl.deadline].push({ festival: f, tier: dl.tier || 'regular', fee: dl.fee_usd, estimated: true, basedOn: dl.basedOn });
+    });
   });
 
   var firstDow = new Date(year, month, 1).getDay();
@@ -1231,6 +1263,7 @@ function renderCalendar() {
         + '<span class="cal-legend-item"><span class="cal-event early" style="display:inline-block;pointer-events:none">Early</span></span>'
         + '<span class="cal-legend-item"><span class="cal-event regular" style="display:inline-block;pointer-events:none">Regular</span></span>'
         + '<span class="cal-legend-item"><span class="cal-event late" style="display:inline-block;pointer-events:none">Late</span></span>'
+        + '<span class="cal-legend-item"><span class="cal-event regular est" style="display:inline-block;pointer-events:none">Estimated from last year</span></span>'
         + '</div>';
 
   // Grid
@@ -1263,7 +1296,7 @@ function renderCalendar() {
     if (hasDl) {
       html += '<div class="cal-events">';
       dls.slice(0, 3).forEach(function(dl) {
-        html += '<span class="cal-event ' + dl.tier + '">' + escapeHtml(dl.festival.name) + '</span>';
+        html += '<span class="cal-event ' + dl.tier + (dl.estimated ? ' est' : '') + '">' + escapeHtml(dl.festival.name) + '</span>';
       });
       if (dls.length > 3) html += '<span class="cal-event-more">+' + (dls.length - 3) + ' more</span>';
       html += '</div>';
@@ -1277,10 +1310,10 @@ function renderCalendar() {
     var items = deadlineMap[selectedCalDay];
     html += '<div class="cal-day-panel">';
     html += '<div class="cal-panel-date">' + formatDate(selectedCalDay)
-          + ' &mdash; ' + items.length + ' deadline' + (items.length !== 1 ? 's' : '') + '</div>';
+          + ' · ' + items.length + ' deadline' + (items.length !== 1 ? 's' : '') + '</div>';
     items.forEach(function(dl) {
       html += '<div class="cal-panel-item" onclick="showDetail(' + dl.festival.id + ')">'
-            + '<span class="cal-panel-tier ' + dl.tier + '">' + dl.tier + '</span>'
+            + '<span class="cal-panel-tier ' + dl.tier + '">' + dl.tier + (dl.estimated ? ' · est.' : '') + '</span>'
             + '<div class="cal-panel-body">'
             + '<div class="cal-panel-name">' + escapeHtml(dl.festival.name) + '</div>'
             + '<div class="cal-panel-meta">' + escapeHtml(dl.festival.city) + ', ' + escapeHtml(dl.festival.country) + '</div>'
