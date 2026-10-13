@@ -672,6 +672,31 @@ body {
   display:flex;gap:24px;flex-wrap:wrap;
   padding-top:16px;border-top:1px solid var(--bd);
 }
+.proj-modal-metrics:empty,.proj-modal-tags:empty,.proj-modal-ctx:empty{display:none;}
+.proj-modal-desc{font-family:'Source Serif 4',Georgia,'Times New Roman',serif;font-size:14.5px;line-height:1.7;margin-bottom:18px;}
+.proj-modal-box.has-demo{max-width:940px;}
+.proj-modal-box.has-demo .proj-modal-body{display:grid;grid-template-columns:minmax(0,300px) minmax(0,1fr);gap:28px;align-items:start;}
+.pm-example[hidden],.pm-arch[hidden]{display:none;}
+.pm-example-lbl{font-family:'Geist Mono',monospace;font-size:10px;color:var(--t4);letter-spacing:1.5px;text-transform:uppercase;margin-bottom:10px;}
+.pm-arch{display:block;margin-top:16px;padding:0;background:none;border:none;font-family:'Geist Mono',monospace;font-size:11px;color:var(--amber);cursor:pointer;text-align:left;}
+.pm-arch:hover,.pm-arch:focus-visible{text-decoration:underline;outline:none;}
+.proj-modal-ft{
+  display:flex;align-items:center;justify-content:space-between;gap:14px;
+  padding:9px 18px;background:var(--panel-hd);border-top:1px solid var(--bd);flex-shrink:0;
+  font-family:'Geist Mono',monospace;font-size:11px;color:var(--t4);
+}
+.pm-nav{flex:1 1 0;min-width:0;display:flex;align-items:center;gap:7px;padding:4px 0;background:none;border:none;font:inherit;color:var(--t3);cursor:pointer;transition:color .12s;}
+.pm-nav span{overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
+.pm-nav:hover,.pm-nav:focus-visible{color:var(--amber);outline:none;}
+.pm-nav[disabled]{visibility:hidden;}
+#pm-next{justify-content:flex-end;}
+.pm-pos{flex-shrink:0;}
+.proj-card:focus-visible{outline:2px solid var(--amber);outline-offset:2px;}
+@media (max-width: 820px) {
+  .proj-modal{padding:12px;}
+  .proj-modal-box.has-demo .proj-modal-body{grid-template-columns:1fr;gap:20px;}
+  .proj-modal-body{padding:18px 16px;}
+}
 
 .status-bar{
   height:22px;flex-shrink:0;
@@ -978,6 +1003,15 @@ body {
 .sch-chip:hover{color:var(--amber);border-color:var(--amber);}
 .sch-none{font-family:'Geist Mono',monospace;font-size:11px;color:var(--t4);}
 .sch-sql{font-family:'Geist Mono',monospace;font-size:12px;line-height:1.7;color:var(--t2);background:var(--panel-hd);border:1px solid var(--bd);border-radius:8px;padding:14px 16px;overflow-x:auto;white-space:pre;margin:0;}
+.sch-fold > summary{cursor:pointer;list-style:none;display:inline-flex;align-items:center;gap:7px;transition:color .12s;}
+.sch-fold > summary::-webkit-details-marker{display:none;}
+.sch-fold > summary::before{content:'▸';font-size:11px;letter-spacing:0;}
+.sch-fold[open] > summary::before{content:'▾';}
+.sch-fold > summary:hover{color:var(--t1);}
+.sch-fold > summary:focus-visible{outline:1px solid var(--amber);outline-offset:3px;border-radius:3px;}
+.sch-fold > summary span{color:var(--t4);letter-spacing:.6px;}
+.sch-body > div > .sch-fold:first-child > summary{margin-top:0;}
+.sch-fold-sql{margin-top:6px;}
 .sq-k{color:var(--amber);}
 .sq-s{color:var(--accent);}
 .sq-j{color:var(--mono-g);font-style:italic;}
@@ -1601,7 +1635,7 @@ body {
     </section>
 
 
-    <!-- ════ ARCHITECTURE (platform + data model explorer) ═══════════ -->
+    <!-- ════ ARCHITECTURE (data model explorer, then platform diagram) ═══════════ -->
     <section class="tab-pane" id="pane-architecture" role="tabpanel">
       <div class="query-bar">
         <span class="kw">SELECT</span><span>&nbsp;*&nbsp;</span>
@@ -1610,21 +1644,22 @@ body {
         <span class="cmt">-- anonymized model · generic names, no client data</span>
       </div>
       <div class="sch-wrap">
-        <div class="pipeline-wrap">
-          <div class="pipeline-lbl">Data platform · click any stage or component to see related projects</div>
-          <div class="pipe-scroll"><svg class="pipeline-svg" id="pipe-svg" role="img" aria-label="Data platform: sources, ingestion, a bronze-silver-gold medallion on Snowflake, BigQuery or Databricks, visualization, analysis, and data transfer between systems"></svg></div>
-        </div>
-        <div class="work-section-hd">one reporting model, up close</div>
-        <p class="sch-intro"><strong>The problem:</strong> nine ad platforms and a client's <span class="term" tabindex="0" data-tip="The client&#39;s own records of what users did, such as sign-ups and subscriptions, shared directly into our warehouse.">first-party data</span> describe the same campaigns with different schemas, IDs, and names, and all of them change over time. This model, a simplified version of one I own, merges them into one daily table that's correct as of every date, without losing or double counting anything. Click any table to trace its lineage and SQL.</p>
+        <div class="work-section-hd">reporting model walkthrough</div>
+        <p class="sch-intro">This is a simplified version of a reporting model I own. It combines daily data from nine ad platforms with a client's <span class="term" tabindex="0" data-tip="The client&#39;s own records of what users did, such as sign-ups and subscriptions, shared directly into our warehouse.">first-party data</span> into one table at campaign and day grain. The sources use different schemas, campaign IDs, and names, and all three change over time, so most of the logic is about matching records and keeping past numbers stable. Click a table in the graph to see its lineage, tests, and SQL.</p>
         <div class="sch-sub">design decisions</div>
         <div class="sch-decisions">
-          <button type="button" class="decision" data-model="int_media_all"><div class="decision-p">orphan / late-arriving records</div><div class="decision-t">Never drop first-party outcomes</div><div class="decision-d">Days with client outcomes but no ad spend used to vanish from reporting. They're now appended with zero media metrics and flagged, so totals reconcile with the client's own numbers.</div><div class="decision-k">int_media_all →</div></button>
-          <button type="button" class="decision" data-model="dim_classification_asof"><div class="decision-p">point-in-time join · slowly changing dimension</div><div class="decision-t">History stays as it was known</div><div class="decision-d">Campaign classifications are joined as of each reporting date, carrying the latest earlier value forward. A relabel today never rewrites last quarter.</div><div class="decision-k">dim_class_asof →</div></button>
-          <button type="button" class="decision" data-model="fct_campaign_daily"><div class="decision-p">grain management · fan-out</div><div class="decision-t">No double counting</div><div class="decision-d">First-party outcomes attach only to <span class="term" data-tip="Stats about the ads themselves: impressions, clicks, and cost.">delivery</span> rows, not to every <span class="term" data-tip="A user action after seeing an ad, like an install or a sign-up, as each ad platform reports it.">conversion</span> row of the same campaign-day. Counts are summed; rates and coefficients are never added together.</div><div class="decision-k">fct_campaign_daily →</div></button>
-          <button type="button" class="decision" data-model="int_first_party_matched"><div class="decision-p">entity resolution</div><div class="decision-t">IDs first, names as a fallback</div><div class="decision-d">Renames apply from their effective date, then records match on campaign ID. Name matching is a last resort for records with no usable ID, because names drift and IDs don't.</div><div class="decision-k">int_1p_matched →</div></button>
+          <button type="button" class="decision" data-model="int_media_all"><div class="decision-p">orphan records</div><div class="decision-t">First-party days with no ad spend</div><div class="decision-d">A campaign can have client outcomes on a day with no media activity. The model is built from media rows, so those days had nothing to join to and were missing from reports. They're appended as rows with zero media metrics and a flag, and totals match the client's numbers again.</div><div class="decision-k">int_media_all →</div></button>
+          <button type="button" class="decision" data-model="dim_classification_asof"><div class="decision-p">point-in-time join · slowly changing dimension</div><div class="decision-t">Classification as of the reporting date</div><div class="decision-d">The client reclassifies campaigns over time. Each row takes the classification from the same day if there is one, otherwise the most recent earlier one, so relabeling a campaign doesn't change past reports.</div><div class="decision-k">dim_class_asof →</div></button>
+          <button type="button" class="decision" data-model="fct_campaign_daily"><div class="decision-p">grain · fan-out</div><div class="decision-t">First-party outcomes join to delivery rows only</div><div class="decision-d">Each campaign-day has a <span class="term" data-tip="Stats about the ads themselves: impressions, clicks, and cost.">delivery</span> row plus one row per <span class="term" data-tip="A user action after seeing an ad, like an install or a sign-up, as each ad platform reports it.">conversion</span> type. First-party outcomes join to the delivery row, otherwise they would repeat once per conversion row. Counts are summed. Rates and coefficients are kept as single values, not added.</div><div class="decision-k">fct_campaign_daily →</div></button>
+          <button type="button" class="decision" data-model="int_first_party_matched"><div class="decision-p">entity resolution</div><div class="decision-t">Match on campaign ID before name</div><div class="decision-d">Renames are applied from their effective date, then first-party records match to media on campaign ID. The name lookup is only used when a record has no ID, since campaign names get edited and IDs stay fixed.</div><div class="decision-k">int_1p_matched →</div></button>
         </div>
         <div class="sch-graph-wrap"><svg class="sch-graph" id="sch-graph" role="group" aria-label="Warehouse lineage graph"></svg></div>
         <div class="sch-detail" id="sch-detail"></div>
+        <div class="work-section-hd">platform overview</div>
+        <div class="pipeline-wrap">
+          <div class="pipeline-lbl">click any stage or component to see related projects</div>
+          <div class="pipe-scroll"><svg class="pipeline-svg" id="pipe-svg" role="img" aria-label="Data platform: sources, ingestion, a bronze-silver-gold medallion on Snowflake, BigQuery or Databricks, visualization, analysis, and data transfer between systems"></svg></div>
+        </div>
       </div>
     </section>
 
@@ -1660,20 +1695,32 @@ body {
   </main>
 </div>
 
-<div class="proj-modal hidden" id="proj-modal">
-  <div class="proj-modal-box">
+<div class="proj-modal hidden" id="proj-modal" role="dialog" aria-modal="true" aria-labelledby="pm-title">
+  <div class="proj-modal-box" id="pm-box">
     <div class="proj-modal-hd">
       <div class="proj-modal-hd-left">
         <span class="proj-modal-label">project</span>
         <span class="proj-modal-title" id="pm-title"></span>
       </div>
-      <button class="proj-modal-close" id="pm-close">×</button>
+      <button class="proj-modal-close" id="pm-close" aria-label="Close">×</button>
     </div>
-    <div class="proj-modal-body">
-      <div class="proj-modal-ctx" id="pm-ctx"></div>
-      <div class="proj-modal-tags" id="pm-tags"></div>
-      <div class="proj-modal-desc" id="pm-desc"></div>
-      <div class="proj-modal-metrics" id="pm-metrics"></div>
+    <div class="proj-modal-body" id="pm-body">
+      <div class="pm-about">
+        <div class="proj-modal-ctx" id="pm-ctx"></div>
+        <div class="proj-modal-desc" id="pm-desc"></div>
+        <div class="proj-modal-tags" id="pm-tags"></div>
+        <div class="proj-modal-metrics" id="pm-metrics"></div>
+        <button type="button" class="pm-arch" id="pm-arch" hidden></button>
+      </div>
+      <div class="pm-example" id="pm-example">
+        <div class="pm-example-lbl">example · sample data</div>
+        <div id="pm-demo"></div>
+      </div>
+    </div>
+    <div class="proj-modal-ft">
+      <button type="button" class="pm-nav" id="pm-prev" aria-label="Previous project">←<span></span></button>
+      <span class="pm-pos" id="pm-pos"></span>
+      <button type="button" class="pm-nav" id="pm-next" aria-label="Next project"><span></span>→</button>
     </div>
   </div>
 </div>
@@ -1779,7 +1826,6 @@ function toggleTheme() {
 (function() {
   var modal     = document.getElementById('proj-modal');
   var pmTitle   = document.getElementById('pm-title');
-  var pmLabel   = document.querySelector('.proj-modal-label');
   var pmCtx     = document.getElementById('pm-ctx');
   var pmTags    = document.getElementById('pm-tags');
   var pmDesc    = document.getElementById('pm-desc');
@@ -1838,13 +1884,13 @@ function toggleTheme() {
     rawdata: '<div class="demo-wrap">'
       + '<div class="demo-topbar"><span style="color:var(--t2);font-size:11px">Raw Data Request Builder</span><span class="demo-env-label">amplify · lambda · snowflake</span></div>'
       + '<div class="demo-form">'
-      + '<div class="demo-field"><div class="demo-field-label">Dataset</div><div class="demo-select"><span>Paid Social — Meta</span><span style="color:var(--t4)">&#9662;</span></div></div>'
+      + '<div class="demo-field"><div class="demo-field-label">Dataset</div><div class="demo-select"><span>Paid Social · Meta</span><span style="color:var(--t4)">&#9662;</span></div></div>'
       + '<div class="demo-field"><div class="demo-field-label">Date Range</div><div class="demo-select"><span>Last 30 days</span><span style="color:var(--t4)">&#9662;</span></div></div>'
       + '<div class="demo-field"><div class="demo-field-label">Platforms</div><div class="demo-chips"><span class="demo-chip on">&#10003; Meta</span><span class="demo-chip on">&#10003; Google Ads</span><span class="demo-chip">CM360</span><span class="demo-chip">DV360</span></div></div>'
       + '<div class="demo-field"><div class="demo-field-label">Fields</div><div class="demo-chips"><span class="demo-chip on">&#10003; Campaign</span><span class="demo-chip on">&#10003; Impressions</span><span class="demo-chip on">&#10003; Clicks</span><span class="demo-chip on">&#10003; Spend</span><span class="demo-chip">Ad Set</span><span class="demo-chip">Conv Rate</span></div></div>'
       + '<div class="demo-field"><div class="demo-field-label">Export As</div><div class="demo-radios"><span class="demo-radio on">&#9679; CSV</span><span class="demo-radio">&#9675; Excel</span><span class="demo-radio">&#9675; JSON</span></div></div>'
       + '<div class="demo-submit-btn">Submit Request &#8594;</div>'
-      + '<div class="demo-note-txt">no engineering required · audit logged to Snowflake</div>'
+      + '<div class="demo-note-txt">audit logged to Snowflake</div>'
       + '<div class="demo-field" style="margin-top:4px"><div class="demo-field-label">Advanced Filters</div><div class="demo-chips"><span class="demo-chip on">&#10003; Exclude test campaigns</span><span class="demo-chip">Paid only</span><span class="demo-chip">Active campaigns</span></div><div><span class="demo-field-label" style="margin-top:8px;display:block">Min Spend</span><div class="demo-select" style="margin-top:4px"><span>$0.00</span><span style="color:var(--t4)">&#9662;</span></div></div><div><span class="demo-field-label" style="margin-top:8px;display:block">Campaign Name Contains</span><div class="demo-select" style="margin-top:4px;color:var(--t4)"><span>e.g. "brand_awareness"</span></div></div></div>'
       + '</div></div>',
 
@@ -1853,7 +1899,7 @@ function toggleTheme() {
       + '<div class="demo-slack-msgs">'
       + '<div class="demo-slack-msg warn"><div class="demo-slack-avatar">&#129302;</div><div style="flex:1;min-width:0">'
       + '<div class="demo-slack-sender">DataBot <span>Today at 9:14 AM</span></div>'
-      + '<div class="demo-slack-alert-title">&#9888;&#65039; KPI Anomaly — OpenAI · Paid Search</div>'
+      + '<div class="demo-slack-alert-title">&#9888;&#65039; KPI anomaly · Client A · Paid Search</div>'
       + '<div class="demo-slack-table"><div>Metric</div><div><b>Clicks</b></div><div>Expected</div><div><b>~45,200</b></div><div>Actual</div><div><b>12,340</b></div><div>Delta</div><div><b class="demo-slack-delta">−72.7%</b></div></div>'
       + '<div class="demo-slack-link">&#8594; View in Snowflake</div>'
       + '</div></div>'
@@ -1865,8 +1911,8 @@ function toggleTheme() {
       + '</div></div>'
       + '<div class="demo-slack-msg" style="border-color:rgba(212,112,128,.3)"><div class="demo-slack-avatar">&#129302;</div><div style="flex:1;min-width:0">'
       + '<div class="demo-slack-sender">DataBot <span>Yesterday at 5:47 PM</span></div>'
-      + '<div style="color:var(--rose);font-size:12px">&#9940; Taxonomy mismatch — Media Campaign</div>'
-      + '<div style="color:var(--t3);font-size:11px;margin-top:3px">Ad set name doesn’t match naming convention — flagged before reporting ingestion</div>'
+      + '<div style="color:var(--rose);font-size:12px">&#9940; Taxonomy mismatch · Media Campaign</div>'
+      + '<div style="color:var(--t3);font-size:11px;margin-top:3px">Ad set name doesn’t match the naming convention. Flagged before reporting ingestion.</div>'
       + '<div class="demo-slack-link">&#8594; Flag to Media team</div>'
       + '</div></div>'
       + '</div></div>',
@@ -1904,12 +1950,12 @@ function toggleTheme() {
     api: '<div class="demo-wrap">'
       + '<div class="demo-topbar"><span style="color:var(--t2);font-size:11px">API Ingestion · Daily Run</span><span class="demo-env-label">python · pandas · snowflake</span></div>'
       + '<div class="demo-log">'
-      + '<div class="demo-log-line">[06:00:02] <span class="demo-log-ok">&#10003;</span> Google Ads — auth OK, fetching campaigns...</div>'
-      + '<div class="demo-log-line">[06:00:08] <span class="demo-log-ok">&#10003;</span> Google Ads — 14,302 rows &#8594; Snowflake</div>'
-      + '<div class="demo-log-line">[06:00:09] <span class="demo-log-ok">&#10003;</span> Meta Ads — auth OK, fetching ad sets...</div>'
-      + '<div class="demo-log-line">[06:00:15] <span class="demo-log-ok">&#10003;</span> Meta Ads — 8,847 rows &#8594; Snowflake</div>'
-      + '<div class="demo-log-line">[06:00:16] <span class="demo-log-ok">&#10003;</span> CM360 — 5,291 rows &#8594; Snowflake</div>'
-      + '<div class="demo-log-line">[06:00:23] <span class="demo-log-ok">&#10003;</span> DV360 — 3,108 rows &#8594; Snowflake</div>'
+      + '<div class="demo-log-line">[06:00:02] <span class="demo-log-ok">&#10003;</span> Google Ads: auth OK, fetching campaigns...</div>'
+      + '<div class="demo-log-line">[06:00:08] <span class="demo-log-ok">&#10003;</span> Google Ads: 14,302 rows &#8594; Snowflake</div>'
+      + '<div class="demo-log-line">[06:00:09] <span class="demo-log-ok">&#10003;</span> Meta Ads: auth OK, fetching ad sets...</div>'
+      + '<div class="demo-log-line">[06:00:15] <span class="demo-log-ok">&#10003;</span> Meta Ads: 8,847 rows &#8594; Snowflake</div>'
+      + '<div class="demo-log-line">[06:00:16] <span class="demo-log-ok">&#10003;</span> CM360: 5,291 rows &#8594; Snowflake</div>'
+      + '<div class="demo-log-line">[06:00:23] <span class="demo-log-ok">&#10003;</span> DV360: 3,108 rows &#8594; Snowflake</div>'
       + '<div class="demo-log-line demo-log-dim">[06:00:30] &#8594; 2 more platforms queued...</div>'
       + '<div class="demo-log-line demo-log-done">[06:01:44] &#9989; All 6 platforms loaded · 31,548 rows total</div>'
       + '</div>'
@@ -1978,7 +2024,7 @@ function toggleTheme() {
       + '<div style="border:1px solid var(--bd);border-radius:8px;overflow:hidden;margin-bottom:12px">'
       + '<div class="demo-tbl-head demo-tbl-5"><span>#</span><span>Campaign</span><span>Vendor</span><span>Budget</span><span>Status</span></div>'
       + '<div class="demo-tbl-row demo-tbl-5"><span>01</span><span>Brand Awareness Q2</span><span>Google</span><span>$45K</span><span class="demo-badge-live">&#9679; Live</span></div>'
-      + '<div class="demo-tbl-row demo-tbl-5"><span>02</span><span>Retargeting — Web</span><span>Meta</span><span>$22.5K</span><span class="demo-badge-live">&#9679; Live</span></div>'
+      + '<div class="demo-tbl-row demo-tbl-5"><span>02</span><span>Retargeting · Web</span><span>Meta</span><span>$22.5K</span><span class="demo-badge-live">&#9679; Live</span></div>'
       + '<div class="demo-tbl-row demo-tbl-5"><span>03</span><span>OOH · NYC Metro</span><span>OUTFRONT</span><span>$80K</span><span class="demo-badge-pend">&#9678; Pending</span></div>'
       + '<div class="demo-tbl-row demo-tbl-5"><span>04</span><span>Print · NYT Weekend</span><span>NYT</span><span>$15K</span><span class="demo-badge-done">&#10003; Done</span></div>'
       + '<div class="demo-tbl-row demo-tbl-5"><span>05</span><span>Audio · Spotify</span><span>Spotify</span><span>$12K</span><span class="demo-badge-live">&#9679; Live</span></div>'
@@ -2074,38 +2120,81 @@ function toggleTheme() {
       + '</div></div>'
   };
 
+  var pmBox   = document.getElementById('pm-box');
+  var pmBody  = document.getElementById('pm-body');
+  var pmEx    = document.getElementById('pm-example');
+  var pmDemo  = document.getElementById('pm-demo');
+  var pmArch  = document.getElementById('pm-arch');
+  var pmPrev  = document.getElementById('pm-prev');
+  var pmNext  = document.getElementById('pm-next');
+  var pmPos   = document.getElementById('pm-pos');
+  var pmClose = document.getElementById('pm-close');
+  /* projects whose logic is shown as a model on the architecture tab */
+  var ARCH = {pipeline:'fct_campaign_daily', slack:'qa_kpi_anomalies', rawdata:'Self-serve exports'};
+  var current = null, opener = null;
+
+  function txt(el) { return el ? el.textContent : ''; }
+  /* cards the visitor can currently see in the same tab, so prev/next respects an active filter */
+  function siblings(card) {
+    var pane = card.closest('.tab-pane') || document;
+    return Array.prototype.filter.call(pane.querySelectorAll('.proj-card'), function(c) { return c.offsetParent !== null; });
+  }
+
   function openProjModal(card) {
+    if (modal.classList.contains('hidden')) opener = card;
+    current = card;
     var demoKey = card.getAttribute('data-demo');
-    var title = card.querySelector('.proj-title');
-    pmTitle.textContent = title ? title.textContent : '';
-    if (demoKey && demoHTML[demoKey]) {
-      pmLabel.textContent  = 'prototype';
-      pmCtx.style.display  = 'none';
-      pmTags.style.display = 'none';
-      pmDesc.innerHTML     = demoHTML[demoKey];
-      pmMetrics.style.display = 'none';
-    } else {
-      var ctx     = card.querySelector('.proj-ctx');
-      var tags    = card.querySelector('.proj-tags');
-      var desc    = card.querySelector('.proj-desc');
-      var metrics = card.querySelector('.proj-metrics');
-      pmLabel.textContent     = 'project';
-      pmCtx.style.display     = '';
-      pmTags.style.display    = '';
-      pmMetrics.style.display = '';
-      pmCtx.textContent    = ctx     ? ctx.textContent    : '';
-      pmTags.innerHTML     = tags    ? tags.innerHTML     : '';
-      pmDesc.textContent   = desc    ? desc.textContent   : '';
-      pmMetrics.innerHTML  = metrics ? metrics.innerHTML  : '';
-    }
+    var demo = demoKey && demoHTML[demoKey];
+    var tags = card.querySelector('.proj-tags'), metrics = card.querySelector('.proj-metrics');
+    pmTitle.textContent = txt(card.querySelector('.proj-title'));
+    pmCtx.textContent   = txt(card.querySelector('.proj-ctx'));
+    pmDesc.textContent  = txt(card.querySelector('.proj-desc'));
+    pmTags.innerHTML    = tags ? tags.innerHTML : '';
+    pmMetrics.innerHTML = metrics ? metrics.innerHTML : '';
+    pmDemo.innerHTML    = demo || '';
+    pmEx.hidden = !demo;
+    pmBox.classList.toggle('has-demo', !!demo);
+
+    var model = window.SCHEMA && ARCH[demoKey];
+    pmArch.hidden = !model;
+    if (model) { pmArch.textContent = 'see ' + model + ' in architecture →'; pmArch.setAttribute('data-model', model); }
+
+    var list = siblings(card), i = list.indexOf(card);
+    var prev = list[i - 1], next = list[i + 1];
+    pmPrev.disabled = !prev; pmNext.disabled = !next;
+    pmPrev.querySelector('span').textContent = prev ? txt(prev.querySelector('.proj-title')) : '';
+    pmNext.querySelector('span').textContent = next ? txt(next.querySelector('.proj-title')) : '';
+    pmPos.textContent = i < 0 ? '' : (i + 1) + ' / ' + list.length;
+
     modal.classList.remove('hidden');
+    pmBody.scrollTop = 0;
+    if (!modal.contains(document.activeElement)) pmClose.focus();
+  }
+  function step(d) {
+    if (!current) return;
+    var list = siblings(current), to = list[list.indexOf(current) + d];
+    if (to) openProjModal(to);
   }
 
   window.closeProjModal = function() {
+    if (modal.classList.contains('hidden')) return;
     modal.classList.add('hidden');
+    pmDemo.innerHTML = '';
+    if (opener && opener.offsetParent !== null) opener.focus({preventScroll:true});
+    current = opener = null;
   };
 
+  pmPrev.addEventListener('click', function() { step(-1); });
+  pmNext.addEventListener('click', function() { step(1); });
+  pmArch.addEventListener('click', function() {
+    var model = pmArch.getAttribute('data-model');
+    window.closeProjModal();
+    window.SCHEMA.open(model);
+  });
+
   document.querySelectorAll('.proj-card').forEach(function(card) {
+    card.setAttribute('tabindex', '0');
+    card.setAttribute('role', 'button');
     card.addEventListener('mousedown', function() {
       if (card.classList.contains('bouncing') || card.closest('.compact')) return;
       card.classList.add('bouncing');
@@ -2114,6 +2203,11 @@ function toggleTheme() {
       if (e.animationName === 'cardBounce') card.classList.remove('bouncing');
     });
     card.addEventListener('click', function() { openProjModal(card); });
+    card.addEventListener('keydown', function(e) {
+      if (e.target !== card || (e.key !== 'Enter' && e.key !== ' ')) return;
+      e.preventDefault();
+      openProjModal(card);
+    });
   });
 
   document.getElementById('pm-close').addEventListener('click', window.closeProjModal);
@@ -2121,8 +2215,22 @@ function toggleTheme() {
     if (e.target === modal) window.closeProjModal();
   });
   document.addEventListener('keydown', function(e) {
-    if (e.key === 'Escape' && !modal.classList.contains('hidden')) window.closeProjModal();
-  });
+    if (modal.classList.contains('hidden')) return;
+    if (e.key === 'Escape') window.closeProjModal();
+    else if (e.key === 'ArrowLeft' || e.key === 'ArrowRight') {
+      /* arrows page through projects here, so they must not also switch the tab behind the dialog */
+      e.stopImmediatePropagation();
+      step(e.key === 'ArrowLeft' ? -1 : 1);
+    }
+    else if (e.key === 'Tab') {
+      /* keep focus inside the dialog */
+      var f = Array.prototype.filter.call(modal.querySelectorAll('button, [tabindex="0"]'), function(el) { return !el.disabled && el.offsetParent !== null; });
+      if (!f.length) return;
+      var first = f[0], last = f[f.length - 1];
+      if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus(); }
+      else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
+    }
+  }, true);
 })();
 
 /* ── Arrow key nav ── */
@@ -2544,7 +2652,7 @@ switchPane = function(id) {
       desc:'The dictionary deduplicated in both directions, so each ID maps to one name and each name to one ID.',
       cols:[['campaign','varchar','unique'],['campaign_id','varchar','unique'],['platform','varchar']],
       tests:['unique(campaign)','unique(campaign_id)'],
-      sql:"select * from (\n    select * from {{ source('ref', 'campaign_dictionary') }}\n    qualify row_number() over (partition by campaign_id order by campaign, platform) = 1\n)\nqualify row_number() over (partition by campaign order by campaign_id, platform) = 1"},
+      sql:"-- one name per ID, then one ID per name\nwith one_name_per_id as (\n    select campaign, campaign_id, platform\n    from {{ source('ref', 'campaign_dictionary') }}\n    qualify row_number() over (partition by campaign_id order by campaign, platform) = 1\n)\n\nselect campaign, campaign_id, platform\nfrom one_name_per_id\nqualify row_number() over (partition by campaign order by campaign_id, platform) = 1"},
     {id:'stg_first_party', layer:'staging', col:1, row:4, mat:'view', grain:'campaign × day', up:['share.client_first_party'],
       desc:'The data share collapsed to one row per campaign and day. Additive outcomes are summed; rates and coefficients are single-valued per key, so they take MAX instead of being wrongly added together.',
       cols:[['date','date'],['campaign','varchar'],['campaign_id','varchar'],['outcomes','number','summed'],['rates','float','max'],['classification','varchar']],
@@ -2575,8 +2683,8 @@ switchPane = function(id) {
     {id:'int_first_party_matched', label:'int_1p_matched', layer:'intermediate', col:2, row:4.5, mat:'view', grain:'campaign × day', up:['stg_first_party','stg_campaign_renames','stg_campaign_dictionary'],
       desc:'First-party rows reconciled to the media identity. Renames apply as of their effective date, then campaigns match on ID first and fall back to the dictionary by name only when the ID is missing.',
       cols:[['date','date'],['campaign','varchar','canonical'],['campaign_id','varchar','recovered when missing'],['outcomes','number']],
-      tests:['not_null(campaign)'],
-      sql:"with renamed as (\n    select\n        fp.*,\n        coalesce(r.new_campaign, fp.campaign) as campaign_mapped\n    from {{ ref('stg_first_party') }} fp\n    left join {{ ref('stg_campaign_renames') }} r\n        on fp.campaign = r.old_campaign\n       and fp.date >= r.effective_date\n    -- latest rename that was already in effect on that day\n    qualify row_number() over (\n        partition by fp.date, fp.campaign_id, fp.campaign\n        order by r.effective_date desc nulls last\n    ) = 1\n)\n\nselect\n    r.date,\n    coalesce(d.campaign, r.campaign_mapped) as campaign,\n    coalesce(r.campaign_id, d.campaign_id) as campaign_id,\n    r.sign_ups, r.subscriptions, r.leads\nfrom renamed r\nleft join {{ ref('stg_campaign_dictionary') }} d\n    on r.campaign_id = d.campaign_id\n    -- name fallback only when there is no usable ID\n    or (r.campaign_id is null and d.campaign ilike r.campaign_mapped)"},
+      tests:['not_null(campaign)','unique(date, campaign, campaign_id)'],
+      sql:"with renamed as (\n    select\n        fp.*,\n        coalesce(r.new_campaign, fp.campaign) as campaign_mapped\n    from {{ ref('stg_first_party') }} fp\n    left join {{ ref('stg_campaign_renames') }} r\n        on fp.campaign = r.old_campaign\n       and fp.date >= r.effective_date\n    -- latest rename that was already in effect on that day\n    qualify row_number() over (\n        partition by fp.date, fp.campaign_id, fp.campaign\n        order by r.effective_date desc nulls last\n    ) = 1\n)\n\nselect\n    r.date,\n    coalesce(d.campaign, r.campaign_mapped) as campaign,\n    coalesce(r.campaign_id, d.campaign_id) as campaign_id,\n    sum(r.sign_ups) as sign_ups,\n    sum(r.subscriptions) as subscriptions,\n    sum(r.leads) as leads\nfrom renamed r\nleft join {{ ref('stg_campaign_dictionary') }} d\n    on (r.campaign_id is not null and d.campaign_id = r.campaign_id)\n    -- name fallback only when there is no usable ID\n    or (r.campaign_id is null and d.campaign ilike r.campaign_mapped)\n-- a rename can fold two source rows into one campaign, so aggregate back to the grain\ngroup by 1, 2, 3"},
 
     /* conformed */
     {id:'int_media_all', layer:'intermediate', col:3, row:1.5, mat:'view', grain:'campaign × day × conversion', up:['int_media','int_first_party_matched'],
@@ -2585,31 +2693,31 @@ switchPane = function(id) {
       tests:['not_null(campaign_id)'],
       sql:"with media_days as (\n    select distinct date, campaign_id from {{ ref('int_media') }}\n),\n\norphans as (\n    select fp.date, fp.campaign_id\n    from {{ ref('int_first_party_matched') }} fp\n    left join media_days m\n        on fp.date = m.date and fp.campaign_id = m.campaign_id\n    where m.campaign_id is null\n),\n\n-- latest known identity for each campaign, to label the appended rows\nidentity as (\n    select platform, account_id, campaign, campaign_id\n    from {{ ref('int_media') }}\n    qualify row_number() over (partition by campaign_id order by date desc) = 1\n)\n\nselect\n    date, platform, account_id, campaign, campaign_id,\n    impressions, clicks, cost, video_25, weighted_impr_share,\n    conversion_name, conversions,\n    false as is_first_party_only\nfrom {{ ref('int_media') }}\n\nunion all\n\n-- first-party days with no media activity: zero media metrics, delivery-row shape\nselect\n    o.date, i.platform, i.account_id, i.campaign, o.campaign_id,\n    0, 0, 0, 0, 0,\n    null, 0,\n    true\nfrom orphans o\njoin identity i on o.campaign_id = i.campaign_id"},
     {id:'dim_classification_asof', label:'dim_class_asof', layer:'dimension', col:3, row:4, mat:'view', grain:'campaign × day', up:['stg_first_party','int_media_all'],
-      desc:'The client\'s campaign classification as it stood on each reporting date: the same-day value when one exists, otherwise the most recent earlier one. Future values never leak into history.',
+      desc:'The client\'s campaign classification as it stood on each reporting date: the same-day value when one exists, otherwise the most recent earlier one. Only first-party rows that carry a campaign ID are used, and future values never leak into history.',
       cols:[['date','date'],['campaign_id','varchar'],['classification','varchar'],['market_group','varchar']],
       tests:['unique(date, campaign_id)'],
-      sql:"select\n    e.date,\n    e.campaign_id,\n    d.classification,\n    d.market_group\nfrom (select distinct date, campaign_id from {{ ref('int_media_all') }}) e\nleft join {{ ref('stg_first_party') }} d\n    on d.campaign_id = e.campaign_id\n   and d.date <= e.date          -- never look into the future\nqualify row_number() over (\n    partition by e.date, e.campaign_id\n    order by d.date desc         -- exact day first, else latest prior\n) = 1"},
+      sql:"-- classification per campaign-day, taken only from rows that carry an ID\nwith daily as (\n    select\n        date,\n        campaign_id,\n        max(classification) as classification,\n        max(market_group) as market_group\n    from {{ ref('stg_first_party') }}\n    where campaign_id is not null\n      and (classification is not null or market_group is not null)\n    group by 1, 2\n)\n\nselect\n    e.date,\n    e.campaign_id,\n    d.classification,\n    d.market_group\nfrom (select distinct date, campaign_id from {{ ref('int_media_all') }}) e\nleft join daily d\n    on d.campaign_id = e.campaign_id\n   and d.date <= e.date               -- never look into the future\nqualify row_number() over (\n    partition by e.date, e.campaign_id\n    order by d.date desc nulls last   -- exact day first, else latest prior\n) = 1"},
     {id:'dim_campaign', layer:'dimension', col:3, row:5.5, mat:'table', grain:'campaign', up:['stg_match_table'],
       desc:'The campaign taxonomy as a dimension, joined onto every media row by campaign name.',
       cols:[['campaign','varchar','PK'],['channel','varchar'],['objective','varchar'],['targeting','varchar'],['region','varchar'],['audience','varchar']],
       tests:['unique(campaign)','not_null(channel)'],
-      sql:"select * from {{ ref('stg_match_table') }}"},
+      sql:"select\n    campaign,\n    channel, publisher, objective, targeting, region, audience, budget_type\nfrom {{ ref('stg_match_table') }}"},
 
     /* reporting + data quality */
     {id:'qa_kpi_anomalies', label:'qa_anomalies', layer:'qa', col:4, row:0, mat:'view', grain:'campaign × day (flagged only)', up:['int_media_all'],
       desc:'Days where a campaign\'s spend or delivery moves more than 3 standard deviations from its trailing two weeks. A non-empty result posts to Slack.',
       cols:[['platform','varchar'],['campaign_id','varchar'],['date','date'],['metric','varchar'],['value','number'],['z_score','float']],
-      tests:[],
+      tests:['unique(platform, campaign_id, date, metric)','not_null(z_score)'],
       sql:"with daily as (\n    select platform, campaign_id, date, sum(cost) as cost\n    from {{ ref('int_media_all') }}\n    group by 1, 2, 3\n),\n\nscored as (\n    select *,\n        avg(cost) over (partition by platform, campaign_id order by date\n                        rows between 14 preceding and 1 preceding) as trailing_avg,\n        stddev(cost) over (partition by platform, campaign_id order by date\n                           rows between 14 preceding and 1 preceding) as trailing_sd\n    from daily\n)\n\nselect platform, campaign_id, date, 'cost' as metric, cost as value,\n       (cost - trailing_avg) / nullif(trailing_sd, 0) as z_score\nfrom scored\nwhere abs(z_score) > 3 and date >= current_date - 3"},
     {id:'fct_campaign_daily', layer:'fact', col:4, row:2.5, mat:'table', grain:'date × account × campaign × conversion', up:['int_media_all','int_first_party_matched','dim_classification_asof','dim_campaign','stg_conversion_values'],
       desc:'The one wide reporting table everything reads from: media delivery and conversions from every network, first-party outcomes, the campaign taxonomy, point-in-time classification, and outcome values for the date range each one was valid.',
       cols:[['date','date'],['account_id','varchar'],['campaign','varchar'],['conversion_name','varchar'],['taxonomy dims','varchar','~20 columns'],['media metrics','number'],['first-party outcomes','number'],['outcome value','number','value × count']],
       tests:['unique(date, account_id, campaign_id, conversion_name)','relationships(campaign → dim_campaign)','cost >= 0'],
-      sql:"select\n    m.date, m.account_id, m.platform, m.campaign, m.campaign_id,\n    t.channel, t.objective, t.targeting, t.region, t.audience,\n    c.classification, c.market_group,\n    m.conversion_name,\n    sum(m.impressions) as impressions,\n    sum(m.clicks) as clicks,\n    sum(m.cost) as cost,\n    sum(m.conversions) as conversions,\n    coalesce(sum(fp.sign_ups), 0) as sign_ups,\n    coalesce(sum(fp.subscriptions), 0) as subscriptions,\n    coalesce(sum(fp.subscriptions), 0) * any_value(v.value) as subscription_value\nfrom {{ ref('int_media_all') }} m\nleft join {{ ref('dim_campaign') }} t on m.campaign = t.campaign\n-- first-party outcomes attach to delivery rows only, so they are never\n-- repeated across the conversion rows of the same campaign-day\nleft join {{ ref('int_first_party_matched') }} fp\n    on m.date = fp.date\n   and m.campaign_id = fp.campaign_id\n   and m.conversion_name is null\nleft join {{ ref('dim_classification_asof') }} c\n    on m.date = c.date and m.campaign_id = c.campaign_id\n-- value valid on that date (open-ended windows still apply)\nleft join {{ ref('stg_conversion_values') }} v\n    on v.outcome = 'subscription'\n   and m.date >= v.start_date\n   and (v.end_date is null or m.date <= v.end_date)\ngroup by 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13"},
+      sql:"select\n    m.date, m.account_id, m.platform, m.campaign, m.campaign_id,\n    t.channel, t.objective, t.targeting, t.region, t.audience,\n    c.classification, c.market_group,\n    m.conversion_name,\n    sum(m.impressions) as impressions,\n    sum(m.clicks) as clicks,\n    sum(m.cost) as cost,\n    sum(m.conversions) as conversions,\n    coalesce(sum(fp.sign_ups), 0) as sign_ups,\n    coalesce(sum(fp.subscriptions), 0) as subscriptions,\n    coalesce(sum(fp.subscriptions), 0) * any_value(v.value) as subscription_value\nfrom {{ ref('int_media_all') }} m\nleft join {{ ref('dim_campaign') }} t on m.campaign = t.campaign\n-- first-party outcomes attach to delivery rows only, so they are never\n-- repeated across the conversion rows of the same campaign-day\nleft join {{ ref('int_first_party_matched') }} fp\n    on m.date = fp.date\n   and m.campaign_id = fp.campaign_id\n   and m.conversion_name is null\nleft join {{ ref('dim_classification_asof') }} c\n    on m.date = c.date and m.campaign_id = c.campaign_id\n-- value valid on that date (open-ended windows still apply)\nleft join {{ ref('stg_conversion_values') }} v\n    on v.outcome = 'subscription'\n   and m.date >= v.start_date\n   and (v.end_date is null or m.date <= v.end_date)\ngroup by all"},
     {id:'qa_taxonomy_violations', label:'qa_taxonomy', layer:'qa', col:4, row:5, mat:'view', grain:'campaign (flagged only)', up:['int_media_all','dim_campaign'],
       desc:'Campaigns spending money that the match table doesn\'t know about yet, flagged to the media team before they show up as "unmapped" in reporting.',
       cols:[['platform','varchar'],['campaign','varchar'],['first_seen','date'],['cost_to_date','number']],
-      tests:[],
+      tests:['unique(platform, campaign)','cost_to_date > 0'],
       sql:"select m.platform, m.campaign, min(m.date) as first_seen, sum(m.cost) as cost_to_date\nfrom {{ ref('int_media_all') }} m\nleft join {{ ref('dim_campaign') }} t on m.campaign = t.campaign\nwhere t.campaign is null and m.cost > 0\ngroup by 1, 2"},
 
     /* exposures */
@@ -2680,6 +2788,17 @@ switchPane = function(id) {
   }
   function fact(k, v) { return v ? '<div class="sch-fact"><span>' + k + '</span>' + escHtml(v) + '</div>' : ''; }
 
+  /* columns and SQL start folded; whatever the visitor opens stays open as they move between tables */
+  var OPEN = {cols:false, sql:false};
+  function fold(key, label, body) {
+    return '<details class="sch-fold sch-fold-' + key + '" data-fold="' + key + '"' + (OPEN[key] ? ' open' : '') + '>'
+      + '<summary class="sch-sub">' + label + '</summary>' + body + '</details>';
+  }
+  detail.addEventListener('toggle', function(e) {
+    var k = e.target.getAttribute && e.target.getAttribute('data-fold');
+    if (k) OPEN[k] = e.target.open;
+  }, true);
+
   function renderDetail(m) {
     var h = '<div class="sch-hd"><span class="sch-name">' + escHtml(m.id) + '</span>'
       + '<span class="sch-badge lay-' + m.layer + '">' + LAYERS[m.layer].label + '</span>'
@@ -2687,10 +2806,10 @@ switchPane = function(id) {
       + '<p class="sch-desc">' + escHtml(m.desc) + '</p>'
       + '<div class="sch-body"><div>';
     if (m.cols) {
-      h += '<div class="sch-sub">columns</div><div class="sch-cols">'
+      h += fold('cols', 'columns <span>' + m.cols.length + '</span>', '<div class="sch-cols">'
         + m.cols.map(function(c) {
             return '<div class="sch-col"><span class="sch-cn">' + escHtml(c[0]) + '</span><span class="sch-ct">' + escHtml(c[1]) + '</span><span class="sch-cnote">' + escHtml(c[2] || '') + '</span></div>';
-          }).join('') + '</div>';
+          }).join('') + '</div>');
     }
     h += fact('grain', m.grain) + fact('loaded by', m.loaded) + fact('freshness', m.fresh) + fact('owner', m.owner) + '</div><div>';
     if (m.tests && m.tests.length) {
@@ -2699,7 +2818,7 @@ switchPane = function(id) {
     h += '<div class="sch-sub">upstream</div><div class="sch-chips">' + chips(m.up) + '</div>'
       + '<div class="sch-sub">downstream</div><div class="sch-chips">' + chips(m.down) + '</div>'
       + '</div></div>';
-    if (m.sql) h += '<div class="sch-sub">' + escHtml(m.id) + '.sql</div><pre class="sch-sql">' + hl(m.sql) + '</pre>';
+    if (m.sql) h += fold('sql', escHtml(m.id) + '.sql', '<pre class="sch-sql">' + hl(m.sql) + '</pre>');
     detail.innerHTML = h;
   }
 
