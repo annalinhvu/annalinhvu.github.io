@@ -997,7 +997,7 @@ body {
 .lay-qa rect{stroke:rgba(212,112,128,.7);}
 .lay-exposure rect{stroke:var(--t3);stroke-dasharray:1 3;stroke-linecap:round;}
 .sch-decisions{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin-bottom:22px;}
-.decision{text-align:left;font:inherit;color:inherit;background:var(--surface);border:1px solid var(--bd);border-radius:10px;padding:14px 16px;cursor:pointer;transition:border-color .15s;}
+.decision{display:flex;flex-direction:column;justify-content:flex-start;text-align:left;font:inherit;color:inherit;background:var(--surface);border:1px solid var(--bd);border-radius:10px;padding:14px 16px;cursor:pointer;transition:border-color .15s;}
 .decision:hover,.decision:focus-visible{border-color:var(--amber);outline:none;}
 .decision-p{font-family:'Geist Mono',monospace;font-size:10px;letter-spacing:.8px;text-transform:uppercase;color:var(--t4);margin-bottom:6px;}
 .decision-t{font-size:14px;font-weight:600;color:var(--t1);margin-bottom:5px;}
@@ -1049,7 +1049,8 @@ body {
 }
 
 /* ── Type roles: serif = prose read in full; Geist = titles, bullets, UI people scan; Geist Mono = data ── */
-.proj-desc,.sch-intro,.sch-desc{font-family:'Source Serif 4',Georgia,'Times New Roman',serif;}
+.proj-desc,.sch-intro,.sch-desc,.decision-d{font-family:'Source Serif 4',Georgia,'Times New Roman',serif;}
+.decision-d{font-size:14px;line-height:1.65;}
 .proj-desc{font-size:14px;}
 .sch-intro,.sch-desc{font-size:15px;}
 
@@ -2740,7 +2741,7 @@ switchPane = function(id) {
       desc:'Days where a campaign\'s spend or delivery moves more than 3 standard deviations from its trailing two weeks. A non-empty result posts to Slack.',
       cols:[['platform','varchar'],['campaign_id','varchar'],['date','date'],['metric','varchar'],['value','number'],['z_score','float']],
       tests:['unique(platform, campaign_id, date, metric)','not_null(z_score)'],
-      sql:"with daily as (\n    select platform, campaign_id, date, sum(cost) as cost\n    from {{ ref('int_media_all') }}\n    group by 1, 2, 3\n),\n\nscored as (\n    select *,\n        avg(cost) over (partition by platform, campaign_id order by date\n                        rows between 14 preceding and 1 preceding) as trailing_avg,\n        stddev(cost) over (partition by platform, campaign_id order by date\n                           rows between 14 preceding and 1 preceding) as trailing_sd\n    from daily\n)\n\nselect platform, campaign_id, date, 'cost' as metric, cost as value,\n       (cost - trailing_avg) / nullif(trailing_sd, 0) as z_score\nfrom scored\nwhere abs(z_score) > 3 and date >= current_date - 3"},
+      sql:"with daily as (\n    select platform, campaign_id, date, sum(cost) as cost\n    from {{ ref('int_media_all') }}\n    group by 1, 2, 3\n),\n\nscored as (\n    select platform, campaign_id, date, cost,\n        avg(cost) over (partition by platform, campaign_id order by date\n                        rows between 14 preceding and 1 preceding) as trailing_avg,\n        stddev(cost) over (partition by platform, campaign_id order by date\n                           rows between 14 preceding and 1 preceding) as trailing_sd\n    from daily\n)\n\nselect platform, campaign_id, date, 'cost' as metric, cost as value,\n       (cost - trailing_avg) / nullif(trailing_sd, 0) as z_score\nfrom scored\nwhere abs(z_score) > 3 and date >= current_date - 3"},
     {id:'fct_campaign_daily', layer:'fact', col:4, row:2.5, mat:'table', grain:'date × account × campaign × conversion', up:['int_media_all','int_first_party_matched','dim_classification_asof','dim_campaign','stg_conversion_values'],
       desc:'The one wide reporting table everything reads from: media delivery and conversions from every network, first-party outcomes, the campaign taxonomy, point-in-time classification, and outcome values for the date range each one was valid.',
       cols:[['date','date'],['account_id','varchar'],['campaign','varchar'],['conversion_name','varchar'],['taxonomy dims','varchar','~20 columns'],['media metrics','number'],['first-party outcomes','number'],['outcome value','number','value × count']],
