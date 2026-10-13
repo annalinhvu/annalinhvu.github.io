@@ -299,6 +299,24 @@ footer p{font-size:.82rem;line-height:1.7}
 [data-theme="dark"] .bfyg{background:var(--bg);border-color:var(--border)}
 [data-theme="dark"] .about-who{background:var(--bg);border-color:var(--border)}
 [data-theme="dark"] .hero::before{opacity:.025}
+
+/* Header: below the wide layout the back link and theme toggle join the row instead of floating
+   over the logo; on phones they get their own line and the logo drops to its icon. */
+@media(max-width:1320px){
+  .nav{display:flex;align-items:center;gap:14px;padding:0 24px}
+  .back-link,.theme-toggle{position:static;transform:none;flex-shrink:0}
+  .nav-in{flex:1;min-width:0;padding:0;order:2}
+  .theme-toggle{order:3}
+}
+@media(max-width:680px){
+  .nav{flex-wrap:wrap;gap:0 12px;padding:0 16px}
+  .back-link{order:1;padding:11px 0 0}
+  .theme-toggle{order:2;margin-left:auto;padding:8px 0 0 8px}
+  .nav-in{order:3;flex-basis:100%;height:46px;gap:8px}
+}
+@media(max-width:480px){
+  .nav-logo{font-size:0;gap:0}
+}
 </style>
 </head>
 <body>
@@ -398,7 +416,6 @@ footer p{font-size:.82rem;line-height:1.7}
   <div class="panel-body">
     <div class="dir-hdr-row">
       <div class="panel-hdr" style="margin-bottom:0;width:100%">
-        <div class="s-label">Personally curated</div>
         <h2 class="s-title">A starting point for food help in NYC</h2>
         <p class="s-sub">I researched each of these individually. For current hours and hundreds more locations, the official tools in <button class="link-btn" onclick="showTab('get-help')">Get Help</button> are your best bet.</p>
       </div>

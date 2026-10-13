@@ -658,6 +658,19 @@ body{
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; transition-duration: 0.01ms !important; }
 }
+
+/* Phone header: the centred title used to sit on top of the nav links. Title and toggle share the
+   first line, the links take the second. */
+@media(max-width:720px){
+  .topbar{height:auto;flex-wrap:wrap;padding:10px 16px 0;row-gap:0}
+  .topbar-title{position:static;transform:none;order:1;flex:1}
+  .topbar-right{order:2}
+  .topbar-left{order:3;flex-basis:100%;padding:6px 0 10px}
+}
+@media(max-width:600px){
+  /* stacked cards: the 200px basis is a width on desktop but became a height in a column */
+  .daily-card{flex:none;min-width:0}
+}
 </style>
 </head>
 <body>
