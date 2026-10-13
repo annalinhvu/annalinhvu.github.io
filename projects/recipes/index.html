@@ -3,11 +3,11 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Cơm Nhà  -  Recipe Index</title>
-<meta name="description" content="A personal Vietnamese recipe index  -  100 dishes from Northern, Central, and Southern Vietnam.">
+<title>Cơm Nhà | A Vietnamese Cookbook</title>
+<meta name="description" content="A personal Vietnamese cookbook: noodles, rice, bánh, sides, sweets, and drinks from Northern, Central, and Southern Vietnam.">
 <meta name="theme-color" content="#a8462e">
-<meta property="og:title" content="Cơm Nhà  -  Recipe Index">
-<meta property="og:url" content="https://annalinhvu.github.io/portfolio/projects/recipes/">
+<meta property="og:title" content="Cơm Nhà | A Vietnamese Cookbook">
+<meta property="og:url" content="https://annalinhvu.github.io/projects/recipes/">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;1,400;1,600&family=Playfair+Display:ital,wght@0,700;1,400&display=swap" rel="stylesheet">
@@ -721,13 +721,124 @@ body{
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; transition-duration: 0.01ms !important; }
 }
+
+/* ══ Cookbook layout ══
+   The page reads as a book: cover, contents and regions, six chapters, then an index at the back.
+   Every recipe has a page number (its place in the book), used in the contents, the chapters and the index. */
+.topbar-nav{position:absolute;left:50%;transform:translateX(-50%);display:flex;gap:20px}
+.topbar-nav button{background:none;border:none;cursor:pointer;padding:6px 0;font-family:'Lora',Georgia,serif;font-style:italic;font-size:.84rem;color:var(--text-3);transition:color .2s}
+.topbar-nav button:hover{color:var(--accent)}
+.masthead{padding:52px 32px 40px}
+
+/* front matter: contents on the left page, regions on the right */
+.frontmatter{max-width:1000px;margin:0 auto;padding:44px 28px 4px;display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,1fr)}
+.fm-col{padding:0 40px;min-width:0}
+.fm-col:first-child{padding-left:0;border-right:1px solid var(--border)}
+.fm-col:last-child{padding-right:0}
+.fm-title{font-family:'Playfair Display',Georgia,serif;font-style:italic;font-weight:400;font-size:1.5rem;color:var(--text-1);margin-bottom:10px}
+.toc-row{display:grid;grid-template-columns:24px minmax(0,1fr);column-gap:12px;align-items:baseline;width:100%;padding:14px 0;background:none;border:none;border-bottom:1px solid var(--border);cursor:pointer;font-family:inherit;text-align:left;color:inherit}
+.toc-no{font-family:'Lora',Georgia,serif;font-size:.8rem;color:var(--gold);min-width:24px;letter-spacing:1px}
+.toc-text{display:flex;flex-direction:column;gap:4px;min-width:0}
+.toc-line{display:flex;align-items:baseline;gap:10px}
+.toc-line .ledger-leader{margin-bottom:3px;display:block}
+.toc-name{font-weight:800;text-transform:uppercase;font-size:.98rem;letter-spacing:.5px;color:var(--terra);transition:color .15s}
+.toc-preview{font-family:'Lora',Georgia,serif;font-style:italic;font-size:.8rem;color:var(--text-3);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.toc-page{font-family:'Lora',Georgia,serif;font-size:.92rem;color:var(--text-2);min-width:22px;text-align:right}
+.toc-row:hover .toc-name{color:var(--accent)}
+.toc-row.toc-index .toc-name{color:var(--text-2)}
+.region-btn{padding-left:12px}
+.region-note{display:block;margin-top:6px;font-family:'Lora',Georgia,serif;font-style:italic;font-size:.8rem;line-height:1.5;color:var(--text-3)}
+
+/* chapters */
+.chapter-open{text-align:center;padding:68px 0 20px;scroll-margin-top:56px}
+.chapter-no{font-family:'Lora',Georgia,serif;font-style:italic;font-size:.9rem;color:var(--gold)}
+.chapter-title{font-weight:800;text-transform:uppercase;font-size:clamp(1.7rem,4.4vw,2.5rem);letter-spacing:-.5px;line-height:1.05;color:var(--terra);margin:6px 0 10px}
+.chapter-orn{font-size:1.25rem;line-height:1}
+.chapter-open::after{content:'';display:block;width:56px;height:1px;background:var(--border);margin:18px auto 0}
+.ledger-page{font-family:'Lora',Georgia,serif;font-size:.86rem;color:var(--text-1);min-width:26px;text-align:right}
+.ledger-time{color:var(--text-3);font-style:italic;font-size:.78rem;min-width:46px}
+.ledger-row[data-region="northern"] .ledger-dot{background:#4a7890}
+.ledger-row[data-region="central"] .ledger-dot{background:#8a4030}
+.ledger-row[data-region="southern"] .ledger-dot{background:#7a7030}
+
+/* a region or the saved list: same book, narrowed */
+.selection-bar{display:none;align-items:baseline;gap:14px;flex-wrap:wrap;padding:40px 2px 6px;scroll-margin-top:56px}
+.browse-view.selecting .selection-bar{display:flex}
+.browse-view.selecting .frontmatter,.browse-view.selecting .index-section{display:none}
+.sel-title{font-family:'Playfair Display',Georgia,serif;font-style:italic;font-weight:700;font-size:1.7rem;color:var(--text-1)}
+.sel-sub{font-family:'Lora',Georgia,serif;font-style:italic;font-size:.86rem;color:var(--text-3);flex:1}
+
+/* index */
+.index-section{max-width:1000px;margin:0 auto;scroll-margin-top:56px}
+.index-section .filter-row{border-bottom:none;max-width:560px;margin:0 auto;padding-top:4px}
+.index-section .result-count{justify-content:center}
+.az{columns:3;column-gap:44px;padding-top:6px}
+.az-letter{font-family:'Playfair Display',Georgia,serif;font-style:italic;font-size:1.25rem;color:var(--accent);padding:16px 0 4px;break-after:avoid}
+.az-row{display:flex;align-items:baseline;gap:8px;width:100%;padding:4px 0;font-family:'Lora',Georgia,serif;font-size:.86rem;break-inside:avoid}
+.az-row button{background:none;border:none;padding:0;font:inherit;cursor:pointer;text-align:left;transition:color .15s}
+.az-name{color:var(--text-2)}
+.az-row button:hover{color:var(--accent)}
+.az-sep{margin:0 -5px 0 -8px;color:var(--text-4)}
+.az-leader{flex:1;min-width:12px;border-bottom:1px dotted var(--text-4);opacity:.45;transform:translateY(-3px)}
+.az-row .az-page{font-size:.8rem;color:var(--text-3)}
+
+/* recipe page: headnote, then ingredients beside the method */
+.running-head{display:flex;align-items:center;justify-content:space-between;gap:12px}
+.running-chapter{font-family:'Lora',Georgia,serif;font-style:italic;font-size:.82rem;color:var(--text-3)}
+.recipe-intro{max-width:760px;margin:0 auto;padding:4px 32px 0}
+.recipe-intro .detail-desc{font-size:1rem;line-height:1.85;margin-bottom:24px}
+.recipe-intro .detail-desc::first-letter{font-family:'Playfair Display',Georgia,serif;font-weight:700;float:left;font-size:3.3em;line-height:.82;padding:7px 9px 0 0;color:var(--region-color,var(--accent))}
+.recipe-intro .recipe-info-strip{margin-bottom:30px}
+.ri-val{text-transform:capitalize}
+.detail-body{grid-template-columns:minmax(0,1fr) minmax(0,1.75fr);border-top:1px solid var(--border)}
+.detail-ing{padding:28px 26px 36px 32px;border-right:1px solid var(--border)}
+.detail-main{border-right:none}
+.detail-ing .scaler-wrap{margin:0 0 16px;padding-top:0;border-top:none;display:flex;align-items:center;gap:12px}
+.detail-ing .scaler-label{margin-bottom:0}
+.detail-ing .scale-btns{flex:1}
+.detail-ing .scale-btn{min-height:34px}
+.ing-actions{display:flex;gap:8px;margin-top:16px}
+.ing-actions .save-btn,.ing-actions .print-btn{flex:1;margin-top:0;padding:10px 6px}
+.page-no{display:flex;align-items:center;justify-content:center;gap:14px;padding:20px 0 24px;border-top:1px solid var(--border);font-family:'Lora',Georgia,serif;font-size:.9rem;color:var(--text-2)}
+.page-no::before,.page-no::after{content:'';width:36px;height:1px;background:var(--border)}
+.page-src{font-style:italic;font-size:.78rem;color:var(--text-4)}
+
+@media(max-width:860px){.az{columns:2}}
+@media(max-width:760px){
+  .frontmatter{grid-template-columns:1fr;padding:28px 18px 0;row-gap:36px}
+  .fm-col,.fm-col:first-child,.fm-col:last-child{padding:0;border-right:none}
+  .detail-body{grid-template-columns:1fr}
+  .detail-ing{border-right:none;border-bottom:1px solid var(--border);padding:24px 20px}
+  .sb-inner{position:static}
+  .recipe-intro{padding:4px 20px 0}
+  .chapter-open{padding-top:52px}
+}
+@media(max-width:640px){
+  .masthead{padding:34px 16px 26px}
+  .ledger-row{display:grid;grid-template-columns:12px minmax(0,1fr) auto;column-gap:6px;align-items:start;padding:12px 0}
+  .ledger-dot{margin-top:10px;align-self:start}
+  .ledger-text{display:block;width:auto;overflow:visible}
+  .ledger-name{display:block;white-space:normal}
+  .ledger-tagline{display:block;white-space:normal;margin-top:3px;line-height:1.45}
+  .ledger-meta{width:auto;padding-left:0;gap:8px;justify-content:flex-end;align-items:center}
+  .ledger-time{min-width:0}
+  .ledger-page{min-width:22px}
+  .heart-btn{min-width:36px}
+  .selection-bar{padding-top:28px}
+  .sel-sub{order:3;flex-basis:100%}
+}
+@media(max-width:520px){.az{columns:1}.topbar-nav{gap:14px}}
+@media print{
+  .running-head,.ing-actions,.topbar-nav{display:none!important}
+  .detail-ing{border:none;padding:0 0 12px}
+}
 </style>
 </head>
 <body>
 
 <div class="topbar">
   <a href="../../index.html" class="back-link">&larr; Portfolio</a>
-  <button class="topbar-brand" onclick="goHome()" aria-label="Back to home" style="cursor:pointer;background:none;border:none;font-size:.7rem;color:var(--text-4);letter-spacing:1px;font-family:inherit;transition:color .2s" onmouseenter="this.style.color='var(--accent)'" onmouseleave="this.style.color='var(--text-4)'">&#8962;</button>
+  <div class="topbar-nav"><button type="button" onclick="goHome()">Contents</button><button type="button" onclick="openIndex()">Index</button></div>
   <div class="topbar-right">
     <button class="saved-btn" id="savedBadge" onclick="filterSaved()">
       <span id="savedHeart">&#9825;</span>&thinsp;<span id="savedCount">0</span>
@@ -744,10 +855,15 @@ body{
     <p class="masthead-sub">Vietnamese recipes, cooked from scratch</p>
   </div>
 
-  <div class="explore-body">
-    <!-- A: Region map -->
-    <div class="explore-panel">
-      <div class="explore-panel-label">Browse by region</div>
+  <div class="frontmatter" id="frontmatter">
+    <!-- left page: contents -->
+    <div class="fm-col">
+      <h2 class="fm-title">Contents</h2>
+      <div id="tocList"><!-- populated by JS --></div>
+    </div>
+    <!-- right page: the three regions -->
+    <div class="fm-col">
+      <h2 class="fm-title">By region</h2>
       <div class="map-and-list">
         <svg class="viet-map-svg" viewBox="0 0 68 138" xmlns="http://www.w3.org/2000/svg">
           <!--
@@ -814,36 +930,33 @@ body{
         </div>
       </div>
     </div>
-
-    <!-- B: Category tiles -->
-    <div class="explore-panel">
-      <div class="explore-panel-label">Browse by category</div>
-      <div class="cat-tiles" id="catTiles">
-        <!-- populated by JS -->
-      </div>
-    </div>
   </div>
 
   <div class="page">
     <div class="toc-wrap">
+      <div class="selection-bar" id="selectionBar"></div>
+      <div class="ledger" id="cardGrid"></div>
+    </div>
+
+    <section class="index-section" id="indexSection">
+      <div class="chapter-open"><h2 class="chapter-title">Index</h2></div>
       <div class="filter-row">
         <div class="search-wrap">
           <span class="search-icon">&#10022;</span>
           <input type="search" class="search-input" id="searchInput"
-            aria-label="Search recipes by name or ingredients"
-            placeholder="Search by name or ingredients (e.g. pork, lemongrass)..." oninput="onSearch()">
+            aria-label="Find a recipe by name or ingredient"
+            placeholder="Find a dish or an ingredient (e.g. pork, lemongrass)" oninput="onSearch()">
         </div>
-        <select class="filter-select" id="difficultyFilter" onchange="applyFilters()">
+        <select class="filter-select" id="difficultyFilter" aria-label="Difficulty" onchange="renderIndex()">
           <option value="">Any difficulty</option>
           <option value="easy">Easy</option>
           <option value="moderate">Moderate</option>
           <option value="involved">Involved</option>
         </select>
       </div>
-
       <div class="result-count" id="resultCount"></div>
-      <div class="ledger" id="cardGrid"></div>
-    </div>
+      <div id="indexBody"></div>
+    </section>
 
     <div class="page-footer">
       <a href="../../index.html" class="back-link">&larr; Portfolio</a>
@@ -854,7 +967,7 @@ body{
 
 <div class="detail-view" id="detailView">
   <div class="page">
-    <button class="detail-back" onclick="showBrowse()">&larr; Back to Recipes</button>
+    <div class="running-head"><button class="detail-back" onclick="showBrowse()">&larr; Contents</button><span class="running-chapter" id="runningHead"></span></div>
     <div id="detailContent"></div>
     <div id="detailNav"></div>
   </div>
@@ -864,7 +977,7 @@ body{
 const LS_FAV   = 'from-scratch-favorites';
 const LS_THEME = 'from-scratch-theme';
 
-let allRecipes = [], activeCat = 'all', savedIds = new Set(), searchTimer = null;
+let allRecipes = [], bookOrder = [], activeCat = 'all', savedIds = new Set(), searchTimer = null, browseScroll = 0;
 
 /* ── Theme ── */
 function toggleTheme(){
@@ -873,8 +986,6 @@ function toggleTheme(){
   h.setAttribute('data-theme',n);
   localStorage.setItem(LS_THEME,n);
   updateThemeBtn(n);
-  // Re-render tiles so pastel vs dark colours update
-  if(allRecipes.length) renderExplore();
 }
 function updateThemeBtn(t){}
 
@@ -906,28 +1017,70 @@ function updateSavedBadge(){
   document.getElementById('savedBadge').classList.toggle('has-saved',n>0);
 }
 
-/* ── Filters ── */
+/* ── The book: chapter order gives every recipe a page number ── */
+const ROMAN=['I','II','III','IV','V','VI','VII','VIII','IX','X'];
+function buildBook(){
+  let page=0; bookOrder=[];
+  CAT_ORDER.forEach((cat,ci)=>{
+    allRecipes.filter(r=>r.category===cat).forEach(r=>{ r.page=++page; r.chapter=ci; bookOrder.push(r); });
+  });
+  allRecipes.filter(r=>!r.page).forEach(r=>{ r.page=++page; r.chapter=-1; bookOrder.push(r); });
+}
+
+/* ── Selections: a region or the saved list narrows the book ── */
 function filterSaved(){
   activeCat='saved';
   delete document.getElementById('browseView').dataset.region;
   showBrowse();
   applyFilters();
+  window.scrollTo(0,0);
 }
 function clearFacet(){
   activeCat='all';
   delete document.getElementById('browseView').dataset.region;
   applyFilters();
+  window.scrollTo(0,0);
 }
-function onSearch(){ clearTimeout(searchTimer); searchTimer=setTimeout(applyFilters,150); }
 function applyFilters(){
+  const bv=document.getElementById('browseView');
+  const region=bv.dataset.region||'', saved=activeCat==='saved';
+  const selecting=!!region||saved;
+  bv.classList.toggle('selecting',selecting);
+  const list=bookOrder.filter(r=>(!saved||savedIds.has(r.id))&&(!region||r.cuisine===region));
+  document.getElementById('selectionBar').innerHTML=selecting
+    ?`<span class="sel-title">${saved?'Saved recipes':regionLabel(region)}</span>
+      <span class="sel-sub">${saved?'The ones you marked with a heart':REGION_ENG[region]+' Vietnam, chapter by chapter'}</span>
+      <button class="clear-facet" type="button" onclick="clearFacet()">&larr; The whole book</button>`
+    :'';
+  renderCards(list,selecting);
+}
+
+/* ── Index: every recipe A to Z, or whatever the search finds ── */
+function onSearch(){ clearTimeout(searchTimer); searchTimer=setTimeout(renderIndex,150); }
+function indexLetter(name){
+  return name.trim().charAt(0).toUpperCase().replace('Đ','D').normalize('NFD').replace(/[̀-ͯ]/g,'');
+}
+function renderIndex(){
   const raw=(document.getElementById('searchInput').value||'').toLowerCase().trim();
   const terms=raw?raw.split(',').map(t=>t.trim()).filter(Boolean):[];
-  const region=document.getElementById('browseView').dataset.region||'';
   const dif=document.getElementById('difficultyFilter').value;
-  const out=allRecipes.filter(r=>{
-    if(activeCat==='saved'){if(!savedIds.has(r.id))return false;}
-    else if(activeCat!=='all'){if(r.category!==activeCat)return false;}
-    if(region&&r.cuisine!==region)return false;
+  const host=document.getElementById('indexBody'), rc=document.getElementById('resultCount');
+  if(!terms.length&&!dif){
+    const groups={};
+    bookOrder.slice().sort((a,b)=>a.name.localeCompare(b.name,'vi')||a.page-b.page).forEach(r=>{
+      const g=groups[indexLetter(r.name)]=groups[indexLetter(r.name)]||[];
+      const same=g.length&&g[g.length-1].name===r.name?g[g.length-1]:null;
+      if(same) same.items.push(r); else g.push({name:r.name,items:[r]});
+    });
+    rc.textContent='';
+    host.innerHTML='<div class="az">'+Object.keys(groups).sort().map(L=>
+      `<div class="az-letter">${L}</div>`+groups[L].map(e=>
+        `<div class="az-row"><button type="button" class="az-name" onclick="showDetail(${e.items[0].id})">${e.name}</button><span class="az-leader" aria-hidden="true"></span>`
+        +e.items.map(r=>`<button type="button" class="az-page" onclick="showDetail(${r.id})" aria-label="${r.name}, page ${r.page}">${r.page}</button>`).join('<span class="az-sep">,</span>')+'</div>').join('')
+    ).join('')+'</div>';
+    return;
+  }
+  const out=bookOrder.filter(r=>{
     if(dif&&r.difficulty!==dif)return false;
     if(terms.length){
       const h=[r.name,r.tagline,r.ingredients,r.cuisine,r.category].join(' ').toLowerCase();
@@ -935,13 +1088,26 @@ function applyFilters(){
     }
     return true;
   });
-  renderCards(out);
-  const countText=out.length+(out.length===1?' recipe':' recipes');
-  const facet=activeCat==='saved'?'saved':activeCat!=='all'?(CAT_LABEL[activeCat]||activeCat):region?regionLabel(region):null;
-  const rc=document.getElementById('resultCount');
-  rc.innerHTML=facet
-    ?`${countText}${facet==='saved'?' saved':' in '+facet} <button class="clear-facet" type="button" onclick="clearFacet()">Clear &times;</button>`
-    :countText;
+  rc.innerHTML=`${out.length}${out.length===1?' recipe':' recipes'} <button class="clear-facet" type="button" onclick="clearIndex()">Clear &times;</button>`;
+  host.innerHTML=out.length
+    ?'<div class="ledger">'+out.map((r,i)=>recipeRow(r,i)).join('')+'</div>'
+    :'<div class="empty-state"><p>Nothing in the book matches that.<br>Try one ingredient, like pork or lemongrass.</p></div>';
+}
+function clearIndex(){
+  document.getElementById('searchInput').value='';
+  document.getElementById('difficultyFilter').value='';
+  renderIndex();
+}
+function openIndex(){
+  if(document.getElementById('detailView').classList.contains('active')) showBrowse();
+  if(document.getElementById('browseView').classList.contains('selecting')) clearFacet();
+  document.getElementById('indexSection').scrollIntoView({behavior:'smooth',block:'start'});
+  document.getElementById('searchInput').focus({preventScroll:true});
+}
+function openChapter(ci){
+  if(document.getElementById('browseView').classList.contains('selecting')) clearFacet();
+  const el=document.getElementById('chapter-'+ci);
+  if(el) el.scrollIntoView({behavior:'smooth',block:'start'});
 }
 
 /* ── Helpers ── */
@@ -963,6 +1129,7 @@ function catGrad(c){
   return (CAT_GRAD[t]||CAT_GRAD.light)[c]||'#ccc';
 }
 function regionLabel(c){return{northern:'Miền Bắc',central:'Miền Trung',southern:'Miền Nam'}[c]||c;}
+const REGION_ENG={northern:'Northern',central:'Central',southern:'Southern'};
 function diffStars(d){
   const n={easy:1,moderate:2,involved:3}[d]||1;
   return [1,2,3].map(i=>`<span class="d-star${i<=n?' on':''}">&#9733;</span>`).join('');
@@ -977,34 +1144,35 @@ function fmtTime(m){
 const CAT_ORDER=['noodles','rice','bánh','sides','sweets','drinks'];
 const CAT_LABEL={noodles:'Noodles',rice:'Rice','bánh':'Bánh',sides:'Sides',sweets:'Sweets',drinks:'Drinks'};
 
-function renderCards(list){
+function renderCards(list,selecting){
   const g=document.getElementById('cardGrid');
   if(!list.length){
-    g.innerHTML='<div class="empty-state"><p>No recipes found.<br>Try adjusting your filters.</p></div>';
+    g.innerHTML=activeCat==='saved'
+      ?'<div class="empty-state"><p>Nothing saved yet.<br>Tap the heart beside a recipe to keep it here.</p></div>'
+      :'<div class="empty-state"><p>No recipes here yet.</p></div>';
     return;
   }
-  const grouped = activeCat==='all' && !document.getElementById('searchInput').value.trim()
-                  && !document.getElementById('browseView').dataset.region
-                  && !document.getElementById('difficultyFilter').value;
   let html='';
-  if(grouped){
-    CAT_ORDER.forEach(cat=>{
-      const sub=list.filter(r=>r.category===cat);
-      if(!sub.length)return;
-      html+=`<div class="cat-section-head"><span class="cat-section-icon">${CAT_ICON[cat]||''}</span>${CAT_LABEL[cat]||cat}</div>`;
-      html+=sub.map((r,i)=>recipeRow(r,i)).join('');
-    });
-  } else {
-    html=list.map((r,i)=>recipeRow(r,i)).join('');
-  }
+  CAT_ORDER.forEach((cat,ci)=>{
+    const sub=list.filter(r=>r.category===cat);
+    if(!sub.length)return;
+    html+=selecting
+      ?`<div class="cat-section-head"><span class="cat-section-icon">${CAT_ICON[cat]||''}</span>${CAT_LABEL[cat]||cat}</div>`
+      :`<header class="chapter-open" id="chapter-${ci}">
+          <div class="chapter-no">Chapter ${ROMAN[ci]}</div>
+          <h2 class="chapter-title">${CAT_LABEL[cat]||cat}</h2>
+          <div class="chapter-orn" aria-hidden="true">${CAT_ICON[cat]||''}</div>
+        </header>`;
+    html+=sub.map((r,i)=>recipeRow(r,i)).join('');
+  });
   g.innerHTML=html;
 }
 
 function recipeRow(r,i){
   const sv=savedIds.has(r.id);
   const tot=r.prep_time_min+r.cook_time_min;
-  return `<div class="ledger-row card-in" data-cat="${r.category}" style="animation-delay:${i*.025}s" onclick="showDetail(${r.id})">
-    <span class="ledger-dot"></span>
+  return `<div class="ledger-row card-in" data-cat="${r.category}" data-region="${r.cuisine}" style="animation-delay:${Math.min(i,12)*.025}s" onclick="showDetail(${r.id})">
+    <span class="ledger-dot" title="${regionLabel(r.cuisine)}"></span>
     <div class="ledger-text">
       <span class="ledger-name">${r.name}</span>
       <span class="ledger-tagline">${r.tagline}</span>
@@ -1012,8 +1180,8 @@ function recipeRow(r,i){
     <span class="ledger-leader" aria-hidden="true"></span>
     <div class="ledger-meta">
       <span class="ledger-time">${fmtTime(tot)}</span>
-      <span class="cuisine-lbl">${regionLabel(r.cuisine)}</span>
-      <button class="heart-btn${sv?' saved':''}" data-id="${r.id}"
+      <span class="ledger-page">${r.page}</span>
+      <button class="heart-btn${sv?' saved':''}" data-id="${r.id}" aria-label="Save ${r.name}"
         onclick="toggleFavorite(${r.id},event)">${sv?'&#9829;':'&#9825;'}</button>
     </div>
   </div>`;
@@ -1061,7 +1229,7 @@ function showDetail(id){
   const steps=r.instructions.split('\n').map(l=>l.replace(/^\d+\.\s*/,'').trim()).filter(Boolean);
   const dBadges=r.dietary.length?r.dietary.map(d=>`<span class="badge">${d}</span>`).join(''):'';
   const tipsHtml=r.tips?`<div class="det-section">
-    <div class="det-label">Tips</div>
+    <div class="det-label">Cook's note</div>
     <div class="tips-wrap"><p class="tips-text">${r.tips}</p></div>
   </div>`:'';
   const tot=r.prep_time_min+r.cook_time_min;
@@ -1083,82 +1251,84 @@ function showDetail(id){
   const ingBase=JSON.stringify(ings).replace(/"/g,'&quot;');
   const detailImg=r.photo?`<img class="detail-img-strip" src="${r.photo}" alt="${r.name}" loading="lazy">`
     :`<div class="detail-hero-deco"><div class="hero-deco-line"></div><span class="hero-deco-mark">&#10022;</span><div class="hero-deco-line"></div><span class="hero-deco-mark">&#10022;</span><div class="hero-deco-line"></div></div>`;
+  const chapterName=CAT_LABEL[r.category]||r.category;
+  document.getElementById('runningHead').textContent=(r.chapter>=0?'Chapter '+ROMAN[r.chapter]+', ':'')+chapterName;
   document.getElementById('detailContent').innerHTML=`
     <div class="detail-card">
       ${detailImg}<div class="detail-head-section">
-        <div class="detail-cat-label">${r.category}</div>
+        <div class="detail-cat-label">${chapterName} &middot; ${regionLabel(r.cuisine)}</div>
         <h1 class="detail-title">${r.name}</h1>
         <p class="detail-tagline">${r.tagline}</p>
         ${dBadges?'<div class="detail-badges">'+dBadges+'</div>':''}
       </div>
       <div class="orn-rule">&#10022;</div>
+      <div class="recipe-intro">
+        <p class="detail-desc">${r.description}</p>
+        <div class="recipe-info-strip">
+          <div class="ri-item"><span class="ri-val">${r.servings}</span><span class="ri-key">Serves</span></div>
+          <div class="ri-item"><span class="ri-val">${r.prep_time_min>0?r.prep_time_min+'m':'0m'}</span><span class="ri-key">Prep</span></div>
+          <div class="ri-item"><span class="ri-val">${r.cook_time_min>0?r.cook_time_min+'m':'0m'}</span><span class="ri-key">Cook</span></div>
+          <div class="ri-item"><span class="ri-val">${fmtTime(tot)}</span><span class="ri-key">Total</span></div>
+          <div class="ri-item"><span class="ri-val">${r.difficulty}</span><span class="ri-key">Level</span></div>
+        </div>
+      </div>
       <div class="detail-body">
+        <div class="detail-ing">
+          <div class="sb-inner">
+            <div class="det-section ing-section" style="margin-bottom:0">
+              <div class="det-label">Ingredients</div>
+              <div class="scaler-wrap">
+                <div class="scaler-label">Batch</div>
+                <div class="scale-btns">
+                  <button class="scale-btn active" data-scale="1" onclick="setScale(1)">&times;1</button>
+                  <button class="scale-btn" data-scale="2" onclick="setScale(2)">&times;2</button>
+                  <button class="scale-btn" data-scale="4" onclick="setScale(4)">&times;4</button>
+                </div>
+              </div>
+              <ul class="ing-list" id="scaledIngList" data-base="${ingBase}">${ings.map(i=>`<li>${i}</li>`).join('')}</ul>
+            </div>
+            <div class="ing-actions">
+              <button class="save-btn${sv?' saved':''}" id="detailSaveBtn" data-id="${r.id}"
+                onclick="toggleFavorite(${r.id},event)">
+                ${sv?'&#9829;&ensp;Saved':'&#9825;&ensp;Save Recipe'}
+              </button>
+              <button class="print-btn" onclick="window.print()">&#9112;&ensp;Print</button>
+            </div>
+          </div>
+        </div>
         <div class="detail-main">
-          <p class="detail-desc">${r.description}</p>
-          <div class="recipe-info-strip">
-            <div class="ri-item"><span class="ri-val">${r.servings}</span><span class="ri-key">Serves</span></div>
-            <div class="ri-item"><span class="ri-val">${r.prep_time_min>0?r.prep_time_min+'m':'—'}</span><span class="ri-key">Prep</span></div>
-            <div class="ri-item"><span class="ri-val">${r.cook_time_min>0?r.cook_time_min+'m':'—'}</span><span class="ri-key">Cook</span></div>
-            <div class="ri-item"><span class="ri-val">${fmtTime(tot)}</span><span class="ri-key">Total</span></div>
-          </div>
-          <div class="det-section ing-section">
-            <div class="det-label">Ingredients <span style="font-style:italic;font-weight:400;font-size:.78em;opacity:.6;text-transform:none;letter-spacing:0">${ings.length} items</span></div>
-            <ul class="ing-list" id="scaledIngList" data-base="${ingBase}">${ings.map(i=>`<li>${i}</li>`).join('')}</ul>
-          </div>
           <div class="det-section">
-            <div class="det-label">Instructions <span style="font-style:italic;font-weight:400;font-size:.78em;opacity:.6;text-transform:none;letter-spacing:0">${steps.length} steps</span></div>
+            <div class="det-label">Method</div>
             <ol class="step-list">${steps.map(s=>`<li>${s}</li>`).join('')}</ol>
           </div>
           ${tipsHtml}
         </div>
-        <div class="detail-sidebar">
-          <div class="sb-inner">
-            <div class="sb-label">Quick Facts</div>
-            <div class="sb-stat"><span class="sb-key">Prep</span><span class="sb-val">${r.prep_time_min} min</span></div>
-            <div class="sb-stat"><span class="sb-key">Cook</span><span class="sb-val">${r.cook_time_min>0?r.cook_time_min+' min':'—'}</span></div>
-            <div class="sb-stat"><span class="sb-key">Total</span><span class="sb-val">${fmtTime(tot)}</span></div>
-            <div class="sb-stat"><span class="sb-key">Serves</span><span class="sb-val">${r.servings}</span></div>
-            <div class="sb-stat"><span class="sb-key">Difficulty</span><span class="sb-val">${r.difficulty}</span></div>
-            <div class="sb-stat"><span class="sb-key">Region</span><span class="sb-val">${regionLabel(r.cuisine)}</span></div>
-            <div class="sb-stat"><span class="sb-key">Source</span><span class="sb-val">${r.source}</span></div>
-            <div class="scaler-wrap">
-              <div class="scaler-label">Serving size</div>
-              <div class="scale-btns">
-                <button class="scale-btn active" data-scale="1" onclick="setScale(1)">&times;1</button>
-                <button class="scale-btn" data-scale="2" onclick="setScale(2)">&times;2</button>
-                <button class="scale-btn" data-scale="4" onclick="setScale(4)">&times;4</button>
-              </div>
-            </div>
-            <button class="save-btn${sv?' saved':''}" id="detailSaveBtn" data-id="${r.id}"
-              onclick="toggleFavorite(${r.id},event)">
-              ${sv?'&#9829;&ensp;Saved':'&#9825;&ensp;Save Recipe'}
-            </button>
-            <button class="print-btn" onclick="window.print()">&#9112;&ensp;Print Recipe</button>
-          </div>
-        </div>
       </div>
+      <div class="page-no"><span>${r.page}</span>${r.source&&r.source!=='personal'?`<span class="page-src">${r.source} recipe</span>`:''}</div>
       ${relatedHtml}
     </div>`;
 
-  // Prev / next within same category
-  const peers=allRecipes.filter(x=>x.category===r.category);
+  // Previous / next page, through the whole book
+  const peers=bookOrder;
   const idx=peers.findIndex(x=>x.id===r.id);
   const prev=peers[idx-1], next=peers[idx+1];
   document.getElementById('detailNav').innerHTML=`
     <div class="detail-nav">
       ${prev?`<button class="detail-nav-btn" onclick="showDetail(${prev.id})">
         <span>&#8592;</span>
-        <span><span class="detail-nav-label">Previous</span>
+        <span><span class="detail-nav-label">Previous page</span>
         <span class="detail-nav-name">${prev.name}</span></span>
       </button>`:'<span></span>'}
       ${next?`<button class="detail-nav-btn next" onclick="showDetail(${next.id})">
-        <span><span class="detail-nav-label">Next</span>
+        <span><span class="detail-nav-label">Next page</span>
         <span class="detail-nav-name">${next.name}</span></span>
         <span>&#8594;</span>
       </button>`:''}
     </div>`;
 
-  document.getElementById('browseView').classList.add('hidden');
+  const bvEl=document.getElementById('browseView');
+  if(!bvEl.classList.contains('hidden')) browseScroll=window.scrollY;
+  bvEl.classList.add('hidden');
   const dv=document.getElementById('detailView');
   dv.dataset.region=r.cuisine;
   dv.classList.add('active');
@@ -1166,20 +1336,22 @@ function showDetail(id){
   location.hash='recipe-'+id;
 }
 
-function showBrowse(){
-  document.getElementById('detailView').classList.remove('active');
+function showBrowse(keepHistory){
+  const dv=document.getElementById('detailView'), wasDetail=dv.classList.contains('active');
+  dv.classList.remove('active');
   document.getElementById('browseView').classList.remove('hidden');
-  history.pushState('',document.title,location.pathname);
+  if(!keepHistory) history.pushState('',document.title,location.pathname);
   if(!document.getElementById('cardGrid').children.length) applyFilters();
+  /* back to the page you were on, like reopening a book at its marker */
+  if(wasDetail) window.scrollTo(0,browseScroll);
 }
 
 function goHome(){
   showBrowse();
   delete document.getElementById('browseView').dataset.region;
   activeCat='all';
-  const search=document.getElementById('searchInput'); if(search) search.value='';
-  const dif=document.getElementById('difficultyFilter'); if(dif) dif.value='';
   applyFilters();
+  clearIndex();
   window.scrollTo({top:0,behavior:'smooth'});
 }
 
@@ -1187,46 +1359,49 @@ function browseRegion(region){
   activeCat='all';
   document.getElementById('browseView').dataset.region=region;
   applyFilters();
-  document.getElementById('cardGrid').scrollIntoView({behavior:'smooth',block:'start'});
+  window.scrollTo(0,0);
 }
 
-function browseCategory(cat){
-  activeCat=cat;
-  delete document.getElementById('browseView').dataset.region;
-  applyFilters();
-  document.getElementById('cardGrid').scrollIntoView({behavior:'smooth',block:'start'});
-}
-
+/* front matter: the contents list and the three regions */
+const REGION_NOTE={
+  northern:'Clear broths and restrained seasoning, with black pepper more than chili.',
+  central:'Hotter and saltier, with the small, intricate dishes of Huế.',
+  southern:'Sweeter, with more fresh herbs, coconut, and river fish.'
+};
 function renderExplore(){
-  // Region list
-  const regionCounts={northern:0,central:0,southern:0};
-  allRecipes.forEach(r=>{if(regionCounts[r.cuisine]!==undefined)regionCounts[r.cuisine]++;});
+  const toc=document.getElementById('tocList');
+  if(toc){
+    toc.innerHTML=CAT_ORDER.map((cat,ci)=>{
+      const sub=bookOrder.filter(r=>r.category===cat);
+      if(!sub.length)return'';
+      return `<button type="button" class="toc-row" onclick="openChapter(${ci})">
+        <span class="toc-no">${ROMAN[ci]}</span>
+        <span class="toc-text">
+          <span class="toc-line"><span class="toc-name">${CAT_LABEL[cat]||cat}</span><span class="ledger-leader" aria-hidden="true"></span><span class="toc-page">${sub[0].page}</span></span>
+          <span class="toc-preview">${sub.slice(0,4).map(r=>r.name).join(', ')}</span>
+        </span>
+      </button>`;
+    }).join('')+`<button type="button" class="toc-row toc-index" onclick="openIndex()">
+        <span class="toc-no"></span>
+        <span class="toc-text">
+          <span class="toc-line"><span class="toc-name">Index</span></span>
+          <span class="toc-preview">Every dish from A to Z, and a search by ingredient</span>
+        </span>
+      </button>`;
+  }
   const regionList=document.getElementById('regionList');
   if(regionList){
     regionList.innerHTML=[
-      {key:'northern',cls:'rn',viet:'Miền Bắc',eng:'Northern'},
-      {key:'central', cls:'rc',viet:'Miền Trung',eng:'Central'},
-      {key:'southern',cls:'rs',viet:'Miền Nam',eng:'Southern'},
-    ].map(({key,cls,viet,eng})=>`
+      {key:'northern',cls:'rn',viet:'Miền Bắc'},
+      {key:'central', cls:'rc',viet:'Miền Trung'},
+      {key:'southern',cls:'rs',viet:'Miền Nam'},
+    ].map(({key,cls,viet})=>`
       <button class="region-btn ${cls}" onclick="browseRegion('${key}')">
         <span class="region-info">
           <span class="region-viet">${viet}</span>
-          <span class="region-eng">${eng}</span>
+          <span class="region-eng">${REGION_ENG[key]}</span>
+          <span class="region-note">${REGION_NOTE[key]}</span>
         </span>
-        <span class="region-count-badge">${regionCounts[key]}</span>
-      </button>`).join('');
-  }
-  // Category tiles
-  const catCounts={};
-  allRecipes.forEach(r=>{catCounts[r.category]=(catCounts[r.category]||0)+1;});
-  const catTiles=document.getElementById('catTiles');
-  if(catTiles){
-    catTiles.innerHTML=CAT_ORDER.map(cat=>`
-      <button class="cat-tile" data-cat="${cat}" style="background:${catGrad(cat)}"
-        onclick="browseCategory('${cat.replace(/'/g,"\\'")}')">
-        <span class="cat-tile-icon">${CAT_ICON[cat]||'🍽'}</span>
-        <span class="cat-tile-name">${CAT_LABEL[cat]||cat}</span>
-        <span class="cat-tile-count">${catCounts[cat]||0}</span>
       </button>`).join('');
   }
 }
@@ -1236,6 +1411,8 @@ function handleHash(){
   if(h.startsWith('#recipe-')){
     const id=parseInt(h.replace('#recipe-',''));
     if(!isNaN(id)&&allRecipes.length) showDetail(id);
+  } else if(document.getElementById('detailView').classList.contains('active')){
+    showBrowse(true);   // browser Back from a recipe returns to the book
   }
 }
 
@@ -1246,8 +1423,10 @@ async function init(){
   loadSaved(); updateSavedBadge();
   const res=await fetch('data/recipes.json');
   allRecipes=await res.json();
+  buildBook();
   renderExplore();
   applyFilters();
+  renderIndex();
   handleHash();
 }
 
