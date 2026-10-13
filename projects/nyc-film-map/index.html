@@ -17,6 +17,7 @@
   src: url(https://cdn.jsdelivr.net/fontsource/fonts/geist-mono:vf@latest/latin-wght-normal.woff2) format('woff2-variations');
 }
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{font-size:112.5%}  /* 18px base: every rem size on this page is a step larger */
 
 :root{
   --paper:#f4efe6;--paper-2:#ece7dd;--paper-3:#e2ddd3;
@@ -24,7 +25,7 @@
   --accent:#b8453e;--accent-light:#d4756e;
   --surface:#f0ece2;--surface-2:#e8e2d8;
   --border:#ddd6ca;--radius:3px;
-  --sidebar-w:340px;
+  --sidebar-w:372px;
   --cat-cinema:#c4726c;
   --cat-lab:#8a9a6c;
   --cat-museum:#b8a472;
@@ -56,7 +57,7 @@ body{
   z-index:1000;
 }
 .topbar a{
-  color:var(--ink-4);text-decoration:none;font-size:.6rem;
+  color:var(--ink-4);text-decoration:none;font-size:.64rem;
   font-family:'Geist Mono',monospace;
   letter-spacing:1.5px;text-transform:uppercase;transition:color .2s;
 }
@@ -67,7 +68,7 @@ body{
   letter-spacing:3.5px;text-transform:uppercase;
 }
 .topbar-sub{
-  font-size:.55rem;color:var(--ink-4);letter-spacing:2px;
+  font-size:.6rem;color:var(--ink-4);letter-spacing:2px;
   text-transform:uppercase;margin-top:1px;
   font-family:var(--sans);
 }
@@ -84,7 +85,7 @@ body{
 }
 .sidebar-header{padding:16px 20px 14px;border-bottom:1px solid var(--border)}
 .sidebar-header h2{
-  font-size:.55rem;color:var(--ink-4);font-weight:400;
+  font-size:.6rem;color:var(--ink-4);font-weight:400;
   margin-bottom:12px;letter-spacing:3px;text-transform:uppercase;
   font-family:var(--sans);
 }
@@ -117,7 +118,7 @@ body{
 .filters-row select:focus,.filters-row input:focus{border-color:var(--ink-4)}
 
 .venue-count{
-  padding:7px 20px;font-size:.55rem;color:var(--ink-5);
+  padding:7px 20px;font-size:.6rem;color:var(--ink-5);
   border-bottom:1px solid var(--paper-3);letter-spacing:1.5px;
   text-transform:uppercase;
   font-family:var(--sans);
@@ -163,13 +164,13 @@ body{
 .venue-detail-back:hover{text-decoration:underline}
 .venue-detail h3{font-size:1.05rem;margin-bottom:4px;font-weight:400;letter-spacing:1px}
 .venue-detail .cat-label{
-  display:inline-block;font-size:.55rem;color:var(--ink-4);
+  display:inline-block;font-size:.6rem;color:var(--ink-4);
   letter-spacing:1.5px;text-transform:uppercase;margin-bottom:14px;
   font-family:var(--sans);
 }
 .venue-detail .detail-field{margin-bottom:12px}
 .venue-detail .detail-label{
-  font-size:.5rem;color:var(--ink-5);text-transform:uppercase;
+  font-size:.6rem;color:var(--ink-5);text-transform:uppercase;
   letter-spacing:1.5px;margin-bottom:3px;
   font-family:var(--sans);
 }
@@ -185,7 +186,7 @@ body{
   display:flex;align-items:center;gap:18px;
   padding:8px 20px;
   background:var(--surface-2);border-bottom:1px solid var(--border);
-  font-family:var(--sans);font-size:.6rem;
+  font-family:var(--sans);font-size:.64rem;
   color:var(--ink-3);letter-spacing:1px;text-transform:uppercase;
 }
 .legend-bar .count{color:var(--ink-4);font-weight:500}
@@ -224,7 +225,7 @@ body{
   padding:0;
 }
 .leaflet-popup-content{
-  margin:12px 14px;font-family:Georgia,serif;font-size:13px;line-height:1.4;
+  margin:12px 14px;font-family:Georgia,serif;font-size:14px;line-height:1.4;
   color:var(--ink);
 }
 .leaflet-popup-tip{background:var(--popup-tip)}
@@ -232,11 +233,11 @@ body{
 [data-theme="dark"] .popup-hood{color:var(--ink-3)}
 [data-theme="dark"] .popup-highlight{color:var(--ink-3)}
 [data-theme="dark"] .popup-cat{color:var(--ink-4)}
-.popup-name{font-weight:400;font-size:14px;margin-bottom:3px;letter-spacing:0.3px}
-.popup-hood{color:var(--ink-3);font-size:12px;font-style:italic;margin-bottom:2px}
-.popup-highlight{color:var(--ink-4);font-size:11px;font-style:italic;line-height:1.35}
+.popup-name{font-weight:400;font-size:15px;margin-bottom:3px;letter-spacing:0.3px}
+.popup-hood{color:var(--ink-3);font-size:13px;font-style:italic;margin-bottom:2px}
+.popup-highlight{color:var(--ink-4);font-size:13px;font-style:italic;line-height:1.35}
 .popup-cat{
-  color:var(--ink-5);font-size:10px;margin-top:4px;letter-spacing:1px;
+  color:var(--ink-5);font-size:12px;margin-top:4px;letter-spacing:1px;
   text-transform:uppercase;font-family:var(--sans);
 }
 
@@ -533,7 +534,7 @@ function renderTags(counts){
   var container = document.getElementById('catTags');
   container.innerHTML = CATEGORIES.map(function(c){
     var n = counts[c] != null ? counts[c] : '';
-    var countStr = n !== '' ? ' <span style="opacity:.55;font-size:.5rem">('+n+')</span>' : '';
+    var countStr = n !== '' ? ' <span style="opacity:.55;font-size:.6rem">('+n+')</span>' : '';
     return '<span class="cat-tag '+(activeCategories.has(c)?'active':'')+'" data-cat="'+c+'">'
       +shapeHtml(c)
       +CAT_LABELS[c]+countStr+'</span>';
