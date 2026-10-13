@@ -68,7 +68,7 @@ body{
   letter-spacing:3.5px;text-transform:uppercase;
 }
 .topbar-sub{
-  font-size:.6rem;color:var(--ink-4);letter-spacing:2px;
+  font-size:0.64rem;color:var(--ink-4);letter-spacing:2px;
   text-transform:uppercase;margin-top:1px;
   font-family:var(--sans);
 }
@@ -85,7 +85,7 @@ body{
 }
 .sidebar-header{padding:16px 20px 14px;border-bottom:1px solid var(--border)}
 .sidebar-header h2{
-  font-size:.6rem;color:var(--ink-4);font-weight:400;
+  font-size:0.64rem;color:var(--ink-4);font-weight:400;
   margin-bottom:12px;letter-spacing:3px;text-transform:uppercase;
   font-family:var(--sans);
 }
@@ -118,7 +118,7 @@ body{
 .filters-row select:focus,.filters-row input:focus{border-color:var(--ink-4)}
 
 .venue-count{
-  padding:7px 20px;font-size:.6rem;color:var(--ink-5);
+  padding:7px 20px;font-size:0.64rem;color:var(--ink-5);
   border-bottom:1px solid var(--paper-3);letter-spacing:1.5px;
   text-transform:uppercase;
   font-family:var(--sans);
@@ -164,13 +164,13 @@ body{
 .venue-detail-back:hover{text-decoration:underline}
 .venue-detail h3{font-size:1.05rem;margin-bottom:4px;font-weight:400;letter-spacing:1px}
 .venue-detail .cat-label{
-  display:inline-block;font-size:.6rem;color:var(--ink-4);
+  display:inline-block;font-size:0.64rem;color:var(--ink-4);
   letter-spacing:1.5px;text-transform:uppercase;margin-bottom:14px;
   font-family:var(--sans);
 }
 .venue-detail .detail-field{margin-bottom:12px}
 .venue-detail .detail-label{
-  font-size:.6rem;color:var(--ink-5);text-transform:uppercase;
+  font-size:0.64rem;color:var(--ink-5);text-transform:uppercase;
   letter-spacing:1.5px;margin-bottom:3px;
   font-family:var(--sans);
 }
@@ -534,7 +534,7 @@ function renderTags(counts){
   var container = document.getElementById('catTags');
   container.innerHTML = CATEGORIES.map(function(c){
     var n = counts[c] != null ? counts[c] : '';
-    var countStr = n !== '' ? ' <span style="opacity:.55;font-size:.6rem">('+n+')</span>' : '';
+    var countStr = n !== '' ? ' <span style="opacity:.55;font-size:0.64rem">('+n+')</span>' : '';
     return '<span class="cat-tag '+(activeCategories.has(c)?'active':'')+'" data-cat="'+c+'">'
       +shapeHtml(c)
       +CAT_LABELS[c]+countStr+'</span>';
