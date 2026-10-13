@@ -10,7 +10,7 @@
 <meta property="og:url" content="https://annalinhvu.github.io/projects/recipes/">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;1,400;1,600&family=Playfair+Display:ital,wght@0,700;1,400&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;0,700;1,400;1,600;1,700&display=swap" rel="stylesheet">
 <style>
 @font-face {
   font-family: 'Geist';
@@ -20,6 +20,7 @@
 </style>
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{font-size:106.25%}  /* 17px base: every rem size in this book is one step larger */
 
 :root[data-theme="light"]{
   --bg:#f6f1e7;
@@ -74,12 +75,12 @@ body{
   transition:background .3s,border-color .3s;
 }
 .back-link{
-  font-size:.6rem;letter-spacing:1.5px;text-transform:uppercase;
+  font-size:.64rem;letter-spacing:1.5px;text-transform:uppercase;
   color:var(--text-3);text-decoration:none;transition:color .2s;
 }
 .back-link:hover{color:var(--accent)}
 .topbar-brand{
-  font-family:'Playfair Display',Georgia,serif;
+  font-family:'Lora',Georgia,serif;
   font-style:italic;font-weight:700;font-size:1rem;letter-spacing:.5px;
   color:var(--accent);
   position:absolute;left:50%;transform:translateX(-50%);
@@ -89,7 +90,7 @@ body{
   display:inline-flex;align-items:center;gap:4px;
   padding:4px 10px;border-radius:2px;
   border:1.5px solid var(--border);background:none;
-  font-size:.6rem;letter-spacing:.5px;color:var(--text-4);
+  font-size:.64rem;letter-spacing:.5px;color:var(--text-4);
   cursor:pointer;transition:all .2s;font-family:inherit;font-weight:600;
 }
 .saved-btn:hover,.saved-btn.has-saved{color:var(--accent);border-color:var(--accent)}
@@ -109,7 +110,7 @@ body{
 .mast-rule{
   display:flex;align-items:center;justify-content:center;gap:12px;
   margin:0 auto 16px;
-  color:var(--gold);font-size:.46rem;letter-spacing:4px;opacity:.75;
+  color:var(--gold);font-size:.58rem;letter-spacing:4px;opacity:.75;
 }
 .mast-rule::before,.mast-rule::after{
   content:'';width:56px;height:1px;background:var(--border);
@@ -123,7 +124,7 @@ body{
   margin-bottom:10px;
 }
 .masthead-sub{
-  font-size:.56rem;font-weight:700;color:var(--text-3);
+  font-size:.62rem;font-weight:700;color:var(--text-3);
   letter-spacing:2.5px;text-transform:uppercase;
 }
 
@@ -182,7 +183,7 @@ body{
 .search-wrap{position:relative;flex:1;min-width:180px}
 .search-icon{
   position:absolute;left:10px;top:50%;transform:translateY(-50%);
-  font-size:.62rem;color:var(--text-4);pointer-events:none;
+  font-size:.66rem;color:var(--text-4);pointer-events:none;
 }
 .search-input{
   width:100%;padding:8px 12px 8px 28px;border-radius:2px;
@@ -203,12 +204,12 @@ body{
 }
 .filter-select:focus{outline:none;border-color:var(--accent)}
 .result-count{
-  padding:14px 0 6px;font-size:.54rem;
+  padding:14px 0 6px;font-size:.62rem;
   letter-spacing:1.8px;text-transform:uppercase;color:var(--text-4);font-weight:600;
   display:flex;align-items:center;gap:10px;
 }
 .clear-facet{
-  font-size:.54rem;letter-spacing:1.8px;text-transform:uppercase;font-weight:600;
+  font-size:.62rem;letter-spacing:1.8px;text-transform:uppercase;font-weight:600;
   color:var(--accent);background:none;border:none;cursor:pointer;
   padding:0;font-family:inherit;
 }
@@ -271,7 +272,7 @@ body{
   min-width:32px;text-align:right;
 }
 .cuisine-lbl{
-  font-size:.44rem;letter-spacing:1.6px;text-transform:uppercase;
+  font-size:.58rem;letter-spacing:1.6px;text-transform:uppercase;
   color:var(--text-4);font-weight:600;min-width:54px;text-align:right;
 }
 @media(max-width:640px){
@@ -312,7 +313,7 @@ body{
   border-radius:5px 5px 0 0;
 }
 .region-badge{
-  font-size:.5rem;letter-spacing:1.2px;font-style:italic;
+  font-size:.62rem;letter-spacing:1.2px;font-style:italic;
   color:var(--accent);font-weight:600;
 }
 
@@ -321,7 +322,7 @@ body{
   text-align:center;padding:80px 20px;
   color:var(--text-4);grid-column:1/-1;
 }
-.empty-state p{font-family:Georgia,serif;font-style:italic;font-size:.9rem}
+.empty-state p{font-family:'Lora',Georgia,serif;font-style:italic;font-size:.9rem}
 
 /* ── Views ── */
 .detail-view{display:none}
@@ -341,7 +342,7 @@ body{
   border-radius:8px;padding:28px 24px;box-shadow:var(--sh);
 }
 .explore-panel-label{
-  font-size:.52rem;letter-spacing:2.5px;text-transform:uppercase;
+  font-size:.62rem;letter-spacing:2.5px;text-transform:uppercase;
   color:var(--text-4);font-weight:700;margin-bottom:20px;
   display:flex;align-items:center;gap:10px;
 }
@@ -386,12 +387,12 @@ body{
 
 .region-info{flex:1;min-width:0}
 .region-viet{
-  font-family:'Playfair Display',Georgia,serif;
+  font-family:'Lora',Georgia,serif;
   font-style:italic;font-size:1.12rem;color:var(--text-1);font-weight:700;
   display:block;line-height:1.15;margin-bottom:3px;
 }
 .region-eng{
-  font-size:.46rem;letter-spacing:2px;text-transform:uppercase;
+  font-size:.58rem;letter-spacing:2px;text-transform:uppercase;
   color:var(--text-4);font-weight:700;
 }
 .region-count-badge{
@@ -431,7 +432,7 @@ body{
   font-size:1.7rem;margin-bottom:9px;line-height:1;
 }
 .cat-tile-name{
-  font-size:.46rem;letter-spacing:2px;text-transform:uppercase;
+  font-size:.58rem;letter-spacing:2px;text-transform:uppercase;
   font-weight:700;color:rgba(42,26,8,.72);
 }
 .cat-tile-count{
@@ -444,7 +445,7 @@ body{
 /* ── Detail ── */
 .detail-back{
   display:inline-flex;align-items:center;gap:5px;
-  font-size:.54rem;letter-spacing:1.6px;text-transform:uppercase;font-weight:600;
+  font-size:.62rem;letter-spacing:1.6px;text-transform:uppercase;font-weight:600;
   color:var(--text-4);cursor:pointer;padding:20px 0 14px;
   transition:color .2s;background:none;border:none;font-family:inherit;
 }
@@ -474,7 +475,7 @@ body{
   border-bottom:1px solid var(--border);
 }
 .detail-cat-label{
-  font-size:.5rem;letter-spacing:2px;text-transform:uppercase;
+  font-size:.62rem;letter-spacing:2px;text-transform:uppercase;
   color:var(--region-color,var(--terra));font-weight:700;margin-bottom:12px;
 }
 .detail-title{
@@ -484,12 +485,12 @@ body{
   line-height:1.1;letter-spacing:-.5px;margin-bottom:8px;
 }
 .detail-tagline{
-  font-style:italic;
+  font-family:'Lora',Georgia,serif;font-style:italic;
   font-size:.92rem;color:var(--text-3);margin-bottom:12px;
 }
 .detail-badges{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:0}
 .badge{
-  font-size:.54rem;letter-spacing:1px;text-transform:uppercase;
+  font-size:.62rem;letter-spacing:1px;text-transform:uppercase;
   color:var(--terra);border:1.5px solid var(--terra);
   padding:3px 9px;border-radius:2px;opacity:.75;
 }
@@ -497,7 +498,7 @@ body{
 .orn-rule{
   display:flex;align-items:center;gap:14px;
   padding:0 32px;margin:20px 0;
-  color:var(--accent);opacity:.5;font-size:.45rem;letter-spacing:4px;
+  color:var(--accent);opacity:.5;font-size:.58rem;letter-spacing:4px;
 }
 .orn-rule::before,.orn-rule::after{
   content:'';flex:1;height:1px;background:var(--border);
@@ -533,12 +534,12 @@ body{
   font-weight:800;color:var(--text-1);line-height:1;
 }
 .ri-key{
-  font-size:.42rem;letter-spacing:1.8px;text-transform:uppercase;
+  font-size:.58rem;letter-spacing:1.8px;text-transform:uppercase;
   color:var(--text-4);font-weight:700;margin-top:5px;
 }
 .det-section{margin-bottom:28px}
 .det-label{
-  font-size:.5rem;letter-spacing:2px;text-transform:uppercase;
+  font-size:.62rem;letter-spacing:2px;text-transform:uppercase;
   color:var(--region-color,var(--accent));margin-bottom:10px;font-weight:700;
   display:flex;align-items:center;gap:10px;
 }
@@ -602,13 +603,13 @@ body{
   display:flex;align-items:center;gap:8px;
   background:none;border:1px solid var(--border);border-radius:2px;
   padding:9px 16px;cursor:pointer;font-family:inherit;
-  font-size:.62rem;letter-spacing:.5px;color:var(--text-3);
+  font-size:.66rem;letter-spacing:.5px;color:var(--text-3);
   transition:all .18s;max-width:45%;text-align:left;
 }
 .detail-nav-btn:hover{color:var(--region-color,var(--accent));border-color:var(--region-color,var(--accent))}
 .detail-nav-btn.next{text-align:right;margin-left:auto}
-.detail-nav-label{font-size:.48rem;letter-spacing:1.5px;text-transform:uppercase;color:var(--text-4);display:block;margin-bottom:2px}
-.detail-nav-name{font-size:.78rem;font-family:'Playfair Display',Georgia,serif;font-style:italic;color:var(--text-2);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:180px}
+.detail-nav-label{font-size:.58rem;letter-spacing:1.5px;text-transform:uppercase;color:var(--text-4);display:block;margin-bottom:2px}
+.detail-nav-name{font-size:.78rem;font-family:'Lora',Georgia,serif;font-style:italic;color:var(--text-2);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:180px}
 
 /* ── Related recipes ── */
 .related-section{padding:32px 32px 36px;border-top:1px solid var(--border)}
@@ -616,7 +617,7 @@ body{
 .related-group{margin-bottom:32px}
 .related-group:last-child{margin-bottom:0}
 .related-lbl{
-  font-size:.52rem;letter-spacing:2px;text-transform:uppercase;
+  font-size:.62rem;letter-spacing:2px;text-transform:uppercase;
   color:var(--text-4);font-weight:700;margin-bottom:14px;
   display:flex;align-items:center;gap:10px;
 }
@@ -630,14 +631,14 @@ body{
 }
 .related-card:hover{background:var(--region-tint,rgba(200,136,10,.05));border-left-width:4px}
 .related-name{
-  font-size:.88rem;font-family:'Playfair Display',Georgia,serif;
+  font-size:.88rem;font-family:'Lora',Georgia,serif;
   font-weight:700;color:var(--text-1);margin-bottom:5px;line-height:1.3;
 }
-.related-meta{font-size:.6rem;color:var(--text-4);letter-spacing:.3px}
+.related-meta{font-size:.64rem;color:var(--text-4);letter-spacing:.3px}
 /* Sidebar */
 .sb-inner{position:sticky;top:calc(46px + 24px)}
 .sb-label{
-  font-size:.52rem;letter-spacing:2px;text-transform:uppercase;
+  font-size:.62rem;letter-spacing:2px;text-transform:uppercase;
   color:var(--region-color,var(--accent));margin-bottom:10px;font-weight:700;
   display:flex;align-items:center;gap:10px;
 }
@@ -653,7 +654,7 @@ body{
   display:flex;align-items:center;justify-content:center;gap:6px;
   margin-top:16px;padding:10px;width:100%;
   border:1.5px solid var(--border);border-radius:2px;
-  background:none;font-size:.54rem;letter-spacing:1.4px;text-transform:uppercase;font-weight:700;
+  background:none;font-size:.62rem;letter-spacing:1.4px;text-transform:uppercase;font-weight:700;
   color:var(--text-3);cursor:pointer;transition:all .2s;font-family:inherit;
 }
 .save-btn:hover{border-color:var(--region-color,var(--terra));color:var(--region-color,var(--terra))}
@@ -662,14 +663,14 @@ body{
   display:flex;align-items:center;justify-content:center;gap:6px;
   margin-top:8px;padding:8px;width:100%;
   border:1px solid var(--border);border-radius:2px;
-  background:none;font-size:.52rem;letter-spacing:1.2px;text-transform:uppercase;font-weight:600;
+  background:none;font-size:.62rem;letter-spacing:1.2px;text-transform:uppercase;font-weight:600;
   color:var(--text-4);cursor:pointer;transition:all .2s;font-family:inherit;
 }
 .print-btn:hover{border-color:var(--text-3);color:var(--text-2)}
 /* Serving scaler */
 .scaler-wrap{margin-top:14px;padding-top:14px;border-top:1px solid var(--border)}
 .scaler-label{
-  font-size:.5rem;letter-spacing:1.8px;text-transform:uppercase;
+  font-size:.62rem;letter-spacing:1.8px;text-transform:uppercase;
   color:var(--text-4);font-weight:700;margin-bottom:8px;
 }
 .scale-btns{display:flex;gap:6px}
@@ -698,10 +699,10 @@ body{
 /* ── Footer ── */
 .page-footer{
   padding:52px 0 12px;text-align:center;
-  font-size:.52rem;letter-spacing:2px;text-transform:uppercase;color:var(--text-4);font-weight:600;
+  font-size:.62rem;letter-spacing:2px;text-transform:uppercase;color:var(--text-4);font-weight:600;
 }
 .page-footer::before{
-  content:'✦';display:block;color:rgba(90,122,88,.5);font-size:.5rem;margin-bottom:18px;letter-spacing:6px;
+  content:'✦';display:block;color:rgba(90,122,88,.5);font-size:.62rem;margin-bottom:18px;letter-spacing:6px;
 }
 .page-footer a{color:var(--text-4);text-decoration:none;transition:color .2s}
 .page-footer a:hover{color:var(--accent)}
@@ -735,7 +736,7 @@ body{
 .fm-col{padding:0 40px;min-width:0}
 .fm-col:first-child{padding-left:0;border-right:1px solid var(--border)}
 .fm-col:last-child{padding-right:0}
-.fm-title{font-family:'Playfair Display',Georgia,serif;font-style:italic;font-weight:400;font-size:1.5rem;color:var(--text-1);margin-bottom:10px}
+.fm-title{font-family:'Lora',Georgia,serif;font-style:italic;font-weight:400;font-size:1.5rem;color:var(--text-1);margin-bottom:10px}
 .toc-row{display:grid;grid-template-columns:24px minmax(0,1fr);column-gap:12px;align-items:baseline;width:100%;padding:14px 0;background:none;border:none;border-bottom:1px solid var(--border);cursor:pointer;font-family:inherit;text-align:left;color:inherit}
 .toc-no{font-family:'Lora',Georgia,serif;font-size:.8rem;color:var(--gold);min-width:24px;letter-spacing:1px}
 .toc-text{display:flex;flex-direction:column;gap:4px;min-width:0}
@@ -765,7 +766,7 @@ body{
 .selection-bar{display:none;align-items:baseline;gap:14px;flex-wrap:wrap;padding:40px 2px 6px;scroll-margin-top:56px}
 .browse-view.selecting .selection-bar{display:flex}
 .browse-view.selecting .frontmatter,.browse-view.selecting .index-section{display:none}
-.sel-title{font-family:'Playfair Display',Georgia,serif;font-style:italic;font-weight:700;font-size:1.7rem;color:var(--text-1)}
+.sel-title{font-family:'Lora',Georgia,serif;font-style:italic;font-weight:700;font-size:1.7rem;color:var(--text-1)}
 .sel-sub{font-family:'Lora',Georgia,serif;font-style:italic;font-size:.86rem;color:var(--text-3);flex:1}
 
 /* index */
@@ -773,7 +774,7 @@ body{
 .index-section .filter-row{border-bottom:none;max-width:560px;margin:0 auto;padding-top:4px}
 .index-section .result-count{justify-content:center}
 .az{columns:3;column-gap:44px;padding-top:6px}
-.az-letter{font-family:'Playfair Display',Georgia,serif;font-style:italic;font-size:1.25rem;color:var(--accent);padding:16px 0 4px;break-after:avoid}
+.az-letter{font-family:'Lora',Georgia,serif;font-style:italic;font-size:1.25rem;color:var(--accent);padding:16px 0 4px;break-after:avoid}
 .az-row{display:flex;align-items:baseline;gap:8px;width:100%;padding:4px 0;font-family:'Lora',Georgia,serif;font-size:.86rem;break-inside:avoid}
 .az-row button{background:none;border:none;padding:0;font:inherit;cursor:pointer;text-align:left;transition:color .15s}
 .az-name{color:var(--text-2)}
@@ -787,7 +788,7 @@ body{
 .running-chapter{font-family:'Lora',Georgia,serif;font-style:italic;font-size:.82rem;color:var(--text-3)}
 .recipe-intro{max-width:760px;margin:0 auto;padding:4px 32px 0}
 .recipe-intro .detail-desc{font-size:1rem;line-height:1.85;margin-bottom:24px}
-.recipe-intro .detail-desc::first-letter{font-family:'Playfair Display',Georgia,serif;font-weight:700;float:left;font-size:3.3em;line-height:.82;padding:7px 9px 0 0;color:var(--region-color,var(--accent))}
+.recipe-intro .detail-desc::first-letter{font-family:'Lora',Georgia,serif;font-weight:700;float:left;font-size:3.3em;line-height:.82;padding:7px 9px 0 0;color:var(--region-color,var(--accent))}
 .recipe-intro .recipe-info-strip{margin-bottom:30px}
 .ri-val{text-transform:capitalize}
 .detail-body{grid-template-columns:minmax(0,1fr) minmax(0,1.75fr);border-top:1px solid var(--border)}
@@ -854,11 +855,11 @@ body{
 .gl-zone{fill:var(--gl-zone)}
 .gl-grid{stroke:var(--border);stroke-width:1}
 .gl-split{stroke:var(--text-4);stroke-width:1;stroke-dasharray:3 4;opacity:.7}
-.gl-tick{font-family:'Geist',system-ui,sans-serif;font-size:10.5px;fill:var(--text-3)}
-.gl-axis{font-family:'Geist',system-ui,sans-serif;font-size:11px;font-weight:600;fill:var(--text-3)}
-.gl-corner{font-family:'Lora',Georgia,serif;font-style:italic;font-size:12px;fill:var(--text-4)}
-.gl-corner.gl-main{font-weight:600;font-size:13.5px;fill:var(--text-2)}
-.gl-name{font-family:'Lora',Georgia,serif;font-style:italic;font-size:11.5px;fill:var(--text-2);paint-order:stroke;stroke:var(--bg);stroke-width:3px;stroke-linejoin:round;pointer-events:none}
+.gl-tick{font-family:'Geist',system-ui,sans-serif;font-size:11.5px;fill:var(--text-3)}
+.gl-axis{font-family:'Geist',system-ui,sans-serif;font-size:12px;font-weight:600;fill:var(--text-3)}
+.gl-corner{font-family:'Lora',Georgia,serif;font-style:italic;font-size:13px;fill:var(--text-4)}
+.gl-corner.gl-main{font-weight:600;font-size:14.5px;fill:var(--text-2)}
+.gl-name{font-family:'Lora',Georgia,serif;font-style:italic;font-size:12.5px;fill:var(--text-2);paint-order:stroke;stroke:var(--bg);stroke-width:3px;stroke-linejoin:round;pointer-events:none}
 .gl-dot{stroke:var(--bg);stroke-width:1.5;opacity:0;transform-box:fill-box;transform-origin:center;transform:scale(.2);transition:opacity .45s ease,transform .45s cubic-bezier(.2,.8,.3,1.2)}
 .glance.in .gl-dot{opacity:.92;transform:scale(1)}
 .glance.in .gl-dot.dim{opacity:.12}
@@ -869,7 +870,7 @@ body{
 .gl-tip span{display:block}
 .gl-tip .gl-open{margin-top:5px;color:var(--accent);font-weight:600}
 .gl-tip.touch{pointer-events:auto;cursor:pointer}
-.glance-note{margin-top:10px;font-size:.68rem;line-height:1.6;color:var(--text-4);max-width:62em}
+.glance-note{margin-top:10px;font-size:.72rem;line-height:1.6;color:var(--text-4);max-width:62em}
 @media(max-width:760px){.glance{padding-top:44px}}
 @media (prefers-reduced-motion: reduce){.gl-dot{transition:none}}
 </style>
