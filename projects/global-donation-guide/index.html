@@ -3,15 +3,18 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Global Donation Guide — Anna (Linh) Vu</title>
-<meta name="description" content="36 researched organizations across crisis relief, hunger and poverty, children's health, and animal welfare. Searchable, filterable, chosen deliberately.">
-<meta property="og:title" content="A Global Donation Guide — Anna (Linh) Vu">
+<title>Global Donation Guide | Anna (Linh) Vu</title>
+<meta name="description" content="A personal, non-ranked guide to organizations working in crisis relief, hunger and poverty, children's health, and animals and conservation, with direct donation links.">
+<meta property="og:title" content="A Global Donation Guide | Anna (Linh) Vu">
 <meta property="og:description" content="A personal, non-ranked guide to organizations working in crisis relief, hunger and poverty, children's health, and animal welfare.">
 <meta property="og:url" content="https://annalinhvu.github.io/projects/global-donation-guide/">
 <meta property="og:type" content="website">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="A Global Donation Guide — Anna (Linh) Vu">
-<meta name="twitter:description" content="36 organizations across crisis relief, hunger and poverty, children's health, and animal welfare, researched individually with direct donation links.">
+<meta name="twitter:title" content="A Global Donation Guide | Anna (Linh) Vu">
+<meta name="twitter:description" content="A personal, non-ranked guide to organizations working in crisis relief, hunger and poverty, children's health, and animals and conservation.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Libre+Franklin:wght@400;500;600;700&family=Newsreader:opsz,wght@6..72,400;6..72,500&display=swap" rel="stylesheet">
 <script>
 (function(){
   try {
@@ -21,146 +24,140 @@
 })();
 </script>
 <style>
+/* Layout idea: a directory. Every band is the same two columns, label on the left and content on the right:
+   title | intro, search | cause filter, cause | its organizations. Colour is only ever the cause. */
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+[hidden]{display:none !important}
 html{scroll-behavior:smooth}
 :root{
-  --paper:#F1EFEA;--paper-card:#FFFFFF;
-  --ink:#1D1B18;--ink2:#524D45;--ink-m:#6F695F;
-  --border:#E4E1D8;
-  --accent:#3F7A6B;--accent-dk:#2E5F53;--accent-lt:#DDEAE6;
-  --footer-bg:#1B1916;
-  --sans:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;
-  --serif:Georgia,'Times New Roman',serif
+  --paper:#FAFAF7;--field:#FFFFFF;
+  --ink:#17191B;--ink2:#3F4448;--muted:#646A70;
+  --rule:#DFE0DA;
+  --crisis:#B93E26;--hunger:#8F6410;--children:#2A64A0;--animal:#23704C;
+  --sans:'Libre Franklin',-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif;
+  --serif:'Newsreader',Georgia,'Times New Roman',serif;
+  --nav-h:48px;--rail:260px;--gutter:56px
 }
 :root[data-theme="dark"]{
-  --paper:#171613;--paper-card:#1D1B18;
-  --ink:#EDEAE2;--ink2:#B4AEA0;--ink-m:#8A8478;
-  --border:#332F29;
-  --accent:#5FA592;--accent-dk:#4A8776;--accent-lt:rgba(95,165,146,.15);
-  --footer-bg:#0C0B09;
+  --paper:#131517;--field:#1B1E21;
+  --ink:#ECEDE8;--ink2:#C5C8C6;--muted:#969CA1;
+  --rule:#2B2F33;
+  --crisis:#F08B74;--hunger:#DDAA4A;--children:#86B7E6;--animal:#74C69B
 }
-body{font-family:var(--sans);background:var(--paper);color:var(--ink);line-height:1.6;min-height:100vh;display:flex;flex-direction:column}
+body{font-family:var(--sans);background:var(--paper);color:var(--ink);line-height:1.6;min-height:100vh;display:flex;flex-direction:column;-webkit-font-smoothing:antialiased}
 a{color:inherit;text-decoration:none}
-button{cursor:pointer;font-family:inherit;border:none;background:none}
-:focus-visible{outline:3px solid var(--accent);outline-offset:3px;border-radius:3px}
+button{cursor:pointer;font-family:inherit;border:none;background:none;color:inherit}
+:focus-visible{outline:2px solid var(--ink);outline-offset:3px;border-radius:3px}
 .sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
-
-/* SKIP LINK */
-.skip-link{position:absolute;left:12px;top:-52px;background:var(--accent);color:#fff;padding:12px 18px;border-radius:6px;font-size:.82rem;font-weight:600;z-index:300;transition:top .15s}
+.skip-link{position:absolute;left:12px;top:-52px;background:var(--ink);color:var(--paper);padding:12px 18px;border-radius:6px;font-size:.82rem;font-weight:600;z-index:300;transition:top .15s}
 .skip-link:focus{top:12px}
 
+.wrap{width:100%;max-width:1120px;margin:0 auto;padding:0 28px}
+.split{display:grid;grid-template-columns:var(--rail) minmax(0,1fr);column-gap:var(--gutter)}
+
 /* NAV */
-.nav{position:sticky;top:0;z-index:100;background:color-mix(in srgb, var(--paper) 92%, transparent);backdrop-filter:blur(8px);border-bottom:1px solid var(--border)}
-.nav-in{max-width:1040px;margin:0 auto;padding:8px 16px;min-height:56px;display:grid;grid-template-columns:1fr auto 1fr;align-items:center;column-gap:10px}
-.back-link{justify-self:start;font-size:.7rem;font-weight:600;letter-spacing:1.2px;text-transform:uppercase;color:var(--ink-m);text-decoration:none;white-space:nowrap;transition:color .15s;padding:14px 4px}
-.back-link:hover{color:var(--accent)}
-.nav-logo{justify-self:center;display:flex;align-items:center;gap:8px;font-weight:600;font-size:1rem;color:var(--ink);text-decoration:none;white-space:nowrap;font-family:var(--serif)}
-.globe-mark{width:18px;height:18px;flex-shrink:0}
-.globe-mark circle,.globe-mark path{fill:none;stroke:var(--accent);stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}
-.logo-short{display:none}
-.theme-toggle{justify-self:end;width:44px;height:44px;display:flex;align-items:center;justify-content:center;background:none;border:none;font-size:1.05rem;color:var(--ink-m);cursor:pointer;border-radius:8px;transition:color .2s,background .15s}
-.theme-toggle:hover{color:var(--ink);background:var(--paper-card)}
+.nav{position:sticky;top:0;z-index:100;background:color-mix(in srgb, var(--paper) 94%, transparent);backdrop-filter:blur(8px);border-bottom:1px solid var(--rule)}
+.nav-in{height:var(--nav-h);display:flex;align-items:center;justify-content:space-between}
+.back-link{font-size:.86rem;font-weight:500;color:var(--muted);padding:12px 4px 12px 0;transition:color .15s}
+.back-link:hover{color:var(--ink)}
+.theme-toggle{width:40px;height:40px;margin-right:-10px;display:flex;align-items:center;justify-content:center;font-size:1rem;color:var(--muted);border-radius:8px;transition:color .15s}
+.theme-toggle:hover{color:var(--ink)}
 
-/* PANEL LAYOUT */
-.panel-body{max-width:1040px;margin:0 auto;padding:52px 24px 80px;flex:1}
-.panel-hdr{margin-bottom:20px;max-width:960px}
-.eyebrow{font-size:.72rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);margin-bottom:10px}
-.s-title{font-family:var(--serif);font-weight:500;font-size:clamp(2rem,5vw,2.75rem);line-height:1.12;letter-spacing:-.01em}
-.hero-intro{margin-top:12px;font-size:.96rem;color:var(--ink2);line-height:1.75}
-.scope-note{margin-top:8px;font-size:.8rem;color:var(--ink-m);line-height:1.6}
-.stat-line{margin:0 0 20px;font-size:.78rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-m)}
-.stat-line strong{color:var(--accent)}
+main{flex:1}
 
-/* METHODOLOGY */
-.methodology{margin-top:6px;margin-bottom:12px;max-width:740px}
-.methodology summary{cursor:pointer;list-style:none;padding:12px 0;font-family:var(--serif);font-style:italic;font-weight:600;font-size:.92rem;color:var(--ink);display:flex;align-items:center;gap:10px;min-height:44px}
+/* INTRO */
+.panel-hdr{padding:60px 0 44px;align-items:start}
+.s-title{font-family:var(--serif);font-weight:500;font-size:clamp(2.3rem,4.4vw,2.95rem);line-height:1.04;letter-spacing:-.018em}
+.hero-text{max-width:41rem;padding-top:4px}
+.hero-intro{font-family:var(--serif);font-size:1.3rem;line-height:1.48;color:var(--ink)}
+.scope-note{margin-top:14px;font-size:.92rem;color:var(--muted);line-height:1.6}
+.methodology{margin-top:14px}
+.methodology summary{cursor:pointer;list-style:none;display:inline-flex;align-items:center;gap:8px;min-height:36px;font-size:.92rem;font-weight:600;color:var(--ink)}
 .methodology summary::-webkit-details-marker{display:none}
-.methodology summary::before{content:'+';font-family:var(--sans);font-style:normal;font-weight:700;color:var(--accent);width:14px;flex-shrink:0;text-align:center}
+.methodology summary::before{content:'+';font-weight:500;width:10px;text-align:center}
 .methodology[open] summary::before{content:'\2013'}
-.methodology-content{padding:0 0 20px 24px}
-.methodology-content p{font-size:.85rem;color:var(--ink2);line-height:1.75}
+.methodology summary:hover{text-decoration:underline;text-underline-offset:4px}
+.methodology-content{padding:4px 0 0 18px}
+.methodology-content p{font-size:.92rem;color:var(--ink2);line-height:1.65}
 
-/* FILTER */
-.filter-wrap{position:sticky;top:56px;z-index:90;background:color-mix(in srgb, var(--paper) 92%, transparent);backdrop-filter:blur(8px);border-top:1px solid var(--border);border-bottom:1px solid var(--border);margin:0 -24px 20px;padding:16px 24px}
-.filter-in{max-width:1040px;margin:0 auto;display:flex;flex-wrap:wrap;align-items:center;gap:18px;justify-content:space-between}
-.filter-tabs{display:flex;gap:6px;flex-wrap:wrap}
-.filter-tab{font-size:.74rem;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-m);cursor:pointer;padding:9px 16px;min-height:38px;border-radius:999px;background:var(--border);transition:all .15s}
+/* SEARCH + CAUSE FILTER */
+.filter-wrap{position:sticky;top:var(--nav-h);z-index:90;background:color-mix(in srgb, var(--paper) 94%, transparent);backdrop-filter:blur(8px);border-top:1px solid var(--rule);border-bottom:1px solid var(--rule)}
+.filter-in{align-items:center;padding-top:10px;padding-bottom:10px}
+.search-wrap{display:flex;align-items:center;gap:8px;height:40px;padding:0 6px 0 11px;background:var(--field);border:1px solid var(--rule);border-radius:7px}
+.search-wrap:focus-within{border-color:var(--ink)}
+.search-icon{color:var(--muted);flex-shrink:0}
+.search-field{border:none;background:transparent;font-family:var(--sans);font-size:.92rem;outline:none;color:var(--ink);flex:1;min-width:0;height:100%}
+.search-field::placeholder{color:var(--muted)}
+.search-field::-webkit-search-cancel-button{display:none}
+.search-clear{width:28px;height:28px;flex-shrink:0;display:flex;align-items:center;justify-content:center;color:var(--muted);font-size:1.15rem;border-radius:50%}
+.search-clear:hover{color:var(--ink)}
+.filter-right{display:flex;align-items:center;justify-content:space-between;gap:16px;min-width:0}
+.filter-tabs{display:flex;gap:4px 18px;flex-wrap:wrap}
+.filter-tab{--cause:var(--ink);font-size:.92rem;font-weight:500;color:var(--muted);padding:9px 0 7px;border-bottom:2px solid transparent;white-space:nowrap;transition:color .15s}
 .filter-tab:hover{color:var(--ink)}
-.filter-tab.active{color:var(--accent-dk);background:var(--accent-lt)}
-.search-wrap{display:flex;align-items:center;gap:8px;border-bottom:1px solid var(--border);padding:6px 4px;flex:1;min-width:180px;max-width:260px}
-.search-wrap:focus-within{border-bottom-color:var(--accent)}
-.search-icon{color:var(--ink-m);flex-shrink:0}
-.search-field{border:none;background:transparent;font-family:var(--sans);font-size:.85rem;outline:none;color:var(--ink);flex:1;min-width:0;padding:4px 0}
-.search-field::placeholder{color:var(--ink-m)}
-.search-clear{width:26px;height:26px;flex-shrink:0;display:flex;align-items:center;justify-content:center;color:var(--ink-m);font-size:1.1rem;border-radius:50%;transition:color .15s,background .15s}
-.search-clear:hover{color:var(--ink);background:var(--border)}
-.results-meta{width:100%;font-size:.78rem;color:var(--ink-m);margin-top:2px}
-.results-meta strong{color:var(--ink2);font-weight:600}
+.filter-tab.active{color:var(--ink);font-weight:600;border-bottom-color:var(--cause)}
+.results-meta{font-size:.86rem;color:var(--muted);white-space:nowrap}
 
-/* EMPTY STATE */
-.empty-state{padding:56px 20px;text-align:center}
-.empty-state p{font-family:var(--serif);font-style:italic;font-size:.98rem;color:var(--ink2);margin-bottom:14px}
-.clear-search-btn{font-size:.78rem;font-weight:600;color:var(--accent);text-decoration:underline;padding:10px 12px;min-height:44px}
+.empty-state{padding:64px 0;margin-left:calc(var(--rail) + var(--gutter))}
+.empty-state p{font-size:1rem;color:var(--ink2);margin-bottom:10px}
+.clear-search-btn{font-size:.92rem;font-weight:600;text-decoration:underline;text-underline-offset:4px;min-height:44px}
 
-/* SECTIONS */
-.cat-section{margin-bottom:56px;scroll-margin-top:140px}
-.cat-section + .cat-section{border-top:1px solid var(--border);padding-top:64px}
-.cat-idx{font-family:var(--sans);font-size:.68rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);margin-bottom:8px}
-.cat-title{font-family:var(--serif);font-weight:500;font-size:1.5rem;color:var(--ink)}
-.cat-dek{font-family:var(--serif);font-style:italic;font-size:.9rem;color:var(--ink-m);margin-top:6px;margin-bottom:26px;max-width:740px}
+/* CAUSES */
+[data-cat="humanitarian"]{--cause:var(--crisis)}
+[data-cat="hunger"]{--cause:var(--hunger)}
+[data-cat="children"]{--cause:var(--children)}
+[data-cat="animal"]{--cause:var(--animal)}
+.cat-section{margin-top:44px;border-top:3px solid var(--cause);scroll-margin-top:calc(var(--nav-h) + 76px);align-items:start}
+.filter-wrap + .empty-state + .cat-section{margin-top:36px}
+.cat-head{position:sticky;top:calc(var(--nav-h) + 62px);padding:18px 0 24px}
+.cat-title{font-weight:700;font-size:1.62rem;line-height:1.15;letter-spacing:-.012em;color:var(--cause)}
+.cat-dek{margin-top:8px;font-size:.92rem;color:var(--muted);line-height:1.5}
 
-/* ENTRY LIST */
-.entry-list{display:flex;gap:52px}
-.entry-col{flex:1;min-width:0}
-.entry{margin:0 0 40px}
-.entry-head{display:flex;flex-direction:column;gap:5px;margin-bottom:4px}
-.entry-name{font-family:var(--serif);font-weight:500;font-size:1.3rem;color:var(--ink);line-height:1.25}
-.entry-meta{font-family:var(--serif);font-style:italic;font-size:.88rem;color:var(--accent-dk);font-weight:400;letter-spacing:0;text-transform:none}
-.entry-desc{font-size:.94rem;color:var(--ink2);line-height:1.7;margin-top:8px}
-.entry-links{margin-top:14px;font-size:.82rem;display:flex;align-items:center;gap:16px;flex-wrap:wrap}
-.donate-link{color:var(--accent-dk);font-weight:700;background:transparent;border:1px solid var(--accent);border-radius:7px;padding:7px 13px;display:inline-flex;align-items:center;transition:background .15s,color .15s}
-.donate-link:hover{color:#fff;background:var(--accent)}
-.donate-link:hover .ext-icon{opacity:.9}
-.entry-links a.secondary{color:var(--ink-m);font-weight:500;padding:8px 2px;display:inline-flex;align-items:center}
-.entry-links a.secondary:hover{color:var(--ink2)}
-.entry-links .dot{display:none}
-.ext-icon{margin-left:4px;opacity:.65}
+/* ORGANIZATIONS */
+.entry{display:grid;grid-template-columns:minmax(0,15.5rem) minmax(0,1fr) auto;column-gap:28px;align-items:start;padding:19px 0 20px;border-bottom:1px solid var(--rule)}
+.entry-name{font-weight:600;font-size:1.04rem;line-height:1.3;color:var(--ink)}
+.entry-meta{margin-top:3px;font-size:.86rem;line-height:1.45;color:var(--muted)}
+.entry-desc{font-size:.94rem;color:var(--ink2);line-height:1.6}
+.entry-links{display:flex;flex-direction:column;align-items:flex-end;gap:5px;font-size:.88rem;white-space:nowrap;min-width:5.2rem}
+.entry-links a{display:inline-flex;align-items:center}
+.donate-link{font-weight:600;color:var(--ink);text-decoration:underline;text-decoration-color:var(--cause);text-decoration-thickness:2px;text-underline-offset:5px}
+.donate-link:hover{color:var(--cause)}
+.entry-links a.secondary{color:var(--muted)}
+.entry-links a.secondary:hover{color:var(--ink);text-decoration:underline;text-underline-offset:4px}
+.ext-icon{margin-left:4px;opacity:.6}
 
 /* FOOTER */
-footer{background:var(--footer-bg);color:rgba(255,255,255,.68);padding:40px 24px;text-align:left;margin-top:auto;border-top:1px solid rgba(255,255,255,.08)}
-footer a{color:rgba(255,255,255,.85);transition:color .15s}
-footer a:hover{color:#fff}
-.footer-grid{max-width:1040px;margin:0 auto;display:grid;grid-template-columns:1.3fr 1fr;gap:32px}
-footer p.footer-links{font-size:.76rem;line-height:2;letter-spacing:.03em;text-transform:uppercase;font-weight:600}
-footer p.credit{text-transform:none;font-weight:400;letter-spacing:0;margin-top:10px;color:rgba(255,255,255,.6);font-size:.78rem;line-height:1.75}
-footer p.credit:first-child{margin-top:0}
-@media(max-width:640px){
-  .footer-grid{grid-template-columns:1fr;gap:22px}
-}
+footer{margin-top:72px;border-top:1px solid var(--rule);padding:30px 0 52px;font-size:.86rem;color:var(--muted);line-height:1.65}
+footer p + p{margin-top:8px}
+footer a{color:var(--ink2);text-decoration:underline;text-underline-offset:3px;text-decoration-color:var(--rule)}
+footer a:hover{color:var(--ink);text-decoration-color:currentColor}
+.footer-links{display:flex;flex-wrap:wrap;gap:6px 22px}
 
-@media(max-width:900px){
-  .entry-list{flex-direction:column;gap:0}
+@media(max-width:1000px){
+  .split{grid-template-columns:minmax(0,1fr)}
+  .panel-hdr{padding:44px 0 32px;row-gap:16px}
+  .filter-in{row-gap:8px}
+  .cat-head{position:static;padding:16px 0 6px}
+  .empty-state{margin-left:0}
+  footer .split{row-gap:18px}
 }
 @media(max-width:640px){
-  .panel-body{padding:40px 16px 64px}
-  .logo-full{display:none}
-  .logo-short{display:inline}
-  .filter-wrap{position:static;margin:0 -16px 22px;padding:10px 16px}
-  .filter-in{flex-direction:column;align-items:stretch;gap:12px}
-  .filter-tabs{position:relative;flex-wrap:nowrap;overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none;padding-bottom:2px}
+  .wrap{padding:0 18px}
+  .panel-hdr{padding:32px 0 26px}
+  .hero-intro{font-size:1.16rem}
+  .filter-wrap{position:static}
+  .filter-right{flex-direction:column;align-items:stretch;gap:2px}
+  .filter-tabs{flex-wrap:nowrap;gap:0 20px;overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none;margin-right:-18px;padding-right:18px}
   .filter-tabs::-webkit-scrollbar{display:none}
-  .filter-tabs::after{content:'';position:absolute;top:0;right:0;bottom:2px;width:28px;background:linear-gradient(to right, transparent, var(--paper));pointer-events:none}
-  .search-wrap{max-width:none;width:100%}
-  .entry{margin-bottom:32px}
-  .cat-section + .cat-section{padding-top:44px}
+  .cat-section{margin-top:36px}
+  .entry{grid-template-columns:minmax(0,1fr);row-gap:8px;padding:18px 0 12px}
+  .entry-links{flex-direction:row;align-items:center;gap:22px;min-width:0}
+  .entry-links a{min-height:40px}
+  footer{margin-top:52px}
 }
-
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
-  *, *::before, *::after {
-    transition-duration: 0.01ms !important;
-    animation-duration: 0.01ms !important;
-  }
+  *, *::before, *::after { transition-duration: 0.01ms !important; animation-duration: 0.01ms !important; }
 }
 </style>
 </head>
@@ -170,52 +167,51 @@ footer p.credit:first-child{margin-top:0}
 
 <!-- NAV -->
 <nav class="nav">
-  <div class="nav-in">
+  <div class="wrap nav-in">
     <a href="../../index.html" class="back-link">← Portfolio</a>
-    <a href="index.html" class="nav-logo">
-      <svg class="globe-mark" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M2 12h20"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
-      <span class="logo-full">Global Donation Guide</span>
-      <span class="logo-short">Donation Guide</span>
-    </a>
     <button class="theme-toggle" id="theme-toggle" onclick="toggleTheme()">☀</button>
   </div>
 </nav>
 
-<main id="main-content" class="panel-body">
+<main id="main-content">
 
-  <div class="panel-hdr">
-    <div class="eyebrow">Personal research · Updated July 2026</div>
-    <h1 class="s-title">A global donation guide</h1>
-    <p class="hero-intro">A personal, non-ranked guide to organizations working in crisis&nbsp;relief, hunger&nbsp;and&nbsp;poverty, children's&nbsp;health, and animals&nbsp;and&nbsp;conservation.</p>
-    <p class="scope-note">Built with US-based donors in mind; several organizations link to their US affiliate. Tax treatment and donation availability may differ if you're giving from outside the US.</p>
-  </div>
-
-  <details class="methodology">
-    <summary>How this guide is reviewed</summary>
-    <div class="methodology-content">
-      <p>Selected based on active programs, transparent public information, and coverage by independent charity evaluators, then checked against official sources. Last reviewed July 2026. Inclusion is not a financial, legal, or effectiveness rating.</p>
+  <div class="wrap">
+    <div class="panel-hdr split">
+      <h1 class="s-title">A global donation guide</h1>
+      <div class="hero-text">
+        <p class="hero-intro">A personal, non-ranked guide to organizations working in crisis relief, hunger and poverty, children's health, and animals and conservation.</p>
+        <p class="scope-note">Built with US-based donors in mind; several organizations link to their US affiliate. Tax treatment and donation availability may differ if you're giving from outside the US.</p>
+        <details class="methodology">
+          <summary>How this guide is reviewed</summary>
+          <div class="methodology-content">
+            <p>Selected based on active programs, transparent public information, and coverage by independent charity evaluators, then checked against official sources. Last reviewed July 2026. Inclusion is not a financial, legal, or effectiveness rating.</p>
+          </div>
+        </details>
+      </div>
     </div>
-  </details>
-
-  <div class="stat-line"><strong>36</strong> organizations &nbsp;·&nbsp; <strong>4</strong> causes</div>
+  </div>
 
   <div class="filter-wrap">
-    <div class="filter-in">
-      <div class="filter-tabs" role="group" aria-label="Filter by cause">
-        <button class="filter-tab active" data-cat="all" aria-pressed="true">All causes</button>
-        <button class="filter-tab" data-cat="humanitarian" aria-pressed="false">Crisis Relief</button>
-        <button class="filter-tab" data-cat="hunger" aria-pressed="false">Hunger &amp; Poverty</button>
-        <button class="filter-tab" data-cat="children" aria-pressed="false">Children &amp; Health</button>
-        <button class="filter-tab" data-cat="animal" aria-pressed="false">Animals &amp; Conservation</button>
-      </div>
+    <div class="wrap filter-in split">
       <div class="search-wrap">
         <svg class="search-icon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
-        <input class="search-field" id="search-input" type="search" placeholder="Search organizations…" autocomplete="off" aria-label="Search organizations">
+        <input class="search-field" id="search-input" type="search" placeholder="Search organizations" autocomplete="off" aria-label="Search organizations">
         <button class="search-clear" id="search-clear" type="button" aria-label="Clear search" hidden>×</button>
       </div>
-      <div class="results-meta"><span id="results-count" aria-live="polite" aria-atomic="true">Showing <strong>36</strong> of <strong>36</strong> organizations</span></div>
+      <div class="filter-right">
+        <div class="filter-tabs" role="group" aria-label="Filter by cause">
+          <button class="filter-tab active" data-cat="all" aria-pressed="true">All causes</button>
+          <button class="filter-tab" data-cat="humanitarian" aria-pressed="false">Crisis relief</button>
+          <button class="filter-tab" data-cat="hunger" aria-pressed="false">Hunger &amp; poverty</button>
+          <button class="filter-tab" data-cat="children" aria-pressed="false">Children &amp; health</button>
+          <button class="filter-tab" data-cat="animal" aria-pressed="false">Animals &amp; conservation</button>
+        </div>
+        <div class="results-meta"><span id="results-count" aria-live="polite" aria-atomic="true"></span></div>
+      </div>
     </div>
   </div>
+
+  <div class="wrap">
 
   <div class="empty-state" id="empty-state" hidden>
     <p id="empty-state-text">No organizations match this filter.</p>
@@ -223,306 +219,279 @@ footer p.credit:first-child{margin-top:0}
   </div>
 
   <!-- ===== HUMANITARIAN & CRISIS RELIEF ===== -->
-  <section class="cat-section" id="sect-humanitarian" data-cat="humanitarian">
-    <div class="cat-idx">Cause 01</div>
-    <h2 class="cat-title">Crisis Relief</h2>
-    <p class="cat-dek">Emergency aid, medical response, and displacement.</p>
+  <section class="cat-section split" id="sect-humanitarian" data-cat="humanitarian">
+    <div class="cat-head"><h2 class="cat-title">Crisis Relief</h2><p class="cat-dek">Emergency aid, medical response, and displacement.</p></div>
     <div class="entry-list">
 
-      <div class="entry-col">
 
       <article class="entry">
         <header class="entry-head"><h3 class="entry-name">World Central Kitchen</h3><p class="entry-meta">A worldwide emergency-meals response</p></header>
         <p class="entry-desc">Gets fresh meals to crisis zones faster than almost anyone else, from Gaza to US hurricane response. Founded by chef José Andrés.</p>
-        <div class="entry-links"><a class="donate-link" href="https://wck.org/donate" target="_blank" rel="noopener">Donate</a><span class="dot" aria-hidden="true">·</span><a class="secondary" href="https://wck.org" target="_blank" rel="noopener">Website</a></div>
+        <div class="entry-links"><a class="donate-link" href="https://wck.org/donate" target="_blank" rel="noopener">Donate</a><a class="secondary" href="https://wck.org" target="_blank" rel="noopener">Website</a></div>
       </article>
 
       <article class="entry">
         <header class="entry-head"><h3 class="entry-name">Doctors Without Borders</h3><p class="entry-meta">Emergency medical care, worldwide</p></header>
         <p class="entry-desc">Independent medical teams working in active war zones, including Gaza, Sudan, and Ukraine, often after other NGOs have pulled out.</p>
-        <div class="entry-links"><a class="donate-link" href="https://www.doctorswithoutborders.org/donate/" target="_blank" rel="noopener">Donate</a><span class="dot" aria-hidden="true">·</span><a class="secondary" href="https://www.doctorswithoutborders.org" target="_blank" rel="noopener">Website</a></div>
+        <div class="entry-links"><a class="donate-link" href="https://www.doctorswithoutborders.org/donate/" target="_blank" rel="noopener">Donate</a><a class="secondary" href="https://www.doctorswithoutborders.org" target="_blank" rel="noopener">Website</a></div>
       </article>
 
       <article class="entry">
         <header class="entry-head"><h3 class="entry-name">UNRWA USA</h3><p class="entry-meta">Refugee relief across Gaza &amp; the West Bank</p></header>
         <p class="entry-desc">The most direct channel to UN relief operations for Palestine refugees: food, shelter, healthcare, and education across Gaza and the West Bank.</p>
-        <div class="entry-links"><a class="donate-link" href="https://unrwausa.org/donate/" target="_blank" rel="noopener">Donate</a><span class="dot" aria-hidden="true">·</span><a class="secondary" href="https://unrwausa.org" target="_blank" rel="noopener">Website</a></div>
+        <div class="entry-links"><a class="donate-link" href="https://unrwausa.org/donate/" target="_blank" rel="noopener">Donate</a><a class="secondary" href="https://unrwausa.org" target="_blank" rel="noopener">Website</a></div>
       </article>
 
       <article class="entry">
         <header class="entry-head"><h3 class="entry-name">Anera</h3><p class="entry-meta">Humanitarian aid across Gaza, the West Bank, Lebanon &amp; Jordan</p></header>
         <p class="entry-desc">American Near East Refugee Aid: smaller and more regional than most, delivering medical supplies, food, and education support directly.</p>
-        <div class="entry-links"><a class="donate-link" href="https://www.anera.org/donate/" target="_blank" rel="noopener">Donate</a><span class="dot" aria-hidden="true">·</span><a class="secondary" href="https://www.anera.org" target="_blank" rel="noopener">Website</a></div>
+        <div class="entry-links"><a class="donate-link" href="https://www.anera.org/donate/" target="_blank" rel="noopener">Donate</a><a class="secondary" href="https://www.anera.org" target="_blank" rel="noopener">Website</a></div>
       </article>
 
-      </div>
 
-      <div class="entry-col">
 
       <article class="entry">
         <header class="entry-head"><h3 class="entry-name">International Rescue Committee</h3><p class="entry-meta">Refugee resettlement, worldwide</p></header>
         <p class="entry-desc">One of the largest relief networks, covering refugee crises from first emergency aid through long-term resettlement. Founded in 1933 at Albert Einstein's request.</p>
-        <div class="entry-links"><a class="donate-link" href="https://help.rescue.org/donate" target="_blank" rel="noopener">Donate</a><span class="dot" aria-hidden="true">·</span><a class="secondary" href="https://www.rescue.org" target="_blank" rel="noopener">Website</a></div>
+        <div class="entry-links"><a class="donate-link" href="https://help.rescue.org/donate" target="_blank" rel="noopener">Donate</a><a class="secondary" href="https://www.rescue.org" target="_blank" rel="noopener">Website</a></div>
       </article>
 
       <article class="entry">
         <header class="entry-head"><h3 class="entry-name">Mercy Corps</h3><p class="entry-meta">Disaster recovery, worldwide</p></header>
         <p class="entry-desc">Pairs emergency relief with longer-term recovery: cash assistance and rebuilding livelihoods after the news cycle moves on.</p>
-        <div class="entry-links"><a class="donate-link" href="https://www.mercycorps.org/donate" target="_blank" rel="noopener">Donate</a><span class="dot" aria-hidden="true">·</span><a class="secondary" href="https://www.mercycorps.org" target="_blank" rel="noopener">Website</a></div>
+        <div class="entry-links"><a class="donate-link" href="https://www.mercycorps.org/donate" target="_blank" rel="noopener">Donate</a><a class="secondary" href="https://www.mercycorps.org" target="_blank" rel="noopener">Website</a></div>
       </article>
 
       <article class="entry">
         <header class="entry-head"><h3 class="entry-name">CARE</h3><p class="entry-meta">Focused on women &amp; girls in crisis, worldwide</p></header>
         <p class="entry-desc">Global humanitarian response built around women and girls, who are disproportionately affected in almost every crisis it responds to.</p>
-        <div class="entry-links"><a class="donate-link" href="https://www.care.org/donate/" target="_blank" rel="noopener">Donate</a><span class="dot" aria-hidden="true">·</span><a class="secondary" href="https://www.care.org" target="_blank" rel="noopener">Website</a></div>
+        <div class="entry-links"><a class="donate-link" href="https://www.care.org/donate/" target="_blank" rel="noopener">Donate</a><a class="secondary" href="https://www.care.org" target="_blank" rel="noopener">Website</a></div>
       </article>
 
       <article class="entry">
         <header class="entry-head"><h3 class="entry-name">Direct Relief</h3><p class="entry-meta">Medical supply delivery, worldwide</p></header>
         <p class="entry-desc">Ships medicine directly to health workers in disaster zones, focusing on delivering medical supplies rather than cash aid.</p>
-        <div class="entry-links"><a class="donate-link" href="https://www.directrelief.org/donation-options/" target="_blank" rel="noopener">Donate</a><span class="dot" aria-hidden="true">·</span><a class="secondary" href="https://www.directrelief.org" target="_blank" rel="noopener">Website</a></div>
+        <div class="entry-links"><a class="donate-link" href="https://www.directrelief.org/donation-options/" target="_blank" rel="noopener">Donate</a><a class="secondary" href="https://www.directrelief.org" target="_blank" rel="noopener">Website</a></div>
       </article>
 
-      </div>
 
     </div>
   </section>
 
   <!-- ===== GLOBAL HUNGER & POVERTY ===== -->
-  <section class="cat-section" id="sect-hunger" data-cat="hunger">
-    <div class="cat-idx">Cause 02</div>
-    <h2 class="cat-title">Hunger &amp; Poverty</h2>
-    <p class="cat-dek">Food security, direct aid, and long-term development.</p>
+  <section class="cat-section split" id="sect-hunger" data-cat="hunger">
+    <div class="cat-head"><h2 class="cat-title">Hunger &amp; Poverty</h2><p class="cat-dek">Food security, direct aid, and long-term development.</p></div>
     <div class="entry-list">
 
-      <div class="entry-col">
 
       <article class="entry">
         <header class="entry-head"><h3 class="entry-name">Action Against Hunger</h3><p class="entry-meta">Malnutrition treatment, worldwide</p></header>
         <p class="entry-desc">Treats and prevents malnutrition in crisis zones, with a strong focus on children under five, as the medical emergency it actually is.</p>
-        <div class="entry-links"><a class="donate-link" href="https://www.actionagainsthunger.org/donate/" target="_blank" rel="noopener">Donate</a><span class="dot" aria-hidden="true">·</span><a class="secondary" href="https://www.actionagainsthunger.org" target="_blank" rel="noopener">Website</a></div>
+        <div class="entry-links"><a class="donate-link" href="https://www.actionagainsthunger.org/donate/" target="_blank" rel="noopener">Donate</a><a class="secondary" href="https://www.actionagainsthunger.org" target="_blank" rel="noopener">Website</a></div>
       </article>
 
       <article class="entry">
         <header class="entry-head"><h3 class="entry-name">GiveDirectly</h3><p class="entry-meta">Direct cash transfers across Sub-Saharan Africa</p></header>
         <p class="entry-desc">Sends unconditional cash transfers directly to households in extreme poverty, without intermediary programs.</p>
-        <div class="entry-links"><a class="donate-link" href="https://www.givedirectly.org/donate/" target="_blank" rel="noopener">Donate</a><span class="dot" aria-hidden="true">·</span><a class="secondary" href="https://www.givedirectly.org" target="_blank" rel="noopener">Website</a></div>
+        <div class="entry-links"><a class="donate-link" href="https://www.givedirectly.org/donate/" target="_blank" rel="noopener">Donate</a><a class="secondary" href="https://www.givedirectly.org" target="_blank" rel="noopener">Website</a></div>
       </article>
 
       <article class="entry">
         <header class="entry-head"><h3 class="entry-name">Oxfam</h3><p class="entry-meta">Poverty relief and policy advocacy, worldwide</p></header>
         <p class="entry-desc">Pairs hunger and disaster response with policy advocacy aimed at the systems that keep poverty in place.</p>
-        <div class="entry-links"><a class="donate-link" href="https://www.oxfamamerica.org/take-action/donate/" target="_blank" rel="noopener">Donate</a><span class="dot" aria-hidden="true">·</span><a class="secondary" href="https://www.oxfamamerica.org" target="_blank" rel="noopener">Website</a></div>
+        <div class="entry-links"><a class="donate-link" href="https://www.oxfamamerica.org/take-action/donate/" target="_blank" rel="noopener">Donate</a><a class="secondary" href="https://www.oxfamamerica.org" target="_blank" rel="noopener">Website</a></div>
       </article>
 
       <article class="entry">
         <header class="entry-head"><h3 class="entry-name">The Hunger Project</h3><p class="entry-meta">Community-led development across Africa, South Asia &amp; Latin America</p></header>
         <p class="entry-desc">Grassroots, community-led programs aimed at ending hunger for good, deliberately slower than repeat emergency aid.</p>
-        <div class="entry-links"><a class="donate-link" href="https://www.thp.org/give/" target="_blank" rel="noopener">Donate</a><span class="dot" aria-hidden="true">·</span><a class="secondary" href="https://www.thp.org" target="_blank" rel="noopener">Website</a></div>
+        <div class="entry-links"><a class="donate-link" href="https://www.thp.org/give/" target="_blank" rel="noopener">Donate</a><a class="secondary" href="https://www.thp.org" target="_blank" rel="noopener">Website</a></div>
       </article>
 
       <article class="entry">
         <header class="entry-head"><h3 class="entry-name">World Food Program USA</h3><p class="entry-meta">Food assistance, worldwide</p></header>
         <p class="entry-desc">Supports the UN's food-assistance operation, the largest on Earth, reaching people in famine and near-famine conditions.</p>
-        <div class="entry-links"><a class="donate-link" href="https://www.wfpusa.org/donate/" target="_blank" rel="noopener">Donate</a><span class="dot" aria-hidden="true">·</span><a class="secondary" href="https://www.wfpusa.org" target="_blank" rel="noopener">Website</a></div>
+        <div class="entry-links"><a class="donate-link" href="https://www.wfpusa.org/donate/" target="_blank" rel="noopener">Donate</a><a class="secondary" href="https://www.wfpusa.org" target="_blank" rel="noopener">Website</a></div>
       </article>
 
-      </div>
 
-      <div class="entry-col">
 
       <article class="entry">
         <header class="entry-head"><h3 class="entry-name">Feeding America</h3><p class="entry-meta">A domestic food-bank network across the US</p></header>
         <p class="entry-desc">The largest domestic hunger-relief network in the US: local food banks that move food where it's actually needed.</p>
-        <div class="entry-links"><a class="donate-link" href="https://www.feedingamerica.org/ways-to-give" target="_blank" rel="noopener">Donate</a><span class="dot" aria-hidden="true">·</span><a class="secondary" href="https://www.feedingamerica.org" target="_blank" rel="noopener">Website</a></div>
+        <div class="entry-links"><a class="donate-link" href="https://www.feedingamerica.org/ways-to-give" target="_blank" rel="noopener">Donate</a><a class="secondary" href="https://www.feedingamerica.org" target="_blank" rel="noopener">Website</a></div>
       </article>
 
       <article class="entry">
         <header class="entry-head"><h3 class="entry-name">Heifer International</h3><p class="entry-meta">Livestock and livelihoods programs, worldwide</p></header>
         <p class="entry-desc">Gives families livestock, training, and market access to generate their own income, aiming to end the need for aid.</p>
-        <div class="entry-links"><a class="donate-link" href="https://www.heifer.org/give/" target="_blank" rel="noopener">Donate</a><span class="dot" aria-hidden="true">·</span><a class="secondary" href="https://www.heifer.org" target="_blank" rel="noopener">Website</a></div>
+        <div class="entry-links"><a class="donate-link" href="https://www.heifer.org/give/" target="_blank" rel="noopener">Donate</a><a class="secondary" href="https://www.heifer.org" target="_blank" rel="noopener">Website</a></div>
       </article>
 
       <article class="entry">
         <header class="entry-head"><h3 class="entry-name">Concern Worldwide US</h3><p class="entry-meta">Extreme hunger response, worldwide</p></header>
         <p class="entry-desc">Works in the hardest-to-reach places experiencing extreme hunger, often where few large organizations operate.</p>
-        <div class="entry-links"><a class="donate-link" href="https://www.concernusa.org/donate/" target="_blank" rel="noopener">Donate</a><span class="dot" aria-hidden="true">·</span><a class="secondary" href="https://www.concernusa.org" target="_blank" rel="noopener">Website</a></div>
+        <div class="entry-links"><a class="donate-link" href="https://www.concernusa.org/donate/" target="_blank" rel="noopener">Donate</a><a class="secondary" href="https://www.concernusa.org" target="_blank" rel="noopener">Website</a></div>
       </article>
 
       <article class="entry">
         <header class="entry-head"><h3 class="entry-name">Bread for the World</h3><p class="entry-meta">Hunger policy advocacy in the US</p></header>
         <p class="entry-desc">An advocacy operation, not a service org, pushing US policy toward ending hunger.</p>
-        <div class="entry-links"><a class="donate-link" href="https://www.bread.org/donate" target="_blank" rel="noopener">Donate</a><span class="dot" aria-hidden="true">·</span><a class="secondary" href="https://www.bread.org" target="_blank" rel="noopener">Website</a></div>
+        <div class="entry-links"><a class="donate-link" href="https://www.bread.org/donate" target="_blank" rel="noopener">Donate</a><a class="secondary" href="https://www.bread.org" target="_blank" rel="noopener">Website</a></div>
       </article>
 
       <article class="entry">
         <header class="entry-head"><h3 class="entry-name">Rise Against Hunger</h3><p class="entry-meta">Volunteer meal packaging, worldwide</p></header>
         <p class="entry-desc">Runs volunteer meal-packaging events shipped to schools and crisis regions. The most hands-on option here, you can pack the boxes yourself.</p>
-        <div class="entry-links"><a class="donate-link" href="https://www.riseagainsthunger.org/donate/" target="_blank" rel="noopener">Donate</a><span class="dot" aria-hidden="true">·</span><a class="secondary" href="https://www.riseagainsthunger.org" target="_blank" rel="noopener">Website</a></div>
+        <div class="entry-links"><a class="donate-link" href="https://www.riseagainsthunger.org/donate/" target="_blank" rel="noopener">Donate</a><a class="secondary" href="https://www.riseagainsthunger.org" target="_blank" rel="noopener">Website</a></div>
       </article>
 
-      </div>
 
     </div>
   </section>
 
   <!-- ===== CHILDREN & HEALTH ===== -->
-  <section class="cat-section" id="sect-children" data-cat="children">
-    <div class="cat-idx">Cause 03</div>
-    <h2 class="cat-title">Children &amp; Health</h2>
-    <p class="cat-dek">Pediatric care, nutrition, vaccines, and child well-being.</p>
+  <section class="cat-section split" id="sect-children" data-cat="children">
+    <div class="cat-head"><h2 class="cat-title">Children &amp; Health</h2><p class="cat-dek">Pediatric care, nutrition, vaccines, and child well-being.</p></div>
     <div class="entry-list">
 
-      <div class="entry-col">
 
       <article class="entry">
         <header class="entry-head"><h3 class="entry-name">UNICEF USA</h3><p class="entry-meta">Child health and immunization, worldwide</p></header>
         <p class="entry-desc">Supports vaccines, nutrition, primary health care, and disease prevention for children worldwide, in both emergency and everyday settings.</p>
-        <div class="entry-links"><a class="donate-link" href="https://www.unicefusa.org/donate" target="_blank" rel="noopener">Donate</a><span class="dot" aria-hidden="true">·</span><a class="secondary" href="https://www.unicefusa.org" target="_blank" rel="noopener">Website</a></div>
+        <div class="entry-links"><a class="donate-link" href="https://www.unicefusa.org/donate" target="_blank" rel="noopener">Donate</a><a class="secondary" href="https://www.unicefusa.org" target="_blank" rel="noopener">Website</a></div>
       </article>
 
       <article class="entry">
         <header class="entry-head"><h3 class="entry-name">Save the Children</h3><p class="entry-meta">Child health and protection, worldwide</p></header>
         <p class="entry-desc">Protects children's health, education, and safety worldwide, spanning emergency response and long-term development programs.</p>
-        <div class="entry-links"><a class="donate-link" href="https://www.savethechildren.org/donate" target="_blank" rel="noopener">Donate</a><span class="dot" aria-hidden="true">·</span><a class="secondary" href="https://www.savethechildren.org" target="_blank" rel="noopener">Website</a></div>
+        <div class="entry-links"><a class="donate-link" href="https://www.savethechildren.org/donate" target="_blank" rel="noopener">Donate</a><a class="secondary" href="https://www.savethechildren.org" target="_blank" rel="noopener">Website</a></div>
       </article>
 
       <article class="entry">
         <header class="entry-head"><h3 class="entry-name">St. Jude Children's Research Hospital</h3><p class="entry-meta">Pediatric cancer research and treatment</p></header>
         <p class="entry-desc">Researches and treats childhood cancer while expanding access to pediatric cancer care worldwide. Families never receive a bill for treatment.</p>
-        <div class="entry-links"><a class="donate-link" href="https://www.stjude.org/donate/donate-to-st-jude-today.html" target="_blank" rel="noopener">Donate</a><span class="dot" aria-hidden="true">·</span><a class="secondary" href="https://www.stjude.org" target="_blank" rel="noopener">Website</a></div>
+        <div class="entry-links"><a class="donate-link" href="https://www.stjude.org/donate/donate-to-st-jude-today.html" target="_blank" rel="noopener">Donate</a><a class="secondary" href="https://www.stjude.org" target="_blank" rel="noopener">Website</a></div>
       </article>
 
       <article class="entry">
         <header class="entry-head"><h3 class="entry-name">Helen Keller Intl</h3><p class="entry-meta">Nutrition and vision programs, worldwide</p></header>
         <p class="entry-desc">Combines nutrition and vision programs for children and families across 20 countries, from vitamin A supplementation to preventing and treating blindness.</p>
-        <div class="entry-links"><a class="donate-link" href="https://helenkellerintl.org/more-ways-to-give/" target="_blank" rel="noopener">Donate</a><span class="dot" aria-hidden="true">·</span><a class="secondary" href="https://helenkellerintl.org" target="_blank" rel="noopener">Website</a></div>
+        <div class="entry-links"><a class="donate-link" href="https://helenkellerintl.org/more-ways-to-give/" target="_blank" rel="noopener">Donate</a><a class="secondary" href="https://helenkellerintl.org" target="_blank" rel="noopener">Website</a></div>
       </article>
 
-      </div>
 
-      <div class="entry-col">
 
       <article class="entry">
         <header class="entry-head"><h3 class="entry-name">Children's Health Fund</h3><p class="entry-meta">Healthcare access for underserved US children</p></header>
         <p class="entry-desc">Brings primary and behavioral health care to underserved children across the US through a network of mobile clinics.</p>
-        <div class="entry-links"><a class="donate-link" href="https://www.childrenshealthfund.org/donation/" target="_blank" rel="noopener">Donate</a><span class="dot" aria-hidden="true">·</span><a class="secondary" href="https://www.childrenshealthfund.org" target="_blank" rel="noopener">Website</a></div>
+        <div class="entry-links"><a class="donate-link" href="https://www.childrenshealthfund.org/donation/" target="_blank" rel="noopener">Donate</a><a class="secondary" href="https://www.childrenshealthfund.org" target="_blank" rel="noopener">Website</a></div>
       </article>
 
       <article class="entry">
         <header class="entry-head"><h3 class="entry-name">Vitamin Angels</h3><p class="entry-meta">Maternal and child nutrition, worldwide</p></header>
         <p class="entry-desc">Delivers micronutrients and nutrition programs to pregnant women and children under five in underserved communities worldwide.</p>
-        <div class="entry-links"><a class="donate-link" href="https://vitaminangels.org/donate-today/" target="_blank" rel="noopener">Donate</a><span class="dot" aria-hidden="true">·</span><a class="secondary" href="https://vitaminangels.org" target="_blank" rel="noopener">Website</a></div>
+        <div class="entry-links"><a class="donate-link" href="https://vitaminangels.org/donate-today/" target="_blank" rel="noopener">Donate</a><a class="secondary" href="https://vitaminangels.org" target="_blank" rel="noopener">Website</a></div>
       </article>
 
       <article class="entry">
         <header class="entry-head"><h3 class="entry-name">Operation Smile</h3><p class="entry-meta">Cleft and surgical care, worldwide</p></header>
         <p class="entry-desc">Provides free cleft lip and palate surgery and trains local healthcare providers to expand surgical access worldwide.</p>
-        <div class="entry-links"><a class="donate-link" href="https://www.operationsmile.org/make-an-impact/ways-to-give/" target="_blank" rel="noopener">Donate</a><span class="dot" aria-hidden="true">·</span><a class="secondary" href="https://www.operationsmile.org" target="_blank" rel="noopener">Website</a></div>
+        <div class="entry-links"><a class="donate-link" href="https://www.operationsmile.org/make-an-impact/ways-to-give/" target="_blank" rel="noopener">Donate</a><a class="secondary" href="https://www.operationsmile.org" target="_blank" rel="noopener">Website</a></div>
       </article>
 
       <article class="entry">
         <header class="entry-head"><h3 class="entry-name">CURE International</h3><p class="entry-meta">Pediatric surgery for treatable disabilities, worldwide</p></header>
         <p class="entry-desc">Runs a global network of children's hospitals providing free surgery for treatable disabilities, in an explicitly faith-based, gospel-centered model.</p>
-        <div class="entry-links"><a class="donate-link" href="https://cure.org/donate/" target="_blank" rel="noopener">Donate</a><span class="dot" aria-hidden="true">·</span><a class="secondary" href="https://cure.org" target="_blank" rel="noopener">Website</a></div>
+        <div class="entry-links"><a class="donate-link" href="https://cure.org/donate/" target="_blank" rel="noopener">Donate</a><a class="secondary" href="https://cure.org" target="_blank" rel="noopener">Website</a></div>
       </article>
 
-      </div>
 
     </div>
   </section>
 
   <!-- ===== ANIMALS & CONSERVATION ===== -->
-  <section class="cat-section" id="sect-animal" data-cat="animal">
-    <div class="cat-idx">Cause 04</div>
-    <h2 class="cat-title">Animals &amp; Conservation</h2>
-    <p class="cat-dek">Companion animals, farmed animals, and wildlife.</p>
+  <section class="cat-section split" id="sect-animal" data-cat="animal">
+    <div class="cat-head"><h2 class="cat-title">Animals &amp; Conservation</h2><p class="cat-dek">Companion animals, farmed animals, and wildlife.</p></div>
     <div class="entry-list">
 
-      <div class="entry-col">
 
       <article class="entry">
         <header class="entry-head"><h3 class="entry-name">ASPCA</h3><p class="entry-meta">Anti-cruelty investigations and rescue across the US</p></header>
         <p class="entry-desc">Anti-cruelty investigations, disaster rescue, and shelter support from one of the oldest and most active animal welfare groups in the US.</p>
-        <div class="entry-links"><a class="donate-link" href="https://www.aspca.org/donate" target="_blank" rel="noopener">Donate</a><span class="dot" aria-hidden="true">·</span><a class="secondary" href="https://www.aspca.org" target="_blank" rel="noopener">Website</a></div>
+        <div class="entry-links"><a class="donate-link" href="https://www.aspca.org/donate" target="_blank" rel="noopener">Donate</a><a class="secondary" href="https://www.aspca.org" target="_blank" rel="noopener">Website</a></div>
       </article>
 
       <article class="entry">
         <header class="entry-head"><h3 class="entry-name">Wildlife Conservation Society</h3><p class="entry-meta">Field conservation, worldwide</p></header>
         <p class="entry-desc">Runs field conservation programs worldwide alongside the Bronx Zoo, one of the oldest conservation organizations in the country.</p>
-        <div class="entry-links"><a class="donate-link" href="https://www.wcs.org/donate" target="_blank" rel="noopener">Donate</a><span class="dot" aria-hidden="true">·</span><a class="secondary" href="https://www.wcs.org" target="_blank" rel="noopener">Website</a></div>
+        <div class="entry-links"><a class="donate-link" href="https://www.wcs.org/donate" target="_blank" rel="noopener">Donate</a><a class="secondary" href="https://www.wcs.org" target="_blank" rel="noopener">Website</a></div>
       </article>
 
       <article class="entry">
         <header class="entry-head"><h3 class="entry-name">Defenders of Wildlife</h3><p class="entry-meta">Species protection across the US</p></header>
         <p class="entry-desc">Fights in court and Congress for native US wildlife, focused on the legal and policy battles that determine endangered species protections.</p>
-        <div class="entry-links"><a class="donate-link" href="https://defenders.org/donate" target="_blank" rel="noopener">Donate</a><span class="dot" aria-hidden="true">·</span><a class="secondary" href="https://defenders.org" target="_blank" rel="noopener">Website</a></div>
+        <div class="entry-links"><a class="donate-link" href="https://defenders.org/donate" target="_blank" rel="noopener">Donate</a><a class="secondary" href="https://defenders.org" target="_blank" rel="noopener">Website</a></div>
       </article>
 
       <article class="entry">
         <header class="entry-head"><h3 class="entry-name">The Humane Society of the US</h3><p class="entry-meta">Broad-spectrum animal protection across the US</p></header>
         <p class="entry-desc">Broad-spectrum animal protection: disaster rescue, cruelty investigations, and legislative campaigns against puppy mills and factory farming.</p>
-        <div class="entry-links"><a class="donate-link" href="https://www.humanesociety.org/donate" target="_blank" rel="noopener">Donate</a><span class="dot" aria-hidden="true">·</span><a class="secondary" href="https://www.humanesociety.org" target="_blank" rel="noopener">Website</a></div>
+        <div class="entry-links"><a class="donate-link" href="https://www.humanesociety.org/donate" target="_blank" rel="noopener">Donate</a><a class="secondary" href="https://www.humanesociety.org" target="_blank" rel="noopener">Website</a></div>
       </article>
 
       <article class="entry">
         <header class="entry-head"><h3 class="entry-name">World Wildlife Fund</h3><p class="entry-meta">Habitat conservation, worldwide</p></header>
         <p class="entry-desc">Habitat and species conservation at a global scale, from anti-poaching work to protecting the ecosystems endangered animals depend on.</p>
-        <div class="entry-links"><a class="donate-link" href="https://www.worldwildlife.org/donate" target="_blank" rel="noopener">Donate</a><span class="dot" aria-hidden="true">·</span><a class="secondary" href="https://www.worldwildlife.org" target="_blank" rel="noopener">Website</a></div>
+        <div class="entry-links"><a class="donate-link" href="https://www.worldwildlife.org/donate" target="_blank" rel="noopener">Donate</a><a class="secondary" href="https://www.worldwildlife.org" target="_blank" rel="noopener">Website</a></div>
       </article>
 
-      </div>
 
-      <div class="entry-col">
 
       <article class="entry">
         <header class="entry-head"><h3 class="entry-name">World Animal Protection</h3><p class="entry-meta">Disaster response and farm-animal welfare, worldwide</p></header>
         <p class="entry-desc">International animal welfare spanning disaster response, wildlife protection, and farm animal welfare, covering animals most charities skip.</p>
-        <div class="entry-links"><a class="donate-link" href="https://www.worldanimalprotection.org/donate" target="_blank" rel="noopener">Donate</a><span class="dot" aria-hidden="true">·</span><a class="secondary" href="https://www.worldanimalprotection.org" target="_blank" rel="noopener">Website</a></div>
+        <div class="entry-links"><a class="donate-link" href="https://www.worldanimalprotection.org/donate" target="_blank" rel="noopener">Donate</a><a class="secondary" href="https://www.worldanimalprotection.org" target="_blank" rel="noopener">Website</a></div>
       </article>
 
       <article class="entry">
         <header class="entry-head"><h3 class="entry-name">Best Friends Animal Society</h3><p class="entry-meta">The no-kill shelter movement in the US</p></header>
         <p class="entry-desc">Leads the no-kill shelter movement in the US: direct rescue work plus the policy push to end animal homelessness nationwide.</p>
-        <div class="entry-links"><a class="donate-link" href="https://bestfriends.org/donate" target="_blank" rel="noopener">Donate</a><span class="dot" aria-hidden="true">·</span><a class="secondary" href="https://bestfriends.org" target="_blank" rel="noopener">Website</a></div>
+        <div class="entry-links"><a class="donate-link" href="https://bestfriends.org/donate" target="_blank" rel="noopener">Donate</a><a class="secondary" href="https://bestfriends.org" target="_blank" rel="noopener">Website</a></div>
       </article>
 
       <article class="entry">
         <header class="entry-head"><h3 class="entry-name">Farm Sanctuary</h3><p class="entry-meta">Farm animal rescue across the US</p></header>
         <p class="entry-desc">Rescues farm animals from cruelty and neglect and gives them a real home, paired with advocacy against factory farming.</p>
-        <div class="entry-links"><a class="donate-link" href="https://www.farmsanctuary.org/get-involved/donate/" target="_blank" rel="noopener">Donate</a><span class="dot" aria-hidden="true">·</span><a class="secondary" href="https://www.farmsanctuary.org" target="_blank" rel="noopener">Website</a></div>
+        <div class="entry-links"><a class="donate-link" href="https://www.farmsanctuary.org/get-involved/donate/" target="_blank" rel="noopener">Donate</a><a class="secondary" href="https://www.farmsanctuary.org" target="_blank" rel="noopener">Website</a></div>
       </article>
 
       <article class="entry">
         <header class="entry-head"><h3 class="entry-name">Mercy For Animals</h3><p class="entry-meta">Factory-farming reform, worldwide</p></header>
         <p class="entry-desc">Investigates and campaigns against factory farming cruelty, going undercover inside the operations most others can't see.</p>
-        <div class="entry-links"><a class="donate-link" href="https://mercyforanimals.org/donate" target="_blank" rel="noopener">Donate</a><span class="dot" aria-hidden="true">·</span><a class="secondary" href="https://mercyforanimals.org" target="_blank" rel="noopener">Website</a></div>
+        <div class="entry-links"><a class="donate-link" href="https://mercyforanimals.org/donate" target="_blank" rel="noopener">Donate</a><a class="secondary" href="https://mercyforanimals.org" target="_blank" rel="noopener">Website</a></div>
       </article>
 
       <article class="entry">
         <header class="entry-head"><h3 class="entry-name">Oceana</h3><p class="entry-meta">Ocean conservation, worldwide</p></header>
         <p class="entry-desc">The largest organization focused solely on ocean conservation: overfishing, marine habitat, and the animals that live entirely underwater.</p>
-        <div class="entry-links"><a class="donate-link" href="https://oceana.org/donate/" target="_blank" rel="noopener">Donate</a><span class="dot" aria-hidden="true">·</span><a class="secondary" href="https://oceana.org" target="_blank" rel="noopener">Website</a></div>
+        <div class="entry-links"><a class="donate-link" href="https://oceana.org/donate/" target="_blank" rel="noopener">Donate</a><a class="secondary" href="https://oceana.org" target="_blank" rel="noopener">Website</a></div>
       </article>
 
-      </div>
 
     </div>
   </section>
 
+  </div>
 </main>
 
 <!-- FOOTER -->
 <footer>
-  <div class="footer-grid">
+  <div class="wrap split">
+    <p class="footer-links"><a href="../../index.html">Portfolio</a><a href="https://github.com/annalinhvu/annalinhvu.github.io/blob/main/projects/global-donation-guide/index.html" target="_blank" rel="noopener">View source</a><a href="mailto:vuhongnhatlinh@gmail.com?subject=Global%20Donation%20Guide%3A%20outdated%20info">Report outdated information</a></p>
     <div>
-      <p class="credit">Personal research, not a ranking or guarantee. I am not affiliated with the listed organizations. Details may change, so please verify before donating.</p>
-      <p class="credit">Verify independently: <a href="https://www.charitynavigator.org" target="_blank" rel="noopener">Charity Navigator</a> &nbsp;·&nbsp; <a href="https://www.charitywatch.org" target="_blank" rel="noopener">CharityWatch</a></p>
-    </div>
-    <div>
-      <p class="footer-links"><a href="../../index.html">Return to portfolio</a></p>
-      <p class="footer-links"><a href="https://github.com/annalinhvu/annalinhvu.github.io/blob/main/projects/global-donation-guide/index.html" target="_blank" rel="noopener">View source</a></p>
-      <p class="footer-links"><a href="mailto:vuhongnhatlinh@gmail.com?subject=Global%20Donation%20Guide%3A%20outdated%20info">Report outdated information</a></p>
+      <p>Personal research, not a ranking or guarantee. I am not affiliated with the listed organizations. Details may change, so please verify before donating.</p>
+      <p>Verify independently: <a href="https://www.charitynavigator.org" target="_blank" rel="noopener">Charity Navigator</a>, <a href="https://www.charitywatch.org" target="_blank" rel="noopener">CharityWatch</a></p>
     </div>
   </div>
 </footer>
@@ -538,7 +507,7 @@ function updateThemeLabel(){
   var btn = document.getElementById('theme-toggle');
   var isDark = document.documentElement.dataset.theme === 'dark';
   btn.setAttribute('aria-label', isDark ? 'Switch to light mode' : 'Switch to dark mode');
-  btn.setAttribute('title', isDark ? 'Dark mode — click for light' : 'Light mode — click for dark');
+  btn.setAttribute('title', isDark ? 'Switch to light mode' : 'Switch to dark mode');
   btn.textContent = isDark ? '☾' : '☀';
 }
 updateThemeLabel();
@@ -580,7 +549,8 @@ updateThemeLabel();
       sec.style.display = (catMatch && sectionHasVisible) ? '' : 'none';
     });
 
-    resultsCount.innerHTML = 'Showing <strong>' + visible + '</strong> of <strong>' + TOTAL + '</strong> organizations';
+    /* only say how many when the list is narrowed, so nothing on the page is a count that can go stale */
+    resultsCount.textContent = (visible === TOTAL || visible === 0) ? '' : visible + (visible === 1 ? ' organization' : ' organizations');
     searchClear.hidden = !activeQuery;
 
     if (visible === 0) {
