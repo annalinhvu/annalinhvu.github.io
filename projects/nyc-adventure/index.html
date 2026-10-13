@@ -79,7 +79,7 @@
 
     .back-link {
       position: fixed; top: 14px; left: 16px; z-index: 999;
-      font-size: 0.65rem; font-weight: 500;
+      font-size: 0.72rem; font-weight: 500;
       letter-spacing: 0.08em; text-transform: uppercase;
       color: var(--l-muted); text-decoration: none;
       transition: color .15s;
@@ -96,7 +96,7 @@
 
     .eyebrow {
       display: block;
-      font-size: 0.68rem; font-weight: 500;
+      font-size: 0.72rem; font-weight: 500;
       letter-spacing: 0.12em; text-transform: uppercase;
       color: var(--l-muted); margin-bottom: 0.4rem;
     }
@@ -147,7 +147,7 @@
     }
 
     .cat-group-header {
-      font-size: 0.68rem; font-weight: 600;
+      font-size: 0.72rem; font-weight: 600;
       text-transform: uppercase; letter-spacing: 0.1em;
       padding: 1rem 0 0.4rem;
       border-bottom: 1px solid var(--r-border);
@@ -159,7 +159,7 @@
     }
 
     #centerLabel {
-      font-size: 0.58rem; font-weight: 400;
+      font-size: 0.7rem; font-weight: 400;
       color: var(--l-muted); text-transform: uppercase;
       letter-spacing: 0.1em; margin-top: 0.15rem;
     }
@@ -382,7 +382,7 @@
     .activity-title:hover { color: var(--node-color, var(--accent)); }
 
     .season-tag {
-      font-size: 0.58rem; font-weight: 600;
+      font-size: 0.7rem; font-weight: 600;
       text-transform: uppercase; letter-spacing: 0.07em;
       padding: 0.15rem 0.45rem; border-radius: 3px;
       color: white; flex-shrink: 0; opacity: 0.9;
@@ -424,7 +424,7 @@
 
     .repeat-badge {
       display: inline-flex; align-items: center; gap: 0.25rem;
-      font-size: 0.6rem; font-weight: 500; letter-spacing: 0.05em;
+      font-size: 0.7rem; font-weight: 500; letter-spacing: 0.05em;
       padding: 0.15rem 0.5rem; border-radius: 20px;
       background: rgba(23,17,12,0.07); color: var(--r-muted);
       vertical-align: middle;
@@ -493,7 +493,7 @@
     .form-group { margin-bottom: 0.95rem; }
 
     .form-group label {
-      display: block; font-size: 0.68rem; font-weight: 500;
+      display: block; font-size: 0.72rem; font-weight: 500;
       text-transform: uppercase; letter-spacing: 0.08em;
       color: var(--r-muted); margin-bottom: 0.3rem;
     }
@@ -556,7 +556,7 @@
     }
 
     .s-eyebrow {
-      font-size: 0.68rem; font-weight: 500; text-transform: uppercase;
+      font-size: 0.72rem; font-weight: 500; text-transform: uppercase;
       letter-spacing: 0.14em; color: var(--r-muted); margin-bottom: 1rem; display: block;
     }
 
@@ -1365,7 +1365,7 @@
       `<span class="star ${(a.rating||0)>=n?'lit':''}" onclick="rate(${a.id},${n})">&#9733;</span>`).join('')}</div>` : '';
     const date = a.dateCompleted ? `<span class="activity-date">${a.dateCompleted}</span>` : '';
     const repeatBtn = isDone
-      ? `<button class="row-btn${a.repeat?' repeat-on':''}" style="font-size:0.65rem;width:auto;padding:0 6px;" onclick="toggleRepeat(${a.id})">${a.repeat ? 'added' : '+ again'}</button>`
+      ? `<button class="row-btn${a.repeat?' repeat-on':''}" style="font-size:0.72rem;width:auto;padding:0 6px;" onclick="toggleRepeat(${a.id})">${a.repeat ? 'added' : '+ again'}</button>`
       : '';
 
     return `<div class="activity-row ${isDone && !showAsTodo ? 'done' : ''}" style="--node-color:${cat.color};animation-delay:${delay}ms">
