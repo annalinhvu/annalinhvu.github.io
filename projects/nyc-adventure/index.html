@@ -261,10 +261,30 @@
     }
 
     /* ── PLACEHOLDER ─────────────────────────────── */
-    #placeholder {
-      display: flex; align-items: center;
-      justify-content: center; min-height: 80vh;
+    /* the default view: every category, how much is in it and how much is done */
+    #placeholder { max-width: 560px; margin: 0 auto; padding-top: 6vh; }
+    .ov-title { font-size: 1.35rem; font-weight: 600; letter-spacing: -0.01em; margin-bottom: 4px; }
+    .ov-list { margin-top: 22px; display: flex; flex-direction: column; }
+    .ov-row {
+      display: grid; grid-template-columns: 7.2em minmax(0,1fr) 6.2em; align-items: center; gap: 14px;
+      padding: 9px 0; border: none; border-bottom: 1px solid var(--r-border); background: none;
+      font: inherit; color: inherit; text-align: left; cursor: pointer;
     }
+    .ov-name { display: flex; align-items: center; gap: 8px; font-size: 0.9rem; font-weight: 500; }
+    .ov-name i { width: 8px; height: 8px; border-radius: 50%; background: var(--c); flex-shrink: 0; }
+    .ov-track { display: block; height: 10px; }
+    .ov-bar {
+      display: block; position: relative; height: 100%; width: var(--w); border-radius: 0 4px 4px 0; overflow: hidden;
+      background: color-mix(in srgb, var(--r-text) 16%, transparent);
+      transform-origin: left center; animation: ovGrow .6s cubic-bezier(.2,.7,.2,1) both; animation-delay: calc(var(--i) * 45ms);
+    }
+    .ov-bar b { position: absolute; left: 0; top: 0; bottom: 0; width: var(--d); background: var(--accent); }
+    .ov-num { font-size: 0.78rem; color: var(--r-muted); text-align: right; white-space: nowrap; font-variant-numeric: tabular-nums; }
+    .ov-row:hover .ov-name, .ov-row:focus-visible .ov-name { color: var(--accent); }
+    .ov-row:hover .ov-bar { background: color-mix(in srgb, var(--r-text) 26%, transparent); }
+    .ov-row:focus-visible { outline: none; }
+    @keyframes ovGrow { from { transform: scaleX(0); } to { transform: scaleX(1); } }
+    @media (prefers-reduced-motion: reduce) { .ov-bar { animation: none; } }
 
     .placeholder-hint {
       font-size: 0.85rem; font-weight: 400;
@@ -585,7 +605,7 @@
       .app { flex-direction: column; }
       .left-panel { width: 100%; position: static; height: auto; border-right: none; border-bottom: 1px solid var(--l-border); padding-bottom: 1.75rem; }
       .right-panel { width: 100%; height: auto; padding: 1.75rem 1.5rem 3rem; }
-      #placeholder { min-height: 20vh; }
+      #placeholder { padding-top: 0; }
     }
   </style>
 </head>
@@ -618,7 +638,9 @@
     <!-- ── RIGHT PANEL ─────────────────────────────── -->
     <div class="right-panel">
       <div id="placeholder">
-        <span class="placeholder-hint">Select a category from the wheel to explore</span>
+        <h2 class="ov-title">The whole log</h2>
+        <p class="placeholder-hint">Pick a category here or on the wheel.</p>
+        <div class="ov-list" id="overviewList"></div>
       </div>
       <div id="catView">
         <div id="catHeader">
@@ -1192,8 +1214,13 @@
     document.getElementById('statsRow').innerHTML =
       `<span><b>${items.length}</b> adventures</span><span><b>${done}</b> done</span><span><b>${todo}</b> to go</span>`;
 
+    renderOverview();
+
     const lp   = document.querySelector('.left-panel');
-    const size = Math.min(lp.offsetWidth - 80, lp.offsetHeight * 0.58, 480);
+    const stacked = window.matchMedia('(max-width: 860px)').matches;
+    const size = Math.max(250, stacked
+      ? Math.min(lp.offsetWidth - 40, 400)
+      : Math.min(lp.offsetWidth - 80, lp.offsetHeight * 0.58, 480));
     const wrap = document.getElementById('wheelWrap');
     wrap.style.width = wrap.style.height = size + 'px';
     wrap.querySelectorAll('.wheel-node').forEach(n => n.remove());
@@ -1233,6 +1260,24 @@
       node.onclick = () => showCat(key);
       wrap.appendChild(node);
     });
+  }
+
+  // ── OVERVIEW (default right-hand view) ───────────
+  function renderOverview() {
+    const host = document.getElementById('overviewList');
+    if (!host) return;
+    const rows = Object.keys(CATS).map(key => {
+      const all = items.filter(a => a.category === key);
+      return { key, cat: CATS[key], total: all.length, done: all.filter(a => a.status === 'done').length };
+    });
+    const max = Math.max(1, ...rows.map(r => r.total));
+    const first = !host.children.length;
+    host.innerHTML = rows.map((r, i) =>
+      `<button type="button" class="ov-row" onclick="showCat('${r.key}')" style="--c:${r.cat.color}">
+        <span class="ov-name"><i></i>${r.cat.label}</span>
+        <span class="ov-track"><span class="ov-bar" style="--w:${(r.total / max * 100).toFixed(1)}%;--d:${r.total ? (r.done / r.total * 100).toFixed(1) : 0}%;--i:${first ? i : 0}${first ? '' : ';animation:none'}"><b></b></span></span>
+        <span class="ov-num">${r.total}${r.done ? ' · ' + r.done + ' done' : ''}</span>
+      </button>`).join('');
   }
 
   // ── CAT VIEW ─────────────────────────────────────
