@@ -9,7 +9,12 @@
 <meta property="og:description" content="Principal Data Engineer in NYC. Building scalable pipelines, data models, and BI infrastructure for enterprise clients managing billions in marketing spend.">
 <meta property="og:url" content="https://annalinhvu.github.io">
 <meta property="og:type" content="website">
-<meta name="twitter:card" content="summary">
+<meta property="og:image" content="https://annalinhvu.github.io/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Anna Vu, Principal Data Engineer. Data pipelines, warehouse models, and BI for marketing data.">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://annalinhvu.github.io/og-image.png">
 <meta name="twitter:title" content="Anna Vu | Principal Data Engineer">
 <meta name="twitter:description" content="Principal Data Engineer in NYC. Snowflake · Python · AWS · DEPT® Agency.">
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 52 66'><line x1='26' y1='15' x2='26' y2='6' stroke='%23e8732a' stroke-width='2.5' stroke-linecap='round'/><circle cx='26' cy='4' r='3.5' fill='%23f5a623'/><rect x='5' y='15' width='42' height='38' rx='13' fill='%23e8732a'/><rect x='10' y='21' width='32' height='24' rx='8' fill='%231c2028'/><circle cx='21' cy='31' r='2.5' fill='%23ddd'/><circle cx='33' cy='31' r='2.5' fill='%23ddd'/><path d='M19 38 Q26 43 33 38' stroke='%23c85e20' stroke-width='2' stroke-linecap='round' fill='none'/><rect x='12' y='50' width='11' height='12' rx='5' fill='%23c85e20'/><rect x='29' y='50' width='11' height='12' rx='5' fill='%23c85e20'/></svg>">
@@ -1015,6 +1020,43 @@ body {
 .decision-t{font-size:14px;font-weight:600;color:var(--t1);margin-bottom:5px;}
 .decision-d{font-size:13px;line-height:1.6;color:var(--t3);}
 .decision-k{font-family:'Geist Mono',monospace;font-size:10.5px;color:var(--amber);margin-top:9px;}
+/* decision lab: sample rows pushed through the four rules, each of which can be switched off */
+.lab{margin-bottom:22px;padding:16px 20px 18px;border:1px solid var(--bd);border-radius:10px;background:var(--surface);}
+.lab .sch-sub{margin-top:0;}
+.lab-note{font-size:13px;line-height:1.6;color:var(--t3);margin-bottom:14px;max-width:760px;}
+.lab-grid{display:grid;grid-template-columns:minmax(0,300px) minmax(0,1fr);gap:22px;align-items:start;}
+.lab-switches{display:flex;flex-direction:column;gap:8px;}
+.lab-sw{display:grid;grid-template-columns:auto minmax(0,1fr);gap:11px;align-items:center;padding:9px 11px;border:1px solid var(--bd);border-radius:8px;background:none;font:inherit;color:inherit;text-align:left;cursor:pointer;transition:border-color .15s;}
+.lab-sw:hover,.lab-sw:focus-visible{border-color:var(--bd-hi);outline:none;}
+.lab-sw i{position:relative;width:30px;height:17px;border-radius:9px;background:var(--amber);transition:background .18s;flex-shrink:0;}
+.lab-sw i::after{content:'';position:absolute;top:2px;left:15px;width:13px;height:13px;border-radius:50%;background:#fff;transition:left .18s;}
+.lab-sw[aria-checked="false"] i{background:var(--t4);}
+.lab-sw[aria-checked="false"] i::after{left:2px;}
+.lab-sw span{font-size:13px;font-weight:500;line-height:1.3;color:var(--t1);}
+.lab-sw[aria-checked="false"] span{color:var(--t3);text-decoration:line-through;text-decoration-color:var(--t4);}
+.lab-reset{align-self:flex-start;margin-top:2px;padding:4px 0;border:none;background:none;font-family:'Geist Mono',monospace;font-size:11px;color:var(--amber);cursor:pointer;}
+.lab-reset[hidden]{display:none;}
+.lab-total{display:flex;align-items:baseline;gap:8px 22px;flex-wrap:wrap;margin-bottom:12px;font-family:'Geist Mono',monospace;}
+.lab-fig{display:flex;flex-direction:column;gap:3px;}
+.lab-fig b{font-size:26px;font-weight:600;line-height:1;color:var(--t1);transition:color .2s;}
+.lab-fig small{font-size:10px;letter-spacing:.5px;text-transform:uppercase;color:var(--t4);}
+.lab-fig.bad b{color:var(--rose);}
+.lab-verdict{font-size:12px;padding:4px 10px;border-radius:7px;border:1px solid var(--bd);color:var(--mono-g);}
+.lab-verdict.bad{color:var(--rose);border-color:var(--rose);}
+.lab-table-wrap{overflow-x:auto;}
+.lab-table{width:100%;border-collapse:collapse;font-family:'Geist Mono',monospace;font-size:12px;}
+.lab-table th{text-align:left;font-weight:500;font-size:10px;letter-spacing:.6px;text-transform:uppercase;color:var(--t4);padding:6px 10px 6px 0;border-bottom:1px solid var(--bd-hi);white-space:nowrap;}
+.lab-table td{padding:7px 10px 7px 0;border-bottom:1px solid var(--bd);color:var(--t2);white-space:nowrap;transition:background .25s,color .25s;}
+.lab-table .num{text-align:right;}
+.lab-table td.bad{color:var(--rose);font-weight:600;background:rgba(212,112,128,.10);}
+.lab-table tr.gone td{color:var(--t4);text-decoration:line-through;}
+.lab-table tr.gone td.bad{text-decoration:none;}
+.lab-why{margin-top:12px;font-size:13px;line-height:1.6;color:var(--t2);min-height:1.6em;}
+.lab-why p + p{margin-top:5px;}
+.lab-why b{font-weight:600;color:var(--t1);}
+@media (max-width: 768px){.lab{padding:14px 14px 16px;}.lab-grid{grid-template-columns:minmax(0,1fr);gap:16px;}.lab-fig b{font-size:22px;}}
+.lab-out{min-width:0;}
+@media (max-width: 768px){.lab-wide{display:none;}.lab-table{font-size:11px;}.lab-table th,.lab-table td{padding-right:8px;}.lab-table th:last-child,.lab-table td:last-child{padding-right:0;}}
 .sch-detail{border:1px solid var(--bd);border-radius:12px;background:var(--surface);padding:22px 24px;}
 .sch-hd{display:flex;align-items:baseline;gap:10px;flex-wrap:wrap;margin-bottom:8px;}
 .sch-name{font-family:'Geist Mono',monospace;font-size:16px;font-weight:600;color:var(--t1);}
@@ -1702,6 +1744,18 @@ body {
           <button type="button" class="decision" data-model="dim_classification_asof"><div class="decision-p">point-in-time join · slowly changing dimension</div><div class="decision-t">Classification as of the reporting date</div><div class="decision-d">The client reclassifies campaigns over time. Each row takes the classification from the same day if there is one, otherwise the most recent earlier one, so relabeling a campaign doesn't change past reports.</div><div class="decision-k">dim_class_asof →</div></button>
           <button type="button" class="decision" data-model="fct_campaign_daily"><div class="decision-p">grain · fan-out</div><div class="decision-t">First-party outcomes join to delivery rows only</div><div class="decision-d">Each campaign-day has a <span class="term" data-tip="Stats about the ads themselves: impressions, clicks, and cost.">delivery</span> row plus one row per <span class="term" data-tip="A user action after seeing an ad, like an install or a sign-up, as each ad platform reports it.">conversion</span> type. First-party outcomes join to the delivery row, otherwise they would repeat once per conversion row. Counts are summed. Rates and coefficients are kept as single values, not added.</div><div class="decision-k">fct_campaign_daily →</div></button>
           <button type="button" class="decision" data-model="int_first_party_matched"><div class="decision-p">entity resolution</div><div class="decision-t">Match on campaign ID before name</div><div class="decision-d">Renames are applied from their effective date, then first-party records match to media on campaign ID. The name lookup is only used when a record has no ID, since campaign names get edited and IDs stay fixed.</div><div class="decision-k">int_1p_matched →</div></button>
+        </div>
+        <div class="lab" id="dec-lab">
+          <div class="sch-sub">try it · switch a decision off</div>
+          <p class="lab-note">Four campaign-days of sample data, run through the same four rules in your browser. Turn a rule off to see what the report gets wrong.</p>
+          <div class="lab-grid">
+            <div class="lab-switches" id="lab-switches"></div>
+            <div class="lab-out">
+              <div class="lab-total" id="lab-total"></div>
+              <div class="lab-table-wrap"><table class="lab-table" id="lab-table"></table></div>
+              <div class="lab-why" id="lab-why"></div>
+            </div>
+          </div>
         </div>
         <div class="sch-graph-wrap"><svg class="sch-graph" id="sch-graph" role="group" aria-label="Warehouse lineage graph"></svg></div>
         <div class="sch-detail" id="sch-detail"></div>
@@ -2948,6 +3002,107 @@ switchPane = function(id) {
     r.el.scrollIntoView({behavior:'smooth', block:'start'});
     r.el.classList.remove('ctl-hit'); void r.el.offsetWidth; r.el.classList.add('ctl-hit');
   });
+})();
+
+/* ── Decision lab: a tiny sample dataset run through the four design decisions, each switchable ── */
+(function() {
+  var sw = document.getElementById('lab-switches');
+  if (!sw) return;
+  /* media rows: one delivery row per campaign-day (conv null) plus one row per conversion type */
+  var MEDIA = [
+    {day:1, id:'101', name:'brand_search',    conv:null,      cost:100},
+    {day:1, id:'101', name:'brand_search',    conv:'install', n:10},
+    {day:1, id:'101', name:'brand_search',    conv:'sign_up', n:4},
+    {day:2, id:'101', name:'brand_search',    conv:null,      cost:120},
+    {day:2, id:'101', name:'brand_search',    conv:'install', n:12},
+    {day:1, id:'202', name:'retarget_social', conv:null,      cost:80},
+    {day:1, id:'202', name:'retarget_social', conv:'install', n:7}
+  ];
+  /* what the client sent: one row per campaign-day, with their own label for the campaign */
+  var CLIENT = [
+    {day:1, id:'101', name:'brand_search',    signups:5, label:'Prospecting'},
+    {day:2, id:'101', name:'brand_search',    signups:6, label:'Brand'},        /* relabelled on day 2 */
+    {day:1, id:null,  name:'retarget_social', signups:3, label:'Retargeting'},  /* no campaign ID */
+    {day:3, id:'202', name:'retarget_social', signups:2, label:'Retargeting'}   /* a day with no ad spend */
+  ];
+  var DICT = {brand_search:'101', retarget_social:'202'};
+  var RULES = [
+    {key:'orphans',  title:'Keep first-party days with no ad spend',
+     why:'<b>Day 3</b> had client sign-ups but no ad spend, so there is no media row to join to and its 2 sign-ups disappear.'},
+    {key:'asof',     title:'Classify as of the reporting date',
+     why:'The client relabelled <b>brand_search</b> on day 2. Without the as-of join, day 1 is reported under the new label too.'},
+    {key:'delivery', title:'Join first-party outcomes to delivery rows only',
+     why:'Each campaign-day has a delivery row plus one row per conversion type. Joined to all of them, the same sign-ups are counted once per row.'},
+    {key:'fallback', title:'Match on ID, fall back to name',
+     why:'One client record has <b>no campaign ID</b>. With no name lookup it matches nothing and its 3 sign-ups are lost.'}
+  ];
+  var on = {orphans:true, asof:true, delivery:true, fallback:true};
+
+  function run(o) {
+    var matched = [];
+    CLIENT.forEach(function(c) {
+      var id = c.id || (o.fallback ? DICT[c.name] : null);
+      if (id) matched.push({day:c.day, id:id, signups:c.signups, label:c.label});
+    });
+    var rows = MEDIA.map(function(m) { return {day:m.day, id:m.id, name:m.name, conv:m.conv, cost:m.cost || 0}; });
+    if (o.orphans) matched.forEach(function(c) {
+      if (!rows.some(function(r) { return r.day === c.day && r.id === c.id; })) {
+        var known = MEDIA.filter(function(m) { return m.id === c.id; })[0];
+        rows.push({day:c.day, id:c.id, name:known ? known.name : '', conv:null, cost:0});
+      }
+    });
+    var out = {};
+    rows.forEach(function(r) {
+      var k = r.id + '|' + r.day, g = out[k] = out[k] || {id:r.id, day:r.day, name:r.name, cost:0, signups:0, label:''};
+      g.cost += r.cost;
+      if (!o.delivery || r.conv === null) matched.forEach(function(c) { if (c.day === r.day && c.id === r.id) g.signups += c.signups; });
+      var labels = matched.filter(function(c) { return c.id === r.id && (!o.asof || c.day <= r.day); }).sort(function(a, b) { return a.day - b.day; });
+      g.label = labels.length ? labels[labels.length - 1].label : '';
+    });
+    return out;
+  }
+
+  var truth = run({orphans:true, asof:true, delivery:true, fallback:true});
+  var keys = Object.keys(truth).sort(function(a, b) { var x = truth[a], y = truth[b]; return x.id === y.id ? x.day - y.day : (x.id < y.id ? -1 : 1); });
+  var sent = CLIENT.reduce(function(t, c) { return t + c.signups; }, 0);
+
+  function render() {
+    var got = run(on), total = 0;
+    Object.keys(got).forEach(function(k) { total += got[k].signups; });
+    var wrongLabel = keys.some(function(k) { return got[k] && got[k].label !== truth[k].label; });
+    var ok = total === sent && !wrongLabel;
+    var diff = total - sent;
+    document.getElementById('lab-total').innerHTML =
+      '<span class="lab-fig' + (total !== sent ? ' bad' : '') + '"><b>' + total + '</b><small>sign-ups in the report</small></span>'
+      + '<span class="lab-fig"><b>' + sent + '</b><small>sign-ups the client sent</small></span>'
+      + '<span class="lab-verdict' + (ok ? '' : ' bad') + '">' + (ok ? 'report matches the client'
+          : (diff ? (diff > 0 ? 'over by ' + diff : 'short by ' + (-diff)) : 'totals match') + (wrongLabel ? (diff ? ', and ' : ', but ') + 'a label is wrong' : '')) + '</span>';
+    var h = '<tr><th>campaign</th><th>day</th><th class="num lab-wide">spend</th><th>label</th><th class="num">sign-ups</th><th class="num">should be</th></tr>';
+    keys.forEach(function(k) {
+      var t = truth[k], g = got[k];
+      h += '<tr' + (g ? '' : ' class="gone"') + '><td>' + t.name + '</td><td>day ' + t.day + '</td><td class="num lab-wide">$' + t.cost + '</td>'
+        + '<td' + (g && g.label !== t.label ? ' class="bad"' : '') + '>' + (g ? (g.label || 'none') : t.label) + '</td>'
+        + '<td class="num' + (!g || g.signups !== t.signups ? ' bad' : '') + '">' + (g ? g.signups : 'missing') + '</td>'
+        + '<td class="num">' + t.signups + '</td></tr>';
+    });
+    document.getElementById('lab-table').innerHTML = h;
+    var off = RULES.filter(function(r) { return !on[r.key]; });
+    document.getElementById('lab-why').innerHTML = off.length
+      ? off.map(function(r) { return '<p>' + r.why + '</p>'; }).join('')
+      : '<p>All four rules on: every sign-up the client sent appears once, under the label it had that day.</p>';
+    sw.querySelectorAll('.lab-sw').forEach(function(b) { b.setAttribute('aria-checked', String(on[b.getAttribute('data-key')])); });
+    sw.querySelector('.lab-reset').hidden = !off.length;
+  }
+
+  sw.innerHTML = RULES.map(function(r) {
+    return '<button type="button" class="lab-sw" role="switch" aria-checked="true" data-key="' + r.key + '"><i aria-hidden="true"></i><span>' + r.title + '</span></button>';
+  }).join('') + '<button type="button" class="lab-reset" hidden>turn all back on</button>';
+  sw.addEventListener('click', function(e) {
+    var b = e.target.closest('.lab-sw');
+    if (b) { on[b.getAttribute('data-key')] = !on[b.getAttribute('data-key')]; render(); return; }
+    if (e.target.closest('.lab-reset')) { RULES.forEach(function(r) { on[r.key] = true; }); render(); }
+  });
+  render();
 })();
 
 /* ── In-page links that switch tabs ── */
