@@ -4111,7 +4111,7 @@ document.addEventListener('click', function(e) {
     reactToQuery(cmd, result);
   }
 
-  /* ── Guide data ── */
+  /* ── Guide data ── (only the useful commands are listed; the jokes and the game still work if typed) */
   var GUIDE_DATA = {
     sql: [
       ['SHOW TABLES','show all tables'],
@@ -4125,10 +4125,7 @@ document.addEventListener('click', function(e) {
       ['DESCRIBE built','table schema'],
       ["SELECT name, grain FROM models WHERE layer = 'fact'",'warehouse lineage'],
       ['SELECT * FROM pumkin','meet pumkin'],
-      ["pumkinsay 'hello!'",'any mode'],
-      ["UPDATE anna SET status = 'hired'",'make it happen ;)'],
-      ["INSERT INTO messages (from_name, message) VALUES ('your name', 'hello!')",'contact anna'],
-      ['PLAY GAME','🐍 secret']
+      ["INSERT INTO messages (from_name, message) VALUES ('your name', 'hello!')",'contact anna']
     ],
     python: [
       ['help(anna)','all methods'],
@@ -4138,10 +4135,7 @@ document.addEventListener('click', function(e) {
       ['anna.experience()','work history'],
       ['anna.projects()','projects'],
       ['anna.availability()','open to work?'],
-      ['anna.dream_job()','honest answer'],
-      ['anna.coffee_count','critical stat'],
-      ["anna.contact('your name', 'hello!')",'send anna a message'],
-      ['anna.game()','🐍 secret']
+      ["anna.contact('your name', 'hello!')",'send anna a message']
     ],
     java: [
       ['anna.toString()','string representation'],
@@ -4150,9 +4144,7 @@ document.addEventListener('click', function(e) {
       ['anna.getExperience()','ArrayList of jobs'],
       ['anna.getProjects()','ArrayList of projects'],
       ['anna.getAvailability()','hiring status'],
-      ['anna.getDreamJob()','career goals'],
       ['anna.yearsOfExperience()','int'],
-      ['anna.getCoffeeCount()','∞'],
       ["anna.contact(\"your name\", \"hello!\")",'send a message']
     ],
     c: [
@@ -4163,8 +4155,6 @@ document.addEventListener('click', function(e) {
       ['anna->origin','origin string'],
       ['anna->email','email string'],
       ['sizeof(anna)','struct size'],
-      ['malloc(sizeof(Anna))','allocate anna'],
-      ['free(anna)','try it 😈'],
       ['contact(anna, "your name", "hello!")','send a message']
     ]
   };
