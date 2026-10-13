@@ -242,7 +242,7 @@
       transition: border-color 0.15s, color 0.15s;
     }
     .filter-input { width: 140px; }
-    .filter-input::placeholder { color: var(--text-4); font-family: 'Geist', sans-serif; font-size: 0.65rem; letter-spacing: 0; }
+    .filter-input::placeholder { color: var(--text-3); font-family: 'Geist', sans-serif; font-size: 0.65rem; letter-spacing: 0; }
     .filter-input:focus, .filter-select:focus { border-color: var(--text-3); color: var(--text-1); }
     .filter-select { appearance: none; -webkit-appearance: none; cursor: pointer; }
 
@@ -346,14 +346,14 @@
       flex: 1;
     }
     .style-tag-btn {
-      font-family: 'Geist Mono', monospace; font-size: 0.52rem;
+      font-family: 'Geist Mono', monospace; font-size: 0.58rem;
       letter-spacing: 0.8px; text-transform: uppercase;
-      color: var(--text-4); border: 1px solid var(--border);
-      padding: 3px 10px; border-radius: 2px;
+      color: color-mix(in srgb, var(--text-2) 70%, var(--text-3)); border: 1px solid var(--border-h);
+      padding: 4px 11px; border-radius: 2px;
       transition: color 0.15s, border-color 0.15s, background 0.15s;
       background: none; cursor: pointer;
     }
-    .style-tag-btn:hover { color: var(--text-2); border-color: var(--border-h); }
+    .style-tag-btn:hover { color: var(--text-1); border-color: var(--text-3); }
     .style-tag-btn.active {
       color: var(--text-1); border-color: var(--text-3);
       background: var(--surface);
@@ -827,7 +827,7 @@
     .section-tab {
       font-family: 'Geist Mono', monospace; font-size: 0.58rem;
       letter-spacing: 1.5px; text-transform: uppercase;
-      color: var(--text-4); padding: 10px 18px;
+      color: var(--text-3); padding: 10px 18px;
       border-bottom: 2px solid transparent;
       transition: color 0.15s, border-color 0.15s;
       margin-bottom: -1px;
@@ -1243,9 +1243,9 @@
     const cur = document.documentElement.dataset.theme || 'dark';
     const next = cur === 'dark' ? 'light' : 'dark';
     document.documentElement.dataset.theme = next;
-    localStorage.setItem('auteurs-theme', next);
+    localStorage.setItem('auteurs-theme-v2', next);
   }
-  const st = localStorage.getItem('auteurs-theme') || 'dark';
+  const st = localStorage.getItem('auteurs-theme-v2') || 'dark';
   document.documentElement.dataset.theme = st;
 
   document.addEventListener('keydown', e => {
