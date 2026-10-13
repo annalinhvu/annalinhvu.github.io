@@ -832,6 +832,46 @@ body{
   .running-head,.ing-actions,.topbar-nav{display:none!important}
   .detail-ing{border:none;padding:0 0 12px}
 }
+
+/* ══ At a glance: every recipe plotted by total time and number of ingredients ══
+   Region colours here are brighter steps of the map colours, checked for colour-blind separation
+   on both the light and the dark page. */
+:root[data-theme="light"]{--reg-n:#3580b6;--reg-c:#c0432d;--reg-s:#ac860d;--gl-zone:rgba(184,134,58,.13)}
+:root[data-theme="dark"]{--reg-n:#4f9ad0;--reg-c:#c04832;--reg-s:#a98c14;--gl-zone:rgba(212,165,72,.11)}
+.glance{max-width:1000px;margin:0 auto;padding:64px 0 0;scroll-margin-top:56px}
+.browse-view.selecting .glance{display:none}
+.glance-head{display:flex;align-items:flex-end;justify-content:space-between;gap:16px 28px;flex-wrap:wrap;margin-bottom:14px}
+.glance-sub{font-family:'Lora',Georgia,serif;font-style:italic;font-size:.9rem;color:var(--text-3);max-width:34em;line-height:1.55}
+.glance .fm-title{margin-bottom:6px}
+.gl-legend{display:flex;gap:6px;flex-wrap:wrap}
+.gl-key{display:inline-flex;align-items:center;gap:7px;padding:6px 11px;border:1px solid var(--border);border-radius:3px;background:none;cursor:pointer;font-family:'Lora',Georgia,serif;font-style:italic;font-size:.84rem;color:var(--text-2);transition:border-color .15s,opacity .15s}
+.gl-key i{width:9px;height:9px;border-radius:50%;background:var(--c)}
+.gl-key:hover{border-color:var(--text-3)}
+.gl-key[aria-pressed="true"]{border-color:var(--text-2);background:var(--card)}
+.gl-legend.filtering .gl-key[aria-pressed="false"]{opacity:.5}
+.glance-plot{position:relative}
+.glance-plot svg{display:block;width:100%;height:auto;overflow:visible;cursor:default}
+.gl-zone{fill:var(--gl-zone)}
+.gl-grid{stroke:var(--border);stroke-width:1}
+.gl-split{stroke:var(--text-4);stroke-width:1;stroke-dasharray:3 4;opacity:.7}
+.gl-tick{font-family:'Geist',system-ui,sans-serif;font-size:10.5px;fill:var(--text-3)}
+.gl-axis{font-family:'Geist',system-ui,sans-serif;font-size:11px;font-weight:600;fill:var(--text-3)}
+.gl-corner{font-family:'Lora',Georgia,serif;font-style:italic;font-size:12px;fill:var(--text-4)}
+.gl-corner.gl-main{font-weight:600;font-size:13.5px;fill:var(--text-2)}
+.gl-name{font-family:'Lora',Georgia,serif;font-style:italic;font-size:11.5px;fill:var(--text-2);paint-order:stroke;stroke:var(--bg);stroke-width:3px;stroke-linejoin:round;pointer-events:none}
+.gl-dot{stroke:var(--bg);stroke-width:1.5;opacity:0;transform-box:fill-box;transform-origin:center;transform:scale(.2);transition:opacity .45s ease,transform .45s cubic-bezier(.2,.8,.3,1.2)}
+.glance.in .gl-dot{opacity:.92;transform:scale(1)}
+.glance.in .gl-dot.dim{opacity:.12}
+.glance.in .gl-dot.hot{opacity:1;transform:scale(1.6);transition-duration:.12s;transition-delay:0s!important}
+.gl-tip{position:absolute;z-index:5;min-width:150px;max-width:230px;padding:9px 12px 10px;background:var(--card);border:1px solid var(--border);border-radius:4px;box-shadow:var(--sh-h);font-family:'Geist',system-ui,sans-serif;font-size:.7rem;line-height:1.5;color:var(--text-3);text-align:left;pointer-events:none;opacity:0;transition:opacity .12s}
+.gl-tip.on{opacity:1}
+.gl-tip b{display:block;font-family:'Lora',Georgia,serif;font-style:italic;font-weight:600;font-size:.95rem;color:var(--text-1);margin-bottom:2px}
+.gl-tip span{display:block}
+.gl-tip .gl-open{margin-top:5px;color:var(--accent);font-weight:600}
+.gl-tip.touch{pointer-events:auto;cursor:pointer}
+.glance-note{margin-top:10px;font-size:.68rem;line-height:1.6;color:var(--text-4);max-width:62em}
+@media(max-width:760px){.glance{padding-top:44px}}
+@media (prefers-reduced-motion: reduce){.gl-dot{transition:none}}
 </style>
 </head>
 <body>
@@ -933,6 +973,18 @@ body{
   </div>
 
   <div class="page">
+    <section class="glance" id="glance" aria-labelledby="glanceTitle">
+      <div class="glance-head">
+        <div>
+          <h2 class="fm-title" id="glanceTitle">At a glance</h2>
+          <p class="glance-sub">Every recipe in the book, by how long it takes and how many ingredients it needs. Pick a dot to open the recipe.</p>
+        </div>
+        <div class="gl-legend" id="glanceLegend" role="group" aria-label="Highlight a region"></div>
+      </div>
+      <div class="glance-plot" id="glancePlot"></div>
+      <p class="glance-note">Each dot is one recipe. Time is prep plus cooking, on a stretched scale so the quick dishes spread out. Dots are nudged slightly so recipes with the same numbers do not hide each other. The weeknight corner is 30 minutes or less and no more than 7 ingredients. The same recipes are listed in the chapters below and in the index.</p>
+    </section>
+
     <div class="toc-wrap">
       <div class="selection-bar" id="selectionBar"></div>
       <div class="ledger" id="cardGrid"></div>
@@ -1371,7 +1423,13 @@ const REGION_NOTE={
 function renderExplore(){
   const toc=document.getElementById('tocList');
   if(toc){
-    toc.innerHTML=CAT_ORDER.map((cat,ci)=>{
+    toc.innerHTML=`<button type="button" class="toc-row toc-index" onclick="document.getElementById('glance').scrollIntoView({behavior:'smooth',block:'start'})">
+        <span class="toc-no"></span>
+        <span class="toc-text">
+          <span class="toc-line"><span class="toc-name">At a glance</span></span>
+          <span class="toc-preview">Every recipe by time and number of ingredients</span>
+        </span>
+      </button>`+CAT_ORDER.map((cat,ci)=>{
       const sub=bookOrder.filter(r=>r.category===cat);
       if(!sub.length)return'';
       return `<button type="button" class="toc-row" onclick="openChapter(${ci})">
@@ -1406,6 +1464,107 @@ function renderExplore(){
   }
 }
 
+/* ── At a glance: scatter of total time (log scale) against ingredient count ── */
+const GL_ZONE={maxT:30,maxN:7};                 // the shaded "weeknight" corner
+const GL_REG=[['northern','--reg-n'],['central','--reg-c'],['southern','--reg-s']];
+let glRegion='', glHot=null, glPts=[];
+function ingCount(r){ return r.ingredients.split('\n').filter(l=>l.trim()).length; }
+function glNoise(id,k){ const x=Math.sin(id*12.9898+k*78.233)*43758.5453; return (x-Math.floor(x))-.5; }  // stable per recipe
+function renderGlance(){
+  const host=document.getElementById('glancePlot');
+  if(!host||!bookOrder.length) return;
+  const W=Math.max(300,host.clientWidth), small=W<560, H=small?350:450;
+  const m={l:small?30:44,r:small?10:18,t:26,b:small?40:46}, pw=W-m.l-m.r, ph=H-m.t-m.b;
+  const T0=Math.log(4), T1=Math.log(620), nMin=1, nMax=Math.max(...bookOrder.map(ingCount))+1;
+  const X=t=>m.l+(Math.log(t)-T0)/(T1-T0)*pw, Y=n=>m.t+ph-(n-nMin)/(nMax-nMin)*ph;
+  const xt=[[5,'5m'],[15,'15m'],[30,'30m'],[60,'1h'],[120,'2h'],[240,'4h'],[480,'8h']];
+  const zx=X(GL_ZONE.maxT*1.08), zy=Y(GL_ZONE.maxN+.5);
+  let svg=`<svg viewBox="0 0 ${W} ${H}" role="img" aria-label="Scatter plot of every recipe: total time across, number of ingredients up, coloured by region">`;
+  svg+=`<rect class="gl-zone" x="${m.l}" y="${zy}" width="${zx-m.l}" height="${m.t+ph-zy}" rx="3"/>`;
+  xt.forEach(([t,l])=>{ svg+=`<line class="gl-grid" x1="${X(t)}" x2="${X(t)}" y1="${m.t}" y2="${m.t+ph}"/><text class="gl-tick" x="${X(t)}" y="${m.t+ph+16}" text-anchor="middle">${l}</text>`; });
+  for(let n=2;n<nMax;n+=2) svg+=`<line class="gl-grid" x1="${m.l}" x2="${m.l+pw}" y1="${Y(n)}" y2="${Y(n)}"/><text class="gl-tick" x="${m.l-8}" y="${Y(n)+3.5}" text-anchor="end">${n}</text>`;
+  svg+=`<line class="gl-split" x1="${zx}" x2="${zx}" y1="${m.t}" y2="${m.t+ph}"/><line class="gl-split" x1="${m.l}" x2="${m.l+pw}" y1="${zy}" y2="${zy}"/>`;
+  svg+=`<text class="gl-axis" x="${m.l+pw}" y="${H-6}" text-anchor="end">Total time</text><text class="gl-axis" x="${m.l-(small?22:30)}" y="12">Ingredients</text>`;
+  svg+=`<text class="gl-corner gl-main" x="${m.l+10}" y="${m.t+ph-12}">Weeknight</text>`;
+  if(!small){
+    svg+=`<text class="gl-corner" x="${m.l+10}" y="${m.t+18}">Quick, longer list</text>`
+       +`<text class="gl-corner" x="${m.l+pw-10}" y="${m.t+18}" text-anchor="end">Weekend project</text>`
+       +`<text class="gl-corner" x="${m.l+pw-10}" y="${m.t+ph-12}" text-anchor="end">Short list, slow cook</text>`;
+  }
+  glPts=bookOrder.map(r=>{
+    const t=Math.max(5,r.prep_time_min+r.cook_time_min), n=ingCount(r);
+    return {r,t,n,x:X(Math.exp(Math.log(t)+glNoise(r.id,1)*.07)),y:Y(n+glNoise(r.id,2)*.56)};
+  });
+  glPts.forEach(p=>{
+    const v=(GL_REG.find(g=>g[0]===p.r.cuisine)||GL_REG[0])[1];
+    svg+=`<circle class="gl-dot${glRegion&&p.r.cuisine!==glRegion?' dim':''}" data-id="${p.r.id}" cx="${p.x.toFixed(1)}" cy="${p.y.toFixed(1)}" r="${small?4:4.6}" fill="var(${v})" style="transition-delay:${Math.round((p.x-m.l)/pw*550)}ms"/>`;
+  });
+  /* name only the outliers: the slowest dishes and the longest ingredient lists */
+  const named=new Set();
+  glPts.slice().sort((a,b)=>b.t-a.t).slice(0,small?1:3).forEach(p=>named.add(p));
+  glPts.slice().sort((a,b)=>b.n-a.n).slice(0,small?1:2).forEach(p=>named.add(p));
+  named.forEach(p=>{
+    const left=p.x>m.l+pw*.72;
+    svg+=`<text class="gl-name" x="${(p.x+(left?-9:9)).toFixed(1)}" y="${(p.y+4).toFixed(1)}"${left?' text-anchor="end"':''}>${p.r.name}</text>`;
+  });
+  host.innerHTML=svg+'</svg><div class="gl-tip" id="glTip"></div>';
+  glHot=null;
+}
+function glNearest(e){
+  const svg=document.querySelector('#glancePlot svg'); if(!svg) return null;
+  const b=svg.getBoundingClientRect(), k=svg.viewBox.baseVal.width/b.width;
+  const x=(e.clientX-b.left)*k, y=(e.clientY-b.top)*k;
+  let best=null, bd=26*26;
+  glPts.forEach(p=>{ if(glRegion&&p.r.cuisine!==glRegion) return; const d=(p.x-x)**2+(p.y-y)**2; if(d<bd){bd=d;best=p;} });
+  return best;
+}
+function glShow(p,touch){
+  const tip=document.getElementById('glTip'); if(!tip) return;
+  document.querySelectorAll('.gl-dot.hot').forEach(d=>d.classList.remove('hot'));
+  glHot=p;
+  if(!p){ tip.classList.remove('on','touch'); return; }
+  const dot=document.querySelector('.gl-dot[data-id="'+p.r.id+'"]'); if(dot) dot.classList.add('hot');
+  tip.innerHTML=`<b>${p.r.name}</b><span>${regionLabel(p.r.cuisine)} &middot; ${CAT_LABEL[p.r.category]||p.r.category}</span><span>${fmtTime(p.t)} &middot; ${p.n} ingredients &middot; page ${p.r.page}</span>${touch?'<span class="gl-open">Open recipe</span>':''}`;
+  tip.classList.toggle('touch',!!touch);
+  const svg=document.querySelector('#glancePlot svg'), k=svg.getBoundingClientRect().width/svg.viewBox.baseVal.width, w=svg.getBoundingClientRect().width;
+  const px=p.x*k, py=p.y*k, tw=tip.offsetWidth, th=tip.offsetHeight;
+  tip.style.left=Math.max(0,Math.min(w-tw,px+14+tw>w?px-tw-14:px+14))+'px';
+  tip.style.top=Math.max(0,py-th-10<0?py+14:py-th-10)+'px';
+  tip.classList.add('on');
+}
+function initGlance(){
+  const sec=document.getElementById('glance'), host=document.getElementById('glancePlot'), leg=document.getElementById('glanceLegend');
+  if(!sec||!host) return;
+  const names={northern:'Miền Bắc',central:'Miền Trung',southern:'Miền Nam'};
+  leg.innerHTML=GL_REG.map(([key,v])=>`<button type="button" class="gl-key" data-region="${key}" aria-pressed="false" style="--c:var(${v})"><i></i>${names[key]}</button>`).join('');
+  leg.addEventListener('click',e=>{
+    const b=e.target.closest('.gl-key'); if(!b) return;
+    glRegion=glRegion===b.dataset.region?'':b.dataset.region;
+    leg.classList.toggle('filtering',!!glRegion);
+    leg.querySelectorAll('.gl-key').forEach(k=>k.setAttribute('aria-pressed',String(k.dataset.region===glRegion)));
+    document.querySelectorAll('.gl-dot').forEach(d=>{ const p=glPts.find(q=>q.r.id==d.dataset.id); d.classList.toggle('dim',!!glRegion&&p.r.cuisine!==glRegion); });
+    glShow(null);
+  });
+  const coarse=window.matchMedia('(hover: none)').matches;
+  host.addEventListener('mousemove',e=>{ if(coarse) return; const p=glNearest(e); if(p!==glHot) glShow(p); host.querySelector('svg').style.cursor=p?'pointer':'default'; });
+  host.addEventListener('mouseleave',()=>{ if(!coarse) glShow(null); });
+  host.addEventListener('click',e=>{
+    if(e.target.closest('.gl-tip')){ if(glHot) showDetail(glHot.r.id); return; }
+    const p=glNearest(e);
+    if(!p){ glShow(null); return; }
+    if(coarse&&p!==glHot){ glShow(p,true); return; }   // on touch the first tap names the dot, the second opens it
+    showDetail(p.r.id);
+  });
+  renderGlance();
+  let lastW=host.clientWidth;
+  if('ResizeObserver' in window) new ResizeObserver(()=>{ const w=host.clientWidth; if(w&&Math.abs(w-lastW)>8){ lastW=w; renderGlance(); } }).observe(host);
+  /* the dots arrive left to right the first time the chart scrolls into view */
+  if('IntersectionObserver' in window){
+    const io=new IntersectionObserver(es=>{ if(es.some(x=>x.isIntersecting)){ sec.classList.add('in'); io.disconnect(); } },{threshold:.25});
+    io.observe(sec);
+  } else sec.classList.add('in');
+}
+
 function handleHash(){
   const h=location.hash;
   if(h.startsWith('#recipe-')){
@@ -1427,6 +1586,7 @@ async function init(){
   renderExplore();
   applyFilters();
   renderIndex();
+  initGlance();
   handleHash();
 }
 
