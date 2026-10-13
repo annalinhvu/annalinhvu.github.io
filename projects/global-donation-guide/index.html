@@ -92,7 +92,7 @@ main{flex:1}
 .search-clear{width:28px;height:28px;flex-shrink:0;display:flex;align-items:center;justify-content:center;color:var(--muted);font-size:1.15rem;border-radius:50%}
 .search-clear:hover{color:var(--ink)}
 .filter-right{display:flex;align-items:center;justify-content:space-between;gap:16px;min-width:0}
-.filter-tabs{display:flex;gap:4px 18px;flex-wrap:wrap}
+.filter-tabs{display:flex;gap:4px 18px;flex-wrap:nowrap}
 .filter-tab{--cause:var(--ink);font-size:.92rem;font-weight:500;color:var(--muted);padding:9px 0 7px;border-bottom:2px solid transparent;white-space:nowrap;transition:color .15s}
 .filter-tab:hover{color:var(--ink)}
 .filter-tab.active{color:var(--ink);font-weight:600;border-bottom-color:var(--cause)}
@@ -133,8 +133,9 @@ footer a{color:var(--ink2);text-decoration:underline;text-underline-offset:3px;t
 footer a:hover{color:var(--ink);text-decoration-color:currentColor}
 .footer-links{display:flex;flex-wrap:wrap;gap:6px 22px}
 
-@media(max-width:1000px){
+@media(max-width:1100px){
   .split{grid-template-columns:minmax(0,1fr)}
+  .filter-tabs{flex-wrap:wrap}
   .panel-hdr{padding:44px 0 32px;row-gap:16px}
   .filter-in{row-gap:8px}
   .cat-head{position:static;padding:16px 0 6px}
@@ -550,7 +551,7 @@ updateThemeLabel();
     });
 
     /* only say how many when the list is narrowed, so nothing on the page is a count that can go stale */
-    resultsCount.textContent = (visible === TOTAL || visible === 0) ? '' : visible + (visible === 1 ? ' organization' : ' organizations');
+    resultsCount.textContent = (visible === TOTAL || visible === 0) ? '' : visible + ' shown';
     searchClear.hidden = !activeQuery;
 
     if (visible === 0) {
