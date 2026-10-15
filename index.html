@@ -1572,7 +1572,7 @@ body {
           <div class="proj-card" data-demo="rawdata">
             <div class="proj-title">Raw Data Request Builder</div>
             <div class="proj-ctx">2026</div>
-            <div class="proj-tags"><span class="proj-tag">AWS Amplify</span><span class="proj-tag">Lambda</span><span class="proj-tag">Docker</span><span class="proj-tag">Snowflake</span><span class="proj-tag">Python</span></div>
+            <div class="proj-tags"><span class="proj-tag">AWS Amplify</span><span class="proj-tag">Lambda</span><span class="proj-tag">Docker</span><span class="proj-tag">Snowflake</span><span class="proj-tag">Python</span><span class="proj-tag">S3</span></div>
             <div class="proj-sum">Client Services relied on engineering for every raw data pull. This tool lets them select the data they need and receive the file directly. It is built on Amplify, a Python Lambda, and Snowflake.<span class="proj-more">full write-up →</span></div>
             <div class="proj-desc">Client Services relied on engineering for every raw data pull. This tool lets them select the data they need and receive the file directly. An Amplify front end calls a Dockerized Python Lambda that runs parameterized Snowflake queries. CSV, Excel, and JSON exports are staged in S3 and delivered to Google Drive, and every request is written to an audit log in Snowflake.</div>
             <div class="proj-metrics"><div><div class="pm-v">3</div><div class="pm-u">export formats</div></div><div><div class="pm-v">S3 + Drive</div><div class="pm-u">delivery</div></div><div><div class="pm-v">Zero-code</div><div class="pm-u">for end users</div></div></div>
@@ -2909,7 +2909,7 @@ switchPane = function(id) {
       var ks = [].map.call(el.querySelectorAll(tagSel), function(t) { return T.norm(t.textContent); })
         .filter(function(k, i, a) { return byKey[k] && a.indexOf(k) === i; });
       ks.forEach(function(k) { byKey[k][field].push(title.trim()); });
-      if (ks.length > 1) sets.push(ks);
+      if (ks.length > 1) sets.push({ks:ks, project:field === 'projects'});
     });
   }
   collect('#pane-built .proj-card', '.proj-tag', '.proj-title', 'projects');
@@ -2918,16 +2918,23 @@ switchPane = function(id) {
   var hidden = skills.length - nodes.length;
   if (nodes.length < 4) return;
 
-  var edgeMap = {};
-  sets.forEach(function(ks) {
-    for (var i = 0; i < ks.length; i++) for (var j = i + 1; j < ks.length; j++) {
-      var id = [ks[i], ks[j]].sort().join('|');
-      edgeMap[id] = (edgeMap[id] || 0) + 1;
-    }
-  });
-  var edges = Object.keys(edgeMap).map(function(id) { var p = id.split('|'); return {a:byKey[p[0]], b:byKey[p[1]], w:edgeMap[id]}; });
+  /* every pair of skills that share a card or role, counted; roles only shape the layout,
+     the lines drawn come from projects, since a role's tag list pairs skills that were never used together */
+  function pairs(list) {
+    var m = {};
+    list.forEach(function(st) {
+      var ks = st.ks;
+      for (var i = 0; i < ks.length; i++) for (var j = i + 1; j < ks.length; j++) {
+        var id = [ks[i], ks[j]].sort().join('|');
+        m[id] = (m[id] || 0) + 1;
+      }
+    });
+    return Object.keys(m).map(function(id) { var p = id.split('|'); return {a:byKey[p[0]], b:byKey[p[1]], w:m[id]}; });
+  }
+  var edges = pairs(sets);
+  var links = pairs(sets.filter(function(st) { return st.project; }));
   nodes.forEach(function(n) { n.uses = n.projects.length + n.roles.length; n.r = 3 + Math.sqrt(n.uses) * 1.6; n.nb = {}; });
-  edges.forEach(function(e) { e.a.nb[e.b.key] = 1; e.b.nb[e.a.key] = 1; });
+  links.forEach(function(e) { e.a.nb[e.b.key] = 1; e.b.nb[e.a.key] = 1; });
 
   /* small force layout, seeded so it looks the same on every visit */
   var W = 400, H = 330, seed = 7;
@@ -2997,7 +3004,7 @@ switchPane = function(id) {
   box.className = 'sk-graph';
   box.hidden = true;
   var h = '<svg class="sk-svg" viewBox="0 0 ' + W + ' ' + H + '" role="group" aria-label="Skills graph: lines join skills used together in the same project or role">';
-  edges.forEach(function(e, i) {
+  links.forEach(function(e, i) {
     h += '<line class="sk-edge" data-a="' + esc(e.a.key) + '" data-b="' + esc(e.b.key) + '" x1="' + e.a.x.toFixed(1) + '" y1="' + e.a.y.toFixed(1) + '" x2="' + e.b.x.toFixed(1) + '" y2="' + e.b.y.toFixed(1) + '" stroke-width="' + (0.5 + Math.min(3, e.w) * .35).toFixed(2) + '"/>';
   });
   nodes.forEach(function(n) {
@@ -3010,7 +3017,7 @@ switchPane = function(id) {
   h += '<div class="sk-legend">' + groups.map(function(g, i) {
     return nodes.some(function(n) { return n.g === i; }) ? '<span class="' + GROUP_CLS[i % GROUP_CLS.length] + '"><i></i><b>' + esc(g) + '</b></span>' : '';
   }).join('') + '</div>';
-  h += '<div class="sk-card" aria-live="polite"><span class="sk-hint">hover a skill to see where it was used · click to filter · a line means used together' + (hidden ? ' · ' + hidden + ' more in list view' : '') + '</span></div>';
+  h += '<div class="sk-card" aria-live="polite"><span class="sk-hint">hover a skill to see where it was used · click to filter · a line means used together in a project · bigger dot, used more' + (hidden ? ' · ' + hidden + ' more in list view' : '') + '</span></div>';
   box.innerHTML = h;
   more.insertBefore(box, first);
   var card = box.querySelector('.sk-card'), hint = card.innerHTML;
