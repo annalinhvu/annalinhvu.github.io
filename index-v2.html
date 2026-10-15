@@ -1828,7 +1828,7 @@ body {
 <div class="game-modal hidden" id="game-modal">
   <div class="game-box">
     <div class="game-titlebar">
-      <span>anna_snake.exe — collect the data</span>
+      <span>anna_snake.exe · collect the data</span>
       <button class="game-close" onclick="closeGame()">×</button>
     </div>
     <canvas id="game-canvas"></canvas>
@@ -3219,6 +3219,28 @@ document.addEventListener('click', function(e) {
   letter-spacing:1.5px;color:var(--t4);margin-bottom:2px;
   transition:color .3s;
 }
+/* Petting, dragging, keyboard */
+#pet-char-wrap{touch-action:none;border-radius:14px;outline:none;}
+#pet-char-wrap:focus-visible{box-shadow:0 0 0 2px var(--amber);}
+#pet-wrap.dragging #pet-char{cursor:grabbing;animation:none;transform:rotate(-6deg) scale(1.06);}
+#pet-wrap.dragging #pet-bubble{display:none;}
+.pet-blush{opacity:0;transition:opacity .25s;}
+.pet-happy-eye{opacity:0;transition:opacity .12s;}
+#pet-char.petted .pet-blush{opacity:.55;}
+#pet-char.petted .pet-happy-eye{opacity:1;}
+#pet-char.petted .pet-eye{opacity:0;}
+.pet-eye{transition:opacity .12s;}
+/* Moved to the top half: bubble opens below Pumkin */
+#pet-wrap.below{flex-direction:column-reverse;}
+#pet-wrap.below #pet-bubble{border-radius:4px 16px 16px 16px;}
+#pet-wrap.left{align-items:flex-start;}
+#pet-wrap.left:not(.below) #pet-bubble{border-radius:16px 16px 16px 4px;}
+.pet-hint{display:block;margin-top:10px;font-family:'Geist Mono',monospace;font-size:0.62rem;color:var(--t4);}
+@media (prefers-reduced-motion: reduce){
+  #pet-char,#pet-char.excited,#pet-char.sleeping{animation:none !important;}
+  .pet-zzz.zshow,.pet-dot{animation:none;opacity:.7;}
+  #pet-bubble{animation:none;}
+}
 </style>
 
 <div id="pet-wrap">
@@ -3227,11 +3249,11 @@ document.addEventListener('click', function(e) {
     <div id="pet-bubble-inner"></div>
   </div>
   <div id="pet-label">PUMKIN</div>
-  <div id="pet-char-wrap">
+  <div id="pet-char-wrap" role="button" tabindex="0" aria-label="Pumkin, the site guide. Press Enter for a tip about this tab. Drag to move." title="Click for a tip · drag to move">
     <span class="pet-zzz" id="pet-z1" style="font-size:8px;right:1px;top:8px;">z</span>
     <span class="pet-zzz" id="pet-z2" style="font-size:10px;right:-3px;top:1px;">z</span>
     <span class="pet-zzz" id="pet-z3" style="font-size:12px;right:-7px;top:-7px;">Z</span>
-    <svg id="pet-char" width="52" height="66" viewBox="0 0 52 66" fill="none" xmlns="http://www.w3.org/2000/svg" onclick="petClick()" title="Click me!">
+    <svg id="pet-char" width="52" height="66" viewBox="0 0 52 66" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
       <defs>
         <clipPath id="pet-clip-l"><circle cx="20" cy="31" r="4.5"/></clipPath>
         <clipPath id="pet-clip-r"><circle cx="32" cy="31" r="4.5"/></clipPath>
@@ -3240,15 +3262,22 @@ document.addEventListener('click', function(e) {
       <circle cx="26" cy="4" r="3.5" fill="#f5a623"/>
       <rect x="5" y="15" width="42" height="38" rx="13" fill="#e8732a"/>
       <rect x="10" y="21" width="32" height="24" rx="8" fill="var(--bg)"/>
-      <circle cx="20" cy="31" r="4.5" fill="var(--panel)"/>
-      <circle cx="32" cy="31" r="4.5" fill="var(--panel)"/>
-      <circle id="pet-pupil-l" cx="21" cy="31" r="2.5" fill="var(--t1)"/>
-      <circle id="pet-pupil-r" cx="33" cy="31" r="2.5" fill="var(--t1)"/>
-      <circle id="pet-shine-l" cx="22" cy="30" r="0.9" fill="white"/>
-      <circle id="pet-shine-r" cx="34" cy="30" r="0.9" fill="white"/>
-      <!-- eyelids (scaleY 0=open, 1=closed) -->
-      <rect id="pet-lid-l" x="15.5" y="26.5" width="9" height="9" fill="#e8732a" clip-path="url(#pet-clip-l)" style="transform:scaleY(0);"/>
-      <rect id="pet-lid-r" x="27.5" y="26.5" width="9" height="9" fill="#e8732a" clip-path="url(#pet-clip-r)" style="transform:scaleY(0);"/>
+      <g class="pet-eye">
+        <circle cx="20" cy="31" r="4.5" fill="var(--panel)"/>
+        <circle cx="32" cy="31" r="4.5" fill="var(--panel)"/>
+        <circle id="pet-pupil-l" cx="21" cy="31" r="2.5" fill="var(--t1)"/>
+        <circle id="pet-pupil-r" cx="33" cy="31" r="2.5" fill="var(--t1)"/>
+        <circle id="pet-shine-l" cx="22" cy="30" r="0.9" fill="white"/>
+        <circle id="pet-shine-r" cx="34" cy="30" r="0.9" fill="white"/>
+        <!-- eyelids (scaleY 0=open, 1=closed) -->
+        <rect id="pet-lid-l" x="15.5" y="26.5" width="9" height="9" fill="#e8732a" clip-path="url(#pet-clip-l)" style="transform:scaleY(0);"/>
+        <rect id="pet-lid-r" x="27.5" y="26.5" width="9" height="9" fill="#e8732a" clip-path="url(#pet-clip-r)" style="transform:scaleY(0);"/>
+      </g>
+      <!-- petted: ^ ^ eyes and blush -->
+      <path class="pet-happy-eye" d="M 16.5 32.5 Q 20 27.5 23.5 32.5" stroke="var(--t1)" stroke-width="1.8" stroke-linecap="round" fill="none"/>
+      <path class="pet-happy-eye" d="M 28.5 32.5 Q 32 27.5 35.5 32.5" stroke="var(--t1)" stroke-width="1.8" stroke-linecap="round" fill="none"/>
+      <ellipse class="pet-blush" cx="14" cy="38" rx="3" ry="1.8" fill="#ff7b7b"/>
+      <ellipse class="pet-blush" cx="38" cy="38" rx="3" ry="1.8" fill="#ff7b7b"/>
       <path id="pet-mouth" d="M 19 38 Q 26 43 33 38" stroke="#c85e20" stroke-width="1.8" stroke-linecap="round" fill="none"/>
       <rect x="12" y="50" width="11" height="12" rx="5" fill="#c85e20"/>
       <rect x="29" y="50" width="11" height="12" rx="5" fill="#c85e20"/>
@@ -3269,20 +3298,53 @@ document.addEventListener('click', function(e) {
     wink:    'M 19 38 Q 26 43 31 39'
   };
 
+  /* Click tips: the first ones are about the tab you're on, then general ones */
+  var PANE_TIPS = {
+    built: [
+      "Click any card for the full write-up. The tags filter the list too. 🏷️",
+      "She audited a warehouse of 1,000+ tables and cleaned out what nobody owned. Very satisfying. 🧹",
+      "She built Slack alerts so anomalies get caught before anyone has to ask. Prevention over panic. 🔔"
+    ],
+    career: [
+      "CS at Penn while working full-time. Busy human. 📚",
+      "Want to talk? Her email and LinkedIn are in the sidebar. 📬"
+    ],
+    studio: [
+      "The Cơm Nhà recipe app exists because she kept losing recipes in her notes app. Relatable. 🍜",
+      "The NYC Food Help Map exists because those resources deserve to be easy to find. Full stop. 🗺️",
+      "Film festival tracker. Film stock database. NYC film venue map. A real cinephile lives here. 🎞️",
+      "The Departure Lounge is a bucket list formatted as boarding passes. Normal amount of wanderlust. ✈️"
+    ],
+    architecture: [
+      "Click a component in the platform diagram and it shows the projects that used it. 🧩",
+      "Try the decision lab: switch a rule off and watch the sign-up count go wrong. 🔀",
+      "Click a table in the lineage graph to see what feeds it and what it feeds. 🗂️"
+    ],
+    console: [
+      "The tables here are read live from the page. Try <code>SELECT * FROM projects</code>. 💻",
+      "Type <code>HELP</code> for everything you can run. Python, Java and C modes work too. ⌨️",
+      "Some commands launch things. <code>PLAY GAME</code> is one of them. 🐍"
+    ]
+  };
   var TIPS = [
-    "The terminal tab is real. Type <code>anna.skills()</code> in Python mode. 💻",
     "There's a hidden game somewhere on this page. I am not going to tell you where. 👀",
-    "She once refactored an entire data warehouse. 1,000+ tables. Just... tidied them all up. 🧹",
-    "The Cơm Nhà recipe app exists because she kept losing recipes in her notes app. Relatable. 🍜",
-    "The NYC Food Help Map exists because those resources deserve to be easy to find. Full stop. 🗺️",
-    "Film festival tracker. Film stock database. NYC film venue map. A real cinephile lives here. 🎞️",
     "Pumkin has no second 'p'. This was Anna's decision. Pumkin has accepted it. 🎃",
-    "CS at Penn while working full-time. Busy human. 📚",
-    "She built Slack alerts so anomalies get caught before anyone has to ask. Prevention over panic. 🔔",
     "Anna is from Hanoi, Vietnam. The recipe app has receipts. 🇻🇳",
-    "The Departure Lounge is a bucket list formatted as boarding passes. Normal amount of wanderlust. ✈️",
     "She speaks English and Vietnamese. Pumkin speaks in emojis. We make it work. 👾",
+    "You can drag me anywhere. I'll stay where you put me. 🫳"
   ];
+  var paneTipIdx = {};
+  function currentPane() {
+    var t = document.querySelector('.top-tab.active');
+    return t ? t.dataset.pane : 'built';
+  }
+  function nextTip() {
+    var pane = currentPane(), list = PANE_TIPS[pane] || [];
+    var i = paneTipIdx[pane] || 0;
+    paneTipIdx[pane] = i + 1;
+    if (i < list.length) return list[i];
+    return TIPS[(tipIdx++) % TIPS.length];
+  }
 
   var WAKEUP = [
     "You're back! I was dreaming about <strong>NULL values</strong>... 😴",
@@ -3367,7 +3429,8 @@ document.addEventListener('click', function(e) {
     setTimeout(function() { setLid('pet-lid-r', 0); setMouth('happy'); }, 340);
   }
   function lookAround() {
-    if (PET_STATE !== 'normal') return;
+    // only when the cursor has been still for a while; otherwise the eyes are following it
+    if (PET_STATE !== 'normal' || Date.now() - lastPointer < 4000) return;
     var pl = document.getElementById('pet-pupil-l');
     var pr = document.getElementById('pet-pupil-r');
     var sl = document.getElementById('pet-shine-l');
@@ -3378,7 +3441,10 @@ document.addEventListener('click', function(e) {
     var slx = goLeft ? 20 : 24, srx = goLeft ? 32 : 36;
     pl.setAttribute('cx', lx); pr.setAttribute('cx', rx);
     if (sl) sl.setAttribute('cx', slx); if (sr) sr.setAttribute('cx', srx);
+    pl.setAttribute('cy', 31); pr.setAttribute('cy', 31);
+    if (sl) sl.setAttribute('cy', 30); if (sr) sr.setAttribute('cy', 30);
     setTimeout(function() {
+      if (lastPointer) { aimEyes(); return; }
       pl.setAttribute('cx', 21); pr.setAttribute('cx', 33);
       if (sl) sl.setAttribute('cx', 22); if (sr) sr.setAttribute('cx', 34);
     }, 650);
@@ -3463,8 +3529,7 @@ document.addEventListener('click', function(e) {
       setTimeout(function() { typingThenShow(randWakeup()); }, 350);
       return;
     }
-    typingThenShow(TIPS[tipIdx % TIPS.length]);
-    tipIdx++;
+    typingThenShow(nextTip());
     excite();
   };
 
@@ -3489,15 +3554,130 @@ document.addEventListener('click', function(e) {
     document.getElementById('pet-bubble').classList.add('hidden');
   });
 
+  /* ── Eyes follow the cursor ── */
+  var lastPointer = 0, eyeRaf = 0, px = 0, py = 0, dragging = false;
+  function aimEyes() {
+    eyeRaf = 0;
+    if (PET_STATE !== 'normal' || dragging) return;
+    var svg = document.getElementById('pet-char');
+    var box = svg.getBoundingClientRect();
+    if (!box.width) return;
+    // eye centre in screen space (SVG is 52x66, eyes sit at y=31)
+    var ex = box.left + box.width / 2, ey = box.top + box.height * 31 / 66;
+    var dx = px - ex, dy = py - ey, d = Math.sqrt(dx * dx + dy * dy) || 1;
+    var k = Math.min(1, d / 160);
+    var ox = dx / d * 1.8 * k, oy = dy / d * 1.4 * k;
+    [['pet-pupil-l', 20], ['pet-pupil-r', 32]].forEach(function(e) {
+      var el = document.getElementById(e[0]);
+      if (el) { el.setAttribute('cx', (e[1] + ox).toFixed(2)); el.setAttribute('cy', (31 + oy).toFixed(2)); }
+    });
+    [['pet-shine-l', 21], ['pet-shine-r', 33]].forEach(function(e) {
+      var el = document.getElementById(e[0]);
+      if (el) { el.setAttribute('cx', (e[1] + ox).toFixed(2)); el.setAttribute('cy', (30 + oy).toFixed(2)); }
+    });
+  }
+  document.addEventListener('mousemove', function(e) {
+    px = e.clientX; py = e.clientY; lastPointer = Date.now();
+    if (!eyeRaf) eyeRaf = requestAnimationFrame(aimEyes);
+  }, {passive:true});
+
+  /* ── Petting: hover for a moment ── */
+  var petTimer = null;
+  function setPetted(on) {
+    var c = document.getElementById('pet-char');
+    if (on && (PET_STATE !== 'normal' || dragging)) return;
+    c.classList.toggle('petted', on);
+    if (on) { setMouth('big'); setLabel('♥', 'var(--amber)'); }
+    else if (PET_STATE === 'normal') { setMouth('happy'); setLabel('PUMKIN'); }
+  }
+
+  /* ── Drag to move; a short press is a click ── */
+  var wrap = document.getElementById('pet-wrap');
+  var charWrap = document.getElementById('pet-char-wrap');
+  function placeAt(x, y) {
+    var w = wrap.offsetWidth, h = wrap.offsetHeight, cw = charWrap.offsetWidth, ch = charWrap.offsetHeight;
+    // x, y = where Pumkin's body goes (top-left); clamp so it stays on screen
+    x = Math.max(8, Math.min(window.innerWidth - cw - 8, x));
+    y = Math.max(8, Math.min(window.innerHeight - ch - 8, y));
+    var below = y < window.innerHeight / 2, left = x < window.innerWidth / 2;
+    wrap.classList.toggle('below', below);
+    wrap.classList.toggle('left', left);
+    wrap.style.right = 'auto'; wrap.style.bottom = 'auto';
+    // anchor the wrapper so the character, not the bubble, lands at (x, y)
+    var cr = charWrap.getBoundingClientRect(), wr = wrap.getBoundingClientRect();
+    var offX = cr.left - wr.left, offY = cr.top - wr.top;
+    wrap.style.left = (x - offX) + 'px';
+    wrap.style.top = (y - offY) + 'px';
+    return {x: x, y: y};
+  }
+  var savedPos = null;
+  try { savedPos = JSON.parse(localStorage.getItem(PET_LS + '-pos') || 'null'); } catch (e) {}
+  function applySaved() {
+    if (!savedPos) return;
+    placeAt(savedPos.fx * window.innerWidth, savedPos.fy * window.innerHeight);
+  }
+  // the bubble changes the wrapper's size, so re-anchor whenever it opens or closes
+  new MutationObserver(function() { if (savedPos && !dragging) applySaved(); })
+    .observe(document.getElementById('pet-bubble'), {attributes: true, attributeFilter: ['class']});
+  window.addEventListener('resize', applySaved);
+
+  var down = null;
+  charWrap.addEventListener('pointerdown', function(e) {
+    if (e.button !== 0) return;
+    var r = charWrap.getBoundingClientRect();
+    down = {x: e.clientX, y: e.clientY, gx: e.clientX - r.left, gy: e.clientY - r.top, moved: false};
+    charWrap.setPointerCapture(e.pointerId);
+  });
+  charWrap.addEventListener('pointermove', function(e) {
+    if (!down) return;
+    if (!down.moved && Math.abs(e.clientX - down.x) + Math.abs(e.clientY - down.y) < 6) return;
+    if (!down.moved) {
+      down.moved = dragging = true;
+      clearTimeout(petTimer); setPetted(false);
+      if (PET_STATE === 'sleeping') toNormal();
+      clearTimeout(_navCloseTimer);
+      document.getElementById('pet-bubble').classList.add('hidden');
+      wrap.classList.add('dragging');
+      setMouth('big'); setLabel('wheee', 'var(--amber)');
+    }
+    placeAt(e.clientX - down.gx, e.clientY - down.gy);
+  });
+  charWrap.addEventListener('pointerup', function(e) {
+    if (!down) return;
+    var wasDrag = down.moved; down = null;
+    if (!wasDrag) { window.petClick(); return; }
+    dragging = false;
+    wrap.classList.remove('dragging');
+    var r = charWrap.getBoundingClientRect();
+    savedPos = {fx: r.left / window.innerWidth, fy: r.top / window.innerHeight};
+    try { localStorage.setItem(PET_LS + '-pos', JSON.stringify(savedPos)); } catch (err) {}
+    setMouth('happy'); setLabel('PUMKIN');
+  });
+  charWrap.addEventListener('pointercancel', function() { down = null; dragging = false; wrap.classList.remove('dragging'); });
+  charWrap.addEventListener('mouseenter', function() {
+    clearTimeout(petTimer);
+    petTimer = setTimeout(function() { setPetted(true); }, 700);
+  });
+  charWrap.addEventListener('mouseleave', function() { clearTimeout(petTimer); setPetted(false); });
+  charWrap.addEventListener('keydown', function(e) {
+    if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); window.petClick(); }
+  });
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') { clearTimeout(_navCloseTimer); document.getElementById('pet-bubble').classList.add('hidden'); }
+  });
+
   /* ── Init ── */
   scheduleIdle();
   resetSleepTimer();
+  applySaved();
 
-  if (!localStorage.getItem(PET_LS)) {
-    localStorage.setItem(PET_LS, '1');
+  var seen = null;
+  try { seen = localStorage.getItem(PET_LS); localStorage.setItem(PET_LS, '1'); } catch (e) { seen = '1'; }
+  if (!seen) {
     setTimeout(function() {
       document.getElementById('pet-bubble-inner').innerHTML =
-        '<div class="pet-msg">' + getGreeting() + ' I\'m <strong>Pumkin</strong> 👾 — Anna\'s data sprite and self-appointed guide.<br><br>Click me anytime for tips. Want a quick tour?</div>' + navHtml();
+        '<div class="pet-msg">' + getGreeting() + ' I\'m <strong>Pumkin</strong> 👾, Anna\'s data sprite and self-appointed guide.<br><br>Click me for tips about whatever tab you\'re on. Want a quick tour?</div>' + navHtml() +
+        '<span class="pet-hint">psst: you can drag me out of the way</span>';
       openBubble(); excite();
     }, 1800);
   }
@@ -4050,7 +4230,7 @@ document.addEventListener('click', function(e) {
     if(/^TRUNCATE/i.test(cu))       return '<div class="res-error">ERROR 1142: absolutely not.</div>';
     if(/^DROP\s+DATABASE/i.test(cu))return '<div class="res-error">ERROR 1044: you wish.</div>';
     if(/FROM\s+boyfriends/i.test(cu)) return '<div class="res-error">ERROR 1146: table \'anna_vu.boyfriends\' doesn\'t exist.</div>';
-    if(/FROM\s+salary/i.test(cu))   return '<div class="res-error">ERROR 1142: access denied — classified.</div>';
+    if(/FROM\s+salary/i.test(cu))   return '<div class="res-error">ERROR 1142: access denied. classified.</div>';
     if(/FROM\s+secrets/i.test(cu))  return '<div class="res-info">-- no secrets here... or are there? 🤫</div>';
     if(/SELECT\s+SLEEP/i.test(cu))  return '<div class="res-error">ERROR: i don\'t sleep on the job.</div>';
     if(/^COMMIT\s*;?$/i.test(cu))   return '<div class="res-success">-- transaction committed. changes saved.</div>';
@@ -4136,7 +4316,7 @@ document.addEventListener('click', function(e) {
     if(/^print\s*\(\s*anna\s*\)/.test(cu)) return '<div class="res-success">&lt;Anna Vu · Principal Data Engineer · NYC&gt;</div>';
     if(/^len\s*\(\s*anna\.skills\s*\(\s*\)\s*\)/.test(cu)) return '<div class="res-success">'+SKILLS.length+'</div>';
     if(/^import\s+anna/.test(cu)) return '<div class="res-info"># already imported :)</div>';
-    if(/^anna\s*=\s*Anna\s*\(\s*\)/.test(cu)) return '<div class="res-info"># already instantiated — hi! 👋</div>';
+    if(/^anna\s*=\s*Anna\s*\(\s*\)/.test(cu)) return '<div class="res-info"># already instantiated. hi! 👋</div>';
     if(/^isinstance\s*\(\s*anna\s*,\s*DataEngineer\s*\)/.test(cu)) return '<div class="res-success">True</div>';
     if(/^isinstance\s*\(\s*anna\s*,/.test(cu)) return '<div class="res-success">False</div>';
     if(/^anna\s*==\s*['"]the best['"]/.test(cu)) return '<div class="res-success">True</div>';
@@ -4375,7 +4555,7 @@ document.addEventListener('click', function(e) {
     }
     if(/^anna\.getAvailability\s*\(\s*\)/.test(cu)) return '<div class="res-success">Status.OPEN_TO_WORK // '+ANNA.target_roles.join(' · ')+' · NYC or remote · vuhongnhatlinh@gmail.com</div>';
     if(/^anna\.getDreamJob\s*\(\s*\)/.test(cu)) return '<div class="res-success">"principal engineer building data systems that actually matter"</div>';
-    if(/^anna\.yearsOfExperience\s*\(\s*\)/.test(cu)) return '<div class="res-success">5 // int, not long — still growing</div>';
+    if(/^anna\.yearsOfExperience\s*\(\s*\)/.test(cu)) return '<div class="res-success">5 // int, not long. still growing</div>';
     if(/^anna\.getCoffeeCount\s*\(\s*\)/.test(cu)) return '<div class="res-success">Integer.MAX_VALUE // ∞</div>';
     if(/^anna\.getBugsFixed\s*\(\s*\)/.test(cu)) return '<div class="res-success">247 // and counting</div>';
     if(/^anna\.hashCode\s*\(\s*\)/.test(cu)) return '<div class="res-success">0x4e5943 // one of a kind</div>';
