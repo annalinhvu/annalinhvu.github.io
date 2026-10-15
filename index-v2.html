@@ -183,6 +183,7 @@ body {
 }
 @keyframes pulse{0%,100%{opacity:1;transform:scale(1);}50%{opacity:.45;transform:scale(.7);}}
 .theme-btn {
+  font-family:'Geist Mono',monospace;
   font-size:14px; background:none; border:none;
   cursor:pointer; color:var(--t3);
   padding:4px 6px; border-radius:4px;
@@ -359,7 +360,7 @@ body {
 .sk-focus .sk-edge.on{opacity:.75;stroke:var(--amber);}
 .sk-node,.sk-edge{transition:opacity .2s;}
 .sk-c0{color:var(--sk0);}.sk-c1{color:var(--sk1);}.sk-c2{color:var(--sk2);}.sk-c3{color:var(--sk3);}.sk-c4{color:var(--sk4);}.sk-c5{color:var(--sk5);}.sk-c6{color:var(--sk6);}.sk-c7{color:var(--sk7);}
-.sk-legend{display:flex;flex-wrap:wrap;gap:3px 12px;margin:6px 0 8px;font-family:'Geist Mono',monospace;font-size:10.5px;}
+.sk-legend{display:flex;flex-wrap:wrap;gap:3px 12px;margin:6px 0 8px;font-family:'Geist Mono',monospace;font-size:11px;}
 .sk-legend span{display:inline-flex;align-items:center;gap:5px;}
 .sk-legend i{width:7px;height:7px;border-radius:50%;background:currentColor;}
 .sk-legend b{font-weight:400;color:var(--t4);}
@@ -453,7 +454,7 @@ body {
 
 .db-head {
   display:grid;
-  grid-template-columns:42px 1fr 175px 70px;
+  grid-template-columns:42px 1fr 175px;
   column-gap:16px;
   padding:0 44px; height:36px; align-items:center;
   background:var(--panel-hd);
@@ -469,7 +470,7 @@ body {
 
 .db-row {
   display:grid;
-  grid-template-columns:42px 1fr 175px 70px;
+  grid-template-columns:42px 1fr 175px;
   column-gap:16px;
   padding:0 44px; border-bottom:1px solid var(--bd);
   text-decoration:none; color:inherit; cursor:pointer;
@@ -489,19 +490,19 @@ body {
 .db-row:hover .row-link{opacity:1;}
 
 .db-row.featured {
-  min-height:110px; background:var(--row-hi);
+  background:var(--row-hi);
   padding-left:44px;
-  align-items:start; padding-top:24px; padding-bottom:24px;
+  align-items:start; padding-top:18px; padding-bottom:18px;
 }
 .db-row.featured:hover{filter:brightness(1.07);}
-.db-row.std{min-height:110px;padding-top:24px;padding-bottom:24px;align-items:start;}
+.db-row.std{padding-top:18px;padding-bottom:18px;align-items:start;}
 .db-row.alt{background:var(--row-alt);}
 
 .col-idx{
   font-family:'Geist Mono',monospace;
   font-size:11px;color:var(--t4);letter-spacing:.5px;
 }
-.col-name{padding-right:14px;}
+.col-name{padding-right:14px;position:relative;}
 .row-name{
   font-size:15px;font-weight:500;color:var(--t1);
   display:block;transition:color .12s;line-height:1.3;
@@ -514,7 +515,8 @@ body {
 .row-link{
   font-family:'Geist Mono',monospace;
   font-size:11px;color:var(--amber);
-  display:block;margin-top:9px;
+  /* shown on hover beside the title, so it doesn't reserve an empty line in every row */
+  position:absolute;top:3px;right:14px;
   opacity:0;transition:opacity .12s;letter-spacing:.3px;
 }
 .col-stat{
@@ -525,15 +527,6 @@ body {
 .col-tech{
   font-family:'Geist Mono',monospace;
   font-size:11px;color:var(--t3);line-height:1.85;
-}
-.col-status{
-  display:flex;align-items:center;gap:7px;
-  font-family:'Geist Mono',monospace;
-  font-size:11px;color:var(--g-text);
-}
-.live-dot{
-  width:7px;height:7px;border-radius:50%;
-  background:var(--green);flex-shrink:0;
 }
 /* ── Filter bar ─────────────────────────────────────── */
 .filter-bar{
@@ -994,6 +987,10 @@ body {
   font-family:'Geist Mono',monospace;font-size:11px;
   padding:3px 10px;border:1px solid var(--tag-bd);border-radius:7px;color:var(--tag-col);
 }
+/* long tag lists show six; a tag the tech filter matches stays visible either way */
+.exp-tags:not(.open) .exp-tag:nth-of-type(n+7):not(.tag-hit){display:none;}
+.exp-more{font-family:'Geist Mono',monospace;font-size:11px;padding:3px 10px;border:1px dashed var(--tag-bd);border-radius:7px;background:none;color:var(--t4);cursor:pointer;transition:color .15s,border-color .15s;}
+.exp-more:hover,.exp-more:focus-visible{color:var(--amber);border-color:var(--amber);outline:none;}
 .exp-bullets{list-style:none;}
 .exp-bullets li{
   position:relative;padding-left:16px;
@@ -1221,10 +1218,12 @@ body {
   .layout{display:flex;flex-direction:column;}
   .left-panel{display:contents;}
   .panel-titlebar{order:0;position:static;}
-  .panel-top{order:1;background:var(--panel);padding-bottom:16px;}
-  .glance{border-bottom:none;padding-bottom:0;}
+  /* phones: name and links, then the intro and work, then the about facts and skills */
+  .panel-top{display:contents;}
+  .panel-top .profile-row{order:1;background:var(--panel);padding:16px;margin:0;border-bottom:1px solid var(--bd-hi);}
   .main-panel{order:2;}
-  .panel-more{order:3;background:var(--panel);border-top:1px solid var(--bd-hi);}
+  .glance{order:3;background:var(--panel);padding:16px;border-top:1px solid var(--bd-hi);border-bottom:none;}
+  .panel-more{order:4;background:var(--panel);border-top:1px solid var(--bd);}
   .intro-lead{font-size:17px;}
   .profile-tagline{display:none;} /* the Work intro covers this on phones */
   .top-tabs{overflow-x:auto;scrollbar-width:none;margin:0;}
@@ -1240,11 +1239,12 @@ body {
 
   /* Project table */
   .db-head,.db-row{
-    grid-template-columns:32px 1fr 52px;
+    grid-template-columns:32px 1fr;
     column-gap:8px;padding:0 16px;
   }
   .db-row.featured,.db-row.std,.db-row.alt{padding-left:16px;}
   .col-tech{display:none;}
+  .row-link{display:none;}
   .db-head span:nth-child(3){display:none;}
 
   .query-bar{padding:8px 16px;overflow-x:auto;white-space:nowrap;}
@@ -1456,7 +1456,7 @@ body {
       </div>
       <div class="db-head">
         <span>#</span><span>PROJECT</span>
-        <span>CATEGORY</span><span>STATUS</span>
+        <span>CATEGORY</span>
       </div>
 
       <a href="projects/festival-tracker/" class="db-row featured">
@@ -1467,70 +1467,60 @@ body {
           <span class="row-link">view project →</span>
         </div>
         <div class="col-tech">Film</div>
-        <div class="col-status"><span class="live-dot"></span>live</div>
       </a>
 
       <a href="projects/film-stocks/" class="db-row std">
         <div class="col-idx">02</div>
         <div class="col-name"><span class="row-name">Analog Film Stock Database</span><span class="row-desc">Compare analog film stocks by price, availability, and format. Paired with a development lab directory searchable by process and location.</span><span class="row-link">view project →</span></div>
         <div class="col-tech">Film</div>
-        <div class="col-status"><span class="live-dot"></span>live</div>
       </a>
 
       <a href="projects/nyc-film-map/" class="db-row std alt">
         <div class="col-idx">03</div>
         <div class="col-name"><span class="row-name">NYC Film Scene Map</span><span class="row-desc">Interactive map of NYC screening spaces, workshops, labs, galleries, and community film spots. Filterable by category and borough.</span><span class="row-link">view project →</span></div>
         <div class="col-tech">Film</div>
-        <div class="col-status"><span class="live-dot"></span>live</div>
       </a>
 
       <a href="projects/filmmakers/" class="db-row std">
         <div class="col-idx">04</div>
         <div class="col-name"><span class="row-name">Auteurs</span><span class="row-desc">Personal index of filmmakers and performers, searchable by era, nationality, and style. Includes film guides and portraits.</span><span class="row-link">view project →</span></div>
         <div class="col-tech">Film</div>
-        <div class="col-status"><span class="live-dot"></span>live</div>
       </a>
 
       <a href="projects/nyc-food-help/" class="db-row std alt">
         <div class="col-idx">05</div>
         <div class="col-name"><span class="row-name">NYC Food Help Map</span><span class="row-desc">Public-service directory of free food assistance organizations across NYC: pantries, soup kitchens, community meals, mobile food, and home delivery. Filterable, mapped, and volunteer-linked.</span><span class="row-link">view project →</span></div>
         <div class="col-tech">Civic</div>
-        <div class="col-status"><span class="live-dot"></span>live</div>
       </a>
 
       <a href="projects/nyc-adventure/" class="db-row std" target="_blank" rel="noopener">
         <div class="col-idx">06</div>
         <div class="col-name"><span class="row-name">NYC Adventure Log</span><span class="row-desc">Curated NYC activities across seasons and neighborhoods. Cinema, Food, Arts, Explore, and more. Surprise picker included.</span><span class="row-link">view project →</span></div>
         <div class="col-tech">City</div>
-        <div class="col-status"><span class="live-dot"></span>live</div>
       </a>
 
       <a href="projects/self-care/" class="db-row std alt">
         <div class="col-idx">07</div>
         <div class="col-name"><span class="row-name">Only Good Things</span><span class="row-desc">Curated self-care activity tracker with filters for season, duration, mood, and setting. Tracks completions locally, with a daily pick to nudge you toward trying one.</span><span class="row-link">view project →</span></div>
         <div class="col-tech">Wellness</div>
-        <div class="col-status"><span class="live-dot"></span>live</div>
       </a>
 
       <a href="projects/recipes/" class="db-row std">
         <div class="col-idx">08</div>
         <div class="col-name"><span class="row-name">Cơm Nhà</span><span class="row-desc">Vietnamese recipes from Miền Bắc, Miền Trung, and Miền Nam. Browse by region, search by ingredient.</span><span class="row-link">view project →</span></div>
         <div class="col-tech">Food</div>
-        <div class="col-status"><span class="live-dot"></span>live</div>
       </a>
 
       <a href="projects/atlas/" class="db-row std alt">
         <div class="col-idx">09</div>
         <div class="col-name"><span class="row-name">Departure Lounge</span><span class="row-desc">Destinations as boarding passes, with a calendar and budget planner for actually booking the trip.</span><span class="row-link">view project →</span></div>
         <div class="col-tech">Travel</div>
-        <div class="col-status"><span class="live-dot"></span>live</div>
       </a>
 
       <a href="projects/global-donation-guide/" class="db-row std">
         <div class="col-idx">10</div>
         <div class="col-name"><span class="row-name">Global Donation Guide</span><span class="row-desc">Curated directory of humanitarian relief, global hunger, and animal welfare organizations worldwide. Each one researched individually, with direct donation links.</span><span class="row-link">view project →</span></div>
         <div class="col-tech">Giving</div>
-        <div class="col-status"><span class="live-dot"></span>live</div>
       </a>
 
       <div class="db-footer">
@@ -2723,6 +2713,21 @@ switchPane = function(id) {
   }
   btns.forEach(function(b) { b.addEventListener('click', function() { run(b.getAttribute('data-run') === 'bad'); }); });
 })();
+
+/* ── Experience: long tag lists fold to six with a "+N more" toggle ── */
+document.querySelectorAll('#pane-career .exp-tags').forEach(function(box) {
+  var n = box.querySelectorAll('.exp-tag').length - 6;
+  if (n <= 0) return;
+  var b = document.createElement('button');
+  b.type = 'button'; b.className = 'exp-more';
+  b.textContent = '+' + n + ' more'; b.setAttribute('aria-expanded', 'false');
+  b.addEventListener('click', function() {
+    var open = box.classList.toggle('open');
+    b.textContent = open ? 'show less' : '+' + n + ' more';
+    b.setAttribute('aria-expanded', String(open));
+  });
+  box.appendChild(b);
+});
 
 /* ── Tech filter: click any tag, sidebar skill, or pipeline stage ── */
 (function() {
@@ -4295,7 +4300,7 @@ document.addEventListener('click', function(e) {
         stack:tagList(el, '.proj-tag'), description:txt(el, '.proj-desc')}, function(){ showOnPage('built', el, true); });
     });
     STUDIO = [].map.call(document.querySelectorAll('#pane-studio .db-row'), function(el){
-      return withRef({title:txt(el, '.row-name'), category:txt(el, '.col-tech'), status:txt(el, '.col-status'),
+      return withRef({title:txt(el, '.row-name'), category:txt(el, '.col-tech'),
         description:txt(el, '.row-desc'), url:el.getAttribute('href') || ''}, function(){ showOnPage('studio', el); });
     });
     MODELS = (window.SCHEMA ? window.SCHEMA.models : []).map(function(m){
@@ -4353,7 +4358,7 @@ document.addEventListener('click', function(e) {
   var SQL_TABLES = {
     anna:       function(){ return {cols:ANNA_COLS, rows:[ANNA]}; },
     built:      function(){ return {cols:['title','section','period','stack','description'], rows:BUILT}; },
-    studio:     function(){ return {cols:['title','category','status','description','url'], rows:STUDIO}; },
+    studio:     function(){ return {cols:['title','category','description','url'], rows:STUDIO}; },
     projects:   function(){ return {cols:['title','tab','category'], rows:PROJECTS}; },
     experience: function(){ return {cols:['title','company','location','period','stack'], rows:EXPERIENCE}; },
     skills:     function(){ return {cols:['category','skill'], rows:SKILLS}; },
