@@ -960,6 +960,10 @@ body {
   padding:3px 10px;border:1px solid var(--tag-bd);border-radius:7px;color:var(--tag-col);
 }
 .proj-desc{font-size:13px;color:var(--t2);line-height:1.75;margin-bottom:14px;}
+/* featured cards: a short summary on the card, the full description opens in the modal */
+.proj-card:has(.proj-sum) > .proj-desc{display:none;}
+.proj-sum{font-family:'Source Serif 4',Georgia,serif;font-size:14px;color:var(--t2);line-height:1.7;margin-bottom:14px;}
+.proj-more{display:block;margin-top:8px;font-family:'Geist Mono',monospace;font-size:11px;color:var(--amber);}
 .proj-metrics{
   display:flex;gap:20px;flex-wrap:wrap;
   padding-top:12px;margin-top:12px;border-top:1px solid var(--bd);
@@ -1086,6 +1090,14 @@ body {
 /* decision lab: sample rows pushed through the four rules, each of which can be switched off */
 .lab{margin-bottom:22px;padding:16px 20px 18px;border:1px solid var(--bd);border-radius:10px;background:var(--surface);}
 .lab .sch-sub{margin-top:0;}
+/* the lab repeats the four decisions above, so it starts folded */
+.lab:has(.lab-fold:not([open])){padding-top:12px;padding-bottom:12px;}
+.lab-fold > summary{list-style:none;cursor:pointer;margin-bottom:0;display:flex;align-items:center;gap:8px;}
+.lab-fold > summary::-webkit-details-marker{display:none;}
+.lab-fold > summary::before{content:'▶';font-size:9px;color:var(--amber);transition:transform .2s;}
+.lab-fold[open] > summary{margin-bottom:10px;}
+.lab-fold[open] > summary::before{transform:rotate(90deg);}
+.lab-fold > summary:hover,.lab-fold > summary:focus-visible{color:var(--amber);outline:none;}
 .lab-note{font-size:13px;line-height:1.6;color:var(--t3);margin-bottom:14px;max-width:760px;}
 .lab-grid{display:grid;grid-template-columns:minmax(0,300px) minmax(0,1fr);gap:22px;align-items:start;}
 .lab-switches{display:flex;flex-direction:column;gap:8px;}
@@ -1578,6 +1590,7 @@ body {
             <div class="proj-title">Data Pipelines & Client Dashboard Suite</div>
             <div class="proj-ctx">2022–Present</div>
             <div class="proj-tags"><span class="proj-tag">Snowflake</span><span class="proj-tag">Python</span><span class="proj-tag">Matillion</span><span class="proj-tag">Looker</span><span class="proj-tag">Tableau</span></div>
+            <div class="proj-sum">One trustworthy view of performance across every platform for a major enterprise marketing client. I own it end to end: 50+ sources into Snowflake, modeled once, feeding dashboards and reports for 100+ clients.<span class="proj-more">full write-up →</span></div>
             <div class="proj-desc">A major enterprise marketing client needed one trustworthy view of performance across every platform. I own the infrastructure end to end: 50+ sources ingested into Snowflake and modeled once, powering Tableau and Looker dashboards, automated reports, and ad-hoc pulls for 100+ clients.</div>
             <div class="proj-metrics"><div><div class="pm-v">50+</div><div class="pm-u">sources</div></div><div><div class="pm-v">100+</div><div class="pm-u">clients</div></div><div><div class="pm-v">$2B+</div><div class="pm-u">ad spend</div></div></div>
           </div>
@@ -1585,6 +1598,7 @@ body {
             <div class="proj-title">Raw Data Request Builder</div>
             <div class="proj-ctx">2026</div>
             <div class="proj-tags"><span class="proj-tag">AWS Amplify</span><span class="proj-tag">Lambda</span><span class="proj-tag">Docker</span><span class="proj-tag">Snowflake</span><span class="proj-tag">Python</span></div>
+            <div class="proj-sum">Client Services used to wait on engineering for every raw data pull. Now they pick the data and get the file themselves, built on Amplify, a Python Lambda and Snowflake.<span class="proj-more">full write-up →</span></div>
             <div class="proj-desc">Client Services used to wait on engineering for every raw data pull. Now they pick the data and get the file themselves. Amplify frontend, a Dockerized Python Lambda running parameterized Snowflake queries, CSV/Excel/JSON exports staged to S3 and delivered to Google Drive, and an audit log written back to Snowflake on every request.</div>
             <div class="proj-metrics"><div><div class="pm-v">3</div><div class="pm-u">export formats</div></div><div><div class="pm-v">S3 + Drive</div><div class="pm-u">delivery</div></div><div><div class="pm-v">Zero-code</div><div class="pm-u">for end users</div></div></div>
           </div>
@@ -1592,6 +1606,7 @@ body {
             <div class="proj-title">Automated Slack Alerting Suite</div>
             <div class="proj-ctx">2022–Present</div>
             <div class="proj-tags"><span class="proj-tag">SQL</span><span class="proj-tag">Python</span><span class="proj-tag">Snowflake</span><span class="proj-tag">Matillion</span><span class="proj-tag">Slack API</span></div>
+            <div class="proj-sum">Data issues used to surface when someone spotted a broken dashboard. These alerting pipelines catch them first, from late files to KPI anomalies to bad ad naming, and route them to the right team in Slack.<span class="proj-more">full write-up →</span></div>
             <div class="proj-desc">Data issues used to surface when someone spotted a broken dashboard. These production alerting pipelines catch them first and route them to the right team in Slack: SFTP file arrivals, KPI anomalies across platforms and geos, changes in reporting docs, and taxonomy/match-table checks that flag bad ad naming to the Media team before it reaches reporting.</div>
             <div class="proj-metrics"><div><div class="pm-v">4+</div><div class="pm-u">alert types</div></div><div><div class="pm-v">Multi-team</div><div class="pm-u">routing</div></div><div><div class="pm-v">Config-driven</div><div class="pm-u">thresholds</div></div></div>
           </div>
@@ -1810,7 +1825,8 @@ body {
           <button type="button" class="decision" data-model="int_first_party_matched"><div class="decision-p">entity resolution</div><div class="decision-t">Match on campaign ID before name</div><div class="decision-d">Renames are applied from their effective date, then first-party records match to media on campaign ID. The name lookup is only used when a record has no ID, since campaign names get edited and IDs stay fixed.</div><div class="decision-k">int_1p_matched →</div></button>
         </div>
         <div class="lab" id="dec-lab">
-          <div class="sch-sub">try it · switch a decision off</div>
+          <details class="lab-fold">
+          <summary class="sch-sub">try it · switch a decision off and see what breaks</summary>
           <p class="lab-note">Four campaign-days of sample data, run through the same four rules in your browser. Turn a rule off to see what the report gets wrong.</p>
           <div class="lab-grid">
             <div class="lab-switches" id="lab-switches"></div>
@@ -1820,6 +1836,7 @@ body {
               <div class="lab-why" id="lab-why"></div>
             </div>
           </div>
+          </details>
         </div>
         <div class="sch-graph-wrap"><svg class="sch-graph" id="sch-graph" role="group" aria-label="Warehouse lineage graph"></svg></div>
         <div class="sch-detail" id="sch-detail"></div>
@@ -3705,7 +3722,7 @@ document.addEventListener('click', function(e) {
     ],
     architecture: [
       "Click a component in the platform diagram and it shows the projects that used it. 🧩",
-      "Try the decision lab: switch a rule off and watch the sign-up count go wrong. 🔀",
+      "Under the design decisions there's a lab. Open it, switch a rule off, and watch the sign-up count go wrong. 🔀",
       "Click a table in the lineage graph to see what feeds it and what it feeds. 🗂️"
     ],
     console: [
@@ -3872,6 +3889,7 @@ document.addEventListener('click', function(e) {
 
   /* ── Typing dots → message ── */
   function typingThenShow(msgHtml, withNav) {
+    clearTimeout(_navCloseTimer);
     var inner = document.getElementById('pet-bubble-inner');
     inner.innerHTML = '<div class="pet-typing"><span class="pet-dot"></span><span class="pet-dot"></span><span class="pet-dot"></span></div>';
     openBubble();
@@ -4062,7 +4080,7 @@ document.addEventListener('click', function(e) {
     {id:'pet',      t:'Pet Pumkin (hover for a second)'},
     {id:'filter',   t:'Filter the work by a skill or tag'},
     {id:'pipeline', t:'Run the pipeline on the architecture tab'},
-    {id:'lab',      t:'Switch off a rule in the decision lab'},
+    {id:'lab',      t:'Open the decision lab and switch off a rule'},
     {id:'query',    t:'Run something in the terminal'},
     {id:'game',     t:'Find the hidden game'}
   ];
@@ -4114,8 +4132,9 @@ document.addEventListener('click', function(e) {
   if (!seen) {
     setTimeout(function() {
       document.getElementById('pet-bubble-inner').innerHTML =
-        '<div class="pet-msg">' + getGreeting() + ' I\'m <strong>Pumkin</strong> 👾, Anna\'s data sprite and self-appointed guide.<br><br>Click me for tips about whatever tab you\'re on. Want a quick tour?</div>' + navHtml() +
-        '<span class="pet-hint">psst: you can drag me out of the way</span>';
+        '<div class="pet-msg">' + getGreeting() + ' I\'m <strong>Pumkin</strong>. Click me for tips.</div>';
+      clearTimeout(_navCloseTimer);
+      _navCloseTimer = setTimeout(function() { document.getElementById('pet-bubble').classList.add('hidden'); }, 6000);
       openBubble(); excite();
     }, 1800);
   }
