@@ -1309,21 +1309,6 @@ body {
 .cta-btn.cta-primary:hover{background:rgba(200,120,94,.18);}
 
 /* ── Quick stats ── */
-.stats-grid {
-  display:grid;grid-template-columns:1fr 1fr;gap:10px 20px;
-  margin-bottom:4px;
-}
-.stat-item{display:flex;flex-direction:column;gap:2px;}
-.stat-v {
-  font-family:'Geist Mono',monospace;
-  font-size:21px;font-weight:700;
-  color:var(--amber);line-height:1;letter-spacing:-.5px;
-}
-.stat-l {
-  font-size:11px;color:var(--t4);
-  text-transform:uppercase;letter-spacing:.8px;line-height:1.3;
-}
-
 /* ── Now section ── */
 .now-list{margin:4px 0 0;}
 .now-item{
@@ -1398,7 +1383,7 @@ body {
           <div class="profile-name">Anna Vu</div>
           <span class="profile-linh">(LINH)</span>
           <div class="profile-role">Principal Data Engineer</div>
-          <div class="profile-tagline">My focus is end-to-end pipelines, data quality, and reporting automation. More recently, I've been integrating AI coding agents into my engineering work.</div>
+          <div class="profile-tagline">I work at the intersection of data engineering, analytics, and automation, building scalable data systems that turn complex data into reliable, actionable insights. My work focuses on developing end-to-end pipelines, improving data quality, and automating reporting workflows. More recently, I've been integrating AI coding agents into my engineering work.</div>
           <div class="cta-row">
             <a href="https://www.linkedin.com/in/annalinhvu" class="cta-btn" target="_blank" rel="noopener">↗ linkedin</a>
             <a href="https://github.com/annalinhvu" class="cta-btn" target="_blank" rel="noopener">↗ github</a>
@@ -1417,16 +1402,6 @@ body {
     </div>
 
     <div class="panel-body panel-more">
-      <div class="metric-lbl">-- impact</div>
-      <div class="stats-grid">
-        <div class="stat-item"><div class="stat-v">5+</div><div class="stat-l">years building</div></div>
-        <div class="stat-item"><div class="stat-v">100+</div><div class="stat-l">clients supported</div></div>
-        <div class="stat-item"><div class="stat-v">$2B+</div><div class="stat-l">ad spend analyzed</div></div>
-        <div class="stat-item"><div class="stat-v">50+</div><div class="stat-l">data sources integrated</div></div>
-      </div>
-
-      <hr class="p-rule">
-
       <div class="panel-skill-grp">LANGUAGES</div>
       <div class="panel-skill-line">SQL · Python · Java · HTML · CSS · JavaScript</div>
       <div class="panel-skill-grp">DATA WAREHOUSING</div>
@@ -3083,7 +3058,7 @@ switchPane = function(id) {
   bar.addEventListener('click', function(e) { var b = e.target.closest('button'); if (b) setView(b.getAttribute('data-v')); });
   var saved = null;
   try { saved = localStorage.getItem('portfolio-skills-view'); } catch (e) {}
-  setView(saved === 'graph' ? 'graph' : 'list');
+  setView(saved === 'list' ? 'list' : 'graph');
 })();
 
 /* ── Architecture tab: an illustrative marketing warehouse, explorable by lineage ── */
