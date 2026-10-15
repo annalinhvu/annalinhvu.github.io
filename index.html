@@ -365,8 +365,7 @@ body {
 .sk-legend b{font-weight:400;color:var(--t4);}
 .sk-card{min-height:62px;padding:8px 10px;border:1px solid var(--bd);border-radius:8px;font-size:12.5px;line-height:1.5;color:var(--t3);}
 .sk-card b{font-weight:600;color:var(--t1);}
-.sk-n{font-family:'Geist Mono',monospace;font-size:11px;color:var(--amber);}
-.sk-used,.sk-with,.sk-hint{display:block;}
+.sk-with,.sk-hint{display:block;}
 .sk-with,.sk-hint{font-family:'Geist Mono',monospace;font-size:11px;color:var(--t4);margin-top:2px;}
 
 /* Pipeline in work tab */
@@ -2909,7 +2908,7 @@ switchPane = function(id) {
       var ks = [].map.call(el.querySelectorAll(tagSel), function(t) { return T.norm(t.textContent); })
         .filter(function(k, i, a) { return byKey[k] && a.indexOf(k) === i; });
       ks.forEach(function(k) { byKey[k][field].push(title.trim()); });
-      if (ks.length > 1) sets.push({ks:ks, project:field === 'projects'});
+      if (ks.length > 1) sets.push({ks:ks});
     });
   }
   collect('#pane-built .proj-card', '.proj-tag', '.proj-title', 'projects');
@@ -2918,8 +2917,7 @@ switchPane = function(id) {
   var hidden = skills.length - nodes.length;
   if (nodes.length < 4) return;
 
-  /* every pair of skills that share a card or role, counted; roles only shape the layout,
-     the lines drawn come from projects, since a role's tag list pairs skills that were never used together */
+  /* every pair of skills that share a card or role, counted */
   function pairs(list) {
     var m = {};
     list.forEach(function(st) {
@@ -2932,9 +2930,8 @@ switchPane = function(id) {
     return Object.keys(m).map(function(id) { var p = id.split('|'); return {a:byKey[p[0]], b:byKey[p[1]], w:m[id]}; });
   }
   var edges = pairs(sets);
-  var links = pairs(sets.filter(function(st) { return st.project; }));
   nodes.forEach(function(n) { n.uses = n.projects.length + n.roles.length; n.r = 3 + Math.sqrt(n.uses) * 1.6; n.nb = {}; });
-  links.forEach(function(e) { e.a.nb[e.b.key] = 1; e.b.nb[e.a.key] = 1; });
+  edges.forEach(function(e) { e.a.nb[e.b.key] = 1; e.b.nb[e.a.key] = 1; });
 
   /* small force layout, seeded so it looks the same on every visit */
   var W = 400, H = 330, seed = 7;
@@ -3003,8 +3000,8 @@ switchPane = function(id) {
   var box = document.createElement('div');
   box.className = 'sk-graph';
   box.hidden = true;
-  var h = '<svg class="sk-svg" viewBox="0 0 ' + W + ' ' + H + '" role="group" aria-label="Skills graph: lines join skills used together in the same project or role">';
-  links.forEach(function(e, i) {
+  var h = '<svg class="sk-svg" viewBox="0 0 ' + W + ' ' + H + '" role="group" aria-label="Skills graph: lines join related skills">';
+  edges.forEach(function(e, i) {
     h += '<line class="sk-edge" data-a="' + esc(e.a.key) + '" data-b="' + esc(e.b.key) + '" x1="' + e.a.x.toFixed(1) + '" y1="' + e.a.y.toFixed(1) + '" x2="' + e.b.x.toFixed(1) + '" y2="' + e.b.y.toFixed(1) + '" stroke-width="' + (0.5 + Math.min(3, e.w) * .35).toFixed(2) + '"/>';
   });
   nodes.forEach(function(n) {
@@ -3017,7 +3014,7 @@ switchPane = function(id) {
   h += '<div class="sk-legend">' + groups.map(function(g, i) {
     return nodes.some(function(n) { return n.g === i; }) ? '<span class="' + GROUP_CLS[i % GROUP_CLS.length] + '"><i></i><b>' + esc(g) + '</b></span>' : '';
   }).join('') + '</div>';
-  h += '<div class="sk-card" aria-live="polite"><span class="sk-hint">hover a skill to see where it was used · click to filter · a line means used together in a project · bigger dot, used more' + (hidden ? ' · ' + hidden + ' more in list view' : '') + '</span></div>';
+  h += '<div class="sk-card" aria-live="polite"><span class="sk-hint">hover a skill to see what it connects to · click to filter · bigger dot, used more' + (hidden ? ' · ' + hidden + ' more in list view' : '') + '</span></div>';
   box.innerHTML = h;
   more.insertBefore(box, first);
   var card = box.querySelector('.sk-card'), hint = card.innerHTML;
@@ -3032,11 +3029,9 @@ switchPane = function(id) {
       l.classList.toggle('on', !!n && (l.getAttribute('data-a') === n.key || l.getAttribute('data-b') === n.key));
     });
     if (!n) { card.innerHTML = hint; return; }
-    var list = n.projects.concat(n.roles), extra = list.length > 4 ? ' +' + (list.length - 4) + ' more' : '';
     var nbs = Object.keys(n.nb).map(function(k) { return byKey[k].name; });
-    card.innerHTML = '<b>' + esc(n.name) + '</b> <span class="sk-n">' + n.projects.length + ' project' + (n.projects.length === 1 ? '' : 's') + ' · ' + n.roles.length + ' role' + (n.roles.length === 1 ? '' : 's') + '</span>'
-      + '<span class="sk-used">' + esc(list.slice(0, 4).join(' · ')) + esc(extra) + '</span>'
-      + (nbs.length ? '<span class="sk-with">used with ' + esc(nbs.slice(0, 5).join(', ')) + (nbs.length > 5 ? '…' : '') + '</span>' : '');
+    card.innerHTML = '<b>' + esc(n.name) + '</b>'
+      + (nbs.length ? '<span class="sk-with">alongside ' + esc(nbs.slice(0, 6).join(', ')) + (nbs.length > 6 ? '…' : '') + '</span>' : '');
   }
   var nodeBy = {}; nodes.forEach(function(n) { nodeBy[n.key] = n; });
   box.addEventListener('mouseover', function(e) { var g = e.target.closest('.sk-node'); if (g) show(nodeBy[g.getAttribute('data-k')]); });
