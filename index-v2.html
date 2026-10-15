@@ -63,6 +63,7 @@
   --shadow-sm: rgba(0,0,0,.2);
   --shadow-lg: rgba(0,0,0,.5);
   --zebra:     rgba(0,0,0,.06);
+  --sk0:#8aaa8e;--sk1:#a090d4;--sk2:#6fb3c0;--sk3:#c8785e;--sk4:#d47080;--sk5:#d0aa50;--sk6:#7d90b0;--sk7:#7f9fd8;
 }
 :root[data-theme="light"] {
   --bg:        #f3f1eb;
@@ -93,6 +94,7 @@
   --shadow-sm: rgba(0,0,0,.08);
   --shadow-lg: rgba(0,0,0,.14);
   --zebra:     rgba(0,0,0,.03);
+  --sk0:#5e7a62;--sk1:#7060a8;--sk2:#3d7f8f;--sk3:#b8644a;--sk4:#a85060;--sk5:#a5801f;--sk6:#8a8070;--sk7:#4f6fa8;
 }
 
 /* ── Reset ─────────────────────────────────────────────── */
@@ -332,6 +334,40 @@ body {
 .panel-skill-line{
   font-size:13px;color:var(--t3);line-height:1.65;
 }
+/* Skills: list / graph toggle */
+.sk-view{display:flex;align-items:center;justify-content:space-between;margin-bottom:10px;}
+.sk-view-lbl{font-family:'Geist Mono',monospace;font-size:11px;color:var(--t4);letter-spacing:1px;}
+.sk-view-btns{display:inline-flex;border:1px solid var(--bd);border-radius:7px;overflow:hidden;}
+.sk-view-btns button{font-family:'Geist Mono',monospace;font-size:11px;padding:3px 10px;border:none;background:none;color:var(--t4);cursor:pointer;}
+.sk-view-btns button+button{border-left:1px solid var(--bd);}
+.sk-view-btns button[aria-pressed="true"]{background:var(--surf-hov);color:var(--amber);}
+.sk-view-btns button:focus-visible{outline:2px solid var(--amber);outline-offset:-2px;}
+.panel-more.sk-as-graph .panel-skill-grp,.panel-more.sk-as-graph .panel-skill-line:not(.learning){display:none;}
+.panel-more.sk-as-graph .panel-skill-line.learning{margin-top:4px;}
+.sk-graph{margin-bottom:6px;}
+.sk-svg{width:100%;height:auto;display:block;overflow:visible;}
+.sk-edge{stroke:var(--t4);opacity:.18;pointer-events:none;transition:opacity .2s,stroke .2s;}
+.sk-node{cursor:pointer;outline:none;}
+.sk-node circle{fill:currentColor;fill-opacity:.85;stroke:var(--panel);stroke-width:1.2;transition:r .2s,fill-opacity .2s;}
+.sk-node text{font-family:'Geist Mono',monospace;font-size:10px;fill:var(--t3);transition:fill .2s,opacity .2s;}
+.sk-node:hover text,.sk-node:focus-visible text,.sk-node.on text{fill:var(--t1);}
+.sk-node:focus-visible circle{stroke:var(--amber);stroke-width:2;}
+.sk-node.hit circle{stroke:var(--amber);stroke-width:2.4;}
+.sk-node.hit text{fill:var(--amber);}
+.sk-focus .sk-node:not(.on){opacity:.28;}
+.sk-focus .sk-edge{opacity:.08;}
+.sk-focus .sk-edge.on{opacity:.75;stroke:var(--amber);}
+.sk-node,.sk-edge{transition:opacity .2s;}
+.sk-c0{color:var(--sk0);}.sk-c1{color:var(--sk1);}.sk-c2{color:var(--sk2);}.sk-c3{color:var(--sk3);}.sk-c4{color:var(--sk4);}.sk-c5{color:var(--sk5);}.sk-c6{color:var(--sk6);}.sk-c7{color:var(--sk7);}
+.sk-legend{display:flex;flex-wrap:wrap;gap:3px 12px;margin:6px 0 8px;font-family:'Geist Mono',monospace;font-size:10.5px;}
+.sk-legend span{display:inline-flex;align-items:center;gap:5px;}
+.sk-legend i{width:7px;height:7px;border-radius:50%;background:currentColor;}
+.sk-legend b{font-weight:400;color:var(--t4);}
+.sk-card{min-height:62px;padding:8px 10px;border:1px solid var(--bd);border-radius:8px;font-size:12.5px;line-height:1.5;color:var(--t3);}
+.sk-card b{font-weight:600;color:var(--t1);}
+.sk-n{font-family:'Geist Mono',monospace;font-size:11px;color:var(--amber);}
+.sk-used,.sk-with,.sk-hint{display:block;}
+.sk-with,.sk-hint{font-family:'Geist Mono',monospace;font-size:11px;color:var(--t4);margin-top:2px;}
 
 /* Pipeline in work tab */
 .pipeline-wrap{margin-bottom:28px;padding:16px 20px;background:rgba(128,128,128,.03);border:1px solid var(--bd);border-radius:10px;}
@@ -339,6 +375,33 @@ body {
 .pipeline-svg{width:100%;display:block;}
 .pd1{fill:var(--accent);}.pd2{fill:var(--indigo);}.pd3{fill:var(--amber2);}.pd4{fill:var(--rose);}
 .pipe-scroll{overflow-x:auto;}
+/* Pipeline run: packets along the edges, stage by stage */
+.pipeline-lbl{display:flex;align-items:center;justify-content:space-between;gap:8px 16px;flex-wrap:wrap;}
+.pl-run-btns{display:flex;gap:6px;flex-wrap:wrap;}
+.pl-run-btn{font-family:'Geist Mono',monospace;font-size:11px;letter-spacing:.3px;text-transform:none;padding:4px 10px;border-radius:8px;border:1px solid var(--tag-bd);background:none;color:var(--tag-col);cursor:pointer;transition:border-color .15s,color .15s,background .15s;}
+.pl-run-btn:hover,.pl-run-btn:focus-visible{border-color:var(--accent);background:var(--surf-hov);outline:none;}
+.pl-run-btn.bad{color:var(--rose);border-color:rgba(200,90,110,.3);}
+.pl-run-btn.bad:hover,.pl-run-btn.bad:focus-visible{border-color:var(--rose);}
+.pl-run-btn:disabled{opacity:.45;cursor:default;}
+.pl-node rect{transition:fill .25s,stroke .25s,stroke-width .25s;}
+.pl-node.run-on rect{stroke:var(--accent);stroke-width:2;fill:rgba(120,170,125,.16);}
+.pl-node.run-ok rect{stroke:var(--accent);fill:rgba(120,170,125,.08);}
+.pl-node.run-bad rect{stroke:var(--rose);stroke-width:2;fill:rgba(212,112,128,.14);}
+.pl-node.run-skip{opacity:.4;transition:opacity .3s;}
+.pl-run-edge{fill:none;stroke:var(--accent);stroke-width:1.6;opacity:.8;pointer-events:none;}
+.pl-run-edge.bad{stroke:var(--rose);stroke-dasharray:4 3;}
+.pl-pkt{fill:var(--accent);pointer-events:none;}
+.pl-pkt.bad{fill:var(--rose);}
+.pl-log{margin-top:12px;padding:10px 12px;border-top:1px dashed var(--bd);font-family:'Geist Mono',monospace;font-size:11.5px;line-height:1.75;color:var(--t3);}
+.pl-log-hd{color:var(--t4);}
+.pl-log-ln{display:grid;grid-template-columns:44px 64px minmax(0,1fr);gap:0 8px;animation:plLogIn .25s ease both;}
+.pl-log-ln b{font-weight:500;color:var(--t2);}
+.pl-log-ln.ok b{color:var(--accent);}
+.pl-log-ln.bad,.pl-log-ln.bad b{color:var(--rose);}
+.pl-log-t{color:var(--t4);}
+@keyframes plLogIn{from{opacity:0;transform:translateY(3px);}to{opacity:1;transform:none;}}
+@media (max-width: 600px){.pl-log-ln{grid-template-columns:38px 56px minmax(0,1fr);font-size:11px;}}
+@media (prefers-reduced-motion: reduce){.pl-log-ln{animation:none;}}
 .pipe-scroll .pipeline-svg{min-width:640px;}
 .pl-hd{font-family:'Geist Mono',monospace;font-size:11px;letter-spacing:1.6px;fill:var(--t4);text-anchor:middle;cursor:pointer;transition:fill .15s;}
 .pl-hd:hover,.pl-hd.p-active{fill:var(--amber);}
@@ -1733,8 +1796,9 @@ body {
       <div class="sch-wrap">
         <div class="work-section-hd">platform overview</div>
         <div class="pipeline-wrap">
-          <div class="pipeline-lbl">click any stage or component to see related projects</div>
+          <div class="pipeline-lbl"><span>click any stage or component to see related projects</span><span class="pl-run-btns"><button type="button" class="pl-run-btn" data-run="ok">▶ run pipeline</button><button type="button" class="pl-run-btn bad" data-run="bad">▶ run with a bad file</button></span></div>
           <div class="pipe-scroll"><svg class="pipeline-svg" id="pipe-svg" role="img" aria-label="Data platform: sources, ingestion, a bronze-silver-gold medallion on Snowflake, BigQuery or Databricks, visualization, analysis, and data transfer between systems"></svg></div>
+          <div class="pl-log" id="pl-log" aria-live="polite" hidden></div>
         </div>
         <div class="work-section-hd">reporting model walkthrough</div>
         <p class="sch-intro">This is a simplified version of a reporting model I own. It combines daily data from nine ad platforms with a client's <span class="term" tabindex="0" data-tip="The client&#39;s own records of what users did, such as sign-ups and subscriptions, shared directly into our warehouse.">first-party data</span> into one table at campaign and day grain. The sources use different schemas, campaign IDs, and names, and all three change over time, so most of the logic is about matching records and keeping past numbers stable. Click a table in the graph to see its lineage, tests, and SQL.</p>
@@ -2543,6 +2607,130 @@ switchPane = function(id) {
   });
   svgEl.setAttribute('viewBox', '0 0 956 292');
   svgEl.innerHTML = h;
+
+  /* ── Run the pipeline: light each stage, send packets along its edges, log the step ── */
+  var NS = 'http://www.w3.org/2000/svg';
+  var BL = byId.bronze, SV = byId.silver;
+  var RUN = [
+    {k:'extract', nodes:['api','sftp','web','sheet','synd'],
+     paths:[curve(R('api'), Lf('py')), curve(R('sftp'), Lf('mat')), curve(R('web'), Lf('mat')), curve(R('sheet'), Lf('gas')), curve(R('synd'), Lf('stage'))],
+     log:'pull from ad platform APIs, SFTP drops, GA4, Sheets, market research'},
+    {k:'load', nodes:['py','mat','gas','stage'],
+     paths:[curve(R('py'), Lf('bronze')), curve(R('mat'), Lf('bronze')), curve(R('gas'), Lf('bronze')), curve(R('stage'), Lf('bronze'))],
+     log:'connectors, Matillion and Apps Script land files in bronze'},
+    {k:'bronze', nodes:['bronze'], paths:[line([LAYER_X, BL.y + BOX], [LAYER_X, SV.y])],
+     log:'raw tables, kept exactly as they arrived'},
+    {k:'silver', nodes:['silver'], paths:[line([LAYER_X, SV.y + BOX], [LAYER_X, byId.gold.y])],
+     log:'typed, deduped, conformed · tests pass',
+     fail:'test failed: duplicate campaign IDs in one file · run stops here'},
+    {k:'gold', nodes:['gold'], paths:[curve(GOLD_OUT, Lf('looker')), curve(GOLD_OUT, Lf('tab')), curve(GOLD_OUT, Lf('domo')), curve(GOLD_OUT, Lf('slack'))],
+     log:'dims, facts and marts rebuilt'},
+    {k:'serve', nodes:['looker','tab','domo','slack'],
+     paths:[line(R('looker'), Lf('perf')), line(R('tab'), Lf('pace')), line(R('domo'), Lf('mix')), line(R('slack'), Lf('triage'))],
+     log:'dashboards refresh · Slack KPI checks pass'},
+    {k:'analyze', nodes:['perf','pace','mix','triage'], paths:[],
+     log:'performance, pacing and share of voice ready'}
+  ];
+  /* a failed silver test skips gold, so dashboards keep the last good load */
+  var ALERT = [
+    {k:'alert', nodes:['slack'], bad:true, paths:[curve([SV.x + SV.w, SV.y + BOX / 2], Lf('slack'))],
+     log:'Slack alert sent · gold not rebuilt, dashboards keep the last good load'},
+    {k:'triage', nodes:['triage'], bad:true, paths:[], pre:[line(R('slack'), Lf('triage'))],
+     log:'fix the source file, rerun from bronze'}
+  ];
+  var nodeEls = {};
+  svgEl.querySelectorAll('.pl-node').forEach(function(g, i) { nodeEls[NODES[i].id] = g; });
+  var layer = document.createElementNS(NS, 'g');
+  svgEl.appendChild(layer);
+  var logEl = document.getElementById('pl-log');
+  var btns = document.querySelectorAll('.pl-run-btn');
+  var still = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var running = false, t0 = 0;
+
+  function mark(ids, cls) { ids.forEach(function(id) { nodeEls[id].classList.add(cls); }); }
+  function logLine(step, msg, cls) {
+    var el = document.createElement('div');
+    el.className = 'pl-log-ln' + (cls ? ' ' + cls : '');
+    el.innerHTML = '<span class="pl-log-t">+' + ((performance.now() - t0) / 1000).toFixed(1) + 's</span><b>' + step + '</b><span>' + esc(msg) + '</span>';
+    logEl.appendChild(el);
+  }
+  /* send one packet along each path; resolves when they've all arrived */
+  function flow(paths, bad, ms) {
+    return new Promise(function(done) {
+      if (!paths.length || still) { setTimeout(done, still ? 250 : 200); return; }
+      var items = paths.map(function(d) {
+        var p = document.createElementNS(NS, 'path');
+        p.setAttribute('d', d); p.setAttribute('class', 'pl-run-edge' + (bad ? ' bad' : ''));
+        var c = document.createElementNS(NS, 'circle');
+        c.setAttribute('r', '3.4'); c.setAttribute('class', 'pl-pkt' + (bad ? ' bad' : ''));
+        layer.appendChild(p); layer.appendChild(c);
+        var len = p.getTotalLength();
+        p.style.strokeDasharray = len; p.style.strokeDashoffset = len;
+        return {p:p, c:c, len:len};
+      });
+      var start = performance.now();
+      (function tick(now) {
+        var t = Math.min(1, (now - start) / ms), e = t < .5 ? 2 * t * t : 1 - Math.pow(-2 * t + 2, 2) / 2;
+        items.forEach(function(it) {
+          var pt = it.p.getPointAtLength(it.len * e);
+          it.c.setAttribute('cx', pt.x); it.c.setAttribute('cy', pt.y);
+          if (!bad) it.p.style.strokeDashoffset = it.len * (1 - e);
+          else it.p.style.strokeDashoffset = 0;
+        });
+        if (t < 1) requestAnimationFrame(tick);
+        else { items.forEach(function(it) { it.c.remove(); }); done(); }
+      })(start);
+    });
+  }
+  function wait(ms) { return new Promise(function(r) { setTimeout(r, still ? 0 : ms); }); }
+  function reset() {
+    layer.innerHTML = '';
+    svgEl.querySelectorAll('.pl-node').forEach(function(g) { g.classList.remove('run-on', 'run-ok', 'run-bad', 'run-skip'); });
+  }
+
+  function run(bad) {
+    if (running) return;
+    running = true;
+    btns.forEach(function(b) { b.disabled = true; });
+    reset();
+    t0 = performance.now();
+    logEl.hidden = false;
+    logEl.innerHTML = '<div class="pl-log-hd">-- sample run' + (bad ? ' · one vendor file has duplicate IDs' : '') + ' · animation only, not real timings</div>';
+    var steps = RUN, chain = Promise.resolve();
+    steps.forEach(function(s, i) {
+      chain = chain.then(function() {
+        if (s.stop) return;
+        mark(s.nodes, 'run-on');
+        if (bad && s.k === 'silver') {
+          return wait(450).then(function() {
+            nodeEls.silver.classList.remove('run-on'); nodeEls.silver.classList.add('run-bad');
+            logLine('silver', s.fail, 'bad');
+            RUN.slice(i + 1).forEach(function(n) { n.stop = true; });
+            mark(['gold', 'looker', 'tab', 'domo', 'perf', 'pace', 'mix'], 'run-skip');
+            return ALERT.reduce(function(c, a) {
+              return c.then(function() { return a.pre ? flow(a.pre, true, 500) : null; })
+                .then(function() { mark(a.nodes, 'run-bad'); logLine(a.k, a.log, 'bad'); return flow(a.paths, true, 750); })
+                .then(function() { return wait(250); });
+            }, wait(200));
+          });
+        }
+        logLine(s.k, s.log);
+        return flow(s.paths, false, 750).then(function() {
+          s.nodes.forEach(function(id) { nodeEls[id].classList.remove('run-on'); nodeEls[id].classList.add('run-ok'); });
+          return wait(120);
+        });
+      });
+    });
+    chain.then(function() {
+      RUN.forEach(function(s) { delete s.stop; });
+      if (bad) logLine('status', 'failed safely · nothing wrong reached a dashboard', 'bad');
+      else logLine('status', 'success · every layer tested before the next one built', 'ok');
+      running = false;
+      btns.forEach(function(b) { b.disabled = false; });
+      if (window.petQuest) window.petQuest('pipeline');
+    });
+  }
+  btns.forEach(function(b) { b.addEventListener('click', function() { run(b.getAttribute('data-run') === 'bad'); }); });
 })();
 
 /* ── Tech filter: click any tag, sidebar skill, or pipeline stage ── */
@@ -2634,7 +2822,10 @@ switchPane = function(id) {
   function setFilter(f) {
     if (active && f && active.id === f.id) f = null; /* clicking the same thing again clears it */
     active = f;
-    return render();
+    if (f && window.petQuest) window.petQuest('filter');
+    var r = render();
+    if (window.TECH && window.TECH.onChange) window.TECH.onChange(active);
+    return r;
   }
   function forTag(name) {
     var k = {}; k[norm(name)] = 1;
@@ -2654,6 +2845,8 @@ switchPane = function(id) {
     }
   }
   window.clearTechFilter = function() { if (active) setFilter(null); };
+  /* for the skills graph: same normalising and the same click-to-filter */
+  window.TECH = {norm:norm, known:known, filter:function(name) { goTo(setFilter(forTag(name))); }, onChange:null};
 
   /* Tags on cards, roles, and inside the project modal (capture so the card itself doesn't open) */
   document.addEventListener('click', function(e) {
@@ -2691,6 +2884,189 @@ switchPane = function(id) {
   });
 
   render();
+})();
+
+/* ── Skills graph: sidebar skills as a constellation; a line means two skills were used together ── */
+(function() {
+  var more = document.querySelector('.panel-more');
+  var T = window.TECH;
+  if (!more || !T) return;
+  var GROUP_CLS = ['sk-c0','sk-c1','sk-c2','sk-c3','sk-c4','sk-c5','sk-c6','sk-c7'];
+  var NS = 'http://www.w3.org/2000/svg';
+  function esc(t) { return String(t).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); }
+
+  /* skills from the sidebar list, keeping their group */
+  var skills = [], groups = [], byKey = {};
+  more.querySelectorAll('.panel-skill-grp').forEach(function(g, gi) {
+    var line = g.nextElementSibling;
+    if (!line || !line.classList.contains('panel-skill-line') || line.classList.contains('learning')) return;
+    groups.push(g.textContent.trim().toLowerCase());
+    line.textContent.split('·').map(function(x) { return x.trim(); }).filter(Boolean).forEach(function(name) {
+      var k = T.norm(name);
+      if (byKey[k]) return;
+      var s = {name:name, key:k, g:groups.length - 1, projects:[], roles:[]};
+      byKey[k] = s; skills.push(s);
+    });
+  });
+
+  /* where each one is used: work cards and roles (same tags the filter reads) */
+  var sets = [];
+  function collect(sel, tagSel, titleSel, field) {
+    document.querySelectorAll(sel).forEach(function(el) {
+      var title = (el.querySelector(titleSel) || {}).textContent || '';
+      var ks = [].map.call(el.querySelectorAll(tagSel), function(t) { return T.norm(t.textContent); })
+        .filter(function(k, i, a) { return byKey[k] && a.indexOf(k) === i; });
+      ks.forEach(function(k) { byKey[k][field].push(title.trim()); });
+      if (ks.length > 1) sets.push(ks);
+    });
+  }
+  collect('#pane-built .proj-card', '.proj-tag', '.proj-title', 'projects');
+  collect('#pane-career .exp-item', '.exp-tag', '.exp-role-title', 'roles');
+  var nodes = skills.filter(function(s) { return s.projects.length + s.roles.length > 0; });
+  var hidden = skills.length - nodes.length;
+  if (nodes.length < 4) return;
+
+  var edgeMap = {};
+  sets.forEach(function(ks) {
+    for (var i = 0; i < ks.length; i++) for (var j = i + 1; j < ks.length; j++) {
+      var id = [ks[i], ks[j]].sort().join('|');
+      edgeMap[id] = (edgeMap[id] || 0) + 1;
+    }
+  });
+  var edges = Object.keys(edgeMap).map(function(id) { var p = id.split('|'); return {a:byKey[p[0]], b:byKey[p[1]], w:edgeMap[id]}; });
+  nodes.forEach(function(n) { n.uses = n.projects.length + n.roles.length; n.r = 3 + Math.sqrt(n.uses) * 1.6; n.nb = {}; });
+  edges.forEach(function(e) { e.a.nb[e.b.key] = 1; e.b.nb[e.a.key] = 1; });
+
+  /* small force layout, seeded so it looks the same on every visit */
+  var W = 400, H = 330, seed = 7;
+  function rnd() { seed = (seed * 16807) % 2147483647; return seed / 2147483647; }
+  var gc = groups.map(function(_, i) {
+    var a = i / groups.length * Math.PI * 2 - Math.PI / 2;
+    return [W / 2 + Math.cos(a) * W * .32, H / 2 + Math.sin(a) * H * .34];
+  });
+  nodes.forEach(function(n) {
+    n.x = gc[n.g][0] + (rnd() - .5) * 40; n.y = gc[n.g][1] + (rnd() - .5) * 40;
+    n.lw = n.name.length * 6.1 + n.r + 4;
+  });
+  for (var it = 0; it < 420; it++) {
+    var cool = 1 - it / 420;
+    nodes.forEach(function(n) { n.vx = 0; n.vy = 0; });
+    for (var i = 0; i < nodes.length; i++) for (var j = i + 1; j < nodes.length; j++) {
+      var a = nodes[i], b = nodes[j], dx = a.x - b.x, dy = a.y - b.y, d2 = dx * dx + dy * dy + .01, d = Math.sqrt(d2);
+      var f = 1400 / d2;
+      a.vx += dx / d * f; a.vy += dy / d * f; b.vx -= dx / d * f; b.vy -= dy / d * f;
+    }
+    edges.forEach(function(e) {
+      var dx = e.b.x - e.a.x, dy = e.b.y - e.a.y, d = Math.sqrt(dx * dx + dy * dy) || 1;
+      var f = (d - 80) * .004 * Math.min(3, e.w);
+      e.a.vx += dx / d * f; e.a.vy += dy / d * f; e.b.vx -= dx / d * f; e.b.vy -= dy / d * f;
+    });
+    nodes.forEach(function(n) {
+      n.vx += (gc[n.g][0] - n.x) * .06;
+      n.vy += (gc[n.g][1] - n.y) * .06;
+      n.x += Math.max(-8, Math.min(8, n.vx)) * cool;
+      n.y += Math.max(-8, Math.min(8, n.vy)) * cool;
+    });
+  }
+  /* stretch to fill the box, then pick a label side */
+  var x0 = Math.min.apply(null, nodes.map(function(n) { return n.x; })), x1 = Math.max.apply(null, nodes.map(function(n) { return n.x; }));
+  var y0 = Math.min.apply(null, nodes.map(function(n) { return n.y; })), y1 = Math.max.apply(null, nodes.map(function(n) { return n.y; }));
+  nodes.forEach(function(n) {
+    n.x = 16 + (n.x - x0) / ((x1 - x0) || 1) * (W - 32);
+    n.y = 14 + (n.y - y0) / ((y1 - y0) || 1) * (H - 28);
+  });
+  function side(n) { n.right = n.x + n.lw < W - 2 || n.x - n.lw < 2; }
+  function rect(n) { return n.right ? [n.x - n.r, n.x + n.lw, n.y - 7, n.y + 7] : [n.x - n.lw, n.x + n.r, n.y - 7, n.y + 7]; }
+  /* push apart anything whose dot + label overlaps another */
+  for (var pass = 0; pass < 260; pass++) {
+    var moved = false;
+    nodes.forEach(side);
+    for (var i = 0; i < nodes.length; i++) for (var j = i + 1; j < nodes.length; j++) {
+      var a = nodes[i], b = nodes[j], ra = rect(a), rb = rect(b);
+      var ox = Math.min(ra[1], rb[1]) - Math.max(ra[0], rb[0]), oy = Math.min(ra[3], rb[3]) - Math.max(ra[2], rb[2]);
+      if (ox <= 0 || oy <= 0) continue;
+      moved = true;
+      if (oy < ox) { var sy = (a.y < b.y ? -1 : 1) * (oy / 2 + .5); a.y += sy; b.y -= sy; }
+      else { var sx = (a.x < b.x ? -1 : 1) * (ox / 2 + .5); a.x += sx; b.x -= sx; }
+    }
+    nodes.forEach(function(n) { n.x = Math.max(8, Math.min(W - 8, n.x)); n.y = Math.max(9, Math.min(H - 9, n.y)); });
+    if (!moved) break;
+  }
+  nodes.forEach(side);
+
+  /* markup: view toggle, graph, hover card */
+  var first = more.querySelector('.panel-skill-grp');
+  var bar = document.createElement('div');
+  bar.className = 'sk-view';
+  bar.innerHTML = '<span class="sk-view-lbl">-- skills</span><span class="sk-view-btns" role="group" aria-label="skills view">'
+    + '<button type="button" data-v="list" aria-pressed="true">list</button><button type="button" data-v="graph" aria-pressed="false">graph</button></span>';
+  more.insertBefore(bar, first);
+  var box = document.createElement('div');
+  box.className = 'sk-graph';
+  box.hidden = true;
+  var h = '<svg class="sk-svg" viewBox="0 0 ' + W + ' ' + H + '" role="group" aria-label="Skills graph: lines join skills used together in the same project or role">';
+  edges.forEach(function(e, i) {
+    h += '<line class="sk-edge" data-a="' + esc(e.a.key) + '" data-b="' + esc(e.b.key) + '" x1="' + e.a.x.toFixed(1) + '" y1="' + e.a.y.toFixed(1) + '" x2="' + e.b.x.toFixed(1) + '" y2="' + e.b.y.toFixed(1) + '" stroke-width="' + (0.5 + Math.min(3, e.w) * .35).toFixed(2) + '"/>';
+  });
+  nodes.forEach(function(n) {
+    var right = n.right;
+    h += '<g class="sk-node ' + GROUP_CLS[n.g % GROUP_CLS.length] + '" data-k="' + esc(n.key) + '" tabindex="0" role="button" aria-label="' + esc(n.name) + ': ' + n.uses + ' uses. Click to filter.">'
+      + '<circle cx="' + n.x.toFixed(1) + '" cy="' + n.y.toFixed(1) + '" r="' + n.r.toFixed(1) + '"/>'
+      + '<text x="' + (n.x + (right ? n.r + 3 : -n.r - 3)).toFixed(1) + '" y="' + (n.y + 3.5).toFixed(1) + '"' + (right ? '' : ' text-anchor="end"') + '>' + esc(n.name) + '</text></g>';
+  });
+  h += '</svg>';
+  h += '<div class="sk-legend">' + groups.map(function(g, i) {
+    return nodes.some(function(n) { return n.g === i; }) ? '<span class="' + GROUP_CLS[i % GROUP_CLS.length] + '"><i></i><b>' + esc(g) + '</b></span>' : '';
+  }).join('') + '</div>';
+  h += '<div class="sk-card" aria-live="polite"><span class="sk-hint">hover a skill to see where it was used · click to filter · a line means used together' + (hidden ? ' · ' + hidden + ' more in list view' : '') + '</span></div>';
+  box.innerHTML = h;
+  more.insertBefore(box, first);
+  var card = box.querySelector('.sk-card'), hint = card.innerHTML;
+
+  function show(n) {
+    box.classList.toggle('sk-focus', !!n);
+    box.querySelectorAll('.sk-node').forEach(function(g) {
+      var k = g.getAttribute('data-k');
+      g.classList.toggle('on', !!n && (k === n.key || !!n.nb[k]));
+    });
+    box.querySelectorAll('.sk-edge').forEach(function(l) {
+      l.classList.toggle('on', !!n && (l.getAttribute('data-a') === n.key || l.getAttribute('data-b') === n.key));
+    });
+    if (!n) { card.innerHTML = hint; return; }
+    var list = n.projects.concat(n.roles), extra = list.length > 4 ? ' +' + (list.length - 4) + ' more' : '';
+    var nbs = Object.keys(n.nb).map(function(k) { return byKey[k].name; });
+    card.innerHTML = '<b>' + esc(n.name) + '</b> <span class="sk-n">' + n.projects.length + ' project' + (n.projects.length === 1 ? '' : 's') + ' · ' + n.roles.length + ' role' + (n.roles.length === 1 ? '' : 's') + '</span>'
+      + '<span class="sk-used">' + esc(list.slice(0, 4).join(' · ')) + esc(extra) + '</span>'
+      + (nbs.length ? '<span class="sk-with">used with ' + esc(nbs.slice(0, 5).join(', ')) + (nbs.length > 5 ? '…' : '') + '</span>' : '');
+  }
+  var nodeBy = {}; nodes.forEach(function(n) { nodeBy[n.key] = n; });
+  box.addEventListener('mouseover', function(e) { var g = e.target.closest('.sk-node'); if (g) show(nodeBy[g.getAttribute('data-k')]); });
+  box.addEventListener('focusin', function(e) { var g = e.target.closest('.sk-node'); if (g) show(nodeBy[g.getAttribute('data-k')]); });
+  box.querySelector('.sk-svg').addEventListener('mouseleave', function() { show(null); });
+  function pick(g) { T.filter(nodeBy[g.getAttribute('data-k')].name); }
+  box.addEventListener('click', function(e) { var g = e.target.closest('.sk-node'); if (g) pick(g); });
+  box.addEventListener('keydown', function(e) {
+    var g = e.target.closest('.sk-node');
+    if (g && (e.key === 'Enter' || e.key === ' ')) { e.preventDefault(); pick(g); }
+  });
+  /* the active filter shows as a ring, wherever it was set from */
+  T.onChange = function(active) {
+    box.querySelectorAll('.sk-node').forEach(function(g) {
+      g.classList.toggle('hit', !!active && !!active.keys[g.getAttribute('data-k')]);
+    });
+  };
+
+  /* list ↔ graph, remembered per visitor */
+  function setView(v) {
+    more.classList.toggle('sk-as-graph', v === 'graph');
+    box.hidden = v !== 'graph';
+    bar.querySelectorAll('button').forEach(function(b) { b.setAttribute('aria-pressed', String(b.getAttribute('data-v') === v)); });
+    try { localStorage.setItem('portfolio-skills-view', v); } catch (e) {}
+  }
+  bar.addEventListener('click', function(e) { var b = e.target.closest('button'); if (b) setView(b.getAttribute('data-v')); });
+  var saved = null;
+  try { saved = localStorage.getItem('portfolio-skills-view'); } catch (e) {}
+  setView(saved === 'graph' ? 'graph' : 'list');
 })();
 
 /* ── Architecture tab: an illustrative marketing warehouse, explorable by lineage ── */
@@ -3099,7 +3475,12 @@ switchPane = function(id) {
   }).join('') + '<button type="button" class="lab-reset" hidden>turn all back on</button>';
   sw.addEventListener('click', function(e) {
     var b = e.target.closest('.lab-sw');
-    if (b) { on[b.getAttribute('data-key')] = !on[b.getAttribute('data-key')]; render(); return; }
+    if (b) {
+      var key = b.getAttribute('data-key');
+      on[key] = !on[key]; render();
+      if (!on[key] && window.petQuest) window.petQuest('lab');
+      return;
+    }
     if (e.target.closest('.lab-reset')) { RULES.forEach(function(r) { on[r.key] = true; }); render(); }
   });
   render();
@@ -3235,6 +3616,13 @@ document.addEventListener('click', function(e) {
 #pet-wrap.below #pet-bubble{border-radius:4px 16px 16px 16px;}
 #pet-wrap.left{align-items:flex-start;}
 #pet-wrap.left:not(.below) #pet-bubble{border-radius:16px 16px 16px 4px;}
+.pet-quests{list-style:none;margin:8px 0 0;padding:0;font-size:0.78rem;line-height:1.5;color:var(--t3);}
+.pet-quests li{display:grid;grid-template-columns:16px 1fr;gap:4px;padding:2px 0;}
+.pet-quests li::before{content:'○';color:var(--t4);}
+.pet-quests li.done{color:var(--t4);text-decoration:line-through;text-decoration-color:var(--bd-hi);}
+.pet-quests li.done::before{content:'✓';color:var(--accent);text-decoration:none;}
+.pet-qbar{height:4px;border-radius:2px;background:var(--bd);margin-top:8px;overflow:hidden;}
+.pet-qbar i{display:block;height:100%;background:var(--amber);transition:width .4s;}
 .pet-hint{display:block;margin-top:10px;font-family:'Geist Mono',monospace;font-size:0.62rem;color:var(--t4);}
 @media (prefers-reduced-motion: reduce){
   #pet-char,#pet-char.excited,#pet-char.sleeping{animation:none !important;}
@@ -3323,7 +3711,7 @@ document.addEventListener('click', function(e) {
     console: [
       "The tables here are read live from the page. Try <code>SELECT * FROM projects</code>. 💻",
       "Type <code>HELP</code> for everything you can run. Python, Java and C modes work too. ⌨️",
-      "Some commands launch things. <code>PLAY GAME</code> is one of them. 🐍"
+      "Some commands launch things. I've said too much. 🤐"
     ]
   };
   var TIPS = [
@@ -3331,7 +3719,8 @@ document.addEventListener('click', function(e) {
     "Pumkin has no second 'p'. This was Anna's decision. Pumkin has accepted it. 🎃",
     "Anna is from Hanoi, Vietnam. The recipe app has receipts. 🇻🇳",
     "She speaks English and Vietnamese. Pumkin speaks in emojis. We make it work. 👾",
-    "You can drag me anywhere. I'll stay where you put me. 🫳"
+    "You can drag me anywhere. I'll stay where you put me. 🫳",
+    "I keep a short list of things to find on this site. The <strong>quests</strong> button has it. 🗒️"
   ];
   var paneTipIdx = {};
   function currentPane() {
@@ -3396,6 +3785,7 @@ document.addEventListener('click', function(e) {
     PET_STATE = 'normal';
     setLids(0); setMouth('happy');
     showZzz(false); setLabel('PUMKIN');
+    if (typeof badge === 'function') badge();
   }
   function toSleeping() {
     if (PET_STATE === 'sleeping') return;
@@ -3496,6 +3886,7 @@ document.addEventListener('click', function(e) {
       '<button class="pet-nav-btn" onclick="petNav(\'built\')">Work</button>' +
       '<button class="pet-nav-btn" onclick="petNav(\'career\')">Experience</button>' +
       '<button class="pet-nav-btn" onclick="petNav(\'studio\')">Side projects</button>' +
+      questBtn() +
       '</div>';
   }
   function openBubble() {
@@ -3587,8 +3978,8 @@ document.addEventListener('click', function(e) {
     var c = document.getElementById('pet-char');
     if (on && (PET_STATE !== 'normal' || dragging)) return;
     c.classList.toggle('petted', on);
-    if (on) { setMouth('big'); setLabel('♥', 'var(--amber)'); }
-    else if (PET_STATE === 'normal') { setMouth('happy'); setLabel('PUMKIN'); }
+    if (on) { setMouth('big'); setLabel('♥', 'var(--amber)'); window.petQuest('pet'); }
+    else if (PET_STATE === 'normal') { setMouth('happy'); setLabel('PUMKIN'); badge(); }
   }
 
   /* ── Drag to move; a short press is a click ── */
@@ -3651,7 +4042,7 @@ document.addEventListener('click', function(e) {
     var r = charWrap.getBoundingClientRect();
     savedPos = {fx: r.left / window.innerWidth, fy: r.top / window.innerHeight};
     try { localStorage.setItem(PET_LS + '-pos', JSON.stringify(savedPos)); } catch (err) {}
-    setMouth('happy'); setLabel('PUMKIN');
+    setMouth('happy'); setLabel('PUMKIN'); badge();
   });
   charWrap.addEventListener('pointercancel', function() { down = null; dragging = false; wrap.classList.remove('dragging'); });
   charWrap.addEventListener('mouseenter', function() {
@@ -3666,10 +4057,57 @@ document.addEventListener('click', function(e) {
     if (e.key === 'Escape') { clearTimeout(_navCloseTimer); document.getElementById('pet-bubble').classList.add('hidden'); }
   });
 
+  /* ── Mini-quests: small things to find, saved per visitor ── */
+  var QUESTS = [
+    {id:'pet',      t:'Pet Pumkin (hover for a second)'},
+    {id:'filter',   t:'Filter the work by a skill or tag'},
+    {id:'pipeline', t:'Run the pipeline on the architecture tab'},
+    {id:'lab',      t:'Switch off a rule in the decision lab'},
+    {id:'query',    t:'Run something in the terminal'},
+    {id:'game',     t:'Find the hidden game'}
+  ];
+  var QK = PET_LS + '-quests', qDone = {};
+  try { qDone = JSON.parse(localStorage.getItem(QK) || '{}') || {}; } catch (e) {}
+  function qCount() { return QUESTS.filter(function(q) { return qDone[q.id]; }).length; }
+  function questBtn() {
+    return '<button class="pet-nav-btn" onclick="petQuests()">quests ' + qCount() + '/' + QUESTS.length + '</button>';
+  }
+  function qList() {
+    var n = qCount();
+    return '<div class="pet-qbar"><i style="width:' + (n / QUESTS.length * 100) + '%"></i></div><ul class="pet-quests">' +
+      QUESTS.map(function(q) { return '<li' + (qDone[q.id] ? ' class="done"' : '') + '>' + q.t + '</li>'; }).join('') + '</ul>';
+  }
+  function allDone() { return qCount() === QUESTS.length; }
+  function badge() { if (allDone() && PET_STATE === 'normal') setLabel('★ PUMKIN', 'var(--amber)'); }
+  window.petQuests = function() {
+    var head = allDone()
+      ? '<strong>All six done.</strong> ⭐'
+      : '<strong>Quests</strong> · ' + qCount() + ' of ' + QUESTS.length + '. Little things to find on this site.';
+    typingThenShow(head + qList(), false);
+  };
+  /* returns true the first time a quest is completed */
+  window.petQuest = function(id) {
+    if (qDone[id] || !QUESTS.some(function(q) { return q.id === id; })) return false;
+    qDone[id] = 1;
+    try { localStorage.setItem(QK, JSON.stringify(qDone)); } catch (e) {}
+    var q = QUESTS.filter(function(x) { return x.id === id; })[0], n = qCount();
+    if (PET_STATE === 'sleeping') toNormal();
+    excite();
+    if (allDone()) {
+      typingThenShow("That's all six. You've seen more of this site than most people. ⭐<br><br>If you want to tell Anna, her email's in the sidebar." + qList(), false);
+      setTimeout(badge, 950);
+    } else {
+      typingThenShow('Quest done: <strong>' + q.t.replace(/ \(.*\)$/, '') + '</strong>. ' + n + ' of ' + QUESTS.length + ' ✓' +
+        '<div class="pet-nav">' + questBtn() + '</div>', false);
+    }
+    return true;
+  };
+
   /* ── Init ── */
   scheduleIdle();
   resetSleepTimer();
   applySaved();
+  badge();
 
   var seen = null;
   try { seen = localStorage.getItem(PET_LS); localStorage.setItem(PET_LS, '1'); } catch (e) { seen = '1'; }
@@ -3788,6 +4226,7 @@ document.addEventListener('click', function(e) {
     if(!modal)return;
     modal.classList.remove('hidden');
     init();
+    if (window.petQuest) window.petQuest('game');
   };
   window.closeGame=function(){
     clearInterval(loop);
@@ -4419,6 +4858,7 @@ document.addEventListener('click', function(e) {
   function reactToQuery(cmd, result) {
     var isErr = result.indexOf('res-error') > -1;
     errStreak = isErr ? errStreak + 1 : 0;
+    if (!isErr && window.petQuest && window.petQuest('query')) return;
     if (/^(DROP|DELETE|TRUNCATE)\b|^del\s+anna|^free\s*\(\s*anna/i.test(cmd)) return petOnce('drop', "Hey! I live in there. 😤");
     if (/UPDATE\s+anna\s+SET\s+status\s*=\s*['"]hired['"]/i.test(cmd)) return petOnce('hired', "Wait, really?! 🎉 Okay okay, the email is right there.");
     if (/FROM\s+(anna\.)?pumkin\b/i.test(cmd) && !isErr) return petOnce('me', "That's me! Hi. 👾");
