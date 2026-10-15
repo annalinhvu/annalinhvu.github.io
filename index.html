@@ -4817,6 +4817,21 @@ document.addEventListener('click', function(e) {
     if(/^anna\.boyfriend/.test(cu)) return '<div class="res-error">AttributeError: attribute not found.</div>';
     if(/^anna\.secrets/.test(cu)) return '<div class="res-info"># no secrets here... or are there? 🤫</div>';
     if(/^(exit|quit)\s*\(\s*\)/.test(cu)) return '<div class="res-info"># you can\'t leave that easily 😄</div>';
+    if(/^anna\s*$/.test(cu)) return '<div class="res-success">&lt;Anna: Principal Data Engineer @ DEPT Agency, NYC&gt;</div><div class="res-info"># try help(anna)</div>';
+    var prM = cu.match(/^print\s*\((.*)\)\s*$/);
+    if(prM) {
+      var arg = prM[1].trim(), str = arg.match(/^(['"])(.*)\1$/);
+      if(str) return '<div class="res-success">'+esc(str[2])+'</div>';
+      if(arg) return runPython(arg);
+      return '<div class="res-info"></div>';
+    }
+    if(/\d/.test(cu) && /^[\d\s+\-*\/().%]+$/.test(cu) && cu.indexOf('//') < 0) {
+      try {
+        var v = Function('"use strict";return (' + cu + ')')();
+        if(!isFinite(v)) return '<div class="res-error">ZeroDivisionError: division by zero</div>';
+        return '<div class="res-success">'+esc(Math.round(v * 1e10) / 1e10)+'</div>';
+      } catch(err) { return '<div class="res-error">SyntaxError: invalid syntax</div>'; }
+    }
     if(/^anna\./.test(cu)) {
       var attr=cu.match(/^anna\.(\w+)/)[1];
       return '<div class="res-error">AttributeError: \'Anna\' has no attribute \''+esc(attr)+'\'. try anna.help()</div>';
@@ -4868,15 +4883,74 @@ document.addEventListener('click', function(e) {
     if (consoleMode === 'sql' && !isErr && /\bWHERE\b/i.test(cmd)) return petOnce('where', "Ooh, a WHERE clause. Filtering like a pro. 🔍");
   }
 
+  /* closest known word within a couple of typos, for "did you mean" hints */
+  function closest(word, list) {
+    var w = String(word).toLowerCase(), best = null, bd = w.length < 4 ? 1 : 2;
+    if (w.length < 2) return null;
+    list.forEach(function(c) {
+      var a = w, b = String(c).toLowerCase();
+      if (a === b) return;
+      var d = [];
+      for (var i = 0; i <= a.length; i++) { d[i] = [i]; }
+      for (var j = 1; j <= b.length; j++) d[0][j] = j;
+      for (i = 1; i <= a.length; i++) for (j = 1; j <= b.length; j++) {
+        d[i][j] = Math.min(d[i-1][j] + 1, d[i][j-1] + 1, d[i-1][j-1] + (a[i-1] === b[j-1] ? 0 : 1));
+        if (i > 1 && j > 1 && a[i-1] === b[j-2] && a[i-2] === b[j-1]) d[i][j] = Math.min(d[i][j], d[i-2][j-2] + 1);
+      }
+      if (d[a.length][b.length] <= bd) { bd = d[a.length][b.length] - 0.5; best = c; }
+    });
+    return best;
+  }
+  var SQL_WORDS = ['SELECT','FROM','WHERE','GROUP','ORDER','BY','HAVING','LIMIT','DISTINCT','COUNT','DESCRIBE','SHOW','TABLES','INSERT','INTO','VALUES','LIKE','BETWEEN','AND','OR','NOT','NULL','ASC','DESC','HELP'];
+  function pyMethods() {
+    var m = {};
+    (GUIDE_DATA.python || []).forEach(function(c) { var x = c[0].match(/anna\.(\w+)/); if (x) m[x[1]] = 1; });
+    return Object.keys(m);
+  }
+  function hint(result) {
+    var m;
+    if (consoleMode === 'sql') {
+      if ((m = result.match(/syntax error near '([^']*)'/)) && (m = closest(m[1], SQL_WORDS.concat(TABLES))))
+        return result.replace('try HELP.', 'did you mean ' + esc(m) + '?');
+      if ((m = result.match(/table 'anna_vu\.([^']+)' doesn't exist/)) && (m = closest(m[1], TABLES)))
+        return result.replace('try SHOW TABLES.', 'did you mean ' + esc(m) + '?');
+    }
+    if (consoleMode === 'python') {
+      if ((m = result.match(/NameError: '([^']+)'/)) && (m = closest(m[1], ['anna','help','print'])))
+        return result.replace('try help(anna)', 'did you mean ' + esc(m) + '?');
+      if ((m = result.match(/has no attribute '([^']+)'/)) && (m = closest(m[1], pyMethods())))
+        return result.replace('try anna.help()', 'did you mean anna.' + esc(m) + '()?');
+    }
+    return result;
+  }
+  /* help for modes that have no help command of their own: their own example commands */
+  function guideList(m) {
+    var c = {java:'//', c:'/*'}[m] || '--', end = m === 'c' ? ' */' : '';
+    return '<div class="res-info">' + c + ' things to try' + end + '<br>' + (GUIDE_DATA[m] || []).map(function(g) {
+      return esc(g[0]) + '&nbsp;&nbsp;' + c + ' ' + esc(g[1]) + end;
+    }).join('<br>') + '</div>';
+  }
+
   function runCmd(cmd) {
     var result;
     syncData();
+    /* shell habits work in every mode */
+    var low = cmd.trim().toLowerCase().replace(/;$/, '');
+    if (low === 'clear' || low === 'cls') { window.clearConsole(); return; }
+    var run = cmd;
+    if (/^(\?|help|man|ls)$/.test(low)) {
+      if (consoleMode === 'sql') run = low === 'ls' ? 'SHOW TABLES' : 'HELP';
+      else if (consoleMode === 'python') run = 'help(anna)';
+      else run = null;
+    }
     var sayM = cmd.match(/^(?:pumkinsay|cowsay)\s*(?:\(\s*)?(['"]?)(.*?)\1\s*\)?\s*;?$/i);
     if(sayM) result=pumkinSay(sayM[2] || 'hi! 👾');
-    else if(consoleMode==='sql') result=runSQL(cmd);
-    else if(consoleMode==='python') result=runPython(cmd);
-    else if(consoleMode==='java') result=runJava(cmd);
-    else result=runC(cmd);
+    else if(run === null) result=guideList(consoleMode);
+    else if(consoleMode==='sql') result=runSQL(run);
+    else if(consoleMode==='python') result=runPython(run);
+    else if(consoleMode==='java') result=runJava(run);
+    else result=runC(run);
+    result = hint(result);
     var prompt = esc(PROMPTS[consoleMode]||'> ');
     var block = document.createElement('div');
     block.className = 'cmd-block';
@@ -5066,6 +5140,7 @@ document.addEventListener('click', function(e) {
     c:'/* switched to C · compiler: gcc anna.c */'
   };
   window.setConsoleMode = function(m) {
+    if(m === consoleMode) { if(cinput) cinput.focus(); return; }
     consoleMode = m;
     ['sql','python','java','c'].forEach(function(id){
       var el=document.getElementById('btn-'+id);
@@ -5082,11 +5157,25 @@ document.addEventListener('click', function(e) {
   };
 
   /* ── Input handling ── */
+  var tabBase = null, tabIdx = 0;
   if(cinput) {
+    cinput.addEventListener('input', function() { tabBase = null; tabIdx = 0; });
     cinput.addEventListener('keydown', function(e) {
+      if(e.key !== 'Tab') { tabBase = null; tabIdx = 0; }
       if(e.key === 'Enter') {
         var cmd = cinput.value.trim();
         if(cmd) { cmdHistory.unshift(cmd); histIdx=-1; runCmd(cmd); cinput.value=''; }
+      } else if(e.key === 'Tab' && !e.shiftKey && cinput.value) {
+        /* complete a table name after FROM / DESCRIBE, otherwise one of this mode's example commands */
+        var v = tabBase === null ? cinput.value : tabBase, opts;
+        var tm = v.match(/^(.*\b(?:FROM|DESCRIBE|JOIN)\s+)(\w*)$/i);
+        if(consoleMode === 'sql' && tm) opts = TABLES.filter(function(t) { return t.indexOf(tm[2].toLowerCase()) === 0; }).map(function(t) { return tm[1] + t; });
+        else opts = (GUIDE_DATA[consoleMode] || []).map(function(g) { return g[0]; }).filter(function(c) { return c.toLowerCase().indexOf(v.toLowerCase()) === 0; });
+        if(!opts.length) return;
+        e.preventDefault();
+        tabBase = v;
+        cinput.value = opts[tabIdx++ % opts.length];
+        return;
       } else if(e.key === 'ArrowUp') {
         e.preventDefault();
         if(histIdx < cmdHistory.length-1) { histIdx++; cinput.value=cmdHistory[histIdx]; }
@@ -5115,8 +5204,10 @@ document.addEventListener('click', function(e) {
     cinput.setSelectionRange(cmd.length, cmd.length);
   };
   window.clearConsole = function() {
-    if(coutput) coutput.innerHTML = '';
+    var c = {python:'#', java:'//', c:'/*'}[consoleMode] || '--';
+    if(coutput) coutput.innerHTML = '<div class="cmd-block"><div class="res-info">' + c + ' cleared · pick an example above or type help' + (consoleMode === 'c' ? ' */' : '') + '</div></div>';
     ROW_REFS = [];
+    if(cinput) cinput.focus({preventScroll:true});
   };
   if(coutput) coutput.addEventListener('click', function(e) {
     var r = e.target.closest('.res-row[data-ref]');
@@ -5125,7 +5216,14 @@ document.addEventListener('click', function(e) {
 
   /* ── Focus input on console pane click ── */
   var consoleWrap = document.querySelector('.console-wrap');
-  if(consoleWrap) consoleWrap.addEventListener('click', function(){ if(cinput) cinput.focus(); });
+  /* but not while selecting text to copy, not from buttons, and not on touch screens (it pops the keyboard) */
+  var touchOnly = window.matchMedia && window.matchMedia('(hover: none)').matches;
+  if(consoleWrap) consoleWrap.addEventListener('click', function(e){
+    if(!cinput || touchOnly) return;
+    if(String(window.getSelection ? getSelection() : '')) return;
+    if(e.target.closest('button, a, input, [data-ref]')) return;
+    cinput.focus({preventScroll:true});
+  });
 
   /* ── Focus input when switching to console tab ── */
   var _prevSwitch = switchPane;
