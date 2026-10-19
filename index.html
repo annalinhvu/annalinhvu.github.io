@@ -679,6 +679,40 @@ body {
 .demo-sent-neu{background:var(--t4);}
 .demo-sent-neg{background:var(--rose);}
 .demo-sent-labels{display:flex;gap:16px;font-size:11px;color:var(--t4);}
+/* interactive demos (CSV state machine, graph algorithms) */
+.demo-ctl{display:flex;gap:6px;flex-wrap:wrap;align-items:center;margin-bottom:10px;}
+.demo-ctl-lbl{font-size:11px;color:var(--t4);margin-right:4px;}
+.demo-ctl button{font:inherit;font-size:11px;padding:4px 10px;border:1px solid var(--bd);border-radius:5px;background:none;color:var(--t3);cursor:pointer;}
+.demo-ctl button:hover{border-color:var(--bd-hi);color:var(--t2);}
+.demo-ctl button.on{border-color:var(--amber);color:var(--amber);background:rgba(200,120,94,.07);}
+.demo-ctl button:focus-visible{outline:2px solid var(--amber);outline-offset:1px;}
+.demo-svg{width:100%;display:block;background:var(--surface);border:1px solid var(--bd);border-radius:8px;margin-bottom:10px;}
+.demo-svg text{font-family:'Geist Mono',monospace;fill:var(--t2);}
+.demo-svg .lbl{fill:var(--t4);font-size:12px;}
+.demo-svg .st{fill:var(--panel-hd);stroke:var(--bd-hi);stroke-width:1.2;transition:fill .2s,stroke .2s;}
+.demo-svg .st.on{fill:rgba(200,120,94,.14);stroke:var(--amber);stroke-width:2;}
+.demo-svg .st.err{fill:rgba(168,80,96,.12);stroke:var(--rose);stroke-width:2;}
+.demo-svg .ed{stroke:var(--bd-hi);stroke-width:1.3;fill:none;transition:stroke .2s;}
+.demo-svg .ed.on{stroke:var(--amber);stroke-width:2.4;}
+.demo-svg .ed.bad{stroke:var(--rose);stroke-width:2.4;stroke-dasharray:5 4;}
+.demo-svg .gn circle{fill:var(--panel-hd);stroke:var(--bd-hi);stroke-width:1.4;transition:fill .2s,stroke .2s;}
+.demo-svg .gn.d0 circle{fill:rgba(200,120,94,.16);stroke:var(--amber);stroke-width:2;}
+.demo-svg .gn.d1 circle,.demo-svg .gn.v circle{fill:rgba(94,122,98,.18);stroke:var(--accent);stroke-width:2;}
+.demo-svg .gn.d2 circle{fill:rgba(94,122,98,.08);stroke:var(--accent);stroke-width:1.6;stroke-dasharray:4 3;}
+.demo-svg .gn.bad circle{fill:rgba(168,80,96,.14);stroke:var(--rose);stroke-width:2;}
+.demo-svg .gn text{font-size:15px;font-weight:600;fill:var(--t1);}
+.demo-svg .gd{font-size:12px;fill:var(--accent);}
+.csv-input{display:flex;flex-wrap:wrap;gap:3px;margin-bottom:10px;}
+.csv-ch{min-width:17px;padding:3px 2px;text-align:center;border:1px solid var(--bd);border-radius:3px;color:var(--t2);font-size:12px;transition:background .15s;}
+.csv-ch.ctl{color:var(--t4);}
+.csv-ch.done{color:var(--t4);border-color:transparent;}
+.csv-ch.cur{border-color:var(--amber);color:var(--amber);background:rgba(200,120,94,.1);}
+.csv-ch.err{border-color:var(--rose);color:var(--rose);background:rgba(168,80,96,.1);}
+.csv-fields{display:flex;gap:6px;flex-wrap:wrap;align-items:center;min-height:28px;margin-bottom:10px;}
+.csv-field{padding:3px 9px;border:1px solid var(--accent);border-radius:5px;color:var(--accent);font-size:12px;white-space:pre;}
+.csv-field.building{border-style:dashed;border-color:var(--bd-hi);color:var(--t3);}
+.demo-err{color:var(--rose);}
+.demo-log .demo-log-line b{color:var(--t1);font-weight:500;}
 .demo-topics{display:flex;gap:5px;flex-wrap:wrap;}
 .demo-topic{font-size:11px;padding:2px 9px;border:1px solid var(--tag-bd);border-radius:5px;color:var(--tag-col);}
 .demo-topic.hot{border-color:rgba(200,120,94,.4);color:var(--amber);}
@@ -1650,19 +1684,19 @@ body {
             <div class="proj-desc">A tool that analyzes geotagged tweets for flu-related content, using regex matching that handles edge cases such as "fluent" versus "#flu". Each match is mapped to the nearest U.S. state by Cartesian distance, and a polymorphic Reader interface supports both JSON and TXT input.</div>
             <div class="proj-metrics"><div><div class="pm-v">50</div><div class="pm-u">states mapped</div></div><div><div class="pm-v">2</div><div class="pm-u">input formats</div></div></div>
           </div>
-          <div class="proj-card">
+          <div class="proj-card" data-demo="csvfsm">
             <div class="proj-title">RFC 4180 CSV Parser</div>
             <div class="proj-ctx">2025</div>
             <div class="proj-tags"><span class="proj-tag">Java</span><span class="proj-tag">State Machine</span><span class="proj-tag">Parsing</span></div>
             <div class="proj-desc">A CSV reader implemented as a four-state finite state machine that follows RFC 4180. It handles quoted fields with embedded commas and line breaks, doubled quotes as escapes, and both CRLF and LF row endings, and it rejects malformed input with an error that identifies the exact line and column.</div>
-            <div class="proj-metrics"><div><div class="pm-v">4</div><div class="pm-u">parser states</div></div><div><div class="pm-v">RFC 4180</div><div class="pm-u">spec</div></div></div>
+            <div class="proj-metrics"><div><div class="pm-v">4</div><div class="pm-u">parser states</div></div><div><div class="pm-v">4</div><div class="pm-u">error types</div></div></div>
           </div>
-          <div class="proj-card">
+          <div class="proj-card" data-demo="graphs">
             <div class="proj-title">Graph Traversal Algorithms</div>
             <div class="proj-ctx">2025</div>
             <div class="proj-tags"><span class="proj-tag">Java</span><span class="proj-tag">Graphs</span><span class="proj-tag">BFS</span></div>
             <div class="proj-desc">Analysis methods for directed and undirected graphs stored as adjacency sets. They include breadth-first search for the shortest distance between two nodes, retrieval of every node within k hops, and a Hamiltonian cycle checker that reports exactly why a path fails: wrong length, not a cycle, or an unknown node.</div>
-            <div class="proj-metrics"><div><div class="pm-v">3</div><div class="pm-u">algorithms</div></div><div><div class="pm-v">BFS</div><div class="pm-u">traversal</div></div></div>
+            <div class="proj-metrics"><div><div class="pm-v">3</div><div class="pm-u">methods</div></div><div><div class="pm-v">5</div><div class="pm-u">report statuses</div></div></div>
           </div>
         </div>
 
@@ -2264,8 +2298,264 @@ function toggleTheme() {
       + '<div class="demo-kpi"><div class="demo-kpi-v">16-bit</div><div class="demo-kpi-l">Instruction Width</div></div>'
       + '<div class="demo-kpi"><div class="demo-kpi-v">2-pass</div><div class="demo-kpi-l">Parser</div></div>'
       + '<div class="demo-kpi"><div class="demo-kpi-v">.asm → .obj</div><div class="demo-kpi-l">Output</div></div>'
+      + '</div></div>',
+
+    /* csvfsm and graphs are filled in by demoInit once the modal opens */
+    csvfsm: '<div class="demo-wrap" data-init="csvfsm">'
+      + '<div class="demo-topbar"><span style="color:var(--t2);font-size:11px">CSVReader.readRow() · 2025</span><span class="demo-env-label">Java · enum CSVState</span></div>'
+      + '<div class="demo-ctl" role="group" aria-label="Sample row"></div>'
+      + '<svg class="demo-svg" viewBox="0 0 540 205" role="img" aria-label="State machine with four states: START, IN_UNQUOTED_FIELD, IN_QUOTED_FIELD, AFTER_QUOTED_FIELD"></svg>'
+      + '<div class="csv-input" aria-hidden="true"></div>'
+      + '<div class="csv-fields" aria-live="polite"></div>'
+      + '<div class="demo-log" style="margin-bottom:12px"><div class="demo-log-line csv-msg">&nbsp;</div></div>'
+      + '<div class="demo-kpis">'
+      + '<div class="demo-kpi"><div class="demo-kpi-v">4</div><div class="demo-kpi-l">States</div></div>'
+      + '<div class="demo-kpi"><div class="demo-kpi-v">4</div><div class="demo-kpi-l">Error Types</div></div>'
+      + '<div class="demo-kpi"><div class="demo-kpi-v">CRLF + LF</div><div class="demo-kpi-l">Row Endings</div></div>'
+      + '<div class="demo-kpi"><div class="demo-kpi-v">line:col</div><div class="demo-kpi-l">Error Position</div></div>'
+      + '</div></div>',
+
+    graphs: '<div class="demo-wrap" data-init="graphs">'
+      + '<div class="demo-topbar"><span style="color:var(--t2);font-size:11px">GraphUtils · 2025</span><span class="demo-env-label">Java · adjacency sets</span></div>'
+      + '<div class="demo-ctl" role="group" aria-label="Breadth-first search"><span class="demo-ctl-lbl">bfs</span></div>'
+      + '<div class="demo-ctl" role="group" aria-label="Hamiltonian cycle check"><span class="demo-ctl-lbl">isHamiltonianCycle</span></div>'
+      + '<svg class="demo-svg" viewBox="0 0 460 200" role="img" aria-label="Undirected graph with six nodes A to F"></svg>'
+      + '<div class="demo-log" style="margin-bottom:12px"><div class="demo-log-line g-msg">&nbsp;</div><div class="demo-log-line g-sub demo-log-dim">&nbsp;</div></div>'
+      + '<div class="demo-kpis">'
+      + '<div class="demo-kpi"><div class="demo-kpi-v">3</div><div class="demo-kpi-l">Methods</div></div>'
+      + '<div class="demo-kpi"><div class="demo-kpi-v">BFS</div><div class="demo-kpi-l">Shortest Path</div></div>'
+      + '<div class="demo-kpi"><div class="demo-kpi-v">5</div><div class="demo-kpi-l">Report Statuses</div></div>'
+      + '<div class="demo-kpi"><div class="demo-kpi-v">O(V+E)</div><div class="demo-kpi-l">Traversal</div></div>'
       + '</div></div>'
   };
+
+  /* ── Interactive demos. Each run keeps a token on its root, so switching
+        cards or closing the modal stops a running animation. ── */
+  var STILL = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var SVGNS = 'http://www.w3.org/2000/svg';
+  function esc(t) { return String(t).replace(/[&<>"]/g, function(c) { return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]; }); }
+  function svgEl(tag, attrs, parent) {
+    var el = document.createElementNS(SVGNS, tag);
+    for (var k in attrs) el.setAttribute(k, attrs[k]);
+    if (parent) parent.appendChild(el);
+    return el;
+  }
+  function play(root, steps, draw, ms) {
+    var token = {}; root._token = token;
+    if (STILL) { draw(steps[steps.length - 1]); return; }
+    var i = 0;
+    (function tick() {
+      if (root._token !== token || !root.isConnected) return;
+      draw(steps[i++]);
+      if (i < steps.length) setTimeout(tick, ms);
+    })();
+  }
+  function buttons(ctl, items, onPick) {
+    items.forEach(function(it, i) {
+      var b = document.createElement('button');
+      b.type = 'button'; b.textContent = it.label;
+      b.addEventListener('click', function() {
+        ctl.closest('.demo-wrap').querySelectorAll('.demo-ctl button').forEach(function(x) { x.classList.remove('on'); });
+        b.classList.add('on'); onPick(it);
+      });
+      ctl.appendChild(b);
+    });
+  }
+
+  /* CSV: the same four states and error messages as CSVReader.readRow() */
+  var CSV_ROWS = [
+    {label:'valid row',          text:'id,"Hà Nội, VN","say ""hi""\"\r\n'},
+    {label:'text after a quote', text:'42,"Huế"x,ok\n'},
+    {label:'stray quote',        text:'size 12",ok\n'}
+  ];
+  var CSV_STATES = {START:[62,85,'START'], IN_UNQUOTED_FIELD:[262,30,'IN_UNQUOTED'], IN_QUOTED_FIELD:[262,140,'IN_QUOTED'], AFTER_QUOTED_FIELD:[462,140,'AFTER_QUOTED']};
+  var CSV_EDGES = [
+    ['START>IN_UNQUOTED_FIELD', 'M120,74 Q150,30 192,30', 'char', 140, 40],
+    ['IN_UNQUOTED_FIELD>START', 'M192,42 Q160,72 120,84', ',', 166, 72],
+    ['START>IN_QUOTED_FIELD', 'M120,96 Q150,140 192,140', '"', 140, 136],
+    ['IN_QUOTED_FIELD>IN_QUOTED_FIELD', 'M246,122 C236,96 288,96 278,122', '""', 300, 104],
+    ['IN_QUOTED_FIELD>AFTER_QUOTED_FIELD', 'M332,140 L392,140', '"', 358, 132],
+    ['AFTER_QUOTED_FIELD>START', 'M462,158 C450,206 80,206 65,103', ',', 262, 196]
+  ];
+  function csvTrace(s) {
+    var st = 'START', fields = [], cur = '', steps = [], i = 0;
+    function snap(a, n, edge, msg, flag) {
+      steps.push({a:a, b:a + n - 1, st:st, edge:edge, fields:fields.slice(), cur:cur, msg:msg, flag:flag || ''});
+    }
+    while (i < s.length) {
+      var c = s[i], from = st, n = 1, msg;
+      if (st === 'IN_QUOTED_FIELD') {
+        if (c === '"' && s[i + 1] === '"') { cur += '"'; n = 2; msg = 'doubled quote inside quotes, keep one "'; }
+        else if (c === '"') { st = 'AFTER_QUOTED_FIELD'; msg = 'closing quote'; }
+        else { cur += c; msg = 'inside quotes, append ' + (c === ',' ? 'the comma' : c === ' ' ? 'a space' : c); }
+      } else if (c === ',') {
+        fields.push(cur); cur = ''; st = 'START'; msg = 'comma, field ' + fields.length + ' ends';
+      } else if (c === '\r' || c === '\n') {
+        n = c === '\r' && s[i + 1] === '\n' ? 2 : 1;
+        if (from !== 'START') fields.push(cur);
+        cur = ''; st = 'START';
+        snap(i, n, null, (n === 2 ? 'CRLF' : 'LF') + ', row ends with ' + fields.length + ' fields', 'done');
+        return steps;
+      } else if (st === 'START') {
+        if (c === '"') { st = 'IN_QUOTED_FIELD'; msg = 'opening quote'; }
+        else { cur += c; st = 'IN_UNQUOTED_FIELD'; msg = 'start an unquoted field'; }
+      } else if (st === 'IN_UNQUOTED_FIELD') {
+        if (c === '"') { snap(i, 1, null, 'Unexpected quote inside unquoted field.', 'err'); return steps; }
+        cur += c; msg = 'append ' + (c === ' ' ? 'a space' : c);
+      } else {
+        snap(i, 1, null, 'Characters found after closing quote.', 'err'); return steps;
+      }
+      snap(i, n, from !== st ? from + '>' + st : (n === 2 ? from + '>' + from : null), msg);
+      i += n;
+    }
+    return steps;
+  }
+  function initCsv(root) {
+    var svg = root.querySelector('svg'), input = root.querySelector('.csv-input');
+    var out = root.querySelector('.csv-fields'), log = root.querySelector('.csv-msg');
+    svgEl('defs', {}, svg).innerHTML = '<marker id="csv-arr" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L8,4 L0,8 z" fill="var(--t4)"/></marker>';
+    var edges = {}, states = {};
+    CSV_EDGES.forEach(function(e) {
+      edges[e[0]] = svgEl('path', {d:e[1], 'class':'ed', 'marker-end':'url(#csv-arr)'}, svg);
+      svgEl('text', {x:e[3], y:e[4], 'class':'lbl', 'text-anchor':'middle'}, svg).textContent = e[2];
+    });
+    Object.keys(CSV_STATES).forEach(function(k) {
+      var p = CSV_STATES[k];
+      states[k] = svgEl('rect', {x:p[0] - 70, y:p[1] - 17, width:140, height:34, rx:8, 'class':'st'}, svg);
+      svgEl('text', {x:p[0], y:p[1] + 4, 'text-anchor':'middle', 'font-size':12}, svg).textContent = p[2];
+    });
+    states.START.setAttribute('x', 4); states.START.setAttribute('width', 116);
+
+    function run(row) {
+      var cells = row.text.split('').map(function(c) {
+        var ctl = c === '\r' || c === '\n' || c === ' ';
+        return '<span class="csv-ch' + (ctl ? ' ctl' : '') + '">' + (c === '\r' ? '\\r' : c === '\n' ? '\\n' : c === ' ' ? '␣' : esc(c)) + '</span>';
+      });
+      input.innerHTML = cells.join('');
+      var spans = input.children;
+      play(root, csvTrace(row.text), function(step) {
+        for (var k = 0; k < spans.length; k++) {
+          var inStep = k >= step.a && k <= step.b;
+          spans[k].classList.toggle('done', k < step.a);
+          spans[k].classList.toggle('cur', inStep && step.flag !== 'err');
+          spans[k].classList.toggle('err', inStep && step.flag === 'err');
+        }
+        for (var s in states) {
+          states[s].classList.toggle('on', s === step.st && step.flag !== 'err');
+          states[s].classList.toggle('err', s === step.st && step.flag === 'err');
+        }
+        for (var e in edges) edges[e].classList.toggle('on', e === step.edge);
+        out.innerHTML = step.fields.map(function(f) { return '<span class="csv-field">' + esc(f) + '</span>'; }).join('')
+          + (step.cur ? '<span class="csv-field building">' + esc(step.cur) + '</span>' : '');
+        log.innerHTML = step.flag === 'err'
+          ? '<span class="demo-err">CSVFormatException</span> line 1, column ' + (step.a + 1) + ': ' + esc(step.msg)
+          : (step.flag === 'done' ? '<span class="demo-log-ok">✓</span> ' : '<span class="demo-log-dim">' + esc(CSV_STATES[step.st][2]) + '</span> ') + esc(step.msg);
+      }, 240);
+    }
+    buttons(root.querySelector('.demo-ctl'), CSV_ROWS, run);
+    root.querySelector('.demo-ctl button').click();
+  }
+
+  /* Graph: undirected, the same checks and statuses as GraphUtils */
+  var G_POS = {A:[230,26], B:[332,66], C:[332,136], D:[230,176], E:[128,136], F:[128,66]};
+  var G_ADJ = {A:['B','C','F'], B:['A','C','E'], C:['A','B','D'], D:['C','E','F'], E:['B','D','F'], F:['A','D','E']};
+  function ek(a, b) { return a < b ? a + b : b + a; }
+  function bfsTrace(src, dest, k) {
+    var dist = {}, q = [src], tree = [], steps = [];
+    dist[src] = 0;
+    function snap(msg, done) { steps.push({dist:JSON.parse(JSON.stringify(dist)), tree:tree.slice(), msg:msg, sub:'queue [' + q.join(', ') + ']', done:done}); }
+    snap('start at ' + src);
+    while (q.length) {
+      var cur = q.shift();
+      if (k && dist[cur] >= k) continue;
+      for (var i = 0; i < G_ADJ[cur].length; i++) {
+        var nb = G_ADJ[cur][i];
+        if (nb in dist) continue;
+        dist[nb] = dist[cur] + 1; q.push(nb); tree.push(ek(cur, nb));
+        if (nb === dest) { snap('minDistance(' + src + ', ' + dest + ') returns ' + dist[nb], true); return steps; }
+        snap('from ' + cur + ', reach ' + nb + ' at distance ' + dist[nb]);
+      }
+    }
+    var within = Object.keys(dist).filter(function(n) { return dist[n] > 0; }).sort();
+    snap('nodesWithinDistance(' + src + ', ' + k + ') returns {' + within.join(', ') + '}', true);
+    return steps;
+  }
+  function hamTrace(path) {
+    var steps = [], walked = [], n = Object.keys(G_ADJ).length;
+    function snap(o) { o.walked = walked.slice(); o.path = path; steps.push(o); }
+    if (path.length < n + 1) { snap({status:'INVALID_CYCLE', msg:path.length + ' entries; a cycle through ' + n + ' nodes needs ' + (n + 1)}); return steps; }
+    for (var i = 0; i < path.length - 1; i++) {
+      var a = path[i], b = path[i + 1];
+      if (G_ADJ[a].indexOf(b) < 0) { snap({status:'INVALID_NODE', bad:b, badEdge:[a, b], msg:'no edge ' + a + ' → ' + b}); return steps; }
+      walked.push(ek(a, b));
+      snap({msg:a + ' → ' + b, at:b});
+    }
+    var seen = {};
+    for (var j = 0; j < path.length - 1; j++) {
+      if (seen[path[j]]) { snap({status:'INVALID_NODE', bad:path[j], msg:path[j] + ' is visited twice'}); return steps; }
+      seen[path[j]] = true;
+    }
+    snap({status:'VALID', msg:'every node once, back to ' + path[0]});
+    return steps;
+  }
+  function initGraph(root) {
+    var svg = root.querySelector('svg'), msg = root.querySelector('.g-msg'), sub = root.querySelector('.g-sub');
+    var edges = {}, nodes = {}, dlab = {};
+    Object.keys(G_ADJ).forEach(function(a) {
+      G_ADJ[a].forEach(function(b) {
+        if (a > b) return;
+        edges[ek(a, b)] = svgEl('line', {x1:G_POS[a][0], y1:G_POS[a][1], x2:G_POS[b][0], y2:G_POS[b][1], 'class':'ed'}, svg);
+      });
+    });
+    var ghost = svgEl('line', {'class':'ed bad', visibility:'hidden'}, svg);
+    Object.keys(G_POS).forEach(function(id) {
+      var p = G_POS[id], g = svgEl('g', {'class':'gn'}, svg);
+      svgEl('circle', {cx:p[0], cy:p[1], r:17}, g);
+      svgEl('text', {x:p[0], y:p[1] + 5, 'text-anchor':'middle'}, g).textContent = id;
+      dlab[id] = svgEl('text', {x:p[0] + (p[0] < 230 ? -30 : p[0] > 230 ? 30 : 28), y:p[1] + (p[0] === 230 ? 5 : -14), 'class':'gd', 'text-anchor':'middle'}, svg);
+      nodes[id] = g;
+    });
+    function reset() {
+      for (var e in edges) edges[e].setAttribute('class', 'ed');
+      for (var id in nodes) { nodes[id].setAttribute('class', 'gn'); dlab[id].textContent = ''; }
+      ghost.setAttribute('visibility', 'hidden');
+    }
+    function drawBfs(step) {
+      reset();
+      step.tree.forEach(function(e) { edges[e].setAttribute('class', 'ed on'); });
+      for (var id in step.dist) { nodes[id].setAttribute('class', 'gn d' + Math.min(step.dist[id], 2)); dlab[id].textContent = 'd' + step.dist[id]; }
+      msg.innerHTML = (step.done ? '<span class="demo-log-ok">✓</span> ' : '') + esc(step.msg);
+      sub.textContent = step.done ? 'tree edges show the shortest path to each node' : step.sub;
+    }
+    var STATUS_COL = {VALID:'demo-log-ok', INVALID_NODE:'demo-err', INVALID_CYCLE:'demo-err'};
+    function drawHam(step) {
+      reset();
+      step.walked.forEach(function(e) { edges[e].setAttribute('class', 'ed on'); });
+      step.path.forEach(function(id, i) { if (step.walked.length >= i || i === 0) nodes[id].setAttribute('class', 'gn v'); });
+      nodes[step.path[0]].setAttribute('class', 'gn d0');
+      if (step.bad && nodes[step.bad]) nodes[step.bad].setAttribute('class', 'gn bad');
+      if (step.badEdge) {
+        var a = G_POS[step.badEdge[0]], b = G_POS[step.badEdge[1]];
+        ghost.setAttribute('x1', a[0]); ghost.setAttribute('y1', a[1]); ghost.setAttribute('x2', b[0]); ghost.setAttribute('y2', b[1]);
+        ghost.setAttribute('visibility', 'visible');
+      }
+      msg.innerHTML = step.status
+        ? '<span class="' + STATUS_COL[step.status] + '">' + step.status + '</span>' + (step.bad ? ' (' + step.bad + ')' : '') + ' · ' + esc(step.msg)
+        : esc(step.msg);
+      sub.textContent = 'path [' + step.path.join(', ') + ']';
+    }
+    var ctls = root.querySelectorAll('.demo-ctl');
+    buttons(ctls[0], [
+      {label:'minDistance(A, D)', run:function() { return bfsTrace('A', 'D'); }},
+      {label:'nodesWithinDistance(A, 1)', run:function() { return bfsTrace('A', null, 1); }},
+      {label:'nodesWithinDistance(A, 2)', run:function() { return bfsTrace('A', null, 2); }}
+    ], function(it) { play(root, it.run(), drawBfs, 650); });
+    buttons(ctls[1], ['A B C D E F A', 'A C D E F B A', 'A B E D C B A', 'A B C D A'].map(function(p) {
+      return {label:p, path:p.split(' ')};
+    }), function(it) { play(root, hamTrace(it.path), drawHam, 550); });
+    ctls[0].querySelector('button').click();
+  }
+  var demoInit = {csvfsm:initCsv, graphs:initGraph};
 
   var pmBox   = document.getElementById('pm-box');
   var pmBody  = document.getElementById('pm-body');
@@ -2299,6 +2589,7 @@ function toggleTheme() {
     pmTags.innerHTML    = tags ? tags.innerHTML : '';
     pmMetrics.innerHTML = metrics ? metrics.innerHTML : '';
     pmDemo.innerHTML    = demo || '';
+    if (demo && demoInit[demoKey]) demoInit[demoKey](pmDemo.firstElementChild);
     pmEx.hidden = !demo;
     pmBox.classList.toggle('has-demo', !!demo);
 
