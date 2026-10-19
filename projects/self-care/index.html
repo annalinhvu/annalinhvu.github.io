@@ -762,6 +762,15 @@ body{
           <option value="indoor">Indoor</option>
           <option value="outdoor">Outdoor</option>
         </select>
+        <select class="filter-select" id="moodFilter">
+          <option value="">Any mood</option>
+          <option value="joy">Joy</option>
+          <option value="stress">Stress relief</option>
+          <option value="focus">Focus</option>
+          <option value="energy">Energy</option>
+          <option value="sleep">Sleep</option>
+          <option value="connection">Connection</option>
+        </select>
       </div>
     </div>
 
@@ -983,10 +992,11 @@ function applyFilters() {
   const season = document.getElementById('seasonFilter').value;
   const duration = document.getElementById('durationFilter').value;
   const setting = document.getElementById('settingFilter').value;
+  const mood = document.getElementById('moodFilter').value;
   const search = document.getElementById('searchInput').value.toLowerCase().trim();
 
   // Update filter badge
-  const activeCount = [season, duration, setting].filter(Boolean).length;
+  const activeCount = [season, duration, setting, mood].filter(Boolean).length;
   const btn = document.getElementById('filterToggle');
   const existing = btn.querySelector('.filter-badge');
   if (existing) existing.remove();
@@ -1001,6 +1011,7 @@ function applyFilters() {
     if (!activeCategories.has(a.category)) return false;
     if (season && a.season !== season && a.season !== 'all') return false;
     if (setting && a.setting !== setting && a.setting !== 'either') return false;
+    if (mood && a.benefit !== mood) return false;
     if (duration) {
       if (duration === 'quick' && a.duration_min > 15) return false;
       if (duration === 'medium' && (a.duration_min < 20 || a.duration_min > 45)) return false;
@@ -1320,6 +1331,7 @@ function esc(s) {
   document.getElementById('seasonFilter').onchange = applyFilters;
   document.getElementById('durationFilter').onchange = applyFilters;
   document.getElementById('settingFilter').onchange = applyFilters;
+  document.getElementById('moodFilter').onchange = applyFilters;
   document.getElementById('searchInput').oninput = function() {
     clearTimeout(searchTimeout);
     searchTimeout = setTimeout(applyFilters, 150);
