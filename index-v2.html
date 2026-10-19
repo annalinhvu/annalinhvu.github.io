@@ -713,6 +713,53 @@ body {
 .csv-field.building{border-style:dashed;border-color:var(--bd-hi);color:var(--t3);}
 .demo-err{color:var(--rose);}
 .demo-log .demo-log-line b{color:var(--t1);font-weight:500;}
+/* LC4, flu tweet, and COVID demos */
+.lc4-cols{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.3fr);gap:10px;margin-bottom:10px;}
+.lc4-sub{font-size:11px;color:var(--t4);letter-spacing:.5px;margin-bottom:6px;}
+.lc4-asm{background:var(--surface);border:1px solid var(--bd);border-radius:8px;padding:8px 6px;}
+.lc4-line{font-size:12px;line-height:1.9;padding:0 8px;border-radius:4px;color:var(--t3);white-space:pre;transition:background .15s;}
+.lc4-line.on{background:rgba(200,120,94,.12);color:var(--amber);}
+.lc4-line.done{color:var(--t2);}
+.lc4-enc{background:var(--surface);border:1px solid var(--bd);border-radius:8px;padding:10px;min-height:150px;}
+.lc4-bits{display:flex;gap:4px;flex-wrap:wrap;margin:6px 0 8px;}
+.lc4-f{display:flex;flex-direction:column;align-items:center;gap:3px;}
+.lc4-f b{font-weight:500;font-size:13px;padding:4px 6px;border:1px solid var(--bd-hi);border-radius:4px;color:var(--t1);letter-spacing:1px;}
+.lc4-f.op b{border-color:var(--amber);color:var(--amber);}
+.lc4-f.sub b{border-color:var(--accent);color:var(--accent);}
+.lc4-f span{font-size:11px;color:var(--t4);}
+.lc4-word{font-size:13px;color:var(--t2);}
+.lc4-word b{color:var(--amber);font-weight:600;}
+.lc4-hex{display:flex;flex-wrap:wrap;gap:3px 6px;background:var(--surface);border:1px solid var(--bd);border-radius:8px;padding:10px 12px;margin-bottom:10px;font-size:12px;color:var(--t4);}
+.lc4-hex .bx{transition:color .15s;}
+.lc4-hex .bx.seen{color:var(--t3);}
+.lc4-hex .bx.hd{color:var(--t2);}
+.lc4-hex .bx.on{color:var(--amber);}
+.lc4-legend{font-size:11px;color:var(--t4);margin:-4px 2px 10px;}
+.demo-tbl-lc4{grid-template-columns:1.3fr .8fr .8fr 1.6fr;}
+.demo-tbl-row.fresh{background:rgba(200,120,94,.08)!important;}
+.lc4-ll{display:flex;flex-wrap:wrap;gap:4px;align-items:center;font-size:11px;color:var(--t4);margin:8px 2px 12px;}
+.lc4-ll span{border:1px solid var(--bd);border-radius:4px;padding:2px 6px;color:var(--t3);}
+.flu-input{width:100%;box-sizing:border-box;font:inherit;font-size:13px;padding:8px 10px;background:var(--surface);border:1px solid var(--bd-hi);border-radius:6px;color:var(--t1);margin-bottom:8px;}
+.flu-input:focus{outline:2px solid var(--amber);outline-offset:1px;}
+.flu-out{font-size:12px;color:var(--t2);margin-bottom:10px;min-height:20px;}
+.flu-out mark{background:rgba(200,120,94,.16);color:var(--amber);border-radius:3px;padding:0 2px;}
+.demo-svg .sd{fill:var(--t4);opacity:.55;}
+.demo-svg .sd.near{fill:var(--accent);opacity:1;}
+.demo-svg .tp{fill:var(--amber);}
+.demo-svg .tl{stroke:var(--amber);stroke-width:1.6;stroke-dasharray:4 3;}
+.demo-svg .snm{font-size:13px;fill:var(--accent);}
+.flu-map{cursor:crosshair;}
+.cv-ctx{display:flex;gap:14px;flex-wrap:wrap;font-size:11px;color:var(--t4);margin:0 2px 10px;}
+.cv-ctx b{color:var(--t2);font-weight:500;}
+.cv-run{background:var(--surface);border:1px solid var(--bd);border-radius:8px;padding:12px 14px;margin-bottom:10px;}
+.cv-call{font-size:12px;color:var(--t2);margin-bottom:8px;}
+.cv-bar{height:6px;background:var(--panel-hd);border-radius:3px;overflow:hidden;margin-bottom:8px;}
+.cv-bar i{display:block;height:100%;width:0;background:var(--accent);}
+.cv-bar.hit i{background:var(--amber);}
+.cv-res{font-size:17px;font-weight:700;color:var(--amber);}
+.cv-why{font-size:11px;color:var(--t4);margin-top:4px;}
+.demo-tbl-memo{grid-template-columns:2fr 1fr;}
+.demo-tbl-row.hit{background:rgba(200,120,94,.1)!important;}
 .demo-topics{display:flex;gap:5px;flex-wrap:wrap;}
 .demo-topic{font-size:11px;padding:2px 9px;border:1px solid var(--tag-bd);border-radius:5px;color:var(--tag-col);}
 .demo-topic.hot{border-color:rgba(200,120,94,.4);color:var(--amber);}
@@ -1667,22 +1714,22 @@ body {
             <div class="proj-title">LC4 Toolchain: Assembler &amp; Disassembler</div>
             <div class="proj-ctx">2026</div>
             <div class="proj-tags"><span class="proj-tag">C</span><span class="proj-tag">ISA</span><span class="proj-tag">Binary I/O</span><span class="proj-tag">Linked Lists</span><span class="proj-tag">Valgrind</span><span class="proj-tag">GDB</span></div>
-            <div class="proj-desc">An assembler and disassembler for the LC4 architecture, written in C. The assembler performs a two-pass parse of assembly source and encodes each instruction as 16-bit machine code in PennSim's .obj format, handling .CODE, .DATA, and .SYMBOL sections and endianness. The disassembler reads those binaries back into a linked list that models program and data memory and prints readable assembly. I wrote the disassembler independently with manual memory management, and it passes all 14 Valgrind memory checks.</div>
-            <div class="proj-metrics"><div><div class="pm-v">30+</div><div class="pm-u">opcodes</div></div><div><div class="pm-v">14/14</div><div class="pm-u">valgrind checks</div></div></div>
+            <div class="proj-desc">An assembler and disassembler for the LC4 architecture, written in C. The assembler encodes register-form arithmetic and logic instructions (ADD, MUL, SUB, DIV, AND, OR, XOR) as 16-bit words and writes them to a PennSim .obj file in big-endian byte order. The disassembler reads .obj files back, parses their code, data, and symbol sections into a linked list sorted by address that models LC4 memory, and turns the ADD-family instructions back into assembly. I wrote the disassembler on my own with manual memory management, and it passes all 14 Valgrind memory checks.</div>
+            <div class="proj-metrics"><div><div class="pm-v">7</div><div class="pm-u">instructions</div></div><div><div class="pm-v">14/14</div><div class="pm-u">valgrind checks</div></div></div>
           </div>
           <div class="proj-card" data-demo="covid">
             <div class="proj-title">COVID & Property Analytics Platform</div>
             <div class="proj-ctx">2025</div>
             <div class="proj-tags"><span class="proj-tag">Java</span><span class="proj-tag">CSV/JSON</span><span class="proj-tag">MVC</span><span class="proj-tag">Memoization</span><span class="proj-tag">JUnit</span></div>
             <div class="proj-desc">A data processing platform that combines Philadelphia COVID vaccination records, population by ZIP code, and property assessments. It follows an MVC architecture with custom readers, a Singleton logger for audit trails, and memoized processors that cache expensive computations.</div>
-            <div class="proj-metrics"><div><div class="pm-v">3</div><div class="pm-u">data sources</div></div><div><div class="pm-v">7+</div><div class="pm-u">test suites</div></div></div>
+            <div class="proj-metrics"><div><div class="pm-v">3</div><div class="pm-u">data sources</div></div><div><div class="pm-v">8</div><div class="pm-u">test suites</div></div></div>
           </div>
           <div class="proj-card" data-demo="flutweet">
             <div class="proj-title">Flu Tweet Geolocation Analyzer</div>
             <div class="proj-ctx">2025</div>
             <div class="proj-tags"><span class="proj-tag">Java</span><span class="proj-tag">Regex</span><span class="proj-tag">Geolocation</span><span class="proj-tag">Singleton</span><span class="proj-tag">Factory</span></div>
             <div class="proj-desc">A tool that analyzes geotagged tweets for flu-related content, using regex matching that handles edge cases such as "fluent" versus "#flu". Each match is mapped to the nearest U.S. state by Cartesian distance, and a polymorphic Reader interface supports both JSON and TXT input.</div>
-            <div class="proj-metrics"><div><div class="pm-v">50</div><div class="pm-u">states mapped</div></div><div><div class="pm-v">2</div><div class="pm-u">input formats</div></div></div>
+            <div class="proj-metrics"><div><div class="pm-v">51</div><div class="pm-u">states + DC</div></div><div><div class="pm-v">2</div><div class="pm-u">input formats</div></div></div>
           </div>
           <div class="proj-card" data-demo="csvfsm">
             <div class="proj-title">RFC 4180 CSV Parser</div>
@@ -2217,87 +2264,55 @@ function toggleTheme() {
       + '<div class="demo-kpi"><div class="demo-kpi-v">3/5</div><div class="demo-kpi-l">Live</div></div>'
       + '</div></div>',
 
-    covid: '<div class="demo-wrap">'
-      + '<div class="demo-topbar"><span style="color:var(--t2);font-size:11px">Analytics Run · Philadelphia 2020</span><span class="demo-env-label">Java · CSV/JSON · MVC</span></div>'
-      + '<div class="demo-log" style="margin-bottom:12px">'
-      + '<div class="demo-log-line"><span class="demo-log-dim">→</span> loading <span style="color:var(--mono-g)">covid_vaccinations.csv</span> &nbsp;<span class="demo-log-ok">OK</span></div>'
-      + '<div class="demo-log-line"><span class="demo-log-dim">→</span> loading <span style="color:var(--mono-g)">population_by_zip.json</span> &nbsp;<span class="demo-log-ok">OK</span></div>'
-      + '<div class="demo-log-line"><span class="demo-log-dim">→</span> loading <span style="color:var(--mono-g)">property_assessments.csv</span> &nbsp;<span class="demo-log-ok">OK</span></div>'
-      + '<div class="demo-log-line"><span class="demo-log-dim">→</span> Singleton logger initialized &nbsp;<span class="demo-log-ok">OK</span></div>'
-      + '<div class="demo-log-line"><span class="demo-log-dim">→</span> memoized cache hit &nbsp;<span style="color:var(--amber)">0.003s</span></div>'
-      + '<div class="demo-log-line"><span class="demo-log-dim">→</span> MVC processors complete &nbsp;<span class="demo-log-done">✓</span></div>'
-      + '</div>'
-      + '<div style="border:1px solid var(--bd);border-radius:8px;overflow:hidden;margin-bottom:12px">'
-      + '<div class="demo-tbl-head demo-tbl-4"><span>ZIP</span><span>Vacc %</span><span>Pop.</span><span>Avg. Property Value</span></div>'
-      + '<div class="demo-tbl-row demo-tbl-4"><span>19103</span><span style="color:var(--accent)">81.2%</span><span>18.4K</span><span>$412K</span></div>'
-      + '<div class="demo-tbl-row demo-tbl-4"><span>19104</span><span style="color:var(--amber)">63.7%</span><span>29.1K</span><span>$187K</span></div>'
-      + '<div class="demo-tbl-row demo-tbl-4"><span>19107</span><span style="color:var(--accent)">79.5%</span><span>12.8K</span><span>$356K</span></div>'
-      + '<div class="demo-tbl-row demo-tbl-4"><span>19121</span><span style="color:var(--rose)">44.1%</span><span>21.6K</span><span>$92K</span></div>'
-      + '</div>'
+    covid: '<div class="demo-wrap" data-init="covid">'
+      + '<div class="demo-topbar"><span style="color:var(--t2);font-size:11px">PropertyProcessor · Philadelphia</span><span class="demo-env-label">Java · memoization</span></div>'
+      + '<div class="demo-ctl" role="group" aria-label="ZIP code"><span class="demo-ctl-lbl">zip</span></div>'
+      + '<div class="demo-ctl" role="group" aria-label="Calculation"><span class="demo-ctl-lbl">call</span></div>'
+      + '<div class="cv-ctx"></div>'
+      + '<div class="cv-run" aria-live="polite"><div class="cv-call"></div><div class="cv-bar"><i></i></div><div class="cv-res">&nbsp;</div><div class="cv-why">&nbsp;</div></div>'
+      + '<div style="border:1px solid var(--bd);border-radius:8px;overflow:hidden;margin-bottom:8px">'
+      + '<div class="demo-tbl-head demo-tbl-memo"><span>memoizedResults key</span><span>value</span></div><div class="cv-memo"></div></div>'
+      + '<div class="demo-ctl"><button type="button" class="cv-reset">new PropertyProcessor()</button><span class="demo-ctl-lbl">empties the cache</span></div>'
       + '<div class="demo-kpis">'
       + '<div class="demo-kpi"><div class="demo-kpi-v">3</div><div class="demo-kpi-l">Data Sources</div></div>'
-      + '<div class="demo-kpi"><div class="demo-kpi-v">67</div><div class="demo-kpi-l">ZIP Codes</div></div>'
-      + '<div class="demo-kpi"><div class="demo-kpi-v">0.003s</div><div class="demo-kpi-l">Cache Hit</div></div>'
-      + '<div class="demo-kpi"><div class="demo-kpi-v">7+</div><div class="demo-kpi-l">Test Suites</div></div>'
+      + '<div class="demo-kpi"><div class="demo-kpi-v">580K+</div><div class="demo-kpi-l">Property Rows</div></div>'
+      + '<div class="demo-kpi"><div class="demo-kpi-v">49</div><div class="demo-kpi-l">ZIP Codes</div></div>'
+      + '<div class="demo-kpi"><div class="demo-kpi-v">8</div><div class="demo-kpi-l">Test Suites</div></div>'
       + '</div></div>',
 
-    flutweet: '<div class="demo-wrap">'
-      + '<div class="demo-topbar"><span style="color:var(--t2);font-size:11px">Flu Tweet Analyzer · 2025</span><span class="demo-env-label">Java · Regex · Geolocation</span></div>'
-      + '<div style="background:var(--panel-hd);border:1px solid var(--bd);border-radius:8px;padding:10px 14px;margin-bottom:10px">'
-      + '<div style="font-size:11px;color:var(--t4);letter-spacing:1px;text-transform:uppercase;margin-bottom:6px">Input Tweet</div>'
-      + '<div style="font-size:12px;color:var(--t2);font-style:italic">"Feeling awful, definitely got the #flu from my coworker. New York City 🤧"</div>'
-      + '</div>'
-      + '<div class="demo-log" style="margin-bottom:10px">'
-      + '<div class="demo-log-line"><span class="demo-log-dim">regex</span> → matched <span style="color:var(--amber)">#flu</span> · excluded "fluent", "influencer" &nbsp;<span class="demo-log-ok">✓</span></div>'
-      + '<div class="demo-log-line"><span class="demo-log-dim">coords</span> → 40.7128° N, 74.0060° W</div>'
-      + '<div class="demo-log-line"><span class="demo-log-dim">nearest state</span> → <span style="color:var(--accent)">New York</span> · Cartesian dist: 0.00</div>'
-      + '<div class="demo-log-line"><span class="demo-log-dim">reader</span> → JSON format detected · Factory pattern <span class="demo-log-ok">✓</span></div>'
-      + '</div>'
+    flutweet: '<div class="demo-wrap" data-init="flutweet">'
+      + '<div class="demo-topbar"><span style="color:var(--t2);font-size:11px">TweetProcessor · 2025</span><span class="demo-env-label">Java · regex · nearest state</span></div>'
+      + '<div class="lc4-sub">type a tweet</div>'
+      + '<input class="flu-input" type="text" maxlength="140" aria-label="Tweet text" spellcheck="false">'
+      + '<div class="demo-ctl" role="group" aria-label="Sample tweets"></div>'
+      + '<div class="flu-out" aria-live="polite"></div>'
+      + '<div class="lc4-sub">click the map to place it</div>'
+      + '<svg class="demo-svg flu-map" viewBox="0 0 460 262" role="img" aria-label="State centroids; click to set the tweet location"></svg>'
+      + '<div class="demo-log" style="margin-bottom:12px"><div class="demo-log-line flu-loc">&nbsp;</div></div>'
+      + '<div class="lc4-sub">run over the course data</div>'
       + '<div style="border:1px solid var(--bd);border-radius:8px;overflow:hidden;margin-bottom:12px">'
-      + '<div class="demo-tbl-head demo-tbl-4"><span>State</span><span>Flu Mentions</span><span>Total Tweets</span><span>Rate</span></div>'
-      + '<div class="demo-tbl-row demo-tbl-4"><span>New York</span><span>143</span><span>892</span><span style="color:var(--rose)">16.0%</span></div>'
-      + '<div class="demo-tbl-row demo-tbl-4"><span>California</span><span>98</span><span>1,204</span><span style="color:var(--amber)">8.1%</span></div>'
-      + '<div class="demo-tbl-row demo-tbl-4"><span>Texas</span><span>77</span><span>1,041</span><span style="color:var(--amber)">7.4%</span></div>'
-      + '<div class="demo-tbl-row demo-tbl-4"><span>Florida</span><span>54</span><span>783</span><span style="color:var(--accent)">6.9%</span></div>'
+      + '<div class="demo-tbl-head demo-tbl-4"><span>State</span><span>Flu tweets</span><span>All tweets</span><span>Rate</span></div>'
+      + '<div class="demo-tbl-row demo-tbl-4"><span>New Jersey</span><span>3</span><span>868</span><span>0.35%</span></div>'
+      + '<div class="demo-tbl-row demo-tbl-4"><span>Pennsylvania</span><span>2</span><span>163</span><span>1.23%</span></div>'
+      + '<div class="demo-tbl-row demo-tbl-4"><span>Louisiana</span><span>2</span><span>708</span><span>0.28%</span></div>'
+      + '<div class="demo-tbl-row demo-tbl-4"><span>7 more states</span><span>1 each</span><span></span><span></span></div>'
       + '</div>'
       + '<div class="demo-kpis">'
-      + '<div class="demo-kpi"><div class="demo-kpi-v">50</div><div class="demo-kpi-l">States Mapped</div></div>'
-      + '<div class="demo-kpi"><div class="demo-kpi-v">2</div><div class="demo-kpi-l">Input Formats</div></div>'
-      + '<div class="demo-kpi"><div class="demo-kpi-v">Regex</div><div class="demo-kpi-l">Pattern Match</div></div>'
-      + '<div class="demo-kpi"><div class="demo-kpi-v">Factory</div><div class="demo-kpi-l">Reader Pattern</div></div>'
+      + '<div class="demo-kpi"><div class="demo-kpi-v">10,000</div><div class="demo-kpi-l">Tweets Read</div></div>'
+      + '<div class="demo-kpi"><div class="demo-kpi-v">14</div><div class="demo-kpi-l">Flu Matches</div></div>'
+      + '<div class="demo-kpi"><div class="demo-kpi-v">51</div><div class="demo-kpi-l">States + DC</div></div>'
+      + '<div class="demo-kpi"><div class="demo-kpi-v">.txt .json</div><div class="demo-kpi-l">Readers</div></div>'
       + '</div></div>',
 
-    lc4asm: '<div class="demo-wrap">'
-      + '<div class="demo-topbar"><span style="color:var(--t2);font-size:11px">LC4 Assembler · 2026</span><span class="demo-env-label">C · Binary I/O · ISA</span></div>'
-      + '<div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:12px">'
-      + '<div>'
-      + '<div style="font-size:11px;color:var(--t4);letter-spacing:1px;text-transform:uppercase;margin-bottom:6px">prog.asm</div>'
-      + '<div class="demo-log" style="font-family:\'Geist Mono\',monospace;font-size:11px;line-height:2">'
-      + '<div style="color:var(--amber)">.CODE</div>'
-      + '<div><span style="color:var(--accent)">ADD</span> <span style="color:var(--t2)">R1, R2, R0</span></div>'
-      + '<div><span style="color:var(--accent)">ST</span> <span style="color:var(--t2)">R1, 0(R2)</span></div>'
-      + '<div><span style="color:var(--accent)">BRn</span> <span style="color:var(--t2)">#6</span></div>'
-      + '<div><span style="color:var(--accent)">CONST</span> <span style="color:var(--t2)">R3, #42</span></div>'
-      + '<div><span style="color:var(--accent)">RTI</span></div>'
-      + '</div>'
-      + '</div>'
-      + '<div>'
-      + '<div style="font-size:11px;color:var(--t4);letter-spacing:1px;text-transform:uppercase;margin-bottom:6px">prog.obj</div>'
-      + '<div class="demo-log" style="font-family:\'Geist Mono\',monospace;font-size:11px;line-height:2">'
-      + '<div style="color:var(--amber)">0xCADE 0x0001</div>'
-      + '<div style="color:var(--mono-g)">0001 001 010 00 000</div>'
-      + '<div style="color:var(--mono-g)">0111 001 010 000000</div>'
-      + '<div style="color:var(--mono-g)">0000 100 000000110</div>'
-      + '<div style="color:var(--mono-g)">1001 011 000101010</div>'
-      + '<div style="color:var(--mono-g)">1000 000 000000000</div>'
-      + '</div>'
-      + '</div>'
-      + '</div>'
+    lc4asm: '<div class="demo-wrap" data-init="lc4asm">'
+      + '<div class="demo-topbar"><span style="color:var(--t2);font-size:11px">LC4 toolchain · test1</span><span class="demo-env-label">C · big-endian .obj</span></div>'
+      + '<div class="demo-ctl" role="group" aria-label="Tool"></div>'
+      + '<div class="lc4-body"></div>'
       + '<div class="demo-kpis">'
-      + '<div class="demo-kpi"><div class="demo-kpi-v">30+</div><div class="demo-kpi-l">Opcodes</div></div>'
-      + '<div class="demo-kpi"><div class="demo-kpi-v">16-bit</div><div class="demo-kpi-l">Instruction Width</div></div>'
-      + '<div class="demo-kpi"><div class="demo-kpi-v">2-pass</div><div class="demo-kpi-l">Parser</div></div>'
-      + '<div class="demo-kpi"><div class="demo-kpi-v">.asm → .obj</div><div class="demo-kpi-l">Output</div></div>'
+      + '<div class="demo-kpi"><div class="demo-kpi-v">7</div><div class="demo-kpi-l">Instructions Encoded</div></div>'
+      + '<div class="demo-kpi"><div class="demo-kpi-v">3</div><div class="demo-kpi-l">Section Types</div></div>'
+      + '<div class="demo-kpi"><div class="demo-kpi-v">16-bit</div><div class="demo-kpi-l">Words</div></div>'
+      + '<div class="demo-kpi"><div class="demo-kpi-v">14/14</div><div class="demo-kpi-l">Valgrind Clean</div></div>'
       + '</div></div>',
 
     /* csvfsm and graphs are filled in by demoInit once the modal opens */
@@ -2555,7 +2570,219 @@ function toggleTheme() {
     }), function(it) { play(root, hamTrace(it.path), drawHam, 550); });
     ctls[0].querySelector('button').click();
   }
-  var demoInit = {csvfsm:initCsv, graphs:initGraph};
+
+  /* LC4: the real test1 inputs and outputs from the assembler and disassembler */
+  var LC4_ASM = ['ADD R1, R0, R1', 'MUL R2, R1, R1', 'SUB R3, R2, R1', 'DIV R1, R3, R2', 'AND R1, R2, R3', 'OR R1, R3, R2', 'XOR R1, R3, R2'];
+  var LC4_OPS = {ADD:['0001','000'], MUL:['0001','001'], SUB:['0001','010'], DIV:['0001','011'], AND:['0101','000'], OR:['0101','010'], XOR:['0101','011']};
+  var LC4_OBJ = [
+    {hdr:0xCADE, addr:0x000A, words:[0x1201, 0x1449, 0x1691], what:'code section · 3 words at x000A'},
+    {hdr:0xDADA, addr:0x4020, words:[0x0001, 0x0002, 0x0003], what:'data section · 3 words at x4020'},
+    {hdr:0xC3B7, addr:0x4020, label:'VALUES', what:'symbol VALUES at x4020'},
+    {hdr:0xC3B7, addr:0x000D, label:'END', what:'symbol END at x000D'},
+    {hdr:0xC3B7, addr:0x000A, label:'BEGINING', what:'symbol BEGINING at x000A'}
+  ];
+  function hex4(n) { return ('000' + n.toString(16).toUpperCase()).slice(-4); }
+  function hex2(n) { return ('0' + n.toString(16).toUpperCase()).slice(-2); }
+  function bin3(r) { return ('00' + (+r).toString(2)).slice(-3); }
+  function lc4Encode(line) {
+    var t = line.split(/[ ,]+/), op = LC4_OPS[t[0]];
+    var f = [[op[0], 'opcode', 'op'], [bin3(t[1].slice(1)), 'Rd'], [bin3(t[2].slice(1)), 'Rs'], [op[1], 'sub-op', 'sub'], [bin3(t[3].slice(1)), 'Rt']];
+    return {fields:f, word:parseInt(f.map(function(x) { return x[0]; }).join(''), 2)};
+  }
+  function lc4Disasm(w) {
+    var rd = (w >> 9) & 7, rs = (w >> 6) & 7, rt = w & 7, sub = (w >> 3) & 7;
+    return ['ADD', 'MUL', 'SUB', 'DIV'][sub] + ' R' + rd + ', R' + rs + ', R' + rt;
+  }
+  function initLc4(root) {
+    var body = root.querySelector('.lc4-body');
+    function assemble() {
+      var enc = LC4_ASM.map(lc4Encode);
+      var words = [0xCADE, 0x0000, enc.length].concat(enc.map(function(e) { return e.word; }));
+      body.innerHTML = '<div class="lc4-cols"><div><div class="lc4-sub">test1.asm</div><div class="lc4-asm">'
+        + LC4_ASM.map(function(l) { return '<div class="lc4-line">' + l + '</div>'; }).join('')
+        + '</div></div><div><div class="lc4-sub">parse_instruction()</div><div class="lc4-enc"></div></div></div>'
+        + '<div class="lc4-sub">test1.obj, written big-endian</div><div class="lc4-hex">'
+        + words.map(function(w, i) { return '<span class="bx' + (i < 3 ? ' hd' : '') + '">' + hex2(w >> 8) + ' ' + hex2(w & 255) + '</span>'; }).join('')
+        + '</div><div class="lc4-legend">CA DE · 00 00 · 00 07 is the code header: section type, load address, word count</div>';
+      var lines = body.querySelectorAll('.lc4-line'), bx = body.querySelectorAll('.bx'), out = body.querySelector('.lc4-enc');
+      var steps = enc.map(function(e, i) { return i; }).concat([enc.length]);
+      play(root, steps, function(i) {
+        for (var k = 0; k < lines.length; k++) { lines[k].classList.toggle('on', k === i); lines[k].classList.toggle('done', k < i); }
+        for (var j = 3; j < bx.length; j++) { bx[j].classList.toggle('seen', j - 3 < i); bx[j].classList.toggle('on', j - 3 === i); }
+        if (i === enc.length) {
+          out.innerHTML = '<div class="lc4-word"><span class="demo-log-ok">✓</span> 7 instructions → 7 words</div>'
+            + '<div class="lc4-word" style="margin-top:8px;color:var(--t4)">write_obj_file() adds the CADE header and writes each word high byte first.</div>';
+          return;
+        }
+        var e = enc[i];
+        out.innerHTML = '<div class="lc4-word">' + LC4_ASM[i] + '</div><div class="lc4-bits">'
+          + e.fields.map(function(f) { return '<div class="lc4-f ' + (f[2] || '') + '"><b>' + f[0] + '</b><span>' + f[1] + '</span></div>'; }).join('')
+          + '</div><div class="lc4-word">= <b>x' + hex4(e.word) + '</b></div>';
+      }, 900);
+    }
+    function disassemble() {
+      var bytes = [], owner = [];
+      LC4_OBJ.forEach(function(sec, si) {
+        var n = sec.words ? sec.words.length : sec.label.length;
+        [sec.hdr, sec.addr, n].concat(sec.words || []).forEach(function(w) { bytes.push(w >> 8, w & 255); owner.push(si, si); });
+        if (sec.label) for (var c = 0; c < sec.label.length; c++) { bytes.push(sec.label.charCodeAt(c)); owner.push(si); }
+      });
+      body.innerHTML = '<div class="lc4-sub">test1.obj</div><div class="lc4-hex">'
+        + bytes.map(function(b) { return '<span class="bx">' + hex2(b) + '</span>'; }).join('')
+        + '</div><div class="lc4-legend lc4-what">&nbsp;</div>'
+        + '<div class="lc4-sub">print_list()</div><div style="border:1px solid var(--bd);border-radius:8px;overflow:hidden">'
+        + '<div class="demo-tbl-head demo-tbl-lc4"><span>label</span><span>address</span><span>contents</span><span>assembly</span></div><div class="lc4-rows"></div></div>'
+        + '<div class="lc4-ll"></div>';
+      var bx = body.querySelectorAll('.bx'), what = body.querySelector('.lc4-what');
+      var rowsEl = body.querySelector('.lc4-rows'), ll = body.querySelector('.lc4-ll');
+      var steps = [], mem = {};
+      function snapMem() { var m = {}; for (var k in mem) m[k] = {label:mem[k].label, contents:mem[k].contents, asm:mem[k].asm}; return m; }
+      LC4_OBJ.forEach(function(sec, si) {
+        var fresh = [];
+        if (sec.words) sec.words.forEach(function(w, i) { var a = sec.addr + i; mem[a] = mem[a] || {}; mem[a].contents = w; fresh.push(a); });
+        else { mem[sec.addr] = mem[sec.addr] || {contents:0}; mem[sec.addr].label = sec.label; fresh.push(sec.addr); }
+        steps.push({sec:si, mem:snapMem(), fresh:fresh, what:sec.what});
+      });
+      var fresh = [];
+      for (var a in mem) if (a <= 0x1FFF && (mem[a].contents >> 12) === 1) { mem[a].asm = lc4Disasm(mem[a].contents); fresh.push(+a); }
+      steps.push({sec:-1, mem:snapMem(), fresh:fresh, what:'reverse_assemble() fills in the ADD-family instructions'});
+      play(root, steps, function(st) {
+        for (var i = 0; i < bx.length; i++) { bx[i].classList.toggle('on', owner[i] === st.sec); bx[i].classList.toggle('seen', st.sec < 0 || owner[i] < st.sec); }
+        what.textContent = st.what;
+        var addrs = Object.keys(st.mem).map(Number).sort(function(x, y) { return x - y; });
+        rowsEl.innerHTML = addrs.map(function(a) {
+          var r = st.mem[a];
+          return '<div class="demo-tbl-row demo-tbl-lc4' + (st.fresh.indexOf(a) >= 0 ? ' fresh' : '') + '"><span>' + (r.label || '') + '</span><span>' + hex4(a)
+            + '</span><span>' + hex4(r.contents || 0) + '</span><span>' + (r.asm || '') + '</span></div>';
+        }).join('');
+        ll.innerHTML = 'row_of_memory list, sorted by address: ' + addrs.map(function(a) { return '<span>' + hex4(a) + '</span>'; }).join(' → ');
+      }, 1100);
+    }
+    buttons(root.querySelector('.demo-ctl'), [
+      {label:'assembler: .asm → .obj', run:assemble},
+      {label:'disassembler: .obj → memory', run:disassemble}
+    ], function(it) { it.run(); });
+    root.querySelector('.demo-ctl button').click();
+  }
+
+  /* Flu tweets: the same regex and nearest-centroid rule as TweetProcessor */
+  var FLU_RE = /(?:\s|^)#?flu(?![a-zA-Z])/i;
+  var FLU_SAMPLES = ['home sick with the flu again', '#flu2020 is no joke', 'my French is finally fluent', 'what a huge influence', 'Flu shot done, arm hurts'];
+  var FLU_STATES = [["Alabama",32.740,-86.843],["Alaska",63.346,-152.837],["Arizona",34.210,-111.602],["Arkansas",34.900,-92.439],["California",37.148,-119.541],["Colorado",38.994,-105.508],["Connecticut",41.580,-72.746],["Delaware",38.990,-75.451],["District of Columbia",38.905,-77.016],["Florida",28.457,-82.410],["Georgia",32.629,-83.424],["Hawaii",19.810,-155.505],["Idaho",44.299,-114.596],["Illinois",40.101,-89.152],["Indiana",39.902,-86.282],["Iowa",42.071,-93.494],["Kansas",38.498,-98.384],["Kentucky",37.534,-85.292],["Louisiana",30.865,-91.797],["Maine",45.393,-68.660],["Maryland",38.946,-76.674],["Massachusetts",42.157,-71.489],["Michigan",44.841,-85.661],["Minnesota",46.316,-94.199],["Mississippi",32.687,-89.656],["Missouri",38.350,-92.458],["Montana",47.053,-109.633],["Nebraska",41.537,-99.810],["Nevada",39.329,-116.616],["New Hampshire",43.674,-71.584],["New Jersey",40.107,-74.666],["New Mexico",34.436,-106.129],["New York",42.913,-75.597],["North Carolina",35.540,-79.131],["North Dakota",47.457,-100.462],["Ohio",40.415,-82.710],["Oklahoma",35.590,-97.494],["Oregon",43.972,-120.622],["Pennsylvania",40.896,-77.839],["Rhode Island",41.598,-71.528],["South Carolina",33.873,-80.854],["South Dakota",44.444,-100.238],["Tennessee",35.860,-86.350],["Texas",31.432,-99.281],["Utah",39.324,-111.656],["Vermont",44.069,-72.670],["Virginia",37.521,-78.668],["Washington",47.418,-120.599],["West Virginia",38.648,-80.621],["Wisconsin",44.625,-89.710],["Wyoming",42.990,-107.545]];
+  var FLU_VIEW = {w:460, h:262, lon0:-125.5, lat0:50, kx:7.6, ky:9.6};
+  function fluXY(lat, lon) { return [(lon - FLU_VIEW.lon0) * FLU_VIEW.kx, (FLU_VIEW.lat0 - lat) * FLU_VIEW.ky]; }
+  function fluNearest(lat, lon) {
+    var best = null, min = Infinity;
+    FLU_STATES.forEach(function(st) {
+      var d = Math.pow(lat - st[1], 2) + Math.pow(lon - st[2], 2);
+      if (d < min) { min = d; best = st; }
+    });
+    return best;
+  }
+  function initFlu(root) {
+    var input = root.querySelector('.flu-input'), out = root.querySelector('.flu-out');
+    var svg = root.querySelector('svg'), locLog = root.querySelector('.flu-loc');
+    var dots = {};
+    FLU_STATES.forEach(function(st) {
+      var p = fluXY(st[1], st[2]);
+      if (p[0] < 0 || p[1] > FLU_VIEW.h) return;
+      dots[st[0]] = svgEl('circle', {cx:p[0], cy:p[1], r:3.2, 'class':'sd'}, svg);
+    });
+    var line = svgEl('line', {'class':'tl'}, svg), pin = svgEl('circle', {r:5, 'class':'tp'}, svg);
+    var name = svgEl('text', {'class':'snm'}, svg);
+    var loc = {lat:39.95, lon:-75.17, label:'Philadelphia'};
+    function check() {
+      var text = input.value, m = FLU_RE.exec(text);
+      if (!text) { out.innerHTML = '<span class="demo-log-dim">empty tweet</span>'; return; }
+      if (!m) { out.innerHTML = '<span class="demo-err">no match</span> · not counted: ' + esc(text); return; }
+      var start = m.index + (m[0].length - m[0].replace(/^\s/, '').length);
+      out.innerHTML = '<span class="demo-log-ok">match</span> · ' + esc(text.slice(0, start)) + '<mark>' + esc(text.slice(start, m.index + m[0].length)) + '</mark>' + esc(text.slice(m.index + m[0].length));
+    }
+    function place() {
+      var st = fluNearest(loc.lat, loc.lon), a = fluXY(loc.lat, loc.lon), b = fluXY(st[1], st[2]);
+      for (var k in dots) dots[k].setAttribute('class', 'sd' + (k === st[0] ? ' near' : ''));
+      pin.setAttribute('cx', a[0]); pin.setAttribute('cy', a[1]);
+      line.setAttribute('x1', a[0]); line.setAttribute('y1', a[1]); line.setAttribute('x2', b[0]); line.setAttribute('y2', b[1]);
+      name.textContent = st[0];
+      name.setAttribute('x', Math.min(Math.max(b[0], 60), FLU_VIEW.w - 60)); name.setAttribute('y', b[1] < 30 ? b[1] + 22 : b[1] - 10);
+      name.setAttribute('text-anchor', 'middle');
+      locLog.innerHTML = '<span class="demo-log-dim">' + (loc.label ? loc.label + ' ' : '') + '[' + loc.lat.toFixed(2) + ', ' + loc.lon.toFixed(2) + ']</span> → nearest centroid: <b>' + esc(st[0]) + '</b>'
+        + (loc.label === 'Philadelphia' ? '<br><span class="demo-log-dim">centroids, not borders: Philadelphia is closer to New Jersey\'s center than Pennsylvania\'s</span>' : '');
+    }
+    svg.addEventListener('click', function(ev) {
+      var r = svg.getBoundingClientRect();
+      var x = (ev.clientX - r.left) * FLU_VIEW.w / r.width, y = (ev.clientY - r.top) * FLU_VIEW.h / r.height;
+      loc = {lat:FLU_VIEW.lat0 - y / FLU_VIEW.ky, lon:FLU_VIEW.lon0 + x / FLU_VIEW.kx};
+      place();
+    });
+    input.addEventListener('input', function() {
+      root.querySelectorAll('.demo-ctl button').forEach(function(x) { x.classList.remove('on'); });
+      check();
+    });
+    buttons(root.querySelector('.demo-ctl'), FLU_SAMPLES.map(function(t) { return {label:t}; }), function(it) { input.value = it.label; check(); });
+    root.querySelector('.demo-ctl button').click();
+    place();
+  }
+
+  /* COVID project: outputs from running the program on the course data */
+  var CV_ZIPS = {
+    '19103':{pop:28717, props:'7.8K', vax:0.5481, LIVABLE_AREA:7583, MARKET_VALUE_PER_CAPITA:577582},
+    '19104':{pop:56839, props:'11.9K', vax:0.461, LIVABLE_AREA:5535, MARKET_VALUE_PER_CAPITA:241498},
+    '19121':{pop:41799, props:'16.0K', vax:0.3814, LIVABLE_AREA:1929, MARKET_VALUE_PER_CAPITA:93497},
+    '19146':{pop:41920, props:'20.8K', vax:0.5844, LIVABLE_AREA:1702, MARKET_VALUE_PER_CAPITA:207506}
+  };
+  var CV_CALLS = [
+    {label:'getAverageLivableArea', key:'LIVABLE_AREA', fmt:function(v) { return v.toLocaleString('en-US') + ' sq ft'; }},
+    {label:'getMarketValuePerCapita', key:'MARKET_VALUE_PER_CAPITA', fmt:function(v) { return '$' + v.toLocaleString('en-US'); }}
+  ];
+  function initCovid(root) {
+    var ctls = root.querySelectorAll('.demo-ctl');
+    var ctx = root.querySelector('.cv-ctx'), call = root.querySelector('.cv-call'), bar = root.querySelector('.cv-bar');
+    var fill = bar.querySelector('i'), res = root.querySelector('.cv-res'), why = root.querySelector('.cv-why');
+    var memoEl = root.querySelector('.cv-memo');
+    var memo = [], zip = '19121', fn = CV_CALLS[0];
+    function pick(ctl, match) { ctl.querySelectorAll('button').forEach(function(b) { b.classList.toggle('on', b.textContent === match); }); }
+    function drawMemo(hitKey) {
+      memoEl.innerHTML = memo.length ? memo.map(function(m) {
+        return '<div class="demo-tbl-row demo-tbl-memo' + (m.key === hitKey ? ' hit' : '') + '"><span>' + m.key + '</span><span>' + m.shown + '</span></div>';
+      }).join('') : '<div class="demo-tbl-row demo-tbl-memo"><span class="demo-log-dim">empty</span><span></span></div>';
+    }
+    function run() {
+      pick(ctls[0], zip); pick(ctls[1], fn.label);
+      var z = CV_ZIPS[zip], key = zip + '_' + fn.key, value = z[fn.key], shown = fn.fmt(value);
+      ctx.innerHTML = 'population <b>' + z.pop.toLocaleString('en-US') + '</b><span>fully vaccinated per capita, 2021-11-01 <b>' + z.vax + '</b></span>';
+      call.textContent = fn.label + '("' + zip + '")';
+      var cached = memo.some(function(m) { return m.key === key; });
+      if (cached) {
+        bar.classList.add('hit'); fill.style.width = '100%';
+        res.textContent = shown;
+        why.innerHTML = '<span style="color:var(--amber)">cache hit</span> · memoizedResults.get("' + key + '"), no rows read';
+        drawMemo(key);
+        root._token = {};
+        return;
+      }
+      bar.classList.remove('hit');
+      var steps = [];
+      for (var i = 1; i <= 14; i++) steps.push(i / 14);
+      play(root, steps, function(f) {
+        fill.style.width = Math.round(f * 100) + '%';
+        if (f < 1) { res.innerHTML = '&nbsp;'; why.textContent = 'cache miss · reading about ' + z.props + ' properties in ' + zip + '…'; return; }
+        memo.push({key:key, shown:shown});
+        res.textContent = shown;
+        why.innerHTML = '<span style="color:var(--accent)">cache miss</span> · read about ' + z.props + ' properties, stored as "' + key + '". Click it again.';
+        drawMemo(key);
+      }, 70);
+    }
+    buttons(ctls[0], Object.keys(CV_ZIPS).map(function(z) { return {label:z}; }), function(it) { zip = it.label; run(); });
+    buttons(ctls[1], CV_CALLS, function(it) { fn = it; run(); });
+    root.querySelector('.cv-reset').addEventListener('click', function() {
+      memo = []; drawMemo(); fill.style.width = '0'; res.innerHTML = '&nbsp;'; why.textContent = 'new processor, empty cache';
+    });
+    drawMemo();
+    run();
+  }
+
+  var demoInit = {csvfsm:initCsv, graphs:initGraph, lc4asm:initLc4, flutweet:initFlu, covid:initCovid};
 
   var pmBox   = document.getElementById('pm-box');
   var pmBody  = document.getElementById('pm-body');
