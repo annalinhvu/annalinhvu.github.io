@@ -911,12 +911,13 @@ body {
 }
 .work-section-hd{
   font-family:'Geist Mono',monospace;
-  font-size:12px;letter-spacing:2px;
-  color:var(--t2);
+  font-size:14px;letter-spacing:1.2px;font-weight:600;
+  color:var(--t1);
   margin-bottom:18px;margin-top:36px;
-  display:flex;align-items:center;gap:8px;
+  display:flex;align-items:center;gap:10px;
   text-transform:uppercase;
 }
+.work-section-hd::after{content:'';flex:1;height:1px;background:var(--bd);margin-left:6px;}
 .work-section-hd::before{content:'--';color:var(--amber);font-weight:700;}
 .work-section-hd:first-of-type{margin-top:0;}
 .proj-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-bottom:8px;overflow:visible;}
