@@ -241,8 +241,6 @@ body {
 .intro-sub{font-family:'Source Serif 4',Georgia,'Times New Roman',serif;font-size:15px;line-height:1.7;color:var(--t3);margin:0 0 16px;}
 .intro-link{color:var(--amber);text-decoration:none;border-bottom:1px solid rgba(200,120,94,.4);}
 .intro-link:hover{border-bottom-color:var(--amber);}
-.intro-actions{display:flex;gap:8px;flex-wrap:wrap;}
-.intro-actions .cta-btn{font-size:11px;padding:6px 13px;}
 
 /* Avatar */
 .profile-row{display:flex;gap:13px;align-items:flex-start;margin-bottom:16px;}
@@ -1615,20 +1613,16 @@ body {
     <!-- ════ WORK (professional + academic projects) ═══ -->
     <section class="tab-pane active" id="pane-built" role="tabpanel">
       <div class="query-bar">
-        <span class="kw">SELECT</span><span>&nbsp;project_name, company, year, stack&nbsp;</span>
+        <span class="kw">SELECT</span><span>&nbsp;project_name, year, stack&nbsp;</span>
         <span class="kw">FROM</span><span>&nbsp;</span>
         <span class="tbl">anna_vu.projects</span><span>&nbsp;</span>
         <span class="kw">ORDER BY</span><span>&nbsp;year&nbsp;</span>
         <span class="kw">DESC</span>
-        <span class="cmt">-- 14 rows · engineering + academic</span>
       </div>
       <div class="work-wrap">
         <div class="intro">
-          <p class="intro-lead">Hi, I'm Anna, a Principal Data Engineer based in New York City. I work at a growth marketing company, building the data platforms behind enterprise clients that spend billions on marketing.</p>
-          <p class="intro-sub">My work is below. If you'd like to go deeper, <a href="#" class="intro-link" data-go="architecture">architecture</a> shows how I design these systems, and the <a href="#" class="intro-link" data-go="console">terminal</a> lets you query this site in SQL, Python, Java, or C.</p>
-          <div class="intro-actions">
-            <a href="#" class="cta-btn cta-primary" data-go="career">see experience →</a>
-          </div>
+          <p class="intro-lead">Hi, I'm Anna. I build the data platforms behind enterprise clients that spend billions on marketing.</p>
+          <p class="intro-sub">Curious how it works? The <a href="#" class="intro-link" data-go="console">terminal</a> lets you query this site in SQL, Python, Java, or C.</p>
         </div>
         <div class="work-section-hd hd-featured">featured projects</div>
         <div class="proj-grid">
