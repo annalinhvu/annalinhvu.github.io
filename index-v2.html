@@ -758,6 +758,25 @@ body {
 .cv-why{font-size:11px;color:var(--t4);margin-top:4px;}
 .demo-tbl-memo{grid-template-columns:2fr 1fr;}
 .demo-tbl-row.hit{background:rgba(200,120,94,.1)!important;}
+/* LC4 OS display and sentiment demos */
+.lc4-screen-wrap{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,1fr);gap:10px;margin-bottom:10px;align-items:start;}
+.lc4-screen{width:100%;aspect-ratio:128/124;image-rendering:pixelated;background:#000;border:1px solid var(--bd);border-radius:6px;display:block;}
+.lc4-regs{background:var(--surface);border:1px solid var(--bd);border-radius:8px;padding:10px 12px;font-size:12px;line-height:1.8;color:var(--t3);}
+.lc4-regs b{color:var(--t1);font-weight:500;}
+.lc4-regs .sw{display:inline-block;width:10px;height:10px;border-radius:2px;vertical-align:-1px;margin-right:4px;border:1px solid var(--bd-hi);}
+.sa-words{display:flex;flex-wrap:wrap;gap:6px;margin:4px 0 12px;min-height:46px;}
+.sa-w{display:flex;flex-direction:column;align-items:center;gap:2px;padding:4px 8px;border:1px solid var(--bd);border-radius:6px;font-size:12px;color:var(--t2);transition:opacity .2s;}
+.sa-w span{font-size:11px;color:var(--t4);}
+.sa-w.pos{border-color:var(--accent);}
+.sa-w.pos span{color:var(--accent);}
+.sa-w.neg{border-color:var(--rose);}
+.sa-w.neg span{color:var(--rose);}
+.sa-w.unseen{border-style:dashed;opacity:.7;}
+.sa-w.skip{opacity:.4;border-style:dotted;}
+.sa-gauge{position:relative;height:10px;border-radius:5px;background:linear-gradient(90deg,var(--rose),var(--panel-hd) 50%,var(--accent));margin:6px 0 4px;}
+.sa-gauge i{position:absolute;top:-4px;width:4px;height:18px;margin-left:-2px;border-radius:2px;background:var(--t1);transition:left .6s ease;}
+.sa-scale{display:flex;justify-content:space-between;font-size:11px;color:var(--t4);margin-bottom:10px;}
+@media (prefers-reduced-motion: reduce){.sa-gauge i{transition:none;}}
 .demo-topics{display:flex;gap:5px;flex-wrap:wrap;}
 .demo-topic{font-size:11px;padding:2px 9px;border:1px solid var(--tag-bd);border-radius:5px;color:var(--tag-col);}
 .demo-topic.hot{border-color:rgba(200,120,94,.4);color:var(--amber);}
@@ -1706,10 +1725,10 @@ body {
         <div class="work-section-hd">penn engineering · projects</div>
         <div class="proj-grid compact">
           <div class="proj-card" data-demo="lc4asm">
-            <div class="proj-title">LC4 Toolchain: Assembler &amp; Disassembler</div>
+            <div class="proj-title">LC4 Systems: OS, Assembler &amp; Disassembler</div>
             <div class="proj-ctx">2026</div>
-            <div class="proj-tags"><span class="proj-tag">C</span><span class="proj-tag">ISA</span><span class="proj-tag">Binary I/O</span><span class="proj-tag">Linked Lists</span><span class="proj-tag">Valgrind</span><span class="proj-tag">GDB</span></div>
-            <div class="proj-desc">An assembler and disassembler for the LC4 architecture, written in C. The assembler encodes register-form arithmetic and logic instructions (ADD, MUL, SUB, DIV, AND, OR, XOR) as 16-bit words and writes them to a PennSim .obj file in big-endian byte order. The disassembler reads .obj files back, parses their code, data, and symbol sections into a linked list sorted by address that models LC4 memory, and turns the ADD-family instructions back into assembly. I wrote the disassembler on my own with manual memory management, and it passes all 14 Valgrind memory checks.</div>
+            <div class="proj-tags"><span class="proj-tag">C</span><span class="proj-tag">Assembly</span><span class="proj-tag">OS</span><span class="proj-tag">ISA</span><span class="proj-tag">Binary I/O</span><span class="proj-tag">Linked Lists</span><span class="proj-tag">Valgrind</span><span class="proj-tag">GDB</span></div>
+            <div class="proj-desc">Systems work for the LC4 architecture, in assembly and C. On the OS side I worked on the trap handlers that user programs call for keyboard input, text output, timers, and drawing to the 128 by 124 pixel display. For extra credit I extended TRAP_DRAW_RECT so a rectangle that starts off screen resets to the corner and one that runs past the right edge wraps around. In C, the assembler encodes register-form arithmetic and logic instructions as 16-bit words and writes them to a PennSim .obj file in big-endian byte order, and the disassembler reads .obj files back into a linked list sorted by address that models LC4 memory, then turns the ADD-family instructions back into assembly. I wrote the disassembler on my own with manual memory management, and it passes all 14 Valgrind memory checks.</div>
             <div class="proj-metrics"><div><div class="pm-v">7</div><div class="pm-u">instructions</div></div><div><div class="pm-v">14/14</div><div class="pm-u">valgrind checks</div></div></div>
           </div>
           <div class="proj-card" data-demo="covid">
@@ -1725,6 +1744,13 @@ body {
             <div class="proj-tags"><span class="proj-tag">Java</span><span class="proj-tag">Regex</span><span class="proj-tag">Geolocation</span><span class="proj-tag">Singleton</span><span class="proj-tag">Factory</span></div>
             <div class="proj-desc">A tool that analyzes geotagged tweets for flu-related content, using regex matching that handles edge cases such as "fluent" versus "#flu". Each match is mapped to the nearest U.S. state by Cartesian distance, and a polymorphic Reader interface supports both JSON and TXT input.</div>
             <div class="proj-metrics"><div><div class="pm-v">51</div><div class="pm-u">states + DC</div></div><div><div class="pm-v">2</div><div class="pm-u">input formats</div></div></div>
+          </div>
+          <div class="proj-card" data-demo="sentiment">
+            <div class="proj-title">Sentiment Analyzer</div>
+            <div class="proj-ctx">2025</div>
+            <div class="proj-tags"><span class="proj-tag">Java</span><span class="proj-tag">Regex</span><span class="proj-tag">HashMap</span><span class="proj-tag">JUnit</span></div>
+            <div class="proj-desc">A sentiment model in Java, trained on 8,529 movie review sentences labeled from -2 to +2. Each word's score is the average label of the sentences it appears in, and a new sentence gets the average of its words' scores, with words it has never seen counted as neutral. It is a bag-of-words baseline: it learns from data, but it has no sense of word order, so "not bad" still leans negative.</div>
+            <div class="proj-metrics"><div><div class="pm-v">8,529</div><div class="pm-u">training sentences</div></div><div><div class="pm-v">16,209</div><div class="pm-u">words scored</div></div></div>
           </div>
           <div class="proj-card" data-demo="csvfsm">
             <div class="proj-title">RFC 4180 CSV Parser</div>
@@ -2299,13 +2325,28 @@ function toggleTheme() {
       + '<div class="demo-kpi"><div class="demo-kpi-v">.txt .json</div><div class="demo-kpi-l">Readers</div></div>'
       + '</div></div>',
 
+    sentiment: '<div class="demo-wrap" data-init="sentiment">'
+      + '<div class="demo-topbar"><span style="color:var(--t2);font-size:11px">Analyzer.calculateSentenceScore()</span><span class="demo-env-label">Java · bag of words</span></div>'
+      + '<div class="lc4-sub">type a review</div>'
+      + '<input class="flu-input" type="text" maxlength="160" aria-label="Review text" spellcheck="false">'
+      + '<div class="demo-ctl" role="group" aria-label="Sample reviews"></div>'
+      + '<div class="sa-words" aria-hidden="true"></div>'
+      + '<div class="sa-gauge"><i></i></div><div class="sa-scale"><span>-2 negative</span><span>0</span><span>+2 positive</span></div>'
+      + '<div class="demo-log" style="margin-bottom:12px"><div class="demo-log-line sa-msg" aria-live="polite">loading word scores…</div></div>'
+      + '<div class="demo-kpis">'
+      + '<div class="demo-kpi"><div class="demo-kpi-v">8,529</div><div class="demo-kpi-l">Training Sentences</div></div>'
+      + '<div class="demo-kpi"><div class="demo-kpi-v">16,209</div><div class="demo-kpi-l">Words Scored</div></div>'
+      + '<div class="demo-kpi"><div class="demo-kpi-v">-2 to +2</div><div class="demo-kpi-l">Label Range</div></div>'
+      + '<div class="demo-kpi"><div class="demo-kpi-v">mean</div><div class="demo-kpi-l">Scoring Rule</div></div>'
+      + '</div></div>',
+
     lc4asm: '<div class="demo-wrap" data-init="lc4asm">'
       + '<div class="demo-topbar"><span style="color:var(--t2);font-size:11px">LC4 toolchain · test1</span><span class="demo-env-label">C · big-endian .obj</span></div>'
       + '<div class="demo-ctl" role="group" aria-label="Tool"></div>'
       + '<div class="lc4-body"></div>'
       + '<div class="demo-kpis">'
       + '<div class="demo-kpi"><div class="demo-kpi-v">7</div><div class="demo-kpi-l">Instructions Encoded</div></div>'
-      + '<div class="demo-kpi"><div class="demo-kpi-v">3</div><div class="demo-kpi-l">Section Types</div></div>'
+      + '<div class="demo-kpi"><div class="demo-kpi-v">128×124</div><div class="demo-kpi-l">Video Display</div></div>'
       + '<div class="demo-kpi"><div class="demo-kpi-v">16-bit</div><div class="demo-kpi-l">Words</div></div>'
       + '<div class="demo-kpi"><div class="demo-kpi-v">14/14</div><div class="demo-kpi-l">Valgrind Clean</div></div>'
       + '</div></div>',
@@ -2360,12 +2401,12 @@ function toggleTheme() {
       if (i < steps.length) setTimeout(tick, ms);
     })();
   }
-  function buttons(ctl, items, onPick) {
+  function buttons(ctl, items, onPick, scope) {
     items.forEach(function(it, i) {
       var b = document.createElement('button');
       b.type = 'button'; b.textContent = it.label;
       b.addEventListener('click', function() {
-        ctl.closest('.demo-wrap').querySelectorAll('.demo-ctl button').forEach(function(x) { x.classList.remove('on'); });
+        (scope || ctl.closest('.demo-wrap')).querySelectorAll('.demo-ctl button').forEach(function(x) { x.classList.remove('on'); });
         b.classList.add('on'); onPick(it);
       });
       ctl.appendChild(b);
@@ -2584,12 +2625,65 @@ function toggleTheme() {
     var f = [[op[0], 'opcode', 'op'], [bin3(t[1].slice(1)), 'Rd'], [bin3(t[2].slice(1)), 'Rs'], [op[1], 'sub-op', 'sub'], [bin3(t[3].slice(1)), 'Rt']];
     return {fields:f, word:parseInt(f.map(function(x) { return x[0]; }).join(''), 2)};
   }
+  /* the four rectangles from user_draw_ec.asm; colors are LC4 RGB555 words */
+  var LC4_RECTS = [
+    {name:'red', x:50, y:5, len:10, wid:5, color:0x7C00},
+    {name:'yellow', x:10, y:10, len:50, wid:40, color:0x7FE0},
+    {name:'blue', x:120, y:100, len:27, wid:10, color:0x001F},
+    {name:'green', x:130, y:20, len:8, wid:4, color:0x03E0}
+  ];
+  LC4_RECTS.forEach(function(r) {
+    r.rgb = [(r.color >> 10 & 31) * 255 / 31, (r.color >> 5 & 31) * 255 / 31, (r.color & 31) * 255 / 31].map(Math.round);
+    r.css = 'rgb(' + r.rgb.join(',') + ')';
+  });
+  /* TRAP_DRAW_RECT, both versions from os_pre_extra_credit.asm and os.asm */
+  function lc4DrawRect(px, r, ec) {
+    var x = r.x, y = r.y, cols = 128, rows = 124;
+    if (r.len <= 0 || r.wid <= 0) return {drawn:false, note:'length and width must be positive'};
+    var reset = false;
+    if (x > cols - 1 || y > rows - 1) {
+      if (!ec) return {drawn:false, note:'start is off screen, nothing drawn'};
+      x = 0; y = 0; reset = true;
+    }
+    if (y + r.wid - 1 > rows - 1) return {drawn:false, note:'runs past the bottom, nothing drawn'};
+    var wraps = x + r.len - 1 > cols - 1;
+    if (wraps && !ec) return {drawn:false, note:'runs past the right edge, nothing drawn'};
+    for (var row = 0; row < r.wid; row++) {
+      for (var k = 0; k < r.len; k++) {
+        var i = ((y + row) * cols + (x + k) % cols) * 4;
+        px[i] = r.rgb[0]; px[i + 1] = r.rgb[1]; px[i + 2] = r.rgb[2]; px[i + 3] = 255;
+      }
+    }
+    return {drawn:true, note:reset ? 'start was off screen, reset to (0, 0)' : wraps ? 'wraps past the right edge onto the same rows' : 'drawn as given'};
+  }
   function lc4Disasm(w) {
     var rd = (w >> 9) & 7, rs = (w >> 6) & 7, rt = w & 7, sub = (w >> 3) & 7;
     return ['ADD', 'MUL', 'SUB', 'DIV'][sub] + ' R' + rd + ', R' + rs + ', R' + rt;
   }
   function initLc4(root) {
     var body = root.querySelector('.lc4-body');
+    function drawRect() {
+      body.innerHTML = '<div class="demo-ctl" role="group" aria-label="OS version"></div>'
+        + '<div class="lc4-screen-wrap"><canvas class="lc4-screen" width="128" height="124" aria-label="LC4 video display, 128 by 124 pixels"></canvas>'
+        + '<div class="lc4-regs" aria-live="polite"></div></div>'
+        + '<div class="lc4-legend">user_draw_ec.asm makes four TRAP x09 calls; R0, R1 = upper-left corner, R2 = length, R3 = width, R4 = color</div>';
+      var cv = body.querySelector('canvas'), ctx2 = cv.getContext('2d'), regs = body.querySelector('.lc4-regs');
+      function run(ec) {
+        var img = ctx2.createImageData(128, 124), steps = LC4_RECTS.map(function(r, i) { return i; });
+        play(root, steps, function(i) {
+          var r = LC4_RECTS[i], res = lc4DrawRect(img.data, r, ec);
+          ctx2.putImageData(img, 0, 0);
+          regs.innerHTML = '<b>' + r.name + '</b><br>R0 = ' + r.x + ', R1 = ' + r.y + '<br>R2 = ' + r.len + ', R3 = ' + r.wid
+            + '<br>R4 = <span class="sw" style="background:' + r.css + '"></span>x' + hex4(r.color)
+            + '<br><span class="' + (res.drawn ? 'demo-log-ok' : 'demo-err') + '">' + res.note + '</span>';
+        }, 1300);
+      }
+      buttons(body.querySelector('.demo-ctl'), [
+        {label:'with extra credit', ec:true},
+        {label:'before extra credit', ec:false}
+      ], function(it) { run(it.ec); }, body);
+      body.querySelector('.demo-ctl button').click();
+    }
     function assemble() {
       var enc = LC4_ASM.map(lc4Encode);
       var words = [0xCADE, 0x0000, enc.length].concat(enc.map(function(e) { return e.word; }));
@@ -2655,7 +2749,8 @@ function toggleTheme() {
     }
     buttons(root.querySelector('.demo-ctl'), [
       {label:'assembler: .asm → .obj', run:assemble},
-      {label:'disassembler: .obj → memory', run:disassemble}
+      {label:'disassembler: .obj → memory', run:disassemble},
+      {label:'OS: TRAP_DRAW_RECT', run:drawRect}
     ], function(it) { it.run(); });
     root.querySelector('.demo-ctl button').click();
   }
@@ -2777,7 +2872,56 @@ function toggleTheme() {
     run();
   }
 
-  var demoInit = {csvfsm:initCsv, graphs:initGraph, lc4asm:initLc4, flutweet:initFlu, covid:initCovid};
+  /* Sentiment: word scores learned by Analyzer.wordTallies + calculateScores on
+     the course's reviews.txt, exported as total/count buckets so each score is exact */
+  var SA_WORDS = null, SA_LOADING = null;
+  function saLoad() {
+    if (SA_LOADING) return SA_LOADING;
+    SA_LOADING = fetch('data/penn-sentiment-words.json').then(function(r) { return r.json(); }).then(function(d) {
+      SA_WORDS = {};
+      for (var k in d.buckets) {
+        var parts = k.split('/'), total = +parts[0], count = +parts[1];
+        d.buckets[k].split(' ').forEach(function(w) { SA_WORDS[w] = {score:total / count, count:count}; });
+      }
+      return SA_WORDS;
+    });
+    return SA_LOADING;
+  }
+  var SA_SAMPLES = ['a gorgeous , heartfelt film', 'dull and lifeless', 'the plot is a mess but the acting is wonderful', 'not bad at all'];
+  function initSentiment(root) {
+    var input = root.querySelector('.flu-input'), wordsEl = root.querySelector('.sa-words');
+    var marker = root.querySelector('.sa-gauge i'), msg = root.querySelector('.sa-msg');
+    marker.style.left = '50%';
+    function score() {
+      if (!SA_WORDS) return;
+      var tokens = input.value.toLowerCase().split(/\s+/).filter(Boolean), sum = 0, n = 0;
+      wordsEl.innerHTML = tokens.map(function(t) {
+        if (!/^[a-z]/.test(t)) return '<div class="sa-w skip">' + esc(t) + '<span>skipped</span></div>';
+        var w = SA_WORDS[t], v = w ? w.score : 0;
+        sum += v; n++;
+        var cls = !w ? ' unseen' : v > 0.05 ? ' pos' : v < -0.05 ? ' neg' : '';
+        return '<div class="sa-w' + cls + '" title="' + (w ? 'in ' + w.count + ' training sentence' + (w.count === 1 ? '' : 's') : 'not in the training data') + '">'
+          + esc(t) + '<span>' + (w ? (v > 0 ? '+' : '') + v.toFixed(2) : 'unseen 0') + '</span></div>';
+      }).join('');
+      var mean = n ? sum / n : 0;
+      marker.style.left = (50 + mean * 25) + '%';
+      msg.innerHTML = n ? 'mean of ' + n + ' word' + (n === 1 ? '' : 's') + ' = <b>' + (mean > 0 ? '+' : '') + mean.toFixed(3) + '</b>'
+        + (mean > 0.1 ? ' · leans positive' : mean < -0.1 ? ' · leans negative' : ' · close to neutral')
+        : '<span class="demo-log-dim">type a few words</span>';
+    }
+    input.addEventListener('input', function() {
+      root.querySelectorAll('.demo-ctl button').forEach(function(x) { x.classList.remove('on'); });
+      score();
+    });
+    buttons(root.querySelector('.demo-ctl'), SA_SAMPLES.map(function(t) { return {label:t}; }), function(it) { input.value = it.label; score(); });
+    input.value = SA_SAMPLES[0];
+    root.querySelector('.demo-ctl button').classList.add('on');
+    saLoad().then(function() { if (root.isConnected) score(); }, function() {
+      msg.innerHTML = '<span class="demo-err">could not load the word scores</span>';
+    });
+  }
+
+  var demoInit = {csvfsm:initCsv, graphs:initGraph, lc4asm:initLc4, flutweet:initFlu, covid:initCovid, sentiment:initSentiment};
 
   var pmBox   = document.getElementById('pm-box');
   var pmBody  = document.getElementById('pm-body');
