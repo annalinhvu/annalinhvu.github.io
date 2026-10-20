@@ -239,6 +239,7 @@ body {
 .intro{margin-bottom:28px;padding-bottom:20px;border-bottom:1px solid var(--bd);}
 .intro-lead{font-family:'Source Serif 4',Georgia,'Times New Roman',serif;font-size:19px;line-height:1.5;color:var(--t1);margin:0 0 10px;}
 .intro-sub{font-family:'Source Serif 4',Georgia,'Times New Roman',serif;font-size:15px;line-height:1.7;color:var(--t3);margin:0;}
+.intro-sub + .intro-sub{margin-top:10px;}
 .intro-link{color:var(--amber);text-decoration:none;border-bottom:1px solid rgba(200,120,94,.4);}
 .intro-link:hover{border-bottom-color:var(--amber);}
 
@@ -1325,7 +1326,6 @@ body {
   .glance{order:3;background:var(--panel);padding:16px;border-top:1px solid var(--bd-hi);border-bottom:none;}
   .panel-more{order:4;background:var(--panel);border-top:1px solid var(--bd);}
   .intro-lead{font-size:17px;}
-  .profile-tagline{display:none;} /* the Work intro covers this on phones */
   .top-tabs{overflow-x:auto;scrollbar-width:none;margin:0;}
   .top-tabs::-webkit-scrollbar{display:none;}
 
@@ -1384,10 +1384,6 @@ body {
 }
 
 /* ── Profile tagline ── */
-.profile-tagline {
-  font-family:'Source Serif 4',Georgia,'Times New Roman',serif;
-  font-size:14px;color:var(--t3);margin-top:6px;line-height:1.55;
-}
 
 /* ── CTA row ── */
 .cta-row {
@@ -1482,7 +1478,6 @@ body {
           <div class="profile-name">Anna Vu</div>
           <span class="profile-linh">(LINH)</span>
           <div class="profile-role">Principal Data Engineer</div>
-          <div class="profile-tagline">I work at the intersection of data engineering, analytics, and automation, building scalable data systems that turn complex data into reliable, actionable insights. My work focuses on developing end-to-end pipelines, improving data quality, and automating reporting workflows. I'm now moving toward AI engineering, building the data pipelines, retrieval, and evaluation that LLM applications depend on.</div>
           <div class="cta-row">
             <a href="https://www.linkedin.com/in/annalinhvu" class="cta-btn" target="_blank" rel="noopener">↗ linkedin</a>
             <a href="https://github.com/annalinhvu" class="cta-btn" target="_blank" rel="noopener">↗ github</a>
@@ -1642,7 +1637,8 @@ body {
       </div>
       <div class="work-wrap">
         <div class="intro">
-          <p class="intro-lead">Hi there, I'm Anna! I build the data pipelines and dashboards behind enterprise marketing decisions.</p>
+          <p class="intro-lead">Hi there, I'm Anna! I work at the intersection of data engineering, analytics, and automation, building scalable data systems that turn complex data into reliable, actionable insights.</p>
+          <p class="intro-sub">My work focuses on developing end-to-end pipelines, improving data quality, and automating reporting workflows. I'm now moving toward AI engineering, building the data pipelines, retrieval, and evaluation that LLM applications depend on.</p>
           <p class="intro-sub">Feel free to look around: my <a href="#" class="intro-link" data-go="career">experience</a>, the <a href="#" class="intro-link" data-go="studio">side projects</a> I make for fun, the <a href="#" class="intro-link" data-go="architecture">architecture</a> behind my work, and a <a href="#" class="intro-link" data-go="console">terminal</a> where you can query this site in SQL, Python, Java, or C.</p>
         </div>
         <div class="work-section-hd hd-featured">featured projects</div>
