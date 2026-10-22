@@ -158,6 +158,12 @@ a.nav-tab{text-decoration:none}
 .btn-p:hover{background:#B5603E;color:#fff}
 .btn-s{background:var(--bg);color:var(--text-m);border:1px solid var(--border)}
 .btn-s:hover{color:var(--text)}
+/* Card: one row of badges, one button, details live in the modal */
+.org-card .card-actions{align-items:center;justify-content:space-between}
+.org-card .card-btn{flex:none;padding:8px 18px}
+.card-more{background:none;border:0;padding:4px 0;font:inherit;font-size:.78rem;font-weight:600;color:var(--text-m);cursor:pointer}
+.card-more:hover{color:var(--green)}
+.card-feat{color:var(--terracotta);font-weight:600;margin-left:8px}
 .org-empty{grid-column:1/-1;text-align:center;padding:48px 24px;color:var(--text-m)}
 .org-empty .empty-icon{font-size:2rem;margin-bottom:10px}
 
@@ -635,9 +641,7 @@ function badge(t) { return `<span class="badge badge-${t}">${tLabel(t)}</span>`;
 
 /* ===== CARD RENDER ===== */
 function cardHTML(o) {
-  const badges = o.types.map(badge).join('');
-  const feat   = o.featured ? `<span class="badge badge-featured">★ Featured</span>` : '';
-  const svcs   = o.services.slice(0,3).map(s=>`<span class="svc-tag">${s}</span>`).join('');
+  const feat   = o.featured ? `<span class="card-feat">★ Featured</span>` : '';
   const phone  = o.phone ? `<div class="meta-row"><span class="meta-icon" aria-hidden="true">${ICONS.phone}</span><a href="tel:${o.phone.replace(/\D/g,'')}">` + o.phone + `</a></div>` : '';
   const hrs    = o.hours.toLowerCase().includes('check')
     ? `<div class="hours-warn" role="note">${ICONS.warn} Check website or call before visiting</div>`
@@ -648,18 +652,16 @@ function cardHTML(o) {
 <article class="org-card" onclick="openModal(${o.id})" role="button" tabindex="0"
   aria-label="${o.name}, ${boroLbl}${o.borough !== 'citywide' ? ', ' + o.neighborhood : ''}. ${o.types.map(tLabel).join(', ')}."
   onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();openModal(${o.id})}">
-  <div><div class="card-name">${o.name}</div><div class="card-boro">${boroLbl}${o.borough !== 'citywide' ? ' · ' + o.neighborhood : ''}</div></div>
-  <div class="card-badges">${badges}${feat}</div>
+  <div><div class="card-name">${o.name}</div><div class="card-boro">${boroLbl}${o.borough !== 'citywide' ? ' · ' + o.neighborhood : ''}${feat}</div></div>
   ${quickBadges(o)}
   <div class="org-meta">
     <div class="meta-row"><span class="meta-icon" aria-hidden="true">${ICONS.pin}</span>${o.address}</div>
     ${phone}${hrs}
   </div>
-  <div class="svc-list">${svcs}</div>
   <div class="trust-line">Source: <a href="${o.sourceUrl}" target="_blank" rel="noopener" onclick="event.stopPropagation()">${o.website}</a> · Last reviewed ${lastReviewed}</div>
   <div class="card-actions">
     <a class="card-btn btn-p" href="${o.websiteUrl}" target="_blank" rel="noopener" onclick="event.stopPropagation()">Visit website</a>
-    <button class="card-btn btn-s" onclick="event.stopPropagation();openModal(${o.id})">More info</button>
+    <button class="card-more" onclick="event.stopPropagation();openModal(${o.id})">More info →</button>
   </div>
 </article>`;
 }
