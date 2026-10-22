@@ -682,6 +682,31 @@
   @media (prefers-reduced-motion: reduce) {
     *, *::before, *::after { animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; transition-duration: 0.01ms !important; }
   }
+
+  /* ── Card text and deadline block (2026-10-22): date first, est. as a small marker ── */
+  .festival-location {
+    font-family: 'Geist', system-ui, sans-serif;
+    font-size: 0.78rem; letter-spacing: 0; color: var(--text-3);
+  }
+  .festival-known-for { font-size: 0.8rem; }
+  .card-footer { align-items: flex-end; }
+  .dl-block { display: flex; flex-direction: column; gap: 2px; min-width: 0; }
+  .dl-label {
+    font-family: 'Geist Mono', monospace; font-size: 0.62rem;
+    letter-spacing: 1px; text-transform: uppercase; color: var(--text-4);
+  }
+  .dl-date { font-size: 0.92rem; font-weight: 600; color: var(--text-1); }
+  .dl-block.urgent .dl-label, .dl-block.urgent .dl-date { color: var(--red); }
+  .dl-block.soon   .dl-label, .dl-block.soon   .dl-date { color: var(--accent); }
+  .dl-block.far    .dl-label { color: var(--indigo); }
+  .dl-block.no-dl  .dl-date { font-weight: 400; color: var(--text-4); }
+  .dl-est, .est-note span {
+    font-family: 'Geist Mono', monospace; font-size: 0.62rem; font-weight: 400;
+    letter-spacing: 0.5px; color: var(--text-4);
+    padding: 0; border: 0; border-bottom: 1px dotted var(--text-4); border-radius: 0;
+    cursor: help;
+  }
+  .card-fee { font-size: 0.72rem; color: var(--text-3); }
 </style>
 </head>
 <body>
@@ -961,14 +986,16 @@ function feeRangeStr(f) {
 
 function dlChipHtml(f) {
   var dl = nextUpcomingDeadline(f);
-  if (!dl) return '<span class="dl-chip no-dl">No deadline on record</span>';
+  if (!dl) return '<div class="dl-block no-dl"><span class="dl-label">deadline</span><span class="dl-date">None on record</span></div>';
   var days = daysUntil(dl.deadline);
   if (dl.estimated) {
-    return '<span class="dl-chip est" title="Estimated from the ' + dl.basedOn + ' deadline. Not confirmed yet.">'
-      + escapeHtml(dl.tier) + ' · around ' + formatDate(dl.deadline) + ' · est.</span>';
+    return '<div class="dl-block est"><span class="dl-label">' + escapeHtml(dl.tier) + ' deadline</span>'
+      + '<span class="dl-date">' + formatDate(dl.deadline)
+      + ' <span class="dl-est" title="Estimated from the ' + dl.basedOn + ' deadline. Not confirmed yet.">est.</span></span></div>';
   }
   var cls = dlClass(days);
-  return '<span class="dl-chip ' + cls + '">' + escapeHtml(dl.tier) + ' · ' + formatDate(dl.deadline) + ' · ' + dlDaysStr(days) + '</span>';
+  return '<div class="dl-block ' + cls + '"><span class="dl-label">' + escapeHtml(dl.tier) + ' · ' + dlDaysStr(days) + '</span>'
+    + '<span class="dl-date">' + formatDate(dl.deadline) + '</span></div>';
 }
 
 /* ── List rendering ── */
