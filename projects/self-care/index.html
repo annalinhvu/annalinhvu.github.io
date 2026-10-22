@@ -23,8 +23,8 @@
   --surface-2:#f5f0e8;
   --text-1:#2d2a26;
   --text-2:#5c5650;
-  --text-3:#8a837a;
-  --text-4:#b8b0a4;
+  --text-3:#736c63;
+  --text-4:#8a837a;
   --accent:#7b9e87;
   --accent-2:#c47d5a;
   --accent-3:#d4a0a0;
@@ -46,8 +46,8 @@
   --surface-2:#2e2a28;
   --text-1:#e8e2da;
   --text-2:#c4bbb0;
-  --text-3:#8a837a;
-  --text-4:#5c5650;
+  --text-3:#9a9288;
+  --text-4:#7a736b;
   --accent:#9bbaa5;
   --accent-2:#d49a7a;
   --accent-3:#d4a0a0;
@@ -130,6 +130,10 @@ body{
 [data-theme="dark"] .bg-moon{opacity:.07}
 .bg-m1{top:12%;left:5%;width:40px;height:40px;animation-delay:1s}
 .bg-m2{top:55%;right:4%;width:35px;height:35px;animation-delay:3s}
+
+/* Fewer doodles: keep the leaves, flowers and colour washes; stars and moons were extra noise */
+.bg-star,.bg-moon{display:none}
+@media(max-width:900px){.bg-item{display:none}}
 
 /* Soft blobs */
 .bg-blob{
