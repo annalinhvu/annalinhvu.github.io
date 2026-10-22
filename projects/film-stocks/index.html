@@ -337,16 +337,25 @@ body {
 .status-discontinued::before { background: var(--red); }
 
 .best-for {
-  font-size: 0.75rem;
-  color: var(--text-3);
+  font-size: 0.86rem;
+  color: var(--text-2);
   font-style: italic;
-  text-align: right;
-  flex: 1;
-  margin-left: 8px;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
+  margin: -2px 0 12px;
 }
+
+/* Stock cards: name and use first, specs along a quiet footer */
+.card { display: flex; flex-direction: column; }
+.card-top .iso-badge { font-size: 0.82rem; }
+.card-name { font-size: 1.2rem; margin-bottom: 4px; }
+.card .card-tags { margin-bottom: 14px; }
+.card .card-bottom {
+  margin-top: auto;
+  padding-top: 10px;
+  border-top: 1px solid var(--border);
+  gap: 12px;
+}
+.card .card-bottom .card-chars { margin-bottom: 0; flex-wrap: wrap; row-gap: 2px; }
+.card .card-bottom .status-dot { white-space: nowrap; }
 
 /* ── Lab Card ── */
 .lab-card-item { }
@@ -775,19 +784,19 @@ function renderStockCard(stock) {
         <span class="iso-badge">ISO ${stock.iso}</span>
       </div>
       <div class="card-name">${stock.name}</div>
+      ${stock.best_for ? `<div class="best-for">${stock.best_for}</div>` : ''}
       <div class="card-tags">
         <span class="tag">${typeLabel(stock.type)}</span>
         <span class="tag">${stock.format}</span>
         <span class="tag tag-secondary">${stock.process}</span>
       </div>
-      <div class="card-chars">
-        ${stock.grain ? `<span>${stock.grain} grain</span>` : ''}
-        ${stock.tone ? `<span>${stock.tone}</span>` : ''}
-        ${stock.saturation ? `<span>${stock.saturation}</span>` : ''}
-      </div>
       <div class="card-bottom">
+        <div class="card-chars">
+          ${stock.grain ? `<span>${stock.grain} grain</span>` : ''}
+          ${stock.tone ? `<span>${stock.tone}</span>` : ''}
+          ${stock.saturation ? `<span>${stock.saturation}</span>` : ''}
+        </div>
         <span class="status-dot status-${stock.status}">${statusLabel(stock.status)}</span>
-        ${stock.best_for ? `<span class="best-for">${stock.best_for}</span>` : ''}
       </div>
     </div>
   `;
