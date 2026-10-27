@@ -1364,6 +1364,7 @@ const US_REGION_OF = Object.fromEntries(
   Object.entries(US_REGIONS).flatMap(([r, names]) => names.map(n => [n, r])));
 let usStatesFeatures = null;
 let usTimers = [];
+let usProjection = null;
 let mapSvg        = null;
 let mapG          = null;
 let pinLayer      = null;   // outside zoom transform — pins stay fixed size
@@ -2121,7 +2122,7 @@ function usShowStates(shown) {
 
 function usDrawPlaces() {
   const svg = d3.select('#usMapSvg');
-  const projection = svg.property('__usProjection');
+  const projection = usProjection;
   const cities = usPlaces.filter(p => p.city && p.at && projection(p.at));
   svg.selectAll('circle.us-city')
     .data(cities.filter(p => !p.home), p => p.city + '|' + p.state)
@@ -2166,7 +2167,7 @@ async function renderUsView() {
   const svg = d3.select('#usMapSvg');
   const projection = d3.geoAlbersUsa().fitExtent([[8, 8], [US_MAP_W - 8, US_MAP_H - 8]],
     { type: 'FeatureCollection', features: usStatesFeatures });
-  svg.property('__usProjection', projection);
+  usProjection = projection;
   const path = d3.geoPath(projection);
 
   svg.selectAll('path.us-state')
