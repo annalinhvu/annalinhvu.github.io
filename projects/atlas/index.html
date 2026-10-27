@@ -851,11 +851,6 @@ body {
 .us-city.shown { opacity: 1; transform: scale(1); }
 .us-city.shown:hover { fill: var(--gold); }
 .us-home { cursor: default; }
-.us-year { font-family: 'Bebas Neue', sans-serif; font-size: 1.5rem; letter-spacing: 3px; color: var(--gold); margin-bottom: 4px; min-height: 1.5rem; }
-.us-year-list { display: flex; flex-direction: column; gap: 8px; }
-.us-year-row { display: grid; grid-template-columns: 44px 1fr; gap: 10px; font-size: 0.74rem; line-height: 1.45; color: var(--text-1); transition: opacity 0.3s ease; }
-.us-year-row b { font-weight: 600; color: var(--americas); }
-.us-year-row.dim { opacity: 0.3; }
 .us-state { cursor: pointer; }
 .us-actions { display: flex; flex-wrap: wrap; gap: 8px; }
 .us-file-note { font-size: 0.7rem; line-height: 1.5; color: var(--text-3); margin-top: -12px; }
@@ -1056,7 +1051,6 @@ body {
     </div>
     <aside class="us-side">
       <div>
-        <div class="us-year" id="usYear"></div>
         <div class="us-big"><span class="us-big-num" id="usCount">0</span><span class="us-big-of">/ 51</span></div>
         <div class="us-big-sub" id="usSub"></div>
       </div>
@@ -1064,10 +1058,6 @@ body {
       <div>
         <div class="us-section-label">By region</div>
         <div class="us-regions" id="usRegions"></div>
-      </div>
-      <div>
-        <div class="us-section-label">By year</div>
-        <div class="us-year-list" id="usYearList"></div>
       </div>
       <div class="us-legend">
         <span><i style="background:var(--americas)"></i>Visited</span>
@@ -1347,20 +1337,12 @@ const STATE_ABBR = {
 };
 // U.S. travels live only in the viewer's browser (localStorage), never in this file, so each
 // visitor sees their own map. Export/Import move them between browsers as a JSON file.
-// A place is { city, state, at: [lng, lat] | null, years: [...], home?: year }; city null = state only.
+// A place is { city, state, at: [lng, lat] | null, home?: true }; city null = state only.
 const US_PLACES_KEY = 'atlas-us-places';
 let usPlaces = [];
 try { usPlaces = JSON.parse(localStorage.getItem(US_PLACES_KEY) || '[]'); } catch (e) {}
-const placeFirstYear = p => Math.min(...p.years, p.home || Infinity);
-let US_STATE_FIRST = {}, VISITED_STATES = new Set(), US_YEARS = [];
-function usDerive() {
-  US_STATE_FIRST = {};
-  usPlaces.forEach(p => {
-    US_STATE_FIRST[p.state] = Math.min(US_STATE_FIRST[p.state] ?? Infinity, placeFirstYear(p));
-  });
-  VISITED_STATES = new Set(Object.keys(US_STATE_FIRST));
-  US_YEARS = [...new Set(usPlaces.flatMap(p => p.home ? [...p.years, p.home] : p.years))].sort();
-}
+let VISITED_STATES = new Set();
+function usDerive() { VISITED_STATES = new Set(usPlaces.map(p => p.state)); }
 usDerive();
 function usSave() {
   try { localStorage.setItem(US_PLACES_KEY, JSON.stringify(usPlaces)); } catch (e) {}
@@ -2080,7 +2062,7 @@ function switchTab(id, btn) {
 
 // ── U.S. VIEW ─────────────────────────────────────
 // Map of the viewer's own usPlaces. Clicking a state marks it visited (state only, no city);
-// Import adds cities and years. Each time the view opens it replays the years in order.
+// Import adds cities. Each time the view opens, visited states fill in one by one.
 const US_MAP_W = 960, US_MAP_H = 600;
 
 function usShowTip(event, region, name, lines, visited) {
@@ -2106,10 +2088,10 @@ function usToggleState(event, name) {
   const places = usPlaces.filter(p => p.state === name);
   if (places.some(p => p.city)) return;
   if (places.length) usPlaces = usPlaces.filter(p => p.state !== name);
-  else usPlaces.push({ city: null, state: name, at: null, years: [] });
+  else usPlaces.push({ city: null, state: name, at: null });
   usSave();
   usRenderSummary();
-  usShowThrough(Infinity);
+  usShowStates(VISITED_STATES);
   usStateTip(event, name);
 }
 
@@ -2121,31 +2103,15 @@ function usRenderSummary() {
     ? `${statesOnly} states${dc}${cityCount ? ` · ${cityCount} cities` : ''} · ${Math.round(VISITED_STATES.size / 51 * 100)}% of the map`
     : 'Click a state to mark it, or import a trips file';
   document.getElementById('usStats').textContent = `${51 - VISITED_STATES.size} states to go`;
-  const undated = [...VISITED_STATES].filter(s => US_STATE_FIRST[s] === Infinity).sort();
-  const rows = US_YEARS.map(y => {
-    const here = usPlaces.filter(p => p.years.includes(y) || p.home === y)
-      .map(p => p.home === y && !p.years.includes(y) ? `moved to ${p.city}` : (p.city || p.state));
-    return `<div class="us-year-row" data-year="${y}"><b>${y}</b><span>${esc(here.join(', '))}</span></div>`;
-  });
-  if (undated.length) rows.push(`<div class="us-year-row"><b>—</b><span>${esc(undated.join(', '))}</span></div>`);
-  document.getElementById('usYearList').innerHTML = rows.join('') ||
-    `<div class="us-year-row"><b></b><span>Nothing yet. Only you can see what you add here.</span></div>`;
 }
 
-// Show the map as of the end of `year` (Infinity = everything)
-function usShowThrough(year) {
-  const shown = new Set(Object.keys(US_STATE_FIRST).filter(s => US_STATE_FIRST[s] <= year));
+function usShowStates(shown) {
   d3.selectAll('#usMapSvg path.us-state').classed('visited', d => shown.has(d.properties.name));
-  d3.selectAll('#usMapSvg circle.us-city').classed('shown', d => placeFirstYear(d) <= year);
-  document.querySelectorAll('#usYearList .us-year-row[data-year]').forEach(el =>
-    el.classList.toggle('dim', +el.dataset.year > year));
-  const first = US_YEARS[0], last = US_YEARS[US_YEARS.length - 1];
-  document.getElementById('usYear').textContent = year === Infinity
-    ? (first ? (first === last ? first : `${first}–${last}`) : '') : year < first ? '' : year;
+  d3.selectAll('#usMapSvg circle.us-city').classed('shown', p => shown.has(p.state));
   document.getElementById('usCount').textContent = shown.size;
   document.getElementById('usTotalBar').style.width = (shown.size / 51 * 100) + '%';
   document.getElementById('usRegions').innerHTML = Object.entries(US_REGIONS).map(([region, names]) => {
-    const n = names.filter(s => shown.has(s)).length;
+    const n = names.filter(st => shown.has(st)).length;
     return `<div>
       <div class="us-region-row">${region}<span>${n} / ${names.length}</span></div>
       <div class="us-bar"><i style="width:${n / names.length * 100}%"></i></div>
@@ -2226,13 +2192,22 @@ async function renderUsView() {
 
   usTimers.forEach(clearTimeout);
   usTimers = [];
-  if (!US_YEARS.length || window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-    usShowThrough(Infinity);
+  // Fill nearest-to-home first, or west to east when there is no home
+  const homePlace = usPlaces.find(p => p.home && p.at && projection(p.at));
+  const [hx, hy] = homePlace ? projection(homePlace.at) : [0, 0];
+  const order = usStatesFeatures.filter(d => VISITED_STATES.has(d.properties.name))
+    .map(d => { const [x, y] = path.centroid(d); return { name: d.properties.name, key: homePlace ? Math.hypot(x - hx, y - hy) : x }; })
+    .sort((a, b) => a.key - b.key);
+  if (!order.length || window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    usShowStates(VISITED_STATES);
     return;
   }
-  usShowThrough(US_YEARS[0] - 1);
-  US_YEARS.forEach((y, i) => usTimers.push(setTimeout(() => usShowThrough(y), 400 + i * 650)));
-  usTimers.push(setTimeout(() => usShowThrough(Infinity), 400 + US_YEARS.length * 650 + 300));
+  const shown = new Set();
+  usShowStates(shown);
+  order.forEach((st, i) => usTimers.push(setTimeout(() => {
+    shown.add(st.name);
+    usShowStates(shown);
+  }, 350 + i * 140)));
 }
 
 function usExport() {
@@ -2245,12 +2220,9 @@ function usExport() {
 }
 
 function usValidPlace(p) {
-  const year = y => Number.isInteger(y) && y > 1900 && y < 2200;
   return p && typeof p === 'object' && US_REGION_OF[p.state] &&
     (p.city === null || typeof p.city === 'string') &&
-    (p.at === null || (Array.isArray(p.at) && p.at.length === 2 && p.at.every(Number.isFinite))) &&
-    Array.isArray(p.years) && p.years.every(year) &&
-    (p.home === undefined || year(p.home));
+    (p.at === null || (Array.isArray(p.at) && p.at.length === 2 && p.at.every(Number.isFinite)));
 }
 
 function usImport(input) {
@@ -2261,8 +2233,7 @@ function usImport(input) {
   file.text().then(text => {
     const data = JSON.parse(text);
     if (!Array.isArray(data) || !data.every(usValidPlace)) throw new Error('bad shape');
-    usPlaces = data.map(p => ({ city: p.city, state: p.state, at: p.at, years: p.years,
-      ...(p.home ? { home: p.home } : {}) }));
+    usPlaces = data.map(p => ({ city: p.city, state: p.state, at: p.at, ...(p.home ? { home: true } : {}) }));
     usSave();
     d3.selectAll('#usMapSvg circle.us-city, #usMapSvg g.us-home').remove();
     note.textContent = `Imported ${data.length} places. Saved in this browser only.`;
