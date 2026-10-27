@@ -856,6 +856,9 @@ body {
 .us-year-row { display: grid; grid-template-columns: 44px 1fr; gap: 10px; font-size: 0.74rem; line-height: 1.45; color: var(--text-1); transition: opacity 0.3s ease; }
 .us-year-row b { font-weight: 600; color: var(--americas); }
 .us-year-row.dim { opacity: 0.3; }
+.us-state { cursor: pointer; }
+.us-actions { display: flex; flex-wrap: wrap; gap: 8px; }
+.us-file-note { font-size: 0.7rem; line-height: 1.5; color: var(--text-3); margin-top: -12px; }
 .us-replay-btn {
   align-self: flex-start;
   background: none; border: 1px solid var(--border); border-radius: 2px;
@@ -1042,8 +1045,8 @@ body {
 <!-- U.S. VIEW -->
 <div class="us-view" id="usView" style="display:none">
   <div class="cal-toolbar">
-    <span class="us-title">My U.S.</span>
-    <span class="cal-hint">Every state and city I've been to, year by year · hover for details</span>
+    <span class="us-title">Your U.S.</span>
+    <span class="cal-hint">Your own map, kept in this browser · click a state to mark it</span>
     <span class="cal-stats" id="usStats"></span>
   </div>
   <div class="us-body">
@@ -1068,11 +1071,18 @@ body {
       </div>
       <div class="us-legend">
         <span><i style="background:var(--americas)"></i>Visited</span>
-        <span><i style="background:var(--text-1); border-radius:50%"></i>City</span>
+        <span id="usCityLegend"><i style="background:var(--text-1); border-radius:50%"></i>City</span>
         <span><i style="background:var(--surface-2); border:1px solid var(--border)"></i>Not yet</span>
-        <span><i style="background:var(--gold); border-radius:50%"></i>Home, NYC</span>
+        <span id="usHomeLegend"><i style="background:var(--gold); border-radius:50%"></i>Home</span>
       </div>
-      <button class="us-replay-btn" onclick="renderUsView()">↻ Replay</button>
+      <div class="us-actions">
+        <button class="us-replay-btn" onclick="renderUsView()">↻ Replay</button>
+        <button class="us-replay-btn" onclick="document.getElementById('usFileInput').click()">Import</button>
+        <button class="us-replay-btn" onclick="usExport()">Export</button>
+        <button class="us-replay-btn" onclick="usClear(this)">Clear</button>
+        <input type="file" id="usFileInput" accept="application/json,.json" hidden onchange="usImport(this)">
+      </div>
+      <div class="us-file-note" id="usFileNote">Saved in this browser only. Nobody else sees your map.</div>
     </aside>
   </div>
 </div>
@@ -1335,20 +1345,27 @@ const STATE_ABBR = {
   'Washington':'WA','West Virginia':'WV','Wisconsin':'WI','Wyoming':'WY',
   'Puerto Rico':'PR',
 };
-// U.S. travels. To add a trip: add a year to a place, or a new line.
-// `at` is [longitude, latitude]; `at: null` means the state only, no specific city.
-// Visited states are worked out from this list, so there is nothing else to update.
-const US_PLACES = [
-];
+// U.S. travels live only in the viewer's browser (localStorage), never in this file, so each
+// visitor sees their own map. Export/Import move them between browsers as a JSON file.
+// A place is { city, state, at: [lng, lat] | null, years: [...], home?: year }; city null = state only.
+const US_PLACES_KEY = 'atlas-us-places';
+let usPlaces = [];
+try { usPlaces = JSON.parse(localStorage.getItem(US_PLACES_KEY) || '[]'); } catch (e) {}
 const placeFirstYear = p => Math.min(...p.years, p.home || Infinity);
-// state -> first year visited
-const US_STATE_FIRST = {};
-US_PLACES.forEach(p => {
-  const y = placeFirstYear(p);
-  US_STATE_FIRST[p.state] = Math.min(US_STATE_FIRST[p.state] || Infinity, y);
-});
-const VISITED_STATES = new Set(Object.keys(US_STATE_FIRST));
-const US_YEARS = [...new Set(US_PLACES.flatMap(p => p.home ? [...p.years, p.home] : p.years))].sort();
+let US_STATE_FIRST = {}, VISITED_STATES = new Set(), US_YEARS = [];
+function usDerive() {
+  US_STATE_FIRST = {};
+  usPlaces.forEach(p => {
+    US_STATE_FIRST[p.state] = Math.min(US_STATE_FIRST[p.state] ?? Infinity, placeFirstYear(p));
+  });
+  VISITED_STATES = new Set(Object.keys(US_STATE_FIRST));
+  US_YEARS = [...new Set(usPlaces.flatMap(p => p.home ? [...p.years, p.home] : p.years))].sort();
+}
+usDerive();
+function usSave() {
+  try { localStorage.setItem(US_PLACES_KEY, JSON.stringify(usPlaces)); } catch (e) {}
+  usDerive();
+}
 // U.S. Census regions; DC counts with the South, so the total is 51.
 const US_REGIONS = {
   'Northeast': ['Connecticut','Maine','Massachusetts','New Hampshire','Rhode Island','Vermont',
@@ -1365,7 +1382,6 @@ const US_REGION_OF = Object.fromEntries(
   Object.entries(US_REGIONS).flatMap(([r, names]) => names.map(n => [n, r])));
 let usStatesFeatures = null;
 let usTimers = [];
-try { localStorage.removeItem('atlas-us-states-visited'); } catch (e) {} // old editable map
 let mapSvg        = null;
 let mapG          = null;
 let pinLayer      = null;   // outside zoom transform — pins stay fixed size
@@ -2063,15 +2079,9 @@ function switchTab(id, btn) {
 }
 
 // ── U.S. VIEW ─────────────────────────────────────
-// Read-only map built from US_PLACES. Each time the view opens it replays the years in
-// order: states fill in the year they were first visited and city dots appear with them.
+// Map of the viewer's own usPlaces. Clicking a state marks it visited (state only, no city);
+// Import adds cities and years. Each time the view opens it replays the years in order.
 const US_MAP_W = 960, US_MAP_H = 600;
-
-function usPlaceLabel(p) { return p.city || `${p.state} (no specific city)`; }
-function usPlaceYears(p) {
-  const ys = p.years.join(', ');
-  return p.home ? `${ys ? ys + ' · ' : ''}home since ${p.home}` : ys;
-}
 
 function usShowTip(event, region, name, lines, visited) {
   document.getElementById('ttRegion').textContent = region.toUpperCase();
@@ -2082,12 +2092,44 @@ function usShowTip(event, region, name, lines, visited) {
   moveTooltip(event);
 }
 
-function usRenderYears() {
-  document.getElementById('usYearList').innerHTML = US_YEARS.map(y => {
-    const here = US_PLACES.filter(p => p.years.includes(y) || p.home === y)
+function usStateTip(event, name) {
+  const places = usPlaces.filter(p => p.state === name);
+  const cities = places.filter(p => p.city);
+  const lines = cities.map(p => p.home ? `${p.city} (home)` : p.city);
+  if (!places.length) lines.push('Click to mark visited');
+  else if (!cities.length) lines.push('Visited · click again to unmark');
+  usShowTip(event, US_REGION_OF[name], name, lines, places.length > 0);
+}
+
+// Clicking only adds or removes a state-only entry; states with cities change through Import.
+function usToggleState(event, name) {
+  const places = usPlaces.filter(p => p.state === name);
+  if (places.some(p => p.city)) return;
+  if (places.length) usPlaces = usPlaces.filter(p => p.state !== name);
+  else usPlaces.push({ city: null, state: name, at: null, years: [] });
+  usSave();
+  usRenderSummary();
+  usShowThrough(Infinity);
+  usStateTip(event, name);
+}
+
+function usRenderSummary() {
+  const statesOnly = [...VISITED_STATES].filter(s => s !== 'District of Columbia').length;
+  const dc = VISITED_STATES.has('District of Columbia') ? ' + DC' : '';
+  const cityCount = usPlaces.filter(p => p.city).length;
+  document.getElementById('usSub').textContent = VISITED_STATES.size
+    ? `${statesOnly} states${dc}${cityCount ? ` · ${cityCount} cities` : ''} · ${Math.round(VISITED_STATES.size / 51 * 100)}% of the map`
+    : 'Click a state to mark it, or import a trips file';
+  document.getElementById('usStats').textContent = `${51 - VISITED_STATES.size} states to go`;
+  const undated = [...VISITED_STATES].filter(s => US_STATE_FIRST[s] === Infinity).sort();
+  const rows = US_YEARS.map(y => {
+    const here = usPlaces.filter(p => p.years.includes(y) || p.home === y)
       .map(p => p.home === y && !p.years.includes(y) ? `moved to ${p.city}` : (p.city || p.state));
     return `<div class="us-year-row" data-year="${y}"><b>${y}</b><span>${esc(here.join(', '))}</span></div>`;
-  }).join('');
+  });
+  if (undated.length) rows.push(`<div class="us-year-row"><b>—</b><span>${esc(undated.join(', '))}</span></div>`);
+  document.getElementById('usYearList').innerHTML = rows.join('') ||
+    `<div class="us-year-row"><b></b><span>Nothing yet. Only you can see what you add here.</span></div>`;
 }
 
 // Show the map as of the end of `year` (Infinity = everything)
@@ -2095,10 +2137,11 @@ function usShowThrough(year) {
   const shown = new Set(Object.keys(US_STATE_FIRST).filter(s => US_STATE_FIRST[s] <= year));
   d3.selectAll('#usMapSvg path.us-state').classed('visited', d => shown.has(d.properties.name));
   d3.selectAll('#usMapSvg circle.us-city').classed('shown', d => placeFirstYear(d) <= year);
-  document.querySelectorAll('#usYearList .us-year-row').forEach(el =>
+  document.querySelectorAll('#usYearList .us-year-row[data-year]').forEach(el =>
     el.classList.toggle('dim', +el.dataset.year > year));
+  const first = US_YEARS[0], last = US_YEARS[US_YEARS.length - 1];
   document.getElementById('usYear').textContent = year === Infinity
-    ? `${US_YEARS[0]}–${US_YEARS[US_YEARS.length - 1]}` : year < US_YEARS[0] ? '' : year;
+    ? (first ? (first === last ? first : `${first}–${last}`) : '') : year < first ? '' : year;
   document.getElementById('usCount').textContent = shown.size;
   document.getElementById('usTotalBar').style.width = (shown.size / 51 * 100) + '%';
   document.getElementById('usRegions').innerHTML = Object.entries(US_REGIONS).map(([region, names]) => {
@@ -2108,6 +2151,36 @@ function usShowThrough(year) {
       <div class="us-bar"><i style="width:${n / names.length * 100}%"></i></div>
     </div>`;
   }).join('');
+}
+
+function usDrawPlaces() {
+  const svg = d3.select('#usMapSvg');
+  const projection = svg.property('__usProjection');
+  const cities = usPlaces.filter(p => p.city && p.at && projection(p.at));
+  svg.selectAll('circle.us-city')
+    .data(cities.filter(p => !p.home), p => p.city + '|' + p.state)
+    .join('circle')
+      .attr('class', 'us-city')
+      .attr('r', 4.5)
+      .attr('cx', p => projection(p.at)[0])
+      .attr('cy', p => projection(p.at)[1])
+      .on('mouseenter', (event, p) => usShowTip(event, p.state, p.city, [], true))
+      .on('mousemove', moveTooltip)
+      .on('mouseleave', hideTooltip);
+
+  const home = cities.filter(p => p.home);
+  const g = svg.selectAll('g.us-home').data(home, p => p.city + '|' + p.state).join(enter => {
+    const g = enter.append('g').attr('class', 'us-home');
+    g.append('circle').attr('class', 'us-origin-ring').attr('r', 6);
+    g.append('circle').attr('class', 'us-origin').attr('r', 6);
+    return g;
+  }).attr('transform', p => `translate(${projection(p.at)})`)
+    .on('mouseenter', (event, p) => usShowTip(event, p.state, p.city, ['Home'], true))
+    .on('mousemove', moveTooltip)
+    .on('mouseleave', hideTooltip)
+    .raise();
+  document.getElementById('usHomeLegend').style.display = home.length ? '' : 'none';
+  document.getElementById('usCityLegend').style.display = cities.some(p => !p.home) ? '' : 'none';
 }
 
 async function renderUsView() {
@@ -2127,6 +2200,7 @@ async function renderUsView() {
   const svg = d3.select('#usMapSvg');
   const projection = d3.geoAlbersUsa().fitExtent([[8, 8], [US_MAP_W - 8, US_MAP_H - 8]],
     { type: 'FeatureCollection', features: usStatesFeatures });
+  svg.property('__usProjection', projection);
   const path = d3.geoPath(projection);
 
   svg.selectAll('path.us-state')
@@ -2134,14 +2208,8 @@ async function renderUsView() {
     .join('path')
       .attr('class', 'us-state')
       .attr('d', path)
-      .on('mouseenter', (event, d) => {
-        const name = d.properties.name;
-        const places = US_PLACES.filter(p => p.state === name);
-        const lines = places.length
-          ? places.map(p => p.city ? `${p.city} · ${usPlaceYears(p)}` : usPlaceYears(p))
-          : ['Not yet'];
-        usShowTip(event, US_REGION_OF[name], name, lines, places.length > 0);
-      })
+      .on('click', (event, d) => usToggleState(event, d.properties.name))
+      .on('mouseenter', (event, d) => usStateTip(event, d.properties.name))
       .on('mousemove', moveTooltip)
       .on('mouseleave', hideTooltip);
 
@@ -2153,48 +2221,71 @@ async function renderUsView() {
       .attr('y', d => path.centroid(d)[1])
       .text(d => d.properties.name === 'District of Columbia' ? '' : STATE_ABBR[d.properties.name] || '');
 
-  const cities = US_PLACES.filter(p => p.at && projection(p.at) && !p.home);
-  svg.selectAll('circle.us-city')
-    .data(cities, p => p.city)
-    .join('circle')
-      .attr('class', 'us-city')
-      .attr('r', 4.5)
-      .attr('cx', p => projection(p.at)[0])
-      .attr('cy', p => projection(p.at)[1])
-      .on('mouseenter', (event, p) => usShowTip(event, p.state, p.city, [usPlaceYears(p)], true))
-      .on('mousemove', moveTooltip)
-      .on('mouseleave', hideTooltip);
-
-  const home = US_PLACES.find(p => p.home);
-  const [nx, ny] = projection(home.at);
-  svg.selectAll('g.us-home').data([home]).join(enter => {
-    const g = enter.append('g').attr('class', 'us-home');
-    g.append('circle').attr('class', 'us-origin-ring').attr('r', 6);
-    g.append('circle').attr('class', 'us-origin').attr('r', 6);
-    return g;
-  }).attr('transform', `translate(${nx},${ny})`)
-    .on('mouseenter', (event, p) => usShowTip(event, p.state, p.city, [usPlaceYears(p)], true))
-    .on('mousemove', moveTooltip)
-    .on('mouseleave', hideTooltip)
-    .raise();
-
-  const statesOnly = [...VISITED_STATES].filter(s => s !== 'District of Columbia').length;
-  const dc = VISITED_STATES.has('District of Columbia') ? ' + DC' : '';
-  const cityCount = US_PLACES.filter(p => p.city).length;
-  document.getElementById('usSub').textContent =
-    `${statesOnly} states${dc} · ${cityCount} cities · ${Math.round(VISITED_STATES.size / 51 * 100)}% of the map`;
-  document.getElementById('usStats').textContent = `${51 - VISITED_STATES.size} states to go`;
-  usRenderYears();
+  usDrawPlaces();
+  usRenderSummary();
 
   usTimers.forEach(clearTimeout);
   usTimers = [];
-  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+  if (!US_YEARS.length || window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
     usShowThrough(Infinity);
     return;
   }
   usShowThrough(US_YEARS[0] - 1);
   US_YEARS.forEach((y, i) => usTimers.push(setTimeout(() => usShowThrough(y), 400 + i * 650)));
   usTimers.push(setTimeout(() => usShowThrough(Infinity), 400 + US_YEARS.length * 650 + 300));
+}
+
+function usExport() {
+  const blob = new Blob([JSON.stringify(usPlaces, null, 2)], { type: 'application/json' });
+  const a = document.createElement('a');
+  a.href = URL.createObjectURL(blob);
+  a.download = 'my-us-travels.json';
+  a.click();
+  URL.revokeObjectURL(a.href);
+}
+
+function usValidPlace(p) {
+  const year = y => Number.isInteger(y) && y > 1900 && y < 2200;
+  return p && typeof p === 'object' && US_REGION_OF[p.state] &&
+    (p.city === null || typeof p.city === 'string') &&
+    (p.at === null || (Array.isArray(p.at) && p.at.length === 2 && p.at.every(Number.isFinite))) &&
+    Array.isArray(p.years) && p.years.every(year) &&
+    (p.home === undefined || year(p.home));
+}
+
+function usImport(input) {
+  const file = input.files && input.files[0];
+  input.value = '';
+  if (!file) return;
+  const note = document.getElementById('usFileNote');
+  file.text().then(text => {
+    const data = JSON.parse(text);
+    if (!Array.isArray(data) || !data.every(usValidPlace)) throw new Error('bad shape');
+    usPlaces = data.map(p => ({ city: p.city, state: p.state, at: p.at, years: p.years,
+      ...(p.home ? { home: p.home } : {}) }));
+    usSave();
+    d3.selectAll('#usMapSvg circle.us-city, #usMapSvg g.us-home').remove();
+    note.textContent = `Imported ${data.length} places. Saved in this browser only.`;
+    renderUsView();
+  }).catch(() => { note.textContent = 'That file is not a trips file this map can read.'; });
+}
+
+let usClearArmed = false;
+function usClear(btn) {
+  if (!usPlaces.length) return;
+  if (!usClearArmed) {
+    usClearArmed = true;
+    btn.textContent = 'Clear all? Click again';
+    setTimeout(() => { usClearArmed = false; btn.textContent = 'Clear'; }, 3000);
+    return;
+  }
+  usClearArmed = false;
+  btn.textContent = 'Clear';
+  usPlaces = [];
+  usSave();
+  d3.selectAll('#usMapSvg circle.us-city, #usMapSvg g.us-home').remove();
+  document.getElementById('usFileNote').textContent = 'Cleared. Export first next time if you want a backup.';
+  renderUsView();
 }
 
 function toggleSavedFilter() {
