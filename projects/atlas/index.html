@@ -847,6 +847,15 @@ body {
 .us-legend { display: flex; gap: 16px; font-size: 0.72rem; color: var(--text-2); flex-wrap: wrap; }
 .us-legend span { display: flex; align-items: center; gap: 7px; }
 .us-legend i { width: 11px; height: 11px; border-radius: 2px; display: inline-block; }
+.us-city { fill: var(--text-1); stroke: var(--bg); stroke-width: 1.5px; opacity: 0; transform: scale(0); transform-box: fill-box; transform-origin: center; transition: opacity 0.3s ease, transform 0.35s cubic-bezier(.3,1.6,.5,1); }
+.us-city.shown { opacity: 1; transform: scale(1); }
+.us-city.shown:hover { fill: var(--gold); }
+.us-home { cursor: default; }
+.us-year { font-family: 'Bebas Neue', sans-serif; font-size: 1.5rem; letter-spacing: 3px; color: var(--gold); margin-bottom: 4px; min-height: 1.5rem; }
+.us-year-list { display: flex; flex-direction: column; gap: 8px; }
+.us-year-row { display: grid; grid-template-columns: 44px 1fr; gap: 10px; font-size: 0.74rem; line-height: 1.45; color: var(--text-1); transition: opacity 0.3s ease; }
+.us-year-row b { font-weight: 600; color: var(--americas); }
+.us-year-row.dim { opacity: 0.3; }
 .us-replay-btn {
   align-self: flex-start;
   background: none; border: 1px solid var(--border); border-radius: 2px;
@@ -1034,7 +1043,7 @@ body {
 <div class="us-view" id="usView" style="display:none">
   <div class="cal-toolbar">
     <span class="us-title">My U.S.</span>
-    <span class="cal-hint">Every state I've been to, starting from New York</span>
+    <span class="cal-hint">Every state and city I've been to, year by year · hover for details</span>
     <span class="cal-stats" id="usStats"></span>
   </div>
   <div class="us-body">
@@ -1044,6 +1053,7 @@ body {
     </div>
     <aside class="us-side">
       <div>
+        <div class="us-year" id="usYear"></div>
         <div class="us-big"><span class="us-big-num" id="usCount">0</span><span class="us-big-of">/ 51</span></div>
         <div class="us-big-sub" id="usSub"></div>
       </div>
@@ -1052,8 +1062,13 @@ body {
         <div class="us-section-label">By region</div>
         <div class="us-regions" id="usRegions"></div>
       </div>
+      <div>
+        <div class="us-section-label">By year</div>
+        <div class="us-year-list" id="usYearList"></div>
+      </div>
       <div class="us-legend">
         <span><i style="background:var(--americas)"></i>Visited</span>
+        <span><i style="background:var(--text-1); border-radius:50%"></i>City</span>
         <span><i style="background:var(--surface-2); border:1px solid var(--border)"></i>Not yet</span>
         <span><i style="background:var(--gold); border-radius:50%"></i>Home, NYC</span>
       </div>
@@ -1320,8 +1335,20 @@ const STATE_ABBR = {
   'Washington':'WA','West Virginia':'WV','Wisconsin':'WI','Wyoming':'WY',
   'Puerto Rico':'PR',
 };
-// Visited states. Read-only: edit this list to update the U.S. view.
-const VISITED_STATES = new Set([]);
+// U.S. travels. To add a trip: add a year to a place, or a new line.
+// `at` is [longitude, latitude]; `at: null` means the state only, no specific city.
+// Visited states are worked out from this list, so there is nothing else to update.
+const US_PLACES = [
+];
+const placeFirstYear = p => Math.min(...p.years, p.home || Infinity);
+// state -> first year visited
+const US_STATE_FIRST = {};
+US_PLACES.forEach(p => {
+  const y = placeFirstYear(p);
+  US_STATE_FIRST[p.state] = Math.min(US_STATE_FIRST[p.state] || Infinity, y);
+});
+const VISITED_STATES = new Set(Object.keys(US_STATE_FIRST));
+const US_YEARS = [...new Set(US_PLACES.flatMap(p => p.home ? [...p.years, p.home] : p.years))].sort();
 // U.S. Census regions; DC counts with the South, so the total is 51.
 const US_REGIONS = {
   'Northeast': ['Connecticut','Maine','Massachusetts','New Hampshire','Rhode Island','Vermont',
@@ -1336,7 +1363,6 @@ const US_REGIONS = {
 };
 const US_REGION_OF = Object.fromEntries(
   Object.entries(US_REGIONS).flatMap(([r, names]) => names.map(n => [n, r])));
-const NYC_LNGLAT = [-74.006, 40.713];
 let usStatesFeatures = null;
 let usTimers = [];
 try { localStorage.removeItem('atlas-us-states-visited'); } catch (e) {} // old editable map
@@ -2037,11 +2063,42 @@ function switchTab(id, btn) {
 }
 
 // ── U.S. VIEW ─────────────────────────────────────
-// Read-only map of VISITED_STATES. Each time the view opens, visited states fill in
-// one by one, nearest to NYC first, while the counter and region bars count up.
+// Read-only map built from US_PLACES. Each time the view opens it replays the years in
+// order: states fill in the year they were first visited and city dots appear with them.
 const US_MAP_W = 960, US_MAP_H = 600;
 
-function usStatTotals(shown) {
+function usPlaceLabel(p) { return p.city || `${p.state} (no specific city)`; }
+function usPlaceYears(p) {
+  const ys = p.years.join(', ');
+  return p.home ? `${ys ? ys + ' · ' : ''}home since ${p.home}` : ys;
+}
+
+function usShowTip(event, region, name, lines, visited) {
+  document.getElementById('ttRegion').textContent = region.toUpperCase();
+  document.getElementById('ttName').textContent = name;
+  document.getElementById('ttTagline').innerHTML = lines.map(esc).join('<br>');
+  _tip.style.setProperty('--region-color', visited ? 'var(--americas)' : 'var(--text-4)');
+  _tip.classList.add('visible');
+  moveTooltip(event);
+}
+
+function usRenderYears() {
+  document.getElementById('usYearList').innerHTML = US_YEARS.map(y => {
+    const here = US_PLACES.filter(p => p.years.includes(y) || p.home === y)
+      .map(p => p.home === y && !p.years.includes(y) ? `moved to ${p.city}` : (p.city || p.state));
+    return `<div class="us-year-row" data-year="${y}"><b>${y}</b><span>${esc(here.join(', '))}</span></div>`;
+  }).join('');
+}
+
+// Show the map as of the end of `year` (Infinity = everything)
+function usShowThrough(year) {
+  const shown = new Set(Object.keys(US_STATE_FIRST).filter(s => US_STATE_FIRST[s] <= year));
+  d3.selectAll('#usMapSvg path.us-state').classed('visited', d => shown.has(d.properties.name));
+  d3.selectAll('#usMapSvg circle.us-city').classed('shown', d => placeFirstYear(d) <= year);
+  document.querySelectorAll('#usYearList .us-year-row').forEach(el =>
+    el.classList.toggle('dim', +el.dataset.year > year));
+  document.getElementById('usYear').textContent = year === Infinity
+    ? `${US_YEARS[0]}–${US_YEARS[US_YEARS.length - 1]}` : year < US_YEARS[0] ? '' : year;
   document.getElementById('usCount').textContent = shown.size;
   document.getElementById('usTotalBar').style.width = (shown.size / 51 * 100) + '%';
   document.getElementById('usRegions').innerHTML = Object.entries(US_REGIONS).map(([region, names]) => {
@@ -2079,12 +2136,11 @@ async function renderUsView() {
       .attr('d', path)
       .on('mouseenter', (event, d) => {
         const name = d.properties.name;
-        document.getElementById('ttRegion').textContent = US_REGION_OF[name].toUpperCase();
-        document.getElementById('ttName').textContent = name;
-        document.getElementById('ttTagline').textContent = VISITED_STATES.has(name) ? 'Been here' : 'Not yet';
-        _tip.style.setProperty('--region-color', VISITED_STATES.has(name) ? 'var(--americas)' : 'var(--text-4)');
-        _tip.classList.add('visible');
-        moveTooltip(event);
+        const places = US_PLACES.filter(p => p.state === name);
+        const lines = places.length
+          ? places.map(p => p.city ? `${p.city} · ${usPlaceYears(p)}` : usPlaceYears(p))
+          : ['Not yet'];
+        usShowTip(event, US_REGION_OF[name], name, lines, places.length > 0);
       })
       .on('mousemove', moveTooltip)
       .on('mouseleave', hideTooltip);
@@ -2097,44 +2153,48 @@ async function renderUsView() {
       .attr('y', d => path.centroid(d)[1])
       .text(d => d.properties.name === 'District of Columbia' ? '' : STATE_ABBR[d.properties.name] || '');
 
-  const [nx, ny] = projection(NYC_LNGLAT);
-  svg.selectAll('g.us-home').data([0]).join(enter => {
+  const cities = US_PLACES.filter(p => p.at && projection(p.at) && !p.home);
+  svg.selectAll('circle.us-city')
+    .data(cities, p => p.city)
+    .join('circle')
+      .attr('class', 'us-city')
+      .attr('r', 4.5)
+      .attr('cx', p => projection(p.at)[0])
+      .attr('cy', p => projection(p.at)[1])
+      .on('mouseenter', (event, p) => usShowTip(event, p.state, p.city, [usPlaceYears(p)], true))
+      .on('mousemove', moveTooltip)
+      .on('mouseleave', hideTooltip);
+
+  const home = US_PLACES.find(p => p.home);
+  const [nx, ny] = projection(home.at);
+  svg.selectAll('g.us-home').data([home]).join(enter => {
     const g = enter.append('g').attr('class', 'us-home');
     g.append('circle').attr('class', 'us-origin-ring').attr('r', 6);
-    g.append('circle').attr('class', 'us-origin').attr('r', 5);
+    g.append('circle').attr('class', 'us-origin').attr('r', 6);
     return g;
-  }).attr('transform', `translate(${nx},${ny})`).raise();
+  }).attr('transform', `translate(${nx},${ny})`)
+    .on('mouseenter', (event, p) => usShowTip(event, p.state, p.city, [usPlaceYears(p)], true))
+    .on('mousemove', moveTooltip)
+    .on('mouseleave', hideTooltip)
+    .raise();
 
-  const visited = usStatesFeatures.filter(d => VISITED_STATES.has(d.properties.name));
   const statesOnly = [...VISITED_STATES].filter(s => s !== 'District of Columbia').length;
   const dc = VISITED_STATES.has('District of Columbia') ? ' + DC' : '';
+  const cityCount = US_PLACES.filter(p => p.city).length;
   document.getElementById('usSub').textContent =
-    `${statesOnly} states${dc} · ${Math.round(VISITED_STATES.size / 51 * 100)}% of the map`;
-  document.getElementById('usStats').textContent = `${51 - VISITED_STATES.size} to go`;
+    `${statesOnly} states${dc} · ${cityCount} cities · ${Math.round(VISITED_STATES.size / 51 * 100)}% of the map`;
+  document.getElementById('usStats').textContent = `${51 - VISITED_STATES.size} states to go`;
+  usRenderYears();
 
-  // Fill nearest-to-NYC first
   usTimers.forEach(clearTimeout);
   usTimers = [];
-  const dist = d => { const [x, y] = path.centroid(d); return Math.hypot(x - nx, y - ny); };
-  visited.sort((a, b) => dist(a) - dist(b));
-  const statePaths = svg.selectAll('path.us-state');
-  const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  if (reduce) {
-    statePaths.classed('visited', d => VISITED_STATES.has(d.properties.name));
-    usStatTotals(VISITED_STATES);
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    usShowThrough(Infinity);
     return;
   }
-  statePaths.classed('visited', false);
-  const shown = new Set();
-  usStatTotals(shown);
-  visited.forEach((d, i) => {
-    usTimers.push(setTimeout(() => {
-      const name = d.properties.name;
-      shown.add(name);
-      statePaths.filter(p => p.properties.name === name).classed('visited', true);
-      usStatTotals(shown);
-    }, 350 + i * 140));
-  });
+  usShowThrough(US_YEARS[0] - 1);
+  US_YEARS.forEach((y, i) => usTimers.push(setTimeout(() => usShowThrough(y), 400 + i * 650)));
+  usTimers.push(setTimeout(() => usShowThrough(Infinity), 400 + US_YEARS.length * 650 + 300));
 }
 
 function toggleSavedFilter() {
