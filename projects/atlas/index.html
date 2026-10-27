@@ -808,25 +808,55 @@ body {
 .budget-flight-note { display: flex; justify-content: space-between; align-items: baseline; font-size: 0.72rem; color: var(--text-3); margin-top: 10px; }
 .budget-flight-note b { color: var(--text-1); font-weight: 600; }
 
-/* ══ PANEL U.S. STATES MAP ══ */
-.us-states-header { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-bottom: 12px; }
-.us-states-clear-btn {
-  font-size: 0.69rem; letter-spacing: 1px; text-transform: uppercase;
-  color: var(--text-3); cursor: pointer; transition: color 0.15s; flex-shrink: 0;
+/* ══ U.S. VIEW ══ */
+.us-view {
+  position: fixed; top: var(--tb); left: 0; right: 0; bottom: 0;
+  display: flex; flex-direction: column;
+  background: var(--bg);
 }
-.us-states-clear-btn:hover { color: var(--gold); }
-.us-map-wrap { position: relative; width: 100%; background: var(--surface); border: 1px solid var(--border); border-radius: 6px; padding: 10px; }
-#usMapSvg { width: 100%; height: auto; display: block; }
+.us-title { font-family: 'Bebas Neue', sans-serif; letter-spacing: 3px; font-size: 1.25rem; color: var(--text-1); flex-shrink: 0; }
+.us-body { flex: 1; display: flex; overflow: hidden; }
+.us-map-wrap { position: relative; flex: 1; min-width: 0; padding: 24px 28px; display: flex; }
+#usMapSvg { width: 100%; height: 100%; display: block; }
 .us-map-loading {
   position: absolute; inset: 0; display: flex; align-items: center; justify-content: center;
   font-size: 0.7rem; letter-spacing: 1px; text-transform: uppercase; color: var(--text-4);
 }
-.us-state { fill: var(--surface-2); stroke: var(--border); stroke-width: 0.75px; cursor: pointer; transition: fill 0.15s; }
-.us-state:hover { fill: var(--border-2); }
-.us-state.visited { fill: var(--region-color, var(--americas)); stroke: var(--region-color, var(--americas)); }
+.us-state { fill: var(--surface-2); stroke: var(--border); stroke-width: 0.9px; transition: fill 0.5s ease, stroke 0.5s ease; }
+.us-state:hover { stroke: var(--text-2); }
+.us-state.visited { fill: var(--americas); stroke: var(--bg); }
+.us-origin { fill: var(--gold); }
+.us-origin-ring { fill: none; stroke: var(--gold); stroke-width: 1.5px; animation: us-ping 2.4s ease-out infinite; transform-box: fill-box; transform-origin: center; }
+@keyframes us-ping { 0% { transform: scale(1); opacity: 0.8; } 100% { transform: scale(3.2); opacity: 0; } }
+.us-side {
+  width: 300px; flex-shrink: 0; overflow-y: auto;
+  border-left: 1px solid var(--border);
+  padding: 26px 26px 30px;
+  display: flex; flex-direction: column; gap: 22px;
+}
+.us-big { display: flex; align-items: baseline; gap: 8px; font-family: 'Bebas Neue', sans-serif; line-height: 0.9; }
+.us-big-num { font-size: 4.6rem; color: var(--americas); letter-spacing: 1px; }
+.us-big-of { font-size: 1.6rem; color: var(--text-3); letter-spacing: 1px; }
+.us-big-sub { font-size: 0.74rem; letter-spacing: 1px; color: var(--text-2); margin-top: 8px; }
+.us-bar { height: 6px; background: var(--surface-2); border-radius: 3px; overflow: hidden; }
+.us-bar i { display: block; height: 100%; width: 0; background: var(--americas); border-radius: 3px; transition: width 0.45s ease; }
+.us-section-label { font-size: 0.69rem; letter-spacing: 2px; text-transform: uppercase; color: var(--text-4); margin-bottom: 12px; }
+.us-regions { display: flex; flex-direction: column; gap: 14px; }
+.us-region-row { display: flex; justify-content: space-between; align-items: baseline; font-size: 0.78rem; color: var(--text-1); margin-bottom: 6px; }
+.us-region-row span { font-size: 0.72rem; color: var(--text-3); }
+.us-legend { display: flex; gap: 16px; font-size: 0.72rem; color: var(--text-2); flex-wrap: wrap; }
+.us-legend span { display: flex; align-items: center; gap: 7px; }
+.us-legend i { width: 11px; height: 11px; border-radius: 2px; display: inline-block; }
+.us-replay-btn {
+  align-self: flex-start;
+  background: none; border: 1px solid var(--border); border-radius: 2px;
+  color: var(--text-2); font-family: 'Geist Mono', monospace; font-size: 0.7rem; letter-spacing: 1px;
+  padding: 6px 11px; cursor: pointer; transition: all 0.15s;
+}
+.us-replay-btn:hover { color: var(--gold); border-color: var(--gold); }
 .us-state-abbr {
   font-family: 'Geist Mono', monospace;
-  font-size: 7.5px;
+  font-size: 11px;
   fill: var(--text-2);
   text-anchor: middle;
   dominant-baseline: middle;
@@ -836,10 +866,12 @@ body {
   stroke-width: 2.5px;
   stroke-linejoin: round;
 }
-.us-states-list { display: flex; flex-wrap: wrap; gap: 5px; margin-top: 12px; }
-.us-state-chip { cursor: pointer; transition: all 0.15s; color: var(--text-1); border-color: var(--border-2); }
-.us-state-chip:hover { border-color: var(--gold); color: var(--gold); }
-.us-states-empty { font-size: 0.72rem; color: var(--text-4); margin-top: 12px; }
+@media (max-width: 900px) {
+  .us-body { flex-direction: column; overflow-y: auto; }
+  .us-map-wrap { flex: none; height: min(62vw, 440px); padding: 14px 12px; }
+  .us-side { width: auto; border-left: none; border-top: 1px solid var(--border); padding: 20px 16px 28px; overflow: visible; }
+  .us-big-num { font-size: 3.6rem; }
+}
 
 /* ══ RESPONSIVE ══ */
 @media (max-width: 640px) {
@@ -897,6 +929,7 @@ body {
       <button class="view-toggle-btn active" id="viewMapBtn" onclick="switchView('map')">✈ Map</button>
       <button class="view-toggle-btn" id="viewCalBtn" onclick="switchView('calendar')">▦ Calendar</button>
       <button class="view-toggle-btn" id="viewBudgetBtn" onclick="switchView('budget')">$ Budget</button>
+      <button class="view-toggle-btn" id="viewUsBtn" onclick="switchView('usa')">★ U.S.</button>
     </div>
     <button class="random-btn" id="randomBtn" onclick="pickRandom()">✦ surprise me</button>
     <button class="saved-btn" id="savedBtn" onclick="toggleSavedFilter()">♥ <span id="savedCount">0</span></button>
@@ -995,6 +1028,38 @@ body {
     <span class="cal-stats" id="budgetStats"></span>
   </div>
   <div id="budgetContent" style="flex:1; display:flex; flex-direction:column; overflow:hidden;"></div>
+</div>
+
+<!-- U.S. VIEW -->
+<div class="us-view" id="usView" style="display:none">
+  <div class="cal-toolbar">
+    <span class="us-title">My U.S.</span>
+    <span class="cal-hint">Every state I've been to, starting from New York</span>
+    <span class="cal-stats" id="usStats"></span>
+  </div>
+  <div class="us-body">
+    <div class="us-map-wrap">
+      <svg id="usMapSvg" viewBox="0 0 960 600" preserveAspectRatio="xMidYMid meet"></svg>
+      <div id="usMapLoading" class="us-map-loading">Loading map&hellip;</div>
+    </div>
+    <aside class="us-side">
+      <div>
+        <div class="us-big"><span class="us-big-num" id="usCount">0</span><span class="us-big-of">/ 51</span></div>
+        <div class="us-big-sub" id="usSub"></div>
+      </div>
+      <div class="us-bar"><i id="usTotalBar"></i></div>
+      <div>
+        <div class="us-section-label">By region</div>
+        <div class="us-regions" id="usRegions"></div>
+      </div>
+      <div class="us-legend">
+        <span><i style="background:var(--americas)"></i>Visited</span>
+        <span><i style="background:var(--surface-2); border:1px solid var(--border)"></i>Not yet</span>
+        <span><i style="background:var(--gold); border-radius:50%"></i>Home, NYC</span>
+      </div>
+      <button class="us-replay-btn" onclick="renderUsView()">↻ Replay</button>
+    </aside>
+  </div>
 </div>
 
 <!-- OVERLAY -->
@@ -1255,13 +1320,26 @@ const STATE_ABBR = {
   'Washington':'WA','West Virginia':'WV','Wisconsin':'WI','Wyoming':'WY',
   'Puerto Rico':'PR',
 };
-const US_STATES_KEY = 'atlas-us-states-visited';
-// Seeded with a starting list the first time this loads in a browser;
-// any later add/remove is what persists in localStorage after that.
-const US_STATES_DEFAULT = [];
-const _usStatesSaved = localStorage.getItem(US_STATES_KEY);
-let visitedStates = new Set(_usStatesSaved !== null ? JSON.parse(_usStatesSaved) : US_STATES_DEFAULT);
+// Visited states. Read-only: edit this list to update the U.S. view.
+const VISITED_STATES = new Set([]);
+// U.S. Census regions; DC counts with the South, so the total is 51.
+const US_REGIONS = {
+  'Northeast': ['Connecticut','Maine','Massachusetts','New Hampshire','Rhode Island','Vermont',
+    'New Jersey','New York','Pennsylvania'],
+  'Midwest': ['Illinois','Indiana','Michigan','Ohio','Wisconsin','Iowa','Kansas','Minnesota',
+    'Missouri','Nebraska','North Dakota','South Dakota'],
+  'South': ['Delaware','District of Columbia','Florida','Georgia','Maryland','North Carolina',
+    'South Carolina','Virginia','West Virginia','Alabama','Kentucky','Mississippi','Tennessee',
+    'Arkansas','Louisiana','Oklahoma','Texas'],
+  'West': ['Arizona','Colorado','Idaho','Montana','Nevada','New Mexico','Utah','Wyoming',
+    'Alaska','California','Hawaii','Oregon','Washington'],
+};
+const US_REGION_OF = Object.fromEntries(
+  Object.entries(US_REGIONS).flatMap(([r, names]) => names.map(n => [n, r])));
+const NYC_LNGLAT = [-74.006, 40.713];
 let usStatesFeatures = null;
+let usTimers = [];
+try { localStorage.removeItem('atlas-us-states-visited'); } catch (e) {} // old editable map
 let mapSvg        = null;
 let mapG          = null;
 let pinLayer      = null;   // outside zoom transform — pins stay fixed size
@@ -1714,7 +1792,7 @@ function openPanel(id) {
         ${food   ? `<button class="panel-tab-btn" onclick="switchTab('tab-food',this)">Food</button>` : ''}
         ${tips   ? `<button class="panel-tab-btn" onclick="switchTab('tab-tips',this)">Tips</button>` : ''}
         <button class="panel-tab-btn" onclick="switchTab('tab-budget',this)">Budget &amp; Timing</button>
-        ${c.code === 'US' ? `<button class="panel-tab-btn" onclick="switchTab('tab-usmap',this); initUsStatesMap();">My U.S. Map</button>` : ''}
+        ${c.code === 'US' ? `<button class="panel-tab-btn" onclick="closePanel(); switchView('usa');">My U.S. Map ↗</button>` : ''}
       </div>
       <div id="tab-overview" class="panel-tab-content">
         <div class="panel-section-text">${esc(c.description)}</div>
@@ -1741,21 +1819,6 @@ function openPanel(id) {
       </div>` : ''}
       ${tips ? `<div id="tab-tips" class="panel-tab-content" style="display:none">
         <div class="tips-list">${tips}</div>
-        <div style="height:8px"></div>
-      </div>` : ''}
-      ${c.code === 'US' ? `<div id="tab-usmap" class="panel-tab-content" style="display:none">
-        <div>
-          <div class="panel-section-label">My U.S. Map</div>
-          <div class="us-states-header">
-            <div class="panel-section-text" style="font-size:0.76rem; color:var(--text-1)">Click a state to mark it visited. <span id="usStatesCount">0</span> so far.</div>
-            <span class="us-states-clear-btn" onclick="clearUsStates()">Clear</span>
-          </div>
-          <div id="usMapWrap" class="us-map-wrap">
-            <svg id="usMapSvg"></svg>
-            <div id="usMapLoading" class="us-map-loading">Loading map&hellip;</div>
-          </div>
-          <div id="usStatesList" class="us-states-list"></div>
-        </div>
         <div style="height:8px"></div>
       </div>` : ''}
     </div>`;
@@ -1973,83 +2036,105 @@ function switchTab(id, btn) {
   btn.classList.add('active');
 }
 
-function saveVisitedStates() { localStorage.setItem(US_STATES_KEY, JSON.stringify([...visitedStates])); }
+// ── U.S. VIEW ─────────────────────────────────────
+// Read-only map of VISITED_STATES. Each time the view opens, visited states fill in
+// one by one, nearest to NYC first, while the counter and region bars count up.
+const US_MAP_W = 960, US_MAP_H = 600;
 
-function renderVisitedStatesList() {
-  const countEl = document.getElementById('usStatesCount');
-  if (countEl) countEl.textContent = visitedStates.size;
-  const listEl = document.getElementById('usStatesList');
-  if (!listEl) return;
-  if (visitedStates.size === 0) {
-    listEl.innerHTML = `<div class="us-states-empty">No states marked yet.</div>`;
-    return;
-  }
-  listEl.innerHTML = [...visitedStates].sort().map(name =>
-    `<span class="vibe-chip us-state-chip" data-state="${esc(name)}">${esc(name)}</span>`
-  ).join('');
-  listEl.querySelectorAll('.us-state-chip').forEach(el => {
-    el.addEventListener('click', () => toggleUsState(el.dataset.state));
-  });
+function usStatTotals(shown) {
+  document.getElementById('usCount').textContent = shown.size;
+  document.getElementById('usTotalBar').style.width = (shown.size / 51 * 100) + '%';
+  document.getElementById('usRegions').innerHTML = Object.entries(US_REGIONS).map(([region, names]) => {
+    const n = names.filter(s => shown.has(s)).length;
+    return `<div>
+      <div class="us-region-row">${region}<span>${n} / ${names.length}</span></div>
+      <div class="us-bar"><i style="width:${n / names.length * 100}%"></i></div>
+    </div>`;
+  }).join('');
 }
 
-function toggleUsState(name) {
-  if (visitedStates.has(name)) visitedStates.delete(name); else visitedStates.add(name);
-  saveVisitedStates();
-  d3.selectAll('#usMapSvg path.us-state')
-    .filter(d => d.properties.name === name)
-    .classed('visited', visitedStates.has(name));
-  renderVisitedStatesList();
-}
-
-function clearUsStates() {
-  if (visitedStates.size === 0) return;
-  visitedStates.clear();
-  saveVisitedStates();
-  d3.selectAll('#usMapSvg path.us-state').classed('visited', false);
-  renderVisitedStatesList();
-}
-
-async function initUsStatesMap() {
-  const wrap = document.getElementById('usMapWrap');
-  if (!wrap) return;
+async function renderUsView() {
   const loading = document.getElementById('usMapLoading');
-
   if (!usStatesFeatures) {
     try {
       const us = await d3.json('https://cdn.jsdelivr.net/npm/us-atlas@3/states-10m.json');
-      usStatesFeatures = topojson.feature(us, us.objects.states).features;
+      usStatesFeatures = topojson.feature(us, us.objects.states).features
+        .filter(d => US_REGION_OF[d.properties.name]); // 50 states + DC, no territories
     } catch (e) {
-      if (loading) loading.textContent = 'Could not load map data.';
+      loading.textContent = 'Could not load map data.';
       return;
     }
-    if (document.getElementById('usMapWrap') !== wrap) return; // panel moved on while loading
   }
+  loading.style.display = 'none';
 
-  if (loading) loading.style.display = 'none';
-
-  const width = wrap.clientWidth || 520, height = 320;
-  const svg = d3.select('#usMapSvg').attr('viewBox', `0 0 ${width} ${height}`);
-  const projection = d3.geoAlbersUsa().fitSize([width, height], { type: 'FeatureCollection', features: usStatesFeatures });
+  const svg = d3.select('#usMapSvg');
+  const projection = d3.geoAlbersUsa().fitExtent([[8, 8], [US_MAP_W - 8, US_MAP_H - 8]],
+    { type: 'FeatureCollection', features: usStatesFeatures });
   const path = d3.geoPath(projection);
 
-  const stateSel = svg.selectAll('path.us-state')
-    .data(usStatesFeatures)
+  svg.selectAll('path.us-state')
+    .data(usStatesFeatures, d => d.properties.name)
     .join('path')
-      .attr('class', d => `us-state${visitedStates.has(d.properties.name) ? ' visited' : ''}`)
+      .attr('class', 'us-state')
       .attr('d', path)
-      .on('click', (event, d) => toggleUsState(d.properties.name));
-  stateSel.selectAll('title').remove();
-  stateSel.append('title').text(d => d.properties.name);
+      .on('mouseenter', (event, d) => {
+        const name = d.properties.name;
+        document.getElementById('ttRegion').textContent = US_REGION_OF[name].toUpperCase();
+        document.getElementById('ttName').textContent = name;
+        document.getElementById('ttTagline').textContent = VISITED_STATES.has(name) ? 'Been here' : 'Not yet';
+        _tip.style.setProperty('--region-color', VISITED_STATES.has(name) ? 'var(--americas)' : 'var(--text-4)');
+        _tip.classList.add('visible');
+        moveTooltip(event);
+      })
+      .on('mousemove', moveTooltip)
+      .on('mouseleave', hideTooltip);
 
   svg.selectAll('text.us-state-abbr')
-    .data(usStatesFeatures)
+    .data(usStatesFeatures, d => d.properties.name)
     .join('text')
       .attr('class', 'us-state-abbr')
       .attr('x', d => path.centroid(d)[0])
       .attr('y', d => path.centroid(d)[1])
-      .text(d => STATE_ABBR[d.properties.name] || '');
+      .text(d => d.properties.name === 'District of Columbia' ? '' : STATE_ABBR[d.properties.name] || '');
 
-  renderVisitedStatesList();
+  const [nx, ny] = projection(NYC_LNGLAT);
+  svg.selectAll('g.us-home').data([0]).join(enter => {
+    const g = enter.append('g').attr('class', 'us-home');
+    g.append('circle').attr('class', 'us-origin-ring').attr('r', 6);
+    g.append('circle').attr('class', 'us-origin').attr('r', 5);
+    return g;
+  }).attr('transform', `translate(${nx},${ny})`).raise();
+
+  const visited = usStatesFeatures.filter(d => VISITED_STATES.has(d.properties.name));
+  const statesOnly = [...VISITED_STATES].filter(s => s !== 'District of Columbia').length;
+  const dc = VISITED_STATES.has('District of Columbia') ? ' + DC' : '';
+  document.getElementById('usSub').textContent =
+    `${statesOnly} states${dc} · ${Math.round(VISITED_STATES.size / 51 * 100)}% of the map`;
+  document.getElementById('usStats').textContent = `${51 - VISITED_STATES.size} to go`;
+
+  // Fill nearest-to-NYC first
+  usTimers.forEach(clearTimeout);
+  usTimers = [];
+  const dist = d => { const [x, y] = path.centroid(d); return Math.hypot(x - nx, y - ny); };
+  visited.sort((a, b) => dist(a) - dist(b));
+  const statePaths = svg.selectAll('path.us-state');
+  const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (reduce) {
+    statePaths.classed('visited', d => VISITED_STATES.has(d.properties.name));
+    usStatTotals(VISITED_STATES);
+    return;
+  }
+  statePaths.classed('visited', false);
+  const shown = new Set();
+  usStatTotals(shown);
+  visited.forEach((d, i) => {
+    usTimers.push(setTimeout(() => {
+      const name = d.properties.name;
+      shown.add(name);
+      statePaths.filter(p => p.properties.name === name).classed('visited', true);
+      usStatTotals(shown);
+    }, 350 + i * 140));
+  });
 }
 
 function toggleSavedFilter() {
@@ -2093,13 +2178,16 @@ function switchView(mode) {
   const isMap = mode === 'map';
   const isCal = mode === 'calendar';
   const isBudget = mode === 'budget';
+  const isUs = mode === 'usa';
   document.getElementById('mapWrap').style.display      = isMap ? '' : 'none';
   document.getElementById('controlsBar').style.display   = isMap ? '' : 'none';
   document.getElementById('calendarView').style.display  = isCal ? 'flex' : 'none';
   document.getElementById('budgetView').style.display    = isBudget ? 'flex' : 'none';
+  document.getElementById('usView').style.display        = isUs ? 'flex' : 'none';
   document.getElementById('viewMapBtn').classList.toggle('active', isMap);
   document.getElementById('viewCalBtn').classList.toggle('active', isCal);
   document.getElementById('viewBudgetBtn').classList.toggle('active', isBudget);
+  document.getElementById('viewUsBtn').classList.toggle('active', isUs);
   document.getElementById('randomBtn').style.display = isMap ? '' : 'none';
   document.getElementById('savedBtn').style.display   = isMap ? '' : 'none';
   if (isCal) {
@@ -2110,6 +2198,14 @@ function switchView(mode) {
     renderCalendar();
   }
   if (isBudget) renderBudget();
+  if (isUs) {
+    history.replaceState(null, '', '#us-map');
+    renderUsView();
+  } else {
+    usTimers.forEach(clearTimeout);
+    hideTooltip();
+    if (location.hash === '#us-map') history.replaceState(null, '', location.pathname);
+  }
 }
 
 function calPlanKey() { return String(calYear); }
@@ -2544,7 +2640,8 @@ fetch('data/countries.json')
     });
     await initMap();
     // Hash routing — open panel if URL has a destination slug
-    if (location.hash) {
+    if (location.hash === '#us-map') switchView('usa');
+    else if (location.hash) {
       const slug = location.hash.replace('#', '').toLowerCase();
       const match = allCountries.find(c => c.name.toLowerCase().replace(/\s+/g, '-') === slug);
       if (match) openPanel(match.id);
