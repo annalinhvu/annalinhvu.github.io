@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Film Festival Tracker | Anna Vu</title>
-<meta name="description" content="Searchable database of experimental and documentary film festivals worldwide. Deadlines, fees, categories, and more.">
+<title>Film Opportunity Tracker | Anna Vu</title>
+<meta name="description" content="Searchable tracker for documentary and experimental film festivals and grants. Compare deadlines, fees, funding, eligibility, and more.">
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎬</text></svg>">
 <style>
   /* ── Geist fonts ── */
@@ -142,6 +142,22 @@
 
   /* ── Page ── */
   .page { max-width: 1440px; margin: 0 auto; padding: 32px 32px 80px; }
+
+  /* ── Opportunity type toggle ── */
+  .resource-toggle {
+    display: flex; gap: 0; margin-bottom: 16px;
+    border-bottom: 1px solid var(--border);
+  }
+  .resource-btn {
+    font-family: 'Geist Mono', monospace; font-size: 0.76rem;
+    letter-spacing: 1.8px; text-transform: uppercase;
+    padding: 11px 22px 12px; border: none; border-bottom: 2px solid transparent;
+    cursor: pointer; background: none; color: var(--text-4); transition: all 0.2s;
+  }
+  .resource-btn:hover { color: var(--text-1); }
+  .resource-btn.active { color: var(--accent); border-bottom-color: var(--accent); font-weight: 600; }
+  .resource-btn:focus-visible { outline: 2px solid var(--accent); outline-offset: -2px; }
+  .controls-spacer { min-height: 1px; }
 
 
   /* ── Group toggle ── */
@@ -294,6 +310,17 @@
     background: var(--red-bg); color: var(--red);
     border: 1px solid var(--red-border);
   }
+  .grant-badge {
+    font-family: 'Geist Mono', monospace; font-size: 0.64rem;
+    padding: 3px 10px; border-radius: 4px; text-transform: uppercase;
+    letter-spacing: 1px; color: var(--indigo);
+    background: var(--indigo-bg); border: 1px solid var(--indigo-border);
+  }
+  .grant-amount {
+    font-family: 'Geist Mono', monospace; font-size: 0.72rem;
+    color: var(--text-3); white-space: nowrap;
+  }
+  .verified-note { color: var(--text-4); font-size: 0.72rem; line-height: 1.6; }
 
   /* ── Event month ── */
   .event-month {
@@ -447,6 +474,8 @@
     .detail-name { font-size: 1.2rem; }
     .deadlines-table th,
     .deadlines-table td { padding: 8px 8px; font-size: 0.72rem; }
+    .resource-toggle { justify-content: center; }
+    .resource-btn { flex: 1; padding-left: 12px; padding-right: 12px; }
   }
 
   /* ── Controls top row ── */
@@ -454,6 +483,7 @@
     display: flex; align-items: center; justify-content: space-between;
     margin-bottom: 24px; flex-wrap: wrap; gap: 12px;
   }
+  .controls-top.grant-controls { justify-content: flex-end; }
   .controls-top .group-toggle { margin-bottom: 0; }
 
   /* ── View toggle (List | Calendar) ── */
@@ -713,7 +743,7 @@
 
 <div class="top-bar">
   <a href="../../index.html" class="back-link">&larr; Portfolio</a>
-  <span class="page-title">Film Festival <span class="pt-accent">Tracker</span></span>
+  <span class="page-title">Film Opportunity <span class="pt-accent">Tracker</span></span>
   <button class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle theme">◐</button>
 </div>
 
@@ -721,8 +751,12 @@
 
   <!-- ── List View ── -->
   <div id="list-view" class="view view-visible">
+    <div class="resource-toggle" role="tablist" aria-label="Opportunity type">
+      <button class="resource-btn active" id="btn-festivals" onclick="setResource('festivals')" role="tab" aria-selected="true">Festivals</button>
+      <button class="resource-btn" id="btn-grants" onclick="setResource('grants')" role="tab" aria-selected="false">Grants</button>
+    </div>
     <div class="controls-top">
-      <div class="group-toggle">
+      <div class="group-toggle" id="festival-groups">
         <button class="group-btn active" id="btn-documentary" onclick="setGroup('documentary')">Documentary</button>
         <button class="group-btn" id="btn-experimental" onclick="setGroup('experimental')">Experimental</button>
       </div>
@@ -732,13 +766,13 @@
       </div>
     </div>
     <div class="stats-row" id="stats-row"></div>
-    <p class="est-note">Dates marked <span>est.</span> are carried forward from a festival's last known deadline, because the new one is not on record yet. Confirm on the festival's site before you submit.</p>
+    <p class="est-note" id="estimate-note">Dates marked <span>est.</span> are carried forward from a festival's last known deadline, because the new one is not on record yet. Confirm on the festival's site before you submit.</p>
     <div class="filter-bar" id="filter-bar">
       <select id="filter-tier"><option value="">Tier</option></select>
       <select id="filter-country"><option value="">Country</option></select>
       <select id="filter-acceptance"><option value="">Selectivity</option></select>
       <select id="filter-premiere"><option value="">Premiere</option></select>
-      <input type="text" id="filter-search" placeholder="Search festivals...">
+      <input type="text" id="filter-search" placeholder="Search festivals..." aria-label="Search festivals">
     </div>
     <div id="list-content">
       <div id="festival-list"></div>
@@ -757,9 +791,11 @@
 <script>
 /* ── State ── */
 var allFestivals = [];
+var allGrants = [];
 var filteredFestivals = [];
 var currentView = 'list';
 var currentDetailId = null;
+var activeResource = 'festivals'; // 'festivals' | 'grants'
 var activeGroup = 'documentary'; // 'documentary' | 'experimental'
 var viewMode = 'list'; // 'list' | 'calendar'
 var calYear = new Date().getFullYear();
@@ -767,6 +803,26 @@ var calMonth = new Date().getMonth(); // 0-indexed
 var selectedCalDay = null;
 
 var EXPERIMENTAL_FOCUSES = ['experimental', 'avant-garde', 'underground'];
+
+function setResource(resource) {
+  activeResource = resource;
+  currentDetailId = null;
+  selectedCalDay = null;
+  document.getElementById('btn-festivals').classList.toggle('active', resource === 'festivals');
+  document.getElementById('btn-grants').classList.toggle('active', resource === 'grants');
+  document.getElementById('btn-festivals').setAttribute('aria-selected', resource === 'festivals');
+  document.getElementById('btn-grants').setAttribute('aria-selected', resource === 'grants');
+  document.getElementById('festival-groups').style.display = resource === 'festivals' ? '' : 'none';
+  document.querySelector('.controls-top').classList.toggle('grant-controls', resource === 'grants');
+  document.getElementById('estimate-note').innerHTML = resource === 'festivals'
+    ? 'Dates marked <span>est.</span> are carried forward from a festival\'s last known deadline, because the new one is not on record yet. Confirm on the festival\'s site before you submit.'
+    : 'Every grant links to its official funder page and was checked against current program guidance. Dates marked <span>est.</span> are projections from the last confirmed cycle; always recheck eligibility and dates before applying.';
+  var search = document.getElementById('filter-search');
+  search.placeholder = resource === 'festivals' ? 'Search festivals...' : 'Search grants...';
+  search.setAttribute('aria-label', resource === 'festivals' ? 'Search festivals' : 'Search grants');
+  populateFilters();
+  applyFilters();
+}
 
 function setGroup(group) {
   activeGroup = group;
@@ -831,6 +887,10 @@ function deadlineTierClass(tier) {
   return '';
 }
 
+function calendarTierClass(tier) {
+  return tier === 'early' ? 'early' : tier === 'late' || tier === 'final' ? 'late' : 'regular';
+}
+
 /* ── Theme ── */
 function toggleTheme() {
   var html = document.documentElement;
@@ -844,10 +904,18 @@ function updateToggle(t) {
 
 /* ── Stats ── */
 function renderStats() {
+  var el = document.getElementById('stats-row');
+  if (activeResource === 'grants') {
+    var open = filteredFestivals.filter(function(g) { return g.rolling || nextUpcomingDeadline(g); }).length;
+    var global = filteredFestivals.filter(function(g) { return g.country === 'International'; }).length;
+    el.innerHTML =
+      '<span class="stat-chip"><span class="stat-val">' + filteredFestivals.length + '</span> grants</span>' +
+      '<span class="stat-chip"><span class="stat-val">' + open + '</span> upcoming / rolling</span>' +
+      '<span class="stat-chip"><span class="stat-val">' + global + '</span> international</span>';
+    return;
+  }
   var countries = new Set();
   filteredFestivals.forEach(function(f) { if (f.country) countries.add(f.country); });
-
-  var el = document.getElementById('stats-row');
   el.innerHTML =
     '<span class="stat-chip"><span class="stat-val">' + filteredFestivals.length + '</span> festivals</span>' +
     '<span class="stat-chip"><span class="stat-val">' + countries.size + '</span> countries</span>';
@@ -855,6 +923,44 @@ function renderStats() {
 
 /* ── Filters ── */
 function populateFilters() {
+  var tierSelect = document.getElementById('filter-tier');
+  var countrySelect = document.getElementById('filter-country');
+  var acceptanceSelect = document.getElementById('filter-acceptance');
+  var premiereSelect = document.getElementById('filter-premiere');
+  tierSelect.innerHTML = '<option value="">' + (activeResource === 'grants' ? 'Focus' : 'Tier') + '</option>';
+  countrySelect.innerHTML = '<option value="">' + (activeResource === 'grants' ? 'Region' : 'Country') + '</option>';
+  acceptanceSelect.innerHTML = '<option value="">' + (activeResource === 'grants' ? 'Stage / type' : 'Selectivity') + '</option>';
+  premiereSelect.innerHTML = '<option value="">' + (activeResource === 'grants' ? 'Community' : 'Premiere') + '</option>';
+
+  if (activeResource === 'grants') {
+    var focuses = new Set();
+    var regions = new Set();
+    var stages = new Set();
+    var communities = new Set();
+    allGrants.forEach(function(g) {
+      (g.focus || []).forEach(function(f) { focuses.add(f); });
+      if (g.country) regions.add(g.country);
+      (g.stages || []).forEach(function(s) { stages.add(s); });
+      (g.communities || []).forEach(function(c) { communities.add(c); });
+    });
+    Array.from(focuses).sort().forEach(function(f) {
+      var o = document.createElement('option'); o.value = f; o.textContent = f.charAt(0).toUpperCase() + f.slice(1); tierSelect.appendChild(o);
+    });
+    Array.from(regions).sort().forEach(function(r) {
+      var o = document.createElement('option'); o.value = r; o.textContent = r; countrySelect.appendChild(o);
+    });
+    ['research', 'development', 'pre-production', 'production', 'post-production', 'distribution', 'new work', 'public project', 'artist practice', 'emergency', 'organizational project'].forEach(function(s) {
+      if (!stages.has(s)) return;
+      var o = document.createElement('option'); o.value = s; o.textContent = s.charAt(0).toUpperCase() + s.slice(1); acceptanceSelect.appendChild(o);
+    });
+    Array.from(communities).sort().forEach(function(c) {
+      var o = document.createElement('option'); o.value = c; o.textContent = c; premiereSelect.appendChild(o);
+    });
+    premiereSelect.style.display = '';
+    return;
+  }
+
+  premiereSelect.style.display = '';
   var tiers = new Set();
   var countries = new Set();
   var acceptances = new Set();
@@ -867,7 +973,6 @@ function populateFilters() {
     if (f.premiere_req) premieres.add(f.premiere_req);
   });
 
-  var tierSelect = document.getElementById('filter-tier');
   Array.from(tiers).sort().forEach(function(t) {
     var o = document.createElement('option');
     o.value = t;
@@ -875,7 +980,6 @@ function populateFilters() {
     tierSelect.appendChild(o);
   });
 
-  var countrySelect = document.getElementById('filter-country');
   Array.from(countries).sort().forEach(function(c) {
     var o = document.createElement('option');
     o.value = c;
@@ -883,7 +987,6 @@ function populateFilters() {
     countrySelect.appendChild(o);
   });
 
-  var acceptanceSelect = document.getElementById('filter-acceptance');
   var acceptOrder = ['very selective', 'selective', 'moderate', 'open'];
   acceptOrder.forEach(function(a) {
     if (acceptances.has(a)) {
@@ -894,7 +997,6 @@ function populateFilters() {
     }
   });
 
-  var premiereSelect = document.getElementById('filter-premiere');
   Array.from(premieres).sort().forEach(function(p) {
     if (p === 'none') return;
     var o = document.createElement('option');
@@ -915,7 +1017,17 @@ function applyFilters() {
   var premiere = document.getElementById('filter-premiere').value;
   var search = document.getElementById('filter-search').value.toLowerCase().trim();
 
-  filteredFestivals = allFestivals.filter(function(f) {
+  if (activeResource === 'grants') {
+    filteredFestivals = allGrants.filter(function(g) {
+      if (tier && (g.focus || []).indexOf(tier) === -1) return false;
+      if (country && g.country !== country) return false;
+      if (acceptance && (g.stages || []).indexOf(acceptance) === -1) return false;
+      if (premiere && (g.communities || []).indexOf(premiere) === -1) return false;
+      if (search && (g.name + ' ' + g.organization + ' ' + g.description + ' ' + (g.communities || []).join(' ')).toLowerCase().indexOf(search) === -1) return false;
+      return true;
+    });
+  } else {
+    filteredFestivals = allFestivals.filter(function(f) {
     // Group filter
     if (activeGroup === 'documentary' && f.focus !== 'documentary') return false;
     if (activeGroup === 'experimental' && EXPERIMENTAL_FOCUSES.indexOf(f.focus) === -1) return false;
@@ -925,7 +1037,8 @@ function applyFilters() {
     if (premiere && f.premiere_req !== premiere) return false;
     if (search && f.name.toLowerCase().indexOf(search) === -1) return false;
     return true;
-  });
+    });
+  }
 
   renderStats();
   if (viewMode === 'calendar') renderCalendar(); else renderList();
@@ -984,9 +1097,22 @@ function feeRangeStr(f) {
   return '$' + min + '–$' + max;
 }
 
+function formatAmount(g) {
+  if (g.amount_max == null) return g.funding_type || 'Support';
+  var symbol = g.currency === 'EUR' ? '€' : g.currency === 'GBP' ? '£' : g.currency === 'CAD' ? 'CA$' : '$';
+  function compact(n) { return n >= 1000 ? (n / 1000) + 'k' : String(n); }
+  if (g.amount_min != null && g.amount_min !== g.amount_max) return symbol + compact(g.amount_min) + '–' + symbol + compact(g.amount_max);
+  return 'Up to ' + symbol + compact(g.amount_max);
+}
+
+function formatStages(g) {
+  return (g.stages || []).map(function(s) { return s.replace('-', ' '); }).join(' · ');
+}
+
 function dlChipHtml(f) {
+  if (f.rolling) return '<div class="dl-block far"><span class="dl-label">applications</span><span class="dl-date">Rolling</span></div>';
   var dl = nextUpcomingDeadline(f);
-  if (!dl) return '<div class="dl-block no-dl"><span class="dl-label">deadline</span><span class="dl-date">None on record</span></div>';
+  if (!dl) return '<div class="dl-block no-dl"><span class="dl-label">applications</span><span class="dl-date">Date TBA</span></div>';
   var days = daysUntil(dl.deadline);
   if (dl.estimated) {
     return '<div class="dl-block est"><span class="dl-label">' + escapeHtml(dl.tier) + ' deadline</span>'
@@ -1005,7 +1131,7 @@ function renderList() {
   if (filteredFestivals.length === 0) {
     container.innerHTML =
       '<div class="state-message">' +
-      'No festivals match your filters.<br>' +
+      'No ' + activeResource + ' match your filters.<br>' +
       '<a onclick="clearFilters()">Clear filters</a>' +
       '</div>';
     return;
@@ -1013,6 +1139,29 @@ function renderList() {
 
   var html = '<div class="festival-grid">';
   filteredFestivals.forEach(function(f, i) {
+    if (activeResource === 'grants') {
+      html +=
+        '<div class="card festival-card stagger-item" style="animation-delay:' + (Math.min(i, 20) * 0.03) + 's" onclick="showDetail(' + f.id + ')">' +
+          '<div class="festival-card-top">' +
+            '<span class="grant-badge">' + escapeHtml(f.funding_type || 'Grant') + '</span>' +
+            '<span class="event-month">' + escapeHtml(f.country || '') + '</span>' +
+          '</div>' +
+          '<div class="festival-name">' + escapeHtml(f.name) + '</div>' +
+          '<div class="festival-location">' + escapeHtml(f.organization || '') + '</div>' +
+          (f.known_for ? '<div class="festival-known-for">' + escapeHtml(f.known_for) + '</div>' : '') +
+          '<div class="festival-card-tags">' +
+            (f.focus || []).map(function(x) { return '<span class="tag">' + escapeHtml(x) + '</span>'; }).join('') +
+          '</div>' +
+          '<div class="festival-meta-row" style="margin-top:10px">' +
+            '<span class="acceptance-label">' + escapeHtml(formatStages(f) || 'stage varies') + '</span>' +
+          '</div>' +
+          '<div class="card-footer">' +
+            dlChipHtml(f) +
+            '<span class="grant-amount">' + escapeHtml(formatAmount(f)) + '</span>' +
+          '</div>' +
+        '</div>';
+      return;
+    }
     var premiereTag = '';
     if (f.premiere_req && f.premiere_req !== 'none') {
       var label = f.premiere_req.replace('_', ' ');
@@ -1060,7 +1209,7 @@ function clearFilters() {
 function showDetail(id) {
   currentView = 'detail';
   currentDetailId = id;
-  location.hash = 'festival/' + id;
+  location.hash = (activeResource === 'grants' ? 'grant/' : 'festival/') + id;
 
   var listView = document.getElementById('list-view');
   var detailView = document.getElementById('detail-view');
@@ -1072,13 +1221,71 @@ function showDetail(id) {
   detailView.classList.add('view-visible');
   window.scrollTo(0, 0);
 
-  var f = allFestivals.find(function(x) { return x.id === id; });
+  var f = (activeResource === 'grants' ? allGrants : allFestivals).find(function(x) { return x.id === id; });
   if (f) {
-    renderDetail(f);
+    if (activeResource === 'grants') renderGrantDetail(f);
+    else renderDetail(f);
   } else {
     detailContent.innerHTML =
-      '<div class="card state-message">Festival not found.</div>';
+      '<div class="card state-message">Opportunity not found.</div>';
   }
+}
+
+function renderGrantDetail(g) {
+  var container = document.getElementById('detail-content');
+  var dl = nextUpcomingDeadline(g);
+  var dlDays = dl ? daysUntil(dl.deadline) : null;
+  var dlCls = dl && dl.estimated ? 'est' : dlClass(dlDays);
+  var focusTags = (g.focus || []).map(function(x) { return '<span class="tag">' + escapeHtml(x) + '</span>'; }).join('');
+  var stageTags = (g.stages || []).map(function(x) { return '<span class="tag">' + escapeHtml(x.replace('-', ' ')) + '</span>'; }).join('');
+  var communityTags = (g.communities || []).map(function(x) { return '<span class="tag">' + escapeHtml(x) + '</span>'; }).join('');
+  var amount = formatAmount(g);
+  var deadlineLabel = g.rolling ? 'Rolling' : dl ? (dl.estimated ? 'Expected next deadline' : 'Next deadline') : 'Applications';
+  var deadlineBody = g.rolling
+    ? '<span class="qf-dl-date">Rolling</span><span class="qf-dl-days">Check the funder site before applying</span>'
+    : dl
+      ? '<span class="qf-dl-tier">' + escapeHtml(dl.tier) + '</span><span class="qf-dl-date">' + (dl.estimated ? 'around ' : '') + formatDate(dl.deadline) + '</span>' +
+        (dl.estimated ? '<span class="qf-dl-days">estimated from ' + dl.basedOn + ', not confirmed</span>' : '<span class="qf-dl-days">' + escapeHtml(dlDaysStr(dlDays)) + '</span>')
+      : '<span class="qf-dl-date">Date TBA</span><span class="qf-dl-days">Applications are not currently open</span>';
+
+  var html = '<div class="detail-grid stagger-item" style="animation-delay:0s">' +
+    '<div class="card detail-header">' +
+      '<div class="detail-header-top"><span class="grant-badge">' + escapeHtml(g.funding_type || 'Grant') + '</span><span class="event-month">' + escapeHtml(g.country || '') + '</span></div>' +
+      '<h1 class="detail-name">' + escapeHtml(g.name) + '</h1>' +
+      '<div class="detail-location">' + escapeHtml(g.organization || '') + '</div>' +
+      '<div class="detail-desc">' + escapeHtml(g.description || '') + '</div>' +
+      (g.known_for ? '<div class="festival-known-for" style="margin-bottom:14px;font-size:0.82rem">' + escapeHtml(g.known_for) + '</div>' : '') +
+      '<div class="detail-tags">' + focusTags + stageTags + communityTags + '</div>' +
+      '<div class="detail-links"><a href="' + escapeHtml(g.website) + '" target="_blank" rel="noopener" class="pill-link">Official program page</a></div>' +
+    '</div>' +
+    '<div class="card quick-facts-card">' +
+      '<div class="qf-head">Quick Facts</div>' +
+      '<div class="qf-row"><span class="qf-label">Support</span><span class="qf-value">' + escapeHtml(amount) + '</span></div>' +
+      '<div class="qf-row"><span class="qf-label">Region</span><span class="qf-value">' + escapeHtml(g.region || g.country || '—') + '</span></div>' +
+      ((g.communities || []).length ? '<div class="qf-row"><span class="qf-label">Community</span><span class="qf-value">' + escapeHtml(g.communities.join(' · ')) + '</span></div>' : '') +
+      '<div class="qf-row"><span class="qf-label">Stage</span><span class="qf-value">' + escapeHtml(formatStages(g) || 'Varies') + '</span></div>' +
+      '<div class="qf-row"><span class="qf-label">Fee</span><span class="qf-value">' + (g.application_fee == null ? 'Free / not listed' : '$' + g.application_fee) + '</span></div>' +
+      '<div class="qf-deadline-block"><div class="qf-head" style="margin-bottom:8px;padding-bottom:0;border-bottom:none">' + deadlineLabel + '</div>' +
+        '<div class="qf-dl-chip ' + (g.rolling ? 'far' : dl ? dlCls : 'no-dl') + '">' + deadlineBody + '</div>' +
+      '</div>' +
+    '</div>' +
+  '</div>';
+
+  html += '<div class="section-header stagger-item" style="animation-delay:0.03s">Eligibility</div>' +
+    '<div class="card stagger-item" style="animation-delay:0.06s;margin-bottom:14px"><div class="detail-desc" style="margin-bottom:0">' + escapeHtml(g.eligibility || 'See the official program page for eligibility.') + '</div></div>';
+
+  if (g.deadlines && g.deadlines.length) {
+    html += '<div class="section-header stagger-item" style="animation-delay:0.09s">Recorded Deadlines</div>' +
+      '<div class="card deadlines-card stagger-item" style="animation-delay:0.12s"><table class="deadlines-table"><thead><tr><th>Cycle</th><th>Round</th><th>Deadline</th><th>Fee</th><th>Status</th></tr></thead><tbody>';
+    g.deadlines.forEach(function(d) {
+      var past = isPast(d.deadline);
+      html += '<tr class="' + (past ? 'deadline-past' : '') + '"><td>' + d.year + '</td><td>' + escapeHtml(d.tier) + '</td><td>' + formatDate(d.deadline) + '</td><td>' + (d.fee_usd == null ? 'Free / not listed' : '$' + d.fee_usd) + '</td><td>' + (past ? 'Closed' : escapeHtml(dlDaysStr(daysUntil(d.deadline)))) + '</td></tr>';
+    });
+    html += '</tbody></table></div>';
+  }
+
+  html += '<p class="verified-note">Details last checked ' + formatDate(g.last_verified) + '. Grant terms can change; the official program page is the source of truth.</p>';
+  container.innerHTML = html;
 }
 
 function renderDetail(f) {
@@ -1218,9 +1425,18 @@ function showList() {
 /* ── Hash routing ── */
 function handleHash() {
   var hash = location.hash.replace('#', '');
+  if (hash.startsWith('grant/')) {
+    var grantId = parseInt(hash.split('/')[1], 10);
+    if (!isNaN(grantId)) {
+      if (activeResource !== 'grants') setResource('grants');
+      showDetail(grantId);
+      return;
+    }
+  }
   if (hash.startsWith('festival/')) {
     var id = parseInt(hash.split('/')[1], 10);
     if (!isNaN(id)) {
+      if (activeResource !== 'festivals') setResource('festivals');
       showDetail(id);
       return;
     }
@@ -1262,11 +1478,11 @@ function renderCalendar() {
       var date = dl.deadline || dl.date || '';
       if (!date) return;
       if (!deadlineMap[date]) deadlineMap[date] = [];
-      deadlineMap[date].push({ festival: f, tier: dl.tier || 'regular', fee: dl.fee_usd });
+      deadlineMap[date].push({ item: f, tier: dl.tier || 'regular', fee: dl.fee_usd });
     });
     expectedDeadlines(f).forEach(function(dl) {
       if (!deadlineMap[dl.deadline]) deadlineMap[dl.deadline] = [];
-      deadlineMap[dl.deadline].push({ festival: f, tier: dl.tier || 'regular', fee: dl.fee_usd, estimated: true, basedOn: dl.basedOn });
+      deadlineMap[dl.deadline].push({ item: f, tier: dl.tier || 'regular', fee: dl.fee_usd, estimated: true, basedOn: dl.basedOn });
     });
   });
 
@@ -1324,7 +1540,7 @@ function renderCalendar() {
     if (hasDl) {
       html += '<div class="cal-events">';
       dls.slice(0, 3).forEach(function(dl) {
-        html += '<span class="cal-event ' + dl.tier + (dl.estimated ? ' est' : '') + '">' + escapeHtml(dl.festival.name) + '</span>';
+        html += '<span class="cal-event ' + calendarTierClass(dl.tier) + (dl.estimated ? ' est' : '') + '">' + escapeHtml(dl.item.name) + '</span>';
       });
       if (dls.length > 3) html += '<span class="cal-event-more">+' + (dls.length - 3) + ' more</span>';
       html += '</div>';
@@ -1340,13 +1556,13 @@ function renderCalendar() {
     html += '<div class="cal-panel-date">' + formatDate(selectedCalDay)
           + ' · ' + items.length + ' deadline' + (items.length !== 1 ? 's' : '') + '</div>';
     items.forEach(function(dl) {
-      html += '<div class="cal-panel-item" onclick="showDetail(' + dl.festival.id + ')">'
-            + '<span class="cal-panel-tier ' + dl.tier + '">' + dl.tier + (dl.estimated ? ' · est.' : '') + '</span>'
+      html += '<div class="cal-panel-item" onclick="showDetail(' + dl.item.id + ')">'
+            + '<span class="cal-panel-tier ' + calendarTierClass(dl.tier) + '">' + escapeHtml(dl.tier) + (dl.estimated ? ' · est.' : '') + '</span>'
             + '<div class="cal-panel-body">'
-            + '<div class="cal-panel-name">' + escapeHtml(dl.festival.name) + '</div>'
-            + '<div class="cal-panel-meta">' + escapeHtml(dl.festival.city) + ', ' + escapeHtml(dl.festival.country) + '</div>'
+            + '<div class="cal-panel-name">' + escapeHtml(dl.item.name) + '</div>'
+            + '<div class="cal-panel-meta">' + escapeHtml(activeResource === 'grants' ? (dl.item.organization || '') : ((dl.item.city || '') + ', ' + (dl.item.country || ''))) + '</div>'
             + '</div>'
-            + '<span class="cal-panel-fee">' + (dl.fee ? '$' + dl.fee : '') + '</span>'
+            + '<span class="cal-panel-fee">' + (activeResource === 'grants' ? escapeHtml(formatAmount(dl.item)) : (dl.fee ? '$' + dl.fee : '')) + '</span>'
             + '</div>';
     });
     html += '</div>';
@@ -1390,13 +1606,13 @@ function init() {
   var container = document.getElementById('festival-list');
   container.innerHTML = '<div class="state-message">Loading festivals...</div>';
 
-  fetch('data/festivals.json')
-    .then(function(r) {
-      if (!r.ok) throw new Error('Failed to load data');
-      return r.json();
-    })
+  Promise.all([
+    fetch('data/festivals.json').then(function(r) { if (!r.ok) throw new Error('Failed to load festival data'); return r.json(); }),
+    fetch('data/grants.json').then(function(r) { if (!r.ok) throw new Error('Failed to load grant data'); return r.json(); })
+  ])
     .then(function(data) {
-      allFestivals = data;
+      allFestivals = data[0];
+      allGrants = data[1];
       populateFilters();
       applyFilters();
       handleHash();
@@ -1404,7 +1620,7 @@ function init() {
     .catch(function() {
       container.innerHTML =
         '<div class="card state-message">' +
-        'Could not load festival data.' +
+        'Could not load opportunity data.' +
         '</div>';
     });
 

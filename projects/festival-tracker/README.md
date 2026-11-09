@@ -1,6 +1,8 @@
-# Film Festival Submission Tracker
+# Film Opportunity Tracker
 
-A searchable database of experimental film festivals. Data layer built with SQLite and Python, with a FastAPI REST API for querying over HTTP.
+A searchable static tracker for documentary and experimental film festivals, filmmaker funds, and artist grants in New York, across the U.S., and internationally. Grants can be filtered by focus, region, stage, and community, including women and gender-expansive artists, Global South filmmakers, Black and Indigenous storytellers, disabled creators, LGBTQ+ filmmakers, Native filmmakers, and other supported groups. The GitHub Pages interface reads curated festival and grant data from JSON; the original SQLite and FastAPI festival data tools remain available for local maintenance.
+
+Grant listings are curated from official funder pages. Each record includes a `last_verified` date, and recurring deadlines carried into a future cycle are visibly labeled as estimates in the interface.
 
 ## Setup
 
