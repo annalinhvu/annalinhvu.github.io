@@ -1,4 +1,4 @@
-# Film Opportunity Tracker
+# Doc & Experimental Film Tracker
 
 A searchable static tracker for documentary and experimental film festivals, filmmaker funds, and artist grants in New York, across the U.S., and internationally. Grants can be filtered by focus, region, stage, and community, including women and gender-expansive artists, Global South filmmakers, Black and Indigenous storytellers, disabled creators, LGBTQ+ filmmakers, Native filmmakers, and other supported groups. The GitHub Pages interface reads curated festival and grant data from JSON; the original SQLite and FastAPI festival data tools remain available for local maintenance.
 

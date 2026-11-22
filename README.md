@@ -22,7 +22,7 @@ The portfolio is organized into these sections:
 
 ## Personal Projects
 
-### Film Opportunity Tracker
+### Doc & Experimental Film Tracker
 
 A searchable tracker for documentary and experimental film festivals plus filmmaker and artist grants, from New York opportunities to international funds. Track submission deadlines, fees, funding, and eligibility in one place, and filter grants by focus, region, stage, and community.
 

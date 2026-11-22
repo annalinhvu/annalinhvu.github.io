@@ -345,6 +345,10 @@ body {
 .panel-more.sk-as-graph .panel-skill-grp,.panel-more.sk-as-graph .panel-skill-line:not(.learning){display:none;}
 .panel-more.sk-as-graph .panel-skill-line.learning{margin-top:4px;}
 .sk-graph{margin-bottom:6px;}
+.sk-facts{display:flex;flex-wrap:wrap;gap:6px;align-items:center;margin:8px 0 4px;font-family:'Geist Mono',monospace;font-size:11px;color:var(--t4);}
+.sk-facts button{font:inherit;color:var(--t3);background:none;border:1px solid var(--bd);border-radius:6px;padding:2px 8px;cursor:pointer;}
+.sk-facts button:hover,.sk-facts button:focus-visible,.sk-facts button[aria-pressed="true"]{border-color:var(--amber);color:var(--amber);outline:none;}
+.sk-facts b{color:var(--t2);font-weight:500;}
 .sk-svg{width:100%;height:auto;display:block;overflow:visible;}
 .sk-edge{stroke:var(--t4);opacity:.18;pointer-events:none;transition:opacity .2s,stroke .2s;}
 .sk-node{cursor:pointer;outline:none;}
@@ -1170,6 +1174,16 @@ body {
 .sch-node.sel rect{stroke:var(--amber);fill:rgba(200,120,94,.14);stroke-width:1.8;}
 .sch-node.sel text{fill:var(--t1);}
 .sch-node.off{opacity:.3;}
+.sch-build{display:flex;align-items:baseline;gap:12px;flex-wrap:wrap;margin-bottom:10px;}
+.sch-build-btn{font-family:'Geist Mono',monospace;font-size:12px;padding:5px 12px;border:1px solid var(--bd-hi);border-radius:7px;background:var(--surface);color:var(--t2);cursor:pointer;white-space:nowrap;}
+.sch-build-btn:hover,.sch-build-btn:focus-visible{border-color:var(--amber);color:var(--amber);outline:none;}
+.sch-build-log{flex:1;min-width:240px;font-size:13px;line-height:1.6;color:var(--t3);}
+.sch-build-log b{color:var(--t1);font-weight:600;}
+.sch-wave{font-family:'Geist Mono',monospace;font-size:10.5px;fill:var(--amber);text-anchor:end;opacity:0;pointer-events:none;transition:opacity .25s;}
+.sch-graph.building .sch-wave.show{opacity:1;}
+.sch-graph.building .sch-edge:not(.on){opacity:.35;}
+.sch-node.lit rect{fill:rgba(200,120,94,.08);}
+.sch-node.crit rect{stroke:var(--amber);stroke-width:1.8;}
 .lay-source rect{stroke:var(--t4);stroke-dasharray:3 3;}
 .lay-staging rect{stroke:rgba(94,122,98,.75);}
 .lay-intermediate rect{stroke:rgba(122,106,150,.8);}
@@ -1555,7 +1569,7 @@ body {
       <a href="projects/festival-tracker/" class="db-row featured">
         <div class="col-idx">01</div>
         <div class="col-name">
-          <span class="row-name">Film Opportunity Tracker</span>
+          <span class="row-name">Doc &amp; Experimental Film Tracker</span>
           <span class="row-desc">Track film festivals plus filmmaker and artist grants, from New York opportunities to international funds. Deadlines, funding, and eligibility in one place.</span>
           <span class="row-link">view project →</span>
         </div>
@@ -1901,6 +1915,7 @@ body {
           </div>
           </details>
         </div>
+        <div class="sch-build"><button type="button" class="sch-build-btn" id="sch-build-btn">▶ build order</button><span class="sch-build-log" id="sch-build-log" aria-live="polite">Lineage is a directed acyclic graph, so the models can be put in a run order where each one runs after everything upstream of it. Press play to watch that order.</span></div>
         <div class="sch-graph-wrap"><svg class="sch-graph" id="sch-graph" role="group" aria-label="Warehouse lineage graph"></svg></div>
         <div class="sch-detail" id="sch-detail"></div>
       </div>
@@ -3679,6 +3694,7 @@ document.querySelectorAll('#pane-career .exp-tags').forEach(function(box) {
   var card = box.querySelector('.sk-card'), hint = card.innerHTML;
 
   function show(n) {
+    box.querySelectorAll('.sk-facts button').forEach(function(x) { x.setAttribute('aria-pressed', 'false'); });
     box.classList.toggle('sk-focus', !!n);
     box.querySelectorAll('.sk-node').forEach(function(g) {
       var k = g.getAttribute('data-k');
@@ -3693,6 +3709,58 @@ document.querySelectorAll('#pane-career .exp-tags').forEach(function(box) {
       + (nbs.length ? '<span class="sk-with">alongside ' + esc(nbs.slice(0, 6).join(', ')) + (nbs.length > 6 ? '…' : '') + '</span>' : '');
   }
   var nodeBy = {}; nodes.forEach(function(n) { nodeBy[n.key] = n; });
+
+  /* graph facts, computed on this graph: degrees, connected components, the largest clique */
+  function deg(n) { return Object.keys(n.nb).length; }
+  var hub = nodes.slice().sort(function(a, b) { return deg(b) - deg(a) || b.uses - a.uses; })[0];
+  var seenC = {}, comps = 0;
+  nodes.forEach(function(n) {
+    if (seenC[n.key]) return;
+    comps++; seenC[n.key] = 1;
+    var stack = [n];
+    while (stack.length) Object.keys(stack.pop().nb).forEach(function(k) { if (!seenC[k]) { seenC[k] = 1; stack.push(nodeBy[k]); } });
+  });
+  /* Bron–Kerbosch with a pivot: R is the clique so far, P the skills that could still join, X the ones already tried */
+  var clique = [];
+  (function bk(R, P, X) {
+    if (!P.length && !X.length) { if (R.length > clique.length) clique = R; return; }
+    if (R.length + P.length <= clique.length) return;
+    var pivot = nodeBy[P.concat(X)[0]].nb;
+    P.filter(function(v) { return !pivot[v]; }).forEach(function(v) {
+      var nv = nodeBy[v].nb;
+      bk(R.concat([v]), P.filter(function(w) { return nv[w]; }), X.filter(function(w) { return nv[w]; }));
+      P = P.filter(function(w) { return w !== v; });
+      X = X.concat([v]);
+    });
+  })([], nodes.map(function(n) { return n.key; }), []);
+  var degSum = nodes.reduce(function(t, n) { return t + deg(n); }, 0);
+
+  var facts = document.createElement('div');
+  facts.className = 'sk-facts';
+  facts.innerHTML = '<button type="button" data-f="hub" aria-pressed="false">most connected <b>' + esc(hub.name) + '</b> · ' + deg(hub) + ' links</button>'
+    + '<button type="button" data-f="clique" aria-pressed="false">largest clique <b>' + clique.length + '</b></button>'
+    + '<span>' + (comps === 1 ? 'one connected component' : comps + ' components') + ' · degrees sum to ' + degSum + ' = 2 × ' + edges.length + ' lines</span>';
+  box.insertBefore(facts, card);
+  function showSet(keys, html) {
+    var inSet = {}; keys.forEach(function(k) { inSet[k] = 1; });
+    box.classList.add('sk-focus');
+    box.querySelectorAll('.sk-node').forEach(function(g) { g.classList.toggle('on', !!inSet[g.getAttribute('data-k')]); });
+    box.querySelectorAll('.sk-edge').forEach(function(l) { l.classList.toggle('on', !!(inSet[l.getAttribute('data-a')] && inSet[l.getAttribute('data-b')])); });
+    card.innerHTML = html;
+  }
+  facts.addEventListener('click', function(e) {
+    var b = e.target.closest('button');
+    if (!b) return;
+    var was = b.getAttribute('aria-pressed') === 'true';
+    facts.querySelectorAll('button').forEach(function(x) { x.setAttribute('aria-pressed', 'false'); });
+    if (was) { show(null); return; }
+    b.setAttribute('aria-pressed', 'true');
+    if (b.getAttribute('data-f') === 'hub') {
+      showSet([hub.key].concat(Object.keys(hub.nb)), '<b>' + esc(hub.name) + '</b><span class="sk-with">used alongside ' + deg(hub) + ' of the other ' + (nodes.length - 1) + ' skills</span>');
+    } else {
+      showSet(clique, '<b>' + clique.length + ' skills, every pair linked</b><span class="sk-with">' + esc(clique.map(function(k) { return nodeBy[k].name; }).join(', ')) + '</span>');
+    }
+  });
   box.addEventListener('mouseover', function(e) { var g = e.target.closest('.sk-node'); if (g) show(nodeBy[g.getAttribute('data-k')]); });
   box.addEventListener('focusin', function(e) { var g = e.target.closest('.sk-node'); if (g) show(nodeBy[g.getAttribute('data-k')]); });
   box.querySelector('.sk-svg').addEventListener('mouseleave', function() { show(null); });
@@ -3890,7 +3958,8 @@ document.querySelectorAll('#pane-career .exp-tags').forEach(function(box) {
   MODELS.forEach(function(m) {
     svg += '<g class="sch-node lay-' + m.layer + '" data-id="' + escHtml(m.id) + '" tabindex="0" role="button" aria-label="' + escHtml(m.id) + ', ' + LAYERS[m.layer].label + '">'
       + '<rect x="' + nx(m) + '" y="' + ny(m) + '" width="' + nw(m) + '" height="' + H + '" rx="7"/>'
-      + '<text x="' + (nx(m) + nw(m) / 2) + '" y="' + (ny(m) + H / 2 + 4.5) + '">' + escHtml(m.label || m.id) + '</text></g>';
+      + '<text x="' + (nx(m) + nw(m) / 2) + '" y="' + (ny(m) + H / 2 + 4.5) + '">' + escHtml(m.label || m.id) + '</text>'
+      + '<text class="sch-wave" x="' + (nx(m) + nw(m) - 2) + '" y="' + (ny(m) - 3) + '"></text></g>';
   });
   graph.setAttribute('viewBox', '0 0 ' + VW + ' ' + VH);
   graph.innerHTML = svg;
@@ -3954,6 +4023,7 @@ document.querySelectorAll('#pane-career .exp-tags').forEach(function(box) {
   function select(id) {
     var m = byId[id];
     if (!m) return;
+    stopBuild();
     var up = walk(id, 'up', {}), down = walk(id, 'down', {});
     graph.querySelectorAll('.sch-node').forEach(function(n) {
       var nid = n.getAttribute('data-id');
@@ -3987,6 +4057,95 @@ document.querySelectorAll('#pane-career .exp-tags').forEach(function(box) {
       graph.parentElement.scrollIntoView({block:'start', behavior:'smooth'});
     });
   });
+
+  /* ── Build order: a topological sort of the lineage DAG (Kahn's algorithm, one wave at a time).
+     A model's wave is the longest chain of models above it, so models in one wave never depend on each other. ── */
+  var buildBtn = document.getElementById('sch-build-btn'), buildLog = document.getElementById('sch-build-log');
+  var buildLogIntro = buildLog ? buildLog.innerHTML : '', buildTimer = null;
+  function topoWaves() {
+    var indeg = {}, waves = [], done = 0, wave = {};
+    MODELS.forEach(function(m) { indeg[m.id] = m.up.length; });
+    var cur = MODELS.filter(function(m) { return !m.up.length; }).map(function(m) { return m.id; });
+    while (cur.length) {
+      waves.push(cur);
+      done += cur.length;
+      var next = [];
+      cur.forEach(function(id) {
+        wave[id] = waves.length;
+        byId[id].down.forEach(function(d) { if (--indeg[d] === 0) next.push(d); });
+      });
+      cur = next;
+    }
+    /* longest chain: start from a model in the last wave and step back to an upstream model one wave earlier */
+    var chain = waves.length ? [waves[waves.length - 1][0]] : [];
+    while (chain.length && wave[chain[0]] > 1) {
+      var w = wave[chain[0]] - 1;
+      chain.unshift(byId[chain[0]].up.filter(function(u) { return wave[u] === w; })[0]);
+    }
+    return {waves:waves, wave:wave, chain:chain, acyclic:done === MODELS.length};
+  }
+  var TOPO = topoWaves();
+  function nodeEl(id) { return graph.querySelector('.sch-node[data-id="' + id.replace(/"/g, '\\"') + '"]'); }
+  function stopBuild() {
+    clearTimeout(buildTimer); buildTimer = null;
+    graph.classList.remove('building');
+    graph.querySelectorAll('.sch-node').forEach(function(n) { n.classList.remove('lit', 'crit', 'off'); });
+    graph.querySelectorAll('.sch-wave').forEach(function(t) { t.classList.remove('show'); });
+    graph.querySelectorAll('.sch-edge').forEach(function(e) { e.classList.remove('on'); });
+    if (buildLog) buildLog.innerHTML = buildLogIntro;
+    if (buildBtn) buildBtn.textContent = '▶ build order';
+  }
+  function label(id) { return escHtml(byId[id].label || id); }
+  function finishBuild() {
+    var onChain = {};
+    TOPO.chain.forEach(function(id) { onChain[id] = 1; var n = nodeEl(id); if (n) n.classList.add('crit'); });
+    graph.querySelectorAll('.sch-edge').forEach(function(e) {
+      var f = e.getAttribute('data-from'), t = e.getAttribute('data-to');
+      e.classList.toggle('on', !!(onChain[f] && onChain[t] && TOPO.wave[t] === TOPO.wave[f] + 1));
+    });
+    buildLog.innerHTML = '<b>' + MODELS.length + ' nodes in ' + TOPO.waves.length + ' waves</b> (sources, models, and exposures). '
+      + 'Nodes in the same wave don\'t depend on each other, so they can run in parallel. '
+      + 'The longest chain has ' + TOPO.chain.length + ' nodes (' + TOPO.chain.map(label).join(' → ') + '), '
+      + 'so no schedule finishes in fewer than ' + TOPO.waves.length + ' waves.';
+    buildBtn.textContent = '↺ reset';
+    buildTimer = null;
+  }
+  function runBuild() {
+    graph.querySelectorAll('.sch-node').forEach(function(n) { n.classList.remove('sel'); n.classList.add('off'); });
+    graph.querySelectorAll('.sch-edge').forEach(function(e) { e.classList.remove('on'); });
+    graph.classList.add('building');
+    buildBtn.textContent = '■ stop';
+    var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    var i = 0;
+    (function step() {
+      var ids = TOPO.waves[i], inWave = {};
+      ids.forEach(function(id) {
+        inWave[id] = 1;
+        var n = nodeEl(id);
+        if (n) {
+          n.classList.remove('off'); n.classList.add('lit');
+          var t = n.querySelector('.sch-wave'); t.textContent = i + 1; t.classList.add('show');
+        }
+      });
+      graph.querySelectorAll('.sch-edge').forEach(function(e) {
+        e.classList.toggle('on', !!inWave[e.getAttribute('data-to')]);
+      });
+      buildLog.innerHTML = '<b>Wave ' + (i + 1) + ' of ' + TOPO.waves.length + ':</b> '
+        + (i === 0 ? 'nothing upstream, so the ' + ids.length + ' sources load first.'
+                   : ids.length + (ids.length === 1 ? ' node whose' : ' nodes whose') + ' upstream nodes have all run: ' + ids.map(label).join(', ') + '.');
+      i++;
+      if (i < TOPO.waves.length) buildTimer = setTimeout(step, reduce ? 0 : 1300);
+      else buildTimer = setTimeout(finishBuild, reduce ? 0 : 1300);
+    })();
+  }
+  if (buildBtn && TOPO.acyclic) {
+    buildBtn.addEventListener('click', function() {
+      if (graph.classList.contains('building')) { stopBuild(); return; }
+      runBuild();
+    });
+  } else if (buildBtn) {
+    buildBtn.parentNode.hidden = true;
+  }
 
   window.SCHEMA = {
     models: MODELS,
