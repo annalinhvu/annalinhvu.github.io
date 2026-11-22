@@ -1633,7 +1633,7 @@ body {
       <div class="db-footer">
         <span>10 rows returned</span>
         <span class="ft-live">● all systems live</span>
-        <span>last updated October 2026</span>
+        <span id="ft-updated" hidden></span>
       </div>
     </section>
 
@@ -4307,6 +4307,16 @@ document.querySelectorAll('#pane-career .exp-tags').forEach(function(box) {
   render();
 })();
 
+/* ── Side projects footer: month the page was last published, from the server's Last-Modified.
+   Without that header browsers report the current time, so a date within a minute of now is skipped. ── */
+(function() {
+  var el = document.getElementById('ft-updated');
+  var t = new Date(document.lastModified);
+  if (!el || isNaN(t) || Math.abs(Date.now() - t) < 60000) return;
+  el.textContent = 'last updated ' + t.toLocaleDateString('en-US', {month:'long', year:'numeric'});
+  el.hidden = false;
+})();
+
 /* ── In-page links that switch tabs ── */
 document.addEventListener('click', function(e) {
   var a = e.target.closest && e.target.closest('[data-go]');
@@ -5081,9 +5091,9 @@ document.addEventListener('click', function(e) {
     role:'Principal Data Engineer', origin:'Hanoi, Vietnam',
     email:'vuhongnhatlinh@gmail.com', linkedin:'linkedin.com/in/annalinhvu', github:'github.com/annalinhvu',
     status:'open_to_work',
-    target_roles:['Data Engineering','BI','Analytics'],
+    target_roles:['Data Engineering','AI Engineering'],
     grad_school:'University of Pennsylvania',
-    grad_degree:'M.A.Sc. Computer Science · Artificial Intelligence',
+    grad_degree:'M.A.Sc. Computer Science',
     undergrad_school:'Vanderbilt University',
     undergrad_degree:'B.A. Economics & Media Arts',
     hobbies:['analog film','photography','community volunteering'],
