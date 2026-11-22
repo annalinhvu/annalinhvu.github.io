@@ -2,7 +2,7 @@
 
 A personal web app for tracking NYC activities together — organized by category, with details on every entry and a surprise picker for when we can't decide.
 
-**Live site:** https://annalinhvu.github.io/nyc-adventure/
+**Live site:** https://annalinhvu.github.io/projects/nyc-adventure/
 
 ## What it is
 

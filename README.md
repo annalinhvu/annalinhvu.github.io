@@ -22,9 +22,9 @@ The portfolio is organized into these sections:
 
 ## Personal Projects
 
-### Film Festival Tracker
+### Film Opportunity Tracker
 
-A searchable directory of documentary and experimental film festivals worldwide, built to make tracking submission deadlines, fees, and requirements easier. Browse festivals by category, region, tier, and premiere status.
+A searchable tracker for documentary and experimental film festivals plus filmmaker and artist grants, from New York opportunities to international funds. Track submission deadlines, fees, funding, and eligibility in one place, and filter grants by focus, region, stage, and community.
 
 **Stack:** HTML · JSON · JavaScript
 
@@ -84,7 +84,7 @@ A travel wish list and planning tool inspired by airline boarding passes. Explor
 
 [View Project ↗](https://annalinhvu.github.io/projects/global-donation-guide/)
 
-An independently researched directory of nonprofit organizations working in humanitarian relief, hunger and poverty, and animal welfare. Each entry includes information about the organization and a direct donation link, without rankings or affiliate partnerships.
+An independently researched directory of nonprofit organizations working in crisis relief, hunger and poverty, children's health, and animal welfare. Each entry includes information about the organization and a direct donation link, without rankings or affiliate partnerships.
 
 **Stack:** HTML · JavaScript
 
