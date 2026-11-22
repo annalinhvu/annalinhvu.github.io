@@ -1778,7 +1778,7 @@ body {
         </div>
 
         <div class="course-block">
-          <p class="course-line"><span class="course-lbl">also studied</span>data structures and algorithms · computer systems, C, and assembly · discrete math: proofs, combinatorics, probability, and graph theory · object-oriented design in Python and Java</p>
+          <p class="course-line"><span class="course-lbl">also studied</span>data structures and algorithms · computer systems, C, and assembly · discrete math: proofs, combinatorics, probability, and <a href="#" class="intro-link" data-go="architecture" data-build="1" title="See it used: a topological sort of the warehouse lineage">graph theory</a> · object-oriented design in Python and Java</p>
           <p class="course-line"><span class="course-lbl">up next</span>artificial intelligence · natural language processing · big data analytics · technology ethics and law</p>
         </div>
       </div>
@@ -4149,6 +4149,15 @@ document.querySelectorAll('#pane-career .exp-tags').forEach(function(box) {
 
   window.SCHEMA = {
     models: MODELS,
+    /* from the coursework line: jump to the build order and play it */
+    build: function() {
+      if (!buildBtn || !TOPO.acyclic) return;
+      stopBuild();
+      setTimeout(function() {
+        buildBtn.parentNode.scrollIntoView({block:'start', behavior:'smooth'});
+        runBuild();
+      }, 150);
+    },
     open: function(id) {
       switchPane('architecture');
       select(id);
@@ -4304,6 +4313,7 @@ document.addEventListener('click', function(e) {
   if (!a) return;
   e.preventDefault();
   switchPane(a.getAttribute('data-go'));
+  if (a.hasAttribute('data-build') && window.SCHEMA && window.SCHEMA.build) window.SCHEMA.build();
 });
 
 /* ── Init ── */
